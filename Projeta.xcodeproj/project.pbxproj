@@ -1,0 +1,469 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4C74A61513A2BFA100E7DBF6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C74A61413A2BFA100E7DBF6 /* Cocoa.framework */; };
+		4C74A61F13A2BFA100E7DBF6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C74A61D13A2BFA100E7DBF6 /* InfoPlist.strings */; };
+		4C74A62113A2BFA100E7DBF6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C74A62013A2BFA100E7DBF6 /* main.m */; };
+		4C74A62513A2BFA100E7DBF6 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 4C74A62313A2BFA100E7DBF6 /* Credits.rtf */; };
+		4C74A62813A2BFA100E7DBF6 /* ProjetaAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C74A62713A2BFA100E7DBF6 /* ProjetaAppDelegate.m */; };
+		4C74A62B13A2BFA100E7DBF6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C74A62913A2BFA100E7DBF6 /* MainMenu.xib */; };
+		4C74A62E13A2BFA100E7DBF6 /* Projeta.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C74A62C13A2BFA100E7DBF6 /* Projeta.xcdatamodeld */; };
+		4C74A63613A2BFA100E7DBF6 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C74A63513A2BFA100E7DBF6 /* SenTestingKit.framework */; };
+		4C74A63713A2BFA100E7DBF6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C74A61413A2BFA100E7DBF6 /* Cocoa.framework */; };
+		4C74A63F13A2BFA100E7DBF6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C74A63D13A2BFA100E7DBF6 /* InfoPlist.strings */; };
+		4C74A64113A2BFA100E7DBF6 /* ProjetaTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 4C74A64013A2BFA100E7DBF6 /* ProjetaTests.h */; };
+		4C74A64313A2BFA100E7DBF6 /* ProjetaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C74A64213A2BFA100E7DBF6 /* ProjetaTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4C74A63813A2BFA100E7DBF6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C74A60713A2BFA100E7DBF6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4C74A60F13A2BFA100E7DBF6;
+			remoteInfo = Projeta;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4C74A61013A2BFA100E7DBF6 /* Projeta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Projeta.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C74A61413A2BFA100E7DBF6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		4C74A61713A2BFA100E7DBF6 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		4C74A61813A2BFA100E7DBF6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		4C74A61913A2BFA100E7DBF6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4C74A61C13A2BFA100E7DBF6 /* Projeta-Info.plist */ = {isa = PBXFileReference; path = "Projeta-Info.plist"; sourceTree = "<group>"; };
+		4C74A61E13A2BFA100E7DBF6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4C74A62013A2BFA100E7DBF6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4C74A62213A2BFA100E7DBF6 /* Projeta-Prefix.pch */ = {isa = PBXFileReference; path = "Projeta-Prefix.pch"; sourceTree = "<group>"; };
+		4C74A62413A2BFA100E7DBF6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		4C74A62613A2BFA100E7DBF6 /* ProjetaAppDelegate.h */ = {isa = PBXFileReference; path = ProjetaAppDelegate.h; sourceTree = "<group>"; };
+		4C74A62713A2BFA100E7DBF6 /* ProjetaAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjetaAppDelegate.m; sourceTree = "<group>"; };
+		4C74A62A13A2BFA100E7DBF6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		4C74A62D13A2BFA100E7DBF6 /* Projeta.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Projeta.xcdatamodel; sourceTree = "<group>"; };
+		4C74A63413A2BFA100E7DBF6 /* ProjetaTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjetaTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C74A63513A2BFA100E7DBF6 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		4C74A63C13A2BFA100E7DBF6 /* ProjetaTests-Info.plist */ = {isa = PBXFileReference; path = "ProjetaTests-Info.plist"; sourceTree = "<group>"; };
+		4C74A63E13A2BFA100E7DBF6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4C74A64013A2BFA100E7DBF6 /* ProjetaTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProjetaTests.h; sourceTree = "<group>"; };
+		4C74A64213A2BFA100E7DBF6 /* ProjetaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjetaTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4C74A60D13A2BFA100E7DBF6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C74A61513A2BFA100E7DBF6 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C74A63013A2BFA100E7DBF6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C74A63613A2BFA100E7DBF6 /* SenTestingKit.framework in Frameworks */,
+				4C74A63713A2BFA100E7DBF6 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4C74A60513A2BFA100E7DBF6 = {
+			isa = PBXGroup;
+			children = (
+				4C74A61A13A2BFA100E7DBF6 /* Projeta */,
+				4C74A63A13A2BFA100E7DBF6 /* ProjetaTests */,
+				4C74A61313A2BFA100E7DBF6 /* Frameworks */,
+				4C74A61113A2BFA100E7DBF6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4C74A61113A2BFA100E7DBF6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4C74A61013A2BFA100E7DBF6 /* Projeta.app */,
+				4C74A63413A2BFA100E7DBF6 /* ProjetaTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4C74A61313A2BFA100E7DBF6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4C74A61413A2BFA100E7DBF6 /* Cocoa.framework */,
+				4C74A63513A2BFA100E7DBF6 /* SenTestingKit.framework */,
+				4C74A61613A2BFA100E7DBF6 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4C74A61613A2BFA100E7DBF6 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4C74A61713A2BFA100E7DBF6 /* AppKit.framework */,
+				4C74A61813A2BFA100E7DBF6 /* CoreData.framework */,
+				4C74A61913A2BFA100E7DBF6 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		4C74A61A13A2BFA100E7DBF6 /* Projeta */ = {
+			isa = PBXGroup;
+			children = (
+				4C74A62613A2BFA100E7DBF6 /* ProjetaAppDelegate.h */,
+				4C74A62713A2BFA100E7DBF6 /* ProjetaAppDelegate.m */,
+				4C74A62913A2BFA100E7DBF6 /* MainMenu.xib */,
+				4C74A62C13A2BFA100E7DBF6 /* Projeta.xcdatamodeld */,
+				4C74A61B13A2BFA100E7DBF6 /* Supporting Files */,
+			);
+			path = Projeta;
+			sourceTree = "<group>";
+		};
+		4C74A61B13A2BFA100E7DBF6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4C74A61C13A2BFA100E7DBF6 /* Projeta-Info.plist */,
+				4C74A61D13A2BFA100E7DBF6 /* InfoPlist.strings */,
+				4C74A62013A2BFA100E7DBF6 /* main.m */,
+				4C74A62213A2BFA100E7DBF6 /* Projeta-Prefix.pch */,
+				4C74A62313A2BFA100E7DBF6 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4C74A63A13A2BFA100E7DBF6 /* ProjetaTests */ = {
+			isa = PBXGroup;
+			children = (
+				4C74A64013A2BFA100E7DBF6 /* ProjetaTests.h */,
+				4C74A64213A2BFA100E7DBF6 /* ProjetaTests.m */,
+				4C74A63B13A2BFA100E7DBF6 /* Supporting Files */,
+			);
+			path = ProjetaTests;
+			sourceTree = "<group>";
+		};
+		4C74A63B13A2BFA100E7DBF6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4C74A63C13A2BFA100E7DBF6 /* ProjetaTests-Info.plist */,
+				4C74A63D13A2BFA100E7DBF6 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4C74A60F13A2BFA100E7DBF6 /* Projeta */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C74A64613A2BFA100E7DBF6 /* Build configuration list for PBXNativeTarget "Projeta" */;
+			buildPhases = (
+				4C74A60C13A2BFA100E7DBF6 /* Sources */,
+				4C74A60D13A2BFA100E7DBF6 /* Frameworks */,
+				4C74A60E13A2BFA100E7DBF6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Projeta;
+			productName = Projeta;
+			productReference = 4C74A61013A2BFA100E7DBF6 /* Projeta.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4C74A63313A2BFA100E7DBF6 /* ProjetaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C74A64913A2BFA100E7DBF6 /* Build configuration list for PBXNativeTarget "ProjetaTests" */;
+			buildPhases = (
+				4C74A62F13A2BFA100E7DBF6 /* Sources */,
+				4C74A63013A2BFA100E7DBF6 /* Frameworks */,
+				4C74A63113A2BFA100E7DBF6 /* Resources */,
+				4C74A63213A2BFA100E7DBF6 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4C74A63913A2BFA100E7DBF6 /* PBXTargetDependency */,
+			);
+			name = ProjetaTests;
+			productName = ProjetaTests;
+			productReference = 4C74A63413A2BFA100E7DBF6 /* ProjetaTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4C74A60713A2BFA100E7DBF6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "Michael Wermeester";
+			};
+			buildConfigurationList = 4C74A60A13A2BFA100E7DBF6 /* Build configuration list for PBXProject "Projeta" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 4C74A60513A2BFA100E7DBF6;
+			productRefGroup = 4C74A61113A2BFA100E7DBF6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4C74A60F13A2BFA100E7DBF6 /* Projeta */,
+				4C74A63313A2BFA100E7DBF6 /* ProjetaTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4C74A60E13A2BFA100E7DBF6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C74A61F13A2BFA100E7DBF6 /* InfoPlist.strings in Resources */,
+				4C74A62513A2BFA100E7DBF6 /* Credits.rtf in Resources */,
+				4C74A62B13A2BFA100E7DBF6 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C74A63113A2BFA100E7DBF6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C74A63F13A2BFA100E7DBF6 /* InfoPlist.strings in Resources */,
+				4C74A64113A2BFA100E7DBF6 /* ProjetaTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4C74A63213A2BFA100E7DBF6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4C74A60C13A2BFA100E7DBF6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C74A62113A2BFA100E7DBF6 /* main.m in Sources */,
+				4C74A62813A2BFA100E7DBF6 /* ProjetaAppDelegate.m in Sources */,
+				4C74A62E13A2BFA100E7DBF6 /* Projeta.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C74A62F13A2BFA100E7DBF6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C74A64313A2BFA100E7DBF6 /* ProjetaTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4C74A63913A2BFA100E7DBF6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4C74A60F13A2BFA100E7DBF6 /* Projeta */;
+			targetProxy = 4C74A63813A2BFA100E7DBF6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4C74A61D13A2BFA100E7DBF6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C74A61E13A2BFA100E7DBF6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4C74A62313A2BFA100E7DBF6 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C74A62413A2BFA100E7DBF6 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		4C74A62913A2BFA100E7DBF6 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C74A62A13A2BFA100E7DBF6 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		4C74A63D13A2BFA100E7DBF6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C74A63E13A2BFA100E7DBF6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4C74A64413A2BFA100E7DBF6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		4C74A64513A2BFA100E7DBF6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		4C74A64713A2BFA100E7DBF6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Projeta/Projeta-Prefix.pch";
+				INFOPLIST_FILE = "Projeta/Projeta-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		4C74A64813A2BFA100E7DBF6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Projeta/Projeta-Prefix.pch";
+				INFOPLIST_FILE = "Projeta/Projeta-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		4C74A64A13A2BFA100E7DBF6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Projeta.app/Contents/MacOS/Projeta";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Projeta/Projeta-Prefix.pch";
+				INFOPLIST_FILE = "ProjetaTests/ProjetaTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		4C74A64B13A2BFA100E7DBF6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Projeta.app/Contents/MacOS/Projeta";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Projeta/Projeta-Prefix.pch";
+				INFOPLIST_FILE = "ProjetaTests/ProjetaTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4C74A60A13A2BFA100E7DBF6 /* Build configuration list for PBXProject "Projeta" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C74A64413A2BFA100E7DBF6 /* Debug */,
+				4C74A64513A2BFA100E7DBF6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4C74A64613A2BFA100E7DBF6 /* Build configuration list for PBXNativeTarget "Projeta" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C74A64713A2BFA100E7DBF6 /* Debug */,
+				4C74A64813A2BFA100E7DBF6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4C74A64913A2BFA100E7DBF6 /* Build configuration list for PBXNativeTarget "ProjetaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C74A64A13A2BFA100E7DBF6 /* Debug */,
+				4C74A64B13A2BFA100E7DBF6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4C74A62C13A2BFA100E7DBF6 /* Projeta.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4C74A62D13A2BFA100E7DBF6 /* Projeta.xcdatamodel */,
+			);
+			currentVersion = 4C74A62D13A2BFA100E7DBF6 /* Projeta.xcdatamodel */;
+			path = Projeta.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 4C74A60713A2BFA100E7DBF6 /* Project object */;
+}
