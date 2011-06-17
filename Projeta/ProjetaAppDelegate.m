@@ -7,14 +7,17 @@
 //
 
 #import "ProjetaAppDelegate.h"
+#import "MainWindow.h"
 
 @implementation ProjetaAppDelegate
 
 @synthesize window = _window;
+MainWindow* windowController;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
+	[self newMainWindow:self];
 }
 
 /**
@@ -186,6 +189,15 @@
     }
 
     return NSTerminateNow;
+}
+
+#pragma MW
+
+-(void) newMainWindow:(id)sender
+{
+    windowController = [[MainWindow alloc] initWithWindowNibName:@"MainWindow"];
+	//[windowController setMainWindowController:self];
+	[windowController showWindow:self];
 }
 
 @end

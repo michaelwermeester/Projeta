@@ -19,6 +19,17 @@
 		4C74A63F13A2BFA100E7DBF6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C74A63D13A2BFA100E7DBF6 /* InfoPlist.strings */; };
 		4C74A64113A2BFA100E7DBF6 /* ProjetaTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 4C74A64013A2BFA100E7DBF6 /* ProjetaTests.h */; };
 		4C74A64313A2BFA100E7DBF6 /* ProjetaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C74A64213A2BFA100E7DBF6 /* ProjetaTests.m */; };
+		4CBCE9BC13ABC0E900835F30 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CBCE9BB13ABC0E900835F30 /* MainWindow.xib */; };
+		4CBCE9C013ABC22200835F30 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBCE9BF13ABC22200835F30 /* MainWindow.m */; };
+		4CBCEA1013ABFC4000835F30 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBCE9FF13ABFC4000835F30 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4CBCEA1113ABFC4000835F30 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBCEA0113ABFC4000835F30 /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4CBCEA1213ABFC4000835F30 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBCEA0313ABFC4000835F30 /* ASIDownloadCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4CBCEA1313ABFC4000835F30 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBCEA0513ABFC4000835F30 /* ASIFormDataRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4CBCEA1413ABFC4000835F30 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBCEA0713ABFC4000835F30 /* ASIHTTPRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4CBCEA1513ABFC4000835F30 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBCEA0B13ABFC4000835F30 /* ASIInputStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4CBCEA1613ABFC4000835F30 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBCEA0D13ABFC4000835F30 /* ASINetworkQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4CBCEA1813AC014F00835F30 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CBCEA1713AC014F00835F30 /* SystemConfiguration.framework */; };
+		4CBCEA1A13AC018C00835F30 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CBCEA1913AC018C00835F30 /* libz.1.2.5.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,21 +48,44 @@
 		4C74A61713A2BFA100E7DBF6 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		4C74A61813A2BFA100E7DBF6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		4C74A61913A2BFA100E7DBF6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		4C74A61C13A2BFA100E7DBF6 /* Projeta-Info.plist */ = {isa = PBXFileReference; path = "Projeta-Info.plist"; sourceTree = "<group>"; };
+		4C74A61C13A2BFA100E7DBF6 /* Projeta-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Projeta-Info.plist"; sourceTree = "<group>"; };
 		4C74A61E13A2BFA100E7DBF6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4C74A62013A2BFA100E7DBF6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		4C74A62213A2BFA100E7DBF6 /* Projeta-Prefix.pch */ = {isa = PBXFileReference; path = "Projeta-Prefix.pch"; sourceTree = "<group>"; };
+		4C74A62213A2BFA100E7DBF6 /* Projeta-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Projeta-Prefix.pch"; sourceTree = "<group>"; };
 		4C74A62413A2BFA100E7DBF6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		4C74A62613A2BFA100E7DBF6 /* ProjetaAppDelegate.h */ = {isa = PBXFileReference; path = ProjetaAppDelegate.h; sourceTree = "<group>"; };
+		4C74A62613A2BFA100E7DBF6 /* ProjetaAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProjetaAppDelegate.h; sourceTree = "<group>"; };
 		4C74A62713A2BFA100E7DBF6 /* ProjetaAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjetaAppDelegate.m; sourceTree = "<group>"; };
 		4C74A62A13A2BFA100E7DBF6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		4C74A62D13A2BFA100E7DBF6 /* Projeta.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Projeta.xcdatamodel; sourceTree = "<group>"; };
 		4C74A63413A2BFA100E7DBF6 /* ProjetaTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjetaTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C74A63513A2BFA100E7DBF6 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		4C74A63C13A2BFA100E7DBF6 /* ProjetaTests-Info.plist */ = {isa = PBXFileReference; path = "ProjetaTests-Info.plist"; sourceTree = "<group>"; };
+		4C74A63C13A2BFA100E7DBF6 /* ProjetaTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ProjetaTests-Info.plist"; sourceTree = "<group>"; };
 		4C74A63E13A2BFA100E7DBF6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4C74A64013A2BFA100E7DBF6 /* ProjetaTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProjetaTests.h; sourceTree = "<group>"; };
 		4C74A64213A2BFA100E7DBF6 /* ProjetaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjetaTests.m; sourceTree = "<group>"; };
+		4CBCE9BB13ABC0E900835F30 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		4CBCE9BE13ABC22200835F30 /* MainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindow.h; sourceTree = "<group>"; };
+		4CBCE9BF13ABC22200835F30 /* MainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindow.m; sourceTree = "<group>"; };
+		4CBCE9FD13ABFC4000835F30 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
+		4CBCE9FE13ABFC4000835F30 /* ASIDataCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataCompressor.h; sourceTree = "<group>"; };
+		4CBCE9FF13ABFC4000835F30 /* ASIDataCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataCompressor.m; sourceTree = "<group>"; };
+		4CBCEA0013ABFC4000835F30 /* ASIDataDecompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataDecompressor.h; sourceTree = "<group>"; };
+		4CBCEA0113ABFC4000835F30 /* ASIDataDecompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataDecompressor.m; sourceTree = "<group>"; };
+		4CBCEA0213ABFC4000835F30 /* ASIDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDownloadCache.h; sourceTree = "<group>"; };
+		4CBCEA0313ABFC4000835F30 /* ASIDownloadCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDownloadCache.m; sourceTree = "<group>"; };
+		4CBCEA0413ABFC4000835F30 /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIFormDataRequest.h; sourceTree = "<group>"; };
+		4CBCEA0513ABFC4000835F30 /* ASIFormDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIFormDataRequest.m; sourceTree = "<group>"; };
+		4CBCEA0613ABFC4000835F30 /* ASIHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequest.h; sourceTree = "<group>"; };
+		4CBCEA0713ABFC4000835F30 /* ASIHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIHTTPRequest.m; sourceTree = "<group>"; };
+		4CBCEA0813ABFC4000835F30 /* ASIHTTPRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestConfig.h; sourceTree = "<group>"; };
+		4CBCEA0913ABFC4000835F30 /* ASIHTTPRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestDelegate.h; sourceTree = "<group>"; };
+		4CBCEA0A13ABFC4000835F30 /* ASIInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIInputStream.h; sourceTree = "<group>"; };
+		4CBCEA0B13ABFC4000835F30 /* ASIInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIInputStream.m; sourceTree = "<group>"; };
+		4CBCEA0C13ABFC4000835F30 /* ASINetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINetworkQueue.h; sourceTree = "<group>"; };
+		4CBCEA0D13ABFC4000835F30 /* ASINetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASINetworkQueue.m; sourceTree = "<group>"; };
+		4CBCEA0E13ABFC4000835F30 /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
+		4CBCEA1713AC014F00835F30 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		4CBCEA1913AC018C00835F30 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +93,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CBCEA1A13AC018C00835F30 /* libz.1.2.5.dylib in Frameworks */,
+				4CBCEA1813AC014F00835F30 /* SystemConfiguration.framework in Frameworks */,
 				4C74A61513A2BFA100E7DBF6 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -97,6 +133,8 @@
 		4C74A61313A2BFA100E7DBF6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4CBCEA1913AC018C00835F30 /* libz.1.2.5.dylib */,
+				4CBCEA1713AC014F00835F30 /* SystemConfiguration.framework */,
 				4C74A61413A2BFA100E7DBF6 /* Cocoa.framework */,
 				4C74A63513A2BFA100E7DBF6 /* SenTestingKit.framework */,
 				4C74A61613A2BFA100E7DBF6 /* Other Frameworks */,
@@ -117,11 +155,15 @@
 		4C74A61A13A2BFA100E7DBF6 /* Projeta */ = {
 			isa = PBXGroup;
 			children = (
+				4CBCE9FA13ABFC2000835F30 /* ASIHTTPRequest */,
 				4C74A62613A2BFA100E7DBF6 /* ProjetaAppDelegate.h */,
 				4C74A62713A2BFA100E7DBF6 /* ProjetaAppDelegate.m */,
+				4CBCE9BE13ABC22200835F30 /* MainWindow.h */,
+				4CBCE9BF13ABC22200835F30 /* MainWindow.m */,
 				4C74A62913A2BFA100E7DBF6 /* MainMenu.xib */,
 				4C74A62C13A2BFA100E7DBF6 /* Projeta.xcdatamodeld */,
 				4C74A61B13A2BFA100E7DBF6 /* Supporting Files */,
+				4CBCE9BB13ABC0E900835F30 /* MainWindow.xib */,
 			);
 			path = Projeta;
 			sourceTree = "<group>";
@@ -155,6 +197,31 @@
 				4C74A63D13A2BFA100E7DBF6 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4CBCE9FA13ABFC2000835F30 /* ASIHTTPRequest */ = {
+			isa = PBXGroup;
+			children = (
+				4CBCE9FD13ABFC4000835F30 /* ASICacheDelegate.h */,
+				4CBCE9FE13ABFC4000835F30 /* ASIDataCompressor.h */,
+				4CBCE9FF13ABFC4000835F30 /* ASIDataCompressor.m */,
+				4CBCEA0013ABFC4000835F30 /* ASIDataDecompressor.h */,
+				4CBCEA0113ABFC4000835F30 /* ASIDataDecompressor.m */,
+				4CBCEA0213ABFC4000835F30 /* ASIDownloadCache.h */,
+				4CBCEA0313ABFC4000835F30 /* ASIDownloadCache.m */,
+				4CBCEA0413ABFC4000835F30 /* ASIFormDataRequest.h */,
+				4CBCEA0513ABFC4000835F30 /* ASIFormDataRequest.m */,
+				4CBCEA0613ABFC4000835F30 /* ASIHTTPRequest.h */,
+				4CBCEA0713ABFC4000835F30 /* ASIHTTPRequest.m */,
+				4CBCEA0813ABFC4000835F30 /* ASIHTTPRequestConfig.h */,
+				4CBCEA0913ABFC4000835F30 /* ASIHTTPRequestDelegate.h */,
+				4CBCEA0A13ABFC4000835F30 /* ASIInputStream.h */,
+				4CBCEA0B13ABFC4000835F30 /* ASIInputStream.m */,
+				4CBCEA0C13ABFC4000835F30 /* ASINetworkQueue.h */,
+				4CBCEA0D13ABFC4000835F30 /* ASINetworkQueue.m */,
+				4CBCEA0E13ABFC4000835F30 /* ASIProgressDelegate.h */,
+			);
+			name = ASIHTTPRequest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,6 +297,7 @@
 				4C74A61F13A2BFA100E7DBF6 /* InfoPlist.strings in Resources */,
 				4C74A62513A2BFA100E7DBF6 /* Credits.rtf in Resources */,
 				4C74A62B13A2BFA100E7DBF6 /* MainMenu.xib in Resources */,
+				4CBCE9BC13ABC0E900835F30 /* MainWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +336,14 @@
 				4C74A62113A2BFA100E7DBF6 /* main.m in Sources */,
 				4C74A62813A2BFA100E7DBF6 /* ProjetaAppDelegate.m in Sources */,
 				4C74A62E13A2BFA100E7DBF6 /* Projeta.xcdatamodeld in Sources */,
+				4CBCE9C013ABC22200835F30 /* MainWindow.m in Sources */,
+				4CBCEA1013ABFC4000835F30 /* ASIDataCompressor.m in Sources */,
+				4CBCEA1113ABFC4000835F30 /* ASIDataDecompressor.m in Sources */,
+				4CBCEA1213ABFC4000835F30 /* ASIDownloadCache.m in Sources */,
+				4CBCEA1313ABFC4000835F30 /* ASIFormDataRequest.m in Sources */,
+				4CBCEA1413ABFC4000835F30 /* ASIHTTPRequest.m in Sources */,
+				4CBCEA1513ABFC4000835F30 /* ASIInputStream.m in Sources */,
+				4CBCEA1613ABFC4000835F30 /* ASINetworkQueue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +451,7 @@
 		4C74A64713A2BFA100E7DBF6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Projeta/Projeta-Prefix.pch";
 				INFOPLIST_FILE = "Projeta/Projeta-Info.plist";
@@ -386,6 +463,7 @@
 		4C74A64813A2BFA100E7DBF6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Projeta/Projeta-Prefix.pch";
 				INFOPLIST_FILE = "Projeta/Projeta-Info.plist";
@@ -441,6 +519,7 @@
 				4C74A64813A2BFA100E7DBF6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4C74A64913A2BFA100E7DBF6 /* Build configuration list for PBXNativeTarget "ProjetaTests" */ = {
 			isa = XCConfigurationList;
@@ -449,6 +528,7 @@
 				4C74A64B13A2BFA100E7DBF6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+@class MainWindow;
 
 @interface ProjetaAppDelegate : NSObject <NSApplicationDelegate> {
     NSWindow *_window;
@@ -22,5 +23,8 @@
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 - (IBAction)saveAction:(id)sender;
+
+// 
+- (IBAction)newMainWindow:(id)sender;
 
 @end
