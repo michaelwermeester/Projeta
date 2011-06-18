@@ -12,11 +12,16 @@
 @implementation ProjetaAppDelegate
 
 @synthesize window = _window;
+
 MainWindow* windowController;
+
+#pragma mark CoreData
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
+    
+    // open main window
 	[self newMainWindow:self];
 }
 
@@ -191,13 +196,23 @@ MainWindow* windowController;
     return NSTerminateNow;
 }
 
-#pragma MW
+#pragma mark Projeta
 
+// open new main window
 -(void) newMainWindow:(id)sender
 {
     windowController = [[MainWindow alloc] initWithWindowNibName:@"MainWindow"];
-	//[windowController setMainWindowController:self];
 	[windowController showWindow:self];
+}
+
+// open preferences window.
+- (IBAction)openPreferences:(id)sender {
+    
+    //[[PreferencesController sharedPrefsWindowController] showWindow:nil];
+    
+    if (preferencesController == nil)
+        preferencesController = [[PreferencesController alloc] initWithWindowNibName:@"Preferences"];
+	[preferencesController showWindow:self];
 }
 
 @end

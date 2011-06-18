@@ -7,10 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "PreferencesController.h"
 
 @interface MainWindow : NSWindowController {
     
+    
 }
-
 
 @end

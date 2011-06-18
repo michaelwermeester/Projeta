@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "PreferencesController.h"
 @class MainWindow;
 
 @interface ProjetaAppDelegate : NSObject <NSApplicationDelegate> {
@@ -14,6 +15,8 @@
     NSPersistentStoreCoordinator *__persistentStoreCoordinator;
     NSManagedObjectModel *__managedObjectModel;
     NSManagedObjectContext *__managedObjectContext;
+    
+    PreferencesController *preferencesController;
 }
 
 @property (strong) IBOutlet NSWindow *window;
@@ -26,5 +29,7 @@
 
 // 
 - (IBAction)newMainWindow:(id)sender;
+// preferences window.
+- (IBAction)openPreferences:(id)sender;
 
 @end

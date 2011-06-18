@@ -30,6 +30,8 @@
 		4CBCEA1613ABFC4000835F30 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBCEA0D13ABFC4000835F30 /* ASINetworkQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4CBCEA1813AC014F00835F30 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CBCEA1713AC014F00835F30 /* SystemConfiguration.framework */; };
 		4CBCEA1A13AC018C00835F30 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CBCEA1913AC018C00835F30 /* libz.1.2.5.dylib */; };
+		4CBCEA1D13AD17CF00835F30 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CBCEA1C13AD17CF00835F30 /* Preferences.xib */; };
+		4CBCEA2013AD180200835F30 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBCEA1F13AD180200835F30 /* PreferencesController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +88,9 @@
 		4CBCEA0E13ABFC4000835F30 /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
 		4CBCEA1713AC014F00835F30 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4CBCEA1913AC018C00835F30 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
+		4CBCEA1C13AD17CF00835F30 /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
+		4CBCEA1E13AD180200835F30 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
+		4CBCEA1F13AD180200835F30 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +160,7 @@
 		4C74A61A13A2BFA100E7DBF6 /* Projeta */ = {
 			isa = PBXGroup;
 			children = (
+				4CBCEA1B13AD161500835F30 /* Preferences */,
 				4CBCE9FA13ABFC2000835F30 /* ASIHTTPRequest */,
 				4C74A62613A2BFA100E7DBF6 /* ProjetaAppDelegate.h */,
 				4C74A62713A2BFA100E7DBF6 /* ProjetaAppDelegate.m */,
@@ -222,6 +228,16 @@
 				4CBCEA0E13ABFC4000835F30 /* ASIProgressDelegate.h */,
 			);
 			name = ASIHTTPRequest;
+			sourceTree = "<group>";
+		};
+		4CBCEA1B13AD161500835F30 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				4CBCEA1C13AD17CF00835F30 /* Preferences.xib */,
+				4CBCEA1E13AD180200835F30 /* PreferencesController.h */,
+				4CBCEA1F13AD180200835F30 /* PreferencesController.m */,
+			);
+			name = Preferences;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,6 +314,7 @@
 				4C74A62513A2BFA100E7DBF6 /* Credits.rtf in Resources */,
 				4C74A62B13A2BFA100E7DBF6 /* MainMenu.xib in Resources */,
 				4CBCE9BC13ABC0E900835F30 /* MainWindow.xib in Resources */,
+				4CBCEA1D13AD17CF00835F30 /* Preferences.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +361,7 @@
 				4CBCEA1413ABFC4000835F30 /* ASIHTTPRequest.m in Sources */,
 				4CBCEA1513ABFC4000835F30 /* ASIInputStream.m in Sources */,
 				4CBCEA1613ABFC4000835F30 /* ASINetworkQueue.m in Sources */,
+				4CBCEA2013AD180200835F30 /* PreferencesController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
