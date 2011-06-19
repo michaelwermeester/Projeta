@@ -364,7 +364,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Extract English strings (use this to check if you added new strings to your nibs)\nibtool --generate-strings-file Projeta/en.lproj/MainWindow.strings Projeta/en.lproj/MainWindow.xib\n# Generate French interface\nibtool --strings-file Projeta/fr.lproj/MainWindow.strings --write Projeta/fr.lproj/MainWindow.xib Projeta/en.lproj/MainWindow.xib";
+			shellScript = "# http://developer.casgrain.com/?p=94\n# Extract English strings (use this to check if you added new strings to your nibs)\nibtool --generate-strings-file Projeta/en.lproj/MainWindow.strings Projeta/en.lproj/MainWindow.xib\n# Generate French interface\nibtool --strings-file Projeta/fr.lproj/MainWindow.strings --write Projeta/fr.lproj/MainWindow.xib Projeta/en.lproj/MainWindow.xib";
 		};
 /* End PBXShellScriptBuildPhase section */
 
