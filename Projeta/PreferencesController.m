@@ -78,18 +78,26 @@ static NSString *nibName = @"Preferences";
 	NSView *previousView = [self viewForTag: currentViewTag];
 	currentViewTag = tag;
 	NSRect newFrame = [self newFrameForNewContentView:view];
+
     
-	[NSAnimationContext beginGrouping];
-	[[NSAnimationContext currentContext] setDuration:0.1];
-	
-	if ([[NSApp currentEvent] modifierFlags] & NSShiftKeyMask)
-	    [[NSAnimationContext currentContext] setDuration:1.0];
-	
-	[[[self.window contentView] animator] replaceSubview:previousView with:view];
-	[[self.window animator] setFrame:newFrame display:YES];
+    NSView *emptyView = [[NSView alloc] init];
     
-	[NSAnimationContext endGrouping];
-	
+    [[self.window contentView] replaceSubview:previousView with:emptyView];
+    
+    //NSRect frame = [self.window frame];
+    //frame.origin = newFrame.origin;
+    
+    //NSRect newFrameRect = [self.window frameRectForContentRect:[view frame]];
+    //NSSize newSize = newFrameRect.size;
+    //NSSize newSize = newFrame.size;
+    
+    //frame.size = newSize;
+    
+    //[self.window setFrame:frame display:YES animate:YES];
+    [self.window setFrame:newFrame display:YES animate:YES];
+    
+   
+    [[self.window contentView] replaceSubview:emptyView with:view]; 
 }
 
 @end
