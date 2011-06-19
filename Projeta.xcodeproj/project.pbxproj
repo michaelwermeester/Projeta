@@ -256,6 +256,7 @@
 				4C74A60C13A2BFA100E7DBF6 /* Sources */,
 				4C74A60D13A2BFA100E7DBF6 /* Frameworks */,
 				4C74A60E13A2BFA100E7DBF6 /* Resources */,
+				4CF2442513AE587C00E10E95 /* Translate NIB files */,
 			);
 			buildRules = (
 			);
@@ -350,6 +351,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		4CF2442513AE587C00E10E95 /* Translate NIB files */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Translate NIB files";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Extract English strings (use this to check if you added new strings to your nibs)\nibtool --generate-strings-file Projeta/en.lproj/MainWindow.strings Projeta/en.lproj/MainWindow.xib\n# Generate French interface\nibtool --strings-file Projeta/fr.lproj/MainWindow.strings --write Projeta/fr.lproj/MainWindow.xib Projeta/en.lproj/MainWindow.xib";
 		};
 /* End PBXShellScriptBuildPhase section */
 
