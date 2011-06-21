@@ -7,12 +7,17 @@
 //
 
 #import "PreferencesController.h"
+#import "ASIHTTPRequest.h"
 
 static PreferencesController *_sharedPrefsWindowController = nil;
 
 static NSString *nibName = @"Preferences";
 
 @implementation PreferencesController
+
+/*@synthesize username;
+@synthesize password;
+@synthesize URL;*/
 
 - (id)initWithWindow:(NSWindow *)window
 {
@@ -98,6 +103,65 @@ static NSString *nibName = @"Preferences";
     
    
     [[self.window contentView] replaceSubview:emptyView with:view]; 
+}
+
+
+#pragma mark Credentials - Keychain
+
+- (NSString*)username
+{
+    return @"mw";
+}
+
+- (void)setUsername:(NSString *)username
+{
+    [self saveCredentialsToKeychain];
+}
+
+- (NSString*)password
+{
+    return @"test";
+}
+
+- (void)setPassword:(NSString *)password
+{
+    [self saveCredentialsToKeychain];
+}
+
+/*- (NSString*)URL
+{
+    return @"https://luckycode.be:8181/test";
+}*/
+
+- (NSURL*)URL
+{
+    // load user defaults from preferences file
+    NSString *strURL = [[NSUserDefaults standardUserDefaults] objectForKey:@"URL"];
+    
+    // return URL
+    return [NSURL URLWithString:[strURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+}
+
+- (void)setURL:(NSString *)theURL
+{
+    // save user defaults to preferences file
+    [[NSUserDefaults standardUserDefaults] setObject:theURL forKey:@"URL"];
+    
+    // save credentials to keychain (call ASIHTTPRequest method)
+    [self saveCredentialsToKeychain];
+}
+
+- (void)saveCredentialsToKeychain
+{
+    
+    //NSURL *url = [NSURL URLWithString:[[self URL] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSURLCredential* credential;
+	credential = [NSURLCredential credentialWithUser:[self username]
+											password:[self password]
+										 persistence:NSURLCredentialPersistencePermanent];
+
+    // save credentials to keychain
+    [ASIHTTPRequest saveCredentials:credential forHost:[[self URL] host] port:[[[self URL] port] intValue] protocol:[[self URL] scheme] realm:nil];
 }
 
 @end
