@@ -17,6 +17,8 @@
     NSString *username;
     NSString *password;
     NSString *URL;
+    NSTextField *usernameTextField;
+    NSSecureTextField *passwordTextField;
 }
 
 + (PreferencesController *)sharedPrefsWindowController;
@@ -30,6 +32,10 @@
 //@property (retain) NSString *URL;
 @property (retain) NSURL *URL;
 
+- (NSURLCredential*)getCredentialFromKeyChain;
 - (void)saveCredentialsToKeychain;
+
+@property (strong) IBOutlet NSTextField *usernameTextField;
+@property (strong) IBOutlet NSSecureTextField *passwordTextField;
 
 @end

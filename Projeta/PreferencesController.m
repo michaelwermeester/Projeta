@@ -14,6 +14,8 @@ static PreferencesController *_sharedPrefsWindowController = nil;
 static NSString *nibName = @"Preferences";
 
 @implementation PreferencesController
+@synthesize usernameTextField;
+@synthesize passwordTextField;
 
 /*@synthesize username;
 @synthesize password;
@@ -110,28 +112,27 @@ static NSString *nibName = @"Preferences";
 
 - (NSString*)username
 {
-    return @"mw";
+    // get credential from keychain
+    //NSURLCredential *tmpCredential = [ASIHTTPRequest savedCredentialsForHost:[[self URL] host] port:[[[self URL] port] intValue] protocol:[[self URL] scheme] realm:nil];
+    
+    // get credential from keychain and return username
+    return [[self getCredentialFromKeyChain] user];
 }
 
-- (void)setUsername:(NSString *)username
+- (void)setUsername:(NSString *)newUsername
 {
     [self saveCredentialsToKeychain];
 }
 
 - (NSString*)password
 {
-    return @"test";
+    return [[self getCredentialFromKeyChain] password];
 }
 
-- (void)setPassword:(NSString *)password
+- (void)setPassword:(NSString *)newPassword
 {
     [self saveCredentialsToKeychain];
 }
-
-/*- (NSString*)URL
-{
-    return @"https://luckycode.be:8181/test";
-}*/
 
 - (NSURL*)URL
 {
@@ -151,13 +152,23 @@ static NSString *nibName = @"Preferences";
     [self saveCredentialsToKeychain];
 }
 
+// get saved credential from keychain
+- (NSURLCredential*)getCredentialFromKeyChain
+{
+    // return credential from keychain
+    return [ASIHTTPRequest savedCredentialsForHost:[[self URL] host] port:[[[self URL] port] intValue] protocol:[[self URL] scheme] realm:nil];
+}
+
 - (void)saveCredentialsToKeychain
 {
     
     //NSURL *url = [NSURL URLWithString:[[self URL] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     NSURLCredential* credential;
-	credential = [NSURLCredential credentialWithUser:[self username]
+	/*credential = [NSURLCredential credentialWithUser:[self username]
 											password:[self password]
+										 persistence:NSURLCredentialPersistencePermanent];*/
+    credential = [NSURLCredential credentialWithUser:[usernameTextField stringValue]
+											password:[passwordTextField stringValue]
 										 persistence:NSURLCredentialPersistencePermanent];
 
     // save credentials to keychain
