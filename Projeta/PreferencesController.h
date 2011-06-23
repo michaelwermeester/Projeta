@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface PreferencesController : NSWindowController {
+@interface PreferencesController : NSWindowController /*<NSWindowDelegate> */ {
     IBOutlet NSToolbar *bar;
 	IBOutlet NSView *generalPreferenceView;
 	IBOutlet NSView *accountPreferenceView;
@@ -26,14 +26,16 @@
 - (IBAction)switchView:(id)sender;
 - (NSRect)newFrameForNewContentView:(NSView *)view;
 
-// username/password - account info
+// username/password/URL - account info
 @property (retain) NSString *username;
 @property (retain) NSString *password;
-//@property (retain) NSString *URL;
 @property (retain) NSURL *URL;
 
 - (NSURLCredential*)getCredentialFromKeyChain;
+- (void)removeCredentialsFromKeychain;
 - (void)saveCredentialsToKeychain;
+
+- (bool)hasValidUrl;
 
 @property (strong) IBOutlet NSTextField *usernameTextField;
 @property (strong) IBOutlet NSSecureTextField *passwordTextField;

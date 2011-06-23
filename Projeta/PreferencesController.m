@@ -17,10 +17,6 @@ static NSString *nibName = @"Preferences";
 @synthesize usernameTextField;
 @synthesize passwordTextField;
 
-/*@synthesize username;
-@synthesize password;
-@synthesize URL;*/
-
 - (id)initWithWindow:(NSWindow *)window
 {
     self = [super initWithWindow:window];
@@ -121,6 +117,10 @@ static NSString *nibName = @"Preferences";
 
 - (void)setUsername:(NSString *)newUsername
 {
+    // remove old credentials (not necessary but let's do it to do some clean-up)
+    [self removeCredentialsFromKeychain];
+    
+    // save credentials to keychain
     [self saveCredentialsToKeychain];
 }
 
@@ -131,6 +131,10 @@ static NSString *nibName = @"Preferences";
 
 - (void)setPassword:(NSString *)newPassword
 {
+    // remove old credentials (not necessary but let's do it to do some clean-up)
+    [self removeCredentialsFromKeychain];
+    
+    // save credentials to keychain
     [self saveCredentialsToKeychain];
 }
 
@@ -145,6 +149,9 @@ static NSString *nibName = @"Preferences";
 
 - (void)setURL:(NSString *)theURL
 {
+    // remove old credentials (not necessary but let's do it to do some clean-up)
+    [self removeCredentialsFromKeychain];
+    
     // save user defaults to preferences file
     [[NSUserDefaults standardUserDefaults] setObject:theURL forKey:@"URL"];
     
@@ -159,20 +166,55 @@ static NSString *nibName = @"Preferences";
     return [ASIHTTPRequest savedCredentialsForHost:[[self URL] host] port:[[[self URL] port] intValue] protocol:[[self URL] scheme] realm:nil];
 }
 
+// remove credentials from keychain
+- (void)removeCredentialsFromKeychain
+{
+    [ASIHTTPRequest removeCredentialsForHost:[[self URL] host] port:[[[self URL] port] intValue] protocol:[[self URL] scheme] realm:nil];
+}
+
+// save credentials to keychain
 - (void)saveCredentialsToKeychain
 {
-    
-    //NSURL *url = [NSURL URLWithString:[[self URL] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    NSURLCredential* credential;
-	/*credential = [NSURLCredential credentialWithUser:[self username]
+    if ([self hasValidUrl])
+    {
+        //NSURL *url = [NSURL URLWithString:[[self URL] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        NSURLCredential* credential;
+        /*credential = [NSURLCredential credentialWithUser:[self username]
 											password:[self password]
 										 persistence:NSURLCredentialPersistencePermanent];*/
-    credential = [NSURLCredential credentialWithUser:[usernameTextField stringValue]
+        credential = [NSURLCredential credentialWithUser:[usernameTextField stringValue]
 											password:[passwordTextField stringValue]
 										 persistence:NSURLCredentialPersistencePermanent];
 
-    // save credentials to keychain
-    [ASIHTTPRequest saveCredentials:credential forHost:[[self URL] host] port:[[[self URL] port] intValue] protocol:[[self URL] scheme] realm:nil];
+        // save credentials to keychain
+        [ASIHTTPRequest saveCredentials:credential forHost:[[self URL] host] port:[[[self URL] port] intValue] protocol:[[self URL] scheme] realm:nil];
+    }
 }
+
+// check for valid URL (this avoids saving null URL entries to keychain)
+- (bool)hasValidUrl
+{
+    // http://stackoverflow.com/questions/1471201/how-to-validate-an-url-on-the-iphone
+    
+    // WARNING > "test" is an URL according to RFCs, being just a path
+    // so you still should check scheme and all other NSURL attributes you need
+    if ([self URL] && [[self URL] scheme] && [[self URL] host] && [[self URL] port]) {
+        // candidate is a well-formed url with:
+        //  - a scheme (like http://)
+        //  - a host (like stackoverflow.com)
+        
+        return true;
+    }
+    
+    return false;
+}
+
+/*
+// test
+- (void)windowWillClose:(NSNotification *)notification
+{
+    [self saveCredentialsToKeychain];
+}
+ */
 
 @end
