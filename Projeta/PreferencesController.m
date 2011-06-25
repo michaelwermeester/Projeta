@@ -209,12 +209,13 @@ static NSString *nibName = @"Preferences";
     return false;
 }
 
-/*
-// test
+
+// save preferences when closing window (needed when user closes window 
+// while still being in edit mode)
 - (void)windowWillClose:(NSNotification *)notification
 {
     [self saveCredentialsToKeychain];
 }
- */
+ 
 
 @end
