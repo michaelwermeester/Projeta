@@ -7,22 +7,34 @@
 //
 
 #import "ProjetaAppDelegate.h"
-#import "MainWindow.h"
+#import "MainWindowController.h"
 
 @implementation ProjetaAppDelegate
 
 @synthesize window = _window;
 
-MainWindow* windowController;
+NSMutableArray *mainWindows;
 
 #pragma mark CoreData
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
+
     
     // open main window
-	[self newMainWindow:self];
+    MainWindowController *newMainWindow;
+    newMainWindow = [[MainWindowController alloc] init];
+    [newMainWindow showWindow:self];
+    
+	/*MainWindowController *newMainWindow;
+    newMainWindow = [[MainWindowController alloc] initWithWindowNibName:@"MainWindow"]; 
+    //newMainWindow = [[MainWindowController alloc] init];
+    [newMainWindow showWindow:self];*/
+    
+    // initialize array with window
+    mainWindows = [NSMutableArray arrayWithObject:newMainWindow];
+    
 }
 
 /**
@@ -199,20 +211,39 @@ MainWindow* windowController;
 #pragma mark Projeta
 
 // open new main window
--(void) newMainWindow:(id)sender
+- (IBAction)newMainWindow:(id)sender
 {
-    windowController = [[MainWindow alloc] initWithWindowNibName:@"MainWindow"];
-	[windowController showWindow:self];
+
+    MainWindowController *newMainWindow;
+    newMainWindow = [[MainWindowController alloc] init];
+    [newMainWindow showWindow:self];
+    
+    /*
+    MainWindowController *newMainWindow;
+    newMainWindow = [[MainWindowController alloc] initWithWindowNibName:@"MainWindow"]; 
+    //newMainWindow = [[MainWindowController alloc] init];
+    [newMainWindow showWindow:self];*/
+    
+    // add window to array
+    [mainWindows addObject:newMainWindow];
 }
 
 // open preferences window.
 - (IBAction)openPreferences:(id)sender {
     
-    //[[PreferencesController sharedPrefsWindowController] showWindow:nil];
-    
     if (preferencesController == nil)
         preferencesController = [[PreferencesController alloc] initWithWindowNibName:@"Preferences"];
 	[preferencesController showWindow:self];
+}
+
+// removes reference to main window that will be closed
++ (void)removeMainWindow:(MainWindowController*)window
+{
+    //NSLog(@"items: %lu", [mainWindows count]);
+    
+    [mainWindows removeObject:window];
+    
+    //NSLog(@"items: %lu", [mainWindows count]);
 }
 
 @end

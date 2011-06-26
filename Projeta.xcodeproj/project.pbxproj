@@ -19,7 +19,7 @@
 		4C74A63F13A2BFA100E7DBF6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C74A63D13A2BFA100E7DBF6 /* InfoPlist.strings */; };
 		4C74A64113A2BFA100E7DBF6 /* ProjetaTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 4C74A64013A2BFA100E7DBF6 /* ProjetaTests.h */; };
 		4C74A64313A2BFA100E7DBF6 /* ProjetaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C74A64213A2BFA100E7DBF6 /* ProjetaTests.m */; };
-		4CBCE9C013ABC22200835F30 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBCE9BF13ABC22200835F30 /* MainWindow.m */; };
+		4CBCE9C013ABC22200835F30 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBCE9BF13ABC22200835F30 /* MainWindowController.m */; };
 		4CBCEA1013ABFC4000835F30 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBCE9FF13ABFC4000835F30 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4CBCEA1113ABFC4000835F30 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBCEA0113ABFC4000835F30 /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4CBCEA1213ABFC4000835F30 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBCEA0313ABFC4000835F30 /* ASIDownloadCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -65,8 +65,8 @@
 		4C74A63E13A2BFA100E7DBF6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4C74A64013A2BFA100E7DBF6 /* ProjetaTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProjetaTests.h; sourceTree = "<group>"; };
 		4C74A64213A2BFA100E7DBF6 /* ProjetaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjetaTests.m; sourceTree = "<group>"; };
-		4CBCE9BE13ABC22200835F30 /* MainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindow.h; sourceTree = "<group>"; };
-		4CBCE9BF13ABC22200835F30 /* MainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindow.m; sourceTree = "<group>"; };
+		4CBCE9BE13ABC22200835F30 /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
+		4CBCE9BF13ABC22200835F30 /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
 		4CBCE9FD13ABFC4000835F30 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
 		4CBCE9FE13ABFC4000835F30 /* ASIDataCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataCompressor.h; sourceTree = "<group>"; };
 		4CBCE9FF13ABFC4000835F30 /* ASIDataCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataCompressor.m; sourceTree = "<group>"; };
@@ -171,8 +171,8 @@
 				4CBCEA1B13AD161500835F30 /* Preferences */,
 				4C74A62613A2BFA100E7DBF6 /* ProjetaAppDelegate.h */,
 				4C74A62713A2BFA100E7DBF6 /* ProjetaAppDelegate.m */,
-				4CBCE9BE13ABC22200835F30 /* MainWindow.h */,
-				4CBCE9BF13ABC22200835F30 /* MainWindow.m */,
+				4CBCE9BE13ABC22200835F30 /* MainWindowController.h */,
+				4CBCE9BF13ABC22200835F30 /* MainWindowController.m */,
 				4C74A62913A2BFA100E7DBF6 /* MainMenu.xib */,
 				4C74A62C13A2BFA100E7DBF6 /* Projeta.xcdatamodeld */,
 				4C74A61B13A2BFA100E7DBF6 /* Supporting Files */,
@@ -384,7 +384,7 @@
 				4C74A62113A2BFA100E7DBF6 /* main.m in Sources */,
 				4C74A62813A2BFA100E7DBF6 /* ProjetaAppDelegate.m in Sources */,
 				4C74A62E13A2BFA100E7DBF6 /* Projeta.xcdatamodeld in Sources */,
-				4CBCE9C013ABC22200835F30 /* MainWindow.m in Sources */,
+				4CBCE9C013ABC22200835F30 /* MainWindowController.m in Sources */,
 				4CBCEA1013ABFC4000835F30 /* ASIDataCompressor.m in Sources */,
 				4CBCEA1113ABFC4000835F30 /* ASIDataDecompressor.m in Sources */,
 				4CBCEA1213ABFC4000835F30 /* ASIDownloadCache.m in Sources */,

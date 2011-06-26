@@ -7,8 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "MainWindowController.h"
 #import "PreferencesController.h"
 @class MainWindow;
+@class MainWindowController;
 
 @interface ProjetaAppDelegate : NSObject <NSApplicationDelegate> {
     NSWindow *_window;
@@ -31,5 +33,8 @@
 - (IBAction)newMainWindow:(id)sender;
 // preferences window.
 - (IBAction)openPreferences:(id)sender;
+
+// removes reference to main window that will be closed
++ (void)removeMainWindow:(MainWindowController*)window;
 
 @end
