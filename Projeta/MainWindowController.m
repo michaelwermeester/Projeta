@@ -7,6 +7,7 @@
 //
 
 #import "MainWindowController.h"
+#import "ProjetaAppDelegate.h"
 
 @implementation MainWindowController
 

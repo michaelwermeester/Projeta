@@ -7,10 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "MainWindowController.h"
-#import "PreferencesController.h"
+
 @class MainWindow;
 @class MainWindowController;
+@class PreferencesController;
 
 @interface ProjetaAppDelegate : NSObject <NSApplicationDelegate> {
     NSWindow *_window;

@@ -8,6 +8,7 @@
 
 #import "ProjetaAppDelegate.h"
 #import "MainWindowController.h"
+#import "PreferencesController.h"
 
 @implementation ProjetaAppDelegate
 
