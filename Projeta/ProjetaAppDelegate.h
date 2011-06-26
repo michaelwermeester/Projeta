@@ -18,6 +18,7 @@
     NSManagedObjectModel *__managedObjectModel;
     NSManagedObjectContext *__managedObjectContext;
     
+    // preferences window
     PreferencesController *preferencesController;
 }
 
