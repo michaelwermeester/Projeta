@@ -30,7 +30,7 @@
 
 - (IBAction)saveAction:(id)sender;
 
-// 
+// opens a new main window
 - (IBAction)newMainWindow:(id)sender;
 // preferences window.
 - (IBAction)openPreferences:(id)sender;
