@@ -11,6 +11,7 @@
 @class MainWindow;
 @class MainWindowController;
 @class PreferencesController;
+@class PTUserManagementWindowController;
 
 @interface ProjetaAppDelegate : NSObject <NSApplicationDelegate> {
     NSWindow *_window;
@@ -20,6 +21,8 @@
     
     // preferences window
     PreferencesController *preferencesController;
+    // users window
+    PTUserManagementWindowController *usersWindowController;
 }
 
 @property (strong) IBOutlet NSWindow *window;

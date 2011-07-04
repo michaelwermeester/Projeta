@@ -9,6 +9,7 @@
 #import "ProjetaAppDelegate.h"
 #import "MainWindowController.h"
 #import "PreferencesController.h"
+#import "PTUserManagementWindowController.h"
 
 @implementation ProjetaAppDelegate
 
@@ -27,6 +28,10 @@ NSMutableArray *mainWindows;
     MainWindowController *newMainWindow;
     newMainWindow = [[MainWindowController alloc] init];
     [newMainWindow showWindow:self];
+    
+    // users window
+    usersWindowController = [[PTUserManagementWindowController alloc] init];
+    [usersWindowController showWindow:self];
     
 	/*MainWindowController *newMainWindow;
     newMainWindow = [[MainWindowController alloc] initWithWindowNibName:@"MainWindow"]; 
