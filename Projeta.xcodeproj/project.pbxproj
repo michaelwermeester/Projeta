@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4C21F24213C268C800462C43 /* PTUserManagementWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C21F24113C268C800462C43 /* PTUserManagementWindow.xib */; };
 		4C21F24513C2691600462C43 /* PTUserWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C21F24413C2691600462C43 /* PTUserWindowController.m */; };
 		4C21F24913C26C6600462C43 /* PTUserManagementController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C21F24713C26C6600462C43 /* PTUserManagementController.m */; };
-		4C21F24A13C26C6600462C43 /* PTUserManagementView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C21F24813C26C6600462C43 /* PTUserManagementView.xib */; };
+		4C21F24B13C2741400462C43 /* PTUserManagementView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C21F24D13C2741400462C43 /* PTUserManagementView.xib */; };
+		4C21F25013C2742400462C43 /* PTUserManagementWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C21F25213C2742400462C43 /* PTUserManagementWindow.xib */; };
 		4C74A61513A2BFA100E7DBF6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C74A61413A2BFA100E7DBF6 /* Cocoa.framework */; };
 		4C74A61F13A2BFA100E7DBF6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C74A61D13A2BFA100E7DBF6 /* InfoPlist.strings */; };
 		4C74A62113A2BFA100E7DBF6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C74A62013A2BFA100E7DBF6 /* main.m */; };
@@ -49,12 +49,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4C21F24113C268C800462C43 /* PTUserManagementWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTUserManagementWindow.xib; sourceTree = "<group>"; };
 		4C21F24313C2691600462C43 /* PTUserManagementWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTUserManagementWindowController.h; sourceTree = "<group>"; };
 		4C21F24413C2691600462C43 /* PTUserWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTUserWindowController.m; sourceTree = "<group>"; };
 		4C21F24613C26C6600462C43 /* PTUserManagementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTUserManagementViewController.h; sourceTree = "<group>"; };
 		4C21F24713C26C6600462C43 /* PTUserManagementController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTUserManagementController.m; sourceTree = "<group>"; };
-		4C21F24813C26C6600462C43 /* PTUserManagementView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTUserManagementView.xib; sourceTree = "<group>"; };
+		4C21F24C13C2741400462C43 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PTUserManagementView.xib; sourceTree = "<group>"; };
+		4C21F24E13C2741A00462C43 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/PTUserManagementView.xib; sourceTree = "<group>"; };
+		4C21F24F13C2741A00462C43 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/PTUserManagementView.xib; sourceTree = "<group>"; };
+		4C21F25113C2742400462C43 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PTUserManagementWindow.xib; sourceTree = "<group>"; };
+		4C21F25313C2742A00462C43 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/PTUserManagementWindow.xib; sourceTree = "<group>"; };
+		4C21F25413C2742A00462C43 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/PTUserManagementWindow.xib; sourceTree = "<group>"; };
 		4C74A61013A2BFA100E7DBF6 /* Projeta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Projeta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C74A61413A2BFA100E7DBF6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		4C74A61713A2BFA100E7DBF6 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -137,10 +141,10 @@
 			children = (
 				4C21F24613C26C6600462C43 /* PTUserManagementViewController.h */,
 				4C21F24713C26C6600462C43 /* PTUserManagementController.m */,
-				4C21F24813C26C6600462C43 /* PTUserManagementView.xib */,
+				4C21F24D13C2741400462C43 /* PTUserManagementView.xib */,
 				4C21F24313C2691600462C43 /* PTUserManagementWindowController.h */,
 				4C21F24413C2691600462C43 /* PTUserWindowController.m */,
-				4C21F24113C268C800462C43 /* PTUserManagementWindow.xib */,
+				4C21F25213C2742400462C43 /* PTUserManagementWindow.xib */,
 			);
 			name = Users;
 			sourceTree = "<group>";
@@ -356,8 +360,8 @@
 				4C74A62B13A2BFA100E7DBF6 /* MainMenu.xib in Resources */,
 				4CBCEA2313AD407600835F30 /* MainWindow.xib in Resources */,
 				4CBCEA2A13AD40DF00835F30 /* Preferences.xib in Resources */,
-				4C21F24213C268C800462C43 /* PTUserManagementWindow.xib in Resources */,
-				4C21F24A13C26C6600462C43 /* PTUserManagementView.xib in Resources */,
+				4C21F25013C2742400462C43 /* PTUserManagementWindow.xib in Resources */,
+				4C21F24B13C2741400462C43 /* PTUserManagementView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,6 +447,26 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		4C21F24D13C2741400462C43 /* PTUserManagementView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C21F24C13C2741400462C43 /* en */,
+				4C21F24E13C2741A00462C43 /* de */,
+				4C21F24F13C2741A00462C43 /* fr */,
+			);
+			name = PTUserManagementView.xib;
+			sourceTree = "<group>";
+		};
+		4C21F25213C2742400462C43 /* PTUserManagementWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C21F25113C2742400462C43 /* en */,
+				4C21F25313C2742A00462C43 /* fr */,
+				4C21F25413C2742A00462C43 /* de */,
+			);
+			name = PTUserManagementWindow.xib;
+			sourceTree = "<group>";
+		};
 		4C74A61D13A2BFA100E7DBF6 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
