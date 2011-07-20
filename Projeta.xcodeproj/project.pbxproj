@@ -36,6 +36,8 @@
 		4CBCEA2013AD180200835F30 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBCEA1F13AD180200835F30 /* PreferencesController.m */; };
 		4CBCEA2313AD407600835F30 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CBCEA2513AD407600835F30 /* MainWindow.xib */; };
 		4CBCEA2A13AD40DF00835F30 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CBCEA2C13AD40DF00835F30 /* Preferences.xib */; };
+		4CF363C013D342D300F5A4F6 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF363BC13D342D300F5A4F6 /* User.m */; };
+		4CF363C113D342D300F5A4F6 /* PTUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF363BE13D342D300F5A4F6 /* PTUser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +113,10 @@
 		4CBCEA2B13AD40DF00835F30 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Preferences.xib; sourceTree = "<group>"; };
 		4CBCEA2D13AD40EC00835F30 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/Preferences.xib; sourceTree = "<group>"; };
 		4CBCEA2E13AD40F500835F30 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/Preferences.xib; sourceTree = "<group>"; };
+		4CF363BC13D342D300F5A4F6 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		4CF363BD13D342D300F5A4F6 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		4CF363BE13D342D300F5A4F6 /* PTUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTUser.m; sourceTree = "<group>"; };
+		4CF363BF13D342D300F5A4F6 /* PTUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTUser.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,6 +249,10 @@
 		4CB426B413B66BC40019B653 /* Business objects */ = {
 			isa = PBXGroup;
 			children = (
+				4CF363BC13D342D300F5A4F6 /* User.m */,
+				4CF363BD13D342D300F5A4F6 /* User.h */,
+				4CF363BE13D342D300F5A4F6 /* PTUser.m */,
+				4CF363BF13D342D300F5A4F6 /* PTUser.h */,
 			);
 			name = "Business objects";
 			sourceTree = "<group>";
@@ -425,6 +435,8 @@
 				4CBCEA2013AD180200835F30 /* PreferencesController.m in Sources */,
 				4C21F24513C2691600462C43 /* PTUserWindowController.m in Sources */,
 				4C21F24913C26C6600462C43 /* PTUserManagementController.m in Sources */,
+				4CF363C013D342D300F5A4F6 /* User.m in Sources */,
+				4CF363C113D342D300F5A4F6 /* PTUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

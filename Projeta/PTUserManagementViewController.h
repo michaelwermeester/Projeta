@@ -8,6 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface PTUserManagementViewController : NSViewController
+@interface PTUserManagementViewController : NSViewController {
+    NSArray *arrUsr;
+}
+
+@property (nonatomic, copy) NSArray *arrUsr;
 
 @end
