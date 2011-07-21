@@ -175,7 +175,7 @@ static NSString *nibName = @"Preferences";
 // save credentials to keychain
 - (void)saveCredentialsToKeychain
 {
-    if ([self hasValidUrl])
+    if ([self hasValidUrl] && [[usernameTextField stringValue] length] > 0)
     {
         //NSURL *url = [NSURL URLWithString:[[self URL] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         NSURLCredential* credential;
