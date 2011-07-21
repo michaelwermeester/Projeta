@@ -138,22 +138,22 @@ static NSString *nibName = @"Preferences";
     [self saveCredentialsToKeychain];
 }
 
-- (NSURL*)URL
+- (NSURL*)serverURL
 {
     // load user defaults from preferences file
-    NSString *strURL = [[NSUserDefaults standardUserDefaults] objectForKey:@"URL"];
+    NSString *strURL = [[NSUserDefaults standardUserDefaults] objectForKey:@"ServerURL"];
     
     // return URL
     return [NSURL URLWithString:[strURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 }
 
-- (void)setURL:(NSString *)theURL
+- (void)setServerURL:(NSString *)theURL
 {
     // remove old credentials (not necessary but let's do it to do some clean-up)
     [self removeCredentialsFromKeychain];
     
     // save user defaults to preferences file
-    [[NSUserDefaults standardUserDefaults] setObject:theURL forKey:@"URL"];
+    [[NSUserDefaults standardUserDefaults] setObject:theURL forKey:@"ServerURL"];
     
     // save credentials to keychain (call ASIHTTPRequest method)
     [self saveCredentialsToKeychain];
@@ -163,13 +163,13 @@ static NSString *nibName = @"Preferences";
 - (NSURLCredential*)getCredentialFromKeyChain
 {
     // return credential from keychain
-    return [ASIHTTPRequest savedCredentialsForHost:[[self URL] host] port:[[[self URL] port] intValue] protocol:[[self URL] scheme] realm:nil];
+    return [ASIHTTPRequest savedCredentialsForHost:[[self serverURL] host] port:[[[self serverURL] port] intValue] protocol:[[self serverURL] scheme] realm:nil];
 }
 
 // remove credentials from keychain
 - (void)removeCredentialsFromKeychain
 {
-    [ASIHTTPRequest removeCredentialsForHost:[[self URL] host] port:[[[self URL] port] intValue] protocol:[[self URL] scheme] realm:nil];
+    [ASIHTTPRequest removeCredentialsForHost:[[self serverURL] host] port:[[[self serverURL] port] intValue] protocol:[[self serverURL] scheme] realm:nil];
 }
 
 // save credentials to keychain
@@ -187,7 +187,7 @@ static NSString *nibName = @"Preferences";
 										 persistence:NSURLCredentialPersistencePermanent];
 
         // save credentials to keychain
-        [ASIHTTPRequest saveCredentials:credential forHost:[[self URL] host] port:[[[self URL] port] intValue] protocol:[[self URL] scheme] realm:nil];
+        [ASIHTTPRequest saveCredentials:credential forHost:[[self serverURL] host] port:[[[self serverURL] port] intValue] protocol:[[self serverURL] scheme] realm:nil];
     }
 }
 
@@ -198,7 +198,7 @@ static NSString *nibName = @"Preferences";
     
     // WARNING > "test" is an URL according to RFCs, being just a path
     // so you still should check scheme and all other NSURL attributes you need
-    if ([self URL] && [[self URL] scheme] && [[self URL] host] && [[self URL] port]) {
+    if ([self serverURL] && [[self serverURL] scheme] && [[self serverURL] host] && [[self serverURL] port]) {
         // candidate is a well-formed url with:
         //  - a scheme (like http://)
         //  - a host (like stackoverflow.com)

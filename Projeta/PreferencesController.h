@@ -16,7 +16,7 @@
     
     NSString *username;
     NSString *password;
-    NSString *URL;
+    NSString *serverURL;
     NSTextField *usernameTextField;
     NSSecureTextField *passwordTextField;
 }
@@ -29,7 +29,7 @@
 // username/password/URL - account info
 @property (retain) NSString *username;
 @property (retain) NSString *password;
-@property (retain) NSURL *URL;
+@property (retain) NSURL *serverURL;
 
 - (NSURLCredential*)getCredentialFromKeyChain;
 - (void)removeCredentialsFromKeychain;

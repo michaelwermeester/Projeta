@@ -86,6 +86,9 @@
             arrUsr = [PTUser setAttributesFromDictionary2:dict]; 
             
             //NSLog(@"error: %@", err);
+            
+            // load user defaults from preferences file
+            NSString *strURL = [[NSUserDefaults standardUserDefaults] objectForKey:@"ServerURL"];
         }
     }
     
