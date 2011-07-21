@@ -163,13 +163,13 @@ static NSString *nibName = @"Preferences";
 - (NSURLCredential*)getCredentialFromKeyChain
 {
     // return credential from keychain
-    return [ASIHTTPRequest savedCredentialsForHost:[[self serverURL] host] port:[[[self serverURL] port] intValue] protocol:[[self serverURL] scheme] realm:nil];
+    return [ASIHTTPRequest savedCredentialsForHost:[[self serverURL] host] port:[[[self serverURL] port] intValue] protocol:[[self serverURL] scheme] realm:@"ProjetaRealm"];
 }
 
 // remove credentials from keychain
 - (void)removeCredentialsFromKeychain
 {
-    [ASIHTTPRequest removeCredentialsForHost:[[self serverURL] host] port:[[[self serverURL] port] intValue] protocol:[[self serverURL] scheme] realm:nil];
+    [ASIHTTPRequest removeCredentialsForHost:[[self serverURL] host] port:[[[self serverURL] port] intValue] protocol:[[self serverURL] scheme] realm:@"ProjetaRealm"];
 }
 
 // save credentials to keychain
@@ -187,7 +187,7 @@ static NSString *nibName = @"Preferences";
 										 persistence:NSURLCredentialPersistencePermanent];
 
         // save credentials to keychain
-        [ASIHTTPRequest saveCredentials:credential forHost:[[self serverURL] host] port:[[[self serverURL] port] intValue] protocol:[[self serverURL] scheme] realm:nil];
+        [ASIHTTPRequest saveCredentials:credential forHost:[[self serverURL] host] port:[[[self serverURL] port] intValue] protocol:[[self serverURL] scheme] realm:@"ProjetaRealm"];
     }
 }
 

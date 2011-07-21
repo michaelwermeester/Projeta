@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "ASIHTTPRequest.h"
 
 @interface PTUserManagementViewController : NSViewController {
     NSArray *arrUsr;

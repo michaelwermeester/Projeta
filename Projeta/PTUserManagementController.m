@@ -23,8 +23,6 @@
     /*if (self) {
         // Initialization code here.
         
-        //NSURL *url = [NSURL URLWithString:@"http://allseeing-i.com"];
-        
         // get users
         //NSURL *url = [NSURL URLWithString:@"https://test:test@luckycode.be:8181/projeta-webservice/resources/be.luckycode.projetawebservice.users/"];
         // get user
@@ -50,13 +48,18 @@
     if (self) {
         // Initialization code here.
         
-        //NSURL *url = [NSURL URLWithString:@"http://allseeing-i.com"];
+        // load user defaults from preferences file
+        NSString *srvURL = [[NSUserDefaults standardUserDefaults] objectForKey:@"ServerURL"];
+        srvURL = [srvURL stringByAppendingString:@"resources/be.luckycode.projetawebservice.users/"];
+        NSURL *url = [NSURL URLWithString:srvURL];
         
         // get users
-        NSURL *url = [NSURL URLWithString:@"https://test:test@luckycode.be:8181/projeta-webservice/resources/be.luckycode.projetawebservice.users/"];
+        //NSURL *url = [NSURL URLWithString:@"https://luckycode.be:8181/projeta-webservice/resources/be.luckycode.projetawebservice.users/"];
         // get user
         //NSURL *url = [NSURL URLWithString:@"https://test:test@luckycode.be:8181/projeta-webservice/resources/be.luckycode.projetawebservice.users/2?"];
         ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+        [request setUseKeychainPersistence:YES];
+        
         [request startSynchronous];
         NSError *error = [request error];
         NSError *err;
@@ -71,24 +74,25 @@
             //NSLog(@"test: %@", [dict valueForKey:@"username"]);
             //PTUser *ptusr;
             
-            /*
-            // work also
-            PTUser *ptusers = [PTUser instanceFromDictionary:dict];
             
-            for (User* usr in [ptusers users])
-            {
-                NSLog(@"t: %@", [usr username]);
-            }
+            //// works also
+            //PTUser *ptusers = [PTUser instanceFromDictionary:dict];
+            //
+            //for (User* usr in [ptusers users])
+            //{
+            //    NSLog(@"t: %@", [usr username]);
+            //}
+            //
+            //arrUsr = [ptusers users];
             
-            arrUsr = [ptusers users];
-             */
             
             arrUsr = [PTUser setAttributesFromDictionary2:dict]; 
             
             //NSLog(@"error: %@", err);
-            
-            // load user defaults from preferences file
-            NSString *strURL = [[NSUserDefaults standardUserDefaults] objectForKey:@"ServerURL"];
+        }
+        else
+        {
+            NSLog(@"Failed %@ with code %ld and with userInfo %@",[error domain],[error code],[error userInfo]);  
         }
     }
     
