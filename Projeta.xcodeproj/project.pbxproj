@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4C0BC5B513DA1D15003360E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C74A61413A2BFA100E7DBF6 /* Cocoa.framework */; };
-		4C21F24513C2691600462C43 /* PTUserWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C21F24413C2691600462C43 /* PTUserWindowController.m */; };
-		4C21F24913C26C6600462C43 /* PTUserManagementController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C21F24713C26C6600462C43 /* PTUserManagementController.m */; };
+		4C21F24513C2691600462C43 /* PTUserManagementWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C21F24413C2691600462C43 /* PTUserManagementWindowController.m */; };
+		4C21F24913C26C6600462C43 /* PTUserManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C21F24713C26C6600462C43 /* PTUserManagementViewController.m */; };
 		4C21F24B13C2741400462C43 /* PTUserManagementView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C21F24D13C2741400462C43 /* PTUserManagementView.xib */; };
 		4C21F25013C2742400462C43 /* PTUserManagementWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C21F25213C2742400462C43 /* PTUserManagementWindow.xib */; };
 		4C23BB2513DA1F5400E18E43 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C0BC5B113DA1C60003360E2 /* CoreServices.framework */; };
@@ -55,9 +55,9 @@
 		4C0BC5B113DA1C60003360E2 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		4C0BC5B313DA1CC9003360E2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4C21F24313C2691600462C43 /* PTUserManagementWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTUserManagementWindowController.h; sourceTree = "<group>"; };
-		4C21F24413C2691600462C43 /* PTUserWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTUserWindowController.m; sourceTree = "<group>"; };
+		4C21F24413C2691600462C43 /* PTUserManagementWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTUserManagementWindowController.m; sourceTree = "<group>"; };
 		4C21F24613C26C6600462C43 /* PTUserManagementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTUserManagementViewController.h; sourceTree = "<group>"; };
-		4C21F24713C26C6600462C43 /* PTUserManagementController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTUserManagementController.m; sourceTree = "<group>"; };
+		4C21F24713C26C6600462C43 /* PTUserManagementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTUserManagementViewController.m; sourceTree = "<group>"; };
 		4C21F24C13C2741400462C43 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PTUserManagementView.xib; sourceTree = "<group>"; };
 		4C21F24E13C2741A00462C43 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/PTUserManagementView.xib; sourceTree = "<group>"; };
 		4C21F24F13C2741A00462C43 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/PTUserManagementView.xib; sourceTree = "<group>"; };
@@ -147,10 +147,10 @@
 			isa = PBXGroup;
 			children = (
 				4C21F24613C26C6600462C43 /* PTUserManagementViewController.h */,
-				4C21F24713C26C6600462C43 /* PTUserManagementController.m */,
+				4C21F24713C26C6600462C43 /* PTUserManagementViewController.m */,
 				4C21F24D13C2741400462C43 /* PTUserManagementView.xib */,
 				4C21F24313C2691600462C43 /* PTUserManagementWindowController.h */,
-				4C21F24413C2691600462C43 /* PTUserWindowController.m */,
+				4C21F24413C2691600462C43 /* PTUserManagementWindowController.m */,
 				4C21F25213C2742400462C43 /* PTUserManagementWindow.xib */,
 			);
 			name = Users;
@@ -465,8 +465,8 @@
 				4C74A62E13A2BFA100E7DBF6 /* Projeta.xcdatamodeld in Sources */,
 				4CBCE9C013ABC22200835F30 /* MainWindowController.m in Sources */,
 				4CBCEA2013AD180200835F30 /* PreferencesController.m in Sources */,
-				4C21F24513C2691600462C43 /* PTUserWindowController.m in Sources */,
-				4C21F24913C26C6600462C43 /* PTUserManagementController.m in Sources */,
+				4C21F24513C2691600462C43 /* PTUserManagementWindowController.m in Sources */,
+				4C21F24913C26C6600462C43 /* PTUserManagementViewController.m in Sources */,
 				4CF363C013D342D300F5A4F6 /* User.m in Sources */,
 				4CF363C113D342D300F5A4F6 /* PTUser.m in Sources */,
 			);
