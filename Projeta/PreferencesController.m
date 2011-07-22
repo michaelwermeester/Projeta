@@ -7,7 +7,6 @@
 //
 
 #import "PreferencesController.h"
-#import "ASIHTTPRequest.h"
 
 static PreferencesController *_sharedPrefsWindowController = nil;
 

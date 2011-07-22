@@ -7,7 +7,6 @@
 //
 
 #import "PTUserManagementViewController.h"
-#import "ASIHTTPRequest.h"
 #import "PTUser.h"
 #import "User.h"
 #import <Foundation/NSJSONSerialization.h>
@@ -57,10 +56,13 @@
         //NSURL *url = [NSURL URLWithString:@"https://luckycode.be:8181/projeta-webservice/resources/be.luckycode.projetawebservice.users/"];
         // get user
         //NSURL *url = [NSURL URLWithString:@"https://test:test@luckycode.be:8181/projeta-webservice/resources/be.luckycode.projetawebservice.users/2?"];
-        ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+        /*ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
         [request setUseKeychainPersistence:YES];
         
-        [request startSynchronous];
+        [request setDelegate:self];
+        [request startAsynchronous];*/
+        
+        /*[request startSynchronous];
         NSError *error = [request error];
         NSError *err;
         if (!error) {
@@ -93,10 +95,26 @@
         else
         {
             NSLog(@"Failed %@ with code %ld and with userInfo %@",[error domain],[error code],[error userInfo]);  
-        }
+        }*/
     }
     
     return self;
 }
 
+/*- (void)requestFinished:(ASIHTTPRequest *)request
+{
+    // Use when fetching text data
+    NSString *responseString = [request responseString];
+    NSLog(@"response: %@", responseString);
+    
+    // Use when fetching binary data
+    //NSData *responseData = [request responseData];
+}
+
+- (void)requestFailed:(ASIHTTPRequest *)request
+{
+    NSError *error = [request error];
+    NSLog(@"Failed %@ with code %ld and with userInfo %@",[error domain],[error code],[error userInfo]);
+}
+*/
 @end
