@@ -12,6 +12,7 @@
 static PreferencesController *_sharedPrefsWindowController = nil;
 
 static NSString *nibName = @"Preferences";
+static NSString *realm = @"ProjetaRealm";
 
 @implementation PreferencesController
 @synthesize usernameTextField;
@@ -108,9 +109,6 @@ static NSString *nibName = @"Preferences";
 
 - (NSString*)username
 {
-    // get credential from keychain
-    //NSURLCredential *tmpCredential = [ASIHTTPRequest savedCredentialsForHost:[[self URL] host] port:[[[self URL] port] intValue] protocol:[[self URL] scheme] realm:nil];
-    
     // get credential from keychain and return username
     return [[self getCredentialFromKeyChain] user];
 }
@@ -163,13 +161,19 @@ static NSString *nibName = @"Preferences";
 - (NSURLCredential*)getCredentialFromKeyChain
 {
     // return credential from keychain
-    return [ASIHTTPRequest savedCredentialsForHost:[[self serverURL] host] port:[[[self serverURL] port] intValue] protocol:[[self serverURL] scheme] realm:@"ProjetaRealm"];
+    NSURLProtectionSpace *protectionSpace = [[NSURLProtectionSpace alloc] initWithHost:[[self serverURL] host] port:[[[self serverURL] port] intValue] protocol:[[self serverURL] scheme] realm:realm authenticationMethod:NSURLAuthenticationMethodHTTPBasic];
+    
+	return [[NSURLCredentialStorage sharedCredentialStorage] defaultCredentialForProtectionSpace:protectionSpace];
 }
 
 // remove credentials from keychain
 - (void)removeCredentialsFromKeychain
 {
-    [ASIHTTPRequest removeCredentialsForHost:[[self serverURL] host] port:[[[self serverURL] port] intValue] protocol:[[self serverURL] scheme] realm:@"ProjetaRealm"];
+    NSURLProtectionSpace *protectionSpace = [[NSURLProtectionSpace alloc] initWithHost:[[self serverURL] host] port:[[[self serverURL] port] intValue] protocol:[[self serverURL] scheme] realm:realm authenticationMethod:NSURLAuthenticationMethodHTTPBasic];
+	NSURLCredential *credential = [[NSURLCredentialStorage sharedCredentialStorage] defaultCredentialForProtectionSpace:protectionSpace];
+	if (credential) {
+		[[NSURLCredentialStorage sharedCredentialStorage] removeCredential:credential forProtectionSpace:protectionSpace];
+	}
 }
 
 // save credentials to keychain
@@ -187,7 +191,8 @@ static NSString *nibName = @"Preferences";
 										 persistence:NSURLCredentialPersistencePermanent];
 
         // save credentials to keychain
-        [ASIHTTPRequest saveCredentials:credential forHost:[[self serverURL] host] port:[[[self serverURL] port] intValue] protocol:[[self serverURL] scheme] realm:@"ProjetaRealm"];
+        NSURLProtectionSpace *protectionSpace = [[NSURLProtectionSpace alloc] initWithHost:[[self serverURL] host] port:[[[self serverURL] port] intValue] protocol:[[self serverURL] scheme] realm:realm authenticationMethod:NSURLAuthenticationMethodHTTPBasic];
+        [[NSURLCredentialStorage sharedCredentialStorage] setDefaultCredential:credential forProtectionSpace:protectionSpace];
     }
 }
 
