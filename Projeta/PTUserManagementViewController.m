@@ -10,8 +10,12 @@
 #import "PTUser.h"
 #import "User.h"
 #import <Foundation/NSJSONSerialization.h>
+#import "ASIHTTPRequest.h"
 
 @implementation PTUserManagementViewController
+
+@synthesize arrayCtrl;
+@synthesize usersTableView;
 
 @synthesize arrUsr;
 
@@ -19,33 +23,11 @@
 {
     //self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     self = [super initWithNibName:@"PTUserManagementView" bundle:nibBundleOrNil];
-    /*if (self) {
-        // Initialization code here.
-        
-        // get users
-        //NSURL *url = [NSURL URLWithString:@"https://test:test@luckycode.be:8181/projeta-webservice/resources/be.luckycode.projetawebservice.users/"];
-        // get user
-        NSURL *url = [NSURL URLWithString:@"https://test:test@luckycode.be:8181/projeta-webservice/resources/be.luckycode.projetawebservice.users/2?"];
-        ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-        [request startSynchronous];
-        NSError *error = [request error];
-        NSError *err;
-        if (!error) {
-            NSString *response = [request responseString];
-            //User *usr = [[User alloc] init];
-            NSDictionary *dict = [[NSDictionary alloc] init];
-            dict = [NSJSONSerialization JSONObjectWithData:[request responseData] options:NSJSONReadingMutableLeaves error:&err];
-            NSLog(@"response: %@", response);
-            
-            //NSLog(@"test: %@", usr.username);
-            NSLog(@"test: %@", [dict valueForKey:@"username"]);
-            
-            //NSLog(@"error: %@", err);
-        }
-    }*/
     
     if (self) {
         // Initialization code here.
+        
+        arrUsr = [[NSMutableArray alloc] init];
         
         // load user defaults from preferences file
         NSString *urlString = [[NSUserDefaults standardUserDefaults] objectForKey:@"ServerURL"];
@@ -53,67 +35,52 @@
         
         NSURL *url = [NSURL URLWithString:urlString];
         
-        NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url
-                                                                  cachePolicy:NSURLRequestReturnCacheDataElseLoad
-                                                              timeoutInterval:30];
         
+        __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+        
+        [request setUseKeychainPersistence:YES];
+        [request setAllowCompressedResponse:YES];
+        
+        __weak ASIHTTPRequest *weakRequest = request;
+        //[request setDelegate:self];
+        [request setCompletionBlock:^{
+            ASIHTTPRequest *strongRequest = weakRequest;
+            
+            [self requestFinished:strongRequest];
+        }];
+        [request setFailedBlock:^{
+            ASIHTTPRequest *strongRequest = weakRequest;
+            
+            [self requestFailed:strongRequest];
+        }];
+        
+        [request startAsynchronous];
+                
         // get users
         //NSURL *url = [NSURL URLWithString:@"https://luckycode.be:8181/projeta-webservice/resources/be.luckycode.projetawebservice.users/"];
         // get user
         //NSURL *url = [NSURL URLWithString:@"https://test:test@luckycode.be:8181/projeta-webservice/resources/be.luckycode.projetawebservice.users/2?"];
-        /*ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-        [request setUseKeychainPersistence:YES];
         
-        [request setDelegate:self];
-        [request startAsynchronous];*/
-        
-        /*[request startSynchronous];
-        NSError *error = [request error];
-        NSError *err;
-        if (!error) {
-            NSString *response = [request responseString];
-            //User *usr = [[User alloc] init];
-            NSDictionary *dict = [[NSDictionary alloc] init];
-            dict = [NSJSONSerialization JSONObjectWithData:[request responseData] options:NSJSONReadingMutableLeaves error:&err];
-            NSLog(@"response: %@", response);
-            
-            //NSLog(@"test: %@", usr.username);
-            //NSLog(@"test: %@", [dict valueForKey:@"username"]);
-            //PTUser *ptusr;
-            
-            
-            //// works also
-            //PTUser *ptusers = [PTUser instanceFromDictionary:dict];
-            //
-            //for (User* usr in [ptusers users])
-            //{
-            //    NSLog(@"t: %@", [usr username]);
-            //}
-            //
-            //arrUsr = [ptusers users];
-            
-            
-            arrUsr = [PTUser setAttributesFromDictionary2:dict]; 
-            
-            //NSLog(@"error: %@", err);
-        }
-        else
-        {
-            NSLog(@"Failed %@ with code %ld and with userInfo %@",[error domain],[error code],[error userInfo]);  
-        }*/
     }
     
     return self;
 }
 
-/*- (void)requestFinished:(ASIHTTPRequest *)request
+- (void)requestFinished:(ASIHTTPRequest *)request
 {
-    // Use when fetching text data
-    NSString *responseString = [request responseString];
-    NSLog(@"response: %@", responseString);
+    NSError *error;
     
-    // Use when fetching binary data
-    //NSData *responseData = [request responseData];
+    // Use when fetching text data
+    //NSString *responseString = [request responseString];
+    //NSLog(@"response: %@", responseString);
+    //NSDictionary *dict = [[NSDictionary alloc] init];
+    NSDictionary *dict = [[NSDictionary alloc] init];
+    dict = [NSJSONSerialization JSONObjectWithData:[request responseData] options:NSJSONReadingMutableLeaves error:&error];
+    
+    // see Cocoa and Objective-C up and running by Scott Stevenson.
+    // page 242
+    [[self mutableArrayValueForKey:@"arrUsr"] addObjectsFromArray:[PTUser setAttributesFromDictionary2:dict]];
+    //[arrayCtrl addObjects:[PTUser setAttributesFromDictionary2:dict]];
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request
@@ -121,5 +88,5 @@
     NSError *error = [request error];
     NSLog(@"Failed %@ with code %ld and with userInfo %@",[error domain],[error code],[error userInfo]);
 }
-*/
+
 @end

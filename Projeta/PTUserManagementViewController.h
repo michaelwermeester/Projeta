@@ -7,11 +7,19 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "ASIHTTPRequest.h"
 
 @interface PTUserManagementViewController : NSViewController {
-    NSArray *arrUsr;
+    NSMutableArray *arrUsr;     // array which holds the users
+    NSTableView *usersTableView;
+    NSArrayController *arrayCtrl;   // array controller
 }
 
-@property (nonatomic, copy) NSArray *arrUsr;
+@property (strong) NSMutableArray *arrUsr;
+@property (strong) IBOutlet NSTableView *usersTableView;
+@property (strong) IBOutlet NSArrayController *arrayCtrl;
+
+- (void)requestFinished:(ASIHTTPRequest *)request;
+- (void)requestFailed:(ASIHTTPRequest *)request;
 
 @end

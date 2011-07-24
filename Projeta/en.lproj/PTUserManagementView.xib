@@ -3,12 +3,12 @@
 	<data>
 		<int key="IBDocument.SystemTarget">1070</int>
 		<string key="IBDocument.SystemVersion">11A511</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1891</string>
+		<string key="IBDocument.InterfaceBuilderVersion">1900</string>
 		<string key="IBDocument.AppKitVersion">1138</string>
 		<string key="IBDocument.HIToolboxVersion">566.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">1891</string>
+			<string key="NS.object.0">1900</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>NSCustomObject</string>
@@ -67,16 +67,14 @@
 											<string key="NSFrameSize">{238, 17}</string>
 											<reference key="NSSuperview" ref="51201045"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="454970321"/>
+											<reference key="NSNextKeyView" ref="310735691"/>
 											<string key="NSReuseIdentifierKey">_NS:1198</string>
 											<reference key="NSTableView" ref="480364275"/>
 										</object>
-										<object class="_NSCornerView" key="NSCornerView" id="454970321">
-											<reference key="NSNextResponder" ref="241597887"/>
+										<object class="_NSCornerView" key="NSCornerView">
+											<nil key="NSNextResponder"/>
 											<int key="NSvFlags">-2147483392</int>
 											<string key="NSFrame">{{224, 0}, {16, 17}}</string>
-											<reference key="NSSuperview" ref="241597887"/>
-											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="310735691"/>
 											<string key="NSReuseIdentifierKey">_NS:1201</string>
 										</object>
@@ -243,7 +241,6 @@
 								<reference key="NSBGColor" ref="639472837"/>
 								<int key="NScvFlags">4</int>
 							</object>
-							<reference ref="454970321"/>
 						</array>
 						<string key="NSFrame">{{20, 26}, {240, 135}}</string>
 						<reference key="NSSuperview" ref="1005"/>
@@ -255,7 +252,6 @@
 						<reference key="NSHScroller" ref="625528623"/>
 						<reference key="NSContentView" ref="310735691"/>
 						<reference key="NSHeaderClipView" ref="51201045"/>
-						<reference key="NSCornerView" ref="454970321"/>
 						<bytes key="NSScrollAmts">QSAAAEEgAABBmAAAQZgAAA</bytes>
 					</object>
 				</array>
@@ -266,6 +262,11 @@
 				<string key="NSClassName">NSView</string>
 			</object>
 			<object class="NSArrayController" id="144895294">
+				<array class="NSMutableArray" key="NSDeclaredKeys">
+					<string>username</string>
+					<string>password</string>
+					<string>userId</string>
+				</array>
 				<string key="NSObjectClassName">User</string>
 				<bool key="NSEditable">YES</bool>
 				<object class="_NSManagedProxy" key="_NSManagedProxy"/>
@@ -290,6 +291,14 @@
 					<int key="connectionID">2</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">usersTableView</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="480364275"/>
+					</object>
+					<int key="connectionID">87</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">contentArray: arrUsr</string>
 						<reference key="source" ref="144895294"/>
@@ -303,7 +312,7 @@
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
-					<int key="connectionID">85</int>
+					<int key="connectionID">95</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -319,7 +328,15 @@
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
-					<int key="connectionID">86</int>
+					<int key="connectionID">98</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">arrayCtrl</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="144895294"/>
+					</object>
+					<int key="connectionID">99</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -534,6 +551,7 @@
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="7.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="77.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<dictionary class="NSMutableDictionary" key="8.IBAttributePlaceholdersKey"/>
 				<string key="8.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="9.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
@@ -541,7 +559,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">86</int>
+			<int key="maxID">99</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -556,6 +574,20 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">PTUserManagementViewController</string>
 					<string key="superclassName">NSViewController</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="arrayCtrl">NSArrayController</string>
+						<string key="usersTableView">NSTableView</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="arrayCtrl">
+							<string key="name">arrayCtrl</string>
+							<string key="candidateClassName">NSArrayController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="usersTableView">
+							<string key="name">usersTableView</string>
+							<string key="candidateClassName">NSTableView</string>
+						</object>
+					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/PTUserManagementViewController.h</string>
