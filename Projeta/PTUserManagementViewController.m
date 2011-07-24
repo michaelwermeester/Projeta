@@ -80,7 +80,15 @@
     // see Cocoa and Objective-C up and running by Scott Stevenson.
     // page 242
     [[self mutableArrayValueForKey:@"arrUsr"] addObjectsFromArray:[PTUser setAttributesFromDictionary2:dict]];
+    
     //[arrayCtrl addObjects:[PTUser setAttributesFromDictionary2:dict]];
+    
+    // add a new user programmatically
+    /*
+     User *user = [[User alloc] init];
+    user.username = @"teeeeeeeeest";
+    [arrayCtrl addObject:user];
+     */
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request
