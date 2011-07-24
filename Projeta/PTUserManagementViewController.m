@@ -48,9 +48,14 @@
         // Initialization code here.
         
         // load user defaults from preferences file
-        NSString *srvURL = [[NSUserDefaults standardUserDefaults] objectForKey:@"ServerURL"];
-        srvURL = [srvURL stringByAppendingString:@"resources/be.luckycode.projetawebservice.users/"];
-        NSURL *url = [NSURL URLWithString:srvURL];
+        NSString *urlString = [[NSUserDefaults standardUserDefaults] objectForKey:@"ServerURL"];
+        urlString = [urlString stringByAppendingString:@"resources/be.luckycode.projetawebservice.users/"];
+        
+        NSURL *url = [NSURL URLWithString:urlString];
+        
+        NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url
+                                                                  cachePolicy:NSURLRequestReturnCacheDataElseLoad
+                                                              timeoutInterval:30];
         
         // get users
         //NSURL *url = [NSURL URLWithString:@"https://luckycode.be:8181/projeta-webservice/resources/be.luckycode.projetawebservice.users/"];
