@@ -17,6 +17,6 @@
 @property (nonatomic) SEL failedAction;
 
 - (id)initWithDelegate:(id)delegate selSucceeded:(SEL)succeeded selFailed:(SEL)failed;
-- (BOOL)startRequestForURL:(NSURL*)url;
+- (BOOL)startRequestForURL:(NSURL*)url setRequest:(NSURLRequest*)request;
 
 @end

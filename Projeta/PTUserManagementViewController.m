@@ -36,14 +36,16 @@
         NSURL *url = [NSURL URLWithString:urlString];
         
         
-        
-        
-        
+        // NSURLConnection - ConnectionController
         id delegate = self;
         ConnectionController* connectionController = [[ConnectionController alloc] initWithDelegate:delegate
                                                                                             selSucceeded:@selector(requestFinished:)
                                                                                                selFailed:@selector(requestFailed:)];
-        [connectionController startRequestForURL:url];
+        
+        NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
+        //[urlRequest setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
+        
+        [connectionController startRequestForURL:url setRequest:urlRequest];
         
         
         

@@ -23,13 +23,13 @@
     return self;
 }
 
-- (BOOL)startRequestForURL:(NSURL*)url {
-    NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
+- (BOOL)startRequestForURL:(NSURL*)url setRequest:(NSURLRequest *)request {
+    //NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
     // cache & policy stuff here
     //[[NSURLCache sharedURLCache] removeAllCachedResponses];
     //[urlRequest setHTTPMethod:@"POST"];
     //[urlRequest setHTTPShouldHandleCookies:YES];
-    NSURLConnection* __autoreleasing connectionResponse = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self];
+    NSURLConnection* __autoreleasing connectionResponse = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     if (!connectionResponse)
     {
         // handle error
