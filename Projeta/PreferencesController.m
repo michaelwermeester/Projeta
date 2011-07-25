@@ -6,7 +6,6 @@
 //  Copyright 2011 Michael Wermeester. All rights reserved.
 //
 
-#import "ASIHTTPRequest.h"
 #import "PreferencesController.h"
 
 static PreferencesController *_sharedPrefsWindowController = nil;
@@ -161,13 +160,19 @@ static NSString *realm = @"ProjetaRealm";
 - (NSURLCredential*)getCredentialFromKeyChain
 {
     // return credential from keychain
-    return [ASIHTTPRequest savedCredentialsForHost:[[self serverURL] host] port:[[[self serverURL] port] intValue] protocol:[[self serverURL] scheme] realm:realm];
+    NSURLProtectionSpace *protectionSpace = [[NSURLProtectionSpace alloc] initWithHost:[[self serverURL] host] port:[[[self serverURL] port] intValue] protocol:[[self serverURL] scheme] realm:realm authenticationMethod:NSURLAuthenticationMethodHTTPBasic];
+    
+	return [[NSURLCredentialStorage sharedCredentialStorage] defaultCredentialForProtectionSpace:protectionSpace];
 }
 
 // remove credentials from keychain
 - (void)removeCredentialsFromKeychain
 {
-    [ASIHTTPRequest removeCredentialsForHost:[[self serverURL] host] port:[[[self serverURL] port] intValue] protocol:[[self serverURL] scheme] realm:realm];
+    NSURLProtectionSpace *protectionSpace = [[NSURLProtectionSpace alloc] initWithHost:[[self serverURL] host] port:[[[self serverURL] port] intValue] protocol:[[self serverURL] scheme] realm:realm authenticationMethod:NSURLAuthenticationMethodHTTPBasic];
+	NSURLCredential *credential = [[NSURLCredentialStorage sharedCredentialStorage] defaultCredentialForProtectionSpace:protectionSpace];
+	if (credential) {
+		[[NSURLCredentialStorage sharedCredentialStorage] removeCredential:credential forProtectionSpace:protectionSpace];
+	}
 }
 
 // save credentials to keychain
@@ -185,7 +190,8 @@ static NSString *realm = @"ProjetaRealm";
 										 persistence:NSURLCredentialPersistencePermanent];
 
         // save credentials to keychain
-        [ASIHTTPRequest saveCredentials:credential forHost:[[self serverURL] host] port:[[[self serverURL] port] intValue] protocol:[[self serverURL] scheme] realm:realm];
+        NSURLProtectionSpace *protectionSpace = [[NSURLProtectionSpace alloc] initWithHost:[[self serverURL] host] port:[[[self serverURL] port] intValue] protocol:[[self serverURL] scheme] realm:realm authenticationMethod:NSURLAuthenticationMethodHTTPBasic];
+        [[NSURLCredentialStorage sharedCredentialStorage] setDefaultCredential:credential forProtectionSpace:protectionSpace];
     }
 }
 

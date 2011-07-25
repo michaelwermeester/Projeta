@@ -10,7 +10,7 @@
 #import "PTUser.h"
 #import "User.h"
 #import <Foundation/NSJSONSerialization.h>
-#import "ASIHTTPRequest.h"
+#import "ConnectionController.h"
 
 @implementation PTUserManagementViewController
 
@@ -36,6 +36,18 @@
         NSURL *url = [NSURL URLWithString:urlString];
         
         
+        
+        
+        
+        id delegate = self;
+        ConnectionController* connectionController = [[ConnectionController alloc] initWithDelegate:delegate
+                                                                                            selSucceeded:@selector(requestFinished:)
+                                                                                               selFailed:@selector(requestFailed:)];
+        [connectionController startRequestForURL:url];
+        
+        
+        
+        /* When using ASIHTTPRequest - WORKS!!!
         __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
         
         [request setUseKeychainPersistence:YES];
@@ -54,7 +66,7 @@
             [self requestFailed:strongRequest];
         }];
         
-        [request startAsynchronous];
+        [request startAsynchronous];*/
                 
         // get users
         //NSURL *url = [NSURL URLWithString:@"https://luckycode.be:8181/projeta-webservice/resources/be.luckycode.projetawebservice.users/"];
@@ -66,7 +78,8 @@
     return self;
 }
 
-- (void)requestFinished:(ASIHTTPRequest *)request
+// ASIHTTPRequest
+/*- (void)requestFinished:(ASIHTTPRequest *)request
 {
     NSError *error;
     
@@ -84,16 +97,47 @@
     //[arrayCtrl addObjects:[PTUser setAttributesFromDictionary2:dict]];
     
     // add a new user programmatically
+    
+    // User *user = [[User alloc] init];
+    //user.username = @"teeeeeeeeest";
+    //[arrayCtrl addObject:user];
+     
+}*/
+
+/*- (void)requestFailed:(ASIHTTPRequest *)request
+{
+    NSError *error = [request error];
+    NSLog(@"Failed %@ with code %ld and with userInfo %@",[error domain],[error code],[error userInfo]);
+}*/
+
+// NSURLConnection
+- (void)requestFinished:(NSMutableData*)data
+{
+    NSError *error;
+    
+    // Use when fetching text data
+    //NSString *responseString = [request responseString];
+    //NSLog(@"response: %@", responseString);
+    //NSDictionary *dict = [[NSDictionary alloc] init];
+    NSDictionary *dict = [[NSDictionary alloc] init];
+    dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
+    
+    // see Cocoa and Objective-C up and running by Scott Stevenson.
+    // page 242
+    [[self mutableArrayValueForKey:@"arrUsr"] addObjectsFromArray:[PTUser setAttributesFromDictionary2:dict]];
+    
+    //[arrayCtrl addObjects:[PTUser setAttributesFromDictionary2:dict]];
+    
+    // add a new user programmatically
     /*
      User *user = [[User alloc] init];
-    user.username = @"teeeeeeeeest";
-    [arrayCtrl addObject:user];
+     user.username = @"teeeeeeeeest";
+     [arrayCtrl addObject:user];
      */
 }
 
-- (void)requestFailed:(ASIHTTPRequest *)request
+- (void)requestFailed:(NSError*)error
 {
-    NSError *error = [request error];
     NSLog(@"Failed %@ with code %ld and with userInfo %@",[error domain],[error code],[error userInfo]);
 }
 

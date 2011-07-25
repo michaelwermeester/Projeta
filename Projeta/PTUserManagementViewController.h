@@ -7,7 +7,6 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "ASIHTTPRequest.h"
 
 @interface PTUserManagementViewController : NSViewController {
     NSMutableArray *arrUsr;     // array which holds the users
@@ -19,7 +18,12 @@
 @property (strong) IBOutlet NSTableView *usersTableView;
 @property (strong) IBOutlet NSArrayController *arrayCtrl;
 
-- (void)requestFinished:(ASIHTTPRequest *)request;
-- (void)requestFailed:(ASIHTTPRequest *)request;
+// ASIHTTPRequest
+//- (void)requestFinished:(ASIHTTPRequest *)request;
+//- (void)requestFailed:(ASIHTTPRequest *)request;
+
+// NSURLConnection
+- (void)requestFinished:(NSMutableData*)data;
+- (void)requestFailed:(NSError*)error;
 
 @end

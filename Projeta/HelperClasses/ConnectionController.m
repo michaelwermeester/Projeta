@@ -10,14 +10,50 @@
 
 @implementation ConnectionController
 
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        // Initialization code here.
+@synthesize connectionDelegate;
+@synthesize succeededAction;
+@synthesize failedAction;
+
+- (id)initWithDelegate:(id)delegate selSucceeded:(SEL)succeeded selFailed:(SEL)failed {
+    if ((self = [super init])) {
+        self.connectionDelegate = delegate;
+        self.succeededAction = succeeded;
+        self.failedAction = failed;
+    }
+    return self;
+}
+
+- (BOOL)startRequestForURL:(NSURL*)url {
+    NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
+    // cache & policy stuff here
+    //[[NSURLCache sharedURLCache] removeAllCachedResponses];
+    //[urlRequest setHTTPMethod:@"POST"];
+    //[urlRequest setHTTPShouldHandleCookies:YES];
+    NSURLConnection* __autoreleasing connectionResponse = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self];
+    if (!connectionResponse)
+    {
+        // handle error
+        return NO;
+    } else {
+        receivedData = [NSMutableData data];
     }
     
-    return self;
+    return YES;
+}
+
+- (void)connection:(NSURLConnection*)connection didReceiveResponse:(NSURLResponse*)response {
+    [receivedData setLength:0];
+}
+- (void)connection:(NSURLConnection*)connection didReceiveData:(NSData*)data {
+    [receivedData appendData:data];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    [connectionDelegate performSelector:failedAction withObject:error];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+     [connectionDelegate performSelector:succeededAction withObject:receivedData];
 }
 
 @end
