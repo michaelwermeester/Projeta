@@ -29,6 +29,9 @@
 		4C23BB3013DA1F5400E18E43 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 4C23BB2F13DA1F5400E18E43 /* main.c */; };
 		4C23BB3213DA1F5400E18E43 /* GetMetadataForFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C23BB3113DA1F5400E18E43 /* GetMetadataForFile.m */; };
 		4C23BB3513DA1F5400E18E43 /* MySpotlightImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C23BB3413DA1F5400E18E43 /* MySpotlightImporter.m */; };
+		4C32ECB513DDE39F009E7131 /* ConnectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C32ECB413DDE39F009E7131 /* ConnectionController.m */; };
+		4C32ECBB13DDE690009E7131 /* PTUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C32ECB813DDE690009E7131 /* PTUser.m */; };
+		4C32ECBC13DDE690009E7131 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C32ECBA13DDE690009E7131 /* User.m */; };
 		4C74A61F13A2BFA100E7DBF6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C74A61D13A2BFA100E7DBF6 /* InfoPlist.strings */; };
 		4C74A62113A2BFA100E7DBF6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C74A62013A2BFA100E7DBF6 /* main.m */; };
 		4C74A62513A2BFA100E7DBF6 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 4C74A62313A2BFA100E7DBF6 /* Credits.rtf */; };
@@ -44,8 +47,6 @@
 		4CBCEA2013AD180200835F30 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBCEA1F13AD180200835F30 /* PreferencesController.m */; };
 		4CBCEA2313AD407600835F30 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CBCEA2513AD407600835F30 /* MainWindow.xib */; };
 		4CBCEA2A13AD40DF00835F30 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CBCEA2C13AD40DF00835F30 /* Preferences.xib */; };
-		4CF363C013D342D300F5A4F6 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF363BC13D342D300F5A4F6 /* User.m */; };
-		4CF363C113D342D300F5A4F6 /* PTUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF363BE13D342D300F5A4F6 /* PTUser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,12 @@
 		4C23BB3413DA1F5400E18E43 /* MySpotlightImporter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MySpotlightImporter.m; sourceTree = "<group>"; };
 		4C23BB3613DA1F5400E18E43 /* Importer Read Me.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Importer Read Me.txt"; sourceTree = "<group>"; };
 		4C23BB3713DA1F5400E18E43 /* ProjetaImporter-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ProjetaImporter-Prefix.pch"; sourceTree = "<group>"; };
+		4C32ECB313DDE39F009E7131 /* ConnectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionController.h; sourceTree = "<group>"; };
+		4C32ECB413DDE39F009E7131 /* ConnectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionController.m; sourceTree = "<group>"; };
+		4C32ECB713DDE690009E7131 /* PTUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTUser.h; sourceTree = "<group>"; };
+		4C32ECB813DDE690009E7131 /* PTUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTUser.m; sourceTree = "<group>"; };
+		4C32ECB913DDE690009E7131 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		4C32ECBA13DDE690009E7131 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		4C74A61013A2BFA100E7DBF6 /* Projeta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Projeta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C74A61413A2BFA100E7DBF6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		4C74A61713A2BFA100E7DBF6 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -134,10 +141,6 @@
 		4CBCEA2B13AD40DF00835F30 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Preferences.xib; sourceTree = "<group>"; };
 		4CBCEA2D13AD40EC00835F30 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/Preferences.xib; sourceTree = "<group>"; };
 		4CBCEA2E13AD40F500835F30 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/Preferences.xib; sourceTree = "<group>"; };
-		4CF363BC13D342D300F5A4F6 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		4CF363BD13D342D300F5A4F6 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		4CF363BE13D342D300F5A4F6 /* PTUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTUser.m; sourceTree = "<group>"; };
-		4CF363BF13D342D300F5A4F6 /* PTUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTUser.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +238,27 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		4C32ECB213DDE2C3009E7131 /* Helper Classes */ = {
+			isa = PBXGroup;
+			children = (
+				4C32ECB313DDE39F009E7131 /* ConnectionController.h */,
+				4C32ECB413DDE39F009E7131 /* ConnectionController.m */,
+			);
+			name = "Helper Classes";
+			path = HelperClasses;
+			sourceTree = "<group>";
+		};
+		4C32ECB613DDE492009E7131 /* Business Objects */ = {
+			isa = PBXGroup;
+			children = (
+				4C32ECB713DDE690009E7131 /* PTUser.h */,
+				4C32ECB813DDE690009E7131 /* PTUser.m */,
+				4C32ECB913DDE690009E7131 /* User.h */,
+				4C32ECBA13DDE690009E7131 /* User.m */,
+			);
+			path = "Business Objects";
+			sourceTree = "<group>";
+		};
 		4C74A60513A2BFA100E7DBF6 = {
 			isa = PBXGroup;
 			children = (
@@ -285,8 +309,9 @@
 		4C74A61A13A2BFA100E7DBF6 /* Projeta */ = {
 			isa = PBXGroup;
 			children = (
+				4C32ECB213DDE2C3009E7131 /* Helper Classes */,
 				4C205C5F13DC662E009E78D7 /* ASIHTTPRequest */,
-				4CB426B413B66BC40019B653 /* Business objects */,
+				4C32ECB613DDE492009E7131 /* Business Objects */,
 				4CBCEA1B13AD161500835F30 /* Preferences */,
 				4C21F23C13C264CC00462C43 /* Users */,
 				4C74A62613A2BFA100E7DBF6 /* ProjetaAppDelegate.h */,
@@ -330,17 +355,6 @@
 				4C74A63D13A2BFA100E7DBF6 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		4CB426B413B66BC40019B653 /* Business objects */ = {
-			isa = PBXGroup;
-			children = (
-				4CF363BC13D342D300F5A4F6 /* User.m */,
-				4CF363BD13D342D300F5A4F6 /* User.h */,
-				4CF363BE13D342D300F5A4F6 /* PTUser.m */,
-				4CF363BF13D342D300F5A4F6 /* PTUser.h */,
-			);
-			name = "Business objects";
 			sourceTree = "<group>";
 		};
 		4CBCEA1B13AD161500835F30 /* Preferences */ = {
@@ -526,8 +540,6 @@
 				4CBCEA2013AD180200835F30 /* PreferencesController.m in Sources */,
 				4C21F24513C2691600462C43 /* PTUserManagementWindowController.m in Sources */,
 				4C21F24913C26C6600462C43 /* PTUserManagementViewController.m in Sources */,
-				4CF363C013D342D300F5A4F6 /* User.m in Sources */,
-				4CF363C113D342D300F5A4F6 /* PTUser.m in Sources */,
 				4C205C7513DC662E009E78D7 /* ASIDataCompressor.m in Sources */,
 				4C205C7613DC662E009E78D7 /* ASIDataDecompressor.m in Sources */,
 				4C205C7713DC662E009E78D7 /* ASIDownloadCache.m in Sources */,
@@ -535,6 +547,9 @@
 				4C205C7913DC662E009E78D7 /* ASIHTTPRequest.m in Sources */,
 				4C205C7A13DC662E009E78D7 /* ASIInputStream.m in Sources */,
 				4C205C7B13DC662E009E78D7 /* ASINetworkQueue.m in Sources */,
+				4C32ECB513DDE39F009E7131 /* ConnectionController.m in Sources */,
+				4C32ECBB13DDE690009E7131 /* PTUser.m in Sources */,
+				4C32ECBC13DDE690009E7131 /* User.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
