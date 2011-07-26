@@ -7,11 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "PTUserManagementViewController.h"
 
 @interface PTUserManagementWindowController : NSWindowController {
     NSView *usersView;
 }
 
+@property (strong, nonatomic) PTUserManagementViewController *userManagementViewController;
 @property (strong) IBOutlet NSView *usersView;
 
 @end

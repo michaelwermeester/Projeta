@@ -17,6 +17,7 @@
 @property (strong) NSMutableArray *arrUsr;
 @property (strong) IBOutlet NSTableView *usersTableView;
 @property (strong) IBOutlet NSArrayController *arrayCtrl;
+@property (strong) IBOutlet NSButton *deleteButton;
 
 // ASIHTTPRequest
 //- (void)requestFinished:(ASIHTTPRequest *)request;
@@ -25,5 +26,6 @@
 // NSURLConnection
 - (void)requestFinished:(NSMutableData*)data;
 - (void)requestFailed:(NSError*)error;
+- (IBAction)deleteButtonClicked:(id)sender;
 
 @end

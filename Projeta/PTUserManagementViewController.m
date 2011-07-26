@@ -13,6 +13,7 @@
 #import "ConnectionController.h"
 
 @implementation PTUserManagementViewController
+@synthesize deleteButton;
 
 @synthesize arrayCtrl;
 @synthesize usersTableView;
@@ -43,7 +44,7 @@
                                                                                                selFailed:@selector(requestFailed:)];
         
         NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
-        //[urlRequest setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
+        [urlRequest setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
         
         [connectionController startRequestForURL:url setRequest:urlRequest];
         
@@ -143,4 +144,11 @@
     NSLog(@"Failed %@ with code %ld and with userInfo %@",[error domain],[error code],[error userInfo]);
 }
 
+- (IBAction)deleteButtonClicked:(NSButton*)sender {
+    
+    for (User* usr in arrUsr)
+    {
+        NSLog(@"t: %@", [usr username]);
+    }
+}
 @end

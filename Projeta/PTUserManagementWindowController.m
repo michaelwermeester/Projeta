@@ -11,6 +11,7 @@
 
 @implementation PTUserManagementWindowController
 @synthesize usersView;
+@synthesize userManagementViewController;
 
 - (id)init
 {
@@ -37,8 +38,8 @@
     [super windowDidLoad];
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
-    PTUserManagementViewController *usrView = [[PTUserManagementViewController alloc] init];
-    [self.usersView addSubview:usrView.view];
+    userManagementViewController = [[PTUserManagementViewController alloc] init];
+    [self.usersView addSubview:userManagementViewController.view];
 }
 
 @end
