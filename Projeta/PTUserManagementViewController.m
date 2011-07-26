@@ -102,7 +102,7 @@
     // add a new user programmatically
     
     // User *user = [[User alloc] init];
-    //user.username = @"teeeeeeeeest";
+    //user.username = @"test";
     //[arrayCtrl addObject:user];
      
 }*/
@@ -134,7 +134,7 @@
     // add a new user programmatically
     /*
      User *user = [[User alloc] init];
-     user.username = @"teeeeeeeeest";
+     user.username = @"test";
      [arrayCtrl addObject:user];
      */
 }
