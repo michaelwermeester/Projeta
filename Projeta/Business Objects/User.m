@@ -44,4 +44,23 @@
 
 }
 
+// In your custom class
++ (id)customClassWithProperties:(NSDictionary *)properties {
+    return [[self alloc] initWithProperties:properties];
+}
+
+- (id)initWithProperties:(NSDictionary *)properties {
+    if (self = [self init]) {
+        [self setValuesForKeysWithDictionary:properties];
+    }
+    return self;
+}
+
+- (NSArray*)allKeys
+{
+    NSArray *retArr = [[NSArray alloc] initWithObjects: @"username", @"password", @"userId", nil];
+    
+    return retArr;
+}
+
 @end

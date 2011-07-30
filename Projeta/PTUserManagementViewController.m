@@ -76,6 +76,11 @@
         // get user
         //NSURL *url = [NSURL URLWithString:@"https://test:test@luckycode.be:8181/projeta-webservice/resources/be.luckycode.projetawebservice.users/2?"];
         
+        // add observer
+        // Source: Technical Q&A QA1551 (Xcode doc)
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editingDidEnd:)
+                                                     name:NSControlTextDidEndEditingNotification object:nil];
+        
     }
     
     return self;
@@ -151,4 +156,43 @@
         NSLog(@"t: %@", [usr username]);
     }
 }
+
+/*- (void)tableView:(NSTableView *)aTableView setObjectValue:(id)anObject forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex {
+ 
+    User *usr = [[User alloc] init];
+    usr = [arrUsr objectAtIndex:rowIndex];
+    //usr.username = anObject;
+    NSLog(@"username: %@", usr.username);
+    
+    //[arrUsr setValue:anObject forKey:@"username"];
+    
+    //[usersTableView reloadData];
+    
+}*/
+
+- (void)editingDidEnd:(NSNotification *)notification
+{
+    NSInteger selRowIndex;
+    selRowIndex = [usersTableView selectedRow];
+    
+    User *usr = [[User alloc] init];
+    usr = [arrUsr objectAtIndex:selRowIndex];
+    //usr = [arrUsr objectAtIndex:rowIndex];
+    
+    NSDictionary *dict = [usr dictionaryWithValuesForKeys:[usr allKeys]];
+    
+    NSError* error;
+    NSData *data = [[NSData alloc] init];
+    data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
+    
+    //NSLog(@"JSON result: %@", data);
+ 
+    NSString* newStr = [[NSString alloc] initWithData:data
+                                             encoding:NSUTF8StringEncoding];
+    
+    NSLog(@"JSON result: %@", newStr);
+    
+    
+}
+
 @end

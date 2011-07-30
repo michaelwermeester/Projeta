@@ -20,5 +20,6 @@
 
 + (User *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
+- (NSArray*)allKeys;
 
 @end

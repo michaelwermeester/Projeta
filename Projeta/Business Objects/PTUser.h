@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface PTUser : NSArrayController {
+@interface PTUser : NSObject {
     NSArray *users;
 }
 
