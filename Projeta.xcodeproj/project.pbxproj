@@ -20,6 +20,7 @@
 		4C23BB3013DA1F5400E18E43 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 4C23BB2F13DA1F5400E18E43 /* main.c */; };
 		4C23BB3213DA1F5400E18E43 /* GetMetadataForFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C23BB3113DA1F5400E18E43 /* GetMetadataForFile.m */; };
 		4C23BB3513DA1F5400E18E43 /* MySpotlightImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C23BB3413DA1F5400E18E43 /* MySpotlightImporter.m */; };
+		4C27F3CA13E5C40900B1A8EC /* PTConnectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C27F3C913E5C40900B1A8EC /* PTConnectionController.m */; };
 		4C32ECB513DDE39F009E7131 /* ConnectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C32ECB413DDE39F009E7131 /* ConnectionController.m */; };
 		4C32ECBB13DDE690009E7131 /* PTUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C32ECB813DDE690009E7131 /* PTUser.m */; };
 		4C32ECBC13DDE690009E7131 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C32ECBA13DDE690009E7131 /* User.m */; };
@@ -74,6 +75,8 @@
 		4C23BB3413DA1F5400E18E43 /* MySpotlightImporter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MySpotlightImporter.m; sourceTree = "<group>"; };
 		4C23BB3613DA1F5400E18E43 /* Importer Read Me.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Importer Read Me.txt"; sourceTree = "<group>"; };
 		4C23BB3713DA1F5400E18E43 /* ProjetaImporter-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ProjetaImporter-Prefix.pch"; sourceTree = "<group>"; };
+		4C27F3C813E5C40900B1A8EC /* PTConnectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTConnectionController.h; sourceTree = "<group>"; };
+		4C27F3C913E5C40900B1A8EC /* PTConnectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTConnectionController.m; sourceTree = "<group>"; };
 		4C32ECB313DDE39F009E7131 /* ConnectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionController.h; sourceTree = "<group>"; };
 		4C32ECB413DDE39F009E7131 /* ConnectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionController.m; sourceTree = "<group>"; };
 		4C32ECB713DDE690009E7131 /* PTUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTUser.h; sourceTree = "<group>"; };
@@ -187,6 +190,8 @@
 			children = (
 				4C32ECB313DDE39F009E7131 /* ConnectionController.h */,
 				4C32ECB413DDE39F009E7131 /* ConnectionController.m */,
+				4C27F3C813E5C40900B1A8EC /* PTConnectionController.h */,
+				4C27F3C913E5C40900B1A8EC /* PTConnectionController.m */,
 			);
 			name = "Helper Classes";
 			path = HelperClasses;
@@ -484,6 +489,7 @@
 				4C32ECB513DDE39F009E7131 /* ConnectionController.m in Sources */,
 				4C32ECBB13DDE690009E7131 /* PTUser.m in Sources */,
 				4C32ECBC13DDE690009E7131 /* User.m in Sources */,
+				4C27F3CA13E5C40900B1A8EC /* PTConnectionController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

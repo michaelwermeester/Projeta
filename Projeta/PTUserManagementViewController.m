@@ -11,6 +11,7 @@
 #import "User.h"
 #import <Foundation/NSJSONSerialization.h>
 #import "ConnectionController.h"
+#import "PTConnectionController.h"
 
 @implementation PTUserManagementViewController
 @synthesize deleteButton;
@@ -39,15 +40,31 @@
         
         // NSURLConnection - ConnectionController
         id delegate = self;
-        ConnectionController* connectionController = [[ConnectionController alloc] initWithDelegate:delegate
+        
+        /*ConnectionController* connectionController = [[ConnectionController alloc] initWithDelegate:delegate
                                                                                             selSucceeded:@selector(requestFinished:)
                                                                                                selFailed:@selector(requestFailed:)];
         
         NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
         [urlRequest setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
         
-        [connectionController startRequestForURL:url setRequest:urlRequest];
+        [connectionController startRequestForURL:url setRequest:urlRequest];*/
         
+        
+        // same as above but using blocks now!
+        PTConnectionController* connectionController = [[PTConnectionController alloc] initWithDelegate:delegate
+                                                                                                success:^(NSMutableData *data) {
+                                                                                                    [self requestFinished:data];
+                                                                                                }
+                                                                                                failure:^(NSError *error) {
+                                                                                                    [self requestFailed:error];
+                                                                                                }];
+        
+        
+        NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
+        [urlRequest setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
+        
+        [connectionController startRequestForURL:url setRequest:urlRequest];
         
         
         /* When using ASIHTTPRequest - WORKS!!!
@@ -191,8 +208,6 @@
                                              encoding:NSUTF8StringEncoding];
     
     NSLog(@"JSON result: %@", newStr);
-    
-    
 }
 
 @end
