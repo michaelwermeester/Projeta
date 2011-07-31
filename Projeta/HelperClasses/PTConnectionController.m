@@ -10,15 +10,14 @@
 
 @implementation PTConnectionController
 
-@synthesize connectionDelegate;
 @synthesize succeededAction;
 @synthesize failedAction;
 
 
-- (id)initWithDelegate:(id)delegate success:(void(^)(NSMutableData *))successBlock_ failure:(void(^)(NSError *))failureBlock_ {
+//- (id)initWithDelegate:(id)delegate success:(void(^)(NSMutableData *))successBlock_ failure:(void(^)(NSError *))failureBlock_ {
+- (id)initWithSuccessBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)(NSError *))failureBlock_ {
     
     if ((self = [super init])) {
-        self.connectionDelegate = delegate;
     
         [self setSucceededAction:successBlock_];
         [self setFailedAction:failureBlock_];

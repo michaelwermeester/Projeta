@@ -39,7 +39,7 @@
         
         
         // NSURLConnection - ConnectionController
-        id delegate = self;
+        //id delegate = self;
         
         /*ConnectionController* connectionController = [[ConnectionController alloc] initWithDelegate:delegate
                                                                                             selSucceeded:@selector(requestFinished:)
@@ -52,13 +52,22 @@
         
         
         // same as above but using blocks now!
-        PTConnectionController* connectionController = [[PTConnectionController alloc] initWithDelegate:delegate
+        /*PTConnectionController* connectionController = [[PTConnectionController alloc] initWithDelegate:delegate
                                                                                                 success:^(NSMutableData *data) {
                                                                                                     [self requestFinished:data];
                                                                                                 }
                                                                                                 failure:^(NSError *error) {
                                                                                                     [self requestFailed:error];
-                                                                                                }];
+                                                                                                }];*/
+        
+        // same as above without using the delegate
+        PTConnectionController* connectionController = [[PTConnectionController alloc] 
+                                                        initWithSuccessBlock:^(NSMutableData *data) {
+                                                            [self requestFinished:data];
+                                                        }
+                                                        failureBlock:^(NSError *error) {
+                                                            [self requestFailed:error];
+                                                        }];
         
         
         NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
