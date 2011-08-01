@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "User.h"
 
 @interface PTUserManagementViewController : NSViewController {
     NSMutableArray *arrUsr;     // array which holds the users
@@ -27,5 +28,7 @@
 - (void)requestFinished:(NSMutableData*)data;
 - (void)requestFailed:(NSError*)error;
 - (IBAction)deleteButtonClicked:(id)sender;
+
+- (void)updateUser:(User *)theUser;
 
 @end

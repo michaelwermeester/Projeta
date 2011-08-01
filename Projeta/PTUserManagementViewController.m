@@ -205,6 +205,11 @@
     usr = [arrUsr objectAtIndex:selRowIndex];
     //usr = [arrUsr objectAtIndex:rowIndex];
     
+    // update User
+    [self updateUser:usr];
+    
+    /*
+    // works! -> updateUser method
     NSDictionary *dict = [usr dictionaryWithValuesForKeys:[usr allKeys]];
     
     NSError* error;
@@ -217,6 +222,48 @@
                                              encoding:NSUTF8StringEncoding];
     
     NSLog(@"JSON result: %@", newStr);
+     */
+}
+
+- (void)updateUser:(User *)theUser
+{
+    // create dictionary from User object
+    NSDictionary *dict = [theUser dictionaryWithValuesForKeys:[theUser allKeys]];
+    
+    // create NSData from dictionary
+    NSError* error;
+    NSData *requestData = [[NSData alloc] init];
+    requestData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
+    
+    NSString *urlString = [NSString stringWithFormat:@"https://luckycode.be:8181/projeta-webservice/resources/be.luckycode.projetawebservice.users"];
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    
+    PTConnectionController* connectionController = [[PTConnectionController alloc] 
+                                                    initWithSuccessBlock:^(NSMutableData *data) {
+                                                        //[self requestFinished:requestData];
+                                                    }
+                                                    failureBlock:^(NSError *error) {
+                                                        //[self requestFailed:error];
+                                                    }];
+    
+    
+    NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
+    [urlRequest setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
+    
+    NSString* requestDataLengthString = [[NSString alloc] initWithFormat:@"%d", [requestData length]];
+    
+    //[urlRequest setHTTPMethod:@"POST"]; // create
+    [urlRequest setHTTPMethod:@"PUT"]; // update
+    [urlRequest setHTTPBody:requestData];
+    [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [urlRequest setValue:requestDataLengthString forHTTPHeaderField:@"Content-Length"];
+    [urlRequest setTimeoutInterval:30.0];
+	// set http-header User-Agent.
+	[urlRequest setValue:@"Projeta" forHTTPHeaderField:@"User-Agent"];
+    
+    [connectionController startRequestForURL:url setRequest:urlRequest];
+    
 }
 
 @end
