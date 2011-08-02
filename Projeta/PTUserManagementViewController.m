@@ -10,8 +10,7 @@
 #import "PTUser.h"
 #import "User.h"
 #import <Foundation/NSJSONSerialization.h>
-#import "ConnectionController.h"
-#import "PTConnectionController.h"
+#import "MWConnectionController.h"
 
 @implementation PTUserManagementViewController
 @synthesize deleteButton;
@@ -38,30 +37,8 @@
         NSURL *url = [NSURL URLWithString:urlString];
         
         
-        // NSURLConnection - ConnectionController
-        //id delegate = self;
-        
-        /*ConnectionController* connectionController = [[ConnectionController alloc] initWithDelegate:delegate
-                                                                                            selSucceeded:@selector(requestFinished:)
-                                                                                               selFailed:@selector(requestFailed:)];
-        
-        NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
-        [urlRequest setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
-        
-        [connectionController startRequestForURL:url setRequest:urlRequest];*/
-        
-        
-        // same as above but using blocks now!
-        /*PTConnectionController* connectionController = [[PTConnectionController alloc] initWithDelegate:delegate
-                                                                                                success:^(NSMutableData *data) {
-                                                                                                    [self requestFinished:data];
-                                                                                                }
-                                                                                                failure:^(NSError *error) {
-                                                                                                    [self requestFailed:error];
-                                                                                                }];*/
-        
-        // same as above without using the delegate
-        PTConnectionController* connectionController = [[PTConnectionController alloc] 
+        // NSURLConnection - MWConnectionController
+        MWConnectionController* connectionController = [[MWConnectionController alloc] 
                                                         initWithSuccessBlock:^(NSMutableData *data) {
                                                             [self requestFinished:data];
                                                         }
@@ -75,27 +52,6 @@
         
         [connectionController startRequestForURL:url setRequest:urlRequest];
         
-        
-        /* When using ASIHTTPRequest - WORKS!!!
-        __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-        
-        [request setUseKeychainPersistence:YES];
-        [request setAllowCompressedResponse:YES];
-        
-        __weak ASIHTTPRequest *weakRequest = request;
-        //[request setDelegate:self];
-        [request setCompletionBlock:^{
-            ASIHTTPRequest *strongRequest = weakRequest;
-            
-            [self requestFinished:strongRequest];
-        }];
-        [request setFailedBlock:^{
-            ASIHTTPRequest *strongRequest = weakRequest;
-            
-            [self requestFailed:strongRequest];
-        }];
-        
-        [request startAsynchronous];*/
                 
         // get users
         //NSURL *url = [NSURL URLWithString:@"https://luckycode.be:8181/projeta-webservice/resources/be.luckycode.projetawebservice.users/"];
@@ -239,7 +195,7 @@
     NSURL *url = [NSURL URLWithString:urlString];
     
     
-    PTConnectionController* connectionController = [[PTConnectionController alloc] 
+    MWConnectionController* connectionController = [[MWConnectionController alloc] 
                                                     initWithSuccessBlock:^(NSMutableData *data) {
                                                         //[self requestFinished:requestData];
                                                     }

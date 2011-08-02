@@ -1,34 +1,38 @@
 //
-//  ConnectionController.m
+//  PTConnectionController.m
 //  Projeta
 //
-//  Created by Michael Wermeester on 25/07/11.
+//  Created by Michael Wermeester on 31/07/11.
 //  Copyright 2011 Michael Wermeester. All rights reserved.
 //
 
-#import "ConnectionController.h"
+#import "MWConnectionController.h"
 
-@implementation ConnectionController
+@implementation MWConnectionController
 
-@synthesize connectionDelegate;
 @synthesize succeededAction;
 @synthesize failedAction;
 
-- (id)initWithDelegate:(id)delegate selSucceeded:(SEL)succeeded selFailed:(SEL)failed {
+
+- (id)initWithSuccessBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)(NSError *))failureBlock_ {
+    
     if ((self = [super init])) {
-        self.connectionDelegate = delegate;
-        self.succeededAction = succeeded;
-        self.failedAction = failed;
+    
+        [self setSucceededAction:successBlock_];
+        [self setFailedAction:failureBlock_];
     }
+    
     return self;
 }
 
 - (BOOL)startRequestForURL:(NSURL*)url setRequest:(NSURLRequest *)request {
+    
     //NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
     // cache & policy stuff here
     //[[NSURLCache sharedURLCache] removeAllCachedResponses];
     //[urlRequest setHTTPMethod:@"POST"];
     //[urlRequest setHTTPShouldHandleCookies:YES];
+    
     NSURLConnection* __autoreleasing connectionResponse = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     if (!connectionResponse)
     {
@@ -49,11 +53,14 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    [connectionDelegate performSelector:failedAction withObject:error];
+    
+    [self failedAction](error);
+    
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-     [connectionDelegate performSelector:succeededAction withObject:receivedData];
+    
+    [self succeededAction](receivedData);
 }
-
+    
 @end
