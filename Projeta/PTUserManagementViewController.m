@@ -11,6 +11,7 @@
 #import "User.h"
 #import <Foundation/NSJSONSerialization.h>
 #import "MWConnectionController.h"
+#import "PTCommon.h"
 
 @implementation PTUserManagementViewController
 @synthesize deleteButton;
@@ -31,9 +32,14 @@
         arrUsr = [[NSMutableArray alloc] init];
         
         // load user defaults from preferences file
-        NSString *urlString = [[NSUserDefaults standardUserDefaults] objectForKey:@"ServerURL"];
+        //NSString *urlString = [[NSUserDefaults standardUserDefaults] objectForKey:@"ServerURL"];
+        
+        // get server URL as string
+        NSString *urlString = [PTCommon serverURLString];
+        // build URL by adding resource path
         urlString = [urlString stringByAppendingString:@"resources/be.luckycode.projetawebservice.users/"];
         
+        // convert to NSURL
         NSURL *url = [NSURL URLWithString:urlString];
         
         
@@ -67,38 +73,6 @@
     
     return self;
 }
-
-// ASIHTTPRequest
-/*- (void)requestFinished:(ASIHTTPRequest *)request
-{
-    NSError *error;
-    
-    // Use when fetching text data
-    //NSString *responseString = [request responseString];
-    //NSLog(@"response: %@", responseString);
-    //NSDictionary *dict = [[NSDictionary alloc] init];
-    NSDictionary *dict = [[NSDictionary alloc] init];
-    dict = [NSJSONSerialization JSONObjectWithData:[request responseData] options:NSJSONReadingMutableLeaves error:&error];
-    
-    // see Cocoa and Objective-C up and running by Scott Stevenson.
-    // page 242
-    [[self mutableArrayValueForKey:@"arrUsr"] addObjectsFromArray:[PTUser setAttributesFromDictionary2:dict]];
-    
-    //[arrayCtrl addObjects:[PTUser setAttributesFromDictionary2:dict]];
-    
-    // add a new user programmatically
-    
-    // User *user = [[User alloc] init];
-    //user.username = @"test";
-    //[arrayCtrl addObject:user];
-     
-}*/
-
-/*- (void)requestFailed:(ASIHTTPRequest *)request
-{
-    NSError *error = [request error];
-    NSLog(@"Failed %@ with code %ld and with userInfo %@",[error domain],[error code],[error userInfo]);
-}*/
 
 // NSURLConnection
 - (void)requestFinished:(NSMutableData*)data
@@ -139,29 +113,8 @@
     }
 }
 
-/*- (void)tableView:(NSTableView *)aTableView setObjectValue:(id)anObject forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex {
- 
-    User *usr = [[User alloc] init];
-    usr = [arrUsr objectAtIndex:rowIndex];
-    //usr.username = anObject;
-    NSLog(@"username: %@", usr.username);
-    
-    //[arrUsr setValue:anObject forKey:@"username"];
-    
-    //[usersTableView reloadData];
-    
-}*/
-
 - (void)editingDidEnd:(NSNotification *)notification
 {
-    /*NSInteger selRowIndex;
-    selRowIndex = [usersTableView selectedRow];
-    
-    User *usr = [[User alloc] init];
-    usr = [arrUsr objectAtIndex:selRowIndex];
-    //usr = [arrUsr objectAtIndex:rowIndex];
-    */
-     
     NSArray *selectedObjects = [arrayCtrl selectedObjects];
     
     for (User *usr in selectedObjects)
@@ -196,7 +149,12 @@
     NSData *requestData = [[NSData alloc] init];
     requestData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
     
-    NSString *urlString = [NSString stringWithFormat:@"https://luckycode.be:8181/projeta-webservice/resources/be.luckycode.projetawebservice.users"];
+    // get server URL as string
+    NSString *urlString = [PTCommon serverURLString];
+    // build URL by adding resource path
+    urlString = [urlString stringByAppendingString:@"resources/be.luckycode.projetawebservice.users"];
+    
+    // convert to NSURL
     NSURL *url = [NSURL URLWithString:urlString];
     
     
