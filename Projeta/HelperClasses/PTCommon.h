@@ -10,7 +10,9 @@
 
 @interface PTCommon : NSObject
 
+// loads server URL from preferences file and returns it as NSURL
 + (NSURL*)serverURL;
+// loads server URL from preferences file and returns it as NSString
 + (NSString*)serverURLString;
 
 @end

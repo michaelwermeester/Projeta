@@ -10,6 +10,7 @@
 
 @implementation PTCommon
 
+// loads server URL from preferences file and returns it as NSURL
 + (NSURL*)serverURL
 {
     // load user defaults from preferences file
@@ -19,6 +20,7 @@
     return [NSURL URLWithString:[strURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 }
 
+// loads server URL from preferences file and returns it as NSString
 + (NSString*)serverURLString
 {
     // load user defaults from preferences file
