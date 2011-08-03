@@ -154,31 +154,36 @@
 
 - (void)editingDidEnd:(NSNotification *)notification
 {
-    NSInteger selRowIndex;
+    /*NSInteger selRowIndex;
     selRowIndex = [usersTableView selectedRow];
     
     User *usr = [[User alloc] init];
     usr = [arrUsr objectAtIndex:selRowIndex];
     //usr = [arrUsr objectAtIndex:rowIndex];
+    */
+     
+    NSArray *selectedObjects = [arrayCtrl selectedObjects];
     
-    // update User
-    [self updateUser:usr];
-    
-    /*
-    // works! -> updateUser method
-    NSDictionary *dict = [usr dictionaryWithValuesForKeys:[usr allKeys]];
-    
-    NSError* error;
-    NSData *data = [[NSData alloc] init];
-    data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
-    
-    //NSLog(@"JSON result: %@", data);
- 
-    NSString* newStr = [[NSString alloc] initWithData:data
-                                             encoding:NSUTF8StringEncoding];
-    
-    NSLog(@"JSON result: %@", newStr);
-     */
+    for (User *usr in selectedObjects)
+    {
+        // update User
+        [self updateUser:usr];
+        
+        /*
+        // works! -> updateUser method
+        NSDictionary *dict = [usr dictionaryWithValuesForKeys:[usr allKeys]];
+        
+        NSError* error;
+        NSData *data = [[NSData alloc] init];
+        data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
+        
+        //NSLog(@"JSON result: %@", data);
+        
+        NSString* newStr = [[NSString alloc] initWithData:data
+                                                 encoding:NSUTF8StringEncoding];
+        
+        NSLog(@"JSON result: %@", newStr);*/
+    }
 }
 
 - (void)updateUser:(User *)theUser
@@ -197,10 +202,10 @@
     
     MWConnectionController* connectionController = [[MWConnectionController alloc] 
                                                     initWithSuccessBlock:^(NSMutableData *data) {
-                                                        //[self requestFinished:requestData];
+
                                                     }
                                                     failureBlock:^(NSError *error) {
-                                                        //[self requestFailed:error];
+
                                                     }];
     
     

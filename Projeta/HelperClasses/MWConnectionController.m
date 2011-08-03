@@ -55,7 +55,6 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     
     [self failedAction](error);
-    
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
