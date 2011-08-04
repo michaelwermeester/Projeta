@@ -20,10 +20,6 @@
 @property (strong) IBOutlet NSArrayController *arrayCtrl;
 @property (strong) IBOutlet NSButton *deleteButton;
 
-// ASIHTTPRequest
-//- (void)requestFinished:(ASIHTTPRequest *)request;
-//- (void)requestFailed:(ASIHTTPRequest *)request;
-
 // NSURLConnection
 - (void)requestFinished:(NSMutableData*)data;
 - (void)requestFailed:(NSError*)error;
