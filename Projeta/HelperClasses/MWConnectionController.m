@@ -25,13 +25,16 @@
     return self;
 }
 
-- (BOOL)startRequestForURL:(NSURL*)url setRequest:(NSURLRequest *)request {
+- (BOOL)startRequestForURL:(NSURL*)url setRequest:(NSMutableURLRequest *)request {
     
     //NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
     // cache & policy stuff here
     //[[NSURLCache sharedURLCache] removeAllCachedResponses];
     //[urlRequest setHTTPMethod:@"POST"];
     //[urlRequest setHTTPShouldHandleCookies:YES];
+    
+    // enable gzip compression
+    [request setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
     
     NSURLConnection* __autoreleasing connectionResponse = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     if (!connectionResponse)

@@ -168,7 +168,6 @@
     
     
     NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
-    [urlRequest setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
     
     NSString* requestDataLengthString = [[NSString alloc] initWithFormat:@"%d", [requestData length]];
     
