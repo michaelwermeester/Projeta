@@ -177,8 +177,6 @@
     [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [urlRequest setValue:requestDataLengthString forHTTPHeaderField:@"Content-Length"];
     [urlRequest setTimeoutInterval:30.0];
-	// set http-header User-Agent.
-	[urlRequest setValue:@"Projeta" forHTTPHeaderField:@"User-Agent"];
     
     [connectionController startRequestForURL:url setRequest:urlRequest];
     

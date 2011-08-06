@@ -35,6 +35,8 @@
     
     // enable gzip compression
     [request setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
+    // set http-header User-Agent.
+	[request setValue:@"Projeta" forHTTPHeaderField:@"User-Agent"];
     
     NSURLConnection* __autoreleasing connectionResponse = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     if (!connectionResponse)
