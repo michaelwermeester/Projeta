@@ -23,6 +23,7 @@
 		4C27F3CA13E5C40900B1A8EC /* MWConnectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C27F3C913E5C40900B1A8EC /* MWConnectionController.m */; };
 		4C32ECBB13DDE690009E7131 /* PTUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C32ECB813DDE690009E7131 /* PTUser.m */; };
 		4C32ECBC13DDE690009E7131 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C32ECBA13DDE690009E7131 /* User.m */; };
+		4C5A6EDB13ED3BAE0004E694 /* Sidebar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C5A6EDD13ED3BAE0004E694 /* Sidebar.xib */; };
 		4C74A61F13A2BFA100E7DBF6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C74A61D13A2BFA100E7DBF6 /* InfoPlist.strings */; };
 		4C74A62113A2BFA100E7DBF6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C74A62013A2BFA100E7DBF6 /* main.m */; };
 		4C74A62513A2BFA100E7DBF6 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 4C74A62313A2BFA100E7DBF6 /* Credits.rtf */; };
@@ -81,6 +82,9 @@
 		4C32ECB813DDE690009E7131 /* PTUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTUser.m; sourceTree = "<group>"; };
 		4C32ECB913DDE690009E7131 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		4C32ECBA13DDE690009E7131 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		4C5A6EDC13ED3BAE0004E694 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Sidebar.xib; sourceTree = "<group>"; };
+		4C5A6EE013ED3BB70004E694 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/Sidebar.xib; sourceTree = "<group>"; };
+		4C5A6EE113ED3DDF0004E694 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/Sidebar.xib; sourceTree = "<group>"; };
 		4C74A61013A2BFA100E7DBF6 /* Projeta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Projeta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C74A61413A2BFA100E7DBF6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		4C74A61713A2BFA100E7DBF6 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -268,6 +272,7 @@
 				4C74A62C13A2BFA100E7DBF6 /* Projeta.xcdatamodeld */,
 				4C74A61B13A2BFA100E7DBF6 /* Supporting Files */,
 				4CBCEA2513AD407600835F30 /* MainWindow.xib */,
+				4C5A6EDD13ED3BAE0004E694 /* Sidebar.xib */,
 			);
 			path = Projeta;
 			sourceTree = "<group>";
@@ -420,6 +425,7 @@
 				4CBCEA2A13AD40DF00835F30 /* Preferences.xib in Resources */,
 				4C21F25013C2742400462C43 /* PTUserManagementWindow.xib in Resources */,
 				4C21F24B13C2741400462C43 /* PTUserManagementView.xib in Resources */,
+				4C5A6EDB13ED3BAE0004E694 /* Sidebar.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,7 +466,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# http://developer.casgrain.com/?p=94\n# MainWindow.xib ##################################################################\n# Extract English strings (use this to check if you added new strings to your nibs)\nibtool --generate-strings-file Projeta/en.lproj/MainWindow.strings Projeta/en.lproj/MainWindow.xib\n# Generate French interface\nibtool --strings-file Projeta/fr.lproj/MainWindow.strings --write Projeta/fr.lproj/MainWindow.xib Projeta/en.lproj/MainWindow.xib\n\n# Preferences.xib #################################################################\nibtool --generate-strings-file Projeta/en.lproj/Preferences.strings Projeta/en.lproj/Preferences.xib\n# fr\nibtool --strings-file Projeta/fr.lproj/Preferences.strings --write Projeta/fr.lproj/Preferences.xib Projeta/en.lproj/Preferences.xib";
+			shellScript = "# MainWindow.xib ##################################################################\n# Extract English strings (use this to check if you added new strings to your nibs)\nibtool --export-strings-file Projeta/en.lproj/MainWindow.strings Projeta/en.lproj/MainWindow.xib\n# Generate French interface\nibtool --strings-file Projeta/fr.lproj/MainWindow.strings --write Projeta/fr.lproj/MainWindow.xib Projeta/en.lproj/MainWindow.xib\n# Preferences.xib #################################################################\nibtool --export-strings-file Projeta/en.lproj/Preferences.strings Projeta/en.lproj/Preferences.xib\n# fr\nibtool --strings-file Projeta/fr.lproj/Preferences.strings --write Projeta/fr.lproj/Preferences.xib Projeta/en.lproj/Preferences.xib";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -538,6 +544,16 @@
 				4C23BB2D13DA1F5400E18E43 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4C5A6EDD13ED3BAE0004E694 /* Sidebar.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C5A6EDC13ED3BAE0004E694 /* en */,
+				4C5A6EE013ED3BB70004E694 /* fr */,
+				4C5A6EE113ED3DDF0004E694 /* de */,
+			);
+			name = Sidebar.xib;
 			sourceTree = "<group>";
 		};
 		4C74A61D13A2BFA100E7DBF6 /* InfoPlist.strings */ = {
