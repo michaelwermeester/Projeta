@@ -8,8 +8,12 @@
 
 #import "MainWindowController.h"
 #import "ProjetaAppDelegate.h"
+#import "PTSidebarViewController.h"
 
 @implementation MainWindowController
+
+@synthesize sidebarViewController;
+@synthesize sidebarView;
 
 - (id)init
 {
@@ -36,6 +40,9 @@
     [super windowDidLoad];
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    
+    sidebarViewController = [[PTSidebarViewController alloc] init];
+    [self.sidebarView addSubview:sidebarViewController.view];
 }
 
 - (void)windowWillClose:(NSNotification *)notification

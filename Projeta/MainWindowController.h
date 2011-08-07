@@ -7,9 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "PTSidebarViewController.h"
 
 @interface MainWindowController : NSWindowController <NSWindowDelegate> {
     
+    NSView *sidebarView;
 }
+
+@property (strong) PTSidebarViewController *sidebarViewController;
+@property (strong) IBOutlet NSView *sidebarView;
 
 @end

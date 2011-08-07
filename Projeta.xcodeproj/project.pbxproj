@@ -23,7 +23,6 @@
 		4C27F3CA13E5C40900B1A8EC /* MWConnectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C27F3C913E5C40900B1A8EC /* MWConnectionController.m */; };
 		4C32ECBB13DDE690009E7131 /* PTUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C32ECB813DDE690009E7131 /* PTUser.m */; };
 		4C32ECBC13DDE690009E7131 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C32ECBA13DDE690009E7131 /* User.m */; };
-		4C5A6EDB13ED3BAE0004E694 /* Sidebar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C5A6EDD13ED3BAE0004E694 /* Sidebar.xib */; };
 		4C74A61F13A2BFA100E7DBF6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C74A61D13A2BFA100E7DBF6 /* InfoPlist.strings */; };
 		4C74A62113A2BFA100E7DBF6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C74A62013A2BFA100E7DBF6 /* main.m */; };
 		4C74A62513A2BFA100E7DBF6 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 4C74A62313A2BFA100E7DBF6 /* Credits.rtf */; };
@@ -40,6 +39,8 @@
 		4CBCEA2313AD407600835F30 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CBCEA2513AD407600835F30 /* MainWindow.xib */; };
 		4CBCEA2A13AD40DF00835F30 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CBCEA2C13AD40DF00835F30 /* Preferences.xib */; };
 		4CC9FB9D13E9EED800A11EA7 /* PTCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC9FB9C13E9EED800A11EA7 /* PTCommon.m */; };
+		4CF2A2DE13EE847F002BFDF9 /* PTSidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2A2DC13EE847F002BFDF9 /* PTSidebarViewController.m */; };
+		4CF2A2E013EE84E4002BFDF9 /* PTSidebarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CF2A2E213EE84E4002BFDF9 /* PTSidebarView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,9 +83,6 @@
 		4C32ECB813DDE690009E7131 /* PTUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTUser.m; sourceTree = "<group>"; };
 		4C32ECB913DDE690009E7131 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		4C32ECBA13DDE690009E7131 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		4C5A6EDC13ED3BAE0004E694 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Sidebar.xib; sourceTree = "<group>"; };
-		4C5A6EE013ED3BB70004E694 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/Sidebar.xib; sourceTree = "<group>"; };
-		4C5A6EE113ED3DDF0004E694 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/Sidebar.xib; sourceTree = "<group>"; };
 		4C74A61013A2BFA100E7DBF6 /* Projeta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Projeta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C74A61413A2BFA100E7DBF6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		4C74A61713A2BFA100E7DBF6 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -119,6 +117,11 @@
 		4CBCEA2E13AD40F500835F30 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/Preferences.xib; sourceTree = "<group>"; };
 		4CC9FB9B13E9EED800A11EA7 /* PTCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTCommon.h; sourceTree = "<group>"; };
 		4CC9FB9C13E9EED800A11EA7 /* PTCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTCommon.m; sourceTree = "<group>"; };
+		4CF2A2DB13EE847E002BFDF9 /* PTSidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTSidebarViewController.h; sourceTree = "<group>"; };
+		4CF2A2DC13EE847F002BFDF9 /* PTSidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTSidebarViewController.m; sourceTree = "<group>"; };
+		4CF2A2E113EE84E4002BFDF9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PTSidebarView.xib; sourceTree = "<group>"; };
+		4CF2A2E313EE84EC002BFDF9 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/PTSidebarView.xib; sourceTree = "<group>"; };
+		4CF2A2E513EE8500002BFDF9 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/PTSidebarView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,7 +275,9 @@
 				4C74A62C13A2BFA100E7DBF6 /* Projeta.xcdatamodeld */,
 				4C74A61B13A2BFA100E7DBF6 /* Supporting Files */,
 				4CBCEA2513AD407600835F30 /* MainWindow.xib */,
-				4C5A6EDD13ED3BAE0004E694 /* Sidebar.xib */,
+				4CF2A2DB13EE847E002BFDF9 /* PTSidebarViewController.h */,
+				4CF2A2DC13EE847F002BFDF9 /* PTSidebarViewController.m */,
+				4CF2A2E213EE84E4002BFDF9 /* PTSidebarView.xib */,
 			);
 			path = Projeta;
 			sourceTree = "<group>";
@@ -425,7 +430,7 @@
 				4CBCEA2A13AD40DF00835F30 /* Preferences.xib in Resources */,
 				4C21F25013C2742400462C43 /* PTUserManagementWindow.xib in Resources */,
 				4C21F24B13C2741400462C43 /* PTUserManagementView.xib in Resources */,
-				4C5A6EDB13ED3BAE0004E694 /* Sidebar.xib in Resources */,
+				4CF2A2E013EE84E4002BFDF9 /* PTSidebarView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +501,7 @@
 				4C32ECBC13DDE690009E7131 /* User.m in Sources */,
 				4C27F3CA13E5C40900B1A8EC /* MWConnectionController.m in Sources */,
 				4CC9FB9D13E9EED800A11EA7 /* PTCommon.m in Sources */,
+				4CF2A2DE13EE847F002BFDF9 /* PTSidebarViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,16 +550,6 @@
 				4C23BB2D13DA1F5400E18E43 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		4C5A6EDD13ED3BAE0004E694 /* Sidebar.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4C5A6EDC13ED3BAE0004E694 /* en */,
-				4C5A6EE013ED3BB70004E694 /* fr */,
-				4C5A6EE113ED3DDF0004E694 /* de */,
-			);
-			name = Sidebar.xib;
 			sourceTree = "<group>";
 		};
 		4C74A61D13A2BFA100E7DBF6 /* InfoPlist.strings */ = {
@@ -608,6 +604,16 @@
 				4CBCEA2E13AD40F500835F30 /* de */,
 			);
 			name = Preferences.xib;
+			sourceTree = "<group>";
+		};
+		4CF2A2E213EE84E4002BFDF9 /* PTSidebarView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4CF2A2E113EE84E4002BFDF9 /* en */,
+				4CF2A2E313EE84EC002BFDF9 /* de */,
+				4CF2A2E513EE8500002BFDF9 /* fr */,
+			);
+			name = PTSidebarView.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
