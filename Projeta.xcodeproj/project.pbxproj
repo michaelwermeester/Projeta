@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C0BA4E913F329C7002EA4F2 /* PXSourceList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0BA4E813F329C7002EA4F2 /* PXSourceList.m */; };
 		4C0BC5B513DA1D15003360E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C74A61413A2BFA100E7DBF6 /* Cocoa.framework */; };
 		4C21F24513C2691600462C43 /* PTUserManagementWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C21F24413C2691600462C43 /* PTUserManagementWindowController.m */; };
 		4C21F24913C26C6600462C43 /* PTUserManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C21F24713C26C6600462C43 /* PTUserManagementViewController.m */; };
@@ -54,6 +55,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C0BA4DA13F3274E002EA4F2 /* PXSourceListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXSourceListDataSource.h; sourceTree = "<group>"; };
+		4C0BA4DB13F3274E002EA4F2 /* PXSourceListDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXSourceListDelegate.h; sourceTree = "<group>"; };
+		4C0BA4E713F329C7002EA4F2 /* PXSourceList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXSourceList.h; sourceTree = "<group>"; };
+		4C0BA4E813F329C7002EA4F2 /* PXSourceList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXSourceList.m; sourceTree = "<group>"; };
 		4C0BC5AD13DA1B9B003360E2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		4C0BC5AF13DA1C4A003360E2 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		4C0BC5B113DA1C60003360E2 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
@@ -156,6 +161,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C0BA4D513F32669002EA4F2 /* PXSourceList */ = {
+			isa = PBXGroup;
+			children = (
+				4C0BA4E713F329C7002EA4F2 /* PXSourceList.h */,
+				4C0BA4E813F329C7002EA4F2 /* PXSourceList.m */,
+				4C0BA4DA13F3274E002EA4F2 /* PXSourceListDataSource.h */,
+				4C0BA4DB13F3274E002EA4F2 /* PXSourceListDelegate.h */,
+			);
+			path = PXSourceList;
+			sourceTree = "<group>";
+		};
 		4C21F23C13C264CC00462C43 /* Users */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,21 +279,22 @@
 		4C74A61A13A2BFA100E7DBF6 /* Projeta */ = {
 			isa = PBXGroup;
 			children = (
+				4C0BA4D513F32669002EA4F2 /* PXSourceList */,
 				4C32ECB213DDE2C3009E7131 /* Helper Classes */,
 				4C32ECB613DDE492009E7131 /* Business Objects */,
 				4CBCEA1B13AD161500835F30 /* Preferences */,
 				4C21F23C13C264CC00462C43 /* Users */,
 				4C74A62613A2BFA100E7DBF6 /* ProjetaAppDelegate.h */,
 				4C74A62713A2BFA100E7DBF6 /* ProjetaAppDelegate.m */,
+				4CBCEA2513AD407600835F30 /* MainWindow.xib */,
 				4CBCE9BE13ABC22200835F30 /* MainWindowController.h */,
 				4CBCE9BF13ABC22200835F30 /* MainWindowController.m */,
 				4C74A62913A2BFA100E7DBF6 /* MainMenu.xib */,
 				4C74A62C13A2BFA100E7DBF6 /* Projeta.xcdatamodeld */,
 				4C74A61B13A2BFA100E7DBF6 /* Supporting Files */,
-				4CBCEA2513AD407600835F30 /* MainWindow.xib */,
+				4CF2A2E213EE84E4002BFDF9 /* PTSidebarView.xib */,
 				4CF2A2DB13EE847E002BFDF9 /* PTSidebarViewController.h */,
 				4CF2A2DC13EE847F002BFDF9 /* PTSidebarViewController.m */,
-				4CF2A2E213EE84E4002BFDF9 /* PTSidebarView.xib */,
 			);
 			path = Projeta;
 			sourceTree = "<group>";
@@ -502,6 +519,7 @@
 				4C27F3CA13E5C40900B1A8EC /* MWConnectionController.m in Sources */,
 				4CC9FB9D13E9EED800A11EA7 /* PTCommon.m in Sources */,
 				4CF2A2DE13EE847F002BFDF9 /* PTSidebarViewController.m in Sources */,
+				4C0BA4E913F329C7002EA4F2 /* PXSourceList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
