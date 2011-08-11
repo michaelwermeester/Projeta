@@ -7,14 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "PTSidebarViewController.h"
+#import "PXSourceList.h"
 
-@interface MainWindowController : NSWindowController <NSWindowDelegate> {
+@interface MainWindowController : NSWindowController <NSWindowDelegate, PXSourceListDataSource, PXSourceListDelegate> {
     
-    NSView *sidebarView;
+    NSMutableArray *sourceListItems;
 }
 
-@property (strong) PTSidebarViewController *sidebarViewController;
-@property (strong) IBOutlet NSView *sidebarView;
+@property (strong) IBOutlet PXSourceList *sourceList;
+
+- (void)initializeSidebar;
 
 @end

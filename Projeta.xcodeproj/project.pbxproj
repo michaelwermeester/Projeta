@@ -22,6 +22,7 @@
 		4C23BB3213DA1F5400E18E43 /* GetMetadataForFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C23BB3113DA1F5400E18E43 /* GetMetadataForFile.m */; };
 		4C23BB3513DA1F5400E18E43 /* MySpotlightImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C23BB3413DA1F5400E18E43 /* MySpotlightImporter.m */; };
 		4C27F3CA13E5C40900B1A8EC /* MWConnectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C27F3C913E5C40900B1A8EC /* MWConnectionController.m */; };
+		4C2C7CA613F335AB00D9AE3D /* SourceListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2C7CA513F335AB00D9AE3D /* SourceListItem.m */; };
 		4C32ECBB13DDE690009E7131 /* PTUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C32ECB813DDE690009E7131 /* PTUser.m */; };
 		4C32ECBC13DDE690009E7131 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C32ECBA13DDE690009E7131 /* User.m */; };
 		4C74A61F13A2BFA100E7DBF6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C74A61D13A2BFA100E7DBF6 /* InfoPlist.strings */; };
@@ -84,6 +85,8 @@
 		4C23BB3713DA1F5400E18E43 /* ProjetaImporter-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ProjetaImporter-Prefix.pch"; sourceTree = "<group>"; };
 		4C27F3C813E5C40900B1A8EC /* MWConnectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWConnectionController.h; sourceTree = "<group>"; };
 		4C27F3C913E5C40900B1A8EC /* MWConnectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWConnectionController.m; sourceTree = "<group>"; };
+		4C2C7CA413F335AB00D9AE3D /* SourceListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceListItem.h; sourceTree = "<group>"; };
+		4C2C7CA513F335AB00D9AE3D /* SourceListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceListItem.m; sourceTree = "<group>"; };
 		4C32ECB713DDE690009E7131 /* PTUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTUser.h; sourceTree = "<group>"; };
 		4C32ECB813DDE690009E7131 /* PTUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTUser.m; sourceTree = "<group>"; };
 		4C32ECB913DDE690009E7131 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -168,6 +171,8 @@
 				4C0BA4E813F329C7002EA4F2 /* PXSourceList.m */,
 				4C0BA4DA13F3274E002EA4F2 /* PXSourceListDataSource.h */,
 				4C0BA4DB13F3274E002EA4F2 /* PXSourceListDelegate.h */,
+				4C2C7CA413F335AB00D9AE3D /* SourceListItem.h */,
+				4C2C7CA513F335AB00D9AE3D /* SourceListItem.m */,
 			);
 			path = PXSourceList;
 			sourceTree = "<group>";
@@ -520,6 +525,7 @@
 				4CC9FB9D13E9EED800A11EA7 /* PTCommon.m in Sources */,
 				4CF2A2DE13EE847F002BFDF9 /* PTSidebarViewController.m in Sources */,
 				4C0BA4E913F329C7002EA4F2 /* PXSourceList.m in Sources */,
+				4C2C7CA613F335AB00D9AE3D /* SourceListItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
