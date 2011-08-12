@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C08036F13F5A20700E70C73 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C08037113F5A20700E70C73 /* Localizable.strings */; };
+		4C08037813F5A23200E70C73 /* PTSidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C08037913F5A23200E70C73 /* PTSidebarViewController.m */; };
 		4C0BA4E913F329C7002EA4F2 /* PXSourceList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0BA4E813F329C7002EA4F2 /* PXSourceList.m */; };
 		4C0BC5B513DA1D15003360E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C74A61413A2BFA100E7DBF6 /* Cocoa.framework */; };
 		4C21F24513C2691600462C43 /* PTUserManagementWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C21F24413C2691600462C43 /* PTUserManagementWindowController.m */; };
@@ -41,7 +43,6 @@
 		4CBCEA2313AD407600835F30 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CBCEA2513AD407600835F30 /* MainWindow.xib */; };
 		4CBCEA2A13AD40DF00835F30 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CBCEA2C13AD40DF00835F30 /* Preferences.xib */; };
 		4CC9FB9D13E9EED800A11EA7 /* PTCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC9FB9C13E9EED800A11EA7 /* PTCommon.m */; };
-		4CF2A2DE13EE847F002BFDF9 /* PTSidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2A2DC13EE847F002BFDF9 /* PTSidebarViewController.m */; };
 		4CF2A2E013EE84E4002BFDF9 /* PTSidebarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CF2A2E213EE84E4002BFDF9 /* PTSidebarView.xib */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C08037013F5A20700E70C73 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4C08037313F5A20D00E70C73 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4C08037713F5A22300E70C73 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4C08037913F5A23200E70C73 /* PTSidebarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PTSidebarViewController.m; sourceTree = "<group>"; };
 		4C0BA4DA13F3274E002EA4F2 /* PXSourceListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXSourceListDataSource.h; sourceTree = "<group>"; };
 		4C0BA4DB13F3274E002EA4F2 /* PXSourceListDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXSourceListDelegate.h; sourceTree = "<group>"; };
 		4C0BA4E713F329C7002EA4F2 /* PXSourceList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXSourceList.h; sourceTree = "<group>"; };
@@ -126,7 +131,6 @@
 		4CC9FB9B13E9EED800A11EA7 /* PTCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTCommon.h; sourceTree = "<group>"; };
 		4CC9FB9C13E9EED800A11EA7 /* PTCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTCommon.m; sourceTree = "<group>"; };
 		4CF2A2DB13EE847E002BFDF9 /* PTSidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTSidebarViewController.h; sourceTree = "<group>"; };
-		4CF2A2DC13EE847F002BFDF9 /* PTSidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTSidebarViewController.m; sourceTree = "<group>"; };
 		4CF2A2E113EE84E4002BFDF9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PTSidebarView.xib; sourceTree = "<group>"; };
 		4CF2A2E313EE84EC002BFDF9 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/PTSidebarView.xib; sourceTree = "<group>"; };
 		4CF2A2E513EE8500002BFDF9 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/PTSidebarView.xib; sourceTree = "<group>"; };
@@ -299,7 +303,8 @@
 				4C74A61B13A2BFA100E7DBF6 /* Supporting Files */,
 				4CF2A2E213EE84E4002BFDF9 /* PTSidebarView.xib */,
 				4CF2A2DB13EE847E002BFDF9 /* PTSidebarViewController.h */,
-				4CF2A2DC13EE847F002BFDF9 /* PTSidebarViewController.m */,
+				4C08037913F5A23200E70C73 /* PTSidebarViewController.m */,
+				4C08037113F5A20700E70C73 /* Localizable.strings */,
 			);
 			path = Projeta;
 			sourceTree = "<group>";
@@ -453,6 +458,7 @@
 				4C21F25013C2742400462C43 /* PTUserManagementWindow.xib in Resources */,
 				4C21F24B13C2741400462C43 /* PTUserManagementView.xib in Resources */,
 				4CF2A2E013EE84E4002BFDF9 /* PTSidebarView.xib in Resources */,
+				4C08036F13F5A20700E70C73 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,7 +529,7 @@
 				4C32ECBC13DDE690009E7131 /* User.m in Sources */,
 				4C27F3CA13E5C40900B1A8EC /* MWConnectionController.m in Sources */,
 				4CC9FB9D13E9EED800A11EA7 /* PTCommon.m in Sources */,
-				4CF2A2DE13EE847F002BFDF9 /* PTSidebarViewController.m in Sources */,
+				4C08037813F5A23200E70C73 /* PTSidebarViewController.m in Sources */,
 				4C0BA4E913F329C7002EA4F2 /* PXSourceList.m in Sources */,
 				4C2C7CA613F335AB00D9AE3D /* SourceListItem.m in Sources */,
 			);
@@ -548,6 +554,16 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		4C08037113F5A20700E70C73 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C08037013F5A20700E70C73 /* en */,
+				4C08037313F5A20D00E70C73 /* de */,
+				4C08037713F5A22300E70C73 /* fr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		4C21F24D13C2741400462C43 /* PTUserManagementView.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
