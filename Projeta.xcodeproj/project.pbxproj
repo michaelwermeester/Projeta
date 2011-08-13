@@ -43,6 +43,9 @@
 		4CBCEA2313AD407600835F30 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CBCEA2513AD407600835F30 /* MainWindow.xib */; };
 		4CBCEA2A13AD40DF00835F30 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CBCEA2C13AD40DF00835F30 /* Preferences.xib */; };
 		4CC9FB9D13E9EED800A11EA7 /* PTCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC9FB9C13E9EED800A11EA7 /* PTCommon.m */; };
+		4CF0704913F6F29E00572231 /* PTMainWindowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CF0704B13F6F29E00572231 /* PTMainWindowView.xib */; };
+		4CF0704E13F6F2AF00572231 /* PTProjectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CF0705013F6F2AF00572231 /* PTProjectView.xib */; };
+		4CF0705613F6F2D900572231 /* PTMainWindowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF0705413F6F2D900572231 /* PTMainWindowViewController.m */; };
 		4CF2A2E013EE84E4002BFDF9 /* PTSidebarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CF2A2E213EE84E4002BFDF9 /* PTSidebarView.xib */; };
 /* End PBXBuildFile section */
 
@@ -130,6 +133,14 @@
 		4CBCEA2E13AD40F500835F30 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/Preferences.xib; sourceTree = "<group>"; };
 		4CC9FB9B13E9EED800A11EA7 /* PTCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTCommon.h; sourceTree = "<group>"; };
 		4CC9FB9C13E9EED800A11EA7 /* PTCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTCommon.m; sourceTree = "<group>"; };
+		4CF0704A13F6F29E00572231 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PTMainWindowView.xib; sourceTree = "<group>"; };
+		4CF0704C13F6F2A500572231 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/PTMainWindowView.xib; sourceTree = "<group>"; };
+		4CF0704D13F6F2A800572231 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/PTMainWindowView.xib; sourceTree = "<group>"; };
+		4CF0704F13F6F2AF00572231 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PTProjectView.xib; sourceTree = "<group>"; };
+		4CF0705113F6F2B500572231 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/PTProjectView.xib; sourceTree = "<group>"; };
+		4CF0705213F6F2B700572231 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/PTProjectView.xib; sourceTree = "<group>"; };
+		4CF0705313F6F2D900572231 /* PTMainWindowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMainWindowViewController.h; sourceTree = "<group>"; };
+		4CF0705413F6F2D900572231 /* PTMainWindowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMainWindowViewController.m; sourceTree = "<group>"; };
 		4CF2A2DB13EE847E002BFDF9 /* PTSidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTSidebarViewController.h; sourceTree = "<group>"; };
 		4CF2A2E113EE84E4002BFDF9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PTSidebarView.xib; sourceTree = "<group>"; };
 		4CF2A2E313EE84EC002BFDF9 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/PTSidebarView.xib; sourceTree = "<group>"; };
@@ -299,6 +310,10 @@
 				4CBCE9BE13ABC22200835F30 /* MainWindowController.h */,
 				4CBCE9BF13ABC22200835F30 /* MainWindowController.m */,
 				4C74A62913A2BFA100E7DBF6 /* MainMenu.xib */,
+				4CF0705313F6F2D900572231 /* PTMainWindowViewController.h */,
+				4CF0705413F6F2D900572231 /* PTMainWindowViewController.m */,
+				4CF0704B13F6F29E00572231 /* PTMainWindowView.xib */,
+				4CF0705013F6F2AF00572231 /* PTProjectView.xib */,
 				4C74A62C13A2BFA100E7DBF6 /* Projeta.xcdatamodeld */,
 				4C74A61B13A2BFA100E7DBF6 /* Supporting Files */,
 				4CF2A2E213EE84E4002BFDF9 /* PTSidebarView.xib */,
@@ -459,6 +474,8 @@
 				4C21F24B13C2741400462C43 /* PTUserManagementView.xib in Resources */,
 				4CF2A2E013EE84E4002BFDF9 /* PTSidebarView.xib in Resources */,
 				4C08036F13F5A20700E70C73 /* Localizable.strings in Resources */,
+				4CF0704E13F6F2AF00572231 /* PTProjectView.xib in Resources */,
+				4CF0704913F6F29E00572231 /* PTMainWindowView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,6 +549,7 @@
 				4C08037813F5A23200E70C73 /* PTSidebarViewController.m in Sources */,
 				4C0BA4E913F329C7002EA4F2 /* PXSourceList.m in Sources */,
 				4C2C7CA613F335AB00D9AE3D /* SourceListItem.m in Sources */,
+				4CF0705613F6F2D900572231 /* PTMainWindowViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -644,6 +662,27 @@
 				4CBCEA2E13AD40F500835F30 /* de */,
 			);
 			name = Preferences.xib;
+			sourceTree = "<group>";
+		};
+		4CF0704B13F6F29E00572231 /* PTMainWindowView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4CF0704A13F6F29E00572231 /* en */,
+				4CF0704C13F6F2A500572231 /* fr */,
+				4CF0704D13F6F2A800572231 /* de */,
+			);
+			name = PTMainWindowView.xib;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		4CF0705013F6F2AF00572231 /* PTProjectView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4CF0704F13F6F2AF00572231 /* en */,
+				4CF0705113F6F2B500572231 /* fr */,
+				4CF0705213F6F2B700572231 /* de */,
+			);
+			name = PTProjectView.xib;
 			sourceTree = "<group>";
 		};
 		4CF2A2E213EE84E4002BFDF9 /* PTSidebarView.xib */ = {
