@@ -208,8 +208,6 @@
 	[sourceListItems addObject:playlistsItem];
 	
 	[sourceList reloadData];
-    
-    //[sourceList expandItem:];
 }
 
 

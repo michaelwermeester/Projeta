@@ -53,7 +53,8 @@
 	mainWindowViewController.view.frame = frame;
     
     // add the view to the window.
-    [self.mainView addSubview:mainWindowViewController.view];
+    //[self.mainView addSubview:mainWindowViewController.view];
+    [window.contentView addSubview:mainWindowViewController.view];
     
     // auto resize the view.
     [mainWindowViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
