@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "PTMainWindowViewController.h"
+#import "PTProjectViewController.h"
 
 @interface MainWindowController : NSWindowController <NSWindowDelegate> {
     
@@ -17,5 +18,11 @@
 @property (strong) IBOutlet NSView *mainView;
 
 @property (strong) PTMainWindowViewController *mainWindowViewController;
+@property (strong) PTProjectViewController *projectViewController;
+
+- (IBAction)switchToMainView:(id)sender;
+- (IBAction)switchToProjectView:(id)sender;
+
+- (NSRect)frameWithContentViewFrameSize;
 
 @end

@@ -14,6 +14,7 @@
 
 @synthesize mainView;
 @synthesize mainWindowViewController;
+@synthesize projectViewController;
 
 - (id)init
 {
@@ -44,17 +45,21 @@
     // instantiate PTMainWindowView.
     mainWindowViewController = [[PTMainWindowViewController alloc] init];
     
-    // adjust for window margin.
+    /*// adjust for window margin.
 	NSWindow* window = self.window;
 	CGFloat padding = [window contentBorderThicknessForEdge:NSMinYEdge];
 	NSRect frame = [window.contentView frame];
 	frame.size.height -= padding;
 	frame.origin.y += padding;
-	mainWindowViewController.view.frame = frame;
+    mainWindowViewController.view.frame = frame;*/
+    
+    // resize view to fit ContentView
+    mainWindowViewController.view.frame = [self frameWithContentViewFrameSize];
     
     // add the view to the window.
     //[self.mainView addSubview:mainWindowViewController.view];
-    [window.contentView addSubview:mainWindowViewController.view];
+    //[window.contentView addSubview:mainWindowViewController.view];
+    [self.window.contentView addSubview:mainWindowViewController.view];
     
     // auto resize the view.
     [mainWindowViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
@@ -69,6 +74,55 @@
 {
     // remove reference to this window
     [ProjetaAppDelegate removeMainWindow:self];
+}
+
+- (IBAction)switchToMainView:(id)sender {
+    // instantiate PTProjectView if needed (probably not).
+    if (!mainWindowViewController)
+        mainWindowViewController = [[PTMainWindowViewController alloc] init];
+    
+    // resize view to fit ContentView
+	mainWindowViewController.view.frame = [self frameWithContentViewFrameSize];
+    
+    //[window.contentView removeFromSuperview];
+    [projectViewController.view removeFromSuperview];
+    
+    // add the view to the window.
+    [self.window.contentView addSubview:mainWindowViewController.view];
+    
+    // auto resize the view.
+    [mainWindowViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
+}
+
+- (IBAction)switchToProjectView:(id)sender {
+    // instantiate PTProjectView if needed (probably not).
+    if (!projectViewController)
+        projectViewController = [[PTProjectViewController alloc] init];
+    
+    // resize view to fit ContentView
+	projectViewController.view.frame =[self frameWithContentViewFrameSize];
+    
+    //[window.contentView removeFromSuperview];
+    [mainWindowViewController.view removeFromSuperview];
+    
+    // add the view to the window.
+    [self.window.contentView addSubview:projectViewController.view];
+    
+    // auto resize the view.
+    [projectViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
+}
+
+// returns a frame which fits the ContentView
+- (NSRect)frameWithContentViewFrameSize
+{
+    // adjust for window margin.
+    NSWindow* window = self.window;
+	CGFloat padding = [window contentBorderThicknessForEdge:NSMinYEdge];
+	NSRect frame = [window.contentView frame];
+	frame.size.height -= padding;
+	frame.origin.y += padding;
+    
+    return frame;
 }
 
 @end
