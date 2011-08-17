@@ -234,4 +234,29 @@
 }
 
 
+#pragma mark -
+#pragma mark Gestures handling (trackpad and mouse events)
+
+- (BOOL)wantsScrollEventsForSwipeTrackingOnAxis:(NSEventGestureAxis)axis 
+{
+    //NSLog(@"swiped");
+    
+    return (axis == NSEventGestureAxisHorizontal) ? YES : NO;
+}
+
+- (void)scrollWheel:(NSEvent *)event 
+{
+    // NSScrollView is instructed to only forward horizontal scroll gesture events (see code above). However, depending
+    // on where your controller is in the responder chain, it may receive other scrollWheel events that we don't want
+    // to track as a fluid swipe because the event wasn't routed though an NSScrollView first.
+    if ([event phase] == NSEventPhaseNone) return; // Not a gesture scroll event.
+    if (fabsf([event scrollingDeltaX]) <= fabsf([event scrollingDeltaY])) return; // Not horizontal
+    // If the user has disabled tracking scrolls as fluid swipes in system preferences, we should respect that.
+    // NSScrollView will do this check for us, however, depending on where your controller is in the responder chain,
+    // it may scrollWheel events that are not filtered by an NSScrollView.
+    if (![NSEvent isSwipeTrackingFromScrollEventsEnabled]) return;
+    
+    //NSLog(@"scrolled");
+}
+
 @end

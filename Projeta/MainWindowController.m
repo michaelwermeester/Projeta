@@ -63,6 +63,9 @@
     
     // auto resize the view.
     [mainWindowViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
+    
+    // set the view to receive NSResponder events (used for trackpad and mouse gestures)
+    [mainWindowViewController.view setNextResponder:mainWindowViewController];
 }
 
 - (void)windowDidResize:(NSNotification *)notification
@@ -123,6 +126,24 @@
 	frame.origin.y += padding;
     
     return frame;
+}
+
+
+#pragma mark -
+#pragma mark Gestures handling (trackpad and mouse events)
+
+- (BOOL)wantsScrollEventsForSwipeTrackingOnAxis:(NSEventGestureAxis)axis {
+    
+    // forward to the subview
+    [self.nextResponder wantsScrollEventsForSwipeTrackingOnAxis:axis];
+    
+    return NO;
+}
+
+- (void)scrollWheel:(NSEvent *)event {
+    
+    // forward to the subview
+    [self.nextResponder scrollWheel:event];
 }
 
 @end
