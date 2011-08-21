@@ -8,6 +8,7 @@
 
 #import "PTMainWindowViewController.h"
 #import "SourceListItem.h"
+#import "MainWindowController.h"
 
 @implementation PTMainWindowViewController
 
@@ -15,6 +16,8 @@
 @synthesize splitView;
 @synthesize leftView;
 @synthesize rightView;
+// reference to the (parent) MainWindowController
+@synthesize mainWindowController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -239,8 +242,6 @@
 
 - (BOOL)wantsScrollEventsForSwipeTrackingOnAxis:(NSEventGestureAxis)axis 
 {
-    //NSLog(@"swiped");
-    
     return (axis == NSEventGestureAxisHorizontal) ? YES : NO;
 }
 
@@ -256,7 +257,44 @@
     // it may scrollWheel events that are not filtered by an NSScrollView.
     if (![NSEvent isSwipeTrackingFromScrollEventsEnabled]) return;
     
-    //NSLog(@"scrolled");
+    //NSLog(@"scrolled on PTMainViewController");
+    
+    __block BOOL animationCancelled = NO;
+    [event trackSwipeEventWithOptions:0 dampenAmountThresholdMin:-5 max:5
+                         usingHandler:^(CGFloat gestureAmount, NSEventPhase phase, BOOL isComplete, BOOL *stop) {
+                             if (animationCancelled) {
+                                 *stop = YES;
+                                 // Tear down animation overlay
+                                 return;
+                             }
+                             if (phase == NSEventPhaseBegan) {
+                                 // Setup animation overlay layers
+                             }
+                             // Update animation overlay to match gestureAmount
+                             if (phase == NSEventPhaseEnded) {
+                                 // The user has completed the gesture successfully.
+                                 // This handler will continue to get called with updated gestureAmount
+                                 // to animate to completion, but just in case we need
+                                 // to cancel the animation (due to user swiping again) setup the
+                                 // controller / view to point to the new content / index / whatever
+                                 
+                                 // if left swipe, switch to main view
+                                 if ([event deltaX] < 0) 
+                                     [mainWindowController switchToProjectView:self];
+                             } else if (phase == NSEventPhaseCancelled) {
+                                 // The user has completed the gesture un-successfully.
+                                 // This handler will continue to get called with updated gestureAmount
+                                 // But we don't need to change the underlying controller / view settings.
+                             }
+                             if (isComplete) {
+                                 // Animation has completed and gestureAmount is either -1, 0, or 1.
+                                 // This handler block will be released upon return from this iteration.
+                                 // Note: we already updated our view to use the new (or same) content
+                                 // above. So no need to do that here. Just...
+                                 // Tear down animation overlay here
+                                 //self->_swipeAnimationCanceled = NULL;
+                             }
+                         }];
 }
 
 @end

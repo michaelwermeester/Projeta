@@ -45,6 +45,9 @@
     // instantiate PTMainWindowView.
     mainWindowViewController = [[PTMainWindowViewController alloc] init];
     
+    // keep a reference to this object(self) in mainWindowViewController object 
+    [mainWindowViewController setMainWindowController:self];
+    
     /*// adjust for window margin.
 	NSWindow* window = self.window;
 	CGFloat padding = [window contentBorderThicknessForEdge:NSMinYEdge];
@@ -84,6 +87,9 @@
     if (!mainWindowViewController)
         mainWindowViewController = [[PTMainWindowViewController alloc] init];
     
+    // keep a reference to this object(self) in mainWindowViewController object 
+    [mainWindowViewController setMainWindowController:self];
+    
     // resize view to fit ContentView
 	mainWindowViewController.view.frame = [self frameWithContentViewFrameSize];
     
@@ -95,12 +101,18 @@
     
     // auto resize the view.
     [mainWindowViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
+    
+    // set the view to receive NSResponder events (used for trackpad and mouse gestures)
+    [mainWindowViewController.view setNextResponder:mainWindowViewController];
 }
 
 - (IBAction)switchToProjectView:(id)sender {
     // instantiate PTProjectView if needed (probably not).
     if (!projectViewController)
         projectViewController = [[PTProjectViewController alloc] init];
+    
+    // keep a reference to this object(self) in mainWindowViewController object 
+    [projectViewController setMainWindowController:self];
     
     // resize view to fit ContentView
 	projectViewController.view.frame =[self frameWithContentViewFrameSize];
@@ -113,6 +125,9 @@
     
     // auto resize the view.
     [projectViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
+    
+    // set the view to receive NSResponder events (used for trackpad and mouse gestures)
+    [projectViewController.view setNextResponder:projectViewController];
 }
 
 // returns a frame which fits the ContentView

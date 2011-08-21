@@ -521,7 +521,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# MainWindow.xib ##################################################################\n# Extract English strings (use this to check if you added new strings to your nibs)\nibtool --export-strings-file Projeta/en.lproj/MainWindow.strings Projeta/en.lproj/MainWindow.xib\n# Generate French interface\nibtool --strings-file Projeta/fr.lproj/MainWindow.strings --write Projeta/fr.lproj/MainWindow.xib Projeta/en.lproj/MainWindow.xib\n# Preferences.xib #################################################################\n#ibtool --export-strings-file Projeta/en.lproj/Preferences.strings Projeta/en.lproj/Preferences.xib\n# fr\n#ibtool --strings-file Projeta/fr.lproj/Preferences.strings --write Projeta/fr.lproj/Preferences.xib Projeta/en.lproj/Preferences.xib";
+			shellScript = "# MainWindow.xib ##################################################################\n# Extract English strings (use this to check if you added new strings to your nibs)\n#ibtool --export-strings-file Projeta/en.lproj/MainWindow.strings Projeta/en.lproj/MainWindow.xib\n# Generate French interface\n#ibtool --strings-file Projeta/fr.lproj/MainWindow.strings --write Projeta/fr.lproj/MainWindow.xib Projeta/en.lproj/MainWindow.xib\n# Preferences.xib #################################################################\n#ibtool --export-strings-file Projeta/en.lproj/Preferences.strings Projeta/en.lproj/Preferences.xib\n# fr\n#ibtool --strings-file Projeta/fr.lproj/Preferences.strings --write Projeta/fr.lproj/Preferences.xib Projeta/en.lproj/Preferences.xib";
 		};
 /* End PBXShellScriptBuildPhase section */
 

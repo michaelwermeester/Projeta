@@ -8,6 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class MainWindowController;
+
 @interface PTProjectViewController : NSViewController
+
+
+@property (assign) MainWindowController *mainWindowController;
 
 @end

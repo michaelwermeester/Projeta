@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "PXSourceList.h"
+@class MainWindowController;
 
 @interface PTMainWindowViewController : NSViewController <PXSourceListDataSource, PXSourceListDelegate> {
     NSMutableArray *sourceListItems;
@@ -20,6 +21,8 @@
 @property (strong) IBOutlet NSSplitView *splitView;
 @property (strong) IBOutlet NSView *leftView;
 @property (strong) IBOutlet NSView *rightView;
+// reference to the (parent) MainWindowController
+@property (assign) MainWindowController *mainWindowController;
 
 - (void)initializeSidebar;
 
