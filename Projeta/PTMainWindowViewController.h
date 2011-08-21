@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "PXSourceList.h"
+
 @class MainWindowController;
 
 @interface PTMainWindowViewController : NSViewController <PXSourceListDataSource, PXSourceListDelegate> {
