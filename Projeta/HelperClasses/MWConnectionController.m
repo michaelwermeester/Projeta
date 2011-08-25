@@ -64,6 +64,13 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     
+    // for easier debugging
+    NSString* newStr = [[NSString alloc] initWithData:receivedData
+                                             encoding:NSUTF8StringEncoding];
+    
+    NSLog(@"JSON result: %@", newStr);
+    // end debug
+    
     [self succeededAction](receivedData);
 }
     
