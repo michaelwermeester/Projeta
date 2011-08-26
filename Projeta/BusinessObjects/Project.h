@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@class User;
+#import "User.h"
+//@class User;
 
 @interface Project : NSObject {
     NSDate *dateCreated;

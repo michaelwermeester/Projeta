@@ -7,6 +7,7 @@
 //
 
 #import "Project.h"
+#import "PTCommon.h"
 #import "User.h"
 
 @implementation Project
@@ -34,32 +35,17 @@
         return;
     }
     
-    
-    NSString *dateCreatedString = [aDictionary objectForKey:@"dateCreated"];
-    if (dateCreatedString && ![dateCreatedString isKindOfClass:[NSNull class]]) {
-        self.dateCreated = [NSDate dateWithString:dateCreatedString];
-    }
-    
-    
-    NSString *endDateString = [aDictionary objectForKey:@"endDate"];
-    if (endDateString && ![endDateString isKindOfClass:[NSNull class]]) {
-        self.endDate = [NSDate dateWithString:endDateString];
-    }
+    // dates
+    self.dateCreated = [PTCommon webserviceStringToDate:[aDictionary objectForKey:@"dateCreated"]];
+    self.endDate = [PTCommon webserviceStringToDate:[aDictionary objectForKey:@"endDate"]];
+    self.startDate = [PTCommon webserviceStringToDate:[aDictionary objectForKey:@"startDate"]];
     
     self.flagPublic = [(NSString *)[aDictionary objectForKey:@"flagPublic"] boolValue];
     
-    NSString *projectDescriptionString = [aDictionary objectForKey:@"projectDescription"];
-    if (projectDescriptionString && ![projectDescriptionString isKindOfClass:[NSNull class]]) {
-        self.projectDescription = [NSDate dateWithString:projectDescriptionString];
-    }
+    self.projectDescription = [aDictionary objectForKey:@"projectDescription"];
     
     self.projectId = [NSDecimalNumber decimalNumberWithString:(NSString *)[aDictionary objectForKey:@"projectId"]];
     self.projectTitle = [aDictionary objectForKey:@"projectTitle"];
-    
-    NSString *startDateString = [aDictionary objectForKey:@"startDate"];
-    if (startDateString && ![startDateString isKindOfClass:[NSNull class]]) {
-        self.startDate = [NSDate dateWithString:startDateString];
-    }
     
     self.userCreated = [User instanceFromDictionary:[aDictionary objectForKey:@"userCreated"]];
     

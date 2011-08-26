@@ -11,7 +11,13 @@
 
 @interface PTProjectListViewController : NSViewController {
     NSMutableArray *arrPrj;     // array which holds the projects
+    NSArrayController *prjArrayCtrl;    // array controller
+    NSCollectionView *prjCollectionView;
 }
+
+@property (strong) NSMutableArray *arrPrj;
+@property (strong) IBOutlet NSArrayController *prjArrayCtrl;
+@property (strong) IBOutlet NSCollectionView *prjCollectionView;
 
 - (void)requestFinished:(NSMutableData*)data;
 - (void)requestFailed:(NSError*)error;
