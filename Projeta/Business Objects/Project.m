@@ -22,7 +22,7 @@
 
 + (Project *)instanceFromDictionary:(NSDictionary *)aDictionary {
     
-    Project *instance = [[Project alloc] init];     // autorelease?
+    Project *instance = [[Project alloc] init];
     [instance setAttributesFromDictionary:aDictionary];
     return instance;
     

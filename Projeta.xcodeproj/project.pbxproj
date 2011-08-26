@@ -39,8 +39,9 @@
 		4C74A64113A2BFA100E7DBF6 /* ProjetaTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 4C74A64013A2BFA100E7DBF6 /* ProjetaTests.h */; };
 		4C74A64313A2BFA100E7DBF6 /* ProjetaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C74A64213A2BFA100E7DBF6 /* ProjetaTests.m */; };
 		4C796C511406F80900495CEB /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C796C501406F80900495CEB /* Project.m */; };
-		4C8173E21407A8720012C0EB /* PTProjectListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C8173E11407A8710012C0EB /* PTProjectListView.xib */; };
 		4C8173E71407A89D0012C0EB /* PTProjectListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8173E51407A89D0012C0EB /* PTProjectListViewController.m */; };
+		4C8173EF1407BE810012C0EB /* PTProjectHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8173EE1407BE810012C0EB /* PTProjectHelper.m */; };
+		4CA7D6B914080685009D11F5 /* PTProjectListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CA7D6BB14080685009D11F5 /* PTProjectListView.xib */; };
 		4CBCE9C013ABC22200835F30 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBCE9BF13ABC22200835F30 /* MainWindowController.m */; };
 		4CBCEA2013AD180200835F30 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBCEA1F13AD180200835F30 /* PreferencesController.m */; };
 		4CBCEA2313AD407600835F30 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CBCEA2513AD407600835F30 /* MainWindow.xib */; };
@@ -125,9 +126,13 @@
 		4C74A64213A2BFA100E7DBF6 /* ProjetaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjetaTests.m; sourceTree = "<group>"; };
 		4C796C4F1406F80900495CEB /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
 		4C796C501406F80900495CEB /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
-		4C8173E11407A8710012C0EB /* PTProjectListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTProjectListView.xib; sourceTree = "<group>"; };
 		4C8173E41407A89D0012C0EB /* PTProjectListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTProjectListViewController.h; sourceTree = "<group>"; };
 		4C8173E51407A89D0012C0EB /* PTProjectListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTProjectListViewController.m; sourceTree = "<group>"; };
+		4C8173ED1407BE810012C0EB /* PTProjectHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTProjectHelper.h; sourceTree = "<group>"; };
+		4C8173EE1407BE810012C0EB /* PTProjectHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTProjectHelper.m; sourceTree = "<group>"; };
+		4CA7D6BA14080685009D11F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PTProjectListView.xib; sourceTree = "<group>"; };
+		4CA7D6BC140806AF009D11F5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/PTProjectListView.xib; sourceTree = "<group>"; };
+		4CA7D6BD140806B1009D11F5 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/PTProjectListView.xib; sourceTree = "<group>"; };
 		4CBCE9BE13ABC22200835F30 /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
 		4CBCE9BF13ABC22200835F30 /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
 		4CBCEA1E13AD180200835F30 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
@@ -258,6 +263,8 @@
 				4C32ECB813DDE690009E7131 /* PTUser.m */,
 				4C32ECB913DDE690009E7131 /* User.h */,
 				4C32ECBA13DDE690009E7131 /* User.m */,
+				4C8173ED1407BE810012C0EB /* PTProjectHelper.h */,
+				4C8173EE1407BE810012C0EB /* PTProjectHelper.m */,
 				4C796C4F1406F80900495CEB /* Project.h */,
 				4C796C501406F80900495CEB /* Project.m */,
 			);
@@ -328,7 +335,7 @@
 				4CF0704B13F6F29E00572231 /* PTMainWindowView.xib */,
 				4C8173E41407A89D0012C0EB /* PTProjectListViewController.h */,
 				4C8173E51407A89D0012C0EB /* PTProjectListViewController.m */,
-				4C8173E11407A8710012C0EB /* PTProjectListView.xib */,
+				4CA7D6BB14080685009D11F5 /* PTProjectListView.xib */,
 				4CCDB31F13F83CB80084FC84 /* PTProjectViewController.h */,
 				4CCDB32013F83CB80084FC84 /* PTProjectViewController.m */,
 				4CF0705013F6F2AF00572231 /* PTProjectView.xib */,
@@ -494,7 +501,7 @@
 				4C08036F13F5A20700E70C73 /* Localizable.strings in Resources */,
 				4CF0704E13F6F2AF00572231 /* PTProjectView.xib in Resources */,
 				4CF0704913F6F29E00572231 /* PTMainWindowView.xib in Resources */,
-				4C8173E21407A8720012C0EB /* PTProjectListView.xib in Resources */,
+				4CA7D6B914080685009D11F5 /* PTProjectListView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,6 +579,7 @@
 				4CCDB32213F83CB80084FC84 /* PTProjectViewController.m in Sources */,
 				4C796C511406F80900495CEB /* Project.m in Sources */,
 				4C8173E71407A89D0012C0EB /* PTProjectListViewController.m in Sources */,
+				4C8173EF1407BE810012C0EB /* PTProjectHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -664,6 +672,16 @@
 				4C74A63E13A2BFA100E7DBF6 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4CA7D6BB14080685009D11F5 /* PTProjectListView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4CA7D6BA14080685009D11F5 /* en */,
+				4CA7D6BC140806AF009D11F5 /* fr */,
+				4CA7D6BD140806B1009D11F5 /* de */,
+			);
+			name = PTProjectListView.xib;
 			sourceTree = "<group>";
 		};
 		4CBCEA2513AD407600835F30 /* MainWindow.xib */ = {

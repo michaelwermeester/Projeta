@@ -19,6 +19,8 @@
 // reference to the (parent) MainWindowController
 @synthesize mainWindowController;
 
+@synthesize projectListViewController;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     //self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -37,7 +39,7 @@
     // initialize the sidebar (sourcelist)
     [self initializeSidebar];
     
-    // expand the second group
+    // expand the first group
     [sourceList expandItem:[sourceListItems objectAtIndex:1]];
 }
 
@@ -127,7 +129,7 @@
 
 - (BOOL)sourceList:(PXSourceList*)aSourceList isGroupAlwaysExpanded:(id)group
 {
-	if([[group identifier] isEqualToString:@"projects"])
+	if([[group identifier] isEqualToString:@"projectsHeader"])
 		return YES;
 	
 	return NO;
@@ -144,9 +146,23 @@
 		//[selectedItemLabel setStringValue:@"(multiple)"];
     }
 	else if([selectedIndexes count]==1) {
-		//NSString *identifier = [[sourceList itemAtRow:[selectedIndexes firstIndex]] identifier];
+		NSString *identifier = [[sourceList itemAtRow:[selectedIndexes firstIndex]] identifier];
 		
-		//[selectedItemLabel setStringValue:identifier];
+        if (identifier == @"projects") {
+            if (!projectListViewController) {
+       
+                projectListViewController = [[PTProjectListViewController alloc] init];
+                [self.rightView addSubview:projectListViewController.view];
+                
+                // auto resize the view.
+                [projectListViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
+            }
+        }
+        else {
+            // free some memory
+            [projectListViewController.view removeFromSuperview];
+            projectListViewController = nil;
+        }
 	}
 	else {
 		//[selectedItemLabel setStringValue:@"(none)"];
@@ -172,9 +188,9 @@
 	
 	//Set up the "Library" parent item and children
 	//SourceListItem *libraryItem = [SourceListItem itemWithTitle:@"LIBRARY" identifier:@"library"];
-    SourceListItem *libraryItem = [SourceListItem itemWithTitle:NSLocalizedString(@"PROJECTS", nil) identifier:@"projects"];
-	SourceListItem *musicItem = [SourceListItem itemWithTitle:@"Music" identifier:@"music"];
-	[musicItem setIcon:[NSImage imageNamed:@"music.png"]];
+    SourceListItem *projectsHeaderItem = [SourceListItem itemWithTitle:NSLocalizedString(@"PROJECTS", nil) identifier:@"projectsHeader"];
+	SourceListItem *projectsItem = [SourceListItem itemWithTitle:@"Projects" identifier:@"projects"];
+	[projectsItem setIcon:[NSImage imageNamed:@"music.png"]];
 	SourceListItem *moviesItem = [SourceListItem itemWithTitle:@"Movies" identifier:@"movies"];
 	[moviesItem setIcon:[NSImage imageNamed:@"movies.png"]];
 	SourceListItem *podcastsItem = [SourceListItem itemWithTitle:@"Podcasts" identifier:@"podcasts"];
@@ -182,7 +198,7 @@
 	[podcastsItem setBadgeValue:10];
 	SourceListItem *audiobooksItem = [SourceListItem itemWithTitle:@"Audiobooks" identifier:@"audiobooks"];
 	[audiobooksItem setIcon:[NSImage imageNamed:@"audiobooks.png"]];
-	[libraryItem setChildren:[NSArray arrayWithObjects:musicItem, moviesItem, podcastsItem,
+	[projectsHeaderItem setChildren:[NSArray arrayWithObjects:projectsItem, moviesItem, podcastsItem,
 							  audiobooksItem, nil]];
     
 	
@@ -207,7 +223,7 @@
 	[playlistsItem setChildren:[NSArray arrayWithObjects:playlist1Item, playlistGroup,playlist2Item,
 								playlist3Item, nil]];
 	
-	[sourceListItems addObject:libraryItem];
+	[sourceListItems addObject:projectsHeaderItem];
 	[sourceListItems addObject:playlistsItem];
 	
 	[sourceList reloadData];

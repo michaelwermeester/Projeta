@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "PXSourceList.h"
+#import "PTProjectListViewController.h"
 
 @class MainWindowController;
 
@@ -24,6 +25,9 @@
 @property (strong) IBOutlet NSView *rightView;
 // reference to the (parent) MainWindowController
 @property (assign) MainWindowController *mainWindowController;
+
+// project-list view
+@property (strong) PTProjectListViewController *projectListViewController;
 
 - (void)initializeSidebar;
 

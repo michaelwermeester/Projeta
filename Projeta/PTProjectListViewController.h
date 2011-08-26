@@ -7,7 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "Project.h"
 
-@interface PTProjectListViewController : NSViewController
+@interface PTProjectListViewController : NSViewController {
+    NSMutableArray *arrPrj;     // array which holds the projects
+}
+
+- (void)requestFinished:(NSMutableData*)data;
+- (void)requestFailed:(NSError*)error;
 
 @end
