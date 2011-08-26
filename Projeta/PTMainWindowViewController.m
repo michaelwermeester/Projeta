@@ -152,6 +152,10 @@
             if (!projectListViewController) {
        
                 projectListViewController = [[PTProjectListViewController alloc] init];
+                
+                // resize the view to fit and fill the right splitview view
+                [projectListViewController.view setFrameSize:rightView.frame.size];
+                
                 [self.rightView addSubview:projectListViewController.view];
                 
                 // auto resize the view.

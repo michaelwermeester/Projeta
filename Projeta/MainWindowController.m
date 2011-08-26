@@ -115,7 +115,7 @@
     [projectViewController setMainWindowController:self];
     
     // resize view to fit ContentView
-	projectViewController.view.frame =[self frameWithContentViewFrameSize];
+	projectViewController.view.frame = [self frameWithContentViewFrameSize];
     
     //[window.contentView removeFromSuperview];
     [mainWindowViewController.view removeFromSuperview];
