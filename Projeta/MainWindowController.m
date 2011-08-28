@@ -13,8 +13,10 @@
 @implementation MainWindowController
 
 @synthesize mainView;
+@synthesize progressIndicator;
 @synthesize mainWindowViewController;
 @synthesize projectViewController;
+@synthesize progressCount;
 
 - (id)init
 {
@@ -22,6 +24,9 @@
     if(self)
     {
         //perform any initializations
+        
+        // set counter to 0
+        progressCount = 0;
     }
     return self;
 }
@@ -159,6 +164,31 @@
     
     // forward to the subview
     [self.nextResponder scrollWheel:event];
+}
+
+
+#pragma mark -
+#pragma mark progress indicators and animations
+
+// start animating the circular progress indicator.
+- (void)startProgressIndicatorAnimation {
+    
+    // increment the counter to keep track of the number of requests.
+    progressCount++;
+    
+    // start animating the circular progress indicator.
+    [progressIndicator startAnimation:self];
+}
+
+// stop animating the circular progress indicator.
+- (void)stopProgressIndicatorAnimation {
+    
+    // decrement the counter.
+    progressCount--;
+    
+    // if all requests have been handled, stop the animation.
+    if (progressCount == 0)
+        [progressIndicator stopAnimation:self];
 }
 
 @end

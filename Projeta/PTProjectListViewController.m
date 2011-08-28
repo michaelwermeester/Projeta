@@ -8,6 +8,7 @@
 
 #import "PTProjectListViewController.h"
 #import <Foundation/NSJSONSerialization.h>
+#import "MainWindowController.h"
 #import "MWConnectionController.h"
 #import "PTCommon.h"
 #import "Project.h"
@@ -16,6 +17,7 @@
 @implementation PTProjectListViewController
 
 @synthesize arrPrj;
+@synthesize mainWindowController;
 @synthesize prjArrayCtrl;
 @synthesize prjCollectionView;
 
@@ -28,32 +30,44 @@
         
         // Initialize the array which holds the list of projects 
         arrPrj = [[NSMutableArray alloc] init];
-        
-        // get server URL as string
-        NSString *urlString = [PTCommon serverURLString];
-        // build URL by adding resource path
-        urlString = [urlString stringByAppendingString:@"resources/be.luckycode.projetawebservice.project/"];
-        
-        // convert to NSURL
-        NSURL *url = [NSURL URLWithString:urlString];
-        
-        // NSURLConnection - MWConnectionController
-        MWConnectionController* connectionController = [[MWConnectionController alloc] 
-                                                        initWithSuccessBlock:^(NSMutableData *data) {
-                                                            [self requestFinished:data];
-                                                        }
-                                                        failureBlock:^(NSError *error) {
-                                                            [self requestFailed:error];
-                                                        }];
-        
-        
-        NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
-        [urlRequest setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
-        
-        [connectionController startRequestForURL:url setRequest:urlRequest];
     }
     
     return self;
+}
+
+- (void)viewDidLoad {
+    // get server URL as string
+    NSString *urlString = [PTCommon serverURLString];
+    // build URL by adding resource path
+    urlString = [urlString stringByAppendingString:@"resources/be.luckycode.projetawebservice.project/"];
+    
+    // convert to NSURL
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    // NSURLConnection - MWConnectionController
+    MWConnectionController* connectionController = [[MWConnectionController alloc] 
+                                                    initWithSuccessBlock:^(NSMutableData *data) {
+                                                        [self requestFinished:data];
+                                                    }
+                                                    failureBlock:^(NSError *error) {
+                                                        [self requestFailed:error];
+                                                    }];
+    
+    
+    NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
+    [urlRequest setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
+    
+    // start animating the main window's circular progress indicator.
+    [mainWindowController startProgressIndicatorAnimation];
+    
+    [connectionController startRequestForURL:url setRequest:urlRequest];
+}
+
+- (void)loadView
+{
+    [super loadView];
+    
+    [self viewDidLoad];
 }
 
 // NSURLConnection
@@ -73,6 +87,9 @@
     // see Cocoa and Objective-C up and running by Scott Stevenson.
     // page 242
     [[self mutableArrayValueForKey:@"arrPrj"] addObjectsFromArray:[PTProjectHelper setAttributesFromJSONDictionary:dict]];
+    
+    // stop animating the main window's circular progress indicator.
+    [mainWindowController stopProgressIndicatorAnimation];
     
     for (Project *p in arrPrj)
     {
@@ -98,6 +115,9 @@
 
 - (void)requestFailed:(NSError*)error
 {
+    // stop animating the main window's circular progress indicator.
+    [mainWindowController stopProgressIndicatorAnimation];
+    
     NSLog(@"Failed %@ with code %ld and with userInfo %@",[error domain],[error code],[error userInfo]);
 }
 

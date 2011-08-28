@@ -13,7 +13,7 @@
 
 @implementation ProjetaAppDelegate
 
-@synthesize window = _window;
+//@synthesize window = _window;
 
 NSMutableArray *mainWindows;
 

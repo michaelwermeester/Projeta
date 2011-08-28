@@ -153,6 +153,9 @@
        
                 projectListViewController = [[PTProjectListViewController alloc] init];
                 
+                // set reference to (parent) window
+                [projectListViewController setMainWindowController:mainWindowController];
+                
                 // resize the view to fit and fill the right splitview view
                 [projectListViewController.view setFrameSize:rightView.frame.size];
                 

@@ -25,13 +25,13 @@
     PTUserManagementWindowController *usersWindowController;
 }
 
-@property (strong) IBOutlet NSWindow *window;
+//@property (strong) IBOutlet NSWindow *window;
 
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
-- (IBAction)saveAction:(id)sender;
+//- (IBAction)saveAction:(id)sender;
 
 // opens a new main window
 - (IBAction)newMainWindow:(id)sender;
