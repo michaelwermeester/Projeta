@@ -7,7 +7,6 @@
 //
 
 #import "Project.h"
-#import "PTCommon.h"
 #import "User.h"
 
 @implementation Project
@@ -36,9 +35,31 @@
     }
     
     // dates
-    self.dateCreated = [PTCommon webserviceStringToDate:[aDictionary objectForKey:@"dateCreated"]];
-    self.endDate = [PTCommon webserviceStringToDate:[aDictionary objectForKey:@"endDate"]];
-    self.startDate = [PTCommon webserviceStringToDate:[aDictionary objectForKey:@"startDate"]];
+    //self.dateCreated = [PTCommon webserviceStringToDate:[aDictionary objectForKey:@"dateCreated"]];
+    //self.endDate = [PTCommon webserviceStringToDate:[aDictionary objectForKey:@"endDate"]];
+    //self.startDate = [PTCommon webserviceStringToDate:[aDictionary objectForKey:@"startDate"]];
+    
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    NSLocale *enUSPOSIXLocale;
+    enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+    [df setLocale:enUSPOSIXLocale];
+    [df setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ssZ'"];
+    [df setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    
+    NSString *dateCreatedString = [aDictionary objectForKey:@"dateCreated"];
+    if (dateCreatedString && ![dateCreatedString isKindOfClass:[NSNull class]]) {
+        self.dateCreated = [df dateFromString:dateCreatedString];
+    }
+    
+    NSString *endDateString = [aDictionary objectForKey:@"endDate"];
+    if (endDateString && ![endDateString isKindOfClass:[NSNull class]]) {
+        self.startDate = [df dateFromString:endDateString];
+    }
+    
+    NSString *startDateString = [aDictionary objectForKey:@"startDate"];
+    if (startDateString && ![startDateString isKindOfClass:[NSNull class]]) {
+        self.startDate = [df dateFromString:startDateString];
+    }
     
     self.flagPublic = [(NSString *)[aDictionary objectForKey:@"flagPublic"] boolValue];
     
