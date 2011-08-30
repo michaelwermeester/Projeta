@@ -64,11 +64,6 @@
         // get user
         //NSURL *url = [NSURL URLWithString:@"https://test:test@luckycode.be:8181/projeta-webservice/resources/be.luckycode.projetawebservice.users/2?"];
         
-        // add observer
-        // Source: Technical Q&A QA1551 (Xcode doc)
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editingDidEnd:)
-                                                     name:NSControlTextDidEndEditingNotification object:nil];
-        
     }
     
     return self;
@@ -113,7 +108,7 @@
     }
 }
 
-- (void)editingDidEnd:(NSNotification *)notification
+/*- (void)editingDidEnd:(NSNotification *)notification
 {
     NSArray *selectedObjects = [arrayCtrl selectedObjects];
     
@@ -122,21 +117,36 @@
         // update User
         [self updateUser:usr];
         
-        /*
-        // works! -> updateUser method
-        NSDictionary *dict = [usr dictionaryWithValuesForKeys:[usr allKeys]];
         
-        NSError* error;
-        NSData *data = [[NSData alloc] init];
-        data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
-        
-        //NSLog(@"JSON result: %@", data);
-        
-        NSString* newStr = [[NSString alloc] initWithData:data
-                                                 encoding:NSUTF8StringEncoding];
-        
-        NSLog(@"JSON result: %@", newStr);*/
+//        // works! -> updateUser method
+//        NSDictionary *dict = [usr dictionaryWithValuesForKeys:[usr allKeys]];
+//        
+//        NSError* error;
+//        NSData *data = [[NSData alloc] init];
+//        data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
+//        
+//        //NSLog(@"JSON result: %@", data);
+//        
+//        NSString* newStr = [[NSString alloc] initWithData:data
+//                                                 encoding:NSUTF8StringEncoding];
+//        
+//        NSLog(@"JSON result: %@", newStr);
     }
+    NSLog(@"EDITING ENDED");
+}*/
+
+// update user when finished editing cell in table view
+- (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor {
+    
+    NSArray *selectedObjects = [arrayCtrl selectedObjects];
+    
+    for (User *usr in selectedObjects)
+    {
+        // update User
+        [self updateUser:usr];
+    }
+    
+    return YES;
 }
 
 - (void)updateUser:(User *)theUser
