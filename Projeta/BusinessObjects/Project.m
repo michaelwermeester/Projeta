@@ -7,6 +7,7 @@
 //
 
 #import "Project.h"
+#import "PTProjectHelper.h"
 #import "User.h"
 
 @implementation Project
@@ -19,6 +20,7 @@
 @synthesize projectTitle = projectTitle;
 @synthesize startDate = startDate;
 @synthesize userCreated = userCreated;
+@synthesize childProject = childProject;
 
 + (Project *)instanceFromDictionary:(NSDictionary *)aDictionary {
     
@@ -69,6 +71,25 @@
     self.projectTitle = [aDictionary objectForKey:@"projectTitle"];
     
     self.userCreated = [User instanceFromDictionary:[aDictionary objectForKey:@"userCreated"]];
+    
+    
+    // child projects
+    if ([[aDictionary objectForKey:@"childProject"] isKindOfClass:[NSArray class]]) {
+        
+        NSArray *tmpChildProjects = [aDictionary objectForKey:@"childProject"];
+        if (tmpChildProjects) {
+            
+            NSMutableArray *parsedProjects = [NSMutableArray arrayWithCapacity:[tmpChildProjects count]];
+            
+            for (id item in tmpChildProjects) {
+                if ([item isKindOfClass:[NSDictionary class]]) {
+                    [parsedProjects addObject:[Project instanceFromDictionary:item]];
+                }
+            }
+            
+            childProject = parsedProjects;
+        }
+    }
     
 }
 

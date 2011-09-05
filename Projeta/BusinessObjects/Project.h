@@ -20,6 +20,8 @@
     NSString *projectTitle;
     NSDate *startDate;
     User *userCreated;
+    
+    NSMutableArray *childProject;
 }
 
 @property (nonatomic, copy) NSDate *dateCreated;
@@ -30,6 +32,7 @@
 @property (nonatomic, copy) NSString *projectTitle;
 @property (nonatomic, copy) NSDate *startDate;
 @property (nonatomic, retain) User *userCreated;
+@property (strong) NSMutableArray *childProject;
 
 + (Project *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
