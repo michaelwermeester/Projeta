@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "PXSourceList.h"
 #import "PTProjectListViewController.h"
+#import "PTTaskListViewController.h"
 
 @class MainWindowController;
 
@@ -28,6 +29,11 @@
 
 // project-list view
 @property (strong) PTProjectListViewController *projectListViewController;
+// task-list view
+@property (strong) PTTaskListViewController *taskListViewController;
+
+// removes any view from rightView
+- (void)removeViewsFromRightView;
 
 - (void)initializeSidebar;
 

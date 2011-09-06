@@ -20,6 +20,7 @@
 @synthesize mainWindowController;
 
 @synthesize projectListViewController;
+@synthesize taskListViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -135,7 +136,6 @@
 	return NO;
 }
 
-
 - (void)sourceListSelectionDidChange:(NSNotification *)notification
 {
 	NSIndexSet *selectedIndexes = [sourceList selectedRowIndexes];
@@ -149,6 +149,9 @@
 		NSString *identifier = [[sourceList itemAtRow:[selectedIndexes firstIndex]] identifier];
 		
         if (identifier == @"projects") {
+            
+            [self removeViewsFromRightView];
+            
             if (!projectListViewController) {
        
                 projectListViewController = [[PTProjectListViewController alloc] init];
@@ -165,15 +168,47 @@
                 [projectListViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
             }
         }
+        else if (identifier == @"tasks") {
+            
+            [self removeViewsFromRightView];
+            
+            if (!taskListViewController) {
+                
+                taskListViewController = [[PTTaskListViewController alloc] init];
+                
+                // set reference to (parent) window
+                [taskListViewController setMainWindowController:mainWindowController];
+                
+                // resize the view to fit and fill the right splitview view
+                [taskListViewController.view setFrameSize:rightView.frame.size];
+                
+                [self.rightView addSubview:taskListViewController.view];
+                
+                // auto resize the view.
+                [taskListViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
+            }
+        }
         else {
             // free some memory
-            [projectListViewController.view removeFromSuperview];
-            projectListViewController = nil;
+            [self removeViewsFromRightView];
         }
 	}
 	else {
 		//[selectedItemLabel setStringValue:@"(none)"];
 	}
+}
+
+- (void)removeViewsFromRightView
+{
+    if (projectListViewController) {
+        [projectListViewController.view removeFromSuperview];
+        projectListViewController = nil;
+    }
+    
+    if (taskListViewController) {
+        [taskListViewController.view removeFromSuperview];
+        taskListViewController = nil;
+    }
 }
 
 
@@ -198,14 +233,14 @@
     SourceListItem *projectsHeaderItem = [SourceListItem itemWithTitle:NSLocalizedString(@"PROJECTS", nil) identifier:@"projectsHeader"];
 	SourceListItem *projectsItem = [SourceListItem itemWithTitle:@"Projects" identifier:@"projects"];
 	[projectsItem setIcon:[NSImage imageNamed:@"music.png"]];
-	SourceListItem *moviesItem = [SourceListItem itemWithTitle:@"Movies" identifier:@"movies"];
-	[moviesItem setIcon:[NSImage imageNamed:@"movies.png"]];
+	SourceListItem *tasksItem = [SourceListItem itemWithTitle:@"Tasks" identifier:@"tasks"];
+	[tasksItem setIcon:[NSImage imageNamed:@"movies.png"]];
 	SourceListItem *podcastsItem = [SourceListItem itemWithTitle:@"Podcasts" identifier:@"podcasts"];
 	[podcastsItem setIcon:[NSImage imageNamed:@"podcasts.png"]];
 	[podcastsItem setBadgeValue:10];
 	SourceListItem *audiobooksItem = [SourceListItem itemWithTitle:@"Audiobooks" identifier:@"audiobooks"];
 	[audiobooksItem setIcon:[NSImage imageNamed:@"audiobooks.png"]];
-	[projectsHeaderItem setChildren:[NSArray arrayWithObjects:projectsItem, moviesItem, podcastsItem,
+	[projectsHeaderItem setChildren:[NSArray arrayWithObjects:projectsItem, tasksItem, podcastsItem,
 							  audiobooksItem, nil]];
     
 	
