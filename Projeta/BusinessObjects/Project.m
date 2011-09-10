@@ -55,7 +55,7 @@
     
     NSString *endDateString = [aDictionary objectForKey:@"endDate"];
     if (endDateString && ![endDateString isKindOfClass:[NSNull class]]) {
-        self.startDate = [df dateFromString:endDateString];
+        self.endDate = [df dateFromString:endDateString];
     }
     
     NSString *startDateString = [aDictionary objectForKey:@"startDate"];
