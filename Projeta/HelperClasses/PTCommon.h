@@ -15,9 +15,8 @@
 // loads server URL from preferences file and returns it as NSString
 + (NSString*)serverURLString;
 
-// Convert a date returned by the webservice to NSDate
+// returns NSDate from a given JSON date-string. 
 // Date format returned by the webservice: 2011-08-26T18:25:36+02:00
-// Thanks to: http://devbytom.blogspot.com/2011/04/rfc-3339-dates-and-ios-parsing.html
-//+ (NSDate *)webserviceStringToDate:(NSString *)aDateString;
++ (NSDate*)dateFromJSONString:(NSString*)aDate;
 
 @end
