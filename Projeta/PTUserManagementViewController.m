@@ -7,7 +7,7 @@
 //
 
 #import "PTUserManagementViewController.h"
-#import "PTUser.h"
+#import "PTUserHelper.h"
 #import "User.h"
 #import <Foundation/NSJSONSerialization.h>
 #import "MWConnectionController.h"
@@ -92,7 +92,7 @@
     
     // see Cocoa and Objective-C up and running by Scott Stevenson.
     // page 242
-    [[self mutableArrayValueForKey:@"arrUsr"] addObjectsFromArray:[PTUser setAttributesFromDictionary2:dict]];
+    [[self mutableArrayValueForKey:@"arrUsr"] addObjectsFromArray:[PTUserHelper setAttributesFromDictionary2:dict]];
     
     //[arrayCtrl addObjects:[PTUser setAttributesFromDictionary2:dict]];
     
