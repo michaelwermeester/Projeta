@@ -8,6 +8,25 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Task : NSObject
+#import "User.h"
+
+@interface Task : NSObject {
+    NSDate *endDate;
+    NSDate *startDate;
+    NSString *taskDescription;
+    NSNumber *taskId;
+    NSString *taskTitle;
+    User *userCreated;
+}
+
+@property (nonatomic, retain) NSDate *endDate;
+@property (nonatomic, retain) NSDate *startDate;
+@property (nonatomic, copy) NSString *taskDescription;
+@property (nonatomic, copy) NSNumber *taskId;
+@property (nonatomic, copy) NSString *taskTitle;
+@property (nonatomic, retain) User *userCreated;
+
++ (Task *)instanceFromDictionary:(NSDictionary *)aDictionary;
+- (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
 
 @end

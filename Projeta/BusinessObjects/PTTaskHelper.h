@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PTTaskHelper : NSObject
+@interface PTTaskHelper : NSObject {
+    NSArray *task;
+}
+
+@property (nonatomic, copy) NSArray *task;
+
++ (PTTaskHelper *)instanceFromDictionary:(NSDictionary *)aDictionary;
+- (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
++ (NSMutableArray *)setAttributesFromJSONDictionary:(NSDictionary *)aDictionary;
 
 @end
