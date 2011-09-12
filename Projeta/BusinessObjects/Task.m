@@ -18,6 +18,8 @@
 @synthesize taskId = taskId;
 @synthesize taskTitle = taskTitle;
 @synthesize userCreated = userCreated;
+@synthesize completed = completed;
+@synthesize childTask = childTask;
 
 + (Task *)instanceFromDictionary:(NSDictionary *)aDictionary {
     
@@ -40,6 +42,8 @@
     self.taskDescription = [aDictionary objectForKey:@"taskDescription"];
     self.taskId = [NSDecimalNumber decimalNumberWithString:(NSString *)[aDictionary objectForKey:@"taskId"]];
     self.taskTitle = [aDictionary objectForKey:@"taskTitle"];
+    //self.completed = [(NSString *)[aDictionary objectForKey:@"completed"] boolValue];
+    self.completed = YES;
     self.userCreated = [User instanceFromDictionary:[aDictionary objectForKey:@"userCreated"]];
     
 }

@@ -10,10 +10,18 @@
 
 @class MainWindowController;
 
-@interface PTTaskListViewController : NSViewController
+@interface PTTaskListViewController : NSViewController {
+    NSMutableArray *arrTask;     // array which holds the projects
+    NSArrayController *taskArrayCtrl;
+}
 
+@property (strong) NSMutableArray *arrTask;
+@property (strong) IBOutlet NSArrayController *taskArrayCtrl;
 
 // reference to the (parent) MainWindowController
 @property (assign) MainWindowController *mainWindowController;
+
+- (void)requestFinished:(NSMutableData*)data;
+- (void)requestFailed:(NSError*)error;
 
 @end

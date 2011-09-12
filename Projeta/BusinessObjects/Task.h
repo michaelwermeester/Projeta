@@ -17,6 +17,8 @@
     NSNumber *taskId;
     NSString *taskTitle;
     User *userCreated;
+    BOOL completed;
+    NSMutableArray *childTask;
 }
 
 @property (nonatomic, retain) NSDate *endDate;
@@ -25,6 +27,8 @@
 @property (nonatomic, copy) NSNumber *taskId;
 @property (nonatomic, copy) NSString *taskTitle;
 @property (nonatomic, retain) User *userCreated;
+@property (nonatomic, assign) BOOL completed;
+@property (strong) NSMutableArray *childTask;
 
 + (Task *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;

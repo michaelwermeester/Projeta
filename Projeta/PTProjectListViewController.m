@@ -55,7 +55,7 @@
     
     
     NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
-    [urlRequest setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
+    //[urlRequest setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
     
     // start animating the main window's circular progress indicator.
     [mainWindowController startProgressIndicatorAnimation];
