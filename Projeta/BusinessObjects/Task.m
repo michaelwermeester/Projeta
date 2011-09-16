@@ -46,6 +46,23 @@
     self.completed = YES;
     self.userCreated = [User instanceFromDictionary:[aDictionary objectForKey:@"userCreated"]];
     
+    // child task
+    if ([[aDictionary objectForKey:@"childTask"] isKindOfClass:[NSArray class]]) {
+        
+        NSArray *tmpChildTasks = [aDictionary objectForKey:@"childTask"];
+        if (tmpChildTasks) {
+            
+            NSMutableArray *parsedTasks = [NSMutableArray arrayWithCapacity:[tmpChildTasks count]];
+            
+            for (id item in tmpChildTasks) {
+                if ([item isKindOfClass:[NSDictionary class]]) {
+                    [parsedTasks addObject:[Task instanceFromDictionary:item]];
+                }
+            }
+            
+            childTask = parsedTasks;
+        }
+    }
 }
 
 @end
