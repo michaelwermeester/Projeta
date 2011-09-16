@@ -42,8 +42,12 @@
     self.taskDescription = [aDictionary objectForKey:@"taskDescription"];
     self.taskId = [NSDecimalNumber decimalNumberWithString:(NSString *)[aDictionary objectForKey:@"taskId"]];
     self.taskTitle = [aDictionary objectForKey:@"taskTitle"];
-    //self.completed = [(NSString *)[aDictionary objectForKey:@"completed"] boolValue];
-    self.completed = YES;
+    
+    if ([[aDictionary objectForKey:@"completed"] isKindOfClass:[NSNull class]])
+        self.completed = NO;
+    else
+        self.completed = [(NSString *)[aDictionary objectForKey:@"completed"] boolValue];
+    
     self.userCreated = [User instanceFromDictionary:[aDictionary objectForKey:@"userCreated"]];
     
     // child task
