@@ -3,12 +3,12 @@
 	<data>
 		<int key="IBDocument.SystemTarget">1070</int>
 		<string key="IBDocument.SystemVersion">11B26</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1923</string>
+		<string key="IBDocument.InterfaceBuilderVersion">1934</string>
 		<string key="IBDocument.AppKitVersion">1138</string>
 		<string key="IBDocument.HIToolboxVersion">566.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">1923</string>
+			<string key="NS.object.0">1934</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>NSToolbar</string>
@@ -71,9 +71,10 @@
 							<string key="NSToolbarItemPaletteLabel">Main view</string>
 							<nil key="NSToolbarItemToolTip"/>
 							<object class="NSButton" key="NSToolbarItemView" id="493923520">
-								<nil key="NSNextResponder"/>
+								<reference key="NSNextResponder"/>
 								<int key="NSvFlags">268</int>
 								<string key="NSFrame">{{0, 14}, {82, 28}}</string>
+								<reference key="NSSuperview"/>
 								<string key="NSReuseIdentifierKey">_NS:161</string>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSButtonCell" key="NSCell" id="926700368">
@@ -114,9 +115,10 @@
 							<string key="NSToolbarItemPaletteLabel">Project view</string>
 							<nil key="NSToolbarItemToolTip"/>
 							<object class="NSButton" key="NSToolbarItemView" id="200860515">
-								<nil key="NSNextResponder"/>
+								<reference key="NSNextResponder"/>
 								<int key="NSvFlags">268</int>
 								<string key="NSFrame">{{0, 14}, {82, 28}}</string>
+								<reference key="NSSuperview"/>
 								<string key="NSReuseIdentifierKey">_NS:161</string>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSButtonCell" key="NSCell" id="461033299">
@@ -433,6 +435,14 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
+						<string key="label">detailViewToolbarItem</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="260827128"/>
+					</object>
+					<int key="connectionID">353</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
 						<string key="label">delegate</string>
 						<reference key="source" ref="1005"/>
 						<reference key="destination" ref="1001"/>
@@ -492,6 +502,7 @@
 								</object>
 								<float key="priority">1000</float>
 								<int key="scoringType">3</int>
+								<float key="scoringTypeFloat">9</float>
 								<int key="contentType">3</int>
 								<reference key="containingView" ref="1006"/>
 							</object>
@@ -507,6 +518,7 @@
 								</object>
 								<float key="priority">1000</float>
 								<int key="scoringType">3</int>
+								<float key="scoringTypeFloat">9</float>
 								<int key="contentType">1</int>
 								<reference key="containingView" ref="1006"/>
 							</object>
@@ -522,6 +534,7 @@
 								</object>
 								<float key="priority">1000</float>
 								<int key="scoringType">8</int>
+								<float key="scoringTypeFloat">29</float>
 								<int key="contentType">3</int>
 								<reference key="containingView" ref="1006"/>
 							</object>
@@ -538,6 +551,7 @@
 								</object>
 								<float key="priority">1000</float>
 								<int key="scoringType">6</int>
+								<float key="scoringTypeFloat">24</float>
 								<int key="contentType">2</int>
 								<reference key="containingView" ref="1006"/>
 							</object>
@@ -553,6 +567,7 @@
 								</object>
 								<float key="priority">1000</float>
 								<int key="scoringType">3</int>
+								<float key="scoringTypeFloat">9</float>
 								<int key="contentType">3</int>
 								<reference key="containingView" ref="1006"/>
 							</object>
@@ -759,7 +774,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">350</int>
+			<int key="maxID">353</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -781,10 +796,15 @@
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="detailViewToolbarItem">NSToolbarItem</string>
 						<string key="mainView">NSView</string>
 						<string key="progressIndicator">NSProgressIndicator</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="detailViewToolbarItem">
+							<string key="name">detailViewToolbarItem</string>
+							<string key="candidateClassName">NSToolbarItem</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="mainView">
 							<string key="name">mainView</string>
 							<string key="candidateClassName">NSView</string>

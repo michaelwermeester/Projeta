@@ -61,6 +61,9 @@
     [mainWindowController startProgressIndicatorAnimation];
     
     [connectionController startRequestForURL:url setRequest:urlRequest];
+    
+    // set label of 'detail view' toolbar item to 'Project view'.
+    [[mainWindowController detailViewToolbarItem] setLabel:@"Project view"];
 }
 
 - (void)loadView

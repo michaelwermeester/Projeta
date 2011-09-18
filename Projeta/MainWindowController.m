@@ -16,6 +16,7 @@
 @synthesize progressIndicator;
 @synthesize mainWindowViewController;
 @synthesize projectViewController;
+@synthesize detailViewToolbarItem;
 @synthesize progressCount;
 
 - (id)init

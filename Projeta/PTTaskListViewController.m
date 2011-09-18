@@ -71,6 +71,9 @@
     [mainWindowController startProgressIndicatorAnimation];
     
     [connectionController startRequestForURL:url setRequest:urlRequest];
+    
+    // set label of 'detail view' toolbar item to 'Task view'.
+    [[mainWindowController detailViewToolbarItem] setLabel:@"Task view"];
 }
 
 - (void)loadView

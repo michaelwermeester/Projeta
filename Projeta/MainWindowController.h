@@ -14,6 +14,7 @@
     
     NSView *mainView;
     NSProgressIndicator *progressIndicator;
+    NSToolbarItem *detailViewToolbarItem;
 }
 
 @property (strong) IBOutlet NSView *mainView;
@@ -22,6 +23,8 @@
 
 @property (strong) PTMainWindowViewController *mainWindowViewController;
 @property (strong) PTProjectViewController *projectViewController;
+
+@property (strong) IBOutlet NSToolbarItem *detailViewToolbarItem;
 
 // used for NSProgressIndicator
 @property (assign) NSInteger progressCount;
