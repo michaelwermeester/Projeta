@@ -31,9 +31,19 @@
         
         // Initialize the array which holds the list of task 
         arrTask = [[NSMutableArray alloc] init];
+        
+        // register for detecting changes in table view
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editingDidEnd:)
+                                                     name:NSControlTextDidEndEditingNotification object:nil];
     }
     
     return self;
+}
+
+- (void)dealloc
+{
+    // remove the observer
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad {
@@ -122,6 +132,26 @@
 - (void)outlineView:(NSTableView *)outlineView sortDescriptorsDidChange:(NSArray *)oldDescriptors
 {
     [[self mutableArrayValueForKey:@"arrTask"] sortUsingDescriptors:[outlineView sortDescriptors]];
+}
+
+- (IBAction)addTaskButtonClick:(id)sender {
+    
+}
+
+// update user when finished editing cell in table view
+- (void)editingDidEnd:(NSNotification *)notification
+{
+    // continue and update the user only if the object is the usersTableView
+    if ([notification object] == taskOutlineView) {
+        
+        NSArray *selectedObjects = [taskArrayCtrl selectedObjects];
+        
+        for (Task *task in selectedObjects)
+        {
+            // update Task
+            //[self updateUser:usr];
+        }
+    }
 }
 
 @end

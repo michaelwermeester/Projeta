@@ -21,6 +21,7 @@
 @property (strong) IBOutlet NSArrayController *taskArrayCtrl;
 @property (strong) IBOutlet NSTreeController *taskTreeCtrl;
 @property (strong) IBOutlet NSOutlineView *taskOutlineView;
+- (IBAction)addTaskButtonClick:(id)sender;
 
 
 // reference to the (parent) MainWindowController

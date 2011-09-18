@@ -11,6 +11,7 @@
 		4C08037813F5A23200E70C73 /* PTSidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C08037913F5A23200E70C73 /* PTSidebarViewController.m */; };
 		4C0BA4E913F329C7002EA4F2 /* PXSourceList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0BA4E813F329C7002EA4F2 /* PXSourceList.m */; };
 		4C0BC5B513DA1D15003360E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C74A61413A2BFA100E7DBF6 /* Cocoa.framework */; };
+		4C207B311426991500EC761E /* projeta_icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 4C207B301426991500EC761E /* projeta_icon.icns */; };
 		4C21F24513C2691600462C43 /* PTUserManagementWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C21F24413C2691600462C43 /* PTUserManagementWindowController.m */; };
 		4C21F24913C26C6600462C43 /* PTUserManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C21F24713C26C6600462C43 /* PTUserManagementViewController.m */; };
 		4C21F24B13C2741400462C43 /* PTUserManagementView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C21F24D13C2741400462C43 /* PTUserManagementView.xib */; };
@@ -81,6 +82,7 @@
 		4C0BC5AF13DA1C4A003360E2 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		4C0BC5B113DA1C60003360E2 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		4C0BC5B313DA1CC9003360E2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4C207B301426991500EC761E /* projeta_icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = projeta_icon.icns; sourceTree = "<group>"; };
 		4C21F24313C2691600462C43 /* PTUserManagementWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTUserManagementWindowController.h; sourceTree = "<group>"; };
 		4C21F24413C2691600462C43 /* PTUserManagementWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTUserManagementWindowController.m; sourceTree = "<group>"; };
 		4C21F24613C26C6600462C43 /* PTUserManagementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTUserManagementViewController.h; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 		4C74A60513A2BFA100E7DBF6 = {
 			isa = PBXGroup;
 			children = (
+				4C207B301426991500EC761E /* projeta_icon.icns */,
 				4C74A61A13A2BFA100E7DBF6 /* Projeta */,
 				4C74A63A13A2BFA100E7DBF6 /* ProjetaTests */,
 				4C23BB2913DA1F5400E18E43 /* ProjetaImporter */,
@@ -524,6 +527,7 @@
 				4CF0704913F6F29E00572231 /* PTMainWindowView.xib in Resources */,
 				4CA7D6B914080685009D11F5 /* PTProjectListView.xib in Resources */,
 				4C5B672114168880003C0F80 /* PTTaskListView.xib in Resources */,
+				4C207B311426991500EC761E /* projeta_icon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
