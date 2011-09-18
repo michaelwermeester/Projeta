@@ -21,7 +21,6 @@
 @property (strong) IBOutlet NSArrayController *taskArrayCtrl;
 @property (strong) IBOutlet NSTreeController *taskTreeCtrl;
 @property (strong) IBOutlet NSOutlineView *taskOutlineView;
-- (IBAction)testButtonClick:(id)sender;
 
 
 // reference to the (parent) MainWindowController
@@ -29,7 +28,5 @@
 
 - (void)requestFinished:(NSMutableData*)data;
 - (void)requestFailed:(NSError*)error;
-
-@property (strong) NSArray *mySortOrder;
 
 @end

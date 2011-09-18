@@ -119,54 +119,9 @@
     }
 }*/
 
-/*- (void)outlineView:(NSOutlineView *)outlineView sortDescriptorsDidChange:(NSArray *)oldDescriptors {
-    NSLog(@"called");
-    
-    NSSortDescriptor *taskTitleDescriptor = [[NSSortDescriptor alloc] initWithKey:@"taskTitle"
-                                                 ascending:YES];
-    NSArray *sortDescriptors = [NSArray arrayWithObject:taskTitleDescriptor];
-    
-    NSLog(@"before: ");
-    for (Task *t in arrTask) {
-        NSLog(@"%@", t.taskTitle);
-    }
-    
-    //NSArray *newDescriptors = [outlineView sortDescriptors];
-	[arrTask sortUsingDescriptors:sortDescriptors];
-    NSLog(@"after: ");
-    for (Task *t in arrTask) {
-        NSLog(@"%@", t.taskTitle);
-    }
-    
-    [taskOutlineView reloadData];
-}*/
-
 - (void)outlineView:(NSTableView *)outlineView sortDescriptorsDidChange:(NSArray *)oldDescriptors
 {
     [[self mutableArrayValueForKey:@"arrTask"] sortUsingDescriptors:[outlineView sortDescriptors]];
-    [outlineView reloadData];
-    NSLog(@"sort");
 }
 
-- (NSArray *)mySortOrder {
-    NSSortDescriptor *taskTitleDescriptor = [[NSSortDescriptor alloc] initWithKey:@"taskTitle"
-                                                                        ascending:YES];
-    
-    NSLog(@"called2");
-    
-    
-    
-    //[arrTask sortUsingDescriptors:[NSArray arrayWithObject:taskTitleDescriptor]];
-    return [NSArray arrayWithObject:taskTitleDescriptor];
-}
-
-- (void)setMySortOrder:(NSArray *)mySortOrder {
-    NSLog(@"set");
-}
-
-- (IBAction)testButtonClick:(id)sender {
-    [arrTask sortUsingDescriptors:[taskOutlineView sortDescriptors]];
-    [taskOutlineView reloadData];
-    NSLog(@"sort");
-}
 @end
