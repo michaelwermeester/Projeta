@@ -12,11 +12,18 @@
     NSString *password;
     NSNumber *userId;
     NSString *username;
+    
+    NSString *emailAddress;
+    NSString *firstName;
+    NSString *lastName;
 }
 
 @property (nonatomic, copy) NSString *password;
 @property (nonatomic, copy) NSNumber *userId;
 @property (nonatomic, copy) NSString *username;
+@property (nonatomic, copy) NSString *emailAddress;
+@property (nonatomic, copy) NSString *firstName;
+@property (nonatomic, copy) NSString *lastName;
 
 + (User *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;

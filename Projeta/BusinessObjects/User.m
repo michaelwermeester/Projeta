@@ -13,6 +13,9 @@
 @synthesize password = password;
 @synthesize userId = userId;
 @synthesize username = username;
+@synthesize emailAddress = emailAddress;
+@synthesize firstName = firstName;
+@synthesize lastName = lastName;
 
 - (id)init
 {
@@ -41,6 +44,10 @@
     self.password = [aDictionary objectForKey:@"password"];
     self.userId = [NSDecimalNumber decimalNumberWithString:(NSString *)[aDictionary objectForKey:@"userId"]];[aDictionary objectForKey:@"userId"];
     self.username = [aDictionary objectForKey:@"username"];
+    
+    self.emailAddress = [aDictionary objectForKey:@"emailAddress"];
+    self.firstName = [aDictionary objectForKey:@"firstName"];
+    self.lastName = [aDictionary objectForKey:@"lastName"];
 
 }
 
