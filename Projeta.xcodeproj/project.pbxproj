@@ -41,6 +41,8 @@
 		4C74A64113A2BFA100E7DBF6 /* ProjetaTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 4C74A64013A2BFA100E7DBF6 /* ProjetaTests.h */; };
 		4C74A64313A2BFA100E7DBF6 /* ProjetaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C74A64213A2BFA100E7DBF6 /* ProjetaTests.m */; };
 		4C779FD4142699F500D8C8A0 /* projeta_icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 4C779FD3142699F500D8C8A0 /* projeta_icon.icns */; };
+		4C779FD714290E9300D8C8A0 /* Role.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C779FD614290E9300D8C8A0 /* Role.m */; };
+		4C779FDA1429305900D8C8A0 /* PTRoleHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C779FD91429305900D8C8A0 /* PTRoleHelper.m */; };
 		4C796C511406F80900495CEB /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C796C501406F80900495CEB /* Project.m */; };
 		4C8173E71407A89D0012C0EB /* PTProjectListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8173E51407A89D0012C0EB /* PTProjectListViewController.m */; };
 		4C8173EF1407BE810012C0EB /* PTProjectHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8173EE1407BE810012C0EB /* PTProjectHelper.m */; };
@@ -135,6 +137,10 @@
 		4C74A64013A2BFA100E7DBF6 /* ProjetaTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProjetaTests.h; sourceTree = "<group>"; };
 		4C74A64213A2BFA100E7DBF6 /* ProjetaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjetaTests.m; sourceTree = "<group>"; };
 		4C779FD3142699F500D8C8A0 /* projeta_icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = projeta_icon.icns; sourceTree = "<group>"; };
+		4C779FD514290E9300D8C8A0 /* Role.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Role.h; sourceTree = "<group>"; };
+		4C779FD614290E9300D8C8A0 /* Role.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Role.m; sourceTree = "<group>"; };
+		4C779FD81429305900D8C8A0 /* PTRoleHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRoleHelper.h; sourceTree = "<group>"; };
+		4C779FD91429305900D8C8A0 /* PTRoleHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRoleHelper.m; sourceTree = "<group>"; };
 		4C796C4F1406F80900495CEB /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
 		4C796C501406F80900495CEB /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
 		4C8173E41407A89D0012C0EB /* PTProjectListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTProjectListViewController.h; sourceTree = "<group>"; };
@@ -274,18 +280,22 @@
 		4C32ECB613DDE492009E7131 /* Business Objects */ = {
 			isa = PBXGroup;
 			children = (
-				4C32ECB713DDE690009E7131 /* PTUserHelper.h */,
-				4C32ECB813DDE690009E7131 /* PTUserHelper.m */,
-				4C32ECB913DDE690009E7131 /* User.h */,
-				4C32ECBA13DDE690009E7131 /* User.m */,
 				4C8173ED1407BE810012C0EB /* PTProjectHelper.h */,
 				4C8173EE1407BE810012C0EB /* PTProjectHelper.m */,
 				4C796C4F1406F80900495CEB /* Project.h */,
 				4C796C501406F80900495CEB /* Project.m */,
+				4C779FD81429305900D8C8A0 /* PTRoleHelper.h */,
+				4C779FD91429305900D8C8A0 /* PTRoleHelper.m */,
+				4C779FD514290E9300D8C8A0 /* Role.h */,
+				4C779FD614290E9300D8C8A0 /* Role.m */,
 				4CB74046141D26F200CF550D /* PTTaskHelper.h */,
 				4CB74047141D26F200CF550D /* PTTaskHelper.m */,
 				4CB74042141D26B700CF550D /* Task.h */,
 				4CB74043141D26B700CF550D /* Task.m */,
+				4C32ECB713DDE690009E7131 /* PTUserHelper.h */,
+				4C32ECB813DDE690009E7131 /* PTUserHelper.m */,
+				4C32ECB913DDE690009E7131 /* User.h */,
+				4C32ECBA13DDE690009E7131 /* User.m */,
 			);
 			name = "Business Objects";
 			path = BusinessObjects;
@@ -609,6 +619,8 @@
 				4C5B671E14168859003C0F80 /* PTTaskListViewController.m in Sources */,
 				4CB74044141D26B700CF550D /* Task.m in Sources */,
 				4CB74048141D26F200CF550D /* PTTaskHelper.m in Sources */,
+				4C779FD714290E9300D8C8A0 /* Role.m in Sources */,
+				4C779FDA1429305900D8C8A0 /* PTRoleHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

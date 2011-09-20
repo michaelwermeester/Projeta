@@ -9,6 +9,12 @@
 #import "PTMainWindowViewController.h"
 #import "SourceListItem.h"
 #import "MainWindowController.h"
+#import "MWConnectionController.h"
+#import "PTCommon.h"
+#import "PTRoleHelper.h"
+#import "Role.h"
+
+static NSMutableArray *_currentUserRoles = nil;
 
 @implementation PTMainWindowViewController
 
@@ -130,7 +136,7 @@
 
 - (BOOL)sourceList:(PXSourceList*)aSourceList isGroupAlwaysExpanded:(id)group
 {
-	if([[group identifier] isEqualToString:@"projectsHeader"])
+	if([[group identifier] isEqualToString:@"projectsHeader"] || [[group identifier] isEqualToString:@"administrationHeader"])
 		return YES;
 	
 	return NO;
@@ -224,6 +230,7 @@
 
 #pragma mark -
 #pragma mark Initialize and populate sidebar
+
 - (void)initializeSidebar
 {
     sourceListItems = [[NSMutableArray alloc] init];
@@ -269,6 +276,79 @@
 	[sourceListItems addObject:playlistsItem];
 	
 	[sourceList reloadData];
+    
+    
+    //
+    [self userRoleInitializations];
+}
+
+- (void)userRoleInitializations
+{
+    if (!_currentUserRoles) {
+        _currentUserRoles = [[NSMutableArray alloc] init];
+        
+        // get server URL as string
+        NSString *urlString = [PTCommon serverURLString];
+        // build URL by adding resource path
+        urlString = [urlString stringByAppendingString:@"resources/be.luckycode.projetawebservice.users/username/"];
+        urlString = [urlString stringByAppendingString:@"admin/roles"];
+        
+        // convert to NSURL
+        NSURL *url = [NSURL URLWithString:urlString];
+        
+        
+        // NSURLConnection - MWConnectionController
+        MWConnectionController* connectionController = [[MWConnectionController alloc] 
+                                                        initWithSuccessBlock:^(NSMutableData *data) {
+                                                            [self requestFinished:data];
+                                                        }
+                                                        failureBlock:^(NSError *error) {
+                                                            [self requestFailed:error];
+                                                        }];
+        
+        
+        NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
+        
+        [connectionController startRequestForURL:url setRequest:urlRequest];
+        
+        
+    } else {
+        [self showAdminMenu];
+    }
+}
+
+- (void)requestFinished:(NSMutableData*)data {
+    NSError *error;
+    
+    NSDictionary *dict = [[NSDictionary alloc] init];
+    dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
+
+    [_currentUserRoles addObjectsFromArray:[PTRoleHelper setAttributesFromJSONDictionary:dict]];
+    
+    [self showAdminMenu];
+}
+
+- (void)requestFailed:(NSError*)error {
+    
+}
+
+- (void)showAdminMenu {
+    
+    for (Role *r in _currentUserRoles) {
+        
+        if ([r.code isEqualToString:@"administrator"])
+        {
+            SourceListItem *administrationHeaderItem = [SourceListItem itemWithTitle:NSLocalizedString(@"ADMINISTRATION", nil) identifier:@"administrationHeader"];
+            
+            SourceListItem *userAdminItem = [SourceListItem itemWithTitle:@"Users" identifier:@"userAdmin"];
+            
+            [administrationHeaderItem setChildren:[NSArray arrayWithObjects:userAdminItem, nil]];
+            
+            [sourceListItems addObject:administrationHeaderItem];
+            
+            [sourceList reloadData];
+        }
+    }
 }
 
 

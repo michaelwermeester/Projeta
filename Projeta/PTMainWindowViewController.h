@@ -37,4 +37,11 @@
 
 - (void)initializeSidebar;
 
+- (void)requestFinished:(NSMutableData*)data;
+- (void)requestFailed:(NSError*)error;
+
+
+- (void)userRoleInitializations;
+- (void)showAdminMenu;
+
 @end
