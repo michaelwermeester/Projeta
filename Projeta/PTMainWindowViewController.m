@@ -12,9 +12,11 @@
 #import "MWConnectionController.h"
 #import "PTCommon.h"
 #import "PTRoleHelper.h"
+#import "PTUserHelper.h"
 #import "Role.h"
 
 static NSMutableArray *_currentUserRoles = nil;
+static User *_loggedInUser = nil;
 
 @implementation PTMainWindowViewController
 
@@ -34,9 +36,20 @@ static NSMutableArray *_currentUserRoles = nil;
     self = [super initWithNibName:@"PTMainWindowView" bundle:nibBundleOrNil];
     if (self) {
         // Initialization code here.
+        
+        [self addObserver:self forKeyPath:@"_currentUserRoles" options:0 context:nil];
     }
     
     return self;
+}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change 
+                      context:(void *)context {
+    
+    if ( [keyPath isEqualToString:@"_currentUserRoles"] ) {
+        // Show the admin menu
+        [self showAdminMenu];
+    }
 }
 
 - (void)loadView
@@ -279,19 +292,96 @@ static NSMutableArray *_currentUserRoles = nil;
     
     
     //
-    [self userRoleInitializations];
+    //[self userRoleInitializations];
+    [self loggedInUserInitializations];
+}
+
+- (void)loggedInUserInitializations {
+    
+    // start animating the main window's circular progress indicator.
+    [mainWindowController startProgressIndicatorAnimation];
+    
+    
+    if (!_loggedInUser) {
+    // get server URL as string
+    NSString *urlString = [PTCommon serverURLString];
+    // build URL by adding resource path
+    urlString = [urlString stringByAppendingString:@"resources/be.luckycode.projetawebservice.users/getLoggedInUser"];
+    
+    // convert to NSURL
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    // NSURLConnection - MWConnectionController
+    MWConnectionController* connectionController = [[MWConnectionController alloc] 
+                                                    initWithSuccessBlock:^(NSMutableData *data) {
+                                                        [self loggedInUserInitializationsRequestFinished:data];
+                                                    }
+                                                    failureBlock:^(NSError *error) {
+                                                        [self loggedInUserInitializationsRequestFailed:error];
+                                                    }];
+    
+    
+    NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
+    
+    [connectionController startRequestForURL:url setRequest:urlRequest];
+    } else {
+        [self showAdminMenu];
+        
+        // stop animating the main window's circular progress indicator.
+        [mainWindowController stopProgressIndicatorAnimation];
+    }
+}
+
+- (void)loggedInUserInitializationsRequestFinished:(NSMutableData*)data {
+    NSError *error;
+    
+    NSDictionary *dict = [[NSDictionary alloc] init];
+    dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
+    
+    NSMutableArray *loggedInUserArr = [[NSMutableArray alloc] init];
+    
+    // see Cocoa and Objective-C up and running by Scott Stevenson.
+    // page 242
+    [loggedInUserArr addObjectsFromArray:[PTUserHelper setAttributesFromDictionary2:dict]];
+    
+    if ([loggedInUserArr count] == 1) {
+        for (User *usr in loggedInUserArr) {
+            _loggedInUser = usr;
+            
+            [self userRoleInitializations];
+        }
+    }
+    
+    // stop animating the main window's circular progress indicator.
+    [mainWindowController stopProgressIndicatorAnimation];
+}
+- (void)loggedInUserInitializationsRequestFailed:(NSError*)error {
+    // stop animating the main window's circular progress indicator.
+    [mainWindowController stopProgressIndicatorAnimation];
 }
 
 - (void)userRoleInitializations
 {
+    // start animating the main window's circular progress indicator.
+    [mainWindowController startProgressIndicatorAnimation];
+    
     if (!_currentUserRoles) {
-        _currentUserRoles = [[NSMutableArray alloc] init];
         
+        /*User *usr = [PTUserHelper loggedInUser];
+        
+        [self showAdminMenu];*/
+        
+        _currentUserRoles = [[NSMutableArray alloc] init];
+                
         // get server URL as string
         NSString *urlString = [PTCommon serverURLString];
         // build URL by adding resource path
         urlString = [urlString stringByAppendingString:@"resources/be.luckycode.projetawebservice.users/username/"];
-        urlString = [urlString stringByAppendingString:@"admin/roles"];
+        //urlString = [urlString stringByAppendingString:[[PTUserHelper loggedInUser] username]];
+        urlString = [urlString stringByAppendingString:[_loggedInUser username]];
+        //NSLog(@"user: %@", [[PTUserHelper loggedInUser] username]);
+        urlString = [urlString stringByAppendingString:@"/roles"];
+        //urlString = [urlString stringByAppendingString:@"admin/roles"];
         
         // convert to NSURL
         NSURL *url = [NSURL URLWithString:urlString];
@@ -300,10 +390,10 @@ static NSMutableArray *_currentUserRoles = nil;
         // NSURLConnection - MWConnectionController
         MWConnectionController* connectionController = [[MWConnectionController alloc] 
                                                         initWithSuccessBlock:^(NSMutableData *data) {
-                                                            [self requestFinished:data];
+                                                            [self userRoleInitializationsRequestFinished:data];
                                                         }
                                                         failureBlock:^(NSError *error) {
-                                                            [self requestFailed:error];
+                                                            [self userRoleInitializationsRequestFailed:error];
                                                         }];
         
         
@@ -314,27 +404,38 @@ static NSMutableArray *_currentUserRoles = nil;
         
     } else {
         [self showAdminMenu];
+        
+        // stop animating the main window's circular progress indicator.
+        [mainWindowController stopProgressIndicatorAnimation];
     }
 }
 
-- (void)requestFinished:(NSMutableData*)data {
+- (void)userRoleInitializationsRequestFinished:(NSMutableData*)data {
     NSError *error;
     
     NSDictionary *dict = [[NSDictionary alloc] init];
     dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
 
+    [self willChangeValueForKey:@"_currentUserRoles"];
     [_currentUserRoles addObjectsFromArray:[PTRoleHelper setAttributesFromJSONDictionary:dict]];
+    [self didChangeValueForKey:@"_currentUserRoles"];
     
-    [self showAdminMenu];
+    //[self showAdminMenu];
+    
+    // stop animating the main window's circular progress indicator.
+    [mainWindowController stopProgressIndicatorAnimation];
 }
 
-- (void)requestFailed:(NSError*)error {
+- (void)userRoleInitializationsRequestFailed:(NSError*)error {
     
+    // stop animating the main window's circular progress indicator.
+    [mainWindowController stopProgressIndicatorAnimation];
 }
 
 - (void)showAdminMenu {
     
     for (Role *r in _currentUserRoles) {
+    //for (Role *r in [PTUserHelper currentUserRoles]) {
         
         if ([r.code isEqualToString:@"administrator"])
         {

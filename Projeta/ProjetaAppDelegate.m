@@ -30,8 +30,8 @@ NSMutableArray *mainWindows;
     [newMainWindow showWindow:self];
     
     // users window
-    usersWindowController = [[PTUserManagementWindowController alloc] init];
-    [usersWindowController showWindow:self];
+    //usersWindowController = [[PTUserManagementWindowController alloc] init];
+    //[usersWindowController showWindow:self];
     
 	/*MainWindowController *newMainWindow;
     newMainWindow = [[MainWindowController alloc] initWithWindowNibName:@"MainWindow"]; 

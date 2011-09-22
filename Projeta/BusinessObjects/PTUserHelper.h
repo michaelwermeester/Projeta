@@ -20,15 +20,4 @@
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
 + (NSMutableArray *)setAttributesFromDictionary2:(NSDictionary *)aDictionary;
 
-// returns the current logged-in user.
-+ (User *)loggedInUser;
-+ (NSMutableArray *)currentUserRoles;
-
-+ (void)setCurrentUserRoles:(NSMutableArray *)newRoles;
-
-- (void)loadUserInfo;
-- (void)loadUserRoles;
-- (void)userRoleInitializationsRequestFinished:(NSMutableData*)data;
-- (void)userRoleInitializationsRequestFailed:(NSError*)error;
-
 @end

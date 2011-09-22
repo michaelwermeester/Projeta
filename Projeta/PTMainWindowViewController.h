@@ -37,10 +37,12 @@
 
 - (void)initializeSidebar;
 
-- (void)requestFinished:(NSMutableData*)data;
-- (void)requestFailed:(NSError*)error;
+- (void)loggedInUserInitializationsRequestFinished:(NSMutableData*)data;
+- (void)loggedInUserInitializationsRequestFailed:(NSError*)error;
+- (void)userRoleInitializationsRequestFinished:(NSMutableData*)data;
+- (void)userRoleInitializationsRequestFailed:(NSError*)error;
 
-
+- (void)loggedInUserInitializations;
 - (void)userRoleInitializations;
 - (void)showAdminMenu;
 
