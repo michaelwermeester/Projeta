@@ -13,6 +13,7 @@
 #import "PTCommon.h"
 #import "PTRoleHelper.h"
 #import "PTUserHelper.h"
+#import "PTUserManagementViewController.h"
 #import "Role.h"
 
 // array which holds the user roles of the connected user.
@@ -31,6 +32,7 @@ static User *_loggedInUser = nil;
 
 @synthesize projectListViewController;
 @synthesize taskListViewController;
+@synthesize userManagementViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -218,6 +220,26 @@ static User *_loggedInUser = nil;
                 [taskListViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
             }
         }
+        else if (identifier == @"userAdmin") {
+            
+            [self removeViewsFromRightView];
+            
+            if (!userManagementViewController) {
+                
+                userManagementViewController = [[PTUserManagementViewController alloc] init];
+                
+                // set reference to (parent) window
+                [userManagementViewController setMainWindowController:mainWindowController];
+                
+                // resize the view to fit and fill the right splitview view
+                [userManagementViewController.view setFrameSize:rightView.frame.size];
+                
+                [self.rightView addSubview:userManagementViewController.view];
+                
+                // auto resize the view.
+                [userManagementViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
+            }
+        }
         else {
             // free some memory
             [self removeViewsFromRightView];
@@ -238,6 +260,11 @@ static User *_loggedInUser = nil;
     if (taskListViewController) {
         [taskListViewController.view removeFromSuperview];
         taskListViewController = nil;
+    }
+    
+    if (userManagementViewController) {
+        [userManagementViewController.view removeFromSuperview];
+        userManagementViewController = nil;
     }
 }
 

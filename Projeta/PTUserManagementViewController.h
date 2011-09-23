@@ -9,6 +9,8 @@
 #import <Cocoa/Cocoa.h>
 #import "User.h"
 
+@class MainWindowController;
+
 @interface PTUserManagementViewController : NSViewController {
     NSMutableArray *arrUsr;     // array which holds the users
     NSTableView *usersTableView;
@@ -19,6 +21,8 @@
 @property (strong) IBOutlet NSTableView *usersTableView;
 @property (strong) IBOutlet NSArrayController *arrayCtrl;
 @property (strong) IBOutlet NSButton *deleteButton;
+// reference to the (parent) MainWindowController
+@property (assign) MainWindowController *mainWindowController;
 
 // NSURLConnection
 - (void)requestFinished:(NSMutableData*)data;

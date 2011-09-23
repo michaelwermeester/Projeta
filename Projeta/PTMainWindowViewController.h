@@ -10,6 +10,7 @@
 #import "PXSourceList.h"
 #import "PTProjectListViewController.h"
 #import "PTTaskListViewController.h"
+#import "PTUserManagementViewController.h"
 
 @class MainWindowController;
 
@@ -31,6 +32,8 @@
 @property (strong) PTProjectListViewController *projectListViewController;
 // task-list view
 @property (strong) PTTaskListViewController *taskListViewController;
+// user-management view
+@property (strong) PTUserManagementViewController *userManagementViewController;
 
 // removes any view from rightView
 - (void)removeViewsFromRightView;
