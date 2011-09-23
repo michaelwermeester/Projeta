@@ -315,27 +315,27 @@ static User *_loggedInUser = nil;
     
     
     if (!_loggedInUser) {
-    // get server URL as string
-    NSString *urlString = [PTCommon serverURLString];
-    // build URL by adding resource path
-    urlString = [urlString stringByAppendingString:@"resources/be.luckycode.projetawebservice.users/getLoggedInUser"];
-    
-    // convert to NSURL
-    NSURL *url = [NSURL URLWithString:urlString];
-    
-    // NSURLConnection - MWConnectionController
-    MWConnectionController* connectionController = [[MWConnectionController alloc] 
-                                                    initWithSuccessBlock:^(NSMutableData *data) {
-                                                        [self loggedInUserInitializationsRequestFinished:data];
-                                                    }
-                                                    failureBlock:^(NSError *error) {
-                                                        [self loggedInUserInitializationsRequestFailed:error];
-                                                    }];
-    
-    
-    NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
-    
-    [connectionController startRequestForURL:url setRequest:urlRequest];
+        // get server URL as string
+        NSString *urlString = [PTCommon serverURLString];
+        // build URL by adding resource path
+        urlString = [urlString stringByAppendingString:@"resources/be.luckycode.projetawebservice.users/getLoggedInUser"];
+        
+        // convert to NSURL
+        NSURL *url = [NSURL URLWithString:urlString];
+        
+        // NSURLConnection - MWConnectionController
+        MWConnectionController* connectionController = [[MWConnectionController alloc] 
+                                                        initWithSuccessBlock:^(NSMutableData *data) {
+                                                            [self loggedInUserInitializationsRequestFinished:data];
+                                                        }
+                                                        failureBlock:^(NSError *error) {
+                                                            [self loggedInUserInitializationsRequestFailed:error];
+                                                        }];
+        
+        
+        NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
+        
+        [connectionController startRequestForURL:url setRequest:urlRequest];
     } else {
         [self showAdminMenu];
         
@@ -456,6 +456,7 @@ static User *_loggedInUser = nil;
     for (Role *r in _currentUserRoles) {
     //for (Role *r in [PTUserHelper currentUserRoles]) {
         
+        // if user is in administrator role, add the admin menu to the sidebar.
         if ([r.code isEqualToString:@"administrator"])
         {
             SourceListItem *administrationHeaderItem = [SourceListItem itemWithTitle:NSLocalizedString(@"ADMINISTRATION", nil) identifier:@"administrationHeader"];
