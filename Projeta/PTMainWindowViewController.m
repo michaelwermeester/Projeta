@@ -302,8 +302,7 @@ static User *_loggedInUser = nil;
 	[sourceList reloadData];
     
     
-    //
-    //[self userRoleInitializations];
+    // fetch logged in user its roles from web service
     [self loggedInUserInitializations];
 }
 
@@ -359,6 +358,7 @@ static User *_loggedInUser = nil;
         for (User *usr in loggedInUserArr) {
             _loggedInUser = usr;
             
+            // fetch user roles of logged in user from webservice
             [self userRoleInitializations];
         }
     }
