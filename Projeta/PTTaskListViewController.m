@@ -43,7 +43,8 @@
 - (void)dealloc
 {
     // remove the observer
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    //[[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSControlTextDidBeginEditingNotification object:nil];
 }
 
 - (void)viewDidLoad {

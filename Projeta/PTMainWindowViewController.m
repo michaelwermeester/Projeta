@@ -15,7 +15,9 @@
 #import "PTUserHelper.h"
 #import "Role.h"
 
+// array which holds the user roles of the connected user.
 static NSMutableArray *_currentUserRoles = nil;
+// logged in User.
 static User *_loggedInUser = nil;
 
 @implementation PTMainWindowViewController
@@ -37,15 +39,24 @@ static User *_loggedInUser = nil;
     if (self) {
         // Initialization code here.
         
+        // Register observer to be notified when value for _currentUserRoles array changes.
         [self addObserver:self forKeyPath:@"_currentUserRoles" options:0 context:nil];
     }
     
     return self;
 }
 
+- (void)dealloc
+{
+    // remove the observer.
+    [self removeObserver:self forKeyPath:@"_currentUserRoles"];
+}
+
+// handle observer events
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change 
                       context:(void *)context {
     
+    // if value for _currentUserRoles array changes. 
     if ( [keyPath isEqualToString:@"_currentUserRoles"] ) {
         // Show the admin menu
         [self showAdminMenu];
