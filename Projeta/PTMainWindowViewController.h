@@ -35,15 +35,26 @@
 // removes any view from rightView
 - (void)removeViewsFromRightView;
 
+// initialize sidebar.
 - (void)initializeSidebar;
 
+// fetch logged in user its roles from web service.
+- (void)loggedInUserInitializations;
+// fetch the logged in user's roles from web service.
+// This method is being called at the end of loggedInUserInitializations method.
+// There's usually no need to call this method alone. 
+// Use loggedInUserInitializations instead or call it at least once before
+// calling userRoleInitializations.
+- (void)userRoleInitializations;
+
+// Finished and failed methods/handlers for previously declared methods. 
+// Passed as blocks to MWConnectionController.
 - (void)loggedInUserInitializationsRequestFinished:(NSMutableData*)data;
 - (void)loggedInUserInitializationsRequestFailed:(NSError*)error;
 - (void)userRoleInitializationsRequestFinished:(NSMutableData*)data;
 - (void)userRoleInitializationsRequestFailed:(NSError*)error;
 
-- (void)loggedInUserInitializations;
-- (void)userRoleInitializations;
+// shows the admin menu in the sidebar if the user is in the administrator role.
 - (void)showAdminMenu;
 
 @end

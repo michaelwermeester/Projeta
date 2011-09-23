@@ -255,6 +255,7 @@ static User *_loggedInUser = nil;
 #pragma mark -
 #pragma mark Initialize and populate sidebar
 
+// initialize sidebar.
 - (void)initializeSidebar
 {
     sourceListItems = [[NSMutableArray alloc] init];
@@ -302,10 +303,11 @@ static User *_loggedInUser = nil;
 	[sourceList reloadData];
     
     
-    // fetch logged in user its roles from web service
+    // fetch logged in user its roles from web service.
     [self loggedInUserInitializations];
 }
 
+// fetch logged in user its roles from web service.
 - (void)loggedInUserInitializations {
     
     // start animating the main window's circular progress indicator.
@@ -371,6 +373,11 @@ static User *_loggedInUser = nil;
     [mainWindowController stopProgressIndicatorAnimation];
 }
 
+// fetch the logged in user's roles from web service.
+// This method is being called at the end of loggedInUserInitializations method.
+// There's usually no need to call this method alone. 
+// Use loggedInUserInitializations instead or call it at least once before
+// calling userRoleInitializations.
 - (void)userRoleInitializations
 {
     // start animating the main window's circular progress indicator.
@@ -443,6 +450,7 @@ static User *_loggedInUser = nil;
     [mainWindowController stopProgressIndicatorAnimation];
 }
 
+// shows the admin menu in the sidebar if the user is in the administrator role.
 - (void)showAdminMenu {
     
     for (Role *r in _currentUserRoles) {
