@@ -12,6 +12,7 @@
 #import <Foundation/NSJSONSerialization.h>
 #import "MWConnectionController.h"
 #import "PTCommon.h"
+#import "PTUserDetailsWindowController.h"
 
 @implementation PTUserManagementViewController
 @synthesize deleteButton;
@@ -113,9 +114,24 @@
 
 - (IBAction)deleteButtonClicked:(NSButton*)sender {
     
-    for (User* usr in arrUsr)
+    /*for (User* usr in arrUsr)
     {
         NSLog(@"t: %@", [usr username]);
+    }*/
+    NSRunAlertPanel(@"Not implemented", @"Not implemented yet.", @"OK", nil, nil);
+}
+
+- (IBAction)detailsButtonClicked:(id)sender {
+    
+    // get selected users.
+    NSArray *selectedObjects = [arrayCtrl selectedObjects];
+    
+    // if a user is selected, open the window to show its user details.
+    if ([selectedObjects count] == 1) {
+        
+        userDetailsWindowController = [[PTUserDetailsWindowController alloc] init];
+        userDetailsWindowController.user = [selectedObjects objectAtIndex:0];
+        [userDetailsWindowController showWindow:self];
     }
 }
 

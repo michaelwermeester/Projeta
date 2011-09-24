@@ -10,11 +10,16 @@
 #import "User.h"
 
 @class MainWindowController;
+@class PTUserDetailsWindowController;
 
 @interface PTUserManagementViewController : NSViewController {
     NSMutableArray *arrUsr;     // array which holds the users
     NSTableView *usersTableView;
     NSArrayController *arrayCtrl;   // array controller
+    
+    // user details window
+    PTUserDetailsWindowController *userDetailsWindowController;
+    
 }
 
 @property (strong) NSMutableArray *arrUsr;
@@ -27,7 +32,9 @@
 // NSURLConnection
 - (void)requestFinished:(NSMutableData*)data;
 - (void)requestFailed:(NSError*)error;
+
 - (IBAction)deleteButtonClicked:(id)sender;
+- (IBAction)detailsButtonClicked:(id)sender;
 
 - (void)updateUser:(User *)theUser;
 
