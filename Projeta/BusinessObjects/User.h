@@ -27,6 +27,10 @@
 
 + (User *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
-- (NSArray*)allKeys;
+
+//
+- (NSArray *)allKeys;
+// keys needed for updating username, first name, last name and email address.
+- (NSArray *)namesEmailKeys;
 
 @end

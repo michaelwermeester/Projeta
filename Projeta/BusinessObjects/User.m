@@ -63,9 +63,17 @@
     return self;
 }
 
-- (NSArray*)allKeys
+- (NSArray *)allKeys
 {
     NSArray *retArr = [[NSArray alloc] initWithObjects: @"username", @"password", @"userId", nil];
+    
+    return retArr;
+}
+
+// keys needed for updating username, first name, last name and email address.
+- (NSArray *)namesEmailKeys {
+    
+    NSArray *retArr = [[NSArray alloc] initWithObjects: @"username", @"firstName", @"lastName", @"emailAddress", @"userId", nil];
     
     return retArr;
 }

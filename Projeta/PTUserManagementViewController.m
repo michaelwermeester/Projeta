@@ -172,7 +172,9 @@
 - (void)updateUser:(User *)theUser
 {
     // create dictionary from User object
-    NSDictionary *dict = [theUser dictionaryWithValuesForKeys:[theUser allKeys]];
+    //NSDictionary *dict = [theUser dictionaryWithValuesForKeys:[theUser allKeys]];
+    // update username, first name, last name and email address
+    NSDictionary *dict = [theUser dictionaryWithValuesForKeys:[theUser namesEmailKeys]];
     
     // create NSData from dictionary
     NSError* error;
