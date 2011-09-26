@@ -33,8 +33,8 @@
         arrTask = [[NSMutableArray alloc] init];
         
         // register for detecting changes in table view
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editingDidEnd:)
-                                                     name:NSControlTextDidEndEditingNotification object:nil];
+        //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editingDidEnd:)
+        //                                             name:NSControlTextDidEndEditingNotification object:nil];
     }
     
     return self;
@@ -44,7 +44,7 @@
 {
     // remove the observer
     //[[NSNotificationCenter defaultCenter] removeObserver:self];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSControlTextDidBeginEditingNotification object:nil];
+    //[[NSNotificationCenter defaultCenter] removeObserver:self name:NSControlTextDidBeginEditingNotification object:nil];
 }
 
 - (void)viewDidLoad {

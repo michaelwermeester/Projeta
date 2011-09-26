@@ -38,4 +38,7 @@
 
 - (void)updateUser:(User *)theUser;
 
+- (void)addObservers;
+- (void)removeObservers;
+
 @end

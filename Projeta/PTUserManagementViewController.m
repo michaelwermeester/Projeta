@@ -68,17 +68,61 @@
         //NSURL *url = [NSURL URLWithString:@"https://test:test@luckycode.be:8181/projeta-webservice/resources/be.luckycode.projetawebservice.users/2?"];
         
         // register for detecting changes in table view
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editingDidEnd:)
-                                                     name:NSControlTextDidEndEditingNotification object:nil];
+        //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editingDidEnd:)
+        //                                             name:NSControlTextDidEndEditingNotification object:nil];
     }
     
     return self;
 }
 
+- (void)viewDidLoad {
+    
+    //[[NSNotificationCenter defaultCenter] removeObserver:self name:NSControlTextDidEndEditingNotification object:nil];
+    
+    // register for detecting changes in table view
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editingDidEnd:)
+      //                                           name:NSControlTextDidEndEditingNotification object:nil];
+}
+
+- (void)addObservers {
+    
+    //[[NSNotificationCenter defaultCenter] removeObserver:self name:NSControlTextDidEndEditingNotification object:nil];
+    
+    // register for detecting changes in table view
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editingDidEnd:)
+      //                                           name:NSControlTextDidEndEditingNotification object:nil];
+}
+
+/*- (void)loadView
+{
+    [super loadView];
+    
+    [self viewDidLoad];
+}*/
+
+- (void)removeObservers {
+    
+    //[[NSNotificationCenter defaultCenter] removeObserver:self name:NSControlTextDidEndEditingNotification object:nil];
+}
+
 - (void)dealloc
 {
-    // remove the observer
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    // remove the observer.
+    //[[NSNotificationCenter defaultCenter] removeObserver:self name:NSControlTextDidEndEditingNotification object:nil];
+}
+
+- (void)tableView:(NSTableView *)aTableView
+   setObjectValue:(id)anObject
+   forTableColumn:(NSTableColumn *)aTableColumn
+              row:(int)rowIndex {
+    
+    NSArray *selectedObjects = [arrayCtrl selectedObjects];
+    
+    for (User *usr in selectedObjects)
+    {
+        // update User
+        [self updateUser:usr];
+    }
 }
 
 // NSURLConnection
