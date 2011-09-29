@@ -13,6 +13,7 @@
 #import "MWConnectionController.h"
 #import "PTCommon.h"
 #import "PTUserDetailsWindowController.h"
+#import "MainWindowController.h"
 
 @implementation PTUserManagementViewController
 @synthesize deleteButton;
@@ -178,8 +179,19 @@
         
         userDetailsWindowController = [[PTUserDetailsWindowController alloc] init];
         userDetailsWindowController.user = [selectedObjects objectAtIndex:0];
+        
+        //[NSApp runModalForWindow:[userDetailsWindowController window]];
         [userDetailsWindowController showWindow:self];
     }
+}
+
+// Don't allow table view selection to be changed when user details window is open.
+- (BOOL)selectionShouldChangeInTableView:(NSTableView *)aTableView {
+    
+    if ([[userDetailsWindowController window] isVisible])
+        return NO;
+    else
+        return YES;
 }
 
 // update user when finished editing cell in table view
@@ -256,6 +268,21 @@
     
     [connectionController startRequestForURL:url setRequest:urlRequest];
     
+}
+
+- (IBAction)addButtonClicked:(id)sender {
+    
+    //[arrayCtrl add:sender];
+    User *usr = [[User alloc] init];
+    [arrayCtrl insertObject:usr atArrangedObjectIndex:([arrUsr count])];
+    //[arrayCtrl insertObject:[arrayCtrl newObject] atArrangedObjectIndex:([arrUsr count])];
+    
+    [self detailsButtonClicked:nil];
+    
+    
+}
+
+- (IBAction)removeButtonClicked:(id)sender {
 }
 
 @end

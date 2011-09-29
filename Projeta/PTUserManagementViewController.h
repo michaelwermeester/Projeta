@@ -33,6 +33,8 @@
 - (void)requestFinished:(NSMutableData*)data;
 - (void)requestFailed:(NSError*)error;
 
+- (IBAction)addButtonClicked:(id)sender;
+- (IBAction)removeButtonClicked:(id)sender;
 - (IBAction)deleteButtonClicked:(id)sender;
 - (IBAction)detailsButtonClicked:(id)sender;
 
