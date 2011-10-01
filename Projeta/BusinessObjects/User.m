@@ -27,6 +27,21 @@
     return self;
 }
 
+// Required by NSCopying protocol.
+- (id) copyWithZone:(NSZone *)zone {
+    
+    User *copy = [[User alloc] init];
+    
+    copy.userId = [userId copyWithZone:zone];
+    copy.password = [password copyWithZone:zone];
+    copy.username = [username copyWithZone:zone];
+    copy.emailAddress = [emailAddress copyWithZone:zone];
+    copy.firstName = [firstName copyWithZone:zone];
+    copy.lastName = [lastName copyWithZone:zone];
+    
+    return copy;
+}
+
 + (User *)instanceFromDictionary:(NSDictionary *)aDictionary {
 
     User *instance = [[User alloc] init];

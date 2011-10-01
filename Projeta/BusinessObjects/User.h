@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface User : NSObject {
+@interface User : NSObject <NSCopying> {
     NSString *password;
     NSNumber *userId;
     NSString *username;
@@ -32,5 +32,8 @@
 - (NSArray *)allKeys;
 // keys needed for updating username, first name, last name and email address.
 - (NSArray *)namesEmailKeys;
+
+// Required by NSCopying protocol.
+- (id) copyWithZone:(NSZone *)zone;
 
 @end

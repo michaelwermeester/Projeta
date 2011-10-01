@@ -180,6 +180,9 @@
         userDetailsWindowController = [[PTUserDetailsWindowController alloc] init];
         userDetailsWindowController.user = [selectedObjects objectAtIndex:0];
         
+        //User *u = [[selectedObjects objectAtIndex:0] copy];
+        //userDetailsWindowController.user = u;
+        
         //[NSApp runModalForWindow:[userDetailsWindowController window]];
         [userDetailsWindowController showWindow:self];
     }
