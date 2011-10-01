@@ -16,6 +16,8 @@
     NSString *emailAddress;
     NSString *firstName;
     NSString *lastName;
+    
+    NSMutableArray *roles;
 }
 
 @property (nonatomic, copy) NSString *password;
@@ -24,6 +26,7 @@
 @property (nonatomic, copy) NSString *emailAddress;
 @property (nonatomic, copy) NSString *firstName;
 @property (nonatomic, copy) NSString *lastName;
+@property (nonatomic, copy) NSMutableArray *roles;
 
 + (User *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;

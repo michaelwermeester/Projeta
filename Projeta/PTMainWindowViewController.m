@@ -421,12 +421,12 @@ static User *_loggedInUser = nil;
         // get server URL as string
         NSString *urlString = [PTCommon serverURLString];
         // build URL by adding resource path
+        /*
         urlString = [urlString stringByAppendingString:@"resources/be.luckycode.projetawebservice.users/username/"];
-        //urlString = [urlString stringByAppendingString:[[PTUserHelper loggedInUser] username]];
         urlString = [urlString stringByAppendingString:[_loggedInUser username]];
-        //NSLog(@"user: %@", [[PTUserHelper loggedInUser] username]);
         urlString = [urlString stringByAppendingString:@"/roles"];
-        //urlString = [urlString stringByAppendingString:@"admin/roles"];
+        */
+        urlString = [urlString stringByAppendingString:@"resources/roles"];
         
         // convert to NSURL
         NSURL *url = [NSURL URLWithString:urlString];

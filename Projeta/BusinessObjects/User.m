@@ -16,6 +16,7 @@
 @synthesize emailAddress = emailAddress;
 @synthesize firstName = firstName;
 @synthesize lastName = lastName;
+@synthesize roles = roles;
 
 - (id)init
 {
