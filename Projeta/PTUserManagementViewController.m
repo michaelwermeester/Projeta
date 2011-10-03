@@ -12,8 +12,10 @@
 #import <Foundation/NSJSONSerialization.h>
 #import "MWConnectionController.h"
 #import "PTCommon.h"
+#import "PTRoleHelper.h"
 #import "PTUserDetailsWindowController.h"
 #import "MainWindowController.h"
+#import "Role.h"
 
 @implementation PTUserManagementViewController
 @synthesize deleteButton;
@@ -41,7 +43,7 @@
         // get server URL as string
         NSString *urlString = [PTCommon serverURLString];
         // build URL by adding resource path
-        urlString = [urlString stringByAppendingString:@"resources/be.luckycode.projetawebservice.users/"];
+        urlString = [urlString stringByAppendingString:@"resources/users/all"];
         
         // convert to NSURL
         NSURL *url = [NSURL URLWithString:urlString];
@@ -180,11 +182,28 @@
         userDetailsWindowController = [[PTUserDetailsWindowController alloc] init];
         userDetailsWindowController.user = [selectedObjects objectAtIndex:0];
         
+        // fetch user roles
+        //userDetailsWindowController.user.roles = [PTRoleHelper rolesForUser:userDetailsWindowController.user];
+        
+        [PTRoleHelper rolesForUser:userDetailsWindowController.user successBlock:^(NSMutableArray *userRoles){
+            userDetailsWindowController.user.roles = userRoles;
+            
+            /*NSLog(@"description: %@", [userRoles description]);
+            
+            for (Role *r in userRoles) {
+                NSLog(@"code: %@", [r code]);
+            }*/
+            
+            [userDetailsWindowController showWindow:self];
+        }];
+        
+        //NSLog(@"items: %lu", [[PTRoleHelper rolesForUser:userDetailsWindowController.user] count]);
+        
         //User *u = [[selectedObjects objectAtIndex:0] copy];
         //userDetailsWindowController.user = u;
         
         //[NSApp runModalForWindow:[userDetailsWindowController window]];
-        [userDetailsWindowController showWindow:self];
+        //[userDetailsWindowController showWindow:self];
     }
 }
 
@@ -243,7 +262,7 @@
     // get server URL as string
     NSString *urlString = [PTCommon serverURLString];
     // build URL by adding resource path
-    urlString = [urlString stringByAppendingString:@"resources/be.luckycode.projetawebservice.users"];
+    urlString = [urlString stringByAppendingString:@"resources/users"];
     
     // convert to NSURL
     NSURL *url = [NSURL URLWithString:urlString];

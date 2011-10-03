@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class User;
+
 @interface PTRoleHelper : NSObject {
     NSArray *role;
 }
@@ -17,5 +19,11 @@
 + (PTRoleHelper *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
 + (NSMutableArray *)setAttributesFromJSONDictionary:(NSDictionary *)aDictionary;
+
+
+//+ (NSMutableArray *)rolesForUser:(User *)aUser;
++ (void)rolesForUser:(User *)aUser successBlock:(void(^)(NSMutableArray *))successBlock_;
+//+ (NSMutableArray *)rolesForUserName:(NSString *)aUsername;
++ (void)rolesForUserName:(NSString *)aUsername successBlock:(void(^)(NSMutableArray *))successBlock_;
 
 @end

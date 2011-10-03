@@ -10,8 +10,12 @@
 
 #import "User.h"
 
-@interface PTUserDetailsWindowController : NSWindowController
+@interface PTUserDetailsWindowController : NSWindowController {
+    NSTableView *userRolesTableView;
+}
+
 
 @property (strong) User *user;
+@property (strong) IBOutlet NSTableView *userRolesTableView;
 
 @end

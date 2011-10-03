@@ -9,6 +9,9 @@
 #import "PTRoleHelper.h"
 
 #import "Role.h"
+#import "MWConnectionController.h"
+#import "PTCommon.h"
+#import "User.h"
 
 @implementation PTRoleHelper
 
@@ -66,6 +69,62 @@
     }
     
     return nil;
+}
+
+
+//+ (NSMutableArray *)rolesForUser:(User *)aUser {
++ (void)rolesForUser:(User *)aUser successBlock:(void(^)(NSMutableArray *))successBlock_ {
+    
+    if (aUser.username)
+        //return [self rolesForUserName:aUser.username successBlock:^{}];
+        [self rolesForUserName:aUser.username successBlock:successBlock_];
+    //else
+    //    return nil;
+}
+
+//+ (NSMutableArray *)rolesForUserName:(NSString *)aUsername {
++ (void)rolesForUserName:(NSString *)aUsername successBlock:(void(^)(NSMutableArray *))successBlock_ {
+    
+    NSString *urlString = [PTCommon serverURLString];
+    // build URL by adding resource path
+    /*
+     urlString = [urlString stringByAppendingString:@"resources/be.luckycode.projetawebservice.users/username/"];
+     urlString = [urlString stringByAppendingString:[_loggedInUser username]];
+     urlString = [urlString stringByAppendingString:@"/roles"];
+     */
+    urlString = [urlString stringByAppendingString:@"resources/roles?username="];
+    urlString = [urlString stringByAppendingString:aUsername];
+    
+    // convert to NSURL
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    NSMutableArray *userRoles = [[NSMutableArray alloc] init];
+    
+    // NSURLConnection - MWConnectionController
+    MWConnectionController* connectionController = [[MWConnectionController alloc] 
+                                                    initWithSuccessBlock:^(NSMutableData *data) {
+                                                        NSError *error;
+                                                        
+                                                        NSDictionary *dict = [[NSDictionary alloc] init];
+                                                        dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
+                                                        
+                                                        [userRoles addObjectsFromArray:[PTRoleHelper setAttributesFromJSONDictionary:dict]];
+                                                        
+                                                        successBlock_(userRoles);
+                                                    }
+                                                    failureBlock:^(NSError *error) {
+                                                        //[self rolesForUserRequestFailed:error];
+                                                    }];
+    
+    [connectionController setPostSuccessAction:^{
+        //NSLog(@"postSuccessAction.");
+    }];
+    
+    NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
+    
+    [connectionController startRequestForURL:url setRequest:urlRequest];
+        
+    // return userRoles;
 }
 
 

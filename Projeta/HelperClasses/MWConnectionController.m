@@ -13,6 +13,8 @@
 @synthesize succeededAction;
 @synthesize failedAction;
 
+@synthesize postSuccessAction;
+
 
 - (id)initWithSuccessBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)(NSError *))failureBlock_ {
     
@@ -72,6 +74,11 @@
     // end debug
     
     [self succeededAction](receivedData);
+    
+    // if there's an postSuccessAction, execute it. 
+    if (postSuccessAction) {
+        [self postSuccessAction]();
+    }
 }
     
 @end

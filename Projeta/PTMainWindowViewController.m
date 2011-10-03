@@ -345,7 +345,8 @@ static User *_loggedInUser = nil;
         // get server URL as string
         NSString *urlString = [PTCommon serverURLString];
         // build URL by adding resource path
-        urlString = [urlString stringByAppendingString:@"resources/be.luckycode.projetawebservice.users/getLoggedInUser"];
+        //urlString = [urlString stringByAppendingString:@"resources/be.luckycode.projetawebservice.users/getLoggedInUser"];
+        urlString = [urlString stringByAppendingString:@"resources/users/"];
         
         // convert to NSURL
         NSURL *url = [NSURL URLWithString:urlString];

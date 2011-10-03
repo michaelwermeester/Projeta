@@ -10,9 +10,12 @@
 
 #import "User.h"
 
+@class Role;
+
 @implementation PTUserDetailsWindowController
 
 @synthesize user;
+@synthesize userRolesTableView;
 
 - (id)init
 {

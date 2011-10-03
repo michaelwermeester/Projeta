@@ -15,6 +15,9 @@
 @property (nonatomic, copy) void (^succeededAction)(NSMutableData *);
 @property (nonatomic, copy) void (^failedAction)(NSError *);
 
+// executed after succeededAction.
+@property (nonatomic, copy) void (^postSuccessAction)(void);
+
 
 - (id)initWithSuccessBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)(NSError *))failureBlock_;
 

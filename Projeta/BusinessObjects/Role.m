@@ -13,6 +13,17 @@
 @synthesize code = code;
 @synthesize roleId = roleId;
 
+// Required by NSCopying protocol.
+- (id) copyWithZone:(NSZone *)zone {
+    
+    Role *copy = [[Role alloc] init];
+    
+    copy.code = [code copyWithZone:zone];
+    copy.roleId = [roleId copyWithZone:zone];
+    
+    return copy;
+}
+
 + (Role *)instanceFromDictionary:(NSDictionary *)aDictionary {
     
     Role *instance = [[Role alloc] init];

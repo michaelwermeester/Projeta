@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Role : NSObject {
+@interface Role : NSObject <NSCopying> {
     NSString *code;
     NSNumber *roleId;
 }
@@ -18,5 +18,8 @@
 
 + (Role *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
+
+// Required by NSCopying protocol.
+- (id) copyWithZone:(NSZone *)zone;
 
 @end
