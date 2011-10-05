@@ -9,8 +9,7 @@
 #import "PTUserDetailsWindowController.h"
 
 #import "User.h"
-
-@class Role;
+#import "Role.h"
 
 @implementation PTUserDetailsWindowController
 
@@ -33,6 +32,25 @@
     [super windowDidLoad];
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    
+    // sort user roles alphabetically. 
+    //[self willChangeValueForKey:@"user.roles"];
+    [user.roles sortUsingComparator:^NSComparisonResult(Role *r1, Role *r2) {
+        
+        return [r1.code compare:r2.code];
+        
+        /*if ([r1.code compare:r2.code] == NSOrderedSame) {
+            return [r1.code compare:r2.code];
+        } else {
+            return [r1.code compare:r2.code];
+        }*/
+    }];
+    //[self didChangeValueForKey:@"user.roles"];
+    
+    /*if ([user.roles isKindOfClass:[NSMutableArray class]])
+        NSLog(@"mutable");
+    else
+        NSLog(@"nonmutable");*/
 }
 
 @end

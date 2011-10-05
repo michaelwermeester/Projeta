@@ -186,13 +186,8 @@
         //userDetailsWindowController.user.roles = [PTRoleHelper rolesForUser:userDetailsWindowController.user];
         
         [PTRoleHelper rolesForUser:userDetailsWindowController.user successBlock:^(NSMutableArray *userRoles){
+            
             userDetailsWindowController.user.roles = userRoles;
-            
-            /*NSLog(@"description: %@", [userRoles description]);
-            
-            for (Role *r in userRoles) {
-                NSLog(@"code: %@", [r code]);
-            }*/
             
             [userDetailsWindowController showWindow:self];
         }];
