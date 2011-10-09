@@ -14,6 +14,8 @@
 @implementation PTUserDetailsWindowController
 
 @synthesize user;
+// Holds the available roles which can be affected.
+@synthesize availableRoles;
 @synthesize userRolesTableView;
 
 - (id)init

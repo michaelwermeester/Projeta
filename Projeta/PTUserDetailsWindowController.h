@@ -8,7 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import "User.h"
+@class User;
+@class Role;
 
 @interface PTUserDetailsWindowController : NSWindowController {
     NSTableView *userRolesTableView;
@@ -16,6 +17,8 @@
 
 
 @property (strong) User *user;
+// Holds the available roles which can be affected. 
+@property (strong) NSMutableArray *availableRoles;
 @property (strong) IBOutlet NSTableView *userRolesTableView;
 
 @end

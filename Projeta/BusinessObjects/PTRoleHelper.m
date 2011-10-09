@@ -71,19 +71,63 @@
     return nil;
 }
 
+// Fetches roles for the given resource URL into an NSMutableArray and executes the successBlock upon success.
++ (void)serverRolesToArray:(NSString *)urlString successBlock:(void (^)(NSMutableArray*))successBlock {
+    
+    // convert to NSURL
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    NSMutableArray *roles= [[NSMutableArray alloc] init];
+    
+    // NSURLConnection - MWConnectionController
+    MWConnectionController* connectionController = [[MWConnectionController alloc] 
+                                                    initWithSuccessBlock:^(NSMutableData *data) {
+                                                        NSError *error;
+                                                        
+                                                        NSDictionary *dict = [[NSDictionary alloc] init];
+                                                        dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
+                                                        
+                                                        [roles addObjectsFromArray:[PTRoleHelper setAttributesFromJSONDictionary:dict]];
+                                                        
+                                                        successBlock(roles);
+                                                    }
+                                                    failureBlock:^(NSError *error) {
+                                                        //[self rolesForUserRequestFailed:error];
+                                                    }];
+    
+    [connectionController setPostSuccessAction:^{
+        //NSLog(@"postSuccessAction.");
+    }];
+    
+    NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
+    
+    [connectionController startRequestForURL:url setRequest:urlRequest];
+}
+
++ (void)rolesAvailable:(void(^)(NSMutableArray *))successBlock {
+    
+    // Server URL.
+    NSString *urlString = [PTCommon serverURLString];
+    
+    // Resource path from which the available resources are being fetched from. 
+    urlString = [urlString stringByAppendingString:@"resources/roles/available"];
+    
+    // Fetch roles from server and exectute the successBlock.
+    [self serverRolesToArray:urlString successBlock:successBlock];
+}
 
 //+ (NSMutableArray *)rolesForUser:(User *)aUser {
-+ (void)rolesForUser:(User *)aUser successBlock:(void(^)(NSMutableArray *))successBlock_ {
++ (void)rolesForUser:(User *)aUser successBlock:(void(^)(NSMutableArray *))successBlock {
     
     if (aUser.username)
         //return [self rolesForUserName:aUser.username successBlock:^{}];
-        [self rolesForUserName:aUser.username successBlock:successBlock_];
+        [self rolesForUserName:aUser.username successBlock:successBlock];
     //else
     //    return nil;
 }
 
 //+ (NSMutableArray *)rolesForUserName:(NSString *)aUsername {
-+ (void)rolesForUserName:(NSString *)aUsername successBlock:(void(^)(NSMutableArray *))successBlock_ {
++ (void)rolesForUserName:(NSString *)aUsername successBlock:(void(^)(NSMutableArray *))successBlock {
     
     NSString *urlString = [PTCommon serverURLString];
     // build URL by adding resource path
@@ -95,7 +139,9 @@
     urlString = [urlString stringByAppendingString:@"resources/roles?username="];
     urlString = [urlString stringByAppendingString:aUsername];
     
-    // convert to NSURL
+    [self serverRolesToArray:urlString successBlock:successBlock];
+    
+    /*// convert to NSURL
     NSURL *url = [NSURL URLWithString:urlString];
     
     NSMutableArray *userRoles = [[NSMutableArray alloc] init];
@@ -122,7 +168,7 @@
     
     NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
     
-    [connectionController startRequestForURL:url setRequest:urlRequest];
+    [connectionController startRequestForURL:url setRequest:urlRequest];*/
         
     // return userRoles;
 }

@@ -20,7 +20,8 @@
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
 + (NSMutableArray *)setAttributesFromJSONDictionary:(NSDictionary *)aDictionary;
 
-
+// Returns all available roles.
++ (void)rolesAvailable:(void(^)(NSMutableArray *))successBlock_;
 //+ (NSMutableArray *)rolesForUser:(User *)aUser;
 + (void)rolesForUser:(User *)aUser successBlock:(void(^)(NSMutableArray *))successBlock_;
 //+ (NSMutableArray *)rolesForUserName:(NSString *)aUsername;
