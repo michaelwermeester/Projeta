@@ -24,6 +24,21 @@
     return copy;
 }
 
+// Override isEqual method.
+- (BOOL)isEqual:(id)anObject {
+    
+    if (self == anObject) {
+        return YES;
+    } else if (!anObject || ![anObject isKindOfClass:[self class]]) {
+        return NO;
+    } // compare if id and code are equal.
+    else if ([[self code] isEqual:[(Role *)anObject code]] && [[self roleId] isEqual:[(Role *)anObject roleId]]) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
 + (Role *)instanceFromDictionary:(NSDictionary *)aDictionary {
     
     Role *instance = [[Role alloc] init];

@@ -29,6 +29,23 @@
     return self;
 }
 
+- (void)awakeFromNib {
+    
+    // remove roles already affected to user from available roles list.
+    for (Role *r in user.roles) {
+        
+        for (NSUInteger i = 0; i < [availableRoles count]; i++) {
+            
+            // if role found.
+            if ([[availableRoles objectAtIndex:i] isEqual:r]) {
+                
+                // remove role.
+                [availableRoles removeObjectAtIndex:i];
+            }
+        }
+    }
+}
+
 - (void)windowDidLoad
 {
     [super windowDidLoad];
@@ -54,6 +71,8 @@
         NSLog(@"mutable");
     else
         NSLog(@"nonmutable");*/
+    
+    
 }
 
 @end
