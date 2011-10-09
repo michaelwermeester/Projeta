@@ -182,15 +182,35 @@
         userDetailsWindowController = [[PTUserDetailsWindowController alloc] init];
         userDetailsWindowController.user = [selectedObjects objectAtIndex:0];
         
-        // fetch user roles
+        // fetch user roles.
         //userDetailsWindowController.user.roles = [PTRoleHelper rolesForUser:userDetailsWindowController.user];
-        
         [PTRoleHelper rolesForUser:userDetailsWindowController.user successBlock:^(NSMutableArray *userRoles){
+            
+            // sort user roles alphabetically.
+            [userRoles sortUsingComparator:^NSComparisonResult(Role *r1, Role *r2) {
+                
+                return [r1.code compare:r2.code];
+            }];
             
             userDetailsWindowController.user.roles = userRoles;
             
+            //[userDetailsWindowController showWindow:self];
+        }];
+        
+        // fetch available roles.
+        [PTRoleHelper rolesAvailable:^(NSMutableArray *availableRoles){
+            
+            // sort available roles alphabetically.
+            [availableRoles sortUsingComparator:^NSComparisonResult(Role *r1, Role *r2) {
+                
+                return [r1.code compare:r2.code];
+            }];
+            
+            userDetailsWindowController.availableRoles = availableRoles;
+
             [userDetailsWindowController showWindow:self];
         }];
+        
         
         //NSLog(@"items: %lu", [[PTRoleHelper rolesForUser:userDetailsWindowController.user] count]);
         

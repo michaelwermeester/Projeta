@@ -37,16 +37,17 @@
     
     // sort user roles alphabetically. 
     //[self willChangeValueForKey:@"user.roles"];
-    [user.roles sortUsingComparator:^NSComparisonResult(Role *r1, Role *r2) {
-        
-        return [r1.code compare:r2.code];
-        
-        /*if ([r1.code compare:r2.code] == NSOrderedSame) {
-            return [r1.code compare:r2.code];
-        } else {
-            return [r1.code compare:r2.code];
-        }*/
-    }];
+    
+    //[user.roles sortUsingComparator:^NSComparisonResult(Role *r1, Role *r2) {
+    //    
+    //    return [r1.code compare:r2.code];
+    //    
+    //    /*if ([r1.code compare:r2.code] == NSOrderedSame) {
+    //        return [r1.code compare:r2.code];
+    //    } else {
+    //        return [r1.code compare:r2.code];
+    //    }*/
+    //}];
     //[self didChangeValueForKey:@"user.roles"];
     
     /*if ([user.roles isKindOfClass:[NSMutableArray class]])
