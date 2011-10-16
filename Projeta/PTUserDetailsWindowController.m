@@ -12,6 +12,8 @@
 #import "Role.h"
 
 @implementation PTUserDetailsWindowController
+@synthesize userRolesArrayCtrl;
+@synthesize availableRolesArrayCtrl;
 
 @synthesize user;
 // Holds the available roles which can be affected.
@@ -73,6 +75,48 @@
         NSLog(@"nonmutable");*/
     
     
+}
+
+// assign selected user role(s) to user. 
+- (IBAction)assignUserRoles:(id)sender {
+    
+    // get selection of roles to be affected to user.
+    NSArray *selectedRoles = [availableRolesArrayCtrl selectedObjects];
+     
+    for (Role *role in selectedRoles) {
+        // affect new role to user.
+        [userRolesArrayCtrl addObject:role];
+        
+        // remove role from available roles.
+        [availableRolesArrayCtrl removeObject:role];
+        
+        // sort user roles alphabetically.
+        [user.roles sortUsingComparator:^NSComparisonResult(Role *r1, Role *r2) {
+            
+            return [r1.code compare:r2.code];
+        }];
+    }
+}
+
+// remove selected user role(s) from user.
+- (IBAction)removeUserRoles:(id)sender {
+    
+    // get selection of roles to be removed from user.
+    NSArray *selectedRoles = [userRolesArrayCtrl selectedObjects];
+    
+    for (Role *role in selectedRoles) {
+        // make role available.
+        [availableRolesArrayCtrl addObject:role];
+        
+        // remove role from user roles.
+        [userRolesArrayCtrl removeObject:role];
+        
+        // sort user roles alphabetically.
+        [availableRoles sortUsingComparator:^NSComparisonResult(Role *r1, Role *r2) {
+            
+            return [r1.code compare:r2.code];
+        }];
+    }
 }
 
 @end

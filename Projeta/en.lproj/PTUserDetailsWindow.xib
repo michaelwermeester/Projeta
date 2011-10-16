@@ -2,10 +2,10 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1070</int>
-		<string key="IBDocument.SystemVersion">11B26</string>
+		<string key="IBDocument.SystemVersion">11C74</string>
 		<string key="IBDocument.InterfaceBuilderVersion">1938</string>
-		<string key="IBDocument.AppKitVersion">1138</string>
-		<string key="IBDocument.HIToolboxVersion">566.00</string>
+		<string key="IBDocument.AppKitVersion">1138.23</string>
+		<string key="IBDocument.HIToolboxVersion">567.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			<string key="NS.object.0">1938</string>
@@ -198,7 +198,6 @@
 												<int key="NSvFlags">268</int>
 												<string key="NSFrame">{{165, 81}, {145, 19}}</string>
 												<reference key="NSSuperview" ref="633693685"/>
-												<reference key="NSNextKeyView" ref="507601326"/>
 												<string key="NSReuseIdentifierKey">_NS:903</string>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="641089841">
@@ -417,7 +416,7 @@
 																	</object>
 																</object>
 																<double key="NSRowHeight">17</double>
-																<int key="NSTvFlags">-700448768</int>
+																<int key="NSTvFlags">-566231040</int>
 																<reference key="NSDelegate"/>
 																<reference key="NSDataSource"/>
 																<int key="NSColumnAutoresizingStyle">4</int>
@@ -536,7 +535,7 @@
 																<reference key="NSBackgroundColor" ref="619856955"/>
 																<reference key="NSGridColor" ref="48999444"/>
 																<double key="NSRowHeight">17</double>
-																<int key="NSTvFlags">-700448768</int>
+																<int key="NSTvFlags">-566231040</int>
 																<reference key="NSDelegate"/>
 																<reference key="NSDataSource"/>
 																<int key="NSColumnAutoresizingStyle">4</int>
@@ -821,6 +820,38 @@
 						<reference key="destination" ref="641321062"/>
 					</object>
 					<int key="connectionID">954</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">userRolesArrayCtrl</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="63773039"/>
+					</object>
+					<int key="connectionID">966</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">availableRolesArrayCtrl</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="729881334"/>
+					</object>
+					<int key="connectionID">967</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">removeUserRoles:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="1060639064"/>
+					</object>
+					<int key="connectionID">970</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">assignUserRoles:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="267644445"/>
+					</object>
+					<int key="connectionID">971</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -3152,7 +3183,7 @@
 				<reference key="dict.values" ref="1002"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">963</int>
+			<int key="maxID">971</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3168,15 +3199,75 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">PTUserDetailsWindowController</string>
 					<string key="superclassName">NSWindowController</string>
+					<object class="NSMutableDictionary" key="actions">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>assignUserRoles:</string>
+							<string>removeUserRoles:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+						</object>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>assignUserRoles:</string>
+							<string>removeUserRoles:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBActionInfo">
+								<string key="name">assignUserRoles:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">removeUserRoles:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+						</object>
+					</object>
 					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">userRolesTableView</string>
-						<string key="NS.object.0">NSTableView</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>availableRolesArrayCtrl</string>
+							<string>userRolesArrayCtrl</string>
+							<string>userRolesTableView</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>NSArrayController</string>
+							<string>NSArrayController</string>
+							<string>NSTableView</string>
+						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">userRolesTableView</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">userRolesTableView</string>
-							<string key="candidateClassName">NSTableView</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>availableRolesArrayCtrl</string>
+							<string>userRolesArrayCtrl</string>
+							<string>userRolesTableView</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">availableRolesArrayCtrl</string>
+								<string key="candidateClassName">NSArrayController</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">userRolesArrayCtrl</string>
+								<string key="candidateClassName">NSArrayController</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">userRolesTableView</string>
+								<string key="candidateClassName">NSTableView</string>
+							</object>
 						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">

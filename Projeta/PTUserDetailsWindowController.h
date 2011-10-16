@@ -13,6 +13,8 @@
 
 @interface PTUserDetailsWindowController : NSWindowController {
     NSTableView *userRolesTableView;
+    NSArrayController *userRolesArrayCtrl;
+    NSArrayController *availableRolesArrayCtrl;
 }
 
 
@@ -20,5 +22,12 @@
 // Holds the available roles which can be affected. 
 @property (strong) NSMutableArray *availableRoles;
 @property (strong) IBOutlet NSTableView *userRolesTableView;
+// array controllers which hold the user roles.
+@property (strong) IBOutlet NSArrayController *userRolesArrayCtrl;
+@property (strong) IBOutlet NSArrayController *availableRolesArrayCtrl;
+
+// assign/remove a user role.
+- (IBAction)assignUserRoles:(id)sender;
+- (IBAction)removeUserRoles:(id)sender;
 
 @end
