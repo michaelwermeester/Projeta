@@ -30,4 +30,9 @@
 - (IBAction)assignUserRoles:(id)sender;
 - (IBAction)removeUserRoles:(id)sender;
 
+- (IBAction)okButtonClicked:(id)sender;
+- (IBAction)cancelButtonClicked:(id)sender;
+
+- (void)updateUserRoles;
+
 @end

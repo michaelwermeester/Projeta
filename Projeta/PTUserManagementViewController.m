@@ -194,6 +194,8 @@
             
             userDetailsWindowController.user.roles = userRoles;
             
+            //[[userDetailsWindowController.user mutableArrayValueForKey:@"roles"] addObjectsFromArray:userRoles];
+            
             //[userDetailsWindowController showWindow:self];
         }];
         

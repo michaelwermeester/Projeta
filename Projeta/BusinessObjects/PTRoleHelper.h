@@ -27,4 +27,6 @@
 //+ (NSMutableArray *)rolesForUserName:(NSString *)aUsername;
 + (void)rolesForUserName:(NSString *)aUsername successBlock:(void(^)(NSMutableArray *))successBlock_;
 
++ (void)updateRolesForUser:(User *)aUser successBlock:(void(^)(NSMutableArray *))successBlock;
+
 @end

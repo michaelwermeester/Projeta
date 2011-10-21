@@ -8,6 +8,8 @@
 
 #import "PTUserDetailsWindowController.h"
 
+#import "MWConnectionController.h"
+#import "PTCommon.h"
 #import "User.h"
 #import "Role.h"
 
@@ -42,10 +44,11 @@
             if ([[availableRoles objectAtIndex:i] isEqual:r]) {
                 
                 // remove role.
-                [availableRoles removeObjectAtIndex:i];
+                [[self mutableArrayValueForKey:@"availableRoles"] removeObjectAtIndex:i];
             }
         }
     }
+    
 }
 
 - (void)windowDidLoad
@@ -117,6 +120,68 @@
             return [r1.code compare:r2.code];
         }];
     }
+}
+
+- (IBAction)okButtonClicked:(id)sender {
+    
+    [self updateUserRoles];
+}
+
+- (IBAction)cancelButtonClicked:(id)sender {
+    
+}
+
+- (void)updateUserRoles {
+    
+    
+    NSMutableArray *rolesArray = [[NSMutableArray alloc] init];
+    
+    for (Role *userRole in user.roles) {
+        
+        NSDictionary *tmpRoleDict = [userRole dictionaryWithValuesForKeys:[user updateRolesKeys]];
+
+        [rolesArray addObject:tmpRoleDict];
+    }
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    [dict setObject:rolesArray forKey:@"role"];
+    
+    // create NSData from dictionary
+    NSError* error;
+    NSData *requestData = [[NSData alloc] init];
+    requestData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
+    
+    // get server URL as string
+    NSString *urlString = [PTCommon serverURLString];
+    // build URL by adding resource path
+    urlString = [urlString stringByAppendingString:@"resources/roles?userId="];
+    urlString = [urlString stringByAppendingString:[user.userId stringValue]];
+    
+    // convert to NSURL
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    
+    MWConnectionController* connectionController = [[MWConnectionController alloc] 
+                                                    initWithSuccessBlock:^(NSMutableData *data) {
+                                                        
+                                                    }
+                                                    failureBlock:^(NSError *error) {
+                                                        
+                                                    }];
+    
+    
+    NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
+    
+    NSString* requestDataLengthString = [[NSString alloc] initWithFormat:@"%d", [requestData length]];
+    
+    //[urlRequest setHTTPMethod:@"POST"]; // create
+    [urlRequest setHTTPMethod:@"PUT"]; // update
+    [urlRequest setHTTPBody:requestData];
+    [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [urlRequest setValue:requestDataLengthString forHTTPHeaderField:@"Content-Length"];
+    [urlRequest setTimeoutInterval:30.0];
+    
+    [connectionController startRequestForURL:url setRequest:urlRequest];
+
 }
 
 @end

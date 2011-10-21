@@ -36,6 +36,10 @@
 // keys needed for updating username, first name, last name and email address.
 - (NSArray *)namesEmailKeys;
 
+- (NSArray *)userIdKey;
+// keys needed for updating user roles.
+- (NSArray *)updateRolesKeys;
+
 // Required by NSCopying protocol.
 - (id) copyWithZone:(NSZone *)zone;
 

@@ -94,4 +94,19 @@
     return retArr;
 }
 
+- (NSArray *)userIdKey {
+    NSArray *retArr = [[NSArray alloc] initWithObjects:@"userId", nil];
+    
+    return retArr;
+}
+
+// keys needed for updating user roles.
+- (NSArray *)updateRolesKeys {
+ 
+    //NSArray *retArr = [[NSArray alloc] initWithObjects: @"roles", @"userId", nil];
+    NSArray *retArr = [[NSArray alloc] initWithObjects: @"code", @"roleId", nil];
+    
+    return retArr;
+}
+
 @end

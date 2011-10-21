@@ -174,4 +174,8 @@
 }
 
 
++ (void)updateRolesForUser:(User *)aUser successBlock:(void(^)(NSMutableArray *))successBlock {
+    
+}
+
 @end
