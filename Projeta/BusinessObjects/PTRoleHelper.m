@@ -71,6 +71,8 @@
     return nil;
 }
 
+#pragma mark Web service methods
+
 // Fetches roles for the given resource URL into an NSMutableArray and executes the successBlock upon success.
 + (void)serverRolesToArray:(NSString *)urlString successBlock:(void (^)(NSMutableArray*))successBlock {
     

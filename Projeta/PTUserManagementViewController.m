@@ -13,6 +13,7 @@
 #import "MWConnectionController.h"
 #import "PTCommon.h"
 #import "PTRoleHelper.h"
+#import "PTUserHelper.h"
 #import "PTUserDetailsWindowController.h"
 #import "MainWindowController.h"
 #import "Role.h"
@@ -124,7 +125,8 @@
     for (User *usr in selectedObjects)
     {
         // update User
-        [self updateUser:usr];
+        //[self updateUser:usr];
+        [PTUserHelper updateUser:usr mainWindowController:mainWindowController];
     }
 }
 
@@ -244,7 +246,8 @@
         for (User *usr in selectedObjects)
         {
             // update User
-            [self updateUser:usr];
+            //[self updateUser:usr];
+            [PTUserHelper updateUser:usr mainWindowController:mainWindowController];
             
             
             //        // works! -> updateUser method
@@ -264,7 +267,8 @@
     }
 }
 
-- (void)updateUser:(User *)theUser
+// moved to PTUserHelper
+/*- (void)updateUser:(User *)theUser
 {
     // create dictionary from User object
     //NSDictionary *dict = [theUser dictionaryWithValuesForKeys:[theUser allKeys]];
@@ -307,7 +311,7 @@
     
     [connectionController startRequestForURL:url setRequest:urlRequest];
     
-}
+}*/
 
 - (IBAction)addButtonClicked:(id)sender {
     

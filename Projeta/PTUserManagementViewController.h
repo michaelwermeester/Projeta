@@ -38,7 +38,7 @@
 - (IBAction)deleteButtonClicked:(id)sender;
 - (IBAction)detailsButtonClicked:(id)sender;
 
-- (void)updateUser:(User *)theUser;
+//- (void)updateUser:(User *)theUser;
 
 - (void)addObservers;
 - (void)removeObservers;
