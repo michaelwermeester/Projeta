@@ -176,8 +176,47 @@
 }
 
 
-+ (void)updateRolesForUser:(User *)aUser successBlock:(void(^)(NSMutableArray *))successBlock {
+/*+ (void)updateRolesForUser:(User *)aUser successBlock:(void(^)(NSMutableArray *))successBlock {
     
+}*/
+
++ (void)updateRolesForUser:(User *)aUser roles:(NSMutableDictionary *)roles {
+    // create NSData from dictionary
+    NSError* error;
+    NSData *requestData = [[NSData alloc] init];
+    requestData = [NSJSONSerialization dataWithJSONObject:roles options:0 error:&error];
+    
+    // get server URL as string
+    NSString *urlString = [PTCommon serverURLString];
+    // build URL by adding resource path
+    urlString = [urlString stringByAppendingString:@"resources/roles?userId="];
+    urlString = [urlString stringByAppendingString:[aUser.userId stringValue]];
+    
+    // convert to NSURL
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    
+    MWConnectionController* connectionController = [[MWConnectionController alloc] 
+                                                    initWithSuccessBlock:^(NSMutableData *data) {
+                                                        
+                                                    }
+                                                    failureBlock:^(NSError *error) {
+                                                        
+                                                    }];
+    
+    
+    NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
+    
+    NSString* requestDataLengthString = [[NSString alloc] initWithFormat:@"%d", [requestData length]];
+    
+    //[urlRequest setHTTPMethod:@"POST"]; // create
+    [urlRequest setHTTPMethod:@"PUT"]; // update
+    [urlRequest setHTTPBody:requestData];
+    [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [urlRequest setValue:requestDataLengthString forHTTPHeaderField:@"Content-Length"];
+    [urlRequest setTimeoutInterval:30.0];
+    
+    [connectionController startRequestForURL:url setRequest:urlRequest];
 }
 
 @end

@@ -10,8 +10,10 @@
 
 #import "MWConnectionController.h"
 #import "PTCommon.h"
-#import "User.h"
+#import "PTRoleHelper.h"
+#import "PTUserHelper.h"
 #import "Role.h"
+#import "User.h"
 
 @implementation PTUserDetailsWindowController
 @synthesize userRolesArrayCtrl;
@@ -124,6 +126,10 @@
 
 - (IBAction)okButtonClicked:(id)sender {
     
+    // update user details.
+    [PTUserHelper updateUser:user mainWindowController:nil];
+    
+    // update user roles.
     [self updateUserRoles];
 }
 
@@ -131,6 +137,7 @@
     
 }
 
+// update user roles (in database).
 - (void)updateUserRoles {
     
     
@@ -145,7 +152,13 @@
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     [dict setObject:rolesArray forKey:@"role"];
     
-    // create NSData from dictionary
+    // update user roles in database via web service.
+    [PTRoleHelper updateRolesForUser:user roles:dict];
+    
+    
+    
+    // -> moved to 'PTRoleHelper - updateUserRoles' method
+    /*// create NSData from dictionary
     NSError* error;
     NSData *requestData = [[NSData alloc] init];
     requestData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
@@ -181,6 +194,7 @@
     [urlRequest setTimeoutInterval:30.0];
     
     [connectionController startRequestForURL:url setRequest:urlRequest];
+     */
 
 }
 

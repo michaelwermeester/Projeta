@@ -33,6 +33,7 @@
 - (IBAction)okButtonClicked:(id)sender;
 - (IBAction)cancelButtonClicked:(id)sender;
 
+// update user roles (in database).
 - (void)updateUserRoles;
 
 @end
