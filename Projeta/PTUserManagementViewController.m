@@ -182,6 +182,7 @@
     if ([selectedObjects count] == 1) {
         
         userDetailsWindowController = [[PTUserDetailsWindowController alloc] init];
+        userDetailsWindowController.parentUserManagementViewCtrl = self;
         userDetailsWindowController.user = [selectedObjects objectAtIndex:0];
         
         // fetch user roles.

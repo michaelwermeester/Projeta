@@ -7,6 +7,7 @@
 //
 
 #import "PTUserDetailsWindowController.h"
+#import "PTUserManagementViewController.h"
 
 #import "MWConnectionController.h"
 #import "PTCommon.h"
@@ -14,6 +15,8 @@
 #import "PTUserHelper.h"
 #import "Role.h"
 #import "User.h"
+
+User *userCopy;
 
 @implementation PTUserDetailsWindowController
 @synthesize userRolesArrayCtrl;
@@ -23,6 +26,8 @@
 // Holds the available roles which can be affected.
 @synthesize availableRoles;
 @synthesize userRolesTableView;
+
+@synthesize parentUserManagementViewCtrl;
 
 - (id)init
 {
@@ -36,6 +41,9 @@
 }
 
 - (void)awakeFromNib {
+    
+    userCopy = [[User alloc] init];
+    userCopy = [user copy];
     
     // remove roles already affected to user from available roles list.
     for (Role *r in user.roles) {
@@ -126,35 +134,60 @@
 
 - (IBAction)okButtonClicked:(id)sender {
     
+    BOOL usrUpdSuc, roleUpdSuc;
+    
     // update user details.
-    [PTUserHelper updateUser:user mainWindowController:nil];
+    if ([PTUserHelper updateUser:user mainWindowController:nil] == YES) {
+        // ok.
+        usrUpdSuc = YES;
+    } else {
+        // handle error.
+        usrUpdSuc = NO;
+    }
     
     // update user roles.
-    [self updateUserRoles];
+    roleUpdSuc = [self updateUserRoles];
+    
+    // if updating user and its roles was successful, close this window.
+    if (usrUpdSuc == YES && roleUpdSuc == YES) {
+        // close this window.
+        [self close];
+    }
 }
 
 - (IBAction)cancelButtonClicked:(id)sender {
+
+    // cancel changes -> replace current user with previously made copy of user.
+    [[parentUserManagementViewCtrl mutableArrayValueForKey:@"arrUsr"] replaceObjectAtIndex:[parentUserManagementViewCtrl.arrUsr indexOfObject:user] withObject:userCopy];
     
+    // close this window.
+    [self close];
 }
 
 // update user roles (in database).
-- (void)updateUserRoles {
+- (BOOL)updateUserRoles {
     
+    BOOL success;
     
+    // Initialize a new array to hold the roles.
     NSMutableArray *rolesArray = [[NSMutableArray alloc] init];
     
+    // add (assigned) user roles to the array.
     for (Role *userRole in user.roles) {
         
         NSDictionary *tmpRoleDict = [userRole dictionaryWithValuesForKeys:[user updateRolesKeys]];
 
         [rolesArray addObject:tmpRoleDict];
     }
+    
+    // create a new dictionary which holds the user roles.
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     [dict setObject:rolesArray forKey:@"role"];
     
     // update user roles in database via web service.
-    [PTRoleHelper updateRolesForUser:user roles:dict];
+    success = [PTRoleHelper updateRolesForUser:user roles:dict];
     
+    return success;
     
     
     // -> moved to 'PTRoleHelper - updateUserRoles' method

@@ -30,6 +30,6 @@
 //+ (void)updateRolesForUser:(User *)aUser successBlock:(void(^)(NSMutableArray *))successBlock;
 
 //
-+ (void)updateRolesForUser:(User *)aUser roles:(NSMutableDictionary *)roles;
++ (BOOL)updateRolesForUser:(User *)aUser roles:(NSMutableDictionary *)roles;
 
 @end

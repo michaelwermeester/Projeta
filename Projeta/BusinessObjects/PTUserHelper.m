@@ -87,8 +87,10 @@
 #pragma mark Web service methods
 
 // + (void)updateUser:(User *)theUser
-+ (void)updateUser:(User *)theUser mainWindowController:(id)sender
++ (BOOL)updateUser:(User *)theUser mainWindowController:(id)sender
 {
+    BOOL success = NO;
+    
     if ([sender isKindOfClass:[MainWindowController class]]) {
         // start animating the main window's circular progress indicator.
         [sender startProgressIndicatorAnimation];
@@ -133,12 +135,14 @@
     [urlRequest setValue:requestDataLengthString forHTTPHeaderField:@"Content-Length"];
     [urlRequest setTimeoutInterval:30.0];
     
-    [connectionController startRequestForURL:url setRequest:urlRequest];
+    success = [connectionController startRequestForURL:url setRequest:urlRequest];
     
     if ([sender isKindOfClass:[MainWindowController class]]) {
         // start animating the main window's circular progress indicator.
         [sender stopProgressIndicatorAnimation];
     }
+    
+    return success;
 }
 
 @end

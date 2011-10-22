@@ -8,13 +8,16 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class User;
+@class PTUserManagementViewController;
 @class Role;
+@class User;
 
 @interface PTUserDetailsWindowController : NSWindowController {
     NSTableView *userRolesTableView;
     NSArrayController *userRolesArrayCtrl;
     NSArrayController *availableRolesArrayCtrl;
+    
+    PTUserManagementViewController *parentUserManagementViewCtrl;
 }
 
 
@@ -25,6 +28,8 @@
 // array controllers which hold the user roles.
 @property (strong) IBOutlet NSArrayController *userRolesArrayCtrl;
 @property (strong) IBOutlet NSArrayController *availableRolesArrayCtrl;
+// parent user management view controller.
+@property (strong) PTUserManagementViewController *parentUserManagementViewCtrl;
 
 // assign/remove a user role.
 - (IBAction)assignUserRoles:(id)sender;
@@ -34,6 +39,6 @@
 - (IBAction)cancelButtonClicked:(id)sender;
 
 // update user roles (in database).
-- (void)updateUserRoles;
+- (BOOL)updateUserRoles;
 
 @end

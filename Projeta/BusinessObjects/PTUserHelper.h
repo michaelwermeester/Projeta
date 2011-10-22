@@ -24,6 +24,6 @@
 
 // updates username, first name and last name of a given user. 
 // mainWindowController parameter is user for animating the main window's progress indicator.
-+ (void)updateUser:(User *)theUser mainWindowController:(id)sender;
++ (BOOL)updateUser:(User *)theUser mainWindowController:(id)sender;
 
 @end

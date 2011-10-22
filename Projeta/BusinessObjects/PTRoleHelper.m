@@ -180,7 +180,10 @@
     
 }*/
 
-+ (void)updateRolesForUser:(User *)aUser roles:(NSMutableDictionary *)roles {
++ (BOOL)updateRolesForUser:(User *)aUser roles:(NSMutableDictionary *)roles {
+    
+    BOOL success;
+    
     // create NSData from dictionary
     NSError* error;
     NSData *requestData = [[NSData alloc] init];
@@ -216,7 +219,9 @@
     [urlRequest setValue:requestDataLengthString forHTTPHeaderField:@"Content-Length"];
     [urlRequest setTimeoutInterval:30.0];
     
-    [connectionController startRequestForURL:url setRequest:urlRequest];
+    success = [connectionController startRequestForURL:url setRequest:urlRequest];
+    
+    return success;
 }
 
 @end
