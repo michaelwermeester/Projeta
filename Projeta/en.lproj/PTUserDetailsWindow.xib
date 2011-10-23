@@ -575,7 +575,6 @@
 														<int key="NSvFlags">-2147483392</int>
 														<string key="NSFrame">{{1, 154}, {141, 15}}</string>
 														<reference key="NSSuperview" ref="128362550"/>
-														<reference key="NSNextKeyView" ref="507601326"/>
 														<string key="NSReuseIdentifierKey">_NS:1847</string>
 														<int key="NSsFlags">1</int>
 														<reference key="NSTarget" ref="128362550"/>
@@ -927,6 +926,22 @@
 						</object>
 					</object>
 					<int key="connectionID">356</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: user.password</string>
+						<reference key="source" ref="750361487"/>
+						<reference key="destination" ref="1001"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="750361487"/>
+							<reference key="NSDestination" ref="1001"/>
+							<string key="NSLabel">value: user.password</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">user.password</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">976</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -3194,7 +3209,7 @@
 				<reference key="dict.values" ref="1002"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">973</int>
+			<int key="maxID">976</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
