@@ -7,6 +7,7 @@
 //
 
 #import "PTCommon.h"
+#import "MWConnectionController.h"
 
 @implementation PTCommon
 
@@ -43,6 +44,65 @@
     }
     
     return nil;
+}
+
+
+#pragma mark Web service methods
+
+// executes a given HTTP method on a given resource with a given dictionary.
++ (BOOL)executeHTTPMethodForDictionary:(NSDictionary *)dict resourceString:(NSString *)resourceString httpMethod:(NSString *)httpMethod
+{
+    // create NSData from dictionary
+    BOOL success;
+    NSError* error;
+    NSData *requestData = [[NSData alloc] init];
+    requestData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
+    
+    // get server URL as string
+    NSString *urlString = [PTCommon serverURLString];
+    // build URL by adding resource path
+    //urlString = [urlString stringByAppendingString:@"resources/users"];
+    urlString = [urlString stringByAppendingString:resourceString];
+    
+    // convert to NSURL
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    
+    MWConnectionController* connectionController = [[MWConnectionController alloc] 
+                                                    initWithSuccessBlock:^(NSMutableData *data) {
+                                                        
+                                                    }
+                                                    failureBlock:^(NSError *error) {
+                                                        
+                                                    }];
+    
+    
+    NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
+    
+    NSString* requestDataLengthString = [[NSString alloc] initWithFormat:@"%d", [requestData length]];
+    
+    //[urlRequest setHTTPMethod:@"POST"]; // create
+    //[urlRequest setHTTPMethod:@"PUT"]; // update
+    [urlRequest setHTTPMethod:httpMethod];
+    [urlRequest setHTTPBody:requestData];
+    [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [urlRequest setValue:requestDataLengthString forHTTPHeaderField:@"Content-Length"];
+    [urlRequest setTimeoutInterval:30.0];
+    
+    success = [connectionController startRequestForURL:url setRequest:urlRequest];
+    return success;
+}
+
+// executes the HTTP POST method on a given resource with a given dictionary.
++ (BOOL)executePOSTforDictionary:(NSDictionary *)dict resourceString:(NSString *)resourceString {
+    
+    return [PTCommon executeHTTPMethodForDictionary:dict resourceString:resourceString httpMethod:@"POST"];
+}
+
+// executes the HTTP PUT method on a given resource with a given dictionary.
++ (BOOL)executePUTforDictionary:(NSDictionary *)dict resourceString:(NSString *)resourceString {
+    
+    return [PTCommon executeHTTPMethodForDictionary:dict resourceString:resourceString httpMethod:@"PUT"];
 }
 
 @end

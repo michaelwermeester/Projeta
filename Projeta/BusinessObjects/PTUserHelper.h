@@ -20,10 +20,14 @@
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
 + (NSMutableArray *)setAttributesFromDictionary2:(NSDictionary *)aDictionary;
 
-#pragma mark webservice methods
+#pragma mark Web service methods
+/*********************************************************************************************
+* mainWindowController parameter is used for animating the main window's progress indicator. *
+*********************************************************************************************/
 
+// creates a new user in database.
++ (BOOL)createUser:(User *)theUser mainWindowController:(id)sender;
 // updates username, first name and last name of a given user. 
-// mainWindowController parameter is user for animating the main window's progress indicator.
 + (BOOL)updateUser:(User *)theUser mainWindowController:(id)sender;
 
 @end

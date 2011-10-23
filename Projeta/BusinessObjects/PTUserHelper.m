@@ -86,7 +86,31 @@
 
 #pragma mark Web service methods
 
-// + (void)updateUser:(User *)theUser
+// creates a new user in database.
+// mainWindowController parameter is used for animating the main window's progress indicator.
++ (BOOL)createUser:(User *)theUser mainWindowController:(id)sender {
+    
+    BOOL success = NO;
+    
+    if ([sender isKindOfClass:[MainWindowController class]]) {
+        // start animating the main window's circular progress indicator.
+        [sender startProgressIndicatorAnimation];
+    }
+    
+    
+    
+    
+    if ([sender isKindOfClass:[MainWindowController class]]) {
+        // start animating the main window's circular progress indicator.
+        [sender stopProgressIndicatorAnimation];
+    }
+    
+    return success;
+}
+
+
+// updates username, first name and last name of a given user. 
+// mainWindowController parameter is used for animating the main window's progress indicator.
 + (BOOL)updateUser:(User *)theUser mainWindowController:(id)sender
 {
     BOOL success = NO;
@@ -100,43 +124,13 @@
     //NSDictionary *dict = [theUser dictionaryWithValuesForKeys:[theUser allKeys]];
     // update username, first name, last name and email address
     NSDictionary *dict = [theUser dictionaryWithValuesForKeys:[theUser namesEmailKeys]];
+
+    // API resource string.
+    NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/users/update"];
     
-    // create NSData from dictionary
-    NSError* error;
-    NSData *requestData = [[NSData alloc] init];
-    requestData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
+    // execute the PUT method on the webservice to update the record in the database.
+    success = [PTCommon executePUTforDictionary:dict resourceString:resourceString];
     
-    // get server URL as string
-    NSString *urlString = [PTCommon serverURLString];
-    // build URL by adding resource path
-    //urlString = [urlString stringByAppendingString:@"resources/users"];
-    urlString = [urlString stringByAppendingString:@"resources/users/update"];
-    
-    // convert to NSURL
-    NSURL *url = [NSURL URLWithString:urlString];
-    
-    
-    MWConnectionController* connectionController = [[MWConnectionController alloc] 
-                                                    initWithSuccessBlock:^(NSMutableData *data) {
-                                                        
-                                                    }
-                                                    failureBlock:^(NSError *error) {
-                                                        
-                                                    }];
-    
-    
-    NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
-    
-    NSString* requestDataLengthString = [[NSString alloc] initWithFormat:@"%d", [requestData length]];
-    
-    //[urlRequest setHTTPMethod:@"POST"]; // create
-    [urlRequest setHTTPMethod:@"PUT"]; // update
-    [urlRequest setHTTPBody:requestData];
-    [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [urlRequest setValue:requestDataLengthString forHTTPHeaderField:@"Content-Length"];
-    [urlRequest setTimeoutInterval:30.0];
-    
-    success = [connectionController startRequestForURL:url setRequest:urlRequest];
     
     if ([sender isKindOfClass:[MainWindowController class]]) {
         // start animating the main window's circular progress indicator.

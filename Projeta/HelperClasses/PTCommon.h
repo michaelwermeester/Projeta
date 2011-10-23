@@ -19,4 +19,13 @@
 // Date format returned by the webservice: 2011-08-26T18:25:36+02:00
 + (NSDate*)dateFromJSONString:(NSString*)aDate;
 
+#pragma mark Web service methods
+// executes a given HTTP method on a given resource with a given dictionary.
++ (BOOL)executeHTTPMethodForDictionary:(NSDictionary *)dict resourceString:(NSString *)resourceString httpMethod:(NSString *)httpMethod;
+
+// executes the HTTP POST method on a given resource with a given dictionary.
++ (BOOL)executePOSTforDictionary:(NSDictionary *)dict resourceString:(NSString *)resourceString;
+// executes the HTTP PUT method on a given resource with a given dictionary.
++ (BOOL)executePUTforDictionary:(NSDictionary *)dict resourceString:(NSString *)resourceString;
+
 @end
