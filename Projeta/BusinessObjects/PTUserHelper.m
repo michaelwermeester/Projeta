@@ -109,7 +109,8 @@
     // get server URL as string
     NSString *urlString = [PTCommon serverURLString];
     // build URL by adding resource path
-    urlString = [urlString stringByAppendingString:@"resources/users"];
+    //urlString = [urlString stringByAppendingString:@"resources/users"];
+    urlString = [urlString stringByAppendingString:@"resources/users/update"];
     
     // convert to NSURL
     NSURL *url = [NSURL URLWithString:urlString];
