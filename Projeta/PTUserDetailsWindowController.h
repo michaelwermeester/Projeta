@@ -18,6 +18,8 @@
     NSArrayController *availableRolesArrayCtrl;
     
     PTUserManagementViewController *parentUserManagementViewCtrl;
+    
+    BOOL isNewUser;
 }
 
 
@@ -30,6 +32,7 @@
 @property (strong) IBOutlet NSArrayController *availableRolesArrayCtrl;
 // parent user management view controller.
 @property (strong) PTUserManagementViewController *parentUserManagementViewCtrl;
+@property (assign) BOOL isNewUser;
 
 // assign/remove a user role.
 - (IBAction)assignUserRoles:(id)sender;
@@ -40,5 +43,7 @@
 
 // update user roles (in database).
 - (BOOL)updateUserRoles;
+
+- (void)finishedCreatingUser:(NSMutableData*)data;
 
 @end

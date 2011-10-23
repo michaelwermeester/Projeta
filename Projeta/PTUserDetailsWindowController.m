@@ -29,6 +29,8 @@ User *userCopy;
 
 @synthesize parentUserManagementViewCtrl;
 
+@synthesize isNewUser;
+
 - (id)init
 {
     self = [super initWithWindowNibName:@"PTUserDetailsWindow"];
@@ -97,6 +99,11 @@ User *userCopy;
     NSArray *selectedRoles = [availableRolesArrayCtrl selectedObjects];
      
     for (Role *role in selectedRoles) {
+        
+        if (!user.roles) {
+            user.roles = [[NSMutableArray alloc] init];
+        }
+        
         // affect new role to user.
         [userRolesArrayCtrl addObject:role];
         
@@ -133,35 +140,85 @@ User *userCopy;
 }
 
 - (IBAction)okButtonClicked:(id)sender {
+
+    BOOL usrUpdSuc = NO;
+    BOOL __block roleUpdSuc = NO;
     
-    BOOL usrUpdSuc, roleUpdSuc;
-    
-    // update user details.
-    if ([PTUserHelper updateUser:user mainWindowController:nil] == YES) {
-        // ok.
-        usrUpdSuc = YES;
+    if (isNewUser == NO) {
+        // update user details.
+        if ([PTUserHelper updateUser:user mainWindowController:parentUserManagementViewCtrl] == YES) {
+            // ok.
+            usrUpdSuc = YES;
+            
+            // update user roles.
+            roleUpdSuc = [self updateUserRoles];
+            
+            // if updating user and its roles was successful, close this window.
+            if (usrUpdSuc == YES && roleUpdSuc == YES) {
+                // close this window.
+                [self close];
+            }
+        } else {
+            // handle error.
+        }
     } else {
-        // handle error.
-        usrUpdSuc = NO;
+        
+        usrUpdSuc = [PTUserHelper createUser:user successBlock:^(NSMutableData *data) {
+                                                    [self finishedCreatingUser:data];
+                                                    } 
+                        mainWindowController:parentUserManagementViewCtrl];
+            
     }
-    
+        
     // update user roles.
-    roleUpdSuc = [self updateUserRoles];
+    //roleUpdSuc = [self updateUserRoles];
     
-    // if updating user and its roles was successful, close this window.
-    if (usrUpdSuc == YES && roleUpdSuc == YES) {
-        // close this window.
-        [self close];
-    }
 }
 
 - (IBAction)cancelButtonClicked:(id)sender {
 
-    // cancel changes -> replace current user with previously made copy of user.
-    [[parentUserManagementViewCtrl mutableArrayValueForKey:@"arrUsr"] replaceObjectAtIndex:[parentUserManagementViewCtrl.arrUsr indexOfObject:user] withObject:userCopy];
+    if (isNewUser == NO) {
+        // cancel changes -> replace current user with previously made copy of user.
+        [[parentUserManagementViewCtrl mutableArrayValueForKey:@"arrUsr"] replaceObjectAtIndex:[parentUserManagementViewCtrl.arrUsr indexOfObject:user] withObject:userCopy];
+    } else {
+        // remove the temporary inserted/created user.
+        [[parentUserManagementViewCtrl mutableArrayValueForKey:@"arrUsr"] removeObject:user];
+    }
     
     // close this window.
     [self close];
+}
+
+- (void)finishedCreatingUser:(NSMutableData*)data {
+    NSError *error;
+    
+    NSDictionary *dict = [[NSDictionary alloc] init];
+    dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
+    
+    NSMutableArray *loggedInUserArr = [[NSMutableArray alloc] init];
+    
+    // see Cocoa and Objective-C up and running by Scott Stevenson.
+    // page 242
+    [loggedInUserArr addObjectsFromArray:[PTUserHelper setAttributesFromDictionary2:dict]];
+
+    if ([loggedInUserArr count] == 1) {
+        for (User *usr in loggedInUserArr) {
+            [[parentUserManagementViewCtrl mutableArrayValueForKey:@"arrUsr"] replaceObjectAtIndex:[parentUserManagementViewCtrl.arrUsr indexOfObject:user] withObject:usr];
+            
+            // create temporary copy of user roles. 
+            NSMutableArray* tmpUserRoles = [[NSMutableArray alloc] initWithArray:user.roles];
+            // reassign user with user returned from web-service. 
+            self.user = usr;
+            // reaffect user roles.
+            self.user.roles = tmpUserRoles;
+            
+            // update user roles.
+            if ([self updateUserRoles] == YES) {
+                // close this window.
+                [self close];
+            }
+        }
+    }
 }
 
 // update user roles (in database).
@@ -184,6 +241,7 @@ User *userCopy;
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     [dict setObject:rolesArray forKey:@"role"];
     
+    //
     // update user roles in database via web service.
     success = [PTRoleHelper updateRolesForUser:user roles:dict];
     

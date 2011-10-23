@@ -21,10 +21,10 @@
 
 #pragma mark Web service methods
 // executes a given HTTP method on a given resource with a given dictionary.
-+ (BOOL)executeHTTPMethodForDictionary:(NSDictionary *)dict resourceString:(NSString *)resourceString httpMethod:(NSString *)httpMethod;
++ (BOOL)executeHTTPMethodForDictionary:(NSDictionary *)dict resourceString:(NSString *)resourceString httpMethod:(NSString *)httpMethod successBlock:(void(^)(NSMutableData *))successBlock_;
 
 // executes the HTTP POST method on a given resource with a given dictionary.
-+ (BOOL)executePOSTforDictionary:(NSDictionary *)dict resourceString:(NSString *)resourceString;
++ (BOOL)executePOSTforDictionary:(NSDictionary *)dict resourceString:(NSString *)resourceString successBlock:(void(^)(NSMutableData *))successBlock_;
 // executes the HTTP PUT method on a given resource with a given dictionary.
 + (BOOL)executePUTforDictionary:(NSDictionary *)dict resourceString:(NSString *)resourceString;
 

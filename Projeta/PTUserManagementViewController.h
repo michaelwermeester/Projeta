@@ -38,6 +38,8 @@
 - (IBAction)deleteButtonClicked:(id)sender;
 - (IBAction)detailsButtonClicked:(id)sender;
 
+- (void)openUserDetailsWindow:(BOOL)isNewUser;
+
 //- (void)updateUser:(User *)theUser;
 
 - (void)addObservers;

@@ -175,6 +175,21 @@
 
 - (IBAction)detailsButtonClicked:(id)sender {
     
+    // open user details window. 
+    // NO means that the user already exists.
+    [self openUserDetailsWindow:NO];
+    
+        
+        //NSLog(@"items: %lu", [[PTRoleHelper rolesForUser:userDetailsWindowController.user] count]);
+        
+        //User *u = [[selectedObjects objectAtIndex:0] copy];
+        //userDetailsWindowController.user = u;
+        
+        //[NSApp runModalForWindow:[userDetailsWindowController window]];
+        //[userDetailsWindowController showWindow:self];
+}
+
+- (void)openUserDetailsWindow:(BOOL)isNewUser {
     // get selected users.
     NSArray *selectedObjects = [arrayCtrl selectedObjects];
     
@@ -183,6 +198,7 @@
         
         userDetailsWindowController = [[PTUserDetailsWindowController alloc] init];
         userDetailsWindowController.parentUserManagementViewCtrl = self;
+        userDetailsWindowController.isNewUser = isNewUser;
         userDetailsWindowController.user = [selectedObjects objectAtIndex:0];
         
         // fetch user roles.
@@ -195,7 +211,11 @@
                 return [r1.code compare:r2.code];
             }];
             
+            //if (isNewUser == NO) {
             userDetailsWindowController.user.roles = userRoles;
+            //} else {
+            //    userDetailsWindowController.user.roles = [[NSMutableArray alloc] init];
+            //}
             
             //[[userDetailsWindowController.user mutableArrayValueForKey:@"roles"] addObjectsFromArray:userRoles];
             
@@ -212,18 +232,9 @@
             }];
             
             userDetailsWindowController.availableRoles = availableRoles;
-
+            
             [userDetailsWindowController showWindow:self];
         }];
-        
-        
-        //NSLog(@"items: %lu", [[PTRoleHelper rolesForUser:userDetailsWindowController.user] count]);
-        
-        //User *u = [[selectedObjects objectAtIndex:0] copy];
-        //userDetailsWindowController.user = u;
-        
-        //[NSApp runModalForWindow:[userDetailsWindowController window]];
-        //[userDetailsWindowController showWindow:self];
     }
 }
 
@@ -321,7 +332,11 @@
     [arrayCtrl insertObject:usr atArrangedObjectIndex:([arrUsr count])];
     //[arrayCtrl insertObject:[arrayCtrl newObject] atArrangedObjectIndex:([arrUsr count])];
     
-    [self detailsButtonClicked:nil];
+    //[self detailsButtonClicked:nil];
+    
+    // open user details window. 
+    // YES means that we're creating a new user.
+    [self openUserDetailsWindow:YES];
     
     
 }

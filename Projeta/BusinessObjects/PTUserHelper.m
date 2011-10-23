@@ -88,7 +88,7 @@
 
 // creates a new user in database.
 // mainWindowController parameter is used for animating the main window's progress indicator.
-+ (BOOL)createUser:(User *)theUser mainWindowController:(id)sender {
++ (BOOL)createUser:(User *)theUser successBlock:(void(^)(NSMutableData *))successBlock_ mainWindowController:(id)sender {
     
     BOOL success = NO;
     
@@ -97,7 +97,16 @@
         [sender startProgressIndicatorAnimation];
     }
     
+    // create dictionary from User object
+    //NSDictionary *dict = [theUser dictionaryWithValuesForKeys:[theUser allKeys]];
+    // update username, first name, last name and email address
+    NSDictionary *dict = [theUser dictionaryWithValuesForKeys:[theUser namesEmailKeysWithPassword]];
+
+    // API resource string.
+    NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/users/create"];
     
+    // execute the PUT method on the webservice to update the record in the database.
+    success = [PTCommon executePOSTforDictionary:dict resourceString:resourceString successBlock:successBlock_];
     
     
     if ([sender isKindOfClass:[MainWindowController class]]) {

@@ -26,7 +26,7 @@
 *********************************************************************************************/
 
 // creates a new user in database.
-+ (BOOL)createUser:(User *)theUser mainWindowController:(id)sender;
++ (BOOL)createUser:(User *)theUser successBlock:(void(^)(NSMutableData *))successBlock_ mainWindowController:(id)sender;
 // updates username, first name and last name of a given user. 
 + (BOOL)updateUser:(User *)theUser mainWindowController:(id)sender;
 
