@@ -108,6 +108,7 @@
 
 #pragma mark JSON
 
+// generates a UUID.
 + (NSString *)GenerateUUID
 {    
     CFUUIDRef   uuid;

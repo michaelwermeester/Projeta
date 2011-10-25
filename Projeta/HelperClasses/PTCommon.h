@@ -28,4 +28,9 @@
 // executes the HTTP PUT method on a given resource with a given dictionary.
 + (BOOL)executePUTforDictionary:(NSDictionary *)dict resourceString:(NSString *)resourceString;
 
+#pragma mark JSON
+
+// generates a UUID.
++ (NSString *)GenerateUUID;
+
 @end
