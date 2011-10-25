@@ -195,14 +195,14 @@ User *userCopy;
     NSDictionary *dict = [[NSDictionary alloc] init];
     dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
     
-    NSMutableArray *loggedInUserArr = [[NSMutableArray alloc] init];
+    NSMutableArray *createdUserArray = [[NSMutableArray alloc] init];
     
     // see Cocoa and Objective-C up and running by Scott Stevenson.
     // page 242
-    [loggedInUserArr addObjectsFromArray:[PTUserHelper setAttributesFromDictionary2:dict]];
+    [createdUserArray addObjectsFromArray:[PTUserHelper setAttributesFromDictionary2:dict]];
     
-    if ([loggedInUserArr count] == 1) {
-        for (User *usr in loggedInUserArr) {
+    if ([createdUserArray count] == 1) {
+        for (User *usr in createdUserArray) {
 
             [[parentUserManagementViewCtrl mutableArrayValueForKey:@"arrUsr"] replaceObjectAtIndex:[parentUserManagementViewCtrl.arrUsr indexOfObject:user] withObject:usr];
             
