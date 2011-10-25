@@ -106,4 +106,21 @@
     return [PTCommon executeHTTPMethodForDictionary:dict resourceString:resourceString httpMethod:@"PUT" successBlock:^(NSMutableData *data){}];
 }
 
+#pragma mark JSON
+
++ (NSString *)GenerateUUID
+{    
+    CFUUIDRef   uuid;
+    CFStringRef string;
+    
+    uuid = CFUUIDCreate( NULL );
+    string = CFUUIDCreateString( NULL, uuid );
+    
+    // http://www.mikeash.com/pyblog/friday-qa-2011-09-30-automatic-reference-counting.html
+    NSString *uuidString = (__bridge NSString *)string;
+    CFRelease(string);
+    
+    return uuidString;
+}
+
 @end
