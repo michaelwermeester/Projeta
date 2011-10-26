@@ -30,4 +30,6 @@
 // updates username, first name and last name of a given user. 
 + (BOOL)updateUser:(User *)theUser mainWindowController:(id)sender;
 
++ (void)userExists:(NSString *)aUsername successBlock:(void(^)(BOOL))successBlock failureBlock:(void(^)())failureBlock;
+
 @end

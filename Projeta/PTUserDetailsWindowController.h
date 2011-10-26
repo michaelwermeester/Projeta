@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class MainWindowController;
 @class PTUserManagementViewController;
 @class Role;
 @class User;
@@ -20,6 +21,10 @@
     PTUserManagementViewController *parentUserManagementViewCtrl;
     
     BOOL isNewUser;
+    NSTextField *usernameTextField;
+    NSProgressIndicator *userNameProgressIndicator;
+    NSImageView *userNameInvalidImageView;
+    NSImageView *passwordInvalidImageView;
 }
 
 
@@ -33,6 +38,12 @@
 // parent user management view controller.
 @property (strong) PTUserManagementViewController *parentUserManagementViewCtrl;
 @property (assign) BOOL isNewUser;
+@property (strong) IBOutlet NSTextField *usernameTextField;
+// reference to the (parent) MainWindowController
+@property (assign) MainWindowController *mainWindowController;
+@property (strong) IBOutlet NSProgressIndicator *userNameProgressIndicator;
+@property (strong) IBOutlet NSImageView *userNameInvalidImageView;
+@property (strong) IBOutlet NSImageView *passwordInvalidImageView;
 
 // assign/remove a user role.
 - (IBAction)assignUserRoles:(id)sender;
@@ -45,5 +56,10 @@
 - (BOOL)updateUserRoles;
 
 - (void)finishedCreatingUser:(NSMutableData*)data;
+
+- (void)sucUserExists:(BOOL)userExists;
+- (void)failUserExists;
+
+- (void)checkUsernameExists;
 
 @end

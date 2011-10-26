@@ -9,6 +9,7 @@
 #import "PTUserDetailsWindowController.h"
 #import "PTUserManagementViewController.h"
 
+#import "MainWindowController.h"
 #import "MWConnectionController.h"
 #import "PTCommon.h"
 #import "PTRoleHelper.h"
@@ -28,8 +29,13 @@ User *userCopy;
 @synthesize userRolesTableView;
 
 @synthesize parentUserManagementViewCtrl;
+@synthesize mainWindowController;
+@synthesize userNameProgressIndicator;
+@synthesize userNameInvalidImageView;
+@synthesize passwordInvalidImageView;
 
 @synthesize isNewUser;
+@synthesize usernameTextField;
 
 - (id)init
 {
@@ -140,36 +146,40 @@ User *userCopy;
 }
 
 - (IBAction)okButtonClicked:(id)sender {
-
+    
     BOOL usrUpdSuc = NO;
     BOOL __block roleUpdSuc = NO;
     
-    if (isNewUser == NO) {
-        // update user details.
-        if ([PTUserHelper updateUser:user mainWindowController:parentUserManagementViewCtrl] == YES) {
-            // ok.
-            usrUpdSuc = YES;
-            
-            // update user roles.
-            roleUpdSuc = [self updateUserRoles];
-            
-            // if updating user and its roles was successful, close this window.
-            if (usrUpdSuc == YES && roleUpdSuc == YES) {
-                // close this window.
-                [self close];
+    if ([userNameInvalidImageView isHidden] == YES) { 
+        
+        if (isNewUser == NO) {
+            // update user details.
+            if ([PTUserHelper updateUser:user mainWindowController:parentUserManagementViewCtrl] == YES) {
+                // ok.
+                usrUpdSuc = YES;
+                
+                // update user roles.
+                roleUpdSuc = [self updateUserRoles];
+                
+                // if updating user and its roles was successful, close this window.
+                if (usrUpdSuc == YES && roleUpdSuc == YES) {
+                    // close this window.
+                    [self close];
+                }
+            } else {
+                // handle error.
             }
         } else {
-            // handle error.
-        }
-    } else {
-        
-        usrUpdSuc = [PTUserHelper createUser:user successBlock:^(NSMutableData *data) {
-                                                    [self finishedCreatingUser:data];
-                                                    } 
-                        mainWindowController:parentUserManagementViewCtrl];
             
-    }
+            usrUpdSuc = [PTUserHelper createUser:user successBlock:^(NSMutableData *data) {
+                [self finishedCreatingUser:data];
+            } 
+                            mainWindowController:parentUserManagementViewCtrl];
+            
+        }
         
+    }
+    
     // update user roles.
     //roleUpdSuc = [self updateUserRoles];
     
@@ -288,6 +298,71 @@ User *userCopy;
     [connectionController startRequestForURL:url setRequest:urlRequest];
      */
 
+}
+
+- (void)controlTextDidChange:(NSNotification *)aNotification
+{
+    // username NSTextField
+    if([aNotification object] == usernameTextField)
+    {
+        [self checkUsernameExists];
+    }
+}
+
+- (void)sucUserExists:(BOOL)userExists {
+    
+    // stop animation.
+    [userNameProgressIndicator stopAnimation:self];
+    
+    // stop animating the main window's circular progress indicator.
+    [mainWindowController stopProgressIndicatorAnimation];
+    
+    if (userExists == YES) {
+        // make invalid image visible if username exists.
+        [userNameInvalidImageView setHidden:NO];
+    } else {
+        [userNameInvalidImageView setHidden:YES];
+    }
+}
+
+- (void)failUserExists {
+    
+    // stop animation.
+    [userNameProgressIndicator stopAnimation:self];
+    
+    // stop animating the main window's circular progress indicator.
+    [mainWindowController stopProgressIndicatorAnimation];
+    
+    // make invalid image visible.
+    [userNameInvalidImageView setHidden:NO];
+}
+
+- (void)checkUsernameExists
+{
+    // start progress indicator animation.
+    [userNameProgressIndicator startAnimation:self];
+    
+    // start animating the main window's circular progress indicator.
+    [mainWindowController startProgressIndicatorAnimation];
+    
+    // if username hasn't changed.
+    if ([[usernameTextField stringValue] isEqual:[userCopy username]]) {
+        [self sucUserExists:NO];
+    }
+    // don't allow usernames shorter than 2 characters.
+    else if ([[usernameTextField stringValue] length] > 1) {
+        
+        [PTUserHelper userExists:[usernameTextField stringValue] successBlock:^(BOOL userExists){
+            [self sucUserExists:userExists];
+        } 
+                    failureBlock:^(){
+                        [self failUserExists];
+                    }];
+    } 
+    // if username is too short.
+    else {   
+        [self sucUserExists:YES];
+    }
 }
 
 @end

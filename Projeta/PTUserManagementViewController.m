@@ -198,6 +198,7 @@
         
         userDetailsWindowController = [[PTUserDetailsWindowController alloc] init];
         userDetailsWindowController.parentUserManagementViewCtrl = self;
+        userDetailsWindowController.mainWindowController = mainWindowController;
         userDetailsWindowController.isNewUser = isNewUser;
         userDetailsWindowController.user = [selectedObjects objectAtIndex:0];
         

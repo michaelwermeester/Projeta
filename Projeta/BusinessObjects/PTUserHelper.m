@@ -110,7 +110,7 @@
     
     
     if ([sender isKindOfClass:[MainWindowController class]]) {
-        // start animating the main window's circular progress indicator.
+        // stop animating the main window's circular progress indicator.
         [sender stopProgressIndicatorAnimation];
     }
     
@@ -142,11 +142,50 @@
     
     
     if ([sender isKindOfClass:[MainWindowController class]]) {
-        // start animating the main window's circular progress indicator.
+        // stop animating the main window's circular progress indicator.
         [sender stopProgressIndicatorAnimation];
     }
     
     return success;
+}
+
++ (void)userExists:(NSString *)aUsername successBlock:(void(^)(BOOL))successBlock failureBlock:(void(^)())failureBlock {
+    
+    // get server URL as string
+    NSString *urlString = [PTCommon serverURLString];
+    // build URL by adding resource path
+    urlString = [urlString stringByAppendingString:@"resources/users/exists/"];
+    urlString = [urlString stringByAppendingString:aUsername];
+    
+    // convert to NSURL
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    
+    // NSURLConnection - MWConnectionController
+    MWConnectionController* connectionController = [[MWConnectionController alloc] 
+                                                    initWithSuccessBlock:^(NSMutableData *data) {
+                                                        
+                                                        NSString* resStr = [[NSString alloc] initWithData:data
+                                                                encoding:NSUTF8StringEncoding];
+                                                        
+                                                        if ([resStr isEqual:@"1"]) {
+                                                            // user exists.
+                                                            successBlock(YES);
+                                                        } else {
+                                                            successBlock(NO);
+                                                        }
+                                                        
+                                                    }
+                                                    failureBlock:^(NSError *error) {
+                                                        
+                                                        failureBlock();
+                                                    }];
+    
+    
+    NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
+    [urlRequest setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
+    
+    [connectionController startRequestForURL:url setRequest:urlRequest];
 }
 
 @end
