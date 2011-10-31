@@ -20,6 +20,7 @@
 
 + (Usergroup *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
-+ (NSMutableArray *)setAttributesFromJSONDictionary:(NSDictionary *)aDictionary;
+
+- (NSArray *)allKeys;
 
 @end

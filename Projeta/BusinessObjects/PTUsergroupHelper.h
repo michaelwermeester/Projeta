@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PTUsergroupHelper : NSObject
+@interface PTUsergroupHelper : NSObject {
+    NSArray *usergroup;
+}
+
+@property (nonatomic, copy) NSArray *usergroup;
+
++ (PTUsergroupHelper *)instanceFromDictionary:(NSDictionary *)aDictionary;
+- (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
++ (NSMutableArray *)setAttributesFromJSONDictionary:(NSDictionary *)aDictionary;
 
 @end

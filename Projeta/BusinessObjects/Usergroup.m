@@ -33,27 +33,12 @@
     self.usergroupId = [NSDecimalNumber decimalNumberWithString:(NSString *)[aDictionary objectForKey:@"usergroupId"]];
 }
 
-+ (NSMutableArray *)setAttributesFromJSONDictionary:(NSDictionary *)aDictionary {
+// keys needed for updating usergroup.
+- (NSArray *)allKeys {
     
-    if (!aDictionary) {
-        return nil;
-    }
+    NSArray *retArr = [[NSArray alloc] initWithObjects: @"usergroupId", @"code", @"comment", nil];
     
-    
-    NSArray *receivedUsergroups = [aDictionary objectForKey:@"usergroup"];
-    if (receivedUsergroups) {
-        
-        NSMutableArray *parsedUsergroups = [NSMutableArray arrayWithCapacity:[receivedUsergroups count]];
-        for (id item in receivedUsergroups) {
-            if ([item isKindOfClass:[NSDictionary class]]) {
-                [parsedUsergroups addObject:[Usergroup instanceFromDictionary:item]];
-            }
-        }
-        
-        return parsedUsergroups;
-    }
-    
-    return nil;
+    return retArr;
 }
 
 @end
