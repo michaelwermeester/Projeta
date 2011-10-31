@@ -13,6 +13,7 @@
 #import "PTUserManagementViewController.h"
 
 @class MainWindowController;
+@class PTGroupManagementViewController;
 
 @interface PTMainWindowViewController : NSViewController <PXSourceListDataSource, PXSourceListDelegate> {
     NSMutableArray *sourceListItems;
@@ -34,6 +35,8 @@
 @property (strong) PTTaskListViewController *taskListViewController;
 // user-management view
 @property (strong) PTUserManagementViewController *userManagementViewController;
+// group-management view
+@property (strong) PTGroupManagementViewController *groupManagementViewController;
 
 // removes any view from rightView
 - (void)removeViewsFromRightView;

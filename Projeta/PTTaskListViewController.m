@@ -95,13 +95,12 @@
     //NSDictionary *dict = [[NSDictionary alloc] init];
     NSDictionary *dict = [[NSDictionary alloc] init];
     dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
-    
     //NSLog(@"DESC: %@", [dict description]);
     
     // see Cocoa and Objective-C up and running by Scott Stevenson.
     // page 242
     [[self mutableArrayValueForKey:@"arrTask"] addObjectsFromArray:[PTTaskHelper setAttributesFromJSONDictionary:dict]];
-    
+
     // stop animating the main window's circular progress indicator.
     [mainWindowController stopProgressIndicatorAnimation];
 }

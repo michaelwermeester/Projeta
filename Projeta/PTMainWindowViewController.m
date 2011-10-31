@@ -13,6 +13,7 @@
 #import "PTCommon.h"
 #import "PTRoleHelper.h"
 #import "PTUserHelper.h"
+#import "PTGroupManagementViewController.h"
 #import "PTUserManagementViewController.h"
 #import "Role.h"
 
@@ -33,6 +34,7 @@ static User *_loggedInUser = nil;
 @synthesize projectListViewController;
 @synthesize taskListViewController;
 @synthesize userManagementViewController;
+@synthesize groupManagementViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -240,6 +242,26 @@ static User *_loggedInUser = nil;
                 [userManagementViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
             }
         }
+        else if (identifier == @"groupAdmin") {
+            
+            [self removeViewsFromRightView];
+            
+            if (!groupManagementViewController) {
+                
+                groupManagementViewController = [[PTGroupManagementViewController alloc] init];
+                
+                // set reference to (parent) window
+                [groupManagementViewController setMainWindowController:mainWindowController];
+                
+                // resize the view to fit and fill the right splitview view
+                [groupManagementViewController.view setFrameSize:rightView.frame.size];
+                
+                [self.rightView addSubview:groupManagementViewController.view];
+                
+                // auto resize the view.
+                [groupManagementViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
+            }
+        }
         else {
             // free some memory
             [self removeViewsFromRightView];
@@ -265,6 +287,11 @@ static User *_loggedInUser = nil;
     if (userManagementViewController) {
         [userManagementViewController.view removeFromSuperview];
         userManagementViewController = nil;
+    }
+    
+    if (groupManagementViewController) {
+        [groupManagementViewController.view removeFromSuperview];
+        groupManagementViewController = nil;
     }
 }
 
@@ -489,9 +516,12 @@ static User *_loggedInUser = nil;
         {
             SourceListItem *administrationHeaderItem = [SourceListItem itemWithTitle:NSLocalizedString(@"ADMINISTRATION", nil) identifier:@"administrationHeader"];
             
+            // user admin.
             SourceListItem *userAdminItem = [SourceListItem itemWithTitle:@"Users" identifier:@"userAdmin"];
+            // group admin.
+            SourceListItem *groupAdminItem = [SourceListItem itemWithTitle:@"Groups" identifier:@"groupAdmin"];
             
-            [administrationHeaderItem setChildren:[NSArray arrayWithObjects:userAdminItem, nil]];
+            [administrationHeaderItem setChildren:[NSArray arrayWithObjects:userAdminItem, groupAdminItem, nil]];
             
             [sourceListItems addObject:administrationHeaderItem];
             
