@@ -15,11 +15,15 @@
 
 @synthesize dateCreated = dateCreated;
 @synthesize endDate = endDate;
+@synthesize endDateReal = endDateReal;
 @synthesize flagPublic = flagPublic;
+@synthesize completed = completed;
+@synthesize canceled = canceled;
 @synthesize projectDescription = projectDescription;
 @synthesize projectId = projectId;
 @synthesize projectTitle = projectTitle;
 @synthesize startDate = startDate;
+@synthesize startDateReal = startDateReal;
 @synthesize userCreated = userCreated;
 @synthesize childProject = childProject;
 
@@ -57,8 +61,12 @@
     self.dateCreated = [PTCommon dateFromJSONString:[aDictionary objectForKey:@"dateCreated"]];
     self.endDate = [PTCommon dateFromJSONString:[aDictionary objectForKey:@"endDate"]];
     self.startDate = [PTCommon dateFromJSONString:[aDictionary objectForKey:@"startDate"]];
+    self.endDateReal = [PTCommon dateFromJSONString:[aDictionary objectForKey:@"endDateReal"]];
+    self.startDateReal = [PTCommon dateFromJSONString:[aDictionary objectForKey:@"startDateReal"]];
     
     self.flagPublic = [(NSString *)[aDictionary objectForKey:@"flagPublic"] boolValue];
+    self.completed = [(NSString *)[aDictionary objectForKey:@"completed"] boolValue];
+    self.canceled = [(NSString *)[aDictionary objectForKey:@"canceled"] boolValue];
     
     self.projectDescription = [aDictionary objectForKey:@"projectDescription"];
     

@@ -40,7 +40,7 @@
     // get server URL as string
     NSString *urlString = [PTCommon serverURLString];
     // build URL by adding resource path
-    urlString = [urlString stringByAppendingString:@"resources/be.luckycode.projetawebservice.project/"];
+    urlString = [urlString stringByAppendingString:@"resources/projects/"];
     
     // convert to NSURL
     NSURL *url = [NSURL URLWithString:urlString];
@@ -64,7 +64,7 @@
     [connectionController startRequestForURL:url setRequest:urlRequest];
     
     // set label of 'detail view' toolbar item to 'Project view'.
-    [[mainWindowController detailViewToolbarItem] setLabel:@"Project view"];
+    [[mainWindowController detailViewToolbarItem] setLabel:NSLocalizedString(@"Project view", nil)];
 }
 
 - (void)loadView

@@ -51,7 +51,7 @@
     // get server URL as string
     NSString *urlString = [PTCommon serverURLString];
     // build URL by adding resource path
-    urlString = [urlString stringByAppendingString:@"resources/be.luckycode.projetawebservice.task/"];
+    urlString = [urlString stringByAppendingString:@"resources/tasks/"];
     
     // convert to NSURL
     NSURL *url = [NSURL URLWithString:urlString];
@@ -74,7 +74,7 @@
     [connectionController startRequestForURL:url setRequest:urlRequest];
     
     // set label of 'detail view' toolbar item to 'Task view'.
-    [[mainWindowController detailViewToolbarItem] setLabel:@"Task view"];
+    [[mainWindowController detailViewToolbarItem] setLabel:NSLocalizedString(@"Task view", nil)];
 }
 
 - (void)loadView

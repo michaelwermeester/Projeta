@@ -15,22 +15,30 @@
     NSDate *dateCreated;
     NSDate *endDate;
     BOOL flagPublic;
+    BOOL completed;
+    BOOL canceled;
     NSDate *projectDescription;
     NSNumber *projectId;
     NSString *projectTitle;
     NSDate *startDate;
     User *userCreated;
+    NSDate *startDateReal;
+    NSDate *endDateReal;
     
     NSMutableArray *childProject;
 }
 
 @property (nonatomic, copy) NSDate *dateCreated;
 @property (nonatomic, copy) NSDate *endDate;
+@property (nonatomic, copy) NSDate *endDateReal;
 @property (nonatomic, assign) BOOL flagPublic;
+@property (nonatomic, assign) BOOL completed;
+@property (nonatomic, assign) BOOL canceled;
 @property (nonatomic, copy) NSDate *projectDescription;
 @property (nonatomic, copy) NSNumber *projectId;
 @property (nonatomic, copy) NSString *projectTitle;
 @property (nonatomic, copy) NSDate *startDate;
+@property (nonatomic, copy) NSDate *startDateReal;
 @property (nonatomic, retain) User *userCreated;
 @property (strong) NSMutableArray *childProject;
 
