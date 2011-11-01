@@ -85,7 +85,14 @@
     
     // register for detecting changes in table view
     //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editingDidEnd:)
-      //                                           name:NSControlTextDidEndEditingNotification object:nil];
+      //   name:NSControlTextDidEndEditingNotification object:nil];
+    
+    [[mainWindowController searchField] bind:@"predicate" toObject:arrayCtrl withKeyPath:@"filterPredicate" options:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      @"predicate", NSDisplayNameBindingOption,
+      @"(username contains[cd] $value) OR (firstName contains[cd] $value) OR (lastName contains[cd] $value) OR (emailAddress contains[cd] $value)",
+      NSPredicateFormatBindingOption,
+      nil]];
 }
 
 - (void)addObservers {
@@ -97,12 +104,12 @@
       //                                           name:NSControlTextDidEndEditingNotification object:nil];
 }
 
-/*- (void)loadView
+- (void)loadView
 {
     [super loadView];
     
     [self viewDidLoad];
-}*/
+}
 
 - (void)removeObservers {
     

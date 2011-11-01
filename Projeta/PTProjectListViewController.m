@@ -65,6 +65,14 @@
     
     // set label of 'detail view' toolbar item to 'Project view'.
     [[mainWindowController detailViewToolbarItem] setLabel:NSLocalizedString(@"Project view", nil)];
+    
+    // bind the main window's search field to the arraycontroller.
+    [[mainWindowController searchField] bind:@"predicate" toObject:prjArrayCtrl withKeyPath:@"filterPredicate" options:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      @"predicate", NSDisplayNameBindingOption,
+      @"projectTitle contains[cd] $value",
+      NSPredicateFormatBindingOption,
+      nil]];
 }
 
 - (void)loadView

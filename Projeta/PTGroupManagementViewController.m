@@ -6,6 +6,7 @@
 //  Copyright (c) 2011 Michael Wermeester. All rights reserved.
 //
 
+#import "MainWindowController.h"
 #import "MWConnectionController.h"
 #import "PTCommon.h"
 #import "PTGroupManagementViewController.h"
@@ -32,6 +33,24 @@
     }
     
     return self;
+}
+
+- (void)viewDidLoad {
+    
+    // bind the main window's search field to the arraycontroller.
+    [[mainWindowController searchField] bind:@"predicate" toObject:usergroupArrayCtrl withKeyPath:@"filterPredicate" options:[NSDictionary dictionaryWithObjectsAndKeys:
+                    @"predicate", NSDisplayNameBindingOption,
+                    @"(code contains[cd] $value) OR (comment contains[cd] $value)",
+                    NSPredicateFormatBindingOption,
+                    nil]
+     ];
+}
+
+- (void)loadView
+{
+    [super loadView];
+    
+    [self viewDidLoad];
 }
 
 // Fetch user groups from webservice.

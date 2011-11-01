@@ -18,6 +18,7 @@
 @synthesize projectViewController;
 @synthesize detailViewToolbarItem;
 @synthesize progressCount;
+@synthesize searchField;
 
 - (id)init
 {

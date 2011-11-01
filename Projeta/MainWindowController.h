@@ -15,6 +15,7 @@
     NSView *mainView;
     NSProgressIndicator *progressIndicator;
     NSToolbarItem *detailViewToolbarItem;
+    NSSearchField *searchField;
 }
 
 @property (strong) IBOutlet NSView *mainView;
@@ -28,6 +29,7 @@
 
 // used for NSProgressIndicator
 @property (assign) NSInteger progressCount;
+@property (strong) IBOutlet NSSearchField *searchField;
 
 - (IBAction)switchToMainView:(id)sender;
 - (IBAction)switchToProjectView:(id)sender;

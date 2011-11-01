@@ -27,6 +27,12 @@
 @synthesize userCreated = userCreated;
 @synthesize childProject = childProject;
 
+//@synthesize project;
+
+/*- (Project *)project {
+    return self;
+}*/
+
 + (Project *)instanceFromDictionary:(NSDictionary *)aDictionary {
     
     Project *instance = [[Project alloc] init];
