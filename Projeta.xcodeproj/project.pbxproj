@@ -198,9 +198,9 @@
 		4CF7C868145ED2A400CEB50C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PTGroupManagementView.xib; sourceTree = "<group>"; };
 		4CF7C86A145ED2AB00CEB50C /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/PTGroupManagementView.xib; sourceTree = "<group>"; };
 		4CF7C86B145ED2AD00CEB50C /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/PTGroupManagementView.xib; sourceTree = "<group>"; };
-		4CF7C86C145F42C700CEB50C /* Usergroup.h */ = {isa = PBXFileReference; fileEncoding = 4; path = Usergroup.h; sourceTree = "<group>"; };
+		4CF7C86C145F42C700CEB50C /* Usergroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Usergroup.h; sourceTree = "<group>"; };
 		4CF7C86D145F42C700CEB50C /* Usergroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Usergroup.m; sourceTree = "<group>"; };
-		4CF7C86F145F430200CEB50C /* PTUsergroupHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; path = PTUsergroupHelper.h; sourceTree = "<group>"; };
+		4CF7C86F145F430200CEB50C /* PTUsergroupHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTUsergroupHelper.h; sourceTree = "<group>"; };
 		4CF7C870145F430200CEB50C /* PTUsergroupHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTUsergroupHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -384,6 +384,7 @@
 				4C32ECB213DDE2C3009E7131 /* Helper Classes */,
 				4C32ECB613DDE492009E7131 /* Business Objects */,
 				4CBCEA1B13AD161500835F30 /* Preferences */,
+				4C770C92145FFD6900A11E5A /* Projects */,
 				4C21F23C13C264CC00462C43 /* Users */,
 				4C74A62613A2BFA100E7DBF6 /* ProjetaAppDelegate.h */,
 				4C74A62713A2BFA100E7DBF6 /* ProjetaAppDelegate.m */,
@@ -442,6 +443,13 @@
 				4C74A63D13A2BFA100E7DBF6 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4C770C92145FFD6900A11E5A /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Projects;
 			sourceTree = "<group>";
 		};
 		4CBCEA1B13AD161500835F30 /* Preferences */ = {
