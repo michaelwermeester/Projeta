@@ -41,6 +41,8 @@
 		4C74A63F13A2BFA100E7DBF6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C74A63D13A2BFA100E7DBF6 /* InfoPlist.strings */; };
 		4C74A64113A2BFA100E7DBF6 /* ProjetaTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 4C74A64013A2BFA100E7DBF6 /* ProjetaTests.h */; };
 		4C74A64313A2BFA100E7DBF6 /* ProjetaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C74A64213A2BFA100E7DBF6 /* ProjetaTests.m */; };
+		4C770C96145FFE1F00A11E5A /* PTProjectDetailsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C770C95145FFE1F00A11E5A /* PTProjectDetailsWindowController.m */; };
+		4C770C99145FFE6200A11E5A /* PTProjectDetailsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C770C9B145FFE6200A11E5A /* PTProjectDetailsWindow.xib */; };
 		4C779FD4142699F500D8C8A0 /* projeta_icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 4C779FD3142699F500D8C8A0 /* projeta_icon.icns */; };
 		4C779FD714290E9300D8C8A0 /* Role.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C779FD614290E9300D8C8A0 /* Role.m */; };
 		4C779FDA1429305900D8C8A0 /* PTRoleHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C779FD91429305900D8C8A0 /* PTRoleHelper.m */; };
@@ -144,6 +146,11 @@
 		4C74A63E13A2BFA100E7DBF6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4C74A64013A2BFA100E7DBF6 /* ProjetaTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProjetaTests.h; sourceTree = "<group>"; };
 		4C74A64213A2BFA100E7DBF6 /* ProjetaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjetaTests.m; sourceTree = "<group>"; };
+		4C770C94145FFE1F00A11E5A /* PTProjectDetailsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTProjectDetailsWindowController.h; sourceTree = "<group>"; };
+		4C770C95145FFE1F00A11E5A /* PTProjectDetailsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTProjectDetailsWindowController.m; sourceTree = "<group>"; };
+		4C770C9A145FFE6200A11E5A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PTProjectDetailsWindow.xib; sourceTree = "<group>"; };
+		4C770C9C145FFE6B00A11E5A /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/PTProjectDetailsWindow.xib; sourceTree = "<group>"; };
+		4C770C9D145FFE6D00A11E5A /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/PTProjectDetailsWindow.xib; sourceTree = "<group>"; };
 		4C779FD3142699F500D8C8A0 /* projeta_icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = projeta_icon.icns; sourceTree = "<group>"; };
 		4C779FD514290E9300D8C8A0 /* Role.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Role.h; sourceTree = "<group>"; };
 		4C779FD614290E9300D8C8A0 /* Role.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Role.m; sourceTree = "<group>"; };
@@ -448,6 +455,9 @@
 		4C770C92145FFD6900A11E5A /* Projects */ = {
 			isa = PBXGroup;
 			children = (
+				4C770C94145FFE1F00A11E5A /* PTProjectDetailsWindowController.h */,
+				4C770C95145FFE1F00A11E5A /* PTProjectDetailsWindowController.m */,
+				4C770C9B145FFE6200A11E5A /* PTProjectDetailsWindow.xib */,
 			);
 			name = Projects;
 			sourceTree = "<group>";
@@ -578,6 +588,7 @@
 				4C779FD4142699F500D8C8A0 /* projeta_icon.icns in Resources */,
 				4CE9D7B9142E7BC700CB43AC /* PTUserDetailsWindow.xib in Resources */,
 				4CF7C867145ED2A400CEB50C /* PTGroupManagementView.xib in Resources */,
+				4C770C99145FFE6200A11E5A /* PTProjectDetailsWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -665,6 +676,7 @@
 				4CF7C864145ED0E500CEB50C /* PTGroupManagementViewController.m in Sources */,
 				4CF7C86E145F42C700CEB50C /* Usergroup.m in Sources */,
 				4CF7C871145F430200CEB50C /* PTUsergroupHelper.m in Sources */,
+				4C770C96145FFE1F00A11E5A /* PTProjectDetailsWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -767,6 +779,16 @@
 				4C74A63E13A2BFA100E7DBF6 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4C770C9B145FFE6200A11E5A /* PTProjectDetailsWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C770C9A145FFE6200A11E5A /* en */,
+				4C770C9C145FFE6B00A11E5A /* fr */,
+				4C770C9D145FFE6D00A11E5A /* de */,
+			);
+			name = PTProjectDetailsWindow.xib;
 			sourceTree = "<group>";
 		};
 		4CA7D6BB14080685009D11F5 /* PTProjectListView.xib */ = {

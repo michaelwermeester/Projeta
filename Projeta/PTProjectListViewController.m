@@ -13,6 +13,7 @@
 #import "PTCommon.h"
 #import "Project.h"
 #import "PTProjectHelper.h"
+#import "PTProjectDetailsWindowController.h"
 
 @implementation PTProjectListViewController
 
@@ -124,6 +125,10 @@
     NSLog(@"Failed %@ with code %ld and with userInfo %@",[error domain],[error code],[error userInfo]);
 }
 
+- (IBAction)addNewProjectButtonClicked:(id)sender {
+    [self openProjectDetailsWindow:YES];
+}
+
 
 -(void)insertObject:(Project *)p inArrPrjAtIndex:(NSUInteger)index {
     [arrPrj insertObject:p atIndex:index];
@@ -139,6 +144,35 @@
 
 -(NSArray *)arrPrj {
     return arrPrj;
+}
+
+- (void)openProjectDetailsWindow:(BOOL)isNewProject {
+    // get selected users.
+    NSArray *selectedObjects = [prjArrayCtrl selectedObjects];
+    
+    // if a user is selected, open the window to show its user details.
+    if ([selectedObjects count] == 1) {
+        
+        projectDetailsWindowController = [[PTProjectDetailsWindowController alloc] init];
+        projectDetailsWindowController.parentProjectListViewController = self;
+        projectDetailsWindowController.mainWindowController = mainWindowController;
+        projectDetailsWindowController.isNewProject = isNewProject;
+        projectDetailsWindowController.project = [selectedObjects objectAtIndex:0];
+        
+        // fetch available roles.
+        /*[PTRoleHelper rolesAvailable:^(NSMutableArray *availableRoles){
+            
+            // sort available roles alphabetically.
+            [availableRoles sortUsingComparator:^NSComparisonResult(Role *r1, Role *r2) {
+                
+                return [r1.code compare:r2.code];
+            }];
+            
+            projectDetailsWindowController.availableRoles = availableRoles;*/
+            
+            [projectDetailsWindowController showWindow:self];
+        //}];
+    }
 }
 
 @end

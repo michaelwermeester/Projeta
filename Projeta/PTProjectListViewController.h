@@ -10,11 +10,15 @@
 #import "Project.h"
 
 @class MainWindowController;
+@class PTProjectDetailsWindowController;
 
 @interface PTProjectListViewController : NSViewController {
     NSMutableArray *arrPrj;     // array which holds the projects
     NSArrayController *prjArrayCtrl;    // array controller
     NSCollectionView *prjCollectionView;
+    
+    // user details window
+    PTProjectDetailsWindowController *projectDetailsWindowController;
 }
 
 @property (strong) NSMutableArray *arrPrj;
@@ -25,5 +29,9 @@
 
 - (void)requestFinished:(NSMutableData*)data;
 - (void)requestFailed:(NSError*)error;
+
+- (IBAction)addNewProjectButtonClicked:(id)sender;
+
+- (void)openProjectDetailsWindow:(BOOL)isNewProject;
 
 @end

@@ -314,8 +314,7 @@ static User *_loggedInUser = nil;
 {
     sourceListItems = [[NSMutableArray alloc] init];
 	
-	//Set up the "Library" parent item and children
-	//SourceListItem *libraryItem = [SourceListItem itemWithTitle:@"LIBRARY" identifier:@"library"];
+	//Set up the "Projects" parent item and children
     SourceListItem *projectsHeaderItem = [SourceListItem itemWithTitle:NSLocalizedString(@"PROJECTS", nil) identifier:@"projectsHeader"];
 	SourceListItem *projectsItem = [SourceListItem itemWithTitle:@"Projects" identifier:@"projects"];
 	[projectsItem setIcon:[NSImage imageNamed:@"music.png"]];
@@ -330,8 +329,8 @@ static User *_loggedInUser = nil;
 							  audiobooksItem, nil]];
     
 	
-	//Set up the "Playlists" parent item and children
-	SourceListItem *playlistsItem = [SourceListItem itemWithTitle:@"PLAYLISTS" identifier:@"playlists"];
+	//Set up the "Tasks" parent item and children
+	SourceListItem *tasksHeaderItem = [SourceListItem itemWithTitle:@"TASKS" identifier:@"tasks"];
 	SourceListItem *playlist1Item = [SourceListItem itemWithTitle:@"Playlist1" identifier:@"playlist1"];
 	
 	//Create a second-level group to demonstrate
@@ -348,11 +347,15 @@ static User *_loggedInUser = nil;
 	[playlistGroupItem setIcon:[NSImage imageNamed:@"playlist.png"]];
 	[playlistGroup setChildren:[NSArray arrayWithObject:playlistGroupItem]];
 	
-	[playlistsItem setChildren:[NSArray arrayWithObjects:playlist1Item, playlistGroup,playlist2Item,
+	[tasksHeaderItem setChildren:[NSArray arrayWithObjects:playlist1Item, playlistGroup,playlist2Item,
 								playlist3Item, nil]];
+    
+    //Set up the "Bugs" parent item and children
+	SourceListItem *bugsHeaderItem = [SourceListItem itemWithTitle:@"BUGS" identifier:@"tasks"];
 	
 	[sourceListItems addObject:projectsHeaderItem];
-	[sourceListItems addObject:playlistsItem];
+	[sourceListItems addObject:tasksHeaderItem];
+    [sourceListItems addObject:bugsHeaderItem];
 	
 	[sourceList reloadData];
     
@@ -517,11 +520,15 @@ static User *_loggedInUser = nil;
             SourceListItem *administrationHeaderItem = [SourceListItem itemWithTitle:NSLocalizedString(@"ADMINISTRATION", nil) identifier:@"administrationHeader"];
             
             // user admin.
-            SourceListItem *userAdminItem = [SourceListItem itemWithTitle:@"Users" identifier:@"userAdmin"];
+            SourceListItem *userAdminItem = [SourceListItem itemWithTitle:NSLocalizedString(@"Users", nil) identifier:@"userAdmin"];
             // group admin.
-            SourceListItem *groupAdminItem = [SourceListItem itemWithTitle:@"Groups" identifier:@"groupAdmin"];
+            SourceListItem *groupAdminItem = [SourceListItem itemWithTitle:NSLocalizedString(@"Groups", nil) identifier:@"groupAdmin"];
+            // clients admin.
+            SourceListItem *clientAdminItem = [SourceListItem itemWithTitle:NSLocalizedString(@"Clients", nil) identifier:@"clientAdmin"];
+            // contacts admin.
+            SourceListItem *contactAdminItem = [SourceListItem itemWithTitle:NSLocalizedString(@"Contacts", nil) identifier:@"contactAdmin"];
             
-            [administrationHeaderItem setChildren:[NSArray arrayWithObjects:userAdminItem, groupAdminItem, nil]];
+            [administrationHeaderItem setChildren:[NSArray arrayWithObjects:userAdminItem, groupAdminItem, clientAdminItem, contactAdminItem, nil]];
             
             [sourceListItems addObject:administrationHeaderItem];
             
