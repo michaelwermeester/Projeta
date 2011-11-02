@@ -21,6 +21,7 @@
 @synthesize canceled = canceled;
 @synthesize projectDescription = projectDescription;
 @synthesize projectId = projectId;
+@synthesize parentProjectId = parentProjectId;
 @synthesize projectTitle = projectTitle;
 @synthesize startDate = startDate;
 @synthesize startDateReal = startDateReal;
@@ -81,6 +82,10 @@
     
     self.userCreated = [User instanceFromDictionary:[aDictionary objectForKey:@"userCreated"]];
     
+    if ([[aDictionary objectForKey:@"parentProjectId"] isKindOfClass:[NSArray class]] == NO) {
+        self.parentProjectId = [NSDecimalNumber decimalNumberWithString:(NSString *)[aDictionary objectForKey:@"parentProjectId"]];
+    }
+    
     
     // child projects
     if ([[aDictionary objectForKey:@"childProject"] isKindOfClass:[NSArray class]]) {
@@ -100,6 +105,13 @@
         }
     }
     
+}
+
+- (BOOL)isLeaf {
+    if ([childProject count] > 0)
+        return NO;
+    else
+        return YES;
 }
 
 @end

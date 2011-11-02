@@ -19,6 +19,7 @@
     BOOL canceled;
     NSDate *projectDescription;
     NSNumber *projectId;
+    NSNumber *parentProjectId;
     NSString *projectTitle;
     NSDate *startDate;
     User *userCreated;
@@ -38,6 +39,7 @@
 @property (nonatomic, assign) BOOL canceled;
 @property (nonatomic, copy) NSDate *projectDescription;
 @property (nonatomic, copy) NSNumber *projectId;
+@property (nonatomic, copy) NSNumber *parentProjectId;
 @property (nonatomic, copy) NSString *projectTitle;
 @property (nonatomic, copy) NSDate *startDate;
 @property (nonatomic, copy) NSDate *startDateReal;
@@ -47,5 +49,7 @@
 
 + (Project *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
+
+- (BOOL)isLeaf;
 
 @end

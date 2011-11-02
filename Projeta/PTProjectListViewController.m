@@ -19,6 +19,7 @@
 
 @synthesize arrPrj;
 @synthesize mainWindowController;
+@synthesize prjTreeController;
 @synthesize prjArrayCtrl;
 @synthesize prjCollectionView;
 
@@ -134,7 +135,61 @@
 }
 
 - (IBAction)addNewProjectButtonClicked:(id)sender {
-    [self openProjectDetailsWindow:YES];
+    
+    NSNumber *parentID;
+    
+    NSArray *selectedObjects = [prjTreeController selectedObjects];
+    
+    // if a project is selected, open the window to show its details.
+    if ([selectedObjects count] == 1) {
+        parentID = [[selectedObjects objectAtIndex:0] projectId];
+    }
+    
+    Project *prj = [[Project alloc] init];
+    prj.parentProjectId = parentID;
+    
+    [prjTreeController add:prj];
+    
+    //[prjTreeController insertObject:prj atArrangedObjectIndex:([arrPrj count])];
+    
+    [self openProjectDetailsWindow:YES isSubProject:NO];
+}
+
+- (IBAction)addNewSubProjectButtonClicked:(id)sender {
+    
+    
+    NSNumber *parentID;
+    
+    NSArray *selectedObjects = [prjTreeController selectedObjects];
+    
+    // if a project is selected, open the window to show its details.
+    if ([selectedObjects count] == 1) {
+        parentID = [[selectedObjects objectAtIndex:0] projectId];
+    }
+    
+    Project *prj = [[Project alloc] init];
+    prj.parentProjectId = parentID;
+    
+    Project *tmpPrj = [selectedObjects objectAtIndex:0]; 
+    
+    if ([tmpPrj childProject] == nil) {
+     
+        NSIndexPath *indexPath = [prjTreeController selectionIndexPath];
+        
+        tmpPrj.childProject = [[NSMutableArray alloc] init];
+        [prjTreeController insertObject:prj atArrangedObjectIndexPath:[indexPath indexPathByAddingIndex:0]];
+    } else {
+    //else if ([[tmpPrj childProject] count] > 0) {
+
+        NSIndexPath *indexPath = [prjTreeController selectionIndexPath];
+        
+        [prjTreeController insertObject:prj atArrangedObjectIndexPath:[indexPath indexPathByAddingIndex:0]];
+    } 
+
+    
+    NSLog(@"count: %lu", [arrPrj count]);
+    
+    //[self openProjectDetailsWindow:YES isSubProject:YES];
 }
 
 
@@ -154,11 +209,12 @@
     return arrPrj;
 }
 
-- (void)openProjectDetailsWindow:(BOOL)isNewProject {
-    // get selected users.
-    NSArray *selectedObjects = [prjArrayCtrl selectedObjects];
+- (void)openProjectDetailsWindow:(BOOL)isNewProject isSubProject:(BOOL)isSubProject {
+    // get selected projects.
+    //NSArray *selectedObjects = [prjArrayCtrl selectedObjects];
+    NSArray *selectedObjects = [prjTreeController selectedObjects];
     
-    // if a user is selected, open the window to show its user details.
+    // if a project is selected, open the window to show its details.
     if ([selectedObjects count] == 1) {
         
         projectDetailsWindowController = [[PTProjectDetailsWindowController alloc] init];

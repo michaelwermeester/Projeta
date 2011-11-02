@@ -19,10 +19,12 @@
     
     // user details window
     PTProjectDetailsWindowController *projectDetailsWindowController;
+    NSTreeController *prjTreeController;
 }
 
 @property (strong) NSMutableArray *arrPrj;
 @property (strong) IBOutlet NSArrayController *prjArrayCtrl;
+@property (strong) IBOutlet NSTreeController *prjTreeController;
 @property (strong) IBOutlet NSCollectionView *prjCollectionView;
 // reference to the (parent) MainWindowController
 @property (assign) MainWindowController *mainWindowController;
@@ -31,7 +33,8 @@
 - (void)requestFailed:(NSError*)error;
 
 - (IBAction)addNewProjectButtonClicked:(id)sender;
+- (IBAction)addNewSubProjectButtonClicked:(id)sender;
 
-- (void)openProjectDetailsWindow:(BOOL)isNewProject;
+- (void)openProjectDetailsWindow:(BOOL)isNewProject isSubProject:(BOOL)isSubProject ;
 
 @end
