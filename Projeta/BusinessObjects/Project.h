@@ -11,7 +11,7 @@
 #import "User.h"
 //@class User;
 
-@interface Project : NSObject {
+@interface Project : NSObject <NSCopying> {
     NSDate *dateCreated;
     NSDate *endDate;
     BOOL flagPublic;
@@ -51,5 +51,8 @@
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
 
 - (BOOL)isLeaf;
+
+// Required by NSCopying protocol.
+- (id) copyWithZone:(NSZone *)zone;
 
 @end

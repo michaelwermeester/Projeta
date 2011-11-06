@@ -9,10 +9,36 @@
 #import <Cocoa/Cocoa.h>
 
 @class MainWindowController;
+@class PXSourceList;
 
-@interface PTProjectViewController : NSViewController
+@interface PTProjectViewController : NSViewController {
+    NSMutableArray *sourceListItems;
 
+    NSMutableArray *arrPrj;     // array which holds the projects
+    NSTreeController *prjTreeController;
+    
+    NSSplitView *splitView;
+    NSView *leftView;
+    NSView *rightView;
+    PXSourceList *sourceList;
+    NSOutlineView *altSourceList;
+    NSButton *testButton;
+    NSOutlineView *outlineView;
+}
+
+
+@property (strong) NSMutableArray *arrPrj;
+@property (strong) IBOutlet NSTreeController *prjTreeController;
 
 @property (assign) MainWindowController *mainWindowController;
+@property (strong) IBOutlet NSSplitView *splitView;
+@property (strong) IBOutlet NSView *leftView;
+@property (strong) IBOutlet NSView *rightView;
+@property (strong) IBOutlet PXSourceList *sourceList;
+- (IBAction)testButtonClick:(id)sender;
+@property (strong) IBOutlet NSOutlineView *altOutlineView;
+
+// initialize sidebar.
+- (void)initializeSidebar;
 
 @end

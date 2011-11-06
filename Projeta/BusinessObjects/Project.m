@@ -114,4 +114,19 @@
         return YES;
 }
 
+// Required by NSCopying protocol.
+- (id) copyWithZone:(NSZone *)zone {
+    
+    Project *copy = [[Project alloc] init];
+    
+    copy.projectTitle = [projectTitle copyWithZone:zone];
+    copy.projectId = [projectId copyWithZone:zone];
+    copy.projectDescription = [projectDescription copyWithZone:zone];
+    /*copy.emailAddress = [emailAddress copyWithZone:zone];
+    copy.firstName = [firstName copyWithZone:zone];
+    copy.lastName = [lastName copyWithZone:zone];*/
+    
+    return copy;
+}
+
 @end

@@ -121,6 +121,12 @@
     // keep a reference to this object(self) in mainWindowViewController object 
     [projectViewController setMainWindowController:self];
     
+    
+    // test
+    //projectViewController.arrPrj = [[NSMutableArray alloc] initWithArray:[[mainWindowViewController projectListViewController] arrPrj]];
+    projectViewController.arrPrj = [[mainWindowViewController projectListViewController] arrPrj];
+    
+    
     // resize view to fit ContentView
 	projectViewController.view.frame = [self frameWithContentViewFrameSize];
     
