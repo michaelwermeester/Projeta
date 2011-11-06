@@ -67,6 +67,7 @@
 		4CF7C867145ED2A400CEB50C /* PTGroupManagementView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CF7C869145ED2A400CEB50C /* PTGroupManagementView.xib */; };
 		4CF7C86E145F42C700CEB50C /* Usergroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF7C86D145F42C700CEB50C /* Usergroup.m */; };
 		4CF7C871145F430200CEB50C /* PTUsergroupHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF7C870145F430200CEB50C /* PTUsergroupHelper.m */; };
+		4CF8DB5A1466DEF1009FEB2F /* OutlineCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF8DB591466DEF1009FEB2F /* OutlineCollection.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -209,6 +210,8 @@
 		4CF7C86D145F42C700CEB50C /* Usergroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Usergroup.m; sourceTree = "<group>"; };
 		4CF7C86F145F430200CEB50C /* PTUsergroupHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTUsergroupHelper.h; sourceTree = "<group>"; };
 		4CF7C870145F430200CEB50C /* PTUsergroupHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTUsergroupHelper.m; sourceTree = "<group>"; };
+		4CF8DB581466DEF1009FEB2F /* OutlineCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutlineCollection.h; sourceTree = "<group>"; };
+		4CF8DB591466DEF1009FEB2F /* OutlineCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutlineCollection.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -313,6 +316,8 @@
 		4C32ECB613DDE492009E7131 /* Business Objects */ = {
 			isa = PBXGroup;
 			children = (
+				4CF8DB581466DEF1009FEB2F /* OutlineCollection.h */,
+				4CF8DB591466DEF1009FEB2F /* OutlineCollection.m */,
 				4C8173ED1407BE810012C0EB /* PTProjectHelper.h */,
 				4C8173EE1407BE810012C0EB /* PTProjectHelper.m */,
 				4C796C4F1406F80900495CEB /* Project.h */,
@@ -677,6 +682,7 @@
 				4CF7C86E145F42C700CEB50C /* Usergroup.m in Sources */,
 				4CF7C871145F430200CEB50C /* PTUsergroupHelper.m in Sources */,
 				4C770C96145FFE1F00A11E5A /* PTProjectDetailsWindowController.m in Sources */,
+				4CF8DB5A1466DEF1009FEB2F /* OutlineCollection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,7 @@
 //
 
 #import "MainWindowController.h"
+#import "OutlineCollection.h"
 #import "ProjetaAppDelegate.h"
 #import "PTMainWindowViewController.h"
 
@@ -124,7 +125,21 @@
     
     // test
     //projectViewController.arrPrj = [[NSMutableArray alloc] initWithArray:[[mainWindowViewController projectListViewController] arrPrj]];
-    projectViewController.arrPrj = [[mainWindowViewController projectListViewController] arrPrj];
+    //projectViewController.arrPrj = [[mainWindowViewController projectListViewController] arrPrj];
+    
+    NSMutableArray *collectionArray = [[NSMutableArray alloc] init];
+    OutlineCollection *tmpOutlColl = [[OutlineCollection alloc] init];
+    tmpOutlColl.objectTitle = @"PROJECT";
+    tmpOutlColl.childObject = [[mainWindowViewController projectListViewController] arrPrj];
+    [collectionArray addObject:tmpOutlColl];
+    
+    OutlineCollection *tmpOutlColl2 = [[OutlineCollection alloc] init];
+    tmpOutlColl2.objectTitle = @"PROJECT";
+    [collectionArray addObject:tmpOutlColl2];
+    projectViewController.arrPrj = collectionArray;
+    
+    
+    
     
     
     // resize view to fit ContentView

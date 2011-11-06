@@ -29,6 +29,8 @@
     self = [super initWithNibName:@"PTProjectView" bundle:nibBundleOrNil];
     if (self) {
         // Initialization code here.
+
+        [outlineView setFloatsGroupRows:NO];
     }
     
     return self;
@@ -370,6 +372,10 @@
         } else {
             return [altOutlineView makeViewWithIdentifier:@"DataCell" owner:self];
         }
+    }
+    
+    if ([[item representedObject] isKindOfClass:[OutlineCollection class]]) {
+        return [altOutlineView makeViewWithIdentifier:@"HeaderCell" owner:self];
     }
     
     return nil;

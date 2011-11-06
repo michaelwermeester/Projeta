@@ -122,11 +122,27 @@
     copy.projectTitle = [projectTitle copyWithZone:zone];
     copy.projectId = [projectId copyWithZone:zone];
     copy.projectDescription = [projectDescription copyWithZone:zone];
-    /*copy.emailAddress = [emailAddress copyWithZone:zone];
-    copy.firstName = [firstName copyWithZone:zone];
-    copy.lastName = [lastName copyWithZone:zone];*/
+    copy.endDate = [endDate copyWithZone:zone];
+    copy.dateCreated = [dateCreated copyWithZone:zone];
+    copy.endDateReal = [endDateReal copyWithZone:zone];
+    copy.flagPublic = flagPublic;
+    copy.completed = completed;
+    copy.canceled = canceled;
+    copy.parentProjectId = [parentProjectId copyWithZone:zone];
+    copy.startDate = [startDate copyWithZone:zone];
+    copy.startDateReal = [startDateReal copyWithZone:zone];
+    copy.userCreated = [userCreated copyWithZone:zone];
+    copy.childProject = [childProject copyWithZone:zone];
     
     return copy;
+}
+
+- (NSMutableArray *)childObject {
+    return childProject;
+}
+
+- (NSString *)objectTitle {
+    return projectTitle;
 }
 
 @end

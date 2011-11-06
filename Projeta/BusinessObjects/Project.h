@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "OutlineCollection.h"
 
 #import "User.h"
 //@class User;
 
-@interface Project : NSObject <NSCopying> {
+@interface Project : OutlineCollection <NSCopying> {
     NSDate *dateCreated;
     NSDate *endDate;
     BOOL flagPublic;
@@ -49,8 +50,6 @@
 
 + (Project *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
-
-- (BOOL)isLeaf;
 
 // Required by NSCopying protocol.
 - (id) copyWithZone:(NSZone *)zone;
