@@ -49,6 +49,7 @@
 		4C796C511406F80900495CEB /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C796C501406F80900495CEB /* Project.m */; };
 		4C8173E71407A89D0012C0EB /* PTProjectListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8173E51407A89D0012C0EB /* PTProjectListViewController.m */; };
 		4C8173EF1407BE810012C0EB /* PTProjectHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8173EE1407BE810012C0EB /* PTProjectHelper.m */; };
+		4C9198CC14672A56000CF6C2 /* MWTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9198CB14672A56000CF6C2 /* MWTableCellView.m */; };
 		4CA7D6B914080685009D11F5 /* PTProjectListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CA7D6BB14080685009D11F5 /* PTProjectListView.xib */; };
 		4CB74044141D26B700CF550D /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB74043141D26B700CF550D /* Task.m */; };
 		4CB74048141D26F200CF550D /* PTTaskHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB74047141D26F200CF550D /* PTTaskHelper.m */; };
@@ -163,6 +164,8 @@
 		4C8173E51407A89D0012C0EB /* PTProjectListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTProjectListViewController.m; sourceTree = "<group>"; };
 		4C8173ED1407BE810012C0EB /* PTProjectHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTProjectHelper.h; sourceTree = "<group>"; };
 		4C8173EE1407BE810012C0EB /* PTProjectHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTProjectHelper.m; sourceTree = "<group>"; };
+		4C9198CA14672A56000CF6C2 /* MWTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWTableCellView.h; sourceTree = "<group>"; };
+		4C9198CB14672A56000CF6C2 /* MWTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWTableCellView.m; sourceTree = "<group>"; };
 		4CA7D6BA14080685009D11F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PTProjectListView.xib; sourceTree = "<group>"; };
 		4CA7D6BC140806AF009D11F5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/PTProjectListView.xib; sourceTree = "<group>"; };
 		4CA7D6BD140806B1009D11F5 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/PTProjectListView.xib; sourceTree = "<group>"; };
@@ -308,6 +311,8 @@
 				4C27F3C913E5C40900B1A8EC /* MWConnectionController.m */,
 				4CC9FB9B13E9EED800A11EA7 /* PTCommon.h */,
 				4CC9FB9C13E9EED800A11EA7 /* PTCommon.m */,
+				4C9198CA14672A56000CF6C2 /* MWTableCellView.h */,
+				4C9198CB14672A56000CF6C2 /* MWTableCellView.m */,
 			);
 			name = "Helper Classes";
 			path = HelperClasses;
@@ -683,6 +688,7 @@
 				4CF7C871145F430200CEB50C /* PTUsergroupHelper.m in Sources */,
 				4C770C96145FFE1F00A11E5A /* PTProjectDetailsWindowController.m in Sources */,
 				4CF8DB5A1466DEF1009FEB2F /* OutlineCollection.m in Sources */,
+				4C9198CC14672A56000CF6C2 /* MWTableCellView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

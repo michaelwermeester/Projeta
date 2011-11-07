@@ -37,8 +37,8 @@
 @property (strong) IBOutlet PXSourceList *sourceList;
 - (IBAction)testButtonClick:(id)sender;
 @property (strong) IBOutlet NSOutlineView *altOutlineView;
+@property (strong) IBOutlet NSButton *testButton;
 
-// initialize sidebar.
-- (void)initializeSidebar;
+
 
 @end

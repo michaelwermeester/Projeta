@@ -7,12 +7,14 @@
 //
 
 #import "MainWindowController.h"
+#import "MWTableCellView.h"
 #import "PTProjectViewController.h"
 #import "SourceListItem.h"
 #import "Project.h"
 
 @implementation PTProjectViewController
 @synthesize altOutlineView;
+@synthesize testButton;
 
 @synthesize arrPrj;
 @synthesize prjTreeController;
@@ -36,12 +38,13 @@
     return self;
 }
 
+-(void)awakeFromNib {
+   
+}
+
 - (void)loadView
 {
     [super loadView];
-    
-    // initialize the sidebar (sourcelist)
-    [self initializeSidebar];
 }
 
 #pragma mark -
@@ -127,140 +130,6 @@
 }
 
 
-#pragma mark -
-#pragma mark Source List Data Source Methods
-
-- (NSUInteger)sourceList:(PXSourceList*)sourceList numberOfChildrenOfItem:(id)item
-{
-	//Works the same way as the NSOutlineView data source: `nil` means a parent item
-	if(item==nil) {
-		return [sourceListItems count];
-	}
-	else {
-		return [[item children] count];
-	}
-}
-
-
-- (id)sourceList:(PXSourceList*)aSourceList child:(NSUInteger)index ofItem:(id)item
-{
-	//Works the same way as the NSOutlineView data source: `nil` means a parent item
-	if(item==nil) {
-		return [sourceListItems objectAtIndex:index];
-	}
-	else {
-		return [[item children] objectAtIndex:index];
-	}
-}
-
-- (id)sourceList:(PXSourceList*)aSourceList objectValueForItem:(id)item
-{
-	return [item title];
-}
-
-
-- (void)sourceList:(PXSourceList*)aSourceList setObjectValue:(id)object forItem:(id)item
-{
-	[item setTitle:object];
-}
-
-
-- (BOOL)sourceList:(PXSourceList*)aSourceList isItemExpandable:(id)item
-{
-	return [item hasChildren];
-}
-
-- (BOOL)sourceList:(PXSourceList*)aSourceList itemHasBadge:(id)item
-{
-	return [item hasBadge];
-}
-
-
-- (NSInteger)sourceList:(PXSourceList*)aSourceList badgeValueForItem:(id)item
-{
-	return [item badgeValue];
-}
-
-
-- (BOOL)sourceList:(PXSourceList*)aSourceList itemHasIcon:(id)item
-{
-	return [item hasIcon];
-}
-
-
-- (NSImage*)sourceList:(PXSourceList*)aSourceList iconForItem:(id)item
-{
-	return [item icon];
-}
-
-- (NSMenu*)sourceList:(PXSourceList*)aSourceList menuForEvent:(NSEvent*)theEvent item:(id)item
-{
-	if ([theEvent type] == NSRightMouseDown || ([theEvent type] == NSLeftMouseDown && ([theEvent modifierFlags] & NSControlKeyMask) == NSControlKeyMask)) {
-		NSMenu __autoreleasing *m = [[NSMenu alloc] init];
-		if (item != nil) {
-			[m addItemWithTitle:[item title] action:nil keyEquivalent:@""];
-		} else {
-			[m addItemWithTitle:@"clicked outside" action:nil keyEquivalent:@""];
-		}
-		return m;
-	}
-	return nil;
-}
-
-
-#pragma mark -
-#pragma mark Source List Delegate Methods
-
-- (BOOL)sourceList:(PXSourceList*)aSourceList isGroupAlwaysExpanded:(id)group
-{
-	if([[group identifier] isEqualToString:@"projectsHeader"] || [[group identifier] isEqualToString:@"administrationHeader"])
-		return YES;
-	
-	return NO;
-}
-
-- (void)sourceListSelectionDidChange:(NSNotification *)notification
-{
-	NSIndexSet *selectedIndexes = [sourceList selectedRowIndexes];
-	
-	//Set the label text to represent the new selection
-	if([selectedIndexes count]>1)
-    {
-		//[selectedItemLabel setStringValue:@"(multiple)"];
-    }
-	else if([selectedIndexes count]==1) {
-		NSString *identifier = [[sourceList itemAtRow:[selectedIndexes firstIndex]] identifier];
-		
-        if (identifier == @"projects") {
-            
-            /*[self removeViewsFromRightView];
-            
-            if (!projectListViewController) {
-                
-                projectListViewController = [[PTProjectListViewController alloc] init];
-                
-                // set reference to (parent) window
-                [projectListViewController setMainWindowController:mainWindowController];
-                
-                // resize the view to fit and fill the right splitview view
-                [projectListViewController.view setFrameSize:rightView.frame.size];
-                
-                [self.rightView addSubview:projectListViewController.view];
-                
-                // auto resize the view.
-                [projectListViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
-            }*/
-        }
-        else {
-            // free some memory
-            //[self removeViewsFromRightView];
-        }
-	}
-	else {
-		//[selectedItemLabel setStringValue:@"(none)"];
-	}
-}
-
 - (void)removeViewsFromRightView
 {
     
@@ -277,63 +146,6 @@
 }
 
 
-#pragma mark -
-#pragma mark Initialize and populate sidebar
-
-// initialize sidebar.
-- (void)initializeSidebar
-{
-    sourceListItems = [[NSMutableArray alloc] init];
-	
-	//Set up the "Projects" parent item and children
-    SourceListItem *projectsHeaderItem = [SourceListItem itemWithTitle:NSLocalizedString(@"PROJECTS", nil) identifier:@"projectsHeader"];
-	SourceListItem *projectsItem = [SourceListItem itemWithTitle:@"Projects" identifier:@"projects"];
-	[projectsItem setIcon:[NSImage imageNamed:@"music.png"]];
-	//SourceListItem *tasksItem = [SourceListItem itemWithTitle:@"Tasks" identifier:@"tasks"];
-	//[tasksItem setIcon:[NSImage imageNamed:@"movies.png"]];
-	SourceListItem *podcastsItem = [SourceListItem itemWithTitle:@"Podcasts" identifier:@"podcasts"];
-	[podcastsItem setIcon:[NSImage imageNamed:@"podcasts.png"]];
-	[podcastsItem setBadgeValue:10];
-	SourceListItem *audiobooksItem = [SourceListItem itemWithTitle:@"Audiobooks" identifier:@"audiobooks"];
-	[audiobooksItem setIcon:[NSImage imageNamed:@"audiobooks.png"]];
-	[projectsHeaderItem setChildren:[NSArray arrayWithObjects:projectsItem, podcastsItem,
-                                     audiobooksItem, nil]];
-    
-	
-	//Set up the "Tasks" parent item and children
-	SourceListItem *tasksHeaderItem = [SourceListItem itemWithTitle:@"TASKS" identifier:@"tasksHeader"];
-    // all tasks
-    SourceListItem *tasksItem = [SourceListItem itemWithTitle:@"Tasks" identifier:@"tasks"];
-    
-	SourceListItem *playlist1Item = [SourceListItem itemWithTitle:@"Playlist1" identifier:@"playlist1"];
-	
-	//Create a second-level group to demonstrate
-	SourceListItem *playlist2Item = [SourceListItem itemWithTitle:@"Playlist2" identifier:@"playlist2"];
-	SourceListItem *playlist3Item = [SourceListItem itemWithTitle:@"Playlist3Playlist3Playlist3Playlist3Playlist3" identifier:@"playlist3"];
-    [playlist3Item setBadgeValue:50];
-	//[playlist1Item setIcon:[NSImage imageNamed:@"playlist.png"]];
-	[playlist2Item setIcon:[NSImage imageNamed:@"playlist.png"]];
-	[playlist3Item setIcon:[NSImage imageNamed:@"playlist.png"]];
-	
-	SourceListItem *playlistGroup = [SourceListItem itemWithTitle:@"Playlist Group" identifier:@"playlistgroup"];
-	SourceListItem *playlistGroupItem = [SourceListItem itemWithTitle:@"Child Playlist" identifier:@"childplaylist"];
-	[playlistGroup setIcon:[NSImage imageNamed:@"playlistFolder.png"]];
-	[playlistGroupItem setIcon:[NSImage imageNamed:@"playlist.png"]];
-	[playlistGroup setChildren:[NSArray arrayWithObject:playlistGroupItem]];
-	
-	[tasksHeaderItem setChildren:[NSArray arrayWithObjects:tasksItem, playlist1Item, playlistGroup,playlist2Item,
-                                  playlist3Item, nil]];
-    
-    //Set up the "Bugs" parent item and children
-	SourceListItem *bugsHeaderItem = [SourceListItem itemWithTitle:@"BUGS" identifier:@"bugsHeader"];
-    
-	
-	[sourceListItems addObject:projectsHeaderItem];
-	[sourceListItems addObject:tasksHeaderItem];
-    [sourceListItems addObject:bugsHeaderItem];
-
-	[sourceList reloadData];
-}
 
 - (IBAction)testButtonClick:(id)sender {
     NSLog(@"title: %@", [[altSourceList selectedCell] title]);
@@ -362,6 +174,7 @@
     return YES;
 }
 
+// needed for the outline view to show text.
 - (NSView *)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(NSTableColumn *)tableColumn item:(id)item {
     
     if ([[item representedObject] isKindOfClass:[Project class]]) {
@@ -370,7 +183,24 @@
         if (tmpPrj.parentProjectId == nil) {
             return [altOutlineView makeViewWithIdentifier:@"HeaderCell" owner:self];
         } else {
-            return [altOutlineView makeViewWithIdentifier:@"DataCell" owner:self];
+            // set badge count
+            MWTableCellView *tmpView = [altOutlineView makeViewWithIdentifier:@"DataCell" owner:self];
+            [tmpView setBadgeCount:tmpPrj.projectDescription];
+            
+            
+            NSRect r = tmpView.badgeButton.frame;
+            
+            r.size.width = 100;
+            r.size.height = 1;
+            r.origin.x = tmpView.badgeButton.frame.size.width - 100;
+            
+            //NSLog(@"bounds.origin.x: %f", label.bounds.origin.x);
+
+            //[[tmpView badgeButton] setBoundsSize:s];
+            //[[tmpView badgeButton] setFrame:r];
+            [[tmpView badgeButton] setFrame:CGRectMake(1, 1, 1, 1)];
+            
+            return tmpView;
         }
     }
     
