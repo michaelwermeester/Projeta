@@ -13,18 +13,50 @@
 @implementation MWTableCellView
 
 @synthesize badgeButton;
+@synthesize staticText;
 
         /*Project *prj = [[super value] representedObject];
         NSLog(@"test");
         [badgeButton setTitle:prj.projectTitle];*/
+
+- (void)drawRect:(NSRect)dirtyRect {
+    
+    /*[[NSColor whiteColor] set];
+    NSRectFill([self bounds]);*/
+    
+    
+
+    NSRect drawRect = [self bounds];
+    
+    drawRect.origin.x += 0;
+    drawRect.size.width = 10;
+    drawRect.size.height = 5;
+    drawRect.origin.y += 0;
+
+    [[NSColor redColor] set];
+    NSRectFill(drawRect);
+}
 
 - (void)setBadgeCount:(NSString *)badgeCount {
     
     
     [badgeButton setTitle:badgeCount];
     
+    //badgeButton = [[NSButton alloc] init];
     
+    /*NSRect badgeFrame = NSMakeRect(10,
+              10,
+               10,
+               10);
     
+    NSBezierPath *badgePath = [NSBezierPath bezierPathWithRoundedRect:badgeFrame
+															  xRadius:(10/2.0)
+															  yRadius:(10/2.0)];
+    
+    [badgePath fill];
+   
+    [self setNeedsDisplay:YES];*/
+        
 }
 
 

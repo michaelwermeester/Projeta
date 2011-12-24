@@ -322,7 +322,7 @@ static User *_loggedInUser = nil;
 	//[tasksItem setIcon:[NSImage imageNamed:@"movies.png"]];
 	SourceListItem *podcastsItem = [SourceListItem itemWithTitle:@"Podcasts" identifier:@"podcasts"];
 	[podcastsItem setIcon:[NSImage imageNamed:@"podcasts.png"]];
-	[podcastsItem setBadgeValue:10];
+	[podcastsItem setBadgeValue:105];
 	SourceListItem *audiobooksItem = [SourceListItem itemWithTitle:@"Audiobooks" identifier:@"audiobooks"];
 	[audiobooksItem setIcon:[NSImage imageNamed:@"audiobooks.png"]];
 	[projectsHeaderItem setChildren:[NSArray arrayWithObjects:projectsItem, podcastsItem,

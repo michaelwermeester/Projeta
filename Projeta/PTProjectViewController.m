@@ -185,20 +185,26 @@
         } else {
             // set badge count
             MWTableCellView *tmpView = [altOutlineView makeViewWithIdentifier:@"DataCell" owner:self];
-            [tmpView setBadgeCount:tmpPrj.projectDescription];
+            //[tmpView setBadgeCount:tmpPrj.projectDescription];
+            [tmpView setBadgeCount:@"1bkjbhjb;hbhj"];
             
+            //NSRect r = tmpView.badgeButton.frame;
             
-            NSRect r = tmpView.badgeButton.frame;
-            
-            r.size.width = 100;
-            r.size.height = 1;
-            r.origin.x = tmpView.badgeButton.frame.size.width - 100;
+            //r.origin.x -= 15;
+            //r.size.width -= 15;
+            //r.size.height = 1;
+            //r.origin.x = tmpView.badgeButton.frame.size.width - 100;
             
             //NSLog(@"bounds.origin.x: %f", label.bounds.origin.x);
 
             //[[tmpView badgeButton] setBoundsSize:s];
             //[[tmpView badgeButton] setFrame:r];
-            [[tmpView badgeButton] setFrame:CGRectMake(1, 1, 1, 1)];
+            //[[tmpView badgeButton] setFrame:CGRectMake(0, 0, 60, 60)];
+            
+            NSArray *supectConstraints = [tmpView.badgeButton constraintsAffectingLayoutForOrientation:NSLayoutConstraintOrientationHorizontal];
+            
+            [rightView addSubview:tmpView];
+            [mainWindowController.window visualizeConstraints:supectConstraints];
             
             return tmpView;
         }
@@ -206,7 +212,8 @@
     
     if ([[item representedObject] isKindOfClass:[OutlineCollection class]]) {
         return [altOutlineView makeViewWithIdentifier:@"HeaderCell" owner:self];
-    }
+    }   
+    
     
     return nil;
 }

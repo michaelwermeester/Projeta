@@ -11,7 +11,9 @@
 @interface MWTableCellView : NSTableCellView
 
 @property (strong) IBOutlet NSButton *badgeButton;
+@property (strong) IBOutlet NSTextField *staticText;
 
 - (void)setBadgeCount:(NSString *)badgeCount;
+
 
 @end
