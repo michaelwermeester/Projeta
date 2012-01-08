@@ -531,8 +531,10 @@ static User *_loggedInUser = nil;
             SourceListItem *clientAdminItem = [SourceListItem itemWithTitle:NSLocalizedString(@"Clients", nil) identifier:@"clientAdmin"];
             // contacts admin.
             SourceListItem *contactAdminItem = [SourceListItem itemWithTitle:NSLocalizedString(@"Contacts", nil) identifier:@"contactAdmin"];
+            // products admin.
+            SourceListItem *productAdminItem = [SourceListItem itemWithTitle:NSLocalizedString(@"Products", nil) identifier:@"productAdmin"];
             
-            [administrationHeaderItem setChildren:[NSArray arrayWithObjects:userAdminItem, groupAdminItem, clientAdminItem, contactAdminItem, nil]];
+            [administrationHeaderItem setChildren:[NSArray arrayWithObjects:userAdminItem, groupAdminItem, clientAdminItem, contactAdminItem, productAdminItem, nil]];
             
             [sourceListItems addObject:administrationHeaderItem];
             
