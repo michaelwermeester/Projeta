@@ -20,6 +20,7 @@
     // user details window
     PTUserDetailsWindowController *userDetailsWindowController;
     
+    __weak NSSearchField *searchField;
 }
 
 @property (strong) NSMutableArray *arrUsr;
@@ -28,6 +29,8 @@
 @property (strong) IBOutlet NSButton *deleteButton;
 // reference to the (parent) MainWindowController
 @property (assign) MainWindowController *mainWindowController;
+
+@property (weak) IBOutlet NSSearchField *searchField;
 
 // NSURLConnection
 - (void)requestFinished:(NSMutableData*)data;
@@ -44,5 +47,8 @@
 
 - (void)addObservers;
 - (void)removeObservers;
+
+
+- (IBAction)findUser:(id)sender;
 
 @end

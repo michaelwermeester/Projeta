@@ -19,6 +19,7 @@
 #import "Role.h"
 
 @implementation PTUserManagementViewController
+@synthesize searchField;
 @synthesize deleteButton;
 
 @synthesize arrayCtrl;
@@ -350,6 +351,13 @@
 }
 
 - (IBAction)removeButtonClicked:(id)sender {
+    
 }
+
+// fires, when user types something in the search field.
+- (IBAction)findUser:(id)sender {
+    NSLog(@"find: %@", [searchField stringValue]);
+}
+
 
 @end
