@@ -25,6 +25,8 @@
     NSProgressIndicator *userNameProgressIndicator;
     NSImageView *userNameInvalidImageView;
     NSImageView *passwordInvalidImageView;
+    __weak NSButton *setPasswordButton;
+    __weak NSSecureTextField *passwordTextField;
 }
 
 
@@ -44,6 +46,8 @@
 @property (strong) IBOutlet NSProgressIndicator *userNameProgressIndicator;
 @property (strong) IBOutlet NSImageView *userNameInvalidImageView;
 @property (strong) IBOutlet NSImageView *passwordInvalidImageView;
+@property (weak) IBOutlet NSButton *setPasswordButton;
+@property (weak) IBOutlet NSSecureTextField *passwordTextField;
 
 // assign/remove a user role.
 - (IBAction)assignUserRoles:(id)sender;

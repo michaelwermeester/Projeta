@@ -33,6 +33,8 @@ User *userCopy;
 @synthesize userNameProgressIndicator;
 @synthesize userNameInvalidImageView;
 @synthesize passwordInvalidImageView;
+@synthesize setPasswordButton;
+@synthesize passwordTextField;
 
 @synthesize isNewUser;
 @synthesize usernameTextField;
