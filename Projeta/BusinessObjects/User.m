@@ -17,6 +17,7 @@
 @synthesize firstName = firstName;
 @synthesize lastName = lastName;
 @synthesize roles = roles;
+@synthesize usergroups = usergroups;
 
 - (id)init
 {
@@ -122,6 +123,15 @@
  
     //NSArray *retArr = [[NSArray alloc] initWithObjects: @"roles", @"userId", nil];
     NSArray *retArr = [[NSArray alloc] initWithObjects: @"code", @"roleId", nil];
+    
+    return retArr;
+}
+
+// keys needed for updating user's usergroups.
+- (NSArray *)updateUsergroupsKeys {
+    
+    //NSArray *retArr = [[NSArray alloc] initWithObjects: @"roles", @"userId", nil];
+    NSArray *retArr = [[NSArray alloc] initWithObjects: @"code", @"usergroupId", nil];
     
     return retArr;
 }

@@ -18,6 +18,7 @@
     NSString *lastName;
     
     NSMutableArray *roles;
+    NSMutableArray *usergroups;
 }
 
 @property (nonatomic, copy) NSString *password;
@@ -27,6 +28,7 @@
 @property (nonatomic, copy) NSString *firstName;
 @property (nonatomic, copy) NSString *lastName;
 @property (strong) NSMutableArray *roles;
+@property (strong) NSMutableArray *usergroups;
 
 + (User *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
@@ -43,6 +45,8 @@
 - (NSArray *)userIdPasswordKeys;
 // keys needed for updating user roles.
 - (NSArray *)updateRolesKeys;
+// keys needed for updating user's usergroups.
+- (NSArray *)updateUsergroupsKeys;
 
 // Required by NSCopying protocol.
 - (id) copyWithZone:(NSZone *)zone;

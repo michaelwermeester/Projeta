@@ -30,6 +30,8 @@
 		4C2C7CA613F335AB00D9AE3D /* SourceListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2C7CA513F335AB00D9AE3D /* SourceListItem.m */; };
 		4C32ECBB13DDE690009E7131 /* PTUserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C32ECB813DDE690009E7131 /* PTUserHelper.m */; };
 		4C32ECBC13DDE690009E7131 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C32ECBA13DDE690009E7131 /* User.m */; };
+		4C568E3A14CC868F006AF039 /* PTUserGroupWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C568E3914CC868E006AF039 /* PTUserGroupWindowController.m */; };
+		4C568E3B14CC86A6006AF039 /* PTUserGroupWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C568E3D14CC86A6006AF039 /* PTUserGroupWindow.xib */; };
 		4C5B671E14168859003C0F80 /* PTTaskListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5B671C14168859003C0F80 /* PTTaskListViewController.m */; };
 		4C5B672114168880003C0F80 /* PTTaskListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C5B672314168880003C0F80 /* PTTaskListView.xib */; };
 		4C74A61F13A2BFA100E7DBF6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C74A61D13A2BFA100E7DBF6 /* InfoPlist.strings */; };
@@ -130,6 +132,11 @@
 		4C32ECB813DDE690009E7131 /* PTUserHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTUserHelper.m; sourceTree = "<group>"; };
 		4C32ECB913DDE690009E7131 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		4C32ECBA13DDE690009E7131 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		4C568E3814CC868E006AF039 /* PTUserGroupWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTUserGroupWindowController.h; sourceTree = "<group>"; };
+		4C568E3914CC868E006AF039 /* PTUserGroupWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTUserGroupWindowController.m; sourceTree = "<group>"; };
+		4C568E3C14CC86A6006AF039 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PTUserGroupWindow.xib; sourceTree = "<group>"; };
+		4C568E3E14CC86AD006AF039 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/PTUserGroupWindow.xib; sourceTree = "<group>"; };
+		4C568E3F14CC86AF006AF039 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/PTUserGroupWindow.xib; sourceTree = "<group>"; };
 		4C5B671B14168859003C0F80 /* PTTaskListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTTaskListViewController.h; sourceTree = "<group>"; };
 		4C5B671C14168859003C0F80 /* PTTaskListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTTaskListViewController.m; sourceTree = "<group>"; };
 		4C5B672214168880003C0F80 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PTTaskListView.xib; sourceTree = "<group>"; };
@@ -281,6 +288,9 @@
 				4C1208EA142E46B70043598F /* PTUserDetailsWindowController.h */,
 				4C1208EB142E46B80043598F /* PTUserDetailsWindowController.m */,
 				4CE9D7BB142E7BC700CB43AC /* PTUserDetailsWindow.xib */,
+				4C568E3814CC868E006AF039 /* PTUserGroupWindowController.h */,
+				4C568E3914CC868E006AF039 /* PTUserGroupWindowController.m */,
+				4C568E3D14CC86A6006AF039 /* PTUserGroupWindow.xib */,
 				4C21F24613C26C6600462C43 /* PTUserManagementViewController.h */,
 				4C21F24713C26C6600462C43 /* PTUserManagementViewController.m */,
 				4C21F24D13C2741400462C43 /* PTUserManagementView.xib */,
@@ -610,6 +620,7 @@
 				4CF7C867145ED2A400CEB50C /* PTGroupManagementView.xib in Resources */,
 				4C770C99145FFE6200A11E5A /* PTProjectDetailsWindow.xib in Resources */,
 				4C11311414CA21CC008D47F4 /* PTSetPasswordWindow.xib in Resources */,
+				4C568E3B14CC86A6006AF039 /* PTUserGroupWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -701,6 +712,7 @@
 				4CF8DB5A1466DEF1009FEB2F /* OutlineCollection.m in Sources */,
 				4C9198CC14672A56000CF6C2 /* MWTableCellView.m in Sources */,
 				4C11311014CA21AA008D47F4 /* PTSetPasswordWindowController.m in Sources */,
+				4C568E3A14CC868F006AF039 /* PTUserGroupWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -769,6 +781,16 @@
 				4C23BB2D13DA1F5400E18E43 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4C568E3D14CC86A6006AF039 /* PTUserGroupWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C568E3C14CC86A6006AF039 /* en */,
+				4C568E3E14CC86AD006AF039 /* fr */,
+				4C568E3F14CC86AF006AF039 /* de */,
+			);
+			name = PTUserGroupWindow.xib;
 			sourceTree = "<group>";
 		};
 		4C5B672314168880003C0F80 /* PTTaskListView.xib */ = {

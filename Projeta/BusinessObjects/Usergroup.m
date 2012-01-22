@@ -14,6 +14,33 @@
 @synthesize comment = comment;
 @synthesize usergroupId = usergroupId;
 
+// Required by NSCopying protocol.
+- (id) copyWithZone:(NSZone *)zone {
+    
+    Usergroup *copy = [[Usergroup alloc] init];
+    
+    copy.code = [code copyWithZone:zone];
+    copy.usergroupId = [usergroupId copyWithZone:zone];
+    copy.comment = [comment copyWithZone:zone];
+    
+    return copy;
+}
+
+// Override isEqual method.
+- (BOOL)isEqual:(id)anObject {
+    
+    if (self == anObject) {
+        return YES;
+    } else if (!anObject || ![anObject isKindOfClass:[self class]]) {
+        return NO;
+    } // compare if id and code are equal.
+    else if ([[self code] isEqual:[(Usergroup *)anObject code]] && [[self usergroupId] isEqual:[(Usergroup *)anObject usergroupId]]) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
 + (Usergroup *)instanceFromDictionary:(NSDictionary *)aDictionary {
     
     Usergroup *instance = [[Usergroup alloc] init];

@@ -11,6 +11,7 @@
 
 @class MainWindowController;
 @class PTUserDetailsWindowController;
+@class PTUserGroupWindowController;
 
 @interface PTUserManagementViewController : NSViewController {
     NSMutableArray *arrUsr;     // array which holds the users
@@ -19,8 +20,10 @@
     
     // user details window
     PTUserDetailsWindowController *userDetailsWindowController;
+    PTUserGroupWindowController *userGroupWindowController;
     
     __weak NSSearchField *searchField;
+    __weak NSButton *groupsButton;
 }
 
 @property (strong) NSMutableArray *arrUsr;
@@ -29,6 +32,7 @@
 @property (strong) IBOutlet NSButton *deleteButton;
 // reference to the (parent) MainWindowController
 @property (assign) MainWindowController *mainWindowController;
+@property (weak) IBOutlet NSButton *groupsButton;
 
 @property (weak) IBOutlet NSSearchField *searchField;
 
@@ -40,8 +44,10 @@
 - (IBAction)removeButtonClicked:(id)sender;
 - (IBAction)deleteButtonClicked:(id)sender;
 - (IBAction)detailsButtonClicked:(id)sender;
+- (IBAction)groupsButtonClicked:(id)sender;
 
 - (void)openUserDetailsWindow:(BOOL)isNewUser;
+- (void)openUserGroupWindow;
 
 //- (void)updateUser:(User *)theUser;
 
