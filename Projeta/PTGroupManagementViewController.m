@@ -29,13 +29,14 @@
         arrUsrGrp = [[NSMutableArray alloc] init];
         
         // Fetch user groups from webservice.
-        [self fetchUsergroups];
+        //[self fetchUsergroups];
     }
     
     return self;
 }
 
 - (void)viewDidLoad {
+    
     
     // bind the main window's search field to the arraycontroller.
     [[mainWindowController searchField] bind:@"predicate" toObject:usergroupArrayCtrl withKeyPath:@"filterPredicate" options:[NSDictionary dictionaryWithObjectsAndKeys:
@@ -44,6 +45,9 @@
                     NSPredicateFormatBindingOption,
                     nil]
      ];
+    
+    // Fetch user groups from webservice.
+    [self fetchUsergroups];
 }
 
 - (void)loadView
@@ -55,6 +59,9 @@
 
 // Fetch user groups from webservice.
 - (void)fetchUsergroups {
+    
+    [mainWindowController startProgressIndicatorAnimation];
+    
     // get server URL as string
     NSString *urlString = [PTCommon serverURLString];
     // build URL by adding resource path
@@ -93,10 +100,12 @@
     
     // sort the user list by username. 
     [usergroupTableView setSortDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"code" ascending:YES selector:@selector(compare:)], nil]];
+    
+    [mainWindowController stopProgressIndicatorAnimation];
 }
 
 - (void)fetchRequestFailed:(NSError*)error {
-    
+    [mainWindowController stopProgressIndicatorAnimation];
 }
 
 - (IBAction)addUsergroupButtonClicked:(id)sender {
