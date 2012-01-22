@@ -188,4 +188,21 @@
     [connectionController startRequestForURL:url setRequest:urlRequest];
 }
 
++ (void)updateUserPassword:(NSNumber *)theUserId password:(NSString *)thePassword successBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)(NSError *))failureBlock_
+{
+    User *theUser = [[User alloc] init];
+    
+    theUser.userId = theUserId;
+    theUser.password = thePassword;
+    
+    NSDictionary *dict = [theUser dictionaryWithValuesForKeys:[theUser userIdPasswordKeys]];
+    
+    // API resource string.
+    NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/users/setPassword"];
+    
+    // execute the PUT method on the webservice to update the record in the database.
+    [PTCommon executePUTforDictionaryWithBlocks:dict resourceString:resourceString successBlock:successBlock_ failureBlock:failureBlock_];
+    
+}
+
 @end

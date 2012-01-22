@@ -11,6 +11,8 @@
 		4C08037813F5A23200E70C73 /* PTSidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C08037913F5A23200E70C73 /* PTSidebarViewController.m */; };
 		4C0BA4E913F329C7002EA4F2 /* PXSourceList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0BA4E813F329C7002EA4F2 /* PXSourceList.m */; };
 		4C0BC5B513DA1D15003360E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C74A61413A2BFA100E7DBF6 /* Cocoa.framework */; };
+		4C11311014CA21AA008D47F4 /* PTSetPasswordWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C11310F14CA21AA008D47F4 /* PTSetPasswordWindowController.m */; };
+		4C11311414CA21CC008D47F4 /* PTSetPasswordWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C11311614CA21CC008D47F4 /* PTSetPasswordWindow.xib */; };
 		4C1208EC142E46B80043598F /* PTUserDetailsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1208EB142E46B80043598F /* PTUserDetailsWindowController.m */; };
 		4C21F24513C2691600462C43 /* PTUserManagementWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C21F24413C2691600462C43 /* PTUserManagementWindowController.m */; };
 		4C21F24913C26C6600462C43 /* PTUserManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C21F24713C26C6600462C43 /* PTUserManagementViewController.m */; };
@@ -94,6 +96,11 @@
 		4C0BC5AF13DA1C4A003360E2 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		4C0BC5B113DA1C60003360E2 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		4C0BC5B313DA1CC9003360E2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4C11310E14CA21AA008D47F4 /* PTSetPasswordWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTSetPasswordWindowController.h; sourceTree = "<group>"; };
+		4C11310F14CA21AA008D47F4 /* PTSetPasswordWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTSetPasswordWindowController.m; sourceTree = "<group>"; };
+		4C11311514CA21CC008D47F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PTSetPasswordWindow.xib; sourceTree = "<group>"; };
+		4C11311714CA21D3008D47F4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/PTSetPasswordWindow.xib; sourceTree = "<group>"; };
+		4C11311814CA21D5008D47F4 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/PTSetPasswordWindow.xib; sourceTree = "<group>"; };
 		4C1208EA142E46B70043598F /* PTUserDetailsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTUserDetailsWindowController.h; sourceTree = "<group>"; };
 		4C1208EB142E46B80043598F /* PTUserDetailsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTUserDetailsWindowController.m; sourceTree = "<group>"; };
 		4C21F24313C2691600462C43 /* PTUserManagementWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTUserManagementWindowController.h; sourceTree = "<group>"; };
@@ -268,6 +275,9 @@
 				4CF7C861145ED0E500CEB50C /* PTGroupManagementViewController.h */,
 				4CF7C862145ED0E500CEB50C /* PTGroupManagementViewController.m */,
 				4CF7C869145ED2A400CEB50C /* PTGroupManagementView.xib */,
+				4C11310E14CA21AA008D47F4 /* PTSetPasswordWindowController.h */,
+				4C11310F14CA21AA008D47F4 /* PTSetPasswordWindowController.m */,
+				4C11311614CA21CC008D47F4 /* PTSetPasswordWindow.xib */,
 				4C1208EA142E46B70043598F /* PTUserDetailsWindowController.h */,
 				4C1208EB142E46B80043598F /* PTUserDetailsWindowController.m */,
 				4CE9D7BB142E7BC700CB43AC /* PTUserDetailsWindow.xib */,
@@ -599,6 +609,7 @@
 				4CE9D7B9142E7BC700CB43AC /* PTUserDetailsWindow.xib in Resources */,
 				4CF7C867145ED2A400CEB50C /* PTGroupManagementView.xib in Resources */,
 				4C770C99145FFE6200A11E5A /* PTProjectDetailsWindow.xib in Resources */,
+				4C11311414CA21CC008D47F4 /* PTSetPasswordWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -639,7 +650,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# MainWindow.xib ##################################################################\n# Extract English strings (use this to check if you added new strings to your nibs)\n#ibtool --export-strings-file Projeta/en.lproj/MainWindow.strings Projeta/en.lproj/MainWindow.xib\n# Generate French interface\n#ibtool --strings-file Projeta/fr.lproj/MainWindow.strings --write Projeta/fr.lproj/MainWindow.xib Projeta/en.lproj/MainWindow.xib\n# Preferences.xib #################################################################\n#ibtool --export-strings-file Projeta/en.lproj/Preferences.strings Projeta/en.lproj/Preferences.xib\n# fr\n#ibtool --strings-file Projeta/fr.lproj/Preferences.strings --write Projeta/fr.lproj/Preferences.xib Projeta/en.lproj/Preferences.xib";
+			shellScript = "# MainWindow.xib ##################################################################\n# Extract English strings (use this to check if you added new strings to your nibs)\nibtool --export-strings-file Projeta/en.lproj/MainWindow.strings Projeta/en.lproj/MainWindow.xib\n# Generate French interface\nibtool --strings-file Projeta/fr.lproj/MainWindow.strings --write Projeta/fr.lproj/MainWindow.xib Projeta/en.lproj/MainWindow.xib\n# Preferences.xib #################################################################\nibtool --export-strings-file Projeta/en.lproj/Preferences.strings Projeta/en.lproj/Preferences.xib\n# fr\nibtool --strings-file Projeta/fr.lproj/Preferences.strings --write Projeta/fr.lproj/Preferences.xib Projeta/en.lproj/Preferences.xib\n# PTGroupManagementView.xib #################################################################\nibtool --export-strings-file Projeta/en.lproj/PTGroupManagementView.strings Projeta/en.lproj/PTGroupManagementView.xib\n# fr\nibtool --strings-file Projeta/fr.lproj/PTGroupManagementView.strings --write Projeta/fr.lproj/PTGroupManagementView.xib Projeta/en.lproj/PTGroupManagementView.xib\n# PTMainWindowView.xib #################################################################\nibtool --export-strings-file Projeta/en.lproj/PTMainWindowView.strings Projeta/en.lproj/PTMainWindowView.xib\n# fr\nibtool --strings-file Projeta/fr.lproj/PTMainWindowView.strings --write Projeta/fr.lproj/PTMainWindowView.xib Projeta/en.lproj/PTMainWindowView.xib\n# PTProjectDetailsWindow.xib #################################################################\nibtool --export-strings-file Projeta/en.lproj/PTProjectDetailsWindow.strings Projeta/en.lproj/PTProjectDetailsWindow.xib\n# fr\nibtool --strings-file Projeta/fr.lproj/PTProjectListView.strings --write Projeta/fr.lproj/PTProjectDetailsWindow.xib Projeta/en.lproj/PTProjectDetailsWindow.xib\n# PTProjectListView.xib #################################################################\nibtool --export-strings-file Projeta/en.lproj/PTProjectListView.strings Projeta/en.lproj/PTProjectListView.xib\n# fr\nibtool --strings-file Projeta/fr.lproj/PTProjectListView.strings --write Projeta/fr.lproj/PTProjectListView.xib Projeta/en.lproj/PTProjectListView.xib\n# PTProjectView.xib #################################################################\nibtool --export-strings-file Projeta/en.lproj/PTProjectView.strings Projeta/en.lproj/PTProjectView.xib\n# fr\nibtool --strings-file Projeta/fr.lproj/PTProjectView.strings --write Projeta/fr.lproj/PTProjectView.xib Projeta/en.lproj/PTProjectView.xib\n# PTSetPasswordWindow.xib #################################################################\nibtool --export-strings-file Projeta/en.lproj/PTSetPasswordWindow.strings Projeta/en.lproj/PTSetPasswordWindow.xib\n# fr\nibtool --strings-file Projeta/fr.lproj/PTSetPasswordWindow.strings --write Projeta/fr.lproj/PTSetPasswordWindow.xib Projeta/en.lproj/PTSetPasswordWindow.xib\n# PTTaskListView.xib #################################################################\nibtool --export-strings-file Projeta/en.lproj/PTTaskListView.strings Projeta/en.lproj/PTTaskListView.xib\n# fr\nibtool --strings-file Projeta/fr.lproj/PTTaskListView.strings --write Projeta/fr.lproj/PTTaskListView.xib Projeta/en.lproj/PTTaskListView.xib\n# PTUserDetailsWindow.xib #################################################################\nibtool --export-strings-file Projeta/en.lproj/PTUserDetailsWindow.strings Projeta/en.lproj/PTUserDetailsWindow.xib\n# fr\nibtool --strings-file Projeta/fr.lproj/PTUserDetailsWindow.strings --write Projeta/fr.lproj/PTUserDetailsWindow.xib Projeta/en.lproj/PTUserDetailsWindow.xib\n# PTUserManagementView.xib #################################################################\nibtool --export-strings-file Projeta/en.lproj/PTUserManagementView.strings Projeta/en.lproj/PTUserManagementView.xib\n# fr\nibtool --strings-file Projeta/fr.lproj/PTUserManagementView.strings --write Projeta/fr.lproj/PTUserManagementView.xib Projeta/en.lproj/PTUserManagementView.xib";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -689,6 +700,7 @@
 				4C770C96145FFE1F00A11E5A /* PTProjectDetailsWindowController.m in Sources */,
 				4CF8DB5A1466DEF1009FEB2F /* OutlineCollection.m in Sources */,
 				4C9198CC14672A56000CF6C2 /* MWTableCellView.m in Sources */,
+				4C11311014CA21AA008D47F4 /* PTSetPasswordWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -719,6 +731,16 @@
 				4C08037713F5A22300E70C73 /* fr */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		4C11311614CA21CC008D47F4 /* PTSetPasswordWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C11311514CA21CC008D47F4 /* en */,
+				4C11311714CA21D3008D47F4 /* fr */,
+				4C11311814CA21D5008D47F4 /* de */,
+			);
+			name = PTSetPasswordWindow.xib;
 			sourceTree = "<group>";
 		};
 		4C21F24D13C2741400462C43 /* PTUserManagementView.xib */ = {

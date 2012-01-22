@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 @class MainWindowController;
+@class PTSetPasswordWindowController;
 @class PTUserManagementViewController;
 @class Role;
 @class User;
@@ -19,6 +20,9 @@
     NSArrayController *availableRolesArrayCtrl;
     
     PTUserManagementViewController *parentUserManagementViewCtrl;
+    PTSetPasswordWindowController *setPwdWindowCtrl;
+    
+    IBOutlet NSWindow *setPasswordSheet;
     
     BOOL isNewUser;
     NSTextField *usernameTextField;
@@ -48,6 +52,8 @@
 @property (strong) IBOutlet NSImageView *passwordInvalidImageView;
 @property (weak) IBOutlet NSButton *setPasswordButton;
 @property (weak) IBOutlet NSSecureTextField *passwordTextField;
+// 'set password' window
+@property (strong) PTSetPasswordWindowController *setPwdWindowCtrl;
 
 // assign/remove a user role.
 - (IBAction)assignUserRoles:(id)sender;
@@ -55,6 +61,7 @@
 
 - (IBAction)okButtonClicked:(id)sender;
 - (IBAction)cancelButtonClicked:(id)sender;
+- (IBAction)setPasswordButtonClicked:(id)sender;
 
 // update user roles (in database).
 - (BOOL)updateUserRoles;

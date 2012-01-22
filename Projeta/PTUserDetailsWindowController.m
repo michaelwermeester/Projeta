@@ -13,6 +13,7 @@
 #import "MWConnectionController.h"
 #import "PTCommon.h"
 #import "PTRoleHelper.h"
+#import "PTSetPasswordWindowController.h"
 #import "PTUserHelper.h"
 #import "Role.h"
 #import "User.h"
@@ -38,6 +39,8 @@ User *userCopy;
 
 @synthesize isNewUser;
 @synthesize usernameTextField;
+
+@synthesize setPwdWindowCtrl;
 
 - (id)init
 {
@@ -199,6 +202,32 @@ User *userCopy;
     
     // close this window.
     [self close];
+}
+
+- (IBAction)setPasswordButtonClicked:(id)sender {
+    
+    //
+    setPwdWindowCtrl = [[PTSetPasswordWindowController alloc] init];
+
+    [setPwdWindowCtrl setUserId:user.userId];
+    
+    /*NSModalSession session = [NSApp beginModalSessionForWindow:[setPwdWindowCtrl window]];
+    
+    for (;;) {
+        if ([NSApp runModalSession:session] != NSRunContinuesResponse)
+            break;
+        //[self doSomeWork];
+    }
+    
+    [NSApp endModalSession:session];*/
+    
+    [NSApp beginSheet:[setPwdWindowCtrl window]
+       modalForWindow:[self window]
+        modalDelegate:nil
+       didEndSelector:NULL
+          contextInfo:NULL];
+    
+    
 }
 
 - (void)finishedCreatingUser:(NSMutableData*)data {

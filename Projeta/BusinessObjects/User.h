@@ -39,6 +39,8 @@
 - (NSArray *)namesEmailKeysWithPassword;
 
 - (NSArray *)userIdKey;
+// keys needed for updating a user's password.
+- (NSArray *)userIdPasswordKeys;
 // keys needed for updating user roles.
 - (NSArray *)updateRolesKeys;
 

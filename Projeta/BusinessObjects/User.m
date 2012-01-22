@@ -108,6 +108,15 @@
     return retArr;
 }
 
+// keys needed for updating a user's password.
+- (NSArray *)userIdPasswordKeys {
+    
+    NSArray *retArr = [[NSArray alloc] initWithObjects: @"userId", @"password", nil];
+    
+    return retArr;
+}
+
+
 // keys needed for updating user roles.
 - (NSArray *)updateRolesKeys {
  
