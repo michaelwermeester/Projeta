@@ -21,6 +21,7 @@
     
     PTUserManagementViewController *parentUserManagementViewCtrl;
     PTSetPasswordWindowController *setPwdWindowCtrl;
+    __weak NSButton *okButton;
     
     IBOutlet NSWindow *setPasswordSheet;
     
@@ -54,6 +55,7 @@
 @property (weak) IBOutlet NSSecureTextField *passwordTextField;
 // 'set password' window
 @property (strong) PTSetPasswordWindowController *setPwdWindowCtrl;
+@property (weak) IBOutlet NSButton *okButton;
 
 // assign/remove a user role.
 - (IBAction)assignUserRoles:(id)sender;

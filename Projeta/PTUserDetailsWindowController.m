@@ -41,6 +41,7 @@ User *userCopy;
 @synthesize usernameTextField;
 
 @synthesize setPwdWindowCtrl;
+@synthesize okButton;
 
 - (id)init
 {
@@ -156,6 +157,9 @@ User *userCopy;
     BOOL __block roleUpdSuc = NO;
     
     if ([userNameInvalidImageView isHidden] == YES) { 
+        
+        // move focus to OK button to make sure that no text field is in edit mode (which prevents saving).
+        [[self window] makeFirstResponder:okButton];
         
         if (isNewUser == NO) {
             // update user details.
