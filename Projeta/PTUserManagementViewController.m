@@ -42,7 +42,7 @@
         // load user defaults from preferences file
         //NSString *urlString = [[NSUserDefaults standardUserDefaults] objectForKey:@"ServerURL"];
         
-        // get server URL as string
+        /*// get server URL as string
         NSString *urlString = [PTCommon serverURLString];
         // build URL by adding resource path
         urlString = [urlString stringByAppendingString:@"resources/users/all"];
@@ -64,7 +64,7 @@
         NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
         [urlRequest setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
         
-        [connectionController startRequestForURL:url setRequest:urlRequest];
+        [connectionController startRequestForURL:url setRequest:urlRequest];*/
         
                 
         // get users
@@ -94,6 +94,33 @@
       @"(username contains[cd] $value) OR (firstName contains[cd] $value) OR (lastName contains[cd] $value) OR (emailAddress contains[cd] $value)",
       NSPredicateFormatBindingOption,
       nil]];
+    
+    // show loading indicator animation.
+    [mainWindowController startProgressIndicatorAnimation];
+    
+    // get server URL as string
+    NSString *urlString = [PTCommon serverURLString];
+    // build URL by adding resource path
+    urlString = [urlString stringByAppendingString:@"resources/users/all"];
+    
+    // convert to NSURL
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    
+    // NSURLConnection - MWConnectionController
+    MWConnectionController* connectionController = [[MWConnectionController alloc] 
+                                                    initWithSuccessBlock:^(NSMutableData *data) {
+                                                        [self requestFinished:data];
+                                                    }
+                                                    failureBlock:^(NSError *error) {
+                                                        [self requestFailed:error];
+                                                    }];
+    
+    
+    NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
+    [urlRequest setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
+    
+    [connectionController startRequestForURL:url setRequest:urlRequest];
 }
 
 - (void)addObservers {
@@ -165,11 +192,17 @@
      user.username = @"test";
      [arrayCtrl addObject:user];
      */
+    
+    // stop showing loading indicator animation.
+    [mainWindowController stopProgressIndicatorAnimation];
 }
 
 - (void)requestFailed:(NSError*)error
 {
     NSLog(@"Failed %@ with code %ld and with userInfo %@",[error domain],[error code],[error userInfo]);
+    
+    // stop showing loading indicator animation.
+    [mainWindowController stopProgressIndicatorAnimation];
 }
 
 - (IBAction)deleteButtonClicked:(NSButton*)sender {
