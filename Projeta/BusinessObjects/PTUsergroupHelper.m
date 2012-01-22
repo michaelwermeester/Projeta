@@ -143,7 +143,7 @@
     BOOL success;
     
     // build URL by adding resource path
-    NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/usergroups?userId="];
+    NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/usergroups/update?userId="];
     resourceString = [resourceString stringByAppendingString:[aUser.userId stringValue]];
     
     
