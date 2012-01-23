@@ -172,33 +172,47 @@
 // NSURLConnection
 - (void)requestFinished:(NSMutableData*)data
 {
-    NSError *error;
     
-    // Use when fetching text data
-    //NSString *responseString = [request responseString];
-    //NSLog(@"response: %@", responseString);
-    //NSDictionary *dict = [[NSDictionary alloc] init];
-    NSDictionary *dict = [[NSDictionary alloc] init];
-    dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
+    // http://stackoverflow.com/questions/5037545/nsurlconnection-and-grand-central-dispatch
     
-    // see Cocoa and Objective-C up and running by Scott Stevenson.
-    // page 242
-    [[self mutableArrayValueForKey:@"arrUsr"] addObjectsFromArray:[PTUserHelper setAttributesFromDictionary2:dict]];
+    //NSDictionary __block *dict = [[NSDictionary alloc] init];
     
-    // sort the user list by username. 
-    [usersTableView setSortDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"username" ascending:YES selector:@selector(compare:)], nil]];
+    //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSError *error;
+        
+        // Use when fetching text data
+        //NSString *responseString = [request responseString];
+        //NSLog(@"response: %@", responseString);
+        //NSDictionary *dict = [[NSDictionary alloc] init];
+        NSDictionary *dict = [[NSDictionary alloc] init];
+        dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
+        
+        
+    //});
+        // see Cocoa and Objective-C up and running by Scott Stevenson.
+        // page 242
+        
+        //[arrayCtrl addObjects:[PTUser setAttributesFromDictionary2:dict]];
+        
+        // add a new user programmatically
+        /*
+         User *user = [[User alloc] init];
+         user.username = @"test";
+         [arrayCtrl addObject:user];
+         */
     
-    //[arrayCtrl addObjects:[PTUser setAttributesFromDictionary2:dict]];
     
-    // add a new user programmatically
-    /*
-     User *user = [[User alloc] init];
-     user.username = @"test";
-     [arrayCtrl addObject:user];
-     */
-    
-    // stop showing loading indicator animation.
-    [mainWindowController stopProgressIndicatorAnimation];
+    //dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [[self mutableArrayValueForKey:@"arrUsr"] addObjectsFromArray:[PTUserHelper setAttributesFromDictionary2:dict]];
+        
+        // sort the user list by username. 
+        [usersTableView setSortDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"username" ascending:YES selector:@selector(compare:)], nil]];
+        
+        // stop showing loading indicator animation.
+        [mainWindowController stopProgressIndicatorAnimation];
+    //});
+    //});
 }
 
 - (void)requestFailed:(NSError*)error

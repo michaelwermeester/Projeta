@@ -89,7 +89,7 @@
 {
     // http://stackoverflow.com/questions/5037545/nsurlconnection-and-grand-central-dispatch
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         NSError *error;
     
@@ -103,14 +103,18 @@
     
         // see Cocoa and Objective-C up and running by Scott Stevenson.
         // page 242
+        
+    //});    
+    
+
+    //dispatch_async(dispatch_get_main_queue(), ^{
+        
         [[self mutableArrayValueForKey:@"arrTask"] addObjectsFromArray:[PTTaskHelper setAttributesFromJSONDictionary:dict]];
         
-    });
-
-    dispatch_async(dispatch_get_main_queue(), ^{
         // stop animating the main window's circular progress indicator.
         [mainWindowController stopProgressIndicatorAnimation];
-    });
+    //});
+    //});
 }
 
 - (void)requestFailed:(NSError*)error
