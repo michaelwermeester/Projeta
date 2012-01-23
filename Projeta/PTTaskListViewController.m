@@ -87,22 +87,30 @@
 // NSURLConnection
 - (void)requestFinished:(NSMutableData*)data
 {
-    NSError *error;
+    // http://stackoverflow.com/questions/5037545/nsurlconnection-and-grand-central-dispatch
     
-    // Use when fetching text data
-    //NSString *responseString = [request responseString];
-    //NSLog(@"response: %@", responseString);
-    //NSDictionary *dict = [[NSDictionary alloc] init];
-    NSDictionary *dict = [[NSDictionary alloc] init];
-    dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
-    //NSLog(@"DESC: %@", [dict description]);
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        NSError *error;
     
-    // see Cocoa and Objective-C up and running by Scott Stevenson.
-    // page 242
-    [[self mutableArrayValueForKey:@"arrTask"] addObjectsFromArray:[PTTaskHelper setAttributesFromJSONDictionary:dict]];
+        // Use when fetching text data
+        //NSString *responseString = [request responseString];
+        //NSLog(@"response: %@", responseString);
+        //NSDictionary *dict = [[NSDictionary alloc] init];
+        NSDictionary *dict = [[NSDictionary alloc] init];
+        dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
+        //NSLog(@"DESC: %@", [dict description]);
+    
+        // see Cocoa and Objective-C up and running by Scott Stevenson.
+        // page 242
+        [[self mutableArrayValueForKey:@"arrTask"] addObjectsFromArray:[PTTaskHelper setAttributesFromJSONDictionary:dict]];
+        
+    });
 
-    // stop animating the main window's circular progress indicator.
-    [mainWindowController stopProgressIndicatorAnimation];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // stop animating the main window's circular progress indicator.
+        [mainWindowController stopProgressIndicatorAnimation];
+    });
 }
 
 - (void)requestFailed:(NSError*)error
