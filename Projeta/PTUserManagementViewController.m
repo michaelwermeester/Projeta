@@ -102,7 +102,12 @@
     // show loading indicator animation.
     [mainWindowController startProgressIndicatorAnimation];
     
-    // get server URL as string
+    
+    
+    
+    
+    
+    /*// get server URL as string
     NSString *urlString = [PTCommon serverURLString];
     // build URL by adding resource path
     urlString = [urlString stringByAppendingString:@"resources/users/all"];
@@ -124,7 +129,13 @@
     NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
     [urlRequest setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
     
-    [connectionController startRequestForURL:url setRequest:urlRequest];
+    [connectionController startRequestForURL:url setRequest:urlRequest];*/
+    
+    [PTUserHelper allUsers:^(NSMutableArray *users) { 
+        [self allUsersRequestFinished:users]; 
+    } failureBlock:^(NSError *error) {
+        [self allUsersRequestFailed:error];
+    }];
 }
 
 - (void)addObservers {
@@ -169,8 +180,20 @@
     }
 }
 
+- (void)allUsersRequestFinished:(NSMutableArray *)users
+{
+    [[self mutableArrayValueForKey:@"arrUsr"] addObjectsFromArray:users];
+    
+    // sort the user list by username. 
+    [usersTableView setSortDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"username" ascending:YES selector:@selector(compare:)], nil]];
+    
+    // stop showing loading indicator animation.
+    [mainWindowController stopProgressIndicatorAnimation];
+         
+}
+     
 // NSURLConnection
-- (void)requestFinished:(NSMutableData*)data
+/*- (void)requestFinished:(NSMutableData*)data
 {
     
     // http://stackoverflow.com/questions/5037545/nsurlconnection-and-grand-central-dispatch
@@ -195,11 +218,11 @@
         //[arrayCtrl addObjects:[PTUser setAttributesFromDictionary2:dict]];
         
         // add a new user programmatically
-        /*
-         User *user = [[User alloc] init];
-         user.username = @"test";
-         [arrayCtrl addObject:user];
-         */
+        //
+        // User *user = [[User alloc] init];
+        // user.username = @"test";
+        // [arrayCtrl addObject:user];
+        
     
     
     //dispatch_async(dispatch_get_main_queue(), ^{
@@ -214,15 +237,23 @@
         [mainWindowController stopProgressIndicatorAnimation];
     //});
     //});
+}*/
+     
+- (void)allUsersRequestFailed:(NSError*)error
+{
+    NSLog(@"Failed %@ with code %ld and with userInfo %@",[error domain],[error code],[error userInfo]);
+      
+    // stop showing loading indicator animation.
+    [mainWindowController stopProgressIndicatorAnimation];
 }
 
-- (void)requestFailed:(NSError*)error
+/*- (void)requestFailed:(NSError*)error
 {
     NSLog(@"Failed %@ with code %ld and with userInfo %@",[error domain],[error code],[error userInfo]);
     
     // stop showing loading indicator animation.
     [mainWindowController stopProgressIndicatorAnimation];
-}
+}*/
 
 - (IBAction)deleteButtonClicked:(NSButton*)sender {
     

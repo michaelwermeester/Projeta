@@ -37,8 +37,8 @@
 @property (weak) IBOutlet NSSearchField *searchField;
 
 // NSURLConnection
-- (void)requestFinished:(NSMutableData*)data;
-- (void)requestFailed:(NSError*)error;
+//- (void)requestFinished:(NSMutableData*)data;
+//- (void)requestFailed:(NSError*)error;
 
 - (IBAction)addButtonClicked:(id)sender;
 - (IBAction)removeButtonClicked:(id)sender;
@@ -54,6 +54,8 @@
 - (void)addObservers;
 - (void)removeObservers;
 
+- (void)allUsersRequestFinished:(NSMutableArray *)users;
+- (void)allUsersRequestFailed:(NSError*)error;
 
 - (IBAction)findUser:(id)sender;
 

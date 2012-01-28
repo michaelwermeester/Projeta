@@ -44,4 +44,6 @@
 // Fetches users for the given resource URL into an NSMutableArray and executes the successBlock upon success.
 + (void)serverUsersToArray:(NSString *)urlString successBlock:(void (^)(NSMutableArray*))successBlock failureBlock:(void(^)(NSError *))failureBlock;
 
++ (void)allUsers:(void(^)(NSMutableArray *))successBlock failureBlock:(void(^)(NSError *))failureBlock;
+
 @end
