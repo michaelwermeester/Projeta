@@ -244,7 +244,8 @@ User *userCopy;
     
     // see Cocoa and Objective-C up and running by Scott Stevenson.
     // page 242
-    [createdUserArray addObjectsFromArray:[PTUserHelper setAttributesFromDictionary2:dict]];
+    //[createdUserArray addObjectsFromArray:[PTUserHelper setAttributesFromDictionary2:dict]];
+    [createdUserArray addObjectsFromArray:[PTUserHelper setAttributesFromJSONDictionary:dict]];
     
     if ([createdUserArray count] == 1) {
         for (User *usr in createdUserArray) {

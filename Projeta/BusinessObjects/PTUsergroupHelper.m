@@ -9,6 +9,7 @@
 #import "MWConnectionController.h"
 #import "PTCommon.h"
 #import "PTUsergroupHelper.h"
+#import "PTUserHelper.h"
 #import "User.h"
 #import "Usergroup.h"
 
@@ -152,6 +153,7 @@
     
     return success;
 }
+
 
 
 @end

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class User;
+@class Usergroup;
 
 @interface PTUsergroupHelper : NSObject {
     NSArray *usergroup;
@@ -26,5 +27,6 @@
 + (void)usergroupsForUserName:(NSString *)aUsername successBlock:(void(^)(NSMutableArray *))successBlock;
 
 + (BOOL)updateUsergroupsForUser:(User *)aUser usergroups:(NSMutableDictionary *)usergroups successBlock:(void(^)(NSMutableData *))successBlock failureBlock:(void(^)(NSError *))failureBlock;
+
 
 @end

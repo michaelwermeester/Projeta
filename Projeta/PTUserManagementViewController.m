@@ -204,7 +204,8 @@
     
     //dispatch_async(dispatch_get_main_queue(), ^{
         
-        [[self mutableArrayValueForKey:@"arrUsr"] addObjectsFromArray:[PTUserHelper setAttributesFromDictionary2:dict]];
+        //[[self mutableArrayValueForKey:@"arrUsr"] addObjectsFromArray:[PTUserHelper setAttributesFromDictionary2:dict]];
+        [[self mutableArrayValueForKey:@"arrUsr"] addObjectsFromArray:[PTUserHelper setAttributesFromJSONDictionary:dict]];
         
         // sort the user list by username. 
         [usersTableView setSortDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"username" ascending:YES selector:@selector(compare:)], nil]];

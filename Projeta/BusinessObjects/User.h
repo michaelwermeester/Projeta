@@ -19,6 +19,9 @@
     
     NSMutableArray *roles;
     NSMutableArray *usergroups;
+    
+    // retourne le nom complet de l'utilisateur (prénom + nom).
+    NSString *fullName;
 }
 
 @property (nonatomic, copy) NSString *password;
@@ -29,6 +32,8 @@
 @property (nonatomic, copy) NSString *lastName;
 @property (strong) NSMutableArray *roles;
 @property (strong) NSMutableArray *usergroups;
+
+@property (strong, readonly) NSString *fullName;
 
 + (User *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;

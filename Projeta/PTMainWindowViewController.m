@@ -416,7 +416,8 @@ static User *_loggedInUser = nil;
     
     // see Cocoa and Objective-C up and running by Scott Stevenson.
     // page 242
-    [loggedInUserArr addObjectsFromArray:[PTUserHelper setAttributesFromDictionary2:dict]];
+    //[loggedInUserArr addObjectsFromArray:[PTUserHelper setAttributesFromDictionary2:dict]];
+    [loggedInUserArr addObjectsFromArray:[PTUserHelper setAttributesFromJSONDictionary:dict]];
     
     if ([loggedInUserArr count] == 1) {
         for (User *usr in loggedInUserArr) {

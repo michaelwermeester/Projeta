@@ -19,6 +19,7 @@
 @synthesize roles = roles;
 @synthesize usergroups = usergroups;
 
+
 - (id)init
 {
     self = [super init];
@@ -134,6 +135,15 @@
     NSArray *retArr = [[NSArray alloc] initWithObjects: @"code", @"usergroupId", nil];
     
     return retArr;
+}
+
+- (NSString *)fullName
+{
+    NSString *fullname = [NSString stringWithString:firstName];
+    [fullname stringByAppendingString:@" "];
+    [fullname stringByAppendingString:lastName];
+    
+    return fullname;
 }
 
 @end

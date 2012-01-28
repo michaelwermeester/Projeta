@@ -12,11 +12,14 @@
     NSString *code;
     NSString *comment;
     NSNumber *usergroupId;
+    
+    NSMutableArray *users;
 }
 
 @property (nonatomic, copy) NSString *code;
 @property (nonatomic, copy) NSString *comment;
 @property (nonatomic, copy) NSNumber *usergroupId;
+@property (strong) NSMutableArray *users;
 
 + (Usergroup *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;

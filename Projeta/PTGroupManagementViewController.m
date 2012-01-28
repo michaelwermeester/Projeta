@@ -10,7 +10,9 @@
 #import "MWConnectionController.h"
 #import "PTCommon.h"
 #import "PTGroupManagementViewController.h"
+#import "PTGroupUserWindowController.h"
 #import "PTUsergroupHelper.h"
+#import "PTUserHelper.h"
 #import "Usergroup.h"
 
 @implementation PTGroupManagementViewController
@@ -18,6 +20,7 @@
 @synthesize arrUsrGrp;
 @synthesize usergroupArrayCtrl;
 @synthesize usergroupTableView;
+@synthesize usersButton;
 @synthesize mainWindowController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -114,6 +117,11 @@
     [usergroupArrayCtrl insertObject:usrgrp atArrangedObjectIndex:([arrUsrGrp count])];
 }
 
+- (IBAction)usersButtonClicked:(id)sender {
+    
+    [self openUsersWindow];
+}
+
 - (void)tableView:(NSTableView *)aTableView
    setObjectValue:(id)anObject
    forTableColumn:(NSTableColumn *)aTableColumn
@@ -171,6 +179,60 @@
     
     [connectionController startRequestForURL:url setRequest:urlRequest];
     
+}
+
+- (void)openUsersWindow 
+{
+    // get selected users.
+    NSArray *selectedObjects = [usergroupArrayCtrl selectedObjects];
+    
+    // if a user is selected, open the window to show its user details.
+    if ([selectedObjects count] == 1) {
+        
+        groupUserWindowController = [[PTGroupUserWindowController alloc] init];
+        groupUserWindowController.parentGroupManagementViewCtrl = self;
+        groupUserWindowController.mainWindowController = mainWindowController;
+        groupUserWindowController.usergroup = [selectedObjects objectAtIndex:0];
+        
+        // fetch usergroup's users.
+        [PTUserHelper usersForUsergroup:groupUserWindowController.usergroup successBlock:^(NSMutableArray *users) {
+            
+            // sort user roles alphabetically.
+            [users sortUsingComparator:^NSComparisonResult(User *u1, User *u2) {
+                
+                return [u1.username compare:u2.username];
+            }];
+            
+            //if (isNewUser == NO) {
+            groupUserWindowController.usergroup.users = users;
+            
+            //NSLog(@"count: %@", [userGroups count]);
+            //} else {
+            //    userDetailsWindowController.user.roles = [[NSMutableArray alloc] init];
+            //}
+            
+            //[[userDetailsWindowController.user mutableArrayValueForKey:@"roles"] addObjectsFromArray:userRoles];
+            
+            [groupUserWindowController showWindow:self];
+        } failureBlock:^(NSError *error) {
+            
+        }];
+        
+        // fetch available users.
+        /*[PTUserHelper usergroupsAvailable:^(NSMutableArray *availableUsergroups) {
+            
+            // sort available roles alphabetically.
+            [availableUsergroups sortUsingComparator:^NSComparisonResult(Usergroup *ug1, Usergroup *ug2) {
+                
+                return [ug1.code compare:ug2.code];
+            }];
+            
+            userGroupWindowController.availableUsergroups = availableUsergroups;
+            
+            [userGroupWindowController showWindow:self];
+        }];*/
+        
+    }
 }
 
 @end

@@ -59,7 +59,8 @@
 
 }
 
-+ (NSMutableArray *)setAttributesFromDictionary2:(NSDictionary *)aDictionary {
+//+ (NSMutableArray *)setAttributesFromDictionary2:(NSDictionary *)aDictionary {
++ (NSMutableArray *)setAttributesFromJSONDictionary:(NSDictionary *)aDictionary {
     
     if (!aDictionary) {
         return nil;
@@ -203,6 +204,57 @@
     // execute the PUT method on the webservice to update the record in the database.
     [PTCommon executePUTforDictionaryWithBlocks:dict resourceString:resourceString successBlock:successBlock_ failureBlock:failureBlock_];
     
+}
+
+
++ (void)usersForUsergroup:(Usergroup *)aGroup successBlock:(void(^)(NSMutableArray *))successBlock failureBlock:(void(^)(NSError *))failureBlock {
+    
+    if (aGroup.usergroupId)
+        //return [self rolesForUserName:aUser.username successBlock:^{}];
+        [self usersForUsergroupId:aGroup.usergroupId successBlock:successBlock failureBlock:failureBlock];
+}
+
++ (void)usersForUsergroupId:(NSNumber *)aGroupId successBlock:(void(^)(NSMutableArray *))successBlock failureBlock:(void(^)(NSError *))failureBlock {
+    
+    NSString *urlString = [PTCommon serverURLString];
+    // build URL by adding resource path
+    urlString = [urlString stringByAppendingString:@"resources/users/usergroup/"];
+    urlString = [urlString stringByAppendingString:[aGroupId stringValue]];
+    
+    [PTUserHelper serverUsersToArray:urlString successBlock:successBlock failureBlock:failureBlock];
+}
+
+// Fetches users for the given resource URL into an NSMutableArray and executes the successBlock upon success.
++ (void)serverUsersToArray:(NSString *)urlString successBlock:(void (^)(NSMutableArray*))successBlock failureBlock:(void(^)(NSError *))failureBlock {
+    
+    // convert to NSURL
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    NSMutableArray *users= [[NSMutableArray alloc] init];
+    
+    // NSURLConnection - MWConnectionController
+    MWConnectionController* connectionController = [[MWConnectionController alloc] 
+                                                    initWithSuccessBlock:^(NSMutableData *data) {
+                                                        NSError *error;
+                                                        
+                                                        NSDictionary *dict = [[NSDictionary alloc] init];
+                                                        dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
+                                                        
+                                                        [users addObjectsFromArray:[PTUserHelper setAttributesFromJSONDictionary:dict]];
+                                                        
+                                                        successBlock(users);
+                                                    }
+                                                    failureBlock:^(NSError *error) {
+                                                        //[self rolesForUserRequestFailed:error];
+                                                    }];
+    
+    [connectionController setPostSuccessAction:^{
+        //NSLog(@"postSuccessAction.");
+    }];
+    
+    NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
+    
+    [connectionController startRequestForURL:url setRequest:urlRequest];
 }
 
 @end

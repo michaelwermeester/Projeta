@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4C08036F13F5A20700E70C73 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C08037113F5A20700E70C73 /* Localizable.strings */; };
 		4C08037813F5A23200E70C73 /* PTSidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C08037913F5A23200E70C73 /* PTSidebarViewController.m */; };
+		4C09689B14D3F2EA009B4470 /* PTGroupUserWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C09689C14D3F2EA009B4470 /* PTGroupUserWindow.xib */; };
+		4C0968A114D3F869009B4470 /* PTGroupUserWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0968A014D3F869009B4470 /* PTGroupUserWindowController.m */; };
 		4C0BA4E913F329C7002EA4F2 /* PXSourceList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0BA4E813F329C7002EA4F2 /* PXSourceList.m */; };
 		4C0BC5B513DA1D15003360E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C74A61413A2BFA100E7DBF6 /* Cocoa.framework */; };
 		4C11311014CA21AA008D47F4 /* PTSetPasswordWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C11310F14CA21AA008D47F4 /* PTSetPasswordWindowController.m */; };
@@ -90,6 +92,9 @@
 		4C08037313F5A20D00E70C73 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4C08037713F5A22300E70C73 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4C08037913F5A23200E70C73 /* PTSidebarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PTSidebarViewController.m; sourceTree = "<group>"; };
+		4C09689C14D3F2EA009B4470 /* PTGroupUserWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PTGroupUserWindow.xib; sourceTree = "<group>"; };
+		4C09689F14D3F838009B4470 /* PTGroupUserWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTGroupUserWindowController.h; sourceTree = "<group>"; };
+		4C0968A014D3F869009B4470 /* PTGroupUserWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTGroupUserWindowController.m; sourceTree = "<group>"; };
 		4C0BA4DA13F3274E002EA4F2 /* PXSourceListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXSourceListDataSource.h; sourceTree = "<group>"; };
 		4C0BA4DB13F3274E002EA4F2 /* PXSourceListDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXSourceListDelegate.h; sourceTree = "<group>"; };
 		4C0BA4E713F329C7002EA4F2 /* PXSourceList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXSourceList.h; sourceTree = "<group>"; };
@@ -282,6 +287,9 @@
 				4CF7C861145ED0E500CEB50C /* PTGroupManagementViewController.h */,
 				4CF7C862145ED0E500CEB50C /* PTGroupManagementViewController.m */,
 				4CF7C869145ED2A400CEB50C /* PTGroupManagementView.xib */,
+				4C09689F14D3F838009B4470 /* PTGroupUserWindowController.h */,
+				4C0968A014D3F869009B4470 /* PTGroupUserWindowController.m */,
+				4C09689C14D3F2EA009B4470 /* PTGroupUserWindow.xib */,
 				4C11310E14CA21AA008D47F4 /* PTSetPasswordWindowController.h */,
 				4C11310F14CA21AA008D47F4 /* PTSetPasswordWindowController.m */,
 				4C11311614CA21CC008D47F4 /* PTSetPasswordWindow.xib */,
@@ -621,6 +629,7 @@
 				4C770C99145FFE6200A11E5A /* PTProjectDetailsWindow.xib in Resources */,
 				4C11311414CA21CC008D47F4 /* PTSetPasswordWindow.xib in Resources */,
 				4C568E3B14CC86A6006AF039 /* PTUserGroupWindow.xib in Resources */,
+				4C09689B14D3F2EA009B4470 /* PTGroupUserWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -713,6 +722,7 @@
 				4C9198CC14672A56000CF6C2 /* MWTableCellView.m in Sources */,
 				4C11311014CA21AA008D47F4 /* PTSetPasswordWindowController.m in Sources */,
 				4C568E3A14CC868F006AF039 /* PTUserGroupWindowController.m in Sources */,
+				4C0968A114D3F869009B4470 /* PTGroupUserWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

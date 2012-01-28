@@ -13,6 +13,7 @@
 @synthesize code = code;
 @synthesize comment = comment;
 @synthesize usergroupId = usergroupId;
+@synthesize users = users;
 
 // Required by NSCopying protocol.
 - (id) copyWithZone:(NSZone *)zone {
