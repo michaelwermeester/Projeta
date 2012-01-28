@@ -33,30 +33,22 @@
     return self;
 }
 
-/*
 - (void)awakeFromNib {
     
-    // remove usergroups already affected to user from available usergroups list.
-    for (Usergroup *ug in user.usergroups) {
+    // remove users already affected to user from available users list.
+    for (User *u in usergroup.users) {
         
-        for (NSUInteger i = 0; i < [availableUsergroups count]; i++) {
+        for (NSUInteger i = 0; i < [availableUsers count]; i++) {
             
-            // if usergroup found.
-            if ([[availableUsergroups objectAtIndex:i] isEqual:ug]) {
+            // if user found.
+            if ([[availableUsers objectAtIndex:i] isEqual:u]) {
                 
-                // remove usergroup.
-                [[self mutableArrayValueForKey:@"availableUsergroups"] removeObjectAtIndex:i];
+                // remove user.
+                [[self mutableArrayValueForKey:@"availableUsers"] removeObjectAtIndex:i];
             }
         }
     }
     
-}
-
-- (void)windowDidLoad
-{
-    [super windowDidLoad];
-    
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
 
 - (IBAction)cancelButtonClicked:(id)sender {
@@ -64,59 +56,65 @@
     [self close];
 }
 
-// assign selected usergroup(s) to user. 
-- (IBAction)assignUsergroup:(id)sender {
+
+
+// assign selected user(s) to usergroup. 
+- (IBAction)assignUser:(id)sender {
     
-    // get selection of roles to be affected to user.
-    NSArray *selectedUsergroups = [availableUsergroupsArrayCtrl selectedObjects];
+    // get selection of users to be affected to usergroup.
+    NSArray *selectedUsers = [availableUsersArrayCtrl selectedObjects];
     
-    for (Usergroup *usergroup in selectedUsergroups) {
+    for (User *user in selectedUsers) {
         
-        if (!user.usergroups) {
-            user.usergroups = [[NSMutableArray alloc] init];
+        if (!usergroup.users) {
+            usergroup.users = [[NSMutableArray alloc] init];
         }
         
-        // affect new role to user.
-        [userUsergroupsArrayCtrl addObject:usergroup];
+        // affect new user to usergroup.
+        [groupUsersArrayCtrl addObject:user];
         
-        // remove role from available roles.
-        [availableUsergroupsArrayCtrl removeObject:usergroup];
+        // remove user from available users.
+        [availableUsersArrayCtrl removeObject:user];
         
         // sort user roles alphabetically.
-        [user.usergroups sortUsingComparator:^NSComparisonResult(Usergroup *ug1, Usergroup *ug2) {
+        [usergroup.users sortUsingComparator:^NSComparisonResult(User *u1, User *u2) {
             
-            return [ug1.code compare:ug2.code];
+            return [u1.username compare:u2.username];
         }];
     }
 }
 
-// remove selected usergroup(s) from user.
-- (IBAction)removeUsergroup:(id)sender {
+
+
+// remove selected user(s) from usergroup.
+- (IBAction)removeUser:(id)sender {
     
-    // get selection of usergroups to be removed from user.
-    NSArray *selectedUsergroups = [userUsergroupsArrayCtrl selectedObjects];
+    // get selection of users to be removed from usergroup.
+    NSArray *selectedUsers = [groupUsersArrayCtrl selectedObjects];
     
-    for (Usergroup *usergroup in selectedUsergroups) {
+    for (User *user in selectedUsers) {
         // make usergroup available.
-        [availableUsergroupsArrayCtrl addObject:usergroup];
+        [availableUsersArrayCtrl addObject:user];
         
         // remove usergroup from user's usergroups.
-        [userUsergroupsArrayCtrl removeObject:usergroup];
+        [groupUsersArrayCtrl removeObject:user];
         
         // sort user groups alphabetically.
-        [availableUsergroups sortUsingComparator:^NSComparisonResult(Usergroup *ug1, Usergroup *ug2) {
+        [availableUsers sortUsingComparator:^NSComparisonResult(User *u1, User *u2) {
             
-            return [ug1.code compare:ug2.code];
+            return [u1.username compare:u2.username];
         }];
     }
 }
+
+
 
 - (IBAction)okButtonClicked:(id)sender {
     
     [progressIndicator startAnimation:self];
     [updatingUsergroupsLabel setHidden:NO];
     
-    [self updateUserUsergroups];
+    [self updateUsergroupUsers];
 }
 
 // update user's usergroups (in database).
@@ -125,23 +123,23 @@
     BOOL success;
     
     // Initialize a new array to hold the roles.
-    NSMutableArray *usergroupsArray = [[NSMutableArray alloc] init];
+    NSMutableArray *usersArray = [[NSMutableArray alloc] init];
     
     // add (assigned) user roles to the array.
-    for (Usergroup *usergroup in user.usergroups) {
+    for (User *user in usergroup.users) {
         
-        NSDictionary *tmpUsergroupDict = [usergroup dictionaryWithValuesForKeys:[user updateUsergroupsKeys]];
+        NSDictionary *tmpUserDict = [user dictionaryWithValuesForKeys:[user userIdKey]];
         
-        [usergroupsArray addObject:tmpUsergroupDict];
+        [usersArray addObject:tmpUserDict];
     }
     
-    // create a new dictionary which holds the usergroups.
+    // create a new dictionary which holds the users.
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-    [dict setObject:usergroupsArray forKey:@"usergroup"];
+    [dict setObject:usersArray forKey:@"user"];
     
     //
-    // update user roles in database via web service.
-    success = [PTUsergroupHelper updateUsergroupsForUser:user usergroups:dict successBlock:^(NSMutableData *data) {[self finishedUpdatingUsergroups:data];} failureBlock:^(NSError *error) {[self failedUpdatingUsergroups:error];}];
+    // update usergroups in database via web service.
+    success = [PTUsergroupHelper updateUsersForUsergroup:usergroup users:dict successBlock:^(NSMutableData *data) {[self finishedUpdatingUsergroups:data];} failureBlock:^(NSError *error) {[self failedUpdatingUsergroups:error];}];
     
     return success;
 }
@@ -156,10 +154,9 @@
     
     [progressIndicator stopAnimation:self];
     [updatingUsergroupsLabel setHidden:YES];
-    NSLog(@"ok, updated user groups");
+    NSLog(@"ok, updated users in usergroup.");
     
     [self close];
 }
- */
 
 @end

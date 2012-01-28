@@ -213,24 +213,23 @@
             
             //[[userDetailsWindowController.user mutableArrayValueForKey:@"roles"] addObjectsFromArray:userRoles];
             
-            [groupUserWindowController showWindow:self];
         } failureBlock:^(NSError *error) {
             
         }];
         
         // fetch available users.
-        /*[PTUserHelper usergroupsAvailable:^(NSMutableArray *availableUsergroups) {
+        [PTUserHelper allUsers:^(NSMutableArray *availableUsers) { 
             
             // sort available roles alphabetically.
-            [availableUsergroups sortUsingComparator:^NSComparisonResult(Usergroup *ug1, Usergroup *ug2) {
+            [availableUsers sortUsingComparator:^NSComparisonResult(User *u1, User *u2) {
                 
-                return [ug1.code compare:ug2.code];
+                return [u1.username compare:u2.username];
             }];
             
-            userGroupWindowController.availableUsergroups = availableUsergroups;
+            groupUserWindowController.availableUsers = availableUsers;
             
-            [userGroupWindowController showWindow:self];
-        }];*/
+            [groupUserWindowController showWindow:self];
+        } failureBlock:^(NSError *error) { }];
         
     }
 }

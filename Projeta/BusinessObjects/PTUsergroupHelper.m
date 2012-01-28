@@ -144,7 +144,7 @@
     BOOL success;
     
     // build URL by adding resource path
-    NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/usergroups/update?userId="];
+    NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/usergroups/updateGroupsForUser?userId="];
     resourceString = [resourceString stringByAppendingString:[aUser.userId stringValue]];
     
     
@@ -154,6 +154,19 @@
     return success;
 }
 
++ (BOOL)updateUsersForUsergroup:(Usergroup *)aUsergroup users:(NSMutableDictionary *)users successBlock:(void(^)(NSMutableData *))successBlock failureBlock:(void(^)(NSError *))failureBlock {
 
+    BOOL success;
+    
+    // build URL by adding resource path
+    NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/usergroups/updateUsersForGroup?usergroupId="];
+    resourceString = [resourceString stringByAppendingString:[aUsergroup.usergroupId stringValue]];
+    
+    
+    // execute the PUT method on the webservice to update the record in the database.
+    [PTCommon executePUTforDictionaryWithBlocks:users resourceString:resourceString successBlock:successBlock failureBlock:failureBlock];
+    
+    return success;
+}
 
 @end

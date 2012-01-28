@@ -30,6 +30,21 @@
     return self;
 }
 
+// Override isEqual method.
+- (BOOL)isEqual:(id)anObject {
+    
+    if (self == anObject) {
+        return YES;
+    } else if (!anObject || ![anObject isKindOfClass:[self class]]) {
+        return NO;
+    } // compare if id and code are equal.
+    else if ([[self userId] isEqual:[(User *)anObject userId]] && [[self username] isEqual:[(User *)anObject username]]) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
 // Required by NSCopying protocol.
 - (id) copyWithZone:(NSZone *)zone {
     
@@ -139,9 +154,16 @@
 
 - (NSString *)fullName
 {
-    NSString *fullname = [NSString stringWithString:firstName];
-    [fullname stringByAppendingString:@" "];
-    [fullname stringByAppendingString:lastName];
+    NSString *fullname = [NSString stringWithString:@""];
+    if (firstName != nil) {
+        fullname = [fullname stringByAppendingString:firstName];
+    }
+    if (firstName != nil && lastName != nil) {
+        fullname = [fullname stringByAppendingString:@" "];
+    }
+    if (lastName != nil) {
+        fullname = [fullname stringByAppendingString:lastName];
+    }
     
     return fullname;
 }

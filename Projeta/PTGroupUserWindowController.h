@@ -35,14 +35,14 @@
 @property (weak) IBOutlet NSProgressIndicator *progressIndicator;
 
 
-//- (IBAction)cancelButtonClicked:(id)sender;
-//- (IBAction)assignUser:(id)sender;
-//- (IBAction)removeUser:(id)sender;
-//- (IBAction)okButtonClicked:(id)sender;
+- (IBAction)cancelButtonClicked:(id)sender;
+- (IBAction)assignUser:(id)sender;
+- (IBAction)removeUser:(id)sender;
+- (IBAction)okButtonClicked:(id)sender;
 
-// update user's usergroups (in database).
-//- (BOOL)updateUsergroupUsers;
-//- (void)failedUpdatingUsergroups:(NSError *)failure;
-//- (void)finishedUpdatingUsergroups:(NSMutableData *)data;
+// update usergroup's users (in database).
+- (BOOL)updateUsergroupUsers;
+- (void)failedUpdatingUsergroups:(NSError *)failure;
+- (void)finishedUpdatingUsergroups:(NSMutableData *)data;
 
 @end
