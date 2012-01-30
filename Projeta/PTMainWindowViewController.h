@@ -13,6 +13,7 @@
 #import "PTUserManagementViewController.h"
 
 @class MainWindowController;
+@class PTClientManagementViewController;
 @class PTGroupManagementViewController;
 
 @interface PTMainWindowViewController : NSViewController <PXSourceListDataSource, PXSourceListDelegate> {
@@ -37,6 +38,8 @@
 @property (strong) PTUserManagementViewController *userManagementViewController;
 // group-management view
 @property (strong) PTGroupManagementViewController *groupManagementViewController;
+// client-management view
+@property (strong) PTClientManagementViewController *clientManagementViewController;
 
 // removes any view from rightView
 - (void)removeViewsFromRightView;

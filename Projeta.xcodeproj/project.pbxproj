@@ -11,6 +11,8 @@
 		4C08037813F5A23200E70C73 /* PTSidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C08037913F5A23200E70C73 /* PTSidebarViewController.m */; };
 		4C09689B14D3F2EA009B4470 /* PTGroupUserWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C09689C14D3F2EA009B4470 /* PTGroupUserWindow.xib */; };
 		4C0968A114D3F869009B4470 /* PTGroupUserWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0968A014D3F869009B4470 /* PTGroupUserWindowController.m */; };
+		4C0968A414D71E7C009B4470 /* PTClientManagementView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C0968A314D71E7C009B4470 /* PTClientManagementView.xib */; };
+		4C0968A714D71E92009B4470 /* PTClientManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0968A614D71E92009B4470 /* PTClientManagementViewController.m */; };
 		4C0BA4E913F329C7002EA4F2 /* PXSourceList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0BA4E813F329C7002EA4F2 /* PXSourceList.m */; };
 		4C0BC5B513DA1D15003360E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C74A61413A2BFA100E7DBF6 /* Cocoa.framework */; };
 		4C11311014CA21AA008D47F4 /* PTSetPasswordWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C11310F14CA21AA008D47F4 /* PTSetPasswordWindowController.m */; };
@@ -95,6 +97,9 @@
 		4C09689C14D3F2EA009B4470 /* PTGroupUserWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PTGroupUserWindow.xib; sourceTree = "<group>"; };
 		4C09689F14D3F838009B4470 /* PTGroupUserWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTGroupUserWindowController.h; sourceTree = "<group>"; };
 		4C0968A014D3F869009B4470 /* PTGroupUserWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTGroupUserWindowController.m; sourceTree = "<group>"; };
+		4C0968A314D71E7C009B4470 /* PTClientManagementView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTClientManagementView.xib; sourceTree = "<group>"; };
+		4C0968A514D71E92009B4470 /* PTClientManagementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTClientManagementViewController.h; sourceTree = "<group>"; };
+		4C0968A614D71E92009B4470 /* PTClientManagementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTClientManagementViewController.m; sourceTree = "<group>"; };
 		4C0BA4DA13F3274E002EA4F2 /* PXSourceListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXSourceListDataSource.h; sourceTree = "<group>"; };
 		4C0BA4DB13F3274E002EA4F2 /* PXSourceListDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXSourceListDelegate.h; sourceTree = "<group>"; };
 		4C0BA4E713F329C7002EA4F2 /* PXSourceList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXSourceList.h; sourceTree = "<group>"; };
@@ -268,6 +273,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C0968A214D5E040009B4470 /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				4C0968A514D71E92009B4470 /* PTClientManagementViewController.h */,
+				4C0968A614D71E92009B4470 /* PTClientManagementViewController.m */,
+				4C0968A314D71E7C009B4470 /* PTClientManagementView.xib */,
+			);
+			name = Clients;
+			sourceTree = "<group>";
+		};
 		4C0BA4D513F32669002EA4F2 /* PXSourceList */ = {
 			isa = PBXGroup;
 			children = (
@@ -430,6 +445,7 @@
 				4C32ECB613DDE492009E7131 /* Business Objects */,
 				4CBCEA1B13AD161500835F30 /* Preferences */,
 				4C770C92145FFD6900A11E5A /* Projects */,
+				4C0968A214D5E040009B4470 /* Clients */,
 				4C21F23C13C264CC00462C43 /* Users */,
 				4C74A62613A2BFA100E7DBF6 /* ProjetaAppDelegate.h */,
 				4C74A62713A2BFA100E7DBF6 /* ProjetaAppDelegate.m */,
@@ -630,6 +646,7 @@
 				4C11311414CA21CC008D47F4 /* PTSetPasswordWindow.xib in Resources */,
 				4C568E3B14CC86A6006AF039 /* PTUserGroupWindow.xib in Resources */,
 				4C09689B14D3F2EA009B4470 /* PTGroupUserWindow.xib in Resources */,
+				4C0968A414D71E7C009B4470 /* PTClientManagementView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -723,6 +740,7 @@
 				4C11311014CA21AA008D47F4 /* PTSetPasswordWindowController.m in Sources */,
 				4C568E3A14CC868F006AF039 /* PTUserGroupWindowController.m in Sources */,
 				4C0968A114D3F869009B4470 /* PTGroupUserWindowController.m in Sources */,
+				4C0968A714D71E92009B4470 /* PTClientManagementViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

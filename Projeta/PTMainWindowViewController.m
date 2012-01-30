@@ -10,6 +10,7 @@
 #import "SourceListItem.h"
 #import "MainWindowController.h"
 #import "MWConnectionController.h"
+#import "PTClientManagementViewController.h"
 #import "PTCommon.h"
 #import "PTRoleHelper.h"
 #import "PTUserHelper.h"
@@ -35,6 +36,7 @@ static User *_loggedInUser = nil;
 @synthesize taskListViewController;
 @synthesize userManagementViewController;
 @synthesize groupManagementViewController;
+@synthesize clientManagementViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -262,6 +264,26 @@ static User *_loggedInUser = nil;
                 [groupManagementViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
             }
         }
+        else if (identifier == @"clientAdmin") {
+            
+            [self removeViewsFromRightView];
+            
+            if (!clientManagementViewController) {
+                
+                clientManagementViewController = [[PTClientManagementViewController alloc] init];
+                
+                // set reference to (parent) window
+                [clientManagementViewController setMainWindowController:mainWindowController];
+                
+                // resize the view to fit and fill the right splitview view
+                [clientManagementViewController.view setFrameSize:rightView.frame.size];
+                
+                [self.rightView addSubview:clientManagementViewController.view];
+                
+                // auto resize the view.
+                [clientManagementViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
+            }
+        }
         else {
             // free some memory
             [self removeViewsFromRightView];
@@ -292,6 +314,11 @@ static User *_loggedInUser = nil;
     if (groupManagementViewController) {
         [groupManagementViewController.view removeFromSuperview];
         groupManagementViewController = nil;
+    }
+    
+    if (clientManagementViewController) {
+        [clientManagementViewController.view removeFromSuperview];
+        clientManagementViewController = nil;
     }
 }
 
