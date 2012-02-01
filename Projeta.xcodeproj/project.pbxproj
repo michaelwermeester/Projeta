@@ -38,6 +38,8 @@
 		4C568E3B14CC86A6006AF039 /* PTUserGroupWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C568E3D14CC86A6006AF039 /* PTUserGroupWindow.xib */; };
 		4C5B671E14168859003C0F80 /* PTTaskListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5B671C14168859003C0F80 /* PTTaskListViewController.m */; };
 		4C5B672114168880003C0F80 /* PTTaskListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C5B672314168880003C0F80 /* PTTaskListView.xib */; };
+		4C6A256914D9C45A00C66540 /* Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6A256814D9C45A00C66540 /* Client.m */; };
+		4C6A256D14D9C47C00C66540 /* PTClientHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6A256C14D9C47C00C66540 /* PTClientHelper.m */; };
 		4C74A61F13A2BFA100E7DBF6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C74A61D13A2BFA100E7DBF6 /* InfoPlist.strings */; };
 		4C74A62113A2BFA100E7DBF6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C74A62013A2BFA100E7DBF6 /* main.m */; };
 		4C74A62513A2BFA100E7DBF6 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 4C74A62313A2BFA100E7DBF6 /* Credits.rtf */; };
@@ -67,6 +69,8 @@
 		4CBCEA2A13AD40DF00835F30 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CBCEA2C13AD40DF00835F30 /* Preferences.xib */; };
 		4CC9FB9D13E9EED800A11EA7 /* PTCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC9FB9C13E9EED800A11EA7 /* PTCommon.m */; };
 		4CCDB32213F83CB80084FC84 /* PTProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCDB32013F83CB80084FC84 /* PTProjectViewController.m */; };
+		4CE69FDC14D9F1850008BAF0 /* PTClientDetailsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CE69FDB14D9F1850008BAF0 /* PTClientDetailsWindow.xib */; };
+		4CE69FE014D9F1AA0008BAF0 /* PTClientDetailsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE69FDF14D9F1AA0008BAF0 /* PTClientDetailsWindowController.m */; };
 		4CE9D7B9142E7BC700CB43AC /* PTUserDetailsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CE9D7BB142E7BC700CB43AC /* PTUserDetailsWindow.xib */; };
 		4CF0704913F6F29E00572231 /* PTMainWindowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CF0704B13F6F29E00572231 /* PTMainWindowView.xib */; };
 		4CF0704E13F6F2AF00572231 /* PTProjectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CF0705013F6F2AF00572231 /* PTProjectView.xib */; };
@@ -152,6 +156,10 @@
 		4C5B672214168880003C0F80 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PTTaskListView.xib; sourceTree = "<group>"; };
 		4C5B672414168889003C0F80 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/PTTaskListView.xib; sourceTree = "<group>"; };
 		4C5B67251416888B003C0F80 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/PTTaskListView.xib; sourceTree = "<group>"; };
+		4C6A256714D9C45A00C66540 /* Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Client.h; sourceTree = "<group>"; };
+		4C6A256814D9C45A00C66540 /* Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Client.m; sourceTree = "<group>"; };
+		4C6A256B14D9C47C00C66540 /* PTClientHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTClientHelper.h; sourceTree = "<group>"; };
+		4C6A256C14D9C47C00C66540 /* PTClientHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTClientHelper.m; sourceTree = "<group>"; };
 		4C74A61013A2BFA100E7DBF6 /* Projeta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Projeta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C74A61413A2BFA100E7DBF6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		4C74A61713A2BFA100E7DBF6 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -213,6 +221,9 @@
 		4CC9FB9C13E9EED800A11EA7 /* PTCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTCommon.m; sourceTree = "<group>"; };
 		4CCDB31F13F83CB80084FC84 /* PTProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTProjectViewController.h; sourceTree = "<group>"; };
 		4CCDB32013F83CB80084FC84 /* PTProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTProjectViewController.m; sourceTree = "<group>"; };
+		4CE69FDB14D9F1850008BAF0 /* PTClientDetailsWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTClientDetailsWindow.xib; sourceTree = "<group>"; };
+		4CE69FDE14D9F1AA0008BAF0 /* PTClientDetailsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTClientDetailsWindowController.h; sourceTree = "<group>"; };
+		4CE69FDF14D9F1AA0008BAF0 /* PTClientDetailsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTClientDetailsWindowController.m; sourceTree = "<group>"; };
 		4CE9D7BA142E7BC700CB43AC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PTUserDetailsWindow.xib; sourceTree = "<group>"; };
 		4CE9D7BD142E7BD000CB43AC /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/PTUserDetailsWindow.xib; sourceTree = "<group>"; };
 		4CE9D7BE142E7BD200CB43AC /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/PTUserDetailsWindow.xib; sourceTree = "<group>"; };
@@ -276,6 +287,9 @@
 		4C0968A214D5E040009B4470 /* Clients */ = {
 			isa = PBXGroup;
 			children = (
+				4CE69FDE14D9F1AA0008BAF0 /* PTClientDetailsWindowController.h */,
+				4CE69FDF14D9F1AA0008BAF0 /* PTClientDetailsWindowController.m */,
+				4CE69FDB14D9F1850008BAF0 /* PTClientDetailsWindow.xib */,
 				4C0968A514D71E92009B4470 /* PTClientManagementViewController.h */,
 				4C0968A614D71E92009B4470 /* PTClientManagementViewController.m */,
 				4C0968A314D71E7C009B4470 /* PTClientManagementView.xib */,
@@ -366,6 +380,10 @@
 			children = (
 				4CF8DB581466DEF1009FEB2F /* OutlineCollection.h */,
 				4CF8DB591466DEF1009FEB2F /* OutlineCollection.m */,
+				4C6A256B14D9C47C00C66540 /* PTClientHelper.h */,
+				4C6A256C14D9C47C00C66540 /* PTClientHelper.m */,
+				4C6A256714D9C45A00C66540 /* Client.h */,
+				4C6A256814D9C45A00C66540 /* Client.m */,
 				4C8173ED1407BE810012C0EB /* PTProjectHelper.h */,
 				4C8173EE1407BE810012C0EB /* PTProjectHelper.m */,
 				4C796C4F1406F80900495CEB /* Project.h */,
@@ -647,6 +665,7 @@
 				4C568E3B14CC86A6006AF039 /* PTUserGroupWindow.xib in Resources */,
 				4C09689B14D3F2EA009B4470 /* PTGroupUserWindow.xib in Resources */,
 				4C0968A414D71E7C009B4470 /* PTClientManagementView.xib in Resources */,
+				4CE69FDC14D9F1850008BAF0 /* PTClientDetailsWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -741,6 +760,9 @@
 				4C568E3A14CC868F006AF039 /* PTUserGroupWindowController.m in Sources */,
 				4C0968A114D3F869009B4470 /* PTGroupUserWindowController.m in Sources */,
 				4C0968A714D71E92009B4470 /* PTClientManagementViewController.m in Sources */,
+				4C6A256914D9C45A00C66540 /* Client.m in Sources */,
+				4C6A256D14D9C47C00C66540 /* PTClientHelper.m in Sources */,
+				4CE69FE014D9F1AA0008BAF0 /* PTClientDetailsWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
