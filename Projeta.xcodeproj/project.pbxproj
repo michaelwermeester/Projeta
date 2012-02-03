@@ -76,6 +76,8 @@
 		4CE69FF914DC6B570008BAF0 /* PTSidebarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CE69FFA14DC6B570008BAF0 /* PTSidebarView.xib */; };
 		4CE69FFB14DC6B680008BAF0 /* PTProjectDetailsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CE69FFC14DC6B680008BAF0 /* PTProjectDetailsWindow.xib */; };
 		4CE69FFD14DC6B780008BAF0 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CE69FFE14DC6B780008BAF0 /* Preferences.xib */; };
+		4CE6A00014DC8E2A0008BAF0 /* PTClientUserWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CE69FFF14DC8E2A0008BAF0 /* PTClientUserWindow.xib */; };
+		4CE6A00214DC8E620008BAF0 /* PTClientUserWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE6A00114DC8E620008BAF0 /* PTClientUserWindowController.m */; };
 		4CF0705613F6F2D900572231 /* PTMainWindowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF0705413F6F2D900572231 /* PTMainWindowViewController.m */; };
 		4CF7C864145ED0E500CEB50C /* PTGroupManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF7C862145ED0E500CEB50C /* PTGroupManagementViewController.m */; };
 		4CF7C86E145F42C700CEB50C /* Usergroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF7C86D145F42C700CEB50C /* Usergroup.m */; };
@@ -209,6 +211,9 @@
 		4CE69FFA14DC6B570008BAF0 /* PTSidebarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PTSidebarView.xib; sourceTree = "<group>"; };
 		4CE69FFC14DC6B680008BAF0 /* PTProjectDetailsWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PTProjectDetailsWindow.xib; sourceTree = "<group>"; };
 		4CE69FFE14DC6B780008BAF0 /* Preferences.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
+		4CE69FFF14DC8E2A0008BAF0 /* PTClientUserWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTClientUserWindow.xib; sourceTree = "<group>"; };
+		4CE6A00114DC8E620008BAF0 /* PTClientUserWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTClientUserWindowController.m; sourceTree = "<group>"; };
+		4CE6A00314DC8E790008BAF0 /* PTClientUserWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTClientUserWindowController.h; sourceTree = "<group>"; };
 		4CF0705313F6F2D900572231 /* PTMainWindowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMainWindowViewController.h; sourceTree = "<group>"; };
 		4CF0705413F6F2D900572231 /* PTMainWindowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMainWindowViewController.m; sourceTree = "<group>"; };
 		4CF2A2DB13EE847E002BFDF9 /* PTSidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTSidebarViewController.h; sourceTree = "<group>"; };
@@ -263,6 +268,9 @@
 				4C0968A514D71E92009B4470 /* PTClientManagementViewController.h */,
 				4C0968A614D71E92009B4470 /* PTClientManagementViewController.m */,
 				4C0968A314D71E7C009B4470 /* PTClientManagementView.xib */,
+				4CE6A00314DC8E790008BAF0 /* PTClientUserWindowController.h */,
+				4CE6A00114DC8E620008BAF0 /* PTClientUserWindowController.m */,
+				4CE69FFF14DC8E2A0008BAF0 /* PTClientUserWindow.xib */,
 			);
 			name = Clients;
 			sourceTree = "<group>";
@@ -636,6 +644,7 @@
 				4C09689B14D3F2EA009B4470 /* PTGroupUserWindow.xib in Resources */,
 				4C0968A414D71E7C009B4470 /* PTClientManagementView.xib in Resources */,
 				4CE69FDC14D9F1850008BAF0 /* PTClientDetailsWindow.xib in Resources */,
+				4CE6A00014DC8E2A0008BAF0 /* PTClientUserWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -733,6 +742,7 @@
 				4C6A256914D9C45A00C66540 /* Client.m in Sources */,
 				4C6A256D14D9C47C00C66540 /* PTClientHelper.m in Sources */,
 				4CE69FE014D9F1AA0008BAF0 /* PTClientDetailsWindowController.m in Sources */,
+				4CE6A00214DC8E620008BAF0 /* PTClientUserWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

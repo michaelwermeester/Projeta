@@ -7,8 +7,10 @@
 //
 
 #import "MainWindowController.h"
+#import "PTClientDetailsWindowController.h"
 #import "PTClientHelper.h"
 #import "PTClientManagementViewController.h"
+#import "PTClientUserWindowController.h"
 
 @implementation PTClientManagementViewController
 
@@ -43,6 +45,17 @@
 }
 
 - (IBAction)clientDetailsButtonClicked:(id)sender {
+    
+    clientDetailsWindowController = [[PTClientDetailsWindowController alloc] init];
+    
+    [clientDetailsWindowController showWindow:self];
+}
+
+- (IBAction)clientUsersButtonClicked:(id)sender {
+    
+    clientUserWindowController = [[PTClientUserWindowController alloc] init];
+    
+    [clientUserWindowController showWindow:self];
 }
 
 - (void)viewDidLoad {

@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class PTClientDetailsWindowController;
+@class PTClientUserWindowController;
 @class MainWindowController;
 
 @interface PTClientManagementViewController : NSViewController {
@@ -19,6 +21,11 @@
     __weak NSButton *clientDetailsButtonClicked;
     __weak NSButton *addClientButtonClicked;
     __weak NSButton *deleteClientButtonClicked;
+    
+    // client details window
+    PTClientDetailsWindowController *clientDetailsWindowController;
+    
+    PTClientUserWindowController *clientUserWindowController;
 }
 
 // array qui contient les utilisateurs.
@@ -30,6 +37,7 @@
 - (IBAction)addClientButtonClicked:(id)sender;
 - (IBAction)deleteClientButtonClicked:(id)sender;
 - (IBAction)clientDetailsButtonClicked:(id)sender;
+- (IBAction)clientUsersButtonClicked:(id)sender;
 
 - (void)viewDidLoad;
 
