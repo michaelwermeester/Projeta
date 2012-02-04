@@ -20,7 +20,6 @@
 @synthesize arrUsrGrp;
 @synthesize usergroupArrayCtrl;
 @synthesize usergroupTableView;
-@synthesize usersButton;
 @synthesize mainWindowController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -115,11 +114,6 @@
     
     Usergroup *usrgrp = [[Usergroup alloc] init];
     [usergroupArrayCtrl insertObject:usrgrp atArrangedObjectIndex:([arrUsrGrp count])];
-}
-
-- (IBAction)usersButtonClicked:(id)sender {
-    
-    //[self openUsersWindow];
 }
 
 - (void)tableView:(NSTableView *)aTableView

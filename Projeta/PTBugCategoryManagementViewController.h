@@ -15,13 +15,11 @@
     NSMutableArray *arrUsrGrp;     // array which holds the user groups.
     NSArrayController *usergroupArrayCtrl;
     NSTableView *usergroupTableView;
-    __weak NSButton *usersButton;
 }
 
 @property (strong) NSMutableArray *arrUsrGrp;
 @property (strong) IBOutlet NSArrayController *usergroupArrayCtrl;
 @property (strong) IBOutlet NSTableView *usergroupTableView;
-@property (weak) IBOutlet NSButton *usersButton;
 
 // reference to the (parent) MainWindowController
 @property (assign) MainWindowController *mainWindowController;
@@ -33,7 +31,6 @@
 - (void)fetchRequestFailed:(NSError*)error;
 
 - (IBAction)addUsergroupButtonClicked:(id)sender;
-- (IBAction)usersButtonClicked:(id)sender;
 
 - (void)updateUsergroup:(Usergroup *)theUsergroup;
 

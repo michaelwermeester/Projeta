@@ -35,6 +35,8 @@
 		4C5B671E14168859003C0F80 /* PTTaskListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5B671C14168859003C0F80 /* PTTaskListViewController.m */; };
 		4C5B7AC014DD477900DC1F75 /* PTBugCategoryManagementView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C5B7ABF14DD477900DC1F75 /* PTBugCategoryManagementView.xib */; };
 		4C5B7AC514DD47CE00DC1F75 /* PTBugCategoryManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5B7AC414DD47CE00DC1F75 /* PTBugCategoryManagementViewController.m */; };
+		4C5B7ACA14DD4F5700DC1F75 /* BugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5B7AC914DD4F5700DC1F75 /* BugCategory.m */; };
+		4C5B7ACD14DD50CB00DC1F75 /* PTBugCategoryHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5B7ACC14DD50CA00DC1F75 /* PTBugCategoryHelper.m */; };
 		4C6A256914D9C45A00C66540 /* Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6A256814D9C45A00C66540 /* Client.m */; };
 		4C6A256D14D9C47C00C66540 /* PTClientHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6A256C14D9C47C00C66540 /* PTClientHelper.m */; };
 		4C74A61F13A2BFA100E7DBF6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C74A61D13A2BFA100E7DBF6 /* InfoPlist.strings */; };
@@ -148,6 +150,10 @@
 		4C5B7ABF14DD477900DC1F75 /* PTBugCategoryManagementView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTBugCategoryManagementView.xib; sourceTree = "<group>"; };
 		4C5B7AC314DD47AE00DC1F75 /* PTBugCategoryManagementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTBugCategoryManagementViewController.h; sourceTree = "<group>"; };
 		4C5B7AC414DD47CE00DC1F75 /* PTBugCategoryManagementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTBugCategoryManagementViewController.m; sourceTree = "<group>"; };
+		4C5B7AC814DD4F4F00DC1F75 /* BugCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BugCategory.h; sourceTree = "<group>"; };
+		4C5B7AC914DD4F5700DC1F75 /* BugCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BugCategory.m; sourceTree = "<group>"; };
+		4C5B7ACB14DD50B400DC1F75 /* PTBugCategoryHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTBugCategoryHelper.h; sourceTree = "<group>"; };
+		4C5B7ACC14DD50CA00DC1F75 /* PTBugCategoryHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTBugCategoryHelper.m; sourceTree = "<group>"; };
 		4C6A256714D9C45A00C66540 /* Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Client.h; sourceTree = "<group>"; };
 		4C6A256814D9C45A00C66540 /* Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Client.m; sourceTree = "<group>"; };
 		4C6A256B14D9C47C00C66540 /* PTClientHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTClientHelper.h; sourceTree = "<group>"; };
@@ -363,6 +369,10 @@
 			children = (
 				4CF8DB581466DEF1009FEB2F /* OutlineCollection.h */,
 				4CF8DB591466DEF1009FEB2F /* OutlineCollection.m */,
+				4C5B7ACB14DD50B400DC1F75 /* PTBugCategoryHelper.h */,
+				4C5B7ACC14DD50CA00DC1F75 /* PTBugCategoryHelper.m */,
+				4C5B7AC814DD4F4F00DC1F75 /* BugCategory.h */,
+				4C5B7AC914DD4F5700DC1F75 /* BugCategory.m */,
 				4C6A256B14D9C47C00C66540 /* PTClientHelper.h */,
 				4C6A256C14D9C47C00C66540 /* PTClientHelper.m */,
 				4C6A256714D9C45A00C66540 /* Client.h */,
@@ -761,6 +771,8 @@
 				4CE69FE014D9F1AA0008BAF0 /* PTClientDetailsWindowController.m in Sources */,
 				4CE6A00214DC8E620008BAF0 /* PTClientUserWindowController.m in Sources */,
 				4C5B7AC514DD47CE00DC1F75 /* PTBugCategoryManagementViewController.m in Sources */,
+				4C5B7ACA14DD4F5700DC1F75 /* BugCategory.m in Sources */,
+				4C5B7ACD14DD50CB00DC1F75 /* PTBugCategoryHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
