@@ -37,6 +37,8 @@
 		4C5B7AC514DD47CE00DC1F75 /* PTBugCategoryManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5B7AC414DD47CE00DC1F75 /* PTBugCategoryManagementViewController.m */; };
 		4C5B7ACA14DD4F5700DC1F75 /* BugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5B7AC914DD4F5700DC1F75 /* BugCategory.m */; };
 		4C5B7ACD14DD50CB00DC1F75 /* PTBugCategoryHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5B7ACC14DD50CA00DC1F75 /* PTBugCategoryHelper.m */; };
+		4C5B7AD814DDD71100DC1F75 /* PTProjectDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5B7AD614DDD71000DC1F75 /* PTProjectDetailsViewController.m */; };
+		4C5B7AD914DDD71100DC1F75 /* PTProjectDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C5B7AD714DDD71000DC1F75 /* PTProjectDetailsView.xib */; };
 		4C6A256914D9C45A00C66540 /* Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6A256814D9C45A00C66540 /* Client.m */; };
 		4C6A256D14D9C47C00C66540 /* PTClientHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6A256C14D9C47C00C66540 /* PTClientHelper.m */; };
 		4C74A61F13A2BFA100E7DBF6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C74A61D13A2BFA100E7DBF6 /* InfoPlist.strings */; };
@@ -154,6 +156,9 @@
 		4C5B7AC914DD4F5700DC1F75 /* BugCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BugCategory.m; sourceTree = "<group>"; };
 		4C5B7ACB14DD50B400DC1F75 /* PTBugCategoryHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTBugCategoryHelper.h; sourceTree = "<group>"; };
 		4C5B7ACC14DD50CA00DC1F75 /* PTBugCategoryHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTBugCategoryHelper.m; sourceTree = "<group>"; };
+		4C5B7AD514DDD70F00DC1F75 /* PTProjectDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTProjectDetailsViewController.h; path = ../PTProjectDetailsViewController.h; sourceTree = "<group>"; };
+		4C5B7AD614DDD71000DC1F75 /* PTProjectDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PTProjectDetailsViewController.m; path = ../PTProjectDetailsViewController.m; sourceTree = "<group>"; };
+		4C5B7AD714DDD71000DC1F75 /* PTProjectDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PTProjectDetailsView.xib; path = ../PTProjectDetailsView.xib; sourceTree = "<group>"; };
 		4C6A256714D9C45A00C66540 /* Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Client.h; sourceTree = "<group>"; };
 		4C6A256814D9C45A00C66540 /* Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Client.m; sourceTree = "<group>"; };
 		4C6A256B14D9C47C00C66540 /* PTClientHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTClientHelper.h; sourceTree = "<group>"; };
@@ -531,6 +536,9 @@
 		4C770C92145FFD6900A11E5A /* Projects */ = {
 			isa = PBXGroup;
 			children = (
+				4C5B7AD514DDD70F00DC1F75 /* PTProjectDetailsViewController.h */,
+				4C5B7AD614DDD71000DC1F75 /* PTProjectDetailsViewController.m */,
+				4C5B7AD714DDD71000DC1F75 /* PTProjectDetailsView.xib */,
 				4C770C94145FFE1F00A11E5A /* PTProjectDetailsWindowController.h */,
 				4C770C95145FFE1F00A11E5A /* PTProjectDetailsWindowController.m */,
 				4CE69FFC14DC6B680008BAF0 /* PTProjectDetailsWindow.xib */,
@@ -672,6 +680,7 @@
 				4CE69FDC14D9F1850008BAF0 /* PTClientDetailsWindow.xib in Resources */,
 				4CE6A00014DC8E2A0008BAF0 /* PTClientUserWindow.xib in Resources */,
 				4C5B7AC014DD477900DC1F75 /* PTBugCategoryManagementView.xib in Resources */,
+				4C5B7AD914DDD71100DC1F75 /* PTProjectDetailsView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -773,6 +782,7 @@
 				4C5B7AC514DD47CE00DC1F75 /* PTBugCategoryManagementViewController.m in Sources */,
 				4C5B7ACA14DD4F5700DC1F75 /* BugCategory.m in Sources */,
 				4C5B7ACD14DD50CB00DC1F75 /* PTBugCategoryHelper.m in Sources */,
+				4C5B7AD814DDD71100DC1F75 /* PTProjectDetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

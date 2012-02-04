@@ -25,7 +25,7 @@
     NSRectFill([self bounds]);*/
     
     
-
+/*
     NSRect drawRect = [self bounds];
     
     drawRect.origin.x += 0;
@@ -35,6 +35,7 @@
 
     [[NSColor redColor] set];
     NSRectFill(drawRect);
+ */
 }
 
 - (void)setBadgeCount:(NSString *)badgeCount {

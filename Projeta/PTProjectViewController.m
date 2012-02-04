@@ -8,6 +8,7 @@
 
 #import "MainWindowController.h"
 #import "MWTableCellView.h"
+#import "PTProjectDetailsViewController.h"
 #import "PTProjectViewController.h"
 #import "SourceListItem.h"
 #import "Project.h"
@@ -20,6 +21,7 @@
 @synthesize prjTreeController;
 
 @synthesize mainWindowController;
+@synthesize projectDetailsViewController;
 @synthesize splitView;
 @synthesize leftView;
 @synthesize rightView;
@@ -49,6 +51,16 @@
 - (void)loadView
 {
     [super loadView];
+    
+    projectDetailsViewController = [[PTProjectDetailsViewController alloc] init];
+    
+    // resize the view to fit and fill the right splitview view
+    [projectDetailsViewController.view setFrameSize:rightView.frame.size];
+    
+    [self.rightView addSubview:projectDetailsViewController.view];
+    
+    // auto resize the view.
+    [projectDetailsViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
 }
 
 #pragma mark -

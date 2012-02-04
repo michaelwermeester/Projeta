@@ -116,6 +116,7 @@
 
 - (IBAction)switchToProjectView:(id)sender {
     // instantiate PTProjectView if needed (probably not).
+    [projectViewController.view removeFromSuperview];
     projectViewController = nil;
     
     //if (!projectViewController)

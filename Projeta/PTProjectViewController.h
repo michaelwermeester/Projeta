@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 @class MainWindowController;
+@class PTProjectDetailsViewController;
 @class PXSourceList;
 
 @interface PTProjectViewController : NSViewController {
@@ -24,6 +25,8 @@
     NSOutlineView *altSourceList;
     NSButton *testButton;
     NSOutlineView *outlineView;
+    
+    PTProjectDetailsViewController *projectDetailsViewController;
 }
 
 
@@ -31,6 +34,7 @@
 @property (strong) IBOutlet NSTreeController *prjTreeController;
 
 @property (assign) MainWindowController *mainWindowController;
+@property (strong) PTProjectDetailsViewController *projectDetailsViewController;
 @property (strong) IBOutlet NSSplitView *splitView;
 @property (strong) IBOutlet NSView *leftView;
 @property (strong) IBOutlet NSView *rightView;

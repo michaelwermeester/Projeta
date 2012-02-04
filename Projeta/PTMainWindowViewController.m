@@ -374,6 +374,7 @@ static User *_loggedInUser = nil;
     SourceListItem *projectsHeaderItem = [SourceListItem itemWithTitle:NSLocalizedString(@"PROJETS", nil) identifier:@"projectsHeader"];
 	SourceListItem *projectsItem = [SourceListItem itemWithTitle:@"Projets" identifier:@"projects"];
 	[projectsItem setIcon:[NSImage imageNamed:@"music.png"]];
+    SourceListItem *projectsAssignedItem = [SourceListItem itemWithTitle:@"Assignés" identifier:@"projectsAssigned"];
 	//SourceListItem *tasksItem = [SourceListItem itemWithTitle:@"Tasks" identifier:@"tasks"];
 	//[tasksItem setIcon:[NSImage imageNamed:@"movies.png"]];
 	SourceListItem *podcastsItem = [SourceListItem itemWithTitle:@"Podcasts" identifier:@"podcasts"];
@@ -381,7 +382,7 @@ static User *_loggedInUser = nil;
 	[podcastsItem setBadgeValue:105];
 	SourceListItem *audiobooksItem = [SourceListItem itemWithTitle:@"Audiobooks" identifier:@"audiobooks"];
 	[audiobooksItem setIcon:[NSImage imageNamed:@"audiobooks.png"]];
-	[projectsHeaderItem setChildren:[NSArray arrayWithObjects:projectsItem, podcastsItem,
+	[projectsHeaderItem setChildren:[NSArray arrayWithObjects:projectsItem, projectsAssignedItem, podcastsItem,
 							  audiobooksItem, nil]];
     
 	
@@ -389,6 +390,7 @@ static User *_loggedInUser = nil;
 	SourceListItem *tasksHeaderItem = [SourceListItem itemWithTitle:@"TÂCHES" identifier:@"tasksHeader"];
     // all tasks
     SourceListItem *tasksItem = [SourceListItem itemWithTitle:@"Tâches" identifier:@"tasks"];
+    SourceListItem *tasksAssignedItem = [SourceListItem itemWithTitle:@"Assignés" identifier:@"tasksAssigned"];
     
 	SourceListItem *personalTasksItem = [SourceListItem itemWithTitle:@"Personnels" identifier:@"tasksPersonal"];
 	
@@ -406,8 +408,7 @@ static User *_loggedInUser = nil;
 	[playlistGroupItem setIcon:[NSImage imageNamed:@"playlist.png"]];
 	[playlistGroup setChildren:[NSArray arrayWithObject:playlistGroupItem]];
 	
-	[tasksHeaderItem setChildren:[NSArray arrayWithObjects:tasksItem, personalTasksItem, playlistGroup,playlist2Item,
-								playlist3Item, nil]];
+	[tasksHeaderItem setChildren:[NSArray arrayWithObjects:tasksItem, personalTasksItem, tasksAssignedItem, playlistGroup,playlist2Item, playlist3Item, nil]];
     
     //Set up the "Bugs" parent item and children
 	SourceListItem *bugsHeaderItem = [SourceListItem itemWithTitle:@"BOGUES" identifier:@"bugsHeader"];
