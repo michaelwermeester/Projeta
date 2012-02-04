@@ -9,30 +9,30 @@
 #import <Cocoa/Cocoa.h>
 
 @class MainWindowController;
-@class Usergroup;
+@class BugCategory;
 
 @interface PTBugCategoryManagementViewController : NSViewController {
-    NSMutableArray *arrUsrGrp;     // array which holds the user groups.
-    NSArrayController *usergroupArrayCtrl;
-    NSTableView *usergroupTableView;
+    NSMutableArray *arrBugCat;     // array which holds the user groups.
+    NSArrayController *bugCategoryArrayCtrl;
+    NSTableView *bugCategoryTableView;
 }
 
-@property (strong) NSMutableArray *arrUsrGrp;
-@property (strong) IBOutlet NSArrayController *usergroupArrayCtrl;
-@property (strong) IBOutlet NSTableView *usergroupTableView;
+@property (strong) NSMutableArray *arrBugCat;
+@property (strong) IBOutlet NSArrayController *bugCategoryArrayCtrl;
+@property (strong) IBOutlet NSTableView *bugCategoryTableView;
 
 // reference to the (parent) MainWindowController
 @property (assign) MainWindowController *mainWindowController;
 
 // Fetch user groups from webservice.
-- (void)fetchUsergroups;
+- (void)fetchBugCategories;
 
 - (void)fetchRequestFinished:(NSMutableData*)data;
 - (void)fetchRequestFailed:(NSError*)error;
 
-- (IBAction)addUsergroupButtonClicked:(id)sender;
+- (IBAction)addBugCategoryButtonClicked:(id)sender;
 
-- (void)updateUsergroup:(Usergroup *)theUsergroup;
+- (void)updateBugCategory:(BugCategory *)theUsergroup;
 
 
 @end

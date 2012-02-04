@@ -193,7 +193,7 @@
 										<string key="NSFrameSize">{370, 103}</string>
 										<reference key="NSSuperview" ref="902697277"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="448993330"/>
+										<reference key="NSNextKeyView" ref="612070927"/>
 										<string key="NSReuseIdentifierKey">_NS:1828</string>
 										<bool key="NSEnabled">YES</bool>
 										<object class="NSTableHeaderView" key="NSHeaderView" id="409845418">
@@ -364,7 +364,7 @@
 						<string key="NSFrame">{{20, 37}, {372, 121}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="902697277"/>
+						<reference key="NSNextKeyView" ref="448993330"/>
 						<string key="NSReuseIdentifierKey">_NS:1824</string>
 						<int key="NSsFlags">133682</int>
 						<reference key="NSVScroller" ref="612070927"/>
@@ -382,11 +382,11 @@
 			</object>
 			<object class="NSArrayController" id="915073236">
 				<array class="NSMutableArray" key="NSDeclaredKeys">
-					<string>usergroupId</string>
-					<string>code</string>
-					<string>comment</string>
+					<string>bugCategoryId</string>
+					<string>bugCategoryDescription</string>
+					<string>categoryName</string>
 				</array>
-				<string key="NSObjectClassName">Usergroup</string>
+				<string key="NSObjectClassName">BugCategory</string>
 				<bool key="NSEditable">YES</bool>
 				<object class="_NSManagedProxy" key="_NSManagedProxy"/>
 				<bool key="NSPreservesSelection">YES</bool>
@@ -409,36 +409,28 @@
 					<int key="connectionID">23</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">usergroupArrayCtrl</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="915073236"/>
-					</object>
-					<int key="connectionID">25</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">usergroupTableView</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="326017711"/>
-					</object>
-					<int key="connectionID">26</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">addUsergroupButtonClicked:</string>
+						<string key="label">addBugCategoryButtonClicked:</string>
 						<reference key="source" ref="1001"/>
 						<reference key="destination" ref="468775924"/>
 					</object>
-					<int key="connectionID">85</int>
+					<int key="connectionID">157</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">addUsergroupButtonClicked:</string>
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">bugCategoryTableView</string>
 						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="536492065"/>
+						<reference key="destination" ref="326017711"/>
 					</object>
-					<int key="connectionID">92</int>
+					<int key="connectionID">158</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">bugCategoryArrayCtrl</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="915073236"/>
+					</object>
+					<int key="connectionID">159</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -458,51 +450,51 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: arrangedObjects.code</string>
+						<string key="label">value: arrangedObjects.categoryName</string>
 						<reference key="source" ref="1036058977"/>
 						<reference key="destination" ref="915073236"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="1036058977"/>
 							<reference key="NSDestination" ref="915073236"/>
-							<string key="NSLabel">value: arrangedObjects.code</string>
+							<string key="NSLabel">value: arrangedObjects.categoryName</string>
 							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">arrangedObjects.code</string>
+							<string key="NSKeyPath">arrangedObjects.categoryName</string>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
-					<int key="connectionID">32</int>
+					<int key="connectionID">165</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: arrangedObjects.comment</string>
+						<string key="label">value: arrangedObjects.description</string>
 						<reference key="source" ref="514166503"/>
 						<reference key="destination" ref="915073236"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="514166503"/>
 							<reference key="NSDestination" ref="915073236"/>
-							<string key="NSLabel">value: arrangedObjects.comment</string>
+							<string key="NSLabel">value: arrangedObjects.description</string>
 							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">arrangedObjects.comment</string>
+							<string key="NSKeyPath">arrangedObjects.description</string>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
-					<int key="connectionID">34</int>
+					<int key="connectionID">164</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">contentArray: arrUsrGrp</string>
+						<string key="label">contentArray: arrBugCat</string>
 						<reference key="source" ref="915073236"/>
 						<reference key="destination" ref="1001"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="915073236"/>
 							<reference key="NSDestination" ref="1001"/>
-							<string key="NSLabel">contentArray: arrUsrGrp</string>
+							<string key="NSLabel">contentArray: arrBugCat</string>
 							<string key="NSBinding">contentArray</string>
-							<string key="NSKeyPath">arrUsrGrp</string>
+							<string key="NSKeyPath">arrBugCat</string>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
-					<int key="connectionID">30</int>
+					<int key="connectionID">162</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -803,7 +795,7 @@
 						<int key="objectID">24</int>
 						<reference key="object" ref="915073236"/>
 						<reference key="parent" ref="0"/>
-						<string key="objectName">Usergroup Array Controller</string>
+						<string key="objectName">BugCategory Array Controller</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">27</int>
@@ -1059,7 +1051,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">156</int>
+			<int key="maxID">165</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1074,37 +1066,29 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">PTBugCategoryManagementViewController</string>
 					<string key="superclassName">NSViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="addUsergroupButtonClicked:">id</string>
-						<string key="usersButtonClicked:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="addUsergroupButtonClicked:">
-							<string key="name">addUsergroupButtonClicked:</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">addBugCategoryButtonClicked:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">addBugCategoryButtonClicked:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">addBugCategoryButtonClicked:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="usersButtonClicked:">
-							<string key="name">usersButtonClicked:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
+					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="usergroupArrayCtrl">NSArrayController</string>
-						<string key="usergroupTableView">NSTableView</string>
-						<string key="usersButton">NSButton</string>
+						<string key="bugCategoryArrayCtrl">NSArrayController</string>
+						<string key="bugCategoryTableView">NSTableView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="usergroupArrayCtrl">
-							<string key="name">usergroupArrayCtrl</string>
+						<object class="IBToOneOutletInfo" key="bugCategoryArrayCtrl">
+							<string key="name">bugCategoryArrayCtrl</string>
 							<string key="candidateClassName">NSArrayController</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="usergroupTableView">
-							<string key="name">usergroupTableView</string>
+						<object class="IBToOneOutletInfo" key="bugCategoryTableView">
+							<string key="name">bugCategoryTableView</string>
 							<string key="candidateClassName">NSTableView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="usersButton">
-							<string key="name">usersButton</string>
-							<string key="candidateClassName">NSButton</string>
 						</object>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">

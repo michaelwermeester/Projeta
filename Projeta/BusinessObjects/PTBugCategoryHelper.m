@@ -30,17 +30,17 @@
     }
     
     
-    NSArray *receivedUsergroup = [aDictionary objectForKey:@"bugcategory"];
-    if ([receivedUsergroup isKindOfClass:[NSArray class]]) {
+    NSArray *receivedBugCategories = [aDictionary objectForKey:@"bugcategory"];
+    if ([receivedBugCategories isKindOfClass:[NSArray class]]) {
         
-        NSMutableArray *parsedUsergroup = [NSMutableArray arrayWithCapacity:[receivedUsergroup count]];
-        for (NSDictionary *item in receivedUsergroup) {
+        NSMutableArray *parsedBugCategory = [NSMutableArray arrayWithCapacity:[receivedBugCategories count]];
+        for (NSDictionary *item in receivedBugCategories) {
             if ([item isKindOfClass:[NSDictionary class]]) {
-                [parsedUsergroup addObject:[BugCategory instanceFromDictionary:item]];
+                [parsedBugCategory addObject:[BugCategory instanceFromDictionary:item]];
             }
         }
         
-        self.bugCategory = parsedUsergroup;
+        self.bugCategory = parsedBugCategory;
         
     }
     
@@ -54,11 +54,11 @@
     }
     
     
-    NSArray *receivedUsergroups = [aDictionary objectForKey:@"bugcategory"];
-    if (receivedUsergroups) {
+    NSArray *receivedBugCategories = [aDictionary objectForKey:@"bugcategory"];
+    if (receivedBugCategories) {
         
-        NSMutableArray *parsedUsergroups = [NSMutableArray arrayWithCapacity:[receivedUsergroups count]];
-        for (id item in receivedUsergroups) {
+        NSMutableArray *parsedUsergroups = [NSMutableArray arrayWithCapacity:[receivedBugCategories count]];
+        for (id item in receivedBugCategories) {
             if ([item isKindOfClass:[NSDictionary class]]) {
                 [parsedUsergroups addObject:[BugCategory instanceFromDictionary:item]];
             }

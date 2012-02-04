@@ -10,16 +10,16 @@
 #import "MWConnectionController.h"
 #import "PTCommon.h"
 #import "PTBugCategoryManagementViewController.h"
-#import "PTGroupUserWindowController.h"
-#import "PTUsergroupHelper.h"
-#import "PTUserHelper.h"
-#import "Usergroup.h"
+//#import "PTGroupUserWindowController.h"
+#import "PTBugCategoryHelper.h"
+//#import "PTUserHelper.h"
+#import "BugCategory.h"
 
 @implementation PTBugCategoryManagementViewController
 
-@synthesize arrUsrGrp;
-@synthesize usergroupArrayCtrl;
-@synthesize usergroupTableView;
+@synthesize arrBugCat;
+@synthesize bugCategoryArrayCtrl;
+@synthesize bugCategoryTableView;
 @synthesize mainWindowController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -28,7 +28,7 @@
     if (self) {
         // Initialization code here.
         
-        arrUsrGrp = [[NSMutableArray alloc] init];
+        arrBugCat = [[NSMutableArray alloc] init];
         
         // Fetch user groups from webservice.
         //[self fetchUsergroups];
@@ -41,15 +41,15 @@
     
     
     // bind the main window's search field to the arraycontroller.
-    [[mainWindowController searchField] bind:@"predicate" toObject:usergroupArrayCtrl withKeyPath:@"filterPredicate" options:[NSDictionary dictionaryWithObjectsAndKeys:
+    [[mainWindowController searchField] bind:@"predicate" toObject:bugCategoryArrayCtrl withKeyPath:@"filterPredicate" options:[NSDictionary dictionaryWithObjectsAndKeys:
                     @"predicate", NSDisplayNameBindingOption,
-                    @"(code contains[cd] $value) OR (comment contains[cd] $value)",
+                    @"(bugCategoryName contains[cd] $value) OR (description contains[cd] $value)",
                     NSPredicateFormatBindingOption,
                     nil]
      ];
     
     // Fetch user groups from webservice.
-    [self fetchUsergroups];
+    [self fetchBugCategories];
 }
 
 - (void)loadView
@@ -60,14 +60,14 @@
 }
 
 // Fetch user groups from webservice.
-- (void)fetchUsergroups {
+- (void)fetchBugCategories {
     
     [mainWindowController startProgressIndicatorAnimation];
     
     // get server URL as string
     NSString *urlString = [PTCommon serverURLString];
     // build URL by adding resource path
-    urlString = [urlString stringByAppendingString:@"resources/usergroups/all"];
+    urlString = [urlString stringByAppendingString:@"resources/bugcategories/all"];
     
     // convert to NSURL
     NSURL *url = [NSURL URLWithString:urlString];
@@ -98,10 +98,10 @@
     
     // see Cocoa and Objective-C up and running by Scott Stevenson.
     // page 242
-    [[self mutableArrayValueForKey:@"arrUsrGrp"] addObjectsFromArray:[PTUsergroupHelper setAttributesFromJSONDictionary:dict]];
+    [[self mutableArrayValueForKey:@"arrBugCat"] addObjectsFromArray:[PTBugCategoryHelper setAttributesFromJSONDictionary:dict]];
     
     // sort the user list by username. 
-    [usergroupTableView setSortDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"code" ascending:YES selector:@selector(compare:)], nil]];
+    [bugCategoryTableView setSortDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"bugCategoryName" ascending:YES selector:@selector(compare:)], nil]];
     
     [mainWindowController stopProgressIndicatorAnimation];
 }
@@ -110,10 +110,10 @@
     [mainWindowController stopProgressIndicatorAnimation];
 }
 
-- (IBAction)addUsergroupButtonClicked:(id)sender {
+- (IBAction)addBugCategoryButtonClicked:(id)sender {
     
-    Usergroup *usrgrp = [[Usergroup alloc] init];
-    [usergroupArrayCtrl insertObject:usrgrp atArrangedObjectIndex:([arrUsrGrp count])];
+    BugCategory *bugcat = [[BugCategory alloc] init];
+    [bugCategoryArrayCtrl insertObject:bugcat atArrangedObjectIndex:([arrBugCat count])];
 }
 
 - (void)tableView:(NSTableView *)aTableView
@@ -121,21 +121,21 @@
    forTableColumn:(NSTableColumn *)aTableColumn
               row:(int)rowIndex {
     
-    NSArray *selectedObjects = [usergroupArrayCtrl selectedObjects];
+    NSArray *selectedObjects = [bugCategoryArrayCtrl selectedObjects];
     
-    for (Usergroup *usrgrp in selectedObjects)
+    for (BugCategory *bugcat in selectedObjects)
     {
         // update Usergroup.
-        [self updateUsergroup:usrgrp];
+        [self updateBugCategory:bugcat];
         //[PTUserHelper updateUser:usr mainWindowController:mainWindowController];
     }
 }
 
-- (void)updateUsergroup:(Usergroup *)theUsergroup {
+- (void)updateBugCategory:(BugCategory *)theBugCategory {
     // create dictionary from User object
     //NSDictionary *dict = [theUser dictionaryWithValuesForKeys:[theUser allKeys]];
     // update username, first name, last name and email address
-    NSDictionary *dict = [theUsergroup dictionaryWithValuesForKeys:[theUsergroup allKeys]];
+    NSDictionary *dict = [theBugCategory dictionaryWithValuesForKeys:[theBugCategory allKeys]];
     
     // create NSData from dictionary
     NSError* error;
@@ -145,7 +145,7 @@
     // get server URL as string
     NSString *urlString = [PTCommon serverURLString];
     // build URL by adding resource path
-    urlString = [urlString stringByAppendingString:@"resources/usergroups"];
+    urlString = [urlString stringByAppendingString:@"resources/bugcategories"];
     
     // convert to NSURL
     NSURL *url = [NSURL URLWithString:urlString];

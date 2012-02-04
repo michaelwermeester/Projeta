@@ -116,7 +116,9 @@
 
 - (IBAction)switchToProjectView:(id)sender {
     // instantiate PTProjectView if needed (probably not).
-    if (!projectViewController)
+    projectViewController = nil;
+    
+    //if (!projectViewController)
         projectViewController = [[PTProjectViewController alloc] init];
     
     // keep a reference to this object(self) in mainWindowViewController object 

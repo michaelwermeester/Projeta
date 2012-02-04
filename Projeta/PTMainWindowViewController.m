@@ -415,10 +415,14 @@ static User *_loggedInUser = nil;
     SourceListItem *bugsAssignedItem = [SourceListItem itemWithTitle:@"Assignés" identifier:@"bugsAssigned"];
     
     [bugsHeaderItem setChildren:[NSArray arrayWithObjects:bugsItem, bugsAssignedItem, nil]];
+    
+    //Set up the "Clients" parent item and children
+	SourceListItem *clientsHeaderItem = [SourceListItem itemWithTitle:@"CLIENTS" identifier:@"clientsHeader"];
 	
 	[sourceListItems addObject:projectsHeaderItem];
 	[sourceListItems addObject:tasksHeaderItem];
     [sourceListItems addObject:bugsHeaderItem];
+    [sourceListItems addObject:clientsHeaderItem];
 	
 	[sourceList reloadData];
     

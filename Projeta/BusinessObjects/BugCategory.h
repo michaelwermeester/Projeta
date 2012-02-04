@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @interface BugCategory : NSObject {
-    NSString *bugCategoryName;
+    NSString *categoryName;
     NSString *description;
     NSNumber *bugCategoryId;
 }
 
-@property (nonatomic, copy) NSString *bugCategoryName;
+@property (nonatomic, copy) NSString *categoryName;
 @property (nonatomic, copy) NSString *description;
 @property (nonatomic, copy) NSNumber *bugCategoryId;
 

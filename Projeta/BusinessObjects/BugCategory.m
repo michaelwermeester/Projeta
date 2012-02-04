@@ -10,7 +10,7 @@
 
 @implementation BugCategory
 
-@synthesize bugCategoryName = bugCategoryName;
+@synthesize categoryName = bugCategoryName;
 @synthesize description = description;
 @synthesize bugCategoryId = bugCategoryId;
 
@@ -19,7 +19,7 @@
     
     BugCategory *copy = [[BugCategory alloc] init];
     
-    copy.bugCategoryName = [bugCategoryName copyWithZone:zone];
+    copy.categoryName = [categoryName copyWithZone:zone];
     copy.bugCategoryId = [bugCategoryId copyWithZone:zone];
     copy.description = [description copyWithZone:zone];
     
@@ -34,7 +34,7 @@
     } else if (!anObject || ![anObject isKindOfClass:[self class]]) {
         return NO;
     } // compare if id and code are equal.
-    else if ([[self bugCategoryName] isEqual:[(BugCategory *)anObject bugCategoryName]] && [[self bugCategoryId] isEqual:[(BugCategory *)anObject bugCategoryId]]) {
+    else if ([[self categoryName] isEqual:[(BugCategory *)anObject categoryName]] && [[self bugCategoryId] isEqual:[(BugCategory *)anObject bugCategoryId]]) {
         return YES;
     } else {
         return NO;
@@ -55,7 +55,7 @@
         return;
     }
     
-    self.bugCategoryName = [aDictionary objectForKey:@"bugCategoryName"];
+    self.categoryName = [aDictionary objectForKey:@"categoryName"];
     self.description = [aDictionary objectForKey:@"description"];
     self.bugCategoryId = [NSDecimalNumber decimalNumberWithString:(NSString *)[aDictionary objectForKey:@"bugCategoryId"]];
 }
@@ -63,7 +63,7 @@
 // keys needed for updating usergroup.
 - (NSArray *)allKeys {
     
-    NSArray *retArr = [[NSArray alloc] initWithObjects: @"bugCategoryId", @"bugCategoryName", @"description", nil];
+    NSArray *retArr = [[NSArray alloc] initWithObjects: @"bugCategoryId", @"categoryName", @"description", nil];
     
     return retArr;
 }
