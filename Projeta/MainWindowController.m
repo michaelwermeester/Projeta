@@ -129,7 +129,7 @@
     
     NSMutableArray *collectionArray = [[NSMutableArray alloc] init];
     OutlineCollection *tmpOutlColl = [[OutlineCollection alloc] init];
-    tmpOutlColl.objectTitle = @"PROJECT";
+    tmpOutlColl.objectTitle = @"PROJET";
     tmpOutlColl.childObject = [[mainWindowViewController projectListViewController] arrPrj];
     [collectionArray addObject:tmpOutlColl];
     

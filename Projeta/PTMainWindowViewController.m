@@ -76,8 +76,10 @@ static User *_loggedInUser = nil;
     // initialize the sidebar (sourcelist)
     [self initializeSidebar];
     
-    // expand the first group
+    // expand tâches.
     [sourceList expandItem:[sourceListItems objectAtIndex:1]];
+    // expand bugs.
+    [sourceList expandItem:[sourceListItems objectAtIndex:2]];
 }
 
 #pragma mark -
@@ -342,8 +344,8 @@ static User *_loggedInUser = nil;
     sourceListItems = [[NSMutableArray alloc] init];
 	
 	//Set up the "Projects" parent item and children
-    SourceListItem *projectsHeaderItem = [SourceListItem itemWithTitle:NSLocalizedString(@"PROJECTS", nil) identifier:@"projectsHeader"];
-	SourceListItem *projectsItem = [SourceListItem itemWithTitle:@"Projects" identifier:@"projects"];
+    SourceListItem *projectsHeaderItem = [SourceListItem itemWithTitle:NSLocalizedString(@"PROJETS", nil) identifier:@"projectsHeader"];
+	SourceListItem *projectsItem = [SourceListItem itemWithTitle:@"Projets" identifier:@"projects"];
 	[projectsItem setIcon:[NSImage imageNamed:@"music.png"]];
 	//SourceListItem *tasksItem = [SourceListItem itemWithTitle:@"Tasks" identifier:@"tasks"];
 	//[tasksItem setIcon:[NSImage imageNamed:@"movies.png"]];
@@ -357,11 +359,11 @@ static User *_loggedInUser = nil;
     
 	
 	//Set up the "Tasks" parent item and children
-	SourceListItem *tasksHeaderItem = [SourceListItem itemWithTitle:@"TASKS" identifier:@"tasksHeader"];
+	SourceListItem *tasksHeaderItem = [SourceListItem itemWithTitle:@"TÂCHES" identifier:@"tasksHeader"];
     // all tasks
-    SourceListItem *tasksItem = [SourceListItem itemWithTitle:@"Tasks" identifier:@"tasks"];
+    SourceListItem *tasksItem = [SourceListItem itemWithTitle:@"Tâches" identifier:@"tasks"];
     
-	SourceListItem *playlist1Item = [SourceListItem itemWithTitle:@"Playlist1" identifier:@"playlist1"];
+	SourceListItem *personalTasksItem = [SourceListItem itemWithTitle:@"Personnels" identifier:@"tasksPersonal"];
 	
 	//Create a second-level group to demonstrate
 	SourceListItem *playlist2Item = [SourceListItem itemWithTitle:@"Playlist2" identifier:@"playlist2"];
@@ -377,12 +379,14 @@ static User *_loggedInUser = nil;
 	[playlistGroupItem setIcon:[NSImage imageNamed:@"playlist.png"]];
 	[playlistGroup setChildren:[NSArray arrayWithObject:playlistGroupItem]];
 	
-	[tasksHeaderItem setChildren:[NSArray arrayWithObjects:tasksItem, playlist1Item, playlistGroup,playlist2Item,
+	[tasksHeaderItem setChildren:[NSArray arrayWithObjects:tasksItem, personalTasksItem, playlistGroup,playlist2Item,
 								playlist3Item, nil]];
     
     //Set up the "Bugs" parent item and children
-	SourceListItem *bugsHeaderItem = [SourceListItem itemWithTitle:@"BUGS" identifier:@"bugsHeader"];
+	SourceListItem *bugsHeaderItem = [SourceListItem itemWithTitle:@"BOGUES" identifier:@"bugsHeader"];
+    SourceListItem *bugsAssignedItem = [SourceListItem itemWithTitle:@"Assignés" identifier:@"bugsAssigned"];
     
+    [bugsHeaderItem setChildren:[NSArray arrayWithObjects:bugsAssignedItem, nil]];
 	
 	[sourceListItems addObject:projectsHeaderItem];
 	[sourceListItems addObject:tasksHeaderItem];
@@ -552,17 +556,19 @@ static User *_loggedInUser = nil;
             SourceListItem *administrationHeaderItem = [SourceListItem itemWithTitle:NSLocalizedString(@"ADMINISTRATION", nil) identifier:@"administrationHeader"];
             
             // user admin.
-            SourceListItem *userAdminItem = [SourceListItem itemWithTitle:NSLocalizedString(@"Users", nil) identifier:@"userAdmin"];
+            SourceListItem *userAdminItem = [SourceListItem itemWithTitle:NSLocalizedString(@"Utilisateurs", nil) identifier:@"userAdmin"];
             // group admin.
-            SourceListItem *groupAdminItem = [SourceListItem itemWithTitle:NSLocalizedString(@"Groups", nil) identifier:@"groupAdmin"];
+            SourceListItem *groupAdminItem = [SourceListItem itemWithTitle:NSLocalizedString(@"Groupes", nil) identifier:@"groupAdmin"];
             // clients admin.
             SourceListItem *clientAdminItem = [SourceListItem itemWithTitle:NSLocalizedString(@"Clients", nil) identifier:@"clientAdmin"];
             // contacts admin.
             SourceListItem *contactAdminItem = [SourceListItem itemWithTitle:NSLocalizedString(@"Contacts", nil) identifier:@"contactAdmin"];
             // products admin.
             SourceListItem *productAdminItem = [SourceListItem itemWithTitle:NSLocalizedString(@"Products", nil) identifier:@"productAdmin"];
+            // tpe de bogue.
+            SourceListItem *bugCategoryAdminItem = [SourceListItem itemWithTitle:NSLocalizedString(@"Types de bogue", nil) identifier:@"bugCategoryAdmin"];
             
-            [administrationHeaderItem setChildren:[NSArray arrayWithObjects:userAdminItem, groupAdminItem, clientAdminItem, contactAdminItem, productAdminItem, nil]];
+            [administrationHeaderItem setChildren:[NSArray arrayWithObjects:userAdminItem, groupAdminItem, clientAdminItem, contactAdminItem, productAdminItem, bugCategoryAdminItem, nil]];
             
             [sourceListItems addObject:administrationHeaderItem];
             

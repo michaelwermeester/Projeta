@@ -39,7 +39,11 @@
 }
 
 -(void)awakeFromNib {
-   
+    // expand item ( http://stackoverflow.com/questions/519751/nsoutlineview-auto-expand-all-nodes )
+    [altOutlineView expandItem:nil expandChildren:YES];
+    
+    // sélectionner le premier élément de l'outlineview.
+    [altOutlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:1] byExtendingSelection:NO];
 }
 
 - (void)loadView
@@ -186,7 +190,7 @@
             // set badge count
             MWTableCellView *tmpView = [altOutlineView makeViewWithIdentifier:@"DataCell" owner:self];
             //[tmpView setBadgeCount:tmpPrj.projectDescription];
-            [tmpView setBadgeCount:@"1bkjbhjb;hbhj"];
+            //[tmpView setBadgeCount:@"1bkjbhjb;hbhj"];
             
             //NSRect r = tmpView.badgeButton.frame;
             
