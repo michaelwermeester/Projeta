@@ -10,6 +10,7 @@
 #import "SourceListItem.h"
 #import "MainWindowController.h"
 #import "MWConnectionController.h"
+#import "PTBugCategoryManagementViewController.h"
 #import "PTClientManagementViewController.h"
 #import "PTCommon.h"
 #import "PTRoleHelper.h"
@@ -37,6 +38,7 @@ static User *_loggedInUser = nil;
 @synthesize userManagementViewController;
 @synthesize groupManagementViewController;
 @synthesize clientManagementViewController;
+@synthesize bugCategoryManagementViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -286,6 +288,26 @@ static User *_loggedInUser = nil;
                 [clientManagementViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
             }
         }
+        else if (identifier == @"bugCategoryAdmin") {
+            
+            [self removeViewsFromRightView];
+            
+            if (!bugCategoryManagementViewController) {
+                
+                bugCategoryManagementViewController = [[PTBugCategoryManagementViewController alloc] init];
+                
+                // set reference to (parent) window
+                [bugCategoryManagementViewController setMainWindowController:mainWindowController];
+                
+                // resize the view to fit and fill the right splitview view
+                [bugCategoryManagementViewController.view setFrameSize:rightView.frame.size];
+                
+                [self.rightView addSubview:bugCategoryManagementViewController.view];
+                
+                // auto resize the view.
+                [bugCategoryManagementViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
+            }
+        }
         else {
             // free some memory
             [self removeViewsFromRightView];
@@ -321,6 +343,11 @@ static User *_loggedInUser = nil;
     if (clientManagementViewController) {
         [clientManagementViewController.view removeFromSuperview];
         clientManagementViewController = nil;
+    }
+    
+    if (bugCategoryManagementViewController) {
+        [bugCategoryManagementViewController.view removeFromSuperview];
+        bugCategoryManagementViewController = nil;
     }
 }
 
@@ -384,9 +411,10 @@ static User *_loggedInUser = nil;
     
     //Set up the "Bugs" parent item and children
 	SourceListItem *bugsHeaderItem = [SourceListItem itemWithTitle:@"BOGUES" identifier:@"bugsHeader"];
+    SourceListItem *bugsItem = [SourceListItem itemWithTitle:@"Bogues" identifier:@"bugs"];
     SourceListItem *bugsAssignedItem = [SourceListItem itemWithTitle:@"Assignés" identifier:@"bugsAssigned"];
     
-    [bugsHeaderItem setChildren:[NSArray arrayWithObjects:bugsAssignedItem, nil]];
+    [bugsHeaderItem setChildren:[NSArray arrayWithObjects:bugsItem, bugsAssignedItem, nil]];
 	
 	[sourceListItems addObject:projectsHeaderItem];
 	[sourceListItems addObject:tasksHeaderItem];

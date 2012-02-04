@@ -13,6 +13,7 @@
 #import "PTUserManagementViewController.h"
 
 @class MainWindowController;
+@class PTBugCategoryManagementViewController;
 @class PTClientManagementViewController;
 @class PTGroupManagementViewController;
 
@@ -40,6 +41,8 @@
 @property (strong) PTGroupManagementViewController *groupManagementViewController;
 // client-management view
 @property (strong) PTClientManagementViewController *clientManagementViewController;
+// Gestion de types de bogue view.
+@property (strong) PTBugCategoryManagementViewController *bugCategoryManagementViewController;
 
 // removes any view from rightView
 - (void)removeViewsFromRightView;
