@@ -10,9 +10,9 @@
 
 @implementation BugCategory
 
-@synthesize categoryName = bugCategoryName;
+@synthesize categoryName = categoryName;
 @synthesize description = description;
-@synthesize bugCategoryId = bugCategoryId;
+@synthesize bugcategoryId = bugcategoryId;
 
 // Required by NSCopying protocol.
 - (id) copyWithZone:(NSZone *)zone {
@@ -20,7 +20,7 @@
     BugCategory *copy = [[BugCategory alloc] init];
     
     copy.categoryName = [categoryName copyWithZone:zone];
-    copy.bugCategoryId = [bugCategoryId copyWithZone:zone];
+    copy.bugcategoryId = [bugcategoryId copyWithZone:zone];
     copy.description = [description copyWithZone:zone];
     
     return copy;
@@ -34,7 +34,7 @@
     } else if (!anObject || ![anObject isKindOfClass:[self class]]) {
         return NO;
     } // compare if id and code are equal.
-    else if ([[self categoryName] isEqual:[(BugCategory *)anObject categoryName]] && [[self bugCategoryId] isEqual:[(BugCategory *)anObject bugCategoryId]]) {
+    else if ([[self categoryName] isEqual:[(BugCategory *)anObject categoryName]] && [[self bugcategoryId] isEqual:[(BugCategory *)anObject bugcategoryId]]) {
         return YES;
     } else {
         return NO;
@@ -57,13 +57,13 @@
     
     self.categoryName = [aDictionary objectForKey:@"categoryName"];
     self.description = [aDictionary objectForKey:@"description"];
-    self.bugCategoryId = [NSDecimalNumber decimalNumberWithString:(NSString *)[aDictionary objectForKey:@"bugCategoryId"]];
+    self.bugcategoryId = [NSDecimalNumber decimalNumberWithString:(NSString *)[aDictionary objectForKey:@"bugcategoryId"]];
 }
 
 // keys needed for updating usergroup.
 - (NSArray *)allKeys {
     
-    NSArray *retArr = [[NSArray alloc] initWithObjects: @"bugCategoryId", @"categoryName", @"description", nil];
+    NSArray *retArr = [[NSArray alloc] initWithObjects: @"bugcategoryId", @"categoryName", @"description", nil];
     
     return retArr;
 }

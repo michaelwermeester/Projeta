@@ -101,7 +101,7 @@
     [[self mutableArrayValueForKey:@"arrBugCat"] addObjectsFromArray:[PTBugCategoryHelper setAttributesFromJSONDictionary:dict]];
     
     // sort the user list by username. 
-    [bugCategoryTableView setSortDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"bugCategoryName" ascending:YES selector:@selector(compare:)], nil]];
+    [bugCategoryTableView setSortDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"categoryName" ascending:YES selector:@selector(compare:)], nil]];
     
     [mainWindowController stopProgressIndicatorAnimation];
 }

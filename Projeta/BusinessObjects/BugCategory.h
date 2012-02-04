@@ -11,12 +11,12 @@
 @interface BugCategory : NSObject {
     NSString *categoryName;
     NSString *description;
-    NSNumber *bugCategoryId;
+    NSNumber *bugcategoryId;
 }
 
 @property (nonatomic, copy) NSString *categoryName;
 @property (nonatomic, copy) NSString *description;
-@property (nonatomic, copy) NSNumber *bugCategoryId;
+@property (nonatomic, copy) NSNumber *bugcategoryId;
 
 + (BugCategory *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
