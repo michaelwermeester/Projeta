@@ -40,8 +40,15 @@
 
 - (void)setBadgeCount:(NSString *)badgeCount {
     
+    /*if ([badgeCount length] > 0) {
+        [badgeButton setTitle:badgeCount];
+    } else {
+        [badgeButton setHidden:YES];
+    }*/
     
-    [badgeButton setTitle:badgeCount];
+    [badgeButton setHidden:YES];
+    
+    [self setNeedsDisplay:YES];
     
     //badgeButton = [[NSButton alloc] init];
     
