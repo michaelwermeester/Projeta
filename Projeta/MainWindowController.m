@@ -136,9 +136,9 @@
     tmpOutlColl.childObject = [[mainWindowViewController projectListViewController] arrPrj];
     [collectionArray addObject:tmpOutlColl];
     
-    OutlineCollection *tmpOutlColl2 = [[OutlineCollection alloc] init];
+    /*OutlineCollection *tmpOutlColl2 = [[OutlineCollection alloc] init];
     tmpOutlColl2.objectTitle = @"PROJECT";
-    [collectionArray addObject:tmpOutlColl2];
+    [collectionArray addObject:tmpOutlColl2];*/
     projectViewController.arrPrj = collectionArray;
     
     

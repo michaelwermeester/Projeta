@@ -82,6 +82,8 @@ static User *_loggedInUser = nil;
     [sourceList expandItem:[sourceListItems objectAtIndex:1]];
     // expand bugs.
     [sourceList expandItem:[sourceListItems objectAtIndex:2]];
+    // expand messagerie.
+    [sourceList expandItem:[sourceListItems objectAtIndex:3]];
 }
 
 #pragma mark -
@@ -377,13 +379,12 @@ static User *_loggedInUser = nil;
     SourceListItem *projectsAssignedItem = [SourceListItem itemWithTitle:@"Assignés" identifier:@"projectsAssigned"];
 	//SourceListItem *tasksItem = [SourceListItem itemWithTitle:@"Tasks" identifier:@"tasks"];
 	//[tasksItem setIcon:[NSImage imageNamed:@"movies.png"]];
-	SourceListItem *podcastsItem = [SourceListItem itemWithTitle:@"Podcasts" identifier:@"podcasts"];
-	[podcastsItem setIcon:[NSImage imageNamed:@"podcasts.png"]];
-	[podcastsItem setBadgeValue:105];
-	SourceListItem *audiobooksItem = [SourceListItem itemWithTitle:@"Audiobooks" identifier:@"audiobooks"];
-	[audiobooksItem setIcon:[NSImage imageNamed:@"audiobooks.png"]];
-	[projectsHeaderItem setChildren:[NSArray arrayWithObjects:projectsItem, projectsAssignedItem, podcastsItem,
-							  audiobooksItem, nil]];
+	SourceListItem *projectsParClientItem = [SourceListItem itemWithTitle:@"Par client" identifier:@"projectsParClientItem"];
+	[projectsParClientItem setIcon:[NSImage imageNamed:@"podcasts.png"]];
+	[projectsParClientItem setBadgeValue:105];
+	SourceListItem *projectsParDeveloppeurItem = [SourceListItem itemWithTitle:@"Par développeur" identifier:@"projectsParDeveloppeurItem"];
+	[projectsParDeveloppeurItem setIcon:[NSImage imageNamed:@"audiobooks.png"]];
+	[projectsHeaderItem setChildren:[NSArray arrayWithObjects:projectsItem, projectsAssignedItem, projectsParClientItem, projectsParDeveloppeurItem, nil]];
     
 	
 	//Set up the "Tasks" parent item and children
@@ -393,9 +394,11 @@ static User *_loggedInUser = nil;
     SourceListItem *tasksAssignedItem = [SourceListItem itemWithTitle:@"Assignés" identifier:@"tasksAssigned"];
     
 	SourceListItem *personalTasksItem = [SourceListItem itemWithTitle:@"Personnels" identifier:@"tasksPersonal"];
+    SourceListItem *tasksParClientItem = [SourceListItem itemWithTitle:@"Par client" identifier:@"tasksParClientItem"];
+    SourceListItem *tasksParDeveloppeurItem = [SourceListItem itemWithTitle:@"Par développeur" identifier:@"tasksParDeveloppeurItem"];
 	
 	//Create a second-level group to demonstrate
-	SourceListItem *playlist2Item = [SourceListItem itemWithTitle:@"Playlist2" identifier:@"playlist2"];
+	/*SourceListItem *playlist2Item = [SourceListItem itemWithTitle:@"Playlist2" identifier:@"playlist2"];
 	SourceListItem *playlist3Item = [SourceListItem itemWithTitle:@"Playlist3Playlist3Playlist3Playlist3Playlist3" identifier:@"playlist3"];
     [playlist3Item setBadgeValue:50];
 	//[playlist1Item setIcon:[NSImage imageNamed:@"playlist.png"]];
@@ -406,24 +409,42 @@ static User *_loggedInUser = nil;
 	SourceListItem *playlistGroupItem = [SourceListItem itemWithTitle:@"Child Playlist" identifier:@"childplaylist"];
 	[playlistGroup setIcon:[NSImage imageNamed:@"playlistFolder.png"]];
 	[playlistGroupItem setIcon:[NSImage imageNamed:@"playlist.png"]];
-	[playlistGroup setChildren:[NSArray arrayWithObject:playlistGroupItem]];
+	[playlistGroup setChildren:[NSArray arrayWithObject:playlistGroupItem]];*/
 	
-	[tasksHeaderItem setChildren:[NSArray arrayWithObjects:tasksItem, personalTasksItem, tasksAssignedItem, playlistGroup,playlist2Item, playlist3Item, nil]];
+	[tasksHeaderItem setChildren:[NSArray arrayWithObjects:tasksItem, personalTasksItem, tasksAssignedItem, tasksParClientItem, tasksParDeveloppeurItem, nil]];
     
     //Set up the "Bugs" parent item and children
 	SourceListItem *bugsHeaderItem = [SourceListItem itemWithTitle:@"BOGUES" identifier:@"bugsHeader"];
     SourceListItem *bugsItem = [SourceListItem itemWithTitle:@"Bogues" identifier:@"bugs"];
     SourceListItem *bugsAssignedItem = [SourceListItem itemWithTitle:@"Assignés" identifier:@"bugsAssigned"];
+    SourceListItem *bugsParClientItem = [SourceListItem itemWithTitle:@"Par client" identifier:@"bugsParClientItem"];
+    SourceListItem *bugsParDeveloppeurItem = [SourceListItem itemWithTitle:@"Par développeur" identifier:@"bugsParDeveloppeurItem"];
     
-    [bugsHeaderItem setChildren:[NSArray arrayWithObjects:bugsItem, bugsAssignedItem, nil]];
+    [bugsHeaderItem setChildren:[NSArray arrayWithObjects:bugsItem, bugsAssignedItem, bugsParClientItem, bugsParDeveloppeurItem, nil]];
     
     //Set up the "Clients" parent item and children
-	SourceListItem *clientsHeaderItem = [SourceListItem itemWithTitle:@"CLIENTS" identifier:@"clientsHeader"];
+	//SourceListItem *clientsHeaderItem = [SourceListItem itemWithTitle:@"CLIENTS" identifier:@"clientsHeader"];
+    //SourceListItem *clientsItem = [SourceListItem itemWithTitle:@"Clients" identifier:@"clientsItem"];
+    //SourceListItem *clientProjetsItem = [SourceListItem itemWithTitle:@"Projets par client" identifier:@"clientProjetsItem"];
+    //SourceListItem *clientBugsItem = [SourceListItem itemWithTitle:@"Assignés" identifier:@"bugsAssigned"];
+    
+    //[clientsHeaderItem setChildren:[NSArray arrayWithObjects:clientsItem, nil]];
+    
+    //Set up the "Clients" parent item and children
+	SourceListItem *messagerieHeaderItem = [SourceListItem itemWithTitle:@"MESSAGERIE" identifier:@"messagerieHeaderItem"];
+    SourceListItem *messagesRecusItem = [SourceListItem itemWithTitle:@"Reçu" identifier:@"messagesRecusItem"];
+    SourceListItem *messagesEnvoyesItem = [SourceListItem itemWithTitle:@"Envoyé" identifier:@"messagesEnvoyesItem"];
+    SourceListItem *messagesupprimesItem = [SourceListItem itemWithTitle:@"Supprimé" identifier:@"messagesupprimesItem"];
+    
+    [messagerieHeaderItem setChildren:[NSArray arrayWithObjects:messagesRecusItem, messagesEnvoyesItem, messagesupprimesItem, nil]];
+    
+    
 	
 	[sourceListItems addObject:projectsHeaderItem];
 	[sourceListItems addObject:tasksHeaderItem];
     [sourceListItems addObject:bugsHeaderItem];
-    [sourceListItems addObject:clientsHeaderItem];
+    //[sourceListItems addObject:clientsHeaderItem];
+    [sourceListItems addObject:messagerieHeaderItem];
 	
 	[sourceList reloadData];
     
@@ -595,13 +616,13 @@ static User *_loggedInUser = nil;
             // clients admin.
             SourceListItem *clientAdminItem = [SourceListItem itemWithTitle:NSLocalizedString(@"Clients", nil) identifier:@"clientAdmin"];
             // contacts admin.
-            SourceListItem *contactAdminItem = [SourceListItem itemWithTitle:NSLocalizedString(@"Contacts", nil) identifier:@"contactAdmin"];
+            //SourceListItem *contactAdminItem = [SourceListItem itemWithTitle:NSLocalizedString(@"Contacts", nil) identifier:@"contactAdmin"];
             // products admin.
-            SourceListItem *productAdminItem = [SourceListItem itemWithTitle:NSLocalizedString(@"Products", nil) identifier:@"productAdmin"];
+            //SourceListItem *productAdminItem = [SourceListItem itemWithTitle:NSLocalizedString(@"Products", nil) identifier:@"productAdmin"];
             // tpe de bogue.
             SourceListItem *bugCategoryAdminItem = [SourceListItem itemWithTitle:NSLocalizedString(@"Types de bogue", nil) identifier:@"bugCategoryAdmin"];
             
-            [administrationHeaderItem setChildren:[NSArray arrayWithObjects:userAdminItem, groupAdminItem, clientAdminItem, contactAdminItem, productAdminItem, bugCategoryAdminItem, nil]];
+            [administrationHeaderItem setChildren:[NSArray arrayWithObjects:userAdminItem, groupAdminItem, clientAdminItem, bugCategoryAdminItem, nil]];
             
             [sourceListItems addObject:administrationHeaderItem];
             

@@ -39,6 +39,9 @@
 		4C5B7ACD14DD50CB00DC1F75 /* PTBugCategoryHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5B7ACC14DD50CA00DC1F75 /* PTBugCategoryHelper.m */; };
 		4C5B7AD814DDD71100DC1F75 /* PTProjectDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5B7AD614DDD71000DC1F75 /* PTProjectDetailsViewController.m */; };
 		4C5B7AD914DDD71100DC1F75 /* PTProjectDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C5B7AD714DDD71000DC1F75 /* PTProjectDetailsView.xib */; };
+		4C65763B14DEAAC00032CA04 /* PTCommentairesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C65763A14DEAAC00032CA04 /* PTCommentairesView.xib */; };
+		4C65764014DEDC040032CA04 /* PTProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C65763E14DEDC040032CA04 /* PTProgressViewController.m */; };
+		4C65764114DEDC040032CA04 /* PTProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C65763F14DEDC040032CA04 /* PTProgressView.xib */; };
 		4C6A256914D9C45A00C66540 /* Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6A256814D9C45A00C66540 /* Client.m */; };
 		4C6A256D14D9C47C00C66540 /* PTClientHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6A256C14D9C47C00C66540 /* PTClientHelper.m */; };
 		4C74A61F13A2BFA100E7DBF6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C74A61D13A2BFA100E7DBF6 /* InfoPlist.strings */; };
@@ -159,6 +162,10 @@
 		4C5B7AD514DDD70F00DC1F75 /* PTProjectDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTProjectDetailsViewController.h; path = ../PTProjectDetailsViewController.h; sourceTree = "<group>"; };
 		4C5B7AD614DDD71000DC1F75 /* PTProjectDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PTProjectDetailsViewController.m; path = ../PTProjectDetailsViewController.m; sourceTree = "<group>"; };
 		4C5B7AD714DDD71000DC1F75 /* PTProjectDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PTProjectDetailsView.xib; path = ../PTProjectDetailsView.xib; sourceTree = "<group>"; };
+		4C65763A14DEAAC00032CA04 /* PTCommentairesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTCommentairesView.xib; sourceTree = "<group>"; };
+		4C65763D14DEDC040032CA04 /* PTProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = PTProgressViewController.h; sourceTree = "<group>"; };
+		4C65763E14DEDC040032CA04 /* PTProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTProgressViewController.m; sourceTree = "<group>"; };
+		4C65763F14DEDC040032CA04 /* PTProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTProgressView.xib; sourceTree = "<group>"; };
 		4C6A256714D9C45A00C66540 /* Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Client.h; sourceTree = "<group>"; };
 		4C6A256814D9C45A00C66540 /* Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Client.m; sourceTree = "<group>"; };
 		4C6A256B14D9C47C00C66540 /* PTClientHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTClientHelper.h; sourceTree = "<group>"; };
@@ -417,6 +424,24 @@
 			name = Bugs;
 			sourceTree = "<group>";
 		};
+		4C65763814DEAA980032CA04 /* Commentaires */ = {
+			isa = PBXGroup;
+			children = (
+				4C65763A14DEAAC00032CA04 /* PTCommentairesView.xib */,
+			);
+			name = Commentaires;
+			sourceTree = "<group>";
+		};
+		4C65763C14DEDBCD0032CA04 /* Tâches */ = {
+			isa = PBXGroup;
+			children = (
+				4C65763D14DEDC040032CA04 /* PTProgressViewController.h */,
+				4C65763E14DEDC040032CA04 /* PTProgressViewController.m */,
+				4C65763F14DEDC040032CA04 /* PTProgressView.xib */,
+			);
+			name = "Tâches";
+			sourceTree = "<group>";
+		};
 		4C74A60513A2BFA100E7DBF6 = {
 			isa = PBXGroup;
 			children = (
@@ -470,9 +495,11 @@
 				4C32ECB213DDE2C3009E7131 /* Helper Classes */,
 				4C32ECB613DDE492009E7131 /* Business Objects */,
 				4CBCEA1B13AD161500835F30 /* Preferences */,
+				4C65763814DEAA980032CA04 /* Commentaires */,
 				4C770C92145FFD6900A11E5A /* Projects */,
 				4C5B7ABD14DD473400DC1F75 /* Bugs */,
 				4C0968A214D5E040009B4470 /* Clients */,
+				4C65763C14DEDBCD0032CA04 /* Tâches */,
 				4C21F23C13C264CC00462C43 /* Users */,
 				4C74A62613A2BFA100E7DBF6 /* ProjetaAppDelegate.h */,
 				4C74A62713A2BFA100E7DBF6 /* ProjetaAppDelegate.m */,
@@ -681,6 +708,8 @@
 				4CE6A00014DC8E2A0008BAF0 /* PTClientUserWindow.xib in Resources */,
 				4C5B7AC014DD477900DC1F75 /* PTBugCategoryManagementView.xib in Resources */,
 				4C5B7AD914DDD71100DC1F75 /* PTProjectDetailsView.xib in Resources */,
+				4C65763B14DEAAC00032CA04 /* PTCommentairesView.xib in Resources */,
+				4C65764114DEDC040032CA04 /* PTProgressView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -783,6 +812,7 @@
 				4C5B7ACA14DD4F5700DC1F75 /* BugCategory.m in Sources */,
 				4C5B7ACD14DD50CB00DC1F75 /* PTBugCategoryHelper.m in Sources */,
 				4C5B7AD814DDD71100DC1F75 /* PTProjectDetailsViewController.m in Sources */,
+				4C65764014DEDC040032CA04 /* PTProgressViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
