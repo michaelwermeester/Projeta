@@ -19,7 +19,7 @@
 	NSSize _iconSize;									//The size of icons in the Source List. Defaults to 16x16
 }
 	
-@property NSSize iconSize;
+@property (nonatomic, assign) NSSize iconSize;
 	
 @property (unsafe_unretained) id<PXSourceListDataSource> dataSource;
 @property (unsafe_unretained) id<PXSourceListDelegate> delegate;
