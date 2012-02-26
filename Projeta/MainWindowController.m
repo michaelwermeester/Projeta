@@ -133,7 +133,10 @@
     NSMutableArray *collectionArray = [[NSMutableArray alloc] init];
     OutlineCollection *tmpOutlColl = [[OutlineCollection alloc] init];
     tmpOutlColl.objectTitle = @"PROJET";
-    tmpOutlColl.childObject = [[mainWindowViewController projectListViewController] arrPrj];
+    // afficher tous les projets et sous-projets.
+    //tmpOutlColl.childObject = [[mainWindowViewController projectListViewController] arrPrj];
+    // afficher les projets et sous-projets du projet sélectionné dans la treeview.
+    tmpOutlColl.childObject = [[NSMutableArray alloc] initWithArray:[[[mainWindowViewController projectListViewController] prjTreeController] selectedObjects]];
     [collectionArray addObject:tmpOutlColl];
     
     /*OutlineCollection *tmpOutlColl2 = [[OutlineCollection alloc] init];
