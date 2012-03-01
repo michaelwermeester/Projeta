@@ -19,6 +19,7 @@
 
 @synthesize arrPrj;
 @synthesize mainWindowController;
+@synthesize prjTabView;
 @synthesize prjTreeController;
 @synthesize prjArrayCtrl;
 @synthesize prjCollectionView;

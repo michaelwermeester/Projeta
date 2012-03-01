@@ -130,13 +130,29 @@
     //projectViewController.arrPrj = [[NSMutableArray alloc] initWithArray:[[mainWindowViewController projectListViewController] arrPrj]];
     //projectViewController.arrPrj = [[mainWindowViewController projectListViewController] arrPrj];
     
+    
+    // index du tab en actuel.
+    int selectedTabIndex = [[[mainWindowViewController projectListViewController] prjTabView] indexOfTabViewItem:[[[mainWindowViewController projectListViewController] prjTabView] selectedTabViewItem]];
+    
+    
+    
     NSMutableArray *collectionArray = [[NSMutableArray alloc] init];
     OutlineCollection *tmpOutlColl = [[OutlineCollection alloc] init];
     tmpOutlColl.objectTitle = @"PROJET";
+    
+    if (selectedTabIndex == 0)
+    {
+        // afficher le projet selectionné et sous-projets.
+        tmpOutlColl.childObject = [[NSMutableArray alloc] initWithArray:[[[mainWindowViewController projectListViewController] prjArrayCtrl] selectedObjects]];
+        
+    } else if (selectedTabIndex == 1) { 
+        // afficher les projets et sous-projets du projet sélectionné dans la treeview.
+        tmpOutlColl.childObject = [[NSMutableArray alloc] initWithArray:[[[mainWindowViewController projectListViewController] prjTreeController] selectedObjects]];
+    }
     // afficher tous les projets et sous-projets.
     //tmpOutlColl.childObject = [[mainWindowViewController projectListViewController] arrPrj];
     // afficher les projets et sous-projets du projet sélectionné dans la treeview.
-    tmpOutlColl.childObject = [[NSMutableArray alloc] initWithArray:[[[mainWindowViewController projectListViewController] prjTreeController] selectedObjects]];
+    //tmpOutlColl.childObject = [[NSMutableArray alloc] initWithArray:[[[mainWindowViewController projectListViewController] prjTreeController] selectedObjects]];
     [collectionArray addObject:tmpOutlColl];
     
     /*OutlineCollection *tmpOutlColl2 = [[OutlineCollection alloc] init];

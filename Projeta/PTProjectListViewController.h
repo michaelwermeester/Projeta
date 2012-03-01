@@ -20,6 +20,7 @@
     // user details window
     PTProjectDetailsWindowController *projectDetailsWindowController;
     NSTreeController *prjTreeController;
+    __weak NSTabView *prjTabView;
 }
 
 @property (strong) NSMutableArray *arrPrj;
@@ -28,6 +29,7 @@
 @property (strong) IBOutlet NSCollectionView *prjCollectionView;
 // reference to the (parent) MainWindowController
 @property (assign) MainWindowController *mainWindowController;
+@property (weak) IBOutlet NSTabView *prjTabView;
 
 - (void)requestFinished:(NSMutableData*)data;
 - (void)requestFailed:(NSError*)error;
