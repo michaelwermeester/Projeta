@@ -26,5 +26,7 @@
 // reference to the (parent) MainWindowController
 @property (assign) MainWindowController *mainWindowController;
 
+- (IBAction)cancelButtonClicked:(id)sender;
+- (IBAction)okButtonClicked:(id)sender;
 
 @end

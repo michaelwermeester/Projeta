@@ -39,4 +39,9 @@
 
 
 
+- (IBAction)cancelButtonClicked:(id)sender {
+}
+
+- (IBAction)okButtonClicked:(id)sender {
+}
 @end

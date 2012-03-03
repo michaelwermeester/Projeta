@@ -17,6 +17,9 @@
 
 @implementation PTProjectListViewController
 
+// true si on crée un nouveau projet.
+//BOOL isNewProject = false;
+
 @synthesize arrPrj;
 @synthesize mainWindowController;
 @synthesize prjTabView;
@@ -149,9 +152,15 @@
     Project *prj = [[Project alloc] init];
     prj.parentProjectId = parentID;
     
-    [prjTreeController add:prj];
+    //[prjTreeController add:prj];
+    NSIndexPath *indexPath = [prjTreeController selectionIndexPath];
+    [prjTreeController insertObject:prj atArrangedObjectIndexPath:indexPath];
     
     //[prjTreeController insertObject:prj atArrangedObjectIndex:([arrPrj count])];
+    
+    // il s'agit d'un nouveau projet.
+    //isNewProject = true;
+    
     
     [self openProjectDetailsWindow:YES isSubProject:NO];
 }
@@ -190,7 +199,10 @@
     
     NSLog(@"count: %lu", [arrPrj count]);
     
-    //[self openProjectDetailsWindow:YES isSubProject:YES];
+    // il s'agit d'un nouveau projet.
+    //isNewProject = true;
+    
+    [self openProjectDetailsWindow:YES isSubProject:YES];
 }
 
 
