@@ -147,17 +147,16 @@
     // if a project is selected, open the window to show its details.
     if ([selectedObjects count] == 1) {
         parentID = [[selectedObjects objectAtIndex:0] projectId];
+    
+    
+        Project *prj = [[Project alloc] init];
+        prj.parentProjectId = parentID;
+    
+        //[prjTreeController add:prj];
+        NSIndexPath *indexPath = [prjTreeController selectionIndexPath];
+        [prjTreeController insertObject:prj atArrangedObjectIndexPath:indexPath];
     }
-    
-    Project *prj = [[Project alloc] init];
-    prj.parentProjectId = parentID;
-    
-    //[prjTreeController add:prj];
-    NSIndexPath *indexPath = [prjTreeController selectionIndexPath];
-    [prjTreeController insertObject:prj atArrangedObjectIndexPath:indexPath];
-    
-    //[prjTreeController insertObject:prj atArrangedObjectIndex:([arrPrj count])];
-    
+
     // il s'agit d'un nouveau projet.
     //isNewProject = true;
     
@@ -175,26 +174,27 @@
     // if a project is selected, open the window to show its details.
     if ([selectedObjects count] == 1) {
         parentID = [[selectedObjects objectAtIndex:0] projectId];
+        
+        
+        Project *prj = [[Project alloc] init];
+        prj.parentProjectId = parentID;
+        
+        Project *tmpPrj = [selectedObjects objectAtIndex:0]; 
+        
+        if ([tmpPrj childProject] == nil) {
+            
+            NSIndexPath *indexPath = [prjTreeController selectionIndexPath];
+            
+            tmpPrj.childProject = [[NSMutableArray alloc] init];
+            [prjTreeController insertObject:prj atArrangedObjectIndexPath:[indexPath indexPathByAddingIndex:0]];
+        } else {
+            //else if ([[tmpPrj childProject] count] > 0) {
+            
+            NSIndexPath *indexPath = [prjTreeController selectionIndexPath];
+            
+            [prjTreeController insertObject:prj atArrangedObjectIndexPath:[indexPath indexPathByAddingIndex:0]];
+        } 
     }
-    
-    Project *prj = [[Project alloc] init];
-    prj.parentProjectId = parentID;
-    
-    Project *tmpPrj = [selectedObjects objectAtIndex:0]; 
-    
-    if ([tmpPrj childProject] == nil) {
-     
-        NSIndexPath *indexPath = [prjTreeController selectionIndexPath];
-        
-        tmpPrj.childProject = [[NSMutableArray alloc] init];
-        [prjTreeController insertObject:prj atArrangedObjectIndexPath:[indexPath indexPathByAddingIndex:0]];
-    } else {
-    //else if ([[tmpPrj childProject] count] > 0) {
-
-        NSIndexPath *indexPath = [prjTreeController selectionIndexPath];
-        
-        [prjTreeController insertObject:prj atArrangedObjectIndexPath:[indexPath indexPathByAddingIndex:0]];
-    } 
 
     
     NSLog(@"count: %lu", [arrPrj count]);
@@ -203,6 +203,11 @@
     //isNewProject = true;
     
     [self openProjectDetailsWindow:YES isSubProject:YES];
+}
+
+- (IBAction)detailsButtonClicked:(id)sender {
+    
+    [self openProjectDetailsWindow:NO isSubProject:NO];
 }
 
 

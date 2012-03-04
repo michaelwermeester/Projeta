@@ -8,6 +8,10 @@
 
 #import "Project.h"
 #import "PTProjectDetailsWindowController.h"
+#import "PTProjectHelper.h"
+#import "PTProjectListViewController.h"
+
+Project *projectCopy;
 
 @implementation PTProjectDetailsWindowController
 
@@ -30,6 +34,34 @@
     return self;
 }
 
+- (void)awakeFromNib {
+    
+    // faire une copie du projet en cours.
+    projectCopy = [[Project alloc] init];
+    projectCopy = [project copy];
+    
+    // debug
+    /*for (Project *p in project.childProject) {
+        
+        NSLog(@"title: %@", [p projectTitle] );
+        
+        for (Project *p1 in p.childProject) {
+            NSLog(@"titlesub: %@", [p1 projectTitle] );
+        }
+        
+    }
+    
+    for (Project *p in projectCopy.childProject) {
+        
+        NSLog(@"title: %@", [p projectTitle] );
+        
+        for (Project *p1 in p.childProject) {
+            NSLog(@"titlesub: %@", [p1 projectTitle] );
+        }
+        
+    }*/
+}
+
 - (void)windowDidLoad
 {
     [super windowDidLoad];
@@ -40,6 +72,24 @@
 
 
 - (IBAction)cancelButtonClicked:(id)sender {
+    
+    if (isNewProject == NO) {
+        // cancel changes -> replace current project with previously made copy of project.
+        [[parentProjectListViewController mutableArrayValueForKey:@"arrPrj"] replaceObjectAtIndex:[parentProjectListViewController.arrPrj indexOfObject:project] withObject:projectCopy];
+        
+        // TODO: select another item to avoid crash.
+        
+        
+        
+    } else {
+        // remove the temporary inserted/created user.
+        //[[parentProjectListViewController mutableArrayValueForKey:@"arrPrj"] removeObject:project];
+        
+        [[parentProjectListViewController prjTreeController] remove:self];
+    }
+       
+    // close this window.
+    [self close];
 }
 
 - (IBAction)okButtonClicked:(id)sender {
