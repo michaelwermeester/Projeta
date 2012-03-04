@@ -401,4 +401,12 @@ User *userCopy;
     }
 }
 
+// lorsque l'utilisateur clique sur le "x rouge" pour fermer la fenêtre. 
+- (void)windowShouldClose:(NSNotification *)notification
+{
+    
+    // annuler les changements.
+    [self cancelButtonClicked:self];
+}
+
 @end
