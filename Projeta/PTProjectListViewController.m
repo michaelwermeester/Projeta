@@ -210,6 +210,13 @@
     [self openProjectDetailsWindow:NO isSubProject:NO];
 }
 
+- (IBAction)removeProjectButtonClicked:(id)sender {
+    
+    // todo : supprimer en DB.
+    
+    [prjTreeController remove:self];
+}
+
 
 -(void)insertObject:(Project *)p inArrPrjAtIndex:(NSUInteger)index {
     [arrPrj insertObject:p atIndex:index];
