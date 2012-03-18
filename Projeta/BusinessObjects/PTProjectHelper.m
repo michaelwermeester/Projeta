@@ -7,6 +7,7 @@
 //
 
 #import "MainWindowController.h"
+#import "MWConnectionController.h"
 #import "PTCommon.h"
 #import "PTProjectHelper.h"
 #import "Project.h"
@@ -134,6 +135,65 @@
     // execute the PUT method on the webservice to update the record in the database.
     success = [PTCommon executePOSTforDictionary:dict resourceString:resourceString successBlock:successBlock_];
     
+    
+    if ([sender isKindOfClass:[MainWindowController class]]) {
+        // stop animating the main window's circular progress indicator.
+        [sender stopProgressIndicatorAnimation];
+    }
+    
+    return success;
+}
+
++ (BOOL)deleteProject:(Project *)theProject successBlock:(void(^)(BOOL))successBlock failureBlock:(void(^)())failureBlock mainWindowController:(id)sender {
+    
+    BOOL success = NO;
+    
+    if ([sender isKindOfClass:[MainWindowController class]]) {
+        // start animating the main window's circular progress indicator.
+        [sender startProgressIndicatorAnimation];
+    }
+    
+    // get server URL as string
+    NSString *resourceString = [PTCommon serverURLString];
+    // API resource string.
+    resourceString = [resourceString stringByAppendingString:@"resources/projects/delete/"];
+    // rajouter l'id du projet à la fin.
+    resourceString = [resourceString stringByAppendingString:[theProject.projectId stringValue]];
+    
+    // execute the PUT method on the webservice to update the record in the database.
+    //success = [PTCommon executePOSTforDictionary:dict resourceString:resourceString successBlock:successBlock_];
+    
+    // convert to NSURL
+    NSURL *url = [NSURL URLWithString:resourceString];
+    
+    
+    // NSURLConnection - MWConnectionController
+    MWConnectionController* connectionController = [[MWConnectionController alloc] 
+                                                    initWithSuccessBlock:^(NSMutableData *data) {
+                                                        
+                                                        /*NSString* resStr = [[NSString alloc] initWithData:data
+                                                                                                 encoding:NSUTF8StringEncoding];
+                                                        
+                                                        if ([resStr isEqual:@"1"]) {
+                                                            // utilisateur supprimé.
+                                                            successBlock(YES);
+                                                        } else {
+                                                            successBlock(NO);
+                                                        }*/
+                                                        
+                                                        successBlock(YES);
+                                                    }
+                                                    failureBlock:^(NSError *error) {
+                                                        
+                                                        failureBlock();
+                                                    }];
+    
+    
+    NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
+    [urlRequest setHTTPMethod:@"POST"];
+    [urlRequest setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
+    
+    [connectionController startRequestForURL:url setRequest:urlRequest];
     
     if ([sender isKindOfClass:[MainWindowController class]]) {
         // stop animating the main window's circular progress indicator.

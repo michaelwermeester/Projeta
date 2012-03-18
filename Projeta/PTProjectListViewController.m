@@ -212,9 +212,31 @@
 
 - (IBAction)removeProjectButtonClicked:(id)sender {
     
-    // todo : supprimer en DB.
+    // index du tab actuel.
+    int selectedTabIndex = [prjTabView indexOfTabViewItem:[prjTabView selectedTabViewItem]];
     
-    [prjTreeController remove:self];
+    NSArray *selectedObjects;
+    
+    if (selectedTabIndex == 1) {
+        selectedObjects = [prjTreeController selectedObjects];
+    } else if (selectedTabIndex == 0) {
+        selectedObjects = [prjArrayCtrl selectedObjects];
+    }
+    
+    // supprimer en DB.
+    [PTProjectHelper deleteProject:[selectedObjects objectAtIndex:0] successBlock:^(BOOL userExists){
+        //[self sucUserExists:userExists];
+        
+        if (selectedTabIndex == 1) {
+            [prjTreeController remove:self];
+        } else if (selectedTabIndex == 0) {
+            [prjArrayCtrl remove:self];
+        }
+    } failureBlock:^(){
+        //[self failUserExists];
+    } mainWindowController:mainWindowController];
+    
+    //[prjTreeController remove:self];
 }
 
 

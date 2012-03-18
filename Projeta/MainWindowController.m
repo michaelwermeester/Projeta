@@ -136,7 +136,7 @@
     //projectViewController.arrPrj = [[mainWindowViewController projectListViewController] arrPrj];
     
     
-    // index du tab en actuel.
+    // index du tab actuel.
     int selectedTabIndex = [[[mainWindowViewController projectListViewController] prjTabView] indexOfTabViewItem:[[[mainWindowViewController projectListViewController] prjTabView] selectedTabViewItem]];
     
     
