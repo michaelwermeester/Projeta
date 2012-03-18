@@ -55,5 +55,6 @@
 - (id) copyWithZone:(NSZone *)zone;
 
 - (NSArray *)createProjectKeys;
+- (NSArray *)projectIdKey;
 
 @end

@@ -104,8 +104,6 @@ Project *projectCopy;
         // user created.
         project.userCreated = mainWindowController.loggedInUser;
         
-        //[User instanceFromDictionary:[aDictionary objectForKey:@"userCreated"]];
-        
         
         prjUpdSuc = [PTProjectHelper createProject:project successBlock:^(NSMutableData *data) {
             [self finishedCreatingProject:data];

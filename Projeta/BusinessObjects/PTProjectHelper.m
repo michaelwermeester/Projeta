@@ -108,10 +108,24 @@
     //NSDictionary *dict = [theUser dictionaryWithValuesForKeys:[theUser allKeys]];
     // update username, first name, last name and email address
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[theProject dictionaryWithValuesForKeys:[theProject createProjectKeys]]];
+    
+    
     // créer dictionnaire 'user création'.
     NSDictionary *userDict = [theProject.userCreated dictionaryWithValuesForKeys:[theProject.userCreated userIdKey]];
     // ajouter ce dictionnaire sous la clé 'userCreated'.
     [dict setObject:userDict forKey:@"userCreated"];
+    
+    
+    
+    // créer dictionnaire 'parentProjectId'.
+    Project *parentProject = [[Project alloc] init];
+    parentProject.projectId = theProject.parentProjectId;
+    
+    NSDictionary *parentProjectDict = [parentProject dictionaryWithValuesForKeys:[parentProject projectIdKey]];
+    // ajouter ce dictionnaire sous la clé 'parentProjectId'.
+    [dict setObject:parentProjectDict forKey:@"parentProjectId"];
+    
+    
     
     
     // API resource string.
