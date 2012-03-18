@@ -10,12 +10,16 @@
 #import "PTMainWindowViewController.h"
 #import "PTProjectViewController.h"
 
+@class User;
+
 @interface MainWindowController : NSWindowController <NSWindowDelegate> {
     
     NSView *mainView;
     NSProgressIndicator *progressIndicator;
     NSToolbarItem *detailViewToolbarItem;
     NSSearchField *searchField;
+    
+    User *loggedInUser;
 }
 
 @property (strong) IBOutlet NSView *mainView;
@@ -30,6 +34,8 @@
 // used for NSProgressIndicator
 @property (assign) NSInteger progressCount;
 @property (strong) IBOutlet NSSearchField *searchField;
+
+@property (strong) User *loggedInUser;
 
 - (IBAction)switchToMainView:(id)sender;
 - (IBAction)switchToProjectView:(id)sender;

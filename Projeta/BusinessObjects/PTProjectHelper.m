@@ -6,6 +6,8 @@
 //  Copyright (c) 2011 Michael Wermeester. All rights reserved.
 //
 
+#import "MainWindowController.h"
+#import "PTCommon.h"
 #import "PTProjectHelper.h"
 #import "Project.h"
 
@@ -88,6 +90,43 @@
     }
     
     return nil;
+}
+
+
+// Crée un nouveau projet dans la base de données.
+// mainWindowController parameter is used for animating the main window's progress indicator.
++ (BOOL)createProject:(Project *)theProject successBlock:(void(^)(NSMutableData *))successBlock_ mainWindowController:(id)sender {
+    
+    BOOL success = NO;
+    
+    if ([sender isKindOfClass:[MainWindowController class]]) {
+        // start animating the main window's circular progress indicator.
+        [sender startProgressIndicatorAnimation];
+    }
+    
+    // create dictionary from User object
+    //NSDictionary *dict = [theUser dictionaryWithValuesForKeys:[theUser allKeys]];
+    // update username, first name, last name and email address
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[theProject dictionaryWithValuesForKeys:[theProject createProjectKeys]]];
+    // créer dictionnaire 'user création'.
+    NSDictionary *userDict = [theProject.userCreated dictionaryWithValuesForKeys:[theProject.userCreated userIdKey]];
+    // ajouter ce dictionnaire sous la clé 'userCreated'.
+    [dict setObject:userDict forKey:@"userCreated"];
+    
+    
+    // API resource string.
+    NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/projects/create"];
+    
+    // execute the PUT method on the webservice to update the record in the database.
+    success = [PTCommon executePOSTforDictionary:dict resourceString:resourceString successBlock:successBlock_];
+    
+    
+    if ([sender isKindOfClass:[MainWindowController class]]) {
+        // stop animating the main window's circular progress indicator.
+        [sender stopProgressIndicatorAnimation];
+    }
+    
+    return success;
 }
 
 @end

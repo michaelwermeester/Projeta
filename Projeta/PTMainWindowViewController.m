@@ -508,6 +508,9 @@ static User *_loggedInUser = nil;
         for (User *usr in loggedInUserArr) {
             _loggedInUser = usr;
             
+            // 03-18-2012
+            mainWindowController.loggedInUser = usr;
+            
             // fetch user roles of logged in user from webservice
             [self userRoleInitializations];
         }

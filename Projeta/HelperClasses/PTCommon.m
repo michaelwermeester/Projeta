@@ -58,6 +58,9 @@
     NSData *requestData = [[NSData alloc] init];
     requestData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
     
+    //debug.
+    NSLog(@"res: %@", [[NSString alloc] initWithData:requestData encoding:NSASCIIStringEncoding]);
+    
     // get server URL as string
     NSString *urlString = [PTCommon serverURLString];
     // build URL by adding resource path

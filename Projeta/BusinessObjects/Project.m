@@ -145,4 +145,12 @@
     return projectTitle;
 }
 
+- (NSArray *)createProjectKeys
+{
+    //NSArray *retArr = [[NSArray alloc] initWithObjects: @"projectTitle", @"projectDescription", @"endDate", @"endDateReal", @"flagPublic", @"completed", @"parentProjectId", @"startDate", @"startDateReal", @"userCreated", nil];
+    NSArray *retArr = [[NSArray alloc] initWithObjects: @"projectTitle", @"projectDescription", @"flagPublic", nil];
+    
+    return retArr;
+}
+
 @end

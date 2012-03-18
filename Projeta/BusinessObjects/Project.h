@@ -54,4 +54,6 @@
 // Required by NSCopying protocol.
 - (id) copyWithZone:(NSZone *)zone;
 
+- (NSArray *)createProjectKeys;
+
 @end

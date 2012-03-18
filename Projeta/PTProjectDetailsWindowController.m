@@ -6,7 +6,9 @@
 //  Copyright (c) 2011 Michael Wermeester. All rights reserved.
 //
 
+#import "MainWindowController.h"
 #import "Project.h"
+#import "PTMainWindowViewController.h"
 #import "PTProjectDetailsWindowController.h"
 #import "PTProjectHelper.h"
 #import "PTProjectListViewController.h"
@@ -93,6 +95,27 @@ Project *projectCopy;
 }
 
 - (IBAction)okButtonClicked:(id)sender {
+    
+    BOOL prjUpdSuc = NO;
+    
+    // créer un nouveau projet.
+    if (isNewProject == YES) {
+        
+        // user created.
+        project.userCreated = mainWindowController.loggedInUser;
+        
+        //[User instanceFromDictionary:[aDictionary objectForKey:@"userCreated"]];
+        
+        
+        prjUpdSuc = [PTProjectHelper createProject:project successBlock:^(NSMutableData *data) {
+            [self finishedCreatingProject:data];
+        } 
+                        mainWindowController:parentProjectListViewController];
+    }
+    // mettre à jour projet existant.
+    else {
+        
+    }
 }
 
 // lorsque l'utilisateur clique sur le "x rouge" pour fermer la fenêtre. 
@@ -101,6 +124,10 @@ Project *projectCopy;
     
     // annuler les changements.
     [self cancelButtonClicked:self];
+}
+
+- (void)finishedCreatingProject:(NSMutableData*)data {
+    
 }
 
 @end

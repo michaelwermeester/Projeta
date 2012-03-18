@@ -18,4 +18,7 @@
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
 + (NSMutableArray *)setAttributesFromJSONDictionary:(NSDictionary *)aDictionary;
 
+// Crée un nouveau projet dans la base de données.
++ (BOOL)createProject:(Project *)theProject successBlock:(void(^)(NSMutableData *))successBlock_ mainWindowController:(id)sender;
+
 @end

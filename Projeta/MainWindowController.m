@@ -10,6 +10,7 @@
 #import "OutlineCollection.h"
 #import "ProjetaAppDelegate.h"
 #import "PTMainWindowViewController.h"
+#import "User.h"
 
 @implementation MainWindowController
 
@@ -21,6 +22,8 @@
 @synthesize progressCount;
 @synthesize searchField;
 
+@synthesize loggedInUser;
+
 - (id)init
 {
     self = [super initWithWindowNibName:@"MainWindow"];
@@ -30,6 +33,8 @@
         
         // set counter to 0
         progressCount = 0;
+        
+        loggedInUser = nil;
     }
     return self;
 }
