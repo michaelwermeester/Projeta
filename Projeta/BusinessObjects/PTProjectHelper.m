@@ -116,17 +116,16 @@
     // ajouter ce dictionnaire sous la clé 'userCreated'.
     [dict setObject:userDict forKey:@"userCreated"];
     
-    
-    
-    // créer dictionnaire 'parentProjectId'.
-    Project *parentProject = [[Project alloc] init];
-    parentProject.projectId = theProject.parentProjectId;
-    
-    NSDictionary *parentProjectDict = [parentProject dictionaryWithValuesForKeys:[parentProject projectIdKey]];
-    // ajouter ce dictionnaire sous la clé 'parentProjectId'.
-    [dict setObject:parentProjectDict forKey:@"parentProjectId"];
-    
-    
+    // s'il s'agit d'un sous-projet...
+    if (theProject.parentProjectId) {
+        // créer dictionnaire 'parentProjectId'.
+        Project *parentProject = [[Project alloc] init];
+        parentProject.projectId = theProject.parentProjectId;
+        
+        NSDictionary *parentProjectDict = [parentProject dictionaryWithValuesForKeys:[parentProject projectIdKey]];
+        // ajouter ce dictionnaire sous la clé 'parentProjectId'.
+        [dict setObject:parentProjectDict forKey:@"parentProjectId"];
+    }
     
     
     // API resource string.

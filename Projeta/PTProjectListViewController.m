@@ -140,17 +140,17 @@
 
 - (IBAction)addNewProjectButtonClicked:(id)sender {
     
-    NSNumber *parentID;
+    //NSNumber *parentID;
     
     NSArray *selectedObjects = [prjTreeController selectedObjects];
     
     // if a project is selected, open the window to show its details.
     if ([selectedObjects count] == 1) {
-        parentID = [[selectedObjects objectAtIndex:0] projectId];
+        //parentID = [[selectedObjects objectAtIndex:0] projectId];
     
     
         Project *prj = [[Project alloc] init];
-        prj.parentProjectId = parentID;
+        //prj.parentProjectId = parentID;
     
         //[prjTreeController add:prj];
         NSIndexPath *indexPath = [prjTreeController selectionIndexPath];

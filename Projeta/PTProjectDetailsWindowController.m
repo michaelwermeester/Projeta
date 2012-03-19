@@ -126,6 +126,37 @@ Project *projectCopy;
 
 - (void)finishedCreatingProject:(NSMutableData*)data {
     
+    
+    NSError *error;
+    
+    NSDictionary *dict = [[NSDictionary alloc] init];
+    dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
+    
+    NSMutableArray *createdProjectArray = [[NSMutableArray alloc] init];
+    
+    // see Cocoa and Objective-C up and running by Scott Stevenson.
+    // page 242
+    //[createdUserArray addObjectsFromArray:[PTUserHelper setAttributesFromDictionary2:dict]];
+    [createdProjectArray addObjectsFromArray:[PTProjectHelper setAttributesFromJSONDictionary:dict]];
+    
+    NSLog(@"count: %lu", [createdProjectArray count]);
+    
+    if ([createdProjectArray count] == 1) {
+
+        for (Project *prj in createdProjectArray) {
+   
+            [[parentProjectListViewController mutableArrayValueForKey:@"arrPrj"] replaceObjectAtIndex:[parentProjectListViewController.arrPrj indexOfObject:project] withObject:prj];
+            
+            // reassign user with user returned from web-service. 
+            self.project = prj;
+            
+            //NSLog(@"id: %d", [prj.projectId intValue]);
+            //NSLog(@"title: %@", prj.projectTitle);
+        }
+    }
+    
+    // close this window.
+    [self close];
 }
 
 @end
