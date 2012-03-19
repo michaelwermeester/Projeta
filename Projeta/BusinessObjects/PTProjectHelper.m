@@ -144,7 +144,33 @@
     return success;
 }
 
-+ (BOOL)deleteProject:(Project *)theProject successBlock:(void(^)(BOOL))successBlock failureBlock:(void(^)())failureBlock mainWindowController:(id)sender {
++ (BOOL)deleteProject:(Project *)theProject successBlock:(void(^)(NSMutableData *))successBlock failureBlock:(void(^)())failureBlock mainWindowController:(id)sender {
+    
+    BOOL success = NO;
+    
+    if ([sender isKindOfClass:[MainWindowController class]]) {
+        // start animating the main window's circular progress indicator.
+        [sender startProgressIndicatorAnimation];
+    }
+    
+    // create dictionary from Project object.
+    NSDictionary *dict = [theProject dictionaryWithValuesForKeys:[theProject projectIdKey]];
+    
+    // API resource string.
+    NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/projects/delete"];
+    
+    // execute the PUT method on the webservice to update the record in the database.
+    success = [PTCommon executePOSTforDictionaryWithBlocks:dict resourceString:resourceString successBlock:successBlock failureBlock:failureBlock];
+    
+    if ([sender isKindOfClass:[MainWindowController class]]) {
+        // stop animating the main window's circular progress indicator.
+        [sender stopProgressIndicatorAnimation];
+    }
+    
+    return success;
+}
+
+/*+ (BOOL)deleteProject:(Project *)theProject successBlock:(void(^)(BOOL))successBlock failureBlock:(void(^)())failureBlock mainWindowController:(id)sender {
     
     BOOL success = NO;
     
@@ -171,15 +197,15 @@
     MWConnectionController* connectionController = [[MWConnectionController alloc] 
                                                     initWithSuccessBlock:^(NSMutableData *data) {
                                                         
-                                                        /*NSString* resStr = [[NSString alloc] initWithData:data
-                                                                                                 encoding:NSUTF8StringEncoding];
+                                                        //NSString* resStr = [[NSString alloc] initWithData:data
+                                                        //                                         encoding:NSUTF8StringEncoding];
                                                         
-                                                        if ([resStr isEqual:@"1"]) {
+                                                        //if ([resStr isEqual:@"1"]) {
                                                             // utilisateur supprimé.
-                                                            successBlock(YES);
-                                                        } else {
-                                                            successBlock(NO);
-                                                        }*/
+                                                        //    successBlock(YES);
+                                                        //} else {
+                                                        //    successBlock(NO);
+                                                        //}
                                                         
                                                         successBlock(YES);
                                                     }
@@ -201,6 +227,6 @@
     }
     
     return success;
-}
+}*/
 
 @end

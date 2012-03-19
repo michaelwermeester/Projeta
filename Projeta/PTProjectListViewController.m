@@ -224,7 +224,7 @@
     }
     
     // supprimer en DB.
-    [PTProjectHelper deleteProject:[selectedObjects objectAtIndex:0] successBlock:^(BOOL userExists){
+    [PTProjectHelper deleteProject:[selectedObjects objectAtIndex:0] successBlock:^(NSMutableData *data){
         //[self sucUserExists:userExists];
         
         if (selectedTabIndex == 1) {

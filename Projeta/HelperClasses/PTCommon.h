@@ -25,6 +25,8 @@
 
 // executes the HTTP POST method on a given resource with a given dictionary.
 + (BOOL)executePOSTforDictionary:(NSDictionary *)dict resourceString:(NSString *)resourceString successBlock:(void(^)(NSMutableData *))successBlock_;
++ (BOOL)executePOSTforDictionaryWithBlocks:(NSDictionary *)dict resourceString:(NSString *)resourceString successBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)(NSError *))failureBlock_;
+
 // executes the HTTP PUT method on a given resource with a given dictionary.
 + (BOOL)executePUTforDictionary:(NSDictionary *)dict resourceString:(NSString *)resourceString;
 

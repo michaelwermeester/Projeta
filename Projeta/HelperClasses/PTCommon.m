@@ -103,6 +103,12 @@
     return [PTCommon executeHTTPMethodForDictionary:dict resourceString:resourceString httpMethod:@"POST" successBlock:successBlock_];
 }
 
+// 19-03-2012
++ (BOOL)executePOSTforDictionaryWithBlocks:(NSDictionary *)dict resourceString:(NSString *)resourceString successBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)(NSError *))failureBlock_ {
+    
+    return [PTCommon executeHTTPMethodForDictionaryWithFailureBlock:dict resourceString:resourceString httpMethod:@"POST" successBlock:successBlock_ failureBlock:failureBlock_];
+}
+
 // executes the HTTP PUT method on a given resource with a given dictionary.
 + (BOOL)executePUTforDictionary:(NSDictionary *)dict resourceString:(NSString *)resourceString {
     
