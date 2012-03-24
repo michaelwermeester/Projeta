@@ -23,6 +23,7 @@ Project *projectCopy;
 
 @synthesize parentProjectListViewController;
 @synthesize mainWindowController;
+@synthesize okButton;
 
 
 - (id)init
@@ -99,6 +100,9 @@ Project *projectCopy;
 - (IBAction)okButtonClicked:(id)sender {
     
     BOOL prjUpdSuc = NO;
+    
+    // donner le focus au bouton 'OK'.
+    [self.window makeFirstResponder:okButton];
     
     // créer un nouveau projet.
     if (isNewProject == YES) {

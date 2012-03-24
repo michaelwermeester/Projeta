@@ -15,6 +15,7 @@
 @interface PTProjectDetailsWindowController : NSWindowController {
     
     BOOL isNewProject;
+    __weak NSButton *okButton;
 }
 
 @property (strong) Project *project;
@@ -25,6 +26,7 @@
 @property (strong) PTProjectListViewController *parentProjectListViewController;
 // reference to the (parent) MainWindowController
 @property (assign) MainWindowController *mainWindowController;
+@property (weak) IBOutlet NSButton *okButton;
 
 - (IBAction)cancelButtonClicked:(id)sender;
 - (IBAction)okButtonClicked:(id)sender;
