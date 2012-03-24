@@ -23,6 +23,8 @@
 @synthesize arrPrj;
 @synthesize mainWindowController;
 @synthesize prjTabView;
+@synthesize prjOutlineView;
+@synthesize addSubProjectButton;
 @synthesize prjTreeController;
 @synthesize prjArrayCtrl;
 @synthesize prjCollectionView;
@@ -42,6 +44,7 @@
 }
 
 - (void)viewDidLoad {
+    
     // get server URL as string
     NSString *urlString = [PTCommon serverURLString];
     // build URL by adding resource path
@@ -78,6 +81,9 @@
       @"projectTitle contains[cd] $value",
       NSPredicateFormatBindingOption,
       nil]];
+    
+    // désactiver le point de menu pour créer un sous-projet si le premier onglet est l'onglet actif.
+    [self tabView:prjTabView didSelectTabViewItem:[prjTabView tabViewItemAtIndex:0]];
 }
 
 - (void)loadView
@@ -140,26 +146,72 @@
 
 - (IBAction)addNewProjectButtonClicked:(id)sender {
     
-    //NSNumber *parentID;
+    NSNumber *parentID;
     
     NSArray *selectedObjects = [prjTreeController selectedObjects];
     
     // if a project is selected, open the window to show its details.
     if ([selectedObjects count] == 1) {
         //parentID = [[selectedObjects objectAtIndex:0] projectId];
-    
-    
+        //parentID = [[selectedObjects objectAtIndex:0] parentProjectId];
+        
+        //[prjTreeController add:prj];
+
         Project *prj = [[Project alloc] init];
+        
+        // get parent node.
+        NSTreeNode *parent = [[[[prjTreeController selectedNodes] objectAtIndex:0] parentNode] parentNode];
+        NSMutableArray *parentProjects = [[parent representedObject] mutableArrayValueForKeyPath:
+                                   [prjTreeController childrenKeyPathForNode:parent]];
+        //NSLog(@"test: %@", [[[[prjTreeController selectedNodes] objectAtIndex:] parent] projectTitle]); 
+        
+        //[prjTreeController 
+        //parentrowforrow
+        
+        //NSLog(@"test: %@", [[objects objectAtIndex:0] projectTitle]);
+        //int line = [prjOutlineView selectedRow];
+        //NSLog(@"test: %@", [[parentProjects objectAtIndex:line] projectTitle]);
+        
+        // get projectid du projet parent. 
+        for (Project *p in parentProjects)
+        {
+            if ([p.childProject containsObject:[selectedObjects objectAtIndex:0]])
+            {
+                parentID = p.projectId;
+                
+                //NSLog(@"TEST: %d", [[p projectId] intValue]);
+                
+                break;
+            }
+        }
+        
+        //NSLog(@"test: %@", [[parent representedObject] projectTitle]);
+        
         //prj.parentProjectId = parentID;
+        //prj.parentProjectId = p.projectId;
+        if (parentID != nil){
+            prj.parentProjectId = parentID;
+        }
+        
+        //NSLog(@"parentprojectid: %@", p.projectTitle);
     
         //[prjTreeController add:prj];
         NSIndexPath *indexPath = [prjTreeController selectionIndexPath];
-        [prjTreeController insertObject:prj atArrangedObjectIndexPath:indexPath];
+        //NSLog(@"indexpath: %@", indexPath);
+        if ([indexPath length] > 1) {
+            [prjTreeController insertObject:prj atArrangedObjectIndexPath:indexPath];
+        } else {
+            // construire nouveal NSIndexPath avec comme valeur 0 -> l'élément sera inséré à la première position.
+            // https://discussions.apple.com/thread/1585148?start=0&tstart=0
+            NSUInteger indexes[1]={0};
+            indexPath=[NSIndexPath indexPathWithIndexes:indexes length:1];
+            
+            [prjTreeController insertObject:prj atArrangedObjectIndexPath:indexPath];
+        }
     }
 
     // il s'agit d'un nouveau projet.
     //isNewProject = true;
-    
     
     [self openProjectDetailsWindow:YES isSubProject:NO];
 }
@@ -259,6 +311,20 @@
 - (void)openProjectDetailsWindow:(BOOL)isNewProject isSubProject:(BOOL)isSubProject {
     // get selected projects.
     //NSArray *selectedObjects = [prjArrayCtrl selectedObjects];
+    
+    
+    /*if (isNewProject == YES)
+    {
+        projectDetailsWindowController = [[PTProjectDetailsWindowController alloc] init];
+        projectDetailsWindowController.parentProjectListViewController = self;
+        projectDetailsWindowController.mainWindowController = mainWindowController;
+        projectDetailsWindowController.isNewProject = isNewProject;
+        
+        [projectDetailsWindowController showWindow:self];
+    }
+    else {*/
+    
+    
     NSArray *selectedObjects = [prjTreeController selectedObjects];
     
     // if a project is selected, open the window to show its details.
@@ -284,6 +350,20 @@
             [projectDetailsWindowController showWindow:self];
         //}];
     }
+    //}
 }
+
+-(void)tabView:(NSTabView *)tabView didSelectTabViewItem:(NSTabViewItem *)tabViewItem {
+    
+    // désactiver la menu pour rajouter un sous-projet si le premier onglet est l'onglet actif.
+    int selectedTabIndex = [tabView indexOfTabViewItem:tabViewItem];
+    
+    if (selectedTabIndex == 0) {
+        [addSubProjectButton setEnabled:NO];
+    } else {
+        [addSubProjectButton setEnabled:YES];
+    }
+}
+
 
 @end

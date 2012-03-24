@@ -21,6 +21,8 @@
     PTProjectDetailsWindowController *projectDetailsWindowController;
     NSTreeController *prjTreeController;
     __weak NSTabView *prjTabView;
+    __weak NSOutlineView *prjOutlineView;
+    __weak NSMenuItem *addSubProjectButton;
 }
 
 @property (strong) NSMutableArray *arrPrj;
@@ -30,6 +32,8 @@
 // reference to the (parent) MainWindowController
 @property (assign) MainWindowController *mainWindowController;
 @property (weak) IBOutlet NSTabView *prjTabView;
+@property (weak) IBOutlet NSOutlineView *prjOutlineView;
+@property (weak) IBOutlet NSMenuItem *addSubProjectButton;
 
 - (void)requestFinished:(NSMutableData*)data;
 - (void)requestFailed:(NSError*)error;

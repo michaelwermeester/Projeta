@@ -88,6 +88,8 @@ Project *projectCopy;
         //[[parentProjectListViewController mutableArrayValueForKey:@"arrPrj"] removeObject:project];
         
         [[parentProjectListViewController prjTreeController] remove:self];
+        
+        //[[parentProjectListViewController mutableArrayValueForKey:@"arrPrj"] removeObjectIdenticalTo:project];
     }
        
     // close this window.
@@ -145,13 +147,23 @@ Project *projectCopy;
 
         for (Project *prj in createdProjectArray) {
    
-            [[parentProjectListViewController mutableArrayValueForKey:@"arrPrj"] replaceObjectAtIndex:[parentProjectListViewController.arrPrj indexOfObject:project] withObject:prj];
+            
+            /*if (prj.parentProjectId) {
+                [parentProjectListViewController.prjTreeController remove:project];
+                
+                NSIndexPath *indexPath = [parentProjectListViewController.prjTreeController selectionIndexPath];
+                
+                [parentProjectListViewController.prjTreeController insertObject:prj atArrangedObjectIndexPath:[indexPath indexPathByAddingIndex:0]];
+            
+            } else {
+                [[parentProjectListViewController mutableArrayValueForKey:@"arrPrj"] replaceObjectAtIndex:[parentProjectListViewController.arrPrj indexOfObject:project] withObject:prj];
+            }*/
             
             // reassign user with user returned from web-service. 
             self.project = prj;
             
-            //NSLog(@"id: %d", [prj.projectId intValue]);
-            //NSLog(@"title: %@", prj.projectTitle);
+            NSLog(@"id: %d", [prj.projectId intValue]);
+            NSLog(@"title: %@", prj.projectTitle);
         }
     }
     
