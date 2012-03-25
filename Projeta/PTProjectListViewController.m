@@ -201,7 +201,7 @@
         if ([indexPath length] > 1) {
             [prjTreeController insertObject:prj atArrangedObjectIndexPath:indexPath];
         } else {
-            // construire nouveal NSIndexPath avec comme valeur 0 -> l'élément sera inséré à la première position.
+            // construire nouveau NSIndexPath avec comme valeur 0 -> l'élément sera inséré à la première position.
             // https://discussions.apple.com/thread/1585148?start=0&tstart=0
             NSUInteger indexes[1]={0};
             indexPath=[NSIndexPath indexPathWithIndexes:indexes length:1];

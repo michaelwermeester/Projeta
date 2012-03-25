@@ -166,8 +166,8 @@ Project *projectCopy;
             // reassign user with user returned from web-service. 
             self.project = prj;
             
-            NSLog(@"id: %d", [prj.projectId intValue]);
-            NSLog(@"title: %@", prj.projectTitle);
+            //NSLog(@"id: %d", [prj.projectId intValue]);
+            //NSLog(@"title: %@", prj.projectTitle);
         }
     }
     
