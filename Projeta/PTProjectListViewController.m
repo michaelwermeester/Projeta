@@ -325,7 +325,15 @@
     else {*/
     
     
-    NSArray *selectedObjects = [prjTreeController selectedObjects];
+    int selectedTabIndex = [prjTabView indexOfTabViewItem:[prjTabView selectedTabViewItem]];
+    
+    NSArray *selectedObjects;
+    
+    if (selectedTabIndex == 1) {
+        selectedObjects = [prjTreeController selectedObjects];
+    } else {
+        selectedObjects = [prjArrayCtrl selectedObjects];
+    }
     
     // if a project is selected, open the window to show its details.
     if ([selectedObjects count] == 1) {

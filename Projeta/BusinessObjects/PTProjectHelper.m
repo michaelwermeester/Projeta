@@ -169,6 +169,49 @@
     return success;
 }
 
+// Crée un nouveau projet dans la base de données.
+// mainWindowController parameter is used for animating the main window's progress indicator.
++ (BOOL)updateProject:(Project *)theProject successBlock:(void(^)(NSMutableData *))successBlock_ mainWindowController:(id)sender {
+    
+    BOOL success = NO;
+    
+    if ([sender isKindOfClass:[MainWindowController class]]) {
+        // start animating the main window's circular progress indicator.
+        [sender startProgressIndicatorAnimation];
+    }
+    
+    // create dictionary from User object
+    //NSDictionary *dict = [theUser dictionaryWithValuesForKeys:[theUser allKeys]];
+    // update username, first name, last name and email address
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[theProject dictionaryWithValuesForKeys:[theProject updateProjectKeys]]];
+    
+        
+    // s'il s'agit d'un sous-projet...
+    /*if (theProject.parentProjectId) {
+        // créer dictionnaire 'parentProjectId'.
+        Project *parentProject = [[Project alloc] init];
+        parentProject.projectId = theProject.parentProjectId;
+        
+        NSDictionary *parentProjectDict = [parentProject dictionaryWithValuesForKeys:[parentProject projectIdKey]];
+        // ajouter ce dictionnaire sous la clé 'parentProjectId'.
+        [dict setObject:parentProjectDict forKey:@"parentProjectId"];
+    }*/
+    
+    
+    // API resource string.
+    NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/projects/update"];
+    
+    // execute the PUT method on the webservice to update the record in the database.
+    success = [PTCommon executePUTforDictionaryWithSuccessBlock:dict resourceString:resourceString successBlock:successBlock_];
+    
+    if ([sender isKindOfClass:[MainWindowController class]]) {
+        // stop animating the main window's circular progress indicator.
+        [sender stopProgressIndicatorAnimation];
+    }
+    
+    return success;
+}
+
 /*+ (BOOL)deleteProject:(Project *)theProject successBlock:(void(^)(BOOL))successBlock failureBlock:(void(^)())failureBlock mainWindowController:(id)sender {
     
     BOOL success = NO;

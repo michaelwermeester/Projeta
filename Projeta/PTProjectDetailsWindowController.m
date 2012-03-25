@@ -118,7 +118,10 @@ Project *projectCopy;
     }
     // mettre à jour projet existant.
     else {
-        
+        prjUpdSuc = [PTProjectHelper updateProject:project successBlock:^(NSMutableData *data) {
+            [self finishedCreatingProject:data];
+        } 
+                              mainWindowController:parentProjectListViewController];
     }
 }
 
