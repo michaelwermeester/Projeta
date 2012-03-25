@@ -23,6 +23,7 @@
 @synthesize searchField;
 
 @synthesize loggedInUser;
+@synthesize addProjectButton;
 
 - (id)init
 {
@@ -82,6 +83,10 @@
     
     // set the view to receive NSResponder events (used for trackpad and mouse gestures)
     [mainWindowViewController.view setNextResponder:mainWindowViewController];
+    
+    
+    // cacher le bouton 'ajouter un projet'.
+    [addProjectButton setHidden:YES];
 }
 
 - (void)windowDidResize:(NSNotification *)notification
@@ -117,6 +122,9 @@
     
     // set the view to receive NSResponder events (used for trackpad and mouse gestures)
     [mainWindowViewController.view setNextResponder:mainWindowViewController];
+    
+    // cacher le bouton 'ajouter un projet'.
+    [addProjectButton setHidden:YES];
 }
 
 - (IBAction)switchToProjectView:(id)sender {
@@ -183,6 +191,11 @@
     
     // set the view to receive NSResponder events (used for trackpad and mouse gestures)
     [projectViewController.view setNextResponder:projectViewController];
+    
+    
+    
+    // afficher le bouton 'ajouter un projet'.
+    [addProjectButton setHidden:NO];
 }
 
 // returns a frame which fits the ContentView

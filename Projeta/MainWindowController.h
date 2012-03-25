@@ -20,6 +20,7 @@
     NSSearchField *searchField;
     
     User *loggedInUser;
+    __weak NSPopUpButton *addProjectButton;
 }
 
 @property (strong) IBOutlet NSView *mainView;
@@ -36,6 +37,9 @@
 @property (strong) IBOutlet NSSearchField *searchField;
 
 @property (strong) User *loggedInUser;
+
+// bouton pour ajouter des projets ou sous-projets.
+@property (weak) IBOutlet NSPopUpButton *addProjectButton;
 
 - (IBAction)switchToMainView:(id)sender;
 - (IBAction)switchToProjectView:(id)sender;
