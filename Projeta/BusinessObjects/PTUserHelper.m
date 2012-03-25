@@ -267,4 +267,14 @@
     [self serverUsersToArray:urlString successBlock:successBlock failureBlock:failureBlock];
 }
 
++ (void)developers:(void(^)(NSMutableArray *))successBlock failureBlock:(void(^)(NSError *))failureBlock {
+    
+    // get server URL as string
+    NSString *urlString = [PTCommon serverURLString];
+    // build URL by adding resource path
+    urlString = [urlString stringByAppendingString:@"resources/users/developers"];
+    
+    [self serverUsersToArray:urlString successBlock:successBlock failureBlock:failureBlock];
+}
+
 @end

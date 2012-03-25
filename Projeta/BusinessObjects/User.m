@@ -168,4 +168,20 @@
     return fullname;
 }
 
+- (NSString*)fullNameAndUsername {
+    
+    NSString *description = [NSString stringWithString:@""];
+    
+    if (fullName != nil)
+        description = [description stringByAppendingString:fullName];
+    
+    if (username != nil) {
+        description = [description stringByAppendingString:@"("];
+        description = [description stringByAppendingString:username];
+        description = [description stringByAppendingString:@")"];
+    }
+    
+    return description;
+}
+
 @end

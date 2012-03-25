@@ -12,6 +12,7 @@
 #import "PTProjectDetailsWindowController.h"
 #import "PTProjectHelper.h"
 #import "PTProjectListViewController.h"
+#import "PTUserHelper.h"
 
 Project *projectCopy;
 
@@ -21,9 +22,12 @@ Project *projectCopy;
 
 @synthesize isNewProject;
 
+@synthesize arrDevelopers;
+
 @synthesize parentProjectListViewController;
 @synthesize mainWindowController;
 @synthesize okButton;
+@synthesize comboDevelopers;
 
 
 - (id)init
@@ -32,6 +36,7 @@ Project *projectCopy;
     //self = [super initWithWindow:window];
     if (self) {
         // Initialization code here.
+        arrDevelopers = [[NSMutableArray alloc] init];
     }
     
     return self;
@@ -70,6 +75,9 @@ Project *projectCopy;
     [super windowDidLoad];
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    
+    // charger la liste des développeurs à partir du webservice et les mettre dans la combobox.
+    [self fetchDevelopersFromWebservice];
 }
 
 
@@ -176,6 +184,27 @@ Project *projectCopy;
     
     // close this window.
     [self close];
+}
+
+// charger la liste des développeurs à partir du webservice et les mettre dans la combobox.
+- (void)fetchDevelopersFromWebservice
+{
+    // get developers from webservice.
+    [PTUserHelper developers:^(NSMutableArray *developers) {
+        
+        // sort descriptors for array.
+        NSSortDescriptor *firstDescriptor = [[NSSortDescriptor alloc] initWithKey:@"fullNameAndUsername"
+                                                                        ascending:YES];
+        NSArray *sortDescriptors = [NSArray arrayWithObjects:firstDescriptor, nil];
+        
+        // sort array and affect fetched array to local array.
+        [[self mutableArrayValueForKey:@"arrDevelopers"] addObjectsFromArray:[developers sortedArrayUsingDescriptors:sortDescriptors]];
+        
+        
+    }
+                failureBlock:^(NSError *error) {
+                    
+                }];
 }
 
 @end

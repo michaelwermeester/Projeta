@@ -45,5 +45,6 @@
 + (void)serverUsersToArray:(NSString *)urlString successBlock:(void (^)(NSMutableArray*))successBlock failureBlock:(void(^)(NSError *))failureBlock;
 
 + (void)allUsers:(void(^)(NSMutableArray *))successBlock failureBlock:(void(^)(NSError *))failureBlock;
++ (void)developers:(void(^)(NSMutableArray *))successBlock failureBlock:(void(^)(NSError *))failureBlock;
 
 @end
