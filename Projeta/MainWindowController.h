@@ -21,6 +21,8 @@
     
     User *loggedInUser;
     __weak NSPopUpButton *addProjectButton;
+    __weak NSMenuItem *addProjectMenuItem;
+    __weak NSMenuItem *addSubProjectMenuItem;
 }
 
 @property (strong) IBOutlet NSView *mainView;
@@ -40,6 +42,8 @@
 
 // bouton pour ajouter des projets ou sous-projets.
 @property (weak) IBOutlet NSPopUpButton *addProjectButton;
+@property (weak) IBOutlet NSMenuItem *addProjectMenuItem;
+@property (weak) IBOutlet NSMenuItem *addSubProjectMenuItem;
 
 - (IBAction)switchToMainView:(id)sender;
 - (IBAction)switchToProjectView:(id)sender;

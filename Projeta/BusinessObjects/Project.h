@@ -13,6 +13,7 @@
 //@class User;
 
 @interface Project : OutlineCollection <NSCopying> {
+//@interface Project : NSObject <NSCopying> {
     NSDate *dateCreated;
     NSDate *endDate;
     BOOL flagPublic;
@@ -57,5 +58,7 @@
 - (NSArray *)createProjectKeys;
 - (NSArray *)projectIdKey;
 - (NSArray *)updateProjectKeys;
+
+- (BOOL)isLeaf;
 
 @end

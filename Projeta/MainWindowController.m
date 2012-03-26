@@ -24,6 +24,8 @@
 
 @synthesize loggedInUser;
 @synthesize addProjectButton;
+@synthesize addProjectMenuItem;
+@synthesize addSubProjectMenuItem;
 
 - (id)init
 {
@@ -87,6 +89,9 @@
     
     // cacher le bouton 'ajouter un projet'.
     [addProjectButton setHidden:YES];
+    
+    // ajouter 'observer' pour savoir quand le bouton 'ajouter un projet' a été clicqué.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(popupButtonClicked:) name:NSPopUpButtonWillPopUpNotification object:nil];
 }
 
 - (void)windowDidResize:(NSNotification *)notification
@@ -152,6 +157,8 @@
     NSMutableArray *collectionArray = [[NSMutableArray alloc] init];
     OutlineCollection *tmpOutlColl = [[OutlineCollection alloc] init];
     tmpOutlColl.objectTitle = @"PROJET";
+    //Project *tmpOutlColl = [[Project alloc] init];
+    //tmpOutlColl.projectTitle = @"PROJET";
     
     if (selectedTabIndex == 0)
     {
@@ -161,6 +168,7 @@
     } else if (selectedTabIndex == 1) { 
         // afficher les projets et sous-projets du projet sélectionné dans la treeview.
         tmpOutlColl.childObject = [[NSMutableArray alloc] initWithArray:[[[mainWindowViewController projectListViewController] prjTreeController] selectedObjects]];
+
     }
     // afficher tous les projets et sous-projets.
     //tmpOutlColl.childObject = [[mainWindowViewController projectListViewController] arrPrj];
@@ -252,6 +260,51 @@
     // if all requests have been handled, stop the animation.
     if (progressCount == 0)
         [progressIndicator stopAnimation:self];
+}
+
+- (void)popupButtonClicked:(NSNotification *)notification
+{
+    // continue and update the user only if the object is the usersTableView
+    if ([notification object] == addProjectButton) {
+        
+        if (projectViewController.view) {
+            
+            /*if ([projectViewController.arrPrj count] > 0)
+            {
+                
+            }*/
+            
+            NSIndexPath *indexPath = [projectViewController.prjTreeController selectionIndexPath];
+            
+            NSLog(@"length: %lu", [indexPath length]);
+            
+            //NSIndexSet *ids = [projectViewController.altOutlineView selectedRowIndexes];
+            //NSLog(@"ids: %@", ids);
+            
+            /*NSLog(@"ids: %@", [[projectViewController.altOutlineView itemAtRow:[projectViewController.altOutlineView selectedRow]] description]);
+            
+            NSArray *test = [projectViewController.prjTreeController selectedObjects];
+            OutlineCollection *oc = [test objectAtIndex:0];
+            Project *p = [[oc childObject] objectAtIndex:0];
+            NSLog(@"ids: %@", p.projectTitle);*/
+            
+            // Enable 'add project' only if the current selected project is at least a subproject. (1 = header)
+            if ([indexPath length] > 2) {
+                [addProjectMenuItem setEnabled:YES];
+            } else {
+                [addProjectMenuItem setEnabled:NO];
+            }
+            
+            // Enable 'add subproject' only if the current selected project is at least a project. (1 = header)
+            if ([indexPath length] > 1) {
+                [addSubProjectMenuItem setEnabled:YES];
+            } else {
+                [addSubProjectMenuItem setEnabled:NO];
+            }
+
+            
+        }
+    }
 }
 
 @end

@@ -675,7 +675,23 @@
 						<reference key="source" ref="1001"/>
 						<reference key="destination" ref="885756175"/>
 					</object>
-					<int key="connectionID">680</int>
+					<int key="connectionID">683</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">addProjectMenuItem</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="64407231"/>
+					</object>
+					<int key="connectionID">684</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">addSubProjectMenuItem</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="1051836975"/>
+					</object>
+					<int key="connectionID">685</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -1185,7 +1201,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">680</int>
+			<int key="maxID">685</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1208,6 +1224,8 @@
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="addProjectButton">NSPopUpButton</string>
+						<string key="addProjectMenuItem">NSMenuItem</string>
+						<string key="addSubProjectMenuItem">NSMenuItem</string>
 						<string key="detailViewToolbarItem">NSToolbarItem</string>
 						<string key="mainView">NSView</string>
 						<string key="progressIndicator">NSProgressIndicator</string>
@@ -1217,6 +1235,14 @@
 						<object class="IBToOneOutletInfo" key="addProjectButton">
 							<string key="name">addProjectButton</string>
 							<string key="candidateClassName">NSPopUpButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="addProjectMenuItem">
+							<string key="name">addProjectMenuItem</string>
+							<string key="candidateClassName">NSMenuItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="addSubProjectMenuItem">
+							<string key="name">addSubProjectMenuItem</string>
+							<string key="candidateClassName">NSMenuItem</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="detailViewToolbarItem">
 							<string key="name">detailViewToolbarItem</string>
