@@ -301,6 +301,9 @@
             } else {
                 [addSubProjectMenuItem setEnabled:NO];
             }
+            
+            //Project *p = [[projectViewController.prjTreeController selectedObjects] objectAtIndex:0];
+            //NSLog(@"projectitle: %@", p.projectTitle);
 
             
         }
