@@ -61,6 +61,9 @@
     
     // auto resize the view.
     [projectDetailsViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
+    
+    // 
+    projectDetailsViewController.project = [[prjTreeController selectedObjects] objectAtIndex:0];
 }
 
 #pragma mark -
@@ -232,6 +235,30 @@
     
     
     return nil;
+}
+
+- (void)outlineViewSelectionDidChange:(NSNotification *)notification {
+    
+    // si l'élément sélectionné est un projet, afficher le détail.
+    if ([[[prjTreeController selectedObjects] objectAtIndex:0] isKindOfClass:[Project class]]) {
+    
+        projectDetailsViewController.project = [[prjTreeController selectedObjects] objectAtIndex:0];
+    } 
+    else {
+        projectDetailsViewController.project = nil;
+    }
+    
+}
+
+// Si l'élément sélectionné dans la source list est un project, sélectionner ce projet.
+// S'il ne s'agit pas d'un projet, ne pas sélectionner l'élément.
+- (BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item {
+    
+    if ([[item representedObject] isKindOfClass:[Project class]]) {
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 @end

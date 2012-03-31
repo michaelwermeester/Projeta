@@ -145,6 +145,10 @@
     return projectTitle;
 }
 
+- (void)setObjectTitle:(NSString *)anObjectTitle {
+    [self setProjectTitle:anObjectTitle];
+}
+
 - (NSArray *)createProjectKeys
 {
     //NSArray *retArr = [[NSArray alloc] initWithObjects: @"projectTitle", @"projectDescription", @"endDate", @"endDateReal", @"flagPublic", @"completed", @"parentProjectId", @"startDate", @"startDateReal", @"userCreated", nil];

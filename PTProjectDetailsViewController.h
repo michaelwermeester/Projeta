@@ -8,6 +8,19 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface PTProjectDetailsViewController : NSViewController
+@class PTProjectViewController;
+@class Project;
+
+@interface PTProjectDetailsViewController : NSViewController {
+    
+    PTProjectViewController *projectViewController;
+    //NSTreeController *prjTreeController;
+    
+}
+
+@property (strong) PTProjectViewController *projectViewController;
+@property (assign) IBOutlet NSTreeController *prjTreeController;
+
+@property (strong) Project *project;
 
 @end

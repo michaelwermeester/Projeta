@@ -10,6 +10,11 @@
 
 @implementation PTProjectDetailsViewController
 
+@synthesize projectViewController;
+@synthesize prjTreeController;
+
+@synthesize project;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:@"PTProjectDetailsView" bundle:nibBundleOrNil];
