@@ -14,6 +14,8 @@
 @synthesize prjTreeController;
 
 @synthesize project;
+@synthesize startDateRealCalendarButton;
+@synthesize calendarPopover;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -23,6 +25,19 @@
     }
     
     return self;
+}
+
+- (IBAction)startDateRealCalendarButtonClicked:(id)sender {
+    
+    // si bouton clicked...
+    if (self.startDateRealCalendarButton.intValue == 1) {
+        [self.calendarPopover showRelativeToRect:[startDateRealCalendarButton bounds]
+                                  ofView:startDateRealCalendarButton
+                           preferredEdge:NSMaxYEdge];
+    } else {
+        [self.calendarPopover close];
+    }
+
 }
 
 @end

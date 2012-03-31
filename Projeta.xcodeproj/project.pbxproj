@@ -68,6 +68,7 @@
 		4CBCEA2013AD180200835F30 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBCEA1F13AD180200835F30 /* PreferencesController.m */; };
 		4CC9FB9D13E9EED800A11EA7 /* PTCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC9FB9C13E9EED800A11EA7 /* PTCommon.m */; };
 		4CCDB32213F83CB80084FC84 /* PTProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCDB32013F83CB80084FC84 /* PTProjectViewController.m */; };
+		4CE32EC31527A4090082B0C9 /* calendar_small_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CE32EC21527A4090082B0C9 /* calendar_small_icon.png */; };
 		4CE69FDC14D9F1850008BAF0 /* PTClientDetailsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CE69FDB14D9F1850008BAF0 /* PTClientDetailsWindow.xib */; };
 		4CE69FE014D9F1AA0008BAF0 /* PTClientDetailsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE69FDF14D9F1AA0008BAF0 /* PTClientDetailsWindowController.m */; };
 		4CE69FE114DC6A970008BAF0 /* PTGroupManagementView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CE69FE214DC6A970008BAF0 /* PTGroupManagementView.xib */; };
@@ -216,6 +217,7 @@
 		4CC9FB9C13E9EED800A11EA7 /* PTCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTCommon.m; sourceTree = "<group>"; };
 		4CCDB31F13F83CB80084FC84 /* PTProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTProjectViewController.h; sourceTree = "<group>"; };
 		4CCDB32013F83CB80084FC84 /* PTProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTProjectViewController.m; sourceTree = "<group>"; };
+		4CE32EC21527A4090082B0C9 /* calendar_small_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar_small_icon.png; sourceTree = "<group>"; };
 		4CE69FDB14D9F1850008BAF0 /* PTClientDetailsWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTClientDetailsWindow.xib; sourceTree = "<group>"; };
 		4CE69FDE14D9F1AA0008BAF0 /* PTClientDetailsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTClientDetailsWindowController.h; sourceTree = "<group>"; };
 		4CE69FDF14D9F1AA0008BAF0 /* PTClientDetailsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTClientDetailsWindowController.m; sourceTree = "<group>"; };
@@ -532,6 +534,7 @@
 		4C74A61B13A2BFA100E7DBF6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4CE32EC01527A3E50082B0C9 /* icons */,
 				4C74A61C13A2BFA100E7DBF6 /* Projeta-Info.plist */,
 				4C74A61D13A2BFA100E7DBF6 /* InfoPlist.strings */,
 				4C74A62013A2BFA100E7DBF6 /* main.m */,
@@ -581,6 +584,14 @@
 				4CBCEA1F13AD180200835F30 /* PreferencesController.m */,
 			);
 			name = Preferences;
+			sourceTree = "<group>";
+		};
+		4CE32EC01527A3E50082B0C9 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				4CE32EC21527A4090082B0C9 /* calendar_small_icon.png */,
+			);
+			name = icons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -710,6 +721,7 @@
 				4C5B7AD914DDD71100DC1F75 /* PTProjectDetailsView.xib in Resources */,
 				4C65763B14DEAAC00032CA04 /* PTCommentairesView.xib in Resources */,
 				4C65764114DEDC040032CA04 /* PTProgressView.xib in Resources */,
+				4CE32EC31527A4090082B0C9 /* calendar_small_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -49,6 +49,9 @@
 @property (strong) NSMutableArray *childProject;
 //@property (strong) Project *project;
 
+// pour calendar control.
+@property (nonatomic, copy) NSDate *calendarStartDateReal;
+
 + (Project *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
 

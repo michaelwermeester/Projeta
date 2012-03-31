@@ -16,11 +16,18 @@
     PTProjectViewController *projectViewController;
     //NSTreeController *prjTreeController;
     
+    __weak NSButton *startDateRealCalendarButton;
+    NSPopover *calendarPopover;
 }
 
 @property (strong) PTProjectViewController *projectViewController;
 @property (assign) IBOutlet NSTreeController *prjTreeController;
 
 @property (strong) Project *project;
+
+@property (weak) IBOutlet NSButton *startDateRealCalendarButton;
+@property (strong) IBOutlet NSPopover *calendarPopover;
+
+- (IBAction)startDateRealCalendarButtonClicked:(id)sender;
 
 @end

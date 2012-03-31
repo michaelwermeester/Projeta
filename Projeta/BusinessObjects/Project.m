@@ -28,6 +28,9 @@
 @synthesize userCreated = userCreated;
 @synthesize childProject = childProject;
 
+// pour calendar control.
+@synthesize calendarStartDateReal;
+
 //@synthesize project;
 
 /*- (Project *)project {
@@ -173,5 +176,17 @@
     return retArr;
 }
 
+
+// pour calendar control.
+- (NSDate *)calendarStartDateReal {
+    if (startDateReal != nil)
+        return startDateReal;
+    else 
+        return [NSDate date];
+}
+
+- (void)setCalendarStartDateReal:(NSDate *)aCalendarStartDateReal {
+    startDateReal = aCalendarStartDateReal;
+}
 
 @end
