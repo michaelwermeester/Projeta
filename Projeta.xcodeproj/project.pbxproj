@@ -62,6 +62,7 @@
 		4C8173E71407A89D0012C0EB /* PTProjectListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8173E51407A89D0012C0EB /* PTProjectListViewController.m */; };
 		4C8173EF1407BE810012C0EB /* PTProjectHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8173EE1407BE810012C0EB /* PTProjectHelper.m */; };
 		4C9198CC14672A56000CF6C2 /* MWTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9198CB14672A56000CF6C2 /* MWTableCellView.m */; };
+		4C996DC11527BC3500BB6FCC /* PTDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C996DC01527BC3500BB6FCC /* PTDateFormatter.m */; };
 		4CB74044141D26B700CF550D /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB74043141D26B700CF550D /* Task.m */; };
 		4CB74048141D26F200CF550D /* PTTaskHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB74047141D26F200CF550D /* PTTaskHelper.m */; };
 		4CBCE9C013ABC22200835F30 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBCE9BF13ABC22200835F30 /* MainWindowController.m */; };
@@ -205,6 +206,8 @@
 		4C8173EE1407BE810012C0EB /* PTProjectHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTProjectHelper.m; sourceTree = "<group>"; };
 		4C9198CA14672A56000CF6C2 /* MWTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWTableCellView.h; sourceTree = "<group>"; };
 		4C9198CB14672A56000CF6C2 /* MWTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWTableCellView.m; sourceTree = "<group>"; };
+		4C996DBF1527BC3500BB6FCC /* PTDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTDateFormatter.h; sourceTree = "<group>"; };
+		4C996DC01527BC3500BB6FCC /* PTDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTDateFormatter.m; sourceTree = "<group>"; };
 		4CB74042141D26B700CF550D /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		4CB74043141D26B700CF550D /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		4CB74046141D26F200CF550D /* PTTaskHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTTaskHelper.h; sourceTree = "<group>"; };
@@ -373,6 +376,8 @@
 				4CC9FB9C13E9EED800A11EA7 /* PTCommon.m */,
 				4C9198CA14672A56000CF6C2 /* MWTableCellView.h */,
 				4C9198CB14672A56000CF6C2 /* MWTableCellView.m */,
+				4C996DBF1527BC3500BB6FCC /* PTDateFormatter.h */,
+				4C996DC01527BC3500BB6FCC /* PTDateFormatter.m */,
 			);
 			name = "Helper Classes";
 			path = HelperClasses;
@@ -825,6 +830,7 @@
 				4C5B7ACD14DD50CB00DC1F75 /* PTBugCategoryHelper.m in Sources */,
 				4C5B7AD814DDD71100DC1F75 /* PTProjectDetailsViewController.m in Sources */,
 				4C65764014DEDC040032CA04 /* PTProgressViewController.m in Sources */,
+				4C996DC11527BC3500BB6FCC /* PTDateFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
