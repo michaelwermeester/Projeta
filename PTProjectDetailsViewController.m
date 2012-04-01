@@ -87,6 +87,8 @@
     
     // cacher lo colonne "projet".
     //[taskListViewController.outlineViewProjetColumn setHidden:YES];
+    //[taskListViewController.projectButton removeFromSuperview];
+    [taskListViewController.projectButton setHidden:YES];
 }
 
 - (IBAction)startDateRealCalendarButtonClicked:(id)sender {

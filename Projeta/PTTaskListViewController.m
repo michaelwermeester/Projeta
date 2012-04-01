@@ -16,6 +16,7 @@
 
 @implementation PTTaskListViewController
 @synthesize outlineViewProjetColumn;
+@synthesize projectButton;
 
 @synthesize arrTask;
 @synthesize taskArrayCtrl;

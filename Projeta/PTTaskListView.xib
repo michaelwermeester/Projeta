@@ -555,6 +555,14 @@
 					<int key="connectionID">1310</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">projectButton</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="923252563"/>
+					</object>
+					<int key="connectionID">1311</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">contentArray: arrTask</string>
 						<reference key="source" ref="709179103"/>
@@ -2161,7 +2169,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1310</int>
+			<int key="maxID">1311</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2189,6 +2197,7 @@
 					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="outlineViewProjetColumn">NSTableColumn</string>
+						<string key="projectButton">NSButton</string>
 						<string key="taskArrayCtrl">NSArrayController</string>
 						<string key="taskOutlineView">NSOutlineView</string>
 						<string key="taskTreeCtrl">NSTreeController</string>
@@ -2197,6 +2206,10 @@
 						<object class="IBToOneOutletInfo" key="outlineViewProjetColumn">
 							<string key="name">outlineViewProjetColumn</string>
 							<string key="candidateClassName">NSTableColumn</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="projectButton">
+							<string key="name">projectButton</string>
+							<string key="candidateClassName">NSButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="taskArrayCtrl">
 							<string key="name">taskArrayCtrl</string>
