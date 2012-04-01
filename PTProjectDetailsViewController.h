@@ -20,6 +20,7 @@
     NSPopover *calendarPopover;
     __weak NSButton *endDateRealCalendarButton;
     
+    NSArrayController *availableClientsArrayCtrl;
     NSArrayController *availableUsergroupsArrayCtrl;
     NSArrayController *availableUsersArrayCtrl;
 }
@@ -36,7 +37,9 @@
 - (IBAction)startDateRealCalendarButtonClicked:(id)sender;
 - (IBAction)endDateRealCalendarButtonClicked:(id)sender;
 
-
+// Holds the available clients which can be affected. 
+@property (strong) NSMutableArray *availableClients;
+@property (strong) IBOutlet NSArrayController *availableClientsArrayCtrl;
 // Holds the available usergroups which can be affected. 
 @property (strong) NSMutableArray *availableUsergroups;
 @property (strong) IBOutlet NSArrayController *availableUsergroupsArrayCtrl;

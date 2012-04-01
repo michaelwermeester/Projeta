@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 Michael Wermeester. All rights reserved.
 //
 
+#import "PTClientHelper.h"
 #import "PTProjectDetailsViewController.h"
 #import "PTUsergroupHelper.h"
 #import "PTUserHelper.h"
@@ -25,6 +26,8 @@
 @synthesize availableUsergroupsArrayCtrl;
 @synthesize availableUsers;
 @synthesize availableUsersArrayCtrl;
+@synthesize availableClients;
+@synthesize availableClientsArrayCtrl;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,13 +40,17 @@
         availableUsergroups = [[NSMutableArray alloc] init];
         // initialiser l'array qui contient les utilisateurs disponibles.
         availableUsers = [[NSMutableArray alloc] init];
-        
+        // initialiser l'array qui contient les clients disponibles.
+        availableClients = [[NSMutableArray alloc] init];
         
         
         // charger la liste des groupes d'utilisateurs disponibles.
         [self fetchAvailableUsergroups];
         // charger la liste des utilisateurs disponibles.
         [self fetchAvailableUsers];
+        // charger la liste des clients disponibles.
+        [self fetchAvailableClients];
+        
     }
     
     return self;
@@ -105,6 +112,24 @@
         [[self mutableArrayValueForKey:@"availableUsers"] addObjectsFromArray:tmpAvailableUsers];
         
     } failureBlock:^(NSError *error) { }];
+}
+
+// charger les clients à partir du webservice.
+- (void)fetchAvailableClients {
+    
+    [PTClientHelper getClientNames:^(NSMutableArray *tmpAvailableClients) { 
+        
+        // sort available roles alphabetically.
+        [tmpAvailableClients sortUsingComparator:^NSComparisonResult(Client *c1, Client *c2) {
+            
+            return [c1.clientName compare:c2.clientName];
+        }];
+        
+        [[self mutableArrayValueForKey:@"availableClients"] addObjectsFromArray:tmpAvailableClients];
+        
+    } failureBlock:^(NSError *error) {
+        //[self getClientNamesRequestFailed:error];
+    }];
 }
 
 @end
