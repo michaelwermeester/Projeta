@@ -15,6 +15,7 @@
 #import "Task.h"
 
 @implementation PTTaskListViewController
+@synthesize outlineViewProjetColumn;
 
 @synthesize arrTask;
 @synthesize taskArrayCtrl;

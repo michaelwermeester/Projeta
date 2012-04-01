@@ -646,7 +646,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 											<string key="NSFrame">{{578, 9}, {109, 32}}</string>
 											<reference key="NSSuperview" ref="397080931"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView"/>
+											<reference key="NSNextKeyView" ref="448862610"/>
 											<string key="NSReuseIdentifierKey">_NS:9</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSButtonCell" key="NSCell" id="403191420">
@@ -716,6 +716,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 									<nil key="NSNextResponder"/>
 									<int key="NSvFlags">256</int>
 									<string key="NSFrame">{{10, 33}, {698, 591}}</string>
+									<reference key="NSNextKeyView"/>
 								</object>
 								<string key="NSLabel">Tâches</string>
 								<reference key="NSColor" ref="454502495"/>
@@ -1925,7 +1926,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 													<int key="NSvFlags">-2147483392</int>
 													<string key="NSFrame">{{1, 233}, {299, 15}}</string>
 													<reference key="NSSuperview" ref="166483597"/>
-													<reference key="NSNextKeyView"/>
 													<string key="NSReuseIdentifierKey">_NS:1847</string>
 													<int key="NSsFlags">1</int>
 													<reference key="NSTarget" ref="166483597"/>
@@ -2293,7 +2293,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 				<bool key="NSFilterRestrictsInsertion">YES</bool>
 				<bool key="NSClearsFilterPredicateOnInsertion">YES</bool>
 			</object>
-			<object class="NSArrayController" id="103906348">
+			<object class="NSArrayController" id="502386543">
 				<string key="NSObjectClassName">Client</string>
 				<bool key="NSEditable">YES</bool>
 				<object class="_NSManagedProxy" key="_NSManagedProxy"/>
@@ -2385,9 +2385,17 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">availableClientsArrayCtrl</string>
 						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="103906348"/>
+						<reference key="destination" ref="502386543"/>
 					</object>
 					<int key="connectionID">1784</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">tabTaskView</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="972943767"/>
+					</object>
+					<int key="connectionID">1796</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -2553,10 +2561,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">predicate: filterPredicate</string>
 						<reference key="source" ref="220248779"/>
-						<reference key="destination" ref="103906348"/>
+						<reference key="destination" ref="502386543"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="220248779"/>
-							<reference key="NSDestination" ref="103906348"/>
+							<reference key="NSDestination" ref="502386543"/>
 							<string key="NSLabel">predicate: filterPredicate</string>
 							<string key="NSBinding">predicate</string>
 							<string key="NSKeyPath">filterPredicate</string>
@@ -2573,10 +2581,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">value: arrangedObjects.clientName</string>
 						<reference key="source" ref="483719183"/>
-						<reference key="destination" ref="103906348"/>
+						<reference key="destination" ref="502386543"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="483719183"/>
-							<reference key="NSDestination" ref="103906348"/>
+							<reference key="NSDestination" ref="502386543"/>
 							<string key="NSLabel">value: arrangedObjects.clientName</string>
 							<string key="NSBinding">value</string>
 							<string key="NSKeyPath">arrangedObjects.clientName</string>
@@ -2960,10 +2968,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">contentArray: availableClients</string>
-						<reference key="source" ref="103906348"/>
+						<reference key="source" ref="502386543"/>
 						<reference key="destination" ref="1001"/>
 						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="103906348"/>
+							<reference key="NSSource" ref="502386543"/>
 							<reference key="NSDestination" ref="1001"/>
 							<string key="NSLabel">contentArray: availableClients</string>
 							<string key="NSBinding">contentArray</string>
@@ -7056,7 +7064,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">1782</int>
-						<reference key="object" ref="103906348"/>
+						<reference key="object" ref="502386543"/>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Available clients array controller</string>
 					</object>
@@ -7610,7 +7618,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1795</int>
+			<int key="maxID">1796</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -7655,6 +7663,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 						<string key="endDateRealCalendarButton">NSButton</string>
 						<string key="prjTreeController">NSTreeController</string>
 						<string key="startDateRealCalendarButton">NSButton</string>
+						<string key="tabTaskView">NSView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="availableClientsArrayCtrl">
@@ -7684,6 +7693,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 						<object class="IBToOneOutletInfo" key="startDateRealCalendarButton">
 							<string key="name">startDateRealCalendarButton</string>
 							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="tabTaskView">
+							<string key="name">tabTaskView</string>
+							<string key="candidateClassName">NSView</string>
 						</object>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">

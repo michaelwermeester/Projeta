@@ -27,10 +27,13 @@
 @synthesize availableUsergroupsArrayCtrl;
 @synthesize availableUsers;
 @synthesize availableUsersArrayCtrl;
+@synthesize tabTaskView;
 @synthesize availableClients;
 @synthesize availableClientsArrayCtrl;
 
 @synthesize mainWindowController;
+
+@synthesize taskListViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -66,6 +69,24 @@
     [self fetchAvailableUsers];
     // charger la liste des clients disponibles.
     [self fetchAvailableClients];
+}
+
+- (void)loadTasks {
+    taskListViewController = [[PTTaskListViewController alloc] init];
+    
+    // set reference to (parent) window
+    [taskListViewController setMainWindowController:mainWindowController];
+    
+    // resize the view to fit and fill the right splitview view
+    [taskListViewController.view setFrameSize:tabTaskView.frame.size];
+    
+    [self.tabTaskView addSubview:taskListViewController.view];
+    
+    // auto resize the view.
+    [taskListViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
+    
+    // cacher lo colonne "projet".
+    //[taskListViewController.outlineViewProjetColumn setHidden:YES];
 }
 
 - (IBAction)startDateRealCalendarButtonClicked:(id)sender {

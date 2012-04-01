@@ -15,6 +15,7 @@
     NSArrayController *taskArrayCtrl;
     NSTreeController *taskTreeCtrl;
     NSOutlineView *taskOutlineView;
+    __weak NSTableColumn *outlineViewProjetColumn;
 }
 
 @property (strong) NSMutableArray *arrTask;
@@ -23,6 +24,7 @@
 @property (strong) IBOutlet NSOutlineView *taskOutlineView;
 - (IBAction)addTaskButtonClick:(id)sender;
 
+@property (weak) IBOutlet NSTableColumn *outlineViewProjetColumn;
 
 // reference to the (parent) MainWindowController
 @property (assign) MainWindowController *mainWindowController;

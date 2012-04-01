@@ -24,6 +24,7 @@
     NSArrayController *availableClientsArrayCtrl;
     NSArrayController *availableUsergroupsArrayCtrl;
     NSArrayController *availableUsersArrayCtrl;
+    __weak NSView *tabTaskView;
 }
 
 @property (strong) PTProjectViewController *projectViewController;
@@ -47,10 +48,16 @@
 // Holds the available users which can be affected. 
 @property (strong) NSMutableArray *availableUsers;
 @property (strong) IBOutlet NSArrayController *availableUsersArrayCtrl;
+@property (weak) IBOutlet NSView *tabTaskView;
 
 @property (assign) MainWindowController *mainWindowController;
 
+// task-list view
+@property (strong) PTTaskListViewController *taskListViewController;
+
 // charger les utilisateurs, groupes et clients liés au projet.
 - (void)loadProjectDetails;
+// charger les tâches liés au projet sélectionné.
+- (void)loadTasks;
 
 @end
