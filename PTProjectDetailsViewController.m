@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 Michael Wermeester. All rights reserved.
 //
 
+#import "MainWindowController.h"
 #import "PTClientHelper.h"
 #import "PTProjectDetailsViewController.h"
 #import "PTUsergroupHelper.h"
@@ -29,6 +30,8 @@
 @synthesize availableClients;
 @synthesize availableClientsArrayCtrl;
 
+@synthesize mainWindowController;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:@"PTProjectDetailsView" bundle:nibBundleOrNil];
@@ -42,18 +45,27 @@
         availableUsers = [[NSMutableArray alloc] init];
         // initialiser l'array qui contient les clients disponibles.
         availableClients = [[NSMutableArray alloc] init];
-        
-        
-        // charger la liste des groupes d'utilisateurs disponibles.
-        [self fetchAvailableUsergroups];
-        // charger la liste des utilisateurs disponibles.
-        [self fetchAvailableUsers];
-        // charger la liste des clients disponibles.
-        [self fetchAvailableClients];
-        
     }
     
     return self;
+}
+
+- (void)loadView
+{
+    [super loadView];
+    
+    //[self viewDidLoad];
+}
+
+// charger les utilisateurs, groupes et clients liés au projet.
+- (void)loadProjectDetails {
+    
+    // charger la liste des groupes d'utilisateurs disponibles.
+    [self fetchAvailableUsergroups];
+    // charger la liste des utilisateurs disponibles.
+    [self fetchAvailableUsers];
+    // charger la liste des clients disponibles.
+    [self fetchAvailableClients];
 }
 
 - (IBAction)startDateRealCalendarButtonClicked:(id)sender {
@@ -83,6 +95,10 @@
 
 // charger les groupes d'utilisateurs à partir du webservice.
 - (void)fetchAvailableUsergroups {
+    
+    // start animating the main window's circular progress indicator.
+    [mainWindowController startProgressIndicatorAnimation];
+    
     // fetch available usergroups.
     [PTUsergroupHelper usergroupsAvailable:^(NSMutableArray *tmpAvailableUsergroups) {
         
@@ -94,11 +110,18 @@
         
         // ajouter les groupes dans l'array.
         [[self mutableArrayValueForKey:@"availableUsergroups"] addObjectsFromArray:tmpAvailableUsergroups];
+        
+        // stop animating the main window's circular progress indicator.
+        [mainWindowController stopProgressIndicatorAnimation];
     }];
 }
 
 // charger les utilisateurs à partir du webservice.
 - (void)fetchAvailableUsers {
+    
+    // start animating the main window's circular progress indicator.
+    [mainWindowController startProgressIndicatorAnimation];
+    
     // fetch available users.
     [PTUserHelper allUsers:^(NSMutableArray *tmpAvailableUsers) { 
         
@@ -111,11 +134,20 @@
         // ajouter les groupes dans l'array.
         [[self mutableArrayValueForKey:@"availableUsers"] addObjectsFromArray:tmpAvailableUsers];
         
-    } failureBlock:^(NSError *error) { }];
+        // stop animating the main window's circular progress indicator.
+        [mainWindowController stopProgressIndicatorAnimation];
+        
+    } failureBlock:^(NSError *error) { 
+        // stop animating the main window's circular progress indicator.
+        [mainWindowController stopProgressIndicatorAnimation];
+    }];
 }
 
 // charger les clients à partir du webservice.
 - (void)fetchAvailableClients {
+    
+    // start animating the main window's circular progress indicator.
+    [mainWindowController startProgressIndicatorAnimation];
     
     [PTClientHelper getClientNames:^(NSMutableArray *tmpAvailableClients) { 
         
@@ -127,8 +159,12 @@
         
         [[self mutableArrayValueForKey:@"availableClients"] addObjectsFromArray:tmpAvailableClients];
         
+        // stop animating the main window's circular progress indicator.
+        [mainWindowController stopProgressIndicatorAnimation];
     } failureBlock:^(NSError *error) {
         //[self getClientNamesRequestFailed:error];
+        // stop animating the main window's circular progress indicator.
+        [mainWindowController stopProgressIndicatorAnimation];
     }];
 }
 

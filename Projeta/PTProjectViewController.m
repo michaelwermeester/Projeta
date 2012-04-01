@@ -54,6 +54,10 @@
     
     projectDetailsViewController = [[PTProjectDetailsViewController alloc] init];
     
+    // set reference to self.
+    projectDetailsViewController.projectViewController = self;
+    projectDetailsViewController.mainWindowController = self.mainWindowController;
+    
     // resize the view to fit and fill the right splitview view
     [projectDetailsViewController.view setFrameSize:rightView.frame.size];
     
@@ -64,6 +68,9 @@
     
     // 
     projectDetailsViewController.project = [[prjTreeController selectedObjects] objectAtIndex:0];
+    
+    // charger les utilisateurs, groupes et clients liés au projet.
+    [projectDetailsViewController loadProjectDetails];
 }
 
 #pragma mark -

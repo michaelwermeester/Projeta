@@ -143,7 +143,6 @@
     // keep a reference to this object(self) in mainWindowViewController object 
     [projectViewController setMainWindowController:self];
     
-    
     // test
     //projectViewController.arrPrj = [[NSMutableArray alloc] initWithArray:[[mainWindowViewController projectListViewController] arrPrj]];
     //projectViewController.arrPrj = [[mainWindowViewController projectListViewController] arrPrj];
@@ -199,7 +198,6 @@
     
     // set the view to receive NSResponder events (used for trackpad and mouse gestures)
     [projectViewController.view setNextResponder:projectViewController];
-    
     
     
     // afficher le bouton 'ajouter un projet'.

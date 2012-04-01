@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class MainWindowController;
 @class PTProjectViewController;
 @class Project;
 
@@ -46,5 +47,10 @@
 // Holds the available users which can be affected. 
 @property (strong) NSMutableArray *availableUsers;
 @property (strong) IBOutlet NSArrayController *availableUsersArrayCtrl;
+
+@property (assign) MainWindowController *mainWindowController;
+
+// charger les utilisateurs, groupes et clients liés au projet.
+- (void)loadProjectDetails;
 
 @end
