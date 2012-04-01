@@ -19,6 +19,9 @@
     __weak NSButton *startDateRealCalendarButton;
     NSPopover *calendarPopover;
     __weak NSButton *endDateRealCalendarButton;
+    
+    NSArrayController *availableUsergroupsArrayCtrl;
+    NSArrayController *availableUsersArrayCtrl;
 }
 
 @property (strong) PTProjectViewController *projectViewController;
@@ -32,5 +35,13 @@
 
 - (IBAction)startDateRealCalendarButtonClicked:(id)sender;
 - (IBAction)endDateRealCalendarButtonClicked:(id)sender;
+
+
+// Holds the available usergroups which can be affected. 
+@property (strong) NSMutableArray *availableUsergroups;
+@property (strong) IBOutlet NSArrayController *availableUsergroupsArrayCtrl;
+// Holds the available users which can be affected. 
+@property (strong) NSMutableArray *availableUsers;
+@property (strong) IBOutlet NSArrayController *availableUsersArrayCtrl;
 
 @end

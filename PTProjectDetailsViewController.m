@@ -7,6 +7,9 @@
 //
 
 #import "PTProjectDetailsViewController.h"
+#import "PTUsergroupHelper.h"
+#import "PTUserHelper.h"
+#import "Usergroup.h"
 
 @implementation PTProjectDetailsViewController
 
@@ -18,11 +21,29 @@
 @synthesize calendarPopover;
 @synthesize endDateRealCalendarButton;
 
+@synthesize availableUsergroups;
+@synthesize availableUsergroupsArrayCtrl;
+@synthesize availableUsers;
+@synthesize availableUsersArrayCtrl;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:@"PTProjectDetailsView" bundle:nibBundleOrNil];
     if (self) {
+        
         // Initialization code here.
+        
+        // initialiser l'array qui contient les groupes d'utilisateurs disponibles.
+        availableUsergroups = [[NSMutableArray alloc] init];
+        // initialiser l'array qui contient les utilisateurs disponibles.
+        availableUsers = [[NSMutableArray alloc] init];
+        
+        
+        
+        // charger la liste des groupes d'utilisateurs disponibles.
+        [self fetchAvailableUsergroups];
+        // charger la liste des utilisateurs disponibles.
+        [self fetchAvailableUsers];
     }
     
     return self;
@@ -51,6 +72,39 @@
     } else {
         [self.calendarPopover close];
     }
+}
+
+// charger les groupes d'utilisateurs à partir du webservice.
+- (void)fetchAvailableUsergroups {
+    // fetch available usergroups.
+    [PTUsergroupHelper usergroupsAvailable:^(NSMutableArray *tmpAvailableUsergroups) {
+        
+        // sort available roles alphabetically.
+        [tmpAvailableUsergroups sortUsingComparator:^NSComparisonResult(Usergroup *ug1, Usergroup *ug2) {
+            
+            return [ug1.code compare:ug2.code];
+        }];
+        
+        // ajouter les groupes dans l'array.
+        [[self mutableArrayValueForKey:@"availableUsergroups"] addObjectsFromArray:tmpAvailableUsergroups];
+    }];
+}
+
+// charger les utilisateurs à partir du webservice.
+- (void)fetchAvailableUsers {
+    // fetch available users.
+    [PTUserHelper allUsers:^(NSMutableArray *tmpAvailableUsers) { 
+        
+        // sort available roles alphabetically.
+        [tmpAvailableUsers sortUsingComparator:^NSComparisonResult(User *u1, User *u2) {
+            
+            return [u1.username compare:u2.username];
+        }];
+        
+        // ajouter les groupes dans l'array.
+        [[self mutableArrayValueForKey:@"availableUsers"] addObjectsFromArray:tmpAvailableUsers];
+        
+    } failureBlock:^(NSError *error) { }];
 }
 
 @end
