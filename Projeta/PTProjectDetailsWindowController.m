@@ -30,6 +30,9 @@ Project *projectCopy;
 @synthesize comboDevelopers;
 
 
+@synthesize prjTreeIndexPath;
+@synthesize prjArrCtrlIndex;
+
 - (id)init
 {
     self = [super initWithWindowNibName:@"PTProjectDetailsWindow"];
@@ -85,12 +88,26 @@ Project *projectCopy;
 - (IBAction)cancelButtonClicked:(id)sender {
     
     if (isNewProject == NO) {
+        
         // cancel changes -> replace current project with previously made copy of project.
-        [[parentProjectListViewController mutableArrayValueForKey:@"arrPrj"] replaceObjectAtIndex:[parentProjectListViewController.arrPrj indexOfObject:project] withObject:projectCopy];
+        //[[parentProjectListViewController mutableArrayValueForKey:@"arrPrj"] replaceObjectAtIndex:[parentProjectListViewController.arrPrj indexOfObject:project] withObject:projectCopy];
         
+        // cancel changes -> replace current project with previously made copy of project.
+        if (prjTreeIndexPath) {
+            
+            [parentProjectListViewController.prjTreeController removeObjectAtArrangedObjectIndexPath:prjTreeIndexPath];
+        
+            [parentProjectListViewController.prjTreeController insertObject:projectCopy atArrangedObjectIndexPath:prjTreeIndexPath];
+        }
+        else {
+            [[parentProjectListViewController mutableArrayValueForKey:@"arrPrj"] replaceObjectAtIndex:[parentProjectListViewController.arrPrj indexOfObject:project] withObject:projectCopy];
+            
+            // re-sélectionner le projet.
+            [parentProjectListViewController.prjArrayCtrl setSelectionIndex:prjArrCtrlIndex];
+        }
+             
         // TODO: select another item to avoid crash.
-        
-        
+        //[parentProjectListViewController.prjTreeController setSelectionIndexPath:prjTreeIndexPath];       
         
     } else {
         // remove the temporary inserted/created user.

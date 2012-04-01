@@ -328,11 +328,17 @@
     int selectedTabIndex = [prjTabView indexOfTabViewItem:[prjTabView selectedTabViewItem]];
     
     NSArray *selectedObjects;
+    NSIndexPath *prjTreeIndexPath;
+    NSUInteger prjArrCtrlIndex;
     
     if (selectedTabIndex == 1) {
         selectedObjects = [prjTreeController selectedObjects];
+        
+        prjTreeIndexPath = [prjTreeController selectionIndexPath];
     } else {
         selectedObjects = [prjArrayCtrl selectedObjects];
+        
+        prjArrCtrlIndex = [prjArrayCtrl selectionIndex];
     }
     
     // if a project is selected, open the window to show its details.
@@ -343,6 +349,11 @@
         projectDetailsWindowController.mainWindowController = mainWindowController;
         projectDetailsWindowController.isNewProject = isNewProject;
         projectDetailsWindowController.project = [selectedObjects objectAtIndex:0];
+        
+        if (isNewProject == NO) {
+            projectDetailsWindowController.prjTreeIndexPath = prjTreeIndexPath;
+            projectDetailsWindowController.prjArrCtrlIndex = prjArrCtrlIndex;
+        }
         
         // fetch available roles.
         /*[PTRoleHelper rolesAvailable:^(NSMutableArray *availableRoles){

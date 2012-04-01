@@ -27,6 +27,10 @@
 
 @property (strong) NSMutableArray *arrDevelopers;
 
+// test -- can remove
+@property (strong) NSIndexPath *prjTreeIndexPath;
+@property (assign) NSUInteger prjArrCtrlIndex;
+
 // parent project list view controller.
 @property (strong) PTProjectListViewController *parentProjectListViewController;
 // reference to the (parent) MainWindowController
