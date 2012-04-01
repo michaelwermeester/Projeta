@@ -16,6 +16,7 @@
 @synthesize project;
 @synthesize startDateRealCalendarButton;
 @synthesize calendarPopover;
+@synthesize endDateRealCalendarButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,6 +39,18 @@
         [self.calendarPopover close];
     }
 
+}
+
+- (IBAction)endDateRealCalendarButtonClicked:(id)sender {
+    
+    // si bouton clicked...
+    if (self.endDateRealCalendarButton.intValue == 1) {
+        [self.calendarPopover showRelativeToRect:[endDateRealCalendarButton bounds]
+                                          ofView:endDateRealCalendarButton
+                                   preferredEdge:NSMaxYEdge];
+    } else {
+        [self.calendarPopover close];
+    }
 }
 
 @end

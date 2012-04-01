@@ -291,6 +291,10 @@
     //[prjTreeController remove:self];
 }
 
+- (IBAction)switchToProjectViewButtonClicked:(id)sender {
+    [mainWindowController switchToProjectView:sender];
+}
+
 
 -(void)insertObject:(Project *)p inArrPrjAtIndex:(NSUInteger)index {
     [arrPrj insertObject:p atIndex:index];

@@ -18,6 +18,7 @@
     
     __weak NSButton *startDateRealCalendarButton;
     NSPopover *calendarPopover;
+    __weak NSButton *endDateRealCalendarButton;
 }
 
 @property (strong) PTProjectViewController *projectViewController;
@@ -27,7 +28,9 @@
 
 @property (weak) IBOutlet NSButton *startDateRealCalendarButton;
 @property (strong) IBOutlet NSPopover *calendarPopover;
+@property (weak) IBOutlet NSButton *endDateRealCalendarButton;
 
 - (IBAction)startDateRealCalendarButtonClicked:(id)sender;
+- (IBAction)endDateRealCalendarButtonClicked:(id)sender;
 
 @end

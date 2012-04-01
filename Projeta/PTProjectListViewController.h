@@ -42,6 +42,7 @@
 - (IBAction)addNewSubProjectButtonClicked:(id)sender;
 - (IBAction)detailsButtonClicked:(id)sender;
 - (IBAction)removeProjectButtonClicked:(id)sender;
+- (IBAction)switchToProjectViewButtonClicked:(id)sender;
 
 - (void)openProjectDetailsWindow:(BOOL)isNewProject isSubProject:(BOOL)isSubProject ;
 
