@@ -28,6 +28,8 @@
 		4C23BB3213DA1F5400E18E43 /* GetMetadataForFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C23BB3113DA1F5400E18E43 /* GetMetadataForFile.m */; };
 		4C23BB3513DA1F5400E18E43 /* MySpotlightImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C23BB3413DA1F5400E18E43 /* MySpotlightImporter.m */; };
 		4C27F3CA13E5C40900B1A8EC /* MWConnectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C27F3C913E5C40900B1A8EC /* MWConnectionController.m */; };
+		4C2AA20B152E113C0093E8C1 /* PTBugListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C2AA20A152E113C0093E8C1 /* PTBugListView.xib */; };
+		4C2AA211152E11840093E8C1 /* PTBugListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2AA210152E11840093E8C1 /* PTBugListViewController.m */; };
 		4C2C7CA613F335AB00D9AE3D /* SourceListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2C7CA513F335AB00D9AE3D /* SourceListItem.m */; };
 		4C32ECBB13DDE690009E7131 /* PTUserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C32ECB813DDE690009E7131 /* PTUserHelper.m */; };
 		4C32ECBC13DDE690009E7131 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C32ECBA13DDE690009E7131 /* User.m */; };
@@ -144,6 +146,9 @@
 		4C23BB3713DA1F5400E18E43 /* ProjetaImporter-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ProjetaImporter-Prefix.pch"; sourceTree = "<group>"; };
 		4C27F3C813E5C40900B1A8EC /* MWConnectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWConnectionController.h; sourceTree = "<group>"; };
 		4C27F3C913E5C40900B1A8EC /* MWConnectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWConnectionController.m; sourceTree = "<group>"; };
+		4C2AA20A152E113C0093E8C1 /* PTBugListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTBugListView.xib; sourceTree = "<group>"; };
+		4C2AA20F152E11740093E8C1 /* PTBugListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTBugListViewController.h; sourceTree = "<group>"; };
+		4C2AA210152E11840093E8C1 /* PTBugListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTBugListViewController.m; sourceTree = "<group>"; };
 		4C2C7CA413F335AB00D9AE3D /* SourceListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceListItem.h; sourceTree = "<group>"; };
 		4C2C7CA513F335AB00D9AE3D /* SourceListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceListItem.m; sourceTree = "<group>"; };
 		4C32ECB713DDE690009E7131 /* PTUserHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTUserHelper.h; sourceTree = "<group>"; };
@@ -427,6 +432,9 @@
 				4C5B7AC314DD47AE00DC1F75 /* PTBugCategoryManagementViewController.h */,
 				4C5B7AC414DD47CE00DC1F75 /* PTBugCategoryManagementViewController.m */,
 				4C5B7ABF14DD477900DC1F75 /* PTBugCategoryManagementView.xib */,
+				4C2AA20F152E11740093E8C1 /* PTBugListViewController.h */,
+				4C2AA210152E11840093E8C1 /* PTBugListViewController.m */,
+				4C2AA20A152E113C0093E8C1 /* PTBugListView.xib */,
 			);
 			name = Bugs;
 			sourceTree = "<group>";
@@ -727,6 +735,7 @@
 				4C65763B14DEAAC00032CA04 /* PTCommentairesView.xib in Resources */,
 				4C65764114DEDC040032CA04 /* PTProgressView.xib in Resources */,
 				4CE32EC31527A4090082B0C9 /* calendar_small_icon.png in Resources */,
+				4C2AA20B152E113C0093E8C1 /* PTBugListView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -831,6 +840,7 @@
 				4C5B7AD814DDD71100DC1F75 /* PTProjectDetailsViewController.m in Sources */,
 				4C65764014DEDC040032CA04 /* PTProgressViewController.m in Sources */,
 				4C996DC11527BC3500BB6FCC /* MWDateFormatter.m in Sources */,
+				4C2AA211152E11840093E8C1 /* PTBugListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
