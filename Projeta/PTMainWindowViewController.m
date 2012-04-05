@@ -11,6 +11,7 @@
 #import "MainWindowController.h"
 #import "MWConnectionController.h"
 #import "PTBugCategoryManagementViewController.h"
+#import "PTBugListViewController.h"
 #import "PTClientManagementViewController.h"
 #import "PTCommon.h"
 #import "PTRoleHelper.h"
@@ -35,6 +36,7 @@ static User *_loggedInUser = nil;
 
 @synthesize projectListViewController;
 @synthesize taskListViewController;
+@synthesize bugListViewController;
 @synthesize userManagementViewController;
 @synthesize groupManagementViewController;
 @synthesize clientManagementViewController;
@@ -230,6 +232,26 @@ static User *_loggedInUser = nil;
                 [taskListViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
             }
         }
+        else if (identifier == @"bugs") {
+            
+            [self removeViewsFromRightView];
+            
+            if (!bugListViewController) {
+                
+                 bugListViewController = [[PTBugListViewController alloc] init];
+                
+                // set reference to (parent) window
+                [bugListViewController setMainWindowController:mainWindowController];
+                
+                // resize the view to fit and fill the right splitview view
+                [bugListViewController.view setFrameSize:rightView.frame.size];
+                
+                [self.rightView addSubview:bugListViewController.view];
+                
+                // auto resize the view.
+                [bugListViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
+            }
+        }
         else if (identifier == @"userAdmin") {
             
             [self removeViewsFromRightView];
@@ -330,6 +352,11 @@ static User *_loggedInUser = nil;
     if (taskListViewController) {
         [taskListViewController.view removeFromSuperview];
         taskListViewController = nil;
+    }
+    
+    if (bugListViewController) {
+        [bugListViewController.view removeFromSuperview];
+        bugListViewController = nil;
     }
     
     if (userManagementViewController) {

@@ -16,6 +16,7 @@
 @class PTBugCategoryManagementViewController;
 @class PTClientManagementViewController;
 @class PTGroupManagementViewController;
+@class PTBugListViewController;
 
 @interface PTMainWindowViewController : NSViewController <PXSourceListDataSource, PXSourceListDelegate> {
     NSMutableArray *sourceListItems;
@@ -35,6 +36,8 @@
 @property (strong) PTProjectListViewController *projectListViewController;
 // task-list view
 @property (strong) PTTaskListViewController *taskListViewController;
+// bug-list view
+@property (strong) PTBugListViewController *bugListViewController;
 // user-management view
 @property (strong) PTUserManagementViewController *userManagementViewController;
 // group-management view
