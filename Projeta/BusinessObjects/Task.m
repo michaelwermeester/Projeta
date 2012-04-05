@@ -69,4 +69,11 @@
     }
 }
 
+- (BOOL)isLeaf {
+    if ([childTask count] > 0)
+        return NO;
+    else
+        return YES;
+}
+
 @end

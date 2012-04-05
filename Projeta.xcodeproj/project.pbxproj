@@ -30,6 +30,8 @@
 		4C27F3CA13E5C40900B1A8EC /* MWConnectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C27F3C913E5C40900B1A8EC /* MWConnectionController.m */; };
 		4C2AA20B152E113C0093E8C1 /* PTBugListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C2AA20A152E113C0093E8C1 /* PTBugListView.xib */; };
 		4C2AA211152E11840093E8C1 /* PTBugListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2AA210152E11840093E8C1 /* PTBugListViewController.m */; };
+		4C2AA213152E47C20093E8C1 /* PTTaskDetailsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C2AA212152E47C20093E8C1 /* PTTaskDetailsWindow.xib */; };
+		4C2AA216152E481E0093E8C1 /* PTTaskDetailsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2AA215152E481E0093E8C1 /* PTTaskDetailsWindowController.m */; };
 		4C2C7CA613F335AB00D9AE3D /* SourceListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2C7CA513F335AB00D9AE3D /* SourceListItem.m */; };
 		4C32ECBB13DDE690009E7131 /* PTUserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C32ECB813DDE690009E7131 /* PTUserHelper.m */; };
 		4C32ECBC13DDE690009E7131 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C32ECBA13DDE690009E7131 /* User.m */; };
@@ -149,6 +151,9 @@
 		4C2AA20A152E113C0093E8C1 /* PTBugListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTBugListView.xib; sourceTree = "<group>"; };
 		4C2AA20F152E11740093E8C1 /* PTBugListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTBugListViewController.h; sourceTree = "<group>"; };
 		4C2AA210152E11840093E8C1 /* PTBugListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTBugListViewController.m; sourceTree = "<group>"; };
+		4C2AA212152E47C20093E8C1 /* PTTaskDetailsWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTTaskDetailsWindow.xib; sourceTree = "<group>"; };
+		4C2AA214152E480A0093E8C1 /* PTTaskDetailsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTTaskDetailsWindowController.h; sourceTree = "<group>"; };
+		4C2AA215152E481E0093E8C1 /* PTTaskDetailsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTTaskDetailsWindowController.m; sourceTree = "<group>"; };
 		4C2C7CA413F335AB00D9AE3D /* SourceListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceListItem.h; sourceTree = "<group>"; };
 		4C2C7CA513F335AB00D9AE3D /* SourceListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceListItem.m; sourceTree = "<group>"; };
 		4C32ECB713DDE690009E7131 /* PTUserHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTUserHelper.h; sourceTree = "<group>"; };
@@ -453,6 +458,9 @@
 				4C65763D14DEDC040032CA04 /* PTProgressViewController.h */,
 				4C65763E14DEDC040032CA04 /* PTProgressViewController.m */,
 				4C65763F14DEDC040032CA04 /* PTProgressView.xib */,
+				4C2AA214152E480A0093E8C1 /* PTTaskDetailsWindowController.h */,
+				4C2AA215152E481E0093E8C1 /* PTTaskDetailsWindowController.m */,
+				4C2AA212152E47C20093E8C1 /* PTTaskDetailsWindow.xib */,
 			);
 			name = "Tâches";
 			sourceTree = "<group>";
@@ -736,6 +744,7 @@
 				4C65764114DEDC040032CA04 /* PTProgressView.xib in Resources */,
 				4CE32EC31527A4090082B0C9 /* calendar_small_icon.png in Resources */,
 				4C2AA20B152E113C0093E8C1 /* PTBugListView.xib in Resources */,
+				4C2AA213152E47C20093E8C1 /* PTTaskDetailsWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -841,6 +850,7 @@
 				4C65764014DEDC040032CA04 /* PTProgressViewController.m in Sources */,
 				4C996DC11527BC3500BB6FCC /* MWDateFormatter.m in Sources */,
 				4C2AA211152E11840093E8C1 /* PTBugListViewController.m in Sources */,
+				4C2AA216152E481E0093E8C1 /* PTTaskDetailsWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
