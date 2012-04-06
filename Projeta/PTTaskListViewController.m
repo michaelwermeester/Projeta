@@ -14,6 +14,7 @@
 #import "PTCommon.h"
 #import "PTTaskHelper.h"
 #import "Task.h"
+#import "PTTaskDetailsWindowController.h"
 
 @implementation PTTaskListViewController
 @synthesize outlineViewProjetColumn;
@@ -129,7 +130,7 @@
     NSLog(@"Failed %@ with code %ld and with userInfo %@",[error domain],[error code],[error userInfo]);
 }
 
--(void)insertObject:(Project *)p inArrTaskAtIndex:(NSUInteger)index {
+-(void)insertObject:(Task *)p inArrTaskAtIndex:(NSUInteger)index {
     [arrTask insertObject:p atIndex:index];
 }
 
@@ -171,6 +172,69 @@
             //[self updateUser:usr];
         }
     }
+}
+
+- (IBAction)addNewTaskButtonClicked:(id)sender {
+}
+
+- (IBAction)addNewSubTaskButtonClicked:(id)sender {
+}
+
+- (IBAction)detailsButtonClicked:(id)sender {
+    [self openTaskDetailsWindow:NO isSubTask:NO];
+}
+
+- (void)openTaskDetailsWindow:(BOOL)isNewTask isSubTask:(BOOL)isSubTask {
+    // get selected projects.
+    //NSArray *selectedObjects = [prjArrayCtrl selectedObjects];
+    
+    
+    /*if (isNewProject == YES)
+     {
+     projectDetailsWindowController = [[PTProjectDetailsWindowController alloc] init];
+     projectDetailsWindowController.parentProjectListViewController = self;
+     projectDetailsWindowController.mainWindowController = mainWindowController;
+     projectDetailsWindowController.isNewProject = isNewProject;
+     
+     [projectDetailsWindowController showWindow:self];
+     }
+     else {*/
+    
+    
+    //int selectedTabIndex = [prjTabView indexOfTabViewItem:[prjTabView selectedTabViewItem]];
+    
+    NSArray *selectedObjects;
+    NSIndexPath *prjTreeIndexPath;
+    //NSUInteger prjArrCtrlIndex;
+    
+    //if (selectedTabIndex == 1) {
+        selectedObjects = [taskTreeCtrl selectedObjects];
+        
+        prjTreeIndexPath = [taskTreeCtrl selectionIndexPath];
+    //} else {
+    //    selectedObjects = [prjArrayCtrl selectedObjects];
+    //    
+    //    prjArrCtrlIndex = [prjArrayCtrl selectionIndex];
+    //}
+    
+    // if a task is selected, open the window to show its details.
+    if ([selectedObjects count] == 1) {
+        
+        taskDetailsWindowController = [[PTTaskDetailsWindowController alloc] init];
+        taskDetailsWindowController.parentTaskListViewController = self;
+        taskDetailsWindowController.mainWindowController = mainWindowController;
+        taskDetailsWindowController.isNewTask = isNewTask;
+        taskDetailsWindowController.task = [selectedObjects objectAtIndex:0];
+        
+        if (isNewTask == NO) {
+            taskDetailsWindowController.prjTreeIndexPath = prjTreeIndexPath;
+            //taskDetailsWindowControllers.prjArrCtrlIndex = prjArrCtrlIndex;
+        }
+        
+        [taskDetailsWindowController showWindow:self];
+        //}];
+    }
+    //}
 }
 
 @end

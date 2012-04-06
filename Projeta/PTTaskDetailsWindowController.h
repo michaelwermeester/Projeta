@@ -10,7 +10,7 @@
 
 @class MainWindowController;
 @class Task;
-//@class PTProjectListViewController;
+@class PTTaskListViewController;
 
 @interface PTTaskDetailsWindowController : NSWindowController {
     
@@ -21,7 +21,7 @@
     NSMutableArray *arrDevelopers;
 }
 
-@property (strong) Project *project;
+@property (strong) Task *task;
 
 @property (assign) BOOL isNewTask;
 
@@ -32,7 +32,7 @@
 @property (assign) NSUInteger prjArrCtrlIndex;
 
 // parent project list view controller.
-//@property (strong) PTProjectListViewController *parentProjectListViewController;
+@property (strong) PTTaskListViewController *parentTaskListViewController;
 // reference to the (parent) MainWindowController
 @property (assign) MainWindowController *mainWindowController;
 @property (weak) IBOutlet NSButton *okButton;

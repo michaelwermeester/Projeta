@@ -10,6 +10,7 @@
 
 @class MainWindowController;
 @class PTProjectDetailsViewController;
+@class PTTaskDetailsWindowController;
 
 @interface PTTaskListViewController : NSViewController {
     NSMutableArray *arrTask;     // array which holds the projects
@@ -19,6 +20,8 @@
     __weak NSTableColumn *outlineViewProjetColumn;
     __weak NSButton *projectButton;
     
+    // task details window
+    PTTaskDetailsWindowController *taskDetailsWindowController;
 }
 
 @property (strong) NSMutableArray *arrTask;
@@ -30,6 +33,10 @@
 @property (weak) IBOutlet NSTableColumn *outlineViewProjetColumn;
 @property (weak) IBOutlet NSButton *projectButton;
 
+- (IBAction)addNewTaskButtonClicked:(id)sender;
+- (IBAction)addNewSubTaskButtonClicked:(id)sender;
+- (IBAction)detailsButtonClicked:(id)sender;
+
 // reference to the (parent) MainWindowController
 @property (assign) MainWindowController *mainWindowController;
 
@@ -38,5 +45,7 @@
 
 - (void)requestFinished:(NSMutableData*)data;
 - (void)requestFailed:(NSError*)error;
+
+- (void)openTaskDetailsWindow:(BOOL)isNewTask isSubTask:(BOOL)isSubTask;
 
 @end

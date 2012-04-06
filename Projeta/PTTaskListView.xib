@@ -159,7 +159,7 @@
 									<reference ref="714266377"/>
 									<object class="NSMenuItem" id="487457917">
 										<reference key="NSMenu" ref="708328576"/>
-										<string key="NSTitle">Projet</string>
+										<string key="NSTitle">Tâche</string>
 										<string key="NSKeyEquiv"/>
 										<int key="NSKeyEquivModMask">1048576</int>
 										<int key="NSMnemonicLoc">2147483647</int>
@@ -170,7 +170,7 @@
 									</object>
 									<object class="NSMenuItem" id="780875365">
 										<reference key="NSMenu" ref="708328576"/>
-										<string key="NSTitle">Sous-projet</string>
+										<string key="NSTitle">Sous-tâche</string>
 										<string key="NSKeyEquiv"/>
 										<int key="NSKeyEquivModMask">1048576</int>
 										<int key="NSMnemonicLoc">2147483647</int>
@@ -183,6 +183,7 @@
 								<bool key="NSNoAutoenable">YES</bool>
 								<reference key="NSMenuFont" ref="169508843"/>
 							</object>
+							<int key="NSSelectedIndex">-1</int>
 							<bool key="NSPullDown">YES</bool>
 							<int key="NSPreferredEdge">1</int>
 							<bool key="NSUsesItemFromMenu">YES</bool>
@@ -701,6 +702,30 @@
 					<int key="connectionID">1311</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">addNewTaskButtonClicked:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="487457917"/>
+					</object>
+					<int key="connectionID">1509</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">addNewSubTaskButtonClicked:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="780875365"/>
+					</object>
+					<int key="connectionID">1510</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">detailsButtonClicked:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="526063154"/>
+					</object>
+					<int key="connectionID">1511</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">contentArray: arrTask</string>
 						<reference key="source" ref="709179103"/>
@@ -753,7 +778,7 @@
 						<string key="label">content: arrangedObjects</string>
 						<reference key="source" ref="823559301"/>
 						<reference key="destination" ref="108820127"/>
-						<object class="NSNibBindingConnector" key="connector">
+						<object class="NSNibBindingConnector" key="connector" id="280445454">
 							<reference key="NSSource" ref="823559301"/>
 							<reference key="NSDestination" ref="108820127"/>
 							<string key="NSLabel">content: arrangedObjects</string>
@@ -771,6 +796,23 @@
 						<reference key="destination" ref="1001"/>
 					</object>
 					<int key="connectionID">366</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">selectionIndexPaths: selectionIndexPaths</string>
+						<reference key="source" ref="823559301"/>
+						<reference key="destination" ref="108820127"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="823559301"/>
+							<reference key="NSDestination" ref="108820127"/>
+							<string key="NSLabel">selectionIndexPaths: selectionIndexPaths</string>
+							<string key="NSBinding">selectionIndexPaths</string>
+							<string key="NSKeyPath">selectionIndexPaths</string>
+							<reference key="NSPreviousConnector" ref="280445454"/>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">1513</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -2600,7 +2642,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1508</int>
+			<int key="maxID">1513</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2615,17 +2657,30 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">PTTaskListViewController</string>
 					<string key="superclassName">NSViewController</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">addTaskButtonClick:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">addTaskButtonClick:</string>
-						<object class="IBActionInfo" key="NS.object.0">
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="addNewSubTaskButtonClicked:">id</string>
+						<string key="addNewTaskButtonClicked:">id</string>
+						<string key="addTaskButtonClick:">id</string>
+						<string key="detailsButtonClicked:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="addNewSubTaskButtonClicked:">
+							<string key="name">addNewSubTaskButtonClicked:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="addNewTaskButtonClicked:">
+							<string key="name">addNewTaskButtonClicked:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="addTaskButtonClick:">
 							<string key="name">addTaskButtonClick:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-					</object>
+						<object class="IBActionInfo" key="detailsButtonClicked:">
+							<string key="name">detailsButtonClicked:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="outlineViewProjetColumn">NSTableColumn</string>
 						<string key="projectButton">NSButton</string>

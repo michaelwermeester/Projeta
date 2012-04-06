@@ -11,14 +11,14 @@
 #import "PTMainWindowViewController.h"
 #import "PTTaskDetailsWindowController.h"
 #import "PTTaskHelper.h"
-//#import "PTProjectListViewController.h"
+#import "PTTaskListViewController.h"
 #import "PTUserHelper.h"
 
-Project *projectCopy;
+Task *taskCopy;
 
 @implementation PTTaskDetailsWindowController
 
-@synthesize project;
+@synthesize task;
 
 @synthesize isNewTask;
 
@@ -32,6 +32,8 @@ Project *projectCopy;
 
 @synthesize prjTreeIndexPath;
 @synthesize prjArrCtrlIndex;
+
+@synthesize parentTaskListViewController;
 
 - (id)init
 {
@@ -48,8 +50,8 @@ Project *projectCopy;
 - (void)awakeFromNib {
     
     // faire une copie du projet en cours.
-    projectCopy = [[Project alloc] init];
-    projectCopy = [project copy];
+    taskCopy = [[Task alloc] init];
+    taskCopy = [task copy];
     
     // debug
     /*for (Project *p in project.childProject) {
@@ -177,7 +179,7 @@ Project *projectCopy;
     
     if ([createdProjectArray count] == 1) {
 
-        for (Project *prj in createdProjectArray) {
+        for (Task *tsk in createdProjectArray) {
    
             
             /*if (prj.parentProjectId) {
@@ -192,7 +194,7 @@ Project *projectCopy;
             }*/
             
             // reassign user with user returned from web-service. 
-            self.project = prj;
+            self.task = tsk;
             
             //NSLog(@"id: %d", [prj.projectId intValue]);
             //NSLog(@"title: %@", prj.projectTitle);

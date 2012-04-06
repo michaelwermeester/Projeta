@@ -69,6 +69,32 @@
     }
 }
 
+// Required by NSCopying protocol.
+- (id) copyWithZone:(NSZone *)zone {
+    
+    Task *copy = [[Task alloc] init];
+    
+    copy.taskTitle = [taskTitle copyWithZone:zone];
+    copy.taskId = [taskId copyWithZone:zone];
+    copy.taskDescription = [taskDescription copyWithZone:zone];
+    copy.endDate = [endDate copyWithZone:zone];
+    copy.completed = completed;
+    copy.startDate = [startDate copyWithZone:zone];
+    copy.userCreated = [userCreated copyWithZone:zone];
+    copy.childTask = [childTask copyWithZone:zone];
+    
+    //copy.dateCreated = [dateCreated copyWithZone:zone];
+    //copy.endDateReal = [endDateReal copyWithZone:zone];
+    //copy.flagPublic = flagPublic;
+    
+    //copy.canceled = canceled;
+    //copy.parentProjectId = [parentProjectId copyWithZone:zone];
+    
+    //copy.startDateReal = [startDateReal copyWithZone:zone];
+    
+    return copy;
+}
+
 - (BOOL)isLeaf {
     if ([childTask count] > 0)
         return NO;

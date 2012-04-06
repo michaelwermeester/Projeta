@@ -17,7 +17,7 @@
     NSArrayController *prjArrayCtrl;    // array controller
     NSCollectionView *prjCollectionView;
     
-    // user details window
+    // project details window
     PTProjectDetailsWindowController *projectDetailsWindowController;
     NSTreeController *prjTreeController;
     __weak NSTabView *prjTabView;

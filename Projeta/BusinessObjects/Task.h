@@ -10,7 +10,7 @@
 
 #import "User.h"
 
-@interface Task : NSObject {
+@interface Task : NSObject <NSCopying> {
     NSDate *endDate;
     NSDate *startDate;
     NSString *taskDescription;
@@ -29,6 +29,9 @@
 @property (nonatomic, retain) User *userCreated;
 @property (nonatomic, assign) BOOL completed;
 @property (strong) NSMutableArray *childTask;
+
+// Required by NSCopying protocol.
+- (id) copyWithZone:(NSZone *)zone;
 
 + (Task *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
