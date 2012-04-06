@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 @class MainWindowController;
+@class PTProjectDetailsViewController;
 
 @interface PTTaskListViewController : NSViewController {
     NSMutableArray *arrTask;     // array which holds the projects
@@ -17,6 +18,7 @@
     NSOutlineView *taskOutlineView;
     __weak NSTableColumn *outlineViewProjetColumn;
     __weak NSButton *projectButton;
+    
 }
 
 @property (strong) NSMutableArray *arrTask;
@@ -30,6 +32,9 @@
 
 // reference to the (parent) MainWindowController
 @property (assign) MainWindowController *mainWindowController;
+
+// reference to the (parent) PTProjectDetailsViewController
+@property (assign) PTProjectDetailsViewController *parentProjectDetailsViewController;
 
 - (void)requestFinished:(NSMutableData*)data;
 - (void)requestFailed:(NSError*)error;

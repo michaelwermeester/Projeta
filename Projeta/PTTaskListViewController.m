@@ -10,6 +10,7 @@
 #import <Foundation/NSJSONSerialization.h>
 #import "MainWindowController.h"
 #import "MWConnectionController.h"
+#import "PTProjectDetailsViewController.h"
 #import "PTCommon.h"
 #import "PTTaskHelper.h"
 #import "Task.h"
@@ -23,6 +24,7 @@
 @synthesize taskTreeCtrl;
 @synthesize taskOutlineView;
 @synthesize mainWindowController;
+@synthesize parentProjectDetailsViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

@@ -77,6 +77,9 @@
     // set reference to (parent) window
     [taskListViewController setMainWindowController:mainWindowController];
     
+    // set reference to (parent) project details view.
+    [taskListViewController setParentProjectDetailsViewController:self];
+    
     // resize the view to fit and fill the right splitview view
     [taskListViewController.view setFrameSize:tabTaskView.frame.size];
     
