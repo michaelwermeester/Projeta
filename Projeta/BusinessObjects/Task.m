@@ -20,6 +20,7 @@
 @synthesize userCreated = userCreated;
 @synthesize completed = completed;
 @synthesize childTask = childTask;
+@synthesize parentTaskId = parentTaskId;
 
 + (Task *)instanceFromDictionary:(NSDictionary *)aDictionary {
     
@@ -82,13 +83,13 @@
     copy.startDate = [startDate copyWithZone:zone];
     copy.userCreated = [userCreated copyWithZone:zone];
     copy.childTask = [childTask copyWithZone:zone];
+    copy.parentTaskId = [parentTaskId copyWithZone:zone];
     
     //copy.dateCreated = [dateCreated copyWithZone:zone];
     //copy.endDateReal = [endDateReal copyWithZone:zone];
     //copy.flagPublic = flagPublic;
     
     //copy.canceled = canceled;
-    //copy.parentProjectId = [parentProjectId copyWithZone:zone];
     
     //copy.startDateReal = [startDateReal copyWithZone:zone];
     

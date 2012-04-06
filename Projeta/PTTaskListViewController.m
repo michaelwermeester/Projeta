@@ -175,9 +175,114 @@
 }
 
 - (IBAction)addNewTaskButtonClicked:(id)sender {
+    NSNumber *parentID;
+    
+    NSArray *selectedObjects = [taskTreeCtrl selectedObjects];
+    
+    // if a project is selected, open the window to show its details.
+    if ([selectedObjects count] == 1) {
+        //parentID = [[selectedObjects objectAtIndex:0] projectId];
+        //parentID = [[selectedObjects objectAtIndex:0] parentProjectId];
+        
+        //[prjTreeController add:prj];
+        
+        Task *tsk = [[Task alloc] init];
+        
+        // get parent node.
+        NSTreeNode *parent = [[[[taskTreeCtrl selectedNodes] objectAtIndex:0] parentNode] parentNode];
+        NSMutableArray *parentTasks = [[parent representedObject] mutableArrayValueForKeyPath:
+                                          [taskTreeCtrl childrenKeyPathForNode:parent]];
+        //NSLog(@"test: %@", [[[[prjTreeController selectedNodes] objectAtIndex:] parent] projectTitle]); 
+        
+        //[prjTreeController 
+        //parentrowforrow
+        
+        //NSLog(@"test: %@", [[objects objectAtIndex:0] projectTitle]);
+        //int line = [prjOutlineView selectedRow];
+        //NSLog(@"test: %@", [[parentProjects objectAtIndex:line] projectTitle]);
+        
+        // get projectid du projet parent. 
+        for (Task *p in parentTasks)
+        {
+            if ([p.childTask containsObject:[selectedObjects objectAtIndex:0]])
+            {
+                parentID = p.taskId;
+                
+                //NSLog(@"TEST: %d", [[p projectId] intValue]);
+                
+                break;
+            }
+        }
+        
+        //NSLog(@"test: %@", [[parent representedObject] projectTitle]);
+        
+        //prj.parentProjectId = parentID;
+        //prj.parentProjectId = p.projectId;
+        if (parentID != nil){
+            tsk.parentTaskId = parentID;
+        }
+        
+        //NSLog(@"parentprojectid: %@", p.projectTitle);
+        
+        //[prjTreeController add:prj];
+        NSIndexPath *indexPath = [taskTreeCtrl selectionIndexPath];
+        //NSLog(@"indexpath: %@", indexPath);
+        if ([indexPath length] > 1) {
+            [taskTreeCtrl insertObject:tsk atArrangedObjectIndexPath:indexPath];
+        } else {
+            // construire nouveau NSIndexPath avec comme valeur 0 -> l'élément sera inséré à la première position.
+            // https://discussions.apple.com/thread/1585148?start=0&tstart=0
+            NSUInteger indexes[1]={0};
+            indexPath=[NSIndexPath indexPathWithIndexes:indexes length:1];
+            
+            [taskTreeCtrl insertObject:tsk atArrangedObjectIndexPath:indexPath];
+        }
+    }
+    
+    // il s'agit d'un nouveau projet.
+    //isNewProject = true;
+    
+    [self openTaskDetailsWindow:YES isSubTask:NO];
 }
 
 - (IBAction)addNewSubTaskButtonClicked:(id)sender {
+    
+    NSNumber *parentID;
+    
+    NSArray *selectedObjects = [taskTreeCtrl selectedObjects];
+    
+    // if a project is selected, open the window to show its details.
+    if ([selectedObjects count] == 1) {
+        parentID = [[selectedObjects objectAtIndex:0] taskId];
+        
+        
+        Task *tsk = [[Task alloc] init];
+        tsk.parentTaskId = parentID;
+        
+        Task *tmpTask = [selectedObjects objectAtIndex:0]; 
+        
+        if ([tmpTask childTask] == nil) {
+            
+            NSIndexPath *indexPath = [taskTreeCtrl selectionIndexPath];
+            
+            tmpTask.childTask = [[NSMutableArray alloc] init];
+            [taskTreeCtrl insertObject:tsk atArrangedObjectIndexPath:[indexPath indexPathByAddingIndex:0]];
+        } else {
+            //else if ([[tmpPrj childProject] count] > 0) {
+            
+            NSIndexPath *indexPath = [taskTreeCtrl selectionIndexPath];
+            
+            [taskTreeCtrl insertObject:tsk atArrangedObjectIndexPath:[indexPath indexPathByAddingIndex:0]];
+        } 
+    }
+    
+    
+    NSLog(@"count: %lu", [arrTask count]);
+    
+    // il s'agit d'un nouveau projet.
+    //isNewProject = true;
+    
+    [self openTaskDetailsWindow:YES isSubTask:YES];
 }
 
 - (IBAction)detailsButtonClicked:(id)sender {

@@ -19,6 +19,7 @@
     User *userCreated;
     BOOL completed;
     NSMutableArray *childTask;
+    NSNumber *parentTaskId;
 }
 
 @property (nonatomic, retain) NSDate *endDate;
@@ -29,6 +30,7 @@
 @property (nonatomic, retain) User *userCreated;
 @property (nonatomic, assign) BOOL completed;
 @property (strong) NSMutableArray *childTask;
+@property (nonatomic, copy) NSNumber *parentTaskId;
 
 // Required by NSCopying protocol.
 - (id) copyWithZone:(NSZone *)zone;
