@@ -3,12 +3,12 @@
 	<data>
 		<int key="IBDocument.SystemTarget">1070</int>
 		<string key="IBDocument.SystemVersion">11D50</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1938</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2182</string>
 		<string key="IBDocument.AppKitVersion">1138.32</string>
 		<string key="IBDocument.HIToolboxVersion">568.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">1938</string>
+			<string key="NS.object.0">2182</string>
 		</object>
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -60,6 +60,7 @@
 										<string key="NSFrameSize">{438, 230}</string>
 										<reference key="NSSuperview" ref="337157347"/>
 										<reference key="NSWindow"/>
+										<reference key="NSNextKeyView" ref="745752627"/>
 										<string key="NSReuseIdentifierKey">_NS:3367</string>
 										<string key="NSMinGridSize">{0, 0}</string>
 										<string key="NSMaxGridSize">{0, 0}</string>
@@ -101,6 +102,7 @@
 								<string key="NSFrame">{{234, 1}, {15, 143}}</string>
 								<reference key="NSSuperview" ref="409583006"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="288139231"/>
 								<string key="NSReuseIdentifierKey">_NS:3372</string>
 								<reference key="NSTarget" ref="409583006"/>
 								<string key="NSAction">_doScroller:</string>
@@ -113,6 +115,7 @@
 								<string key="NSFrame">{{1, 144}, {233, 15}}</string>
 								<reference key="NSSuperview" ref="409583006"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:3374</string>
 								<int key="NSsFlags">1</int>
 								<reference key="NSTarget" ref="409583006"/>
@@ -134,15 +137,17 @@
 				<string key="NSFrameSize">{480, 272}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
+				<reference key="NSNextKeyView" ref="409583006"/>
 				<string key="NSClassName">NSView</string>
 			</object>
 			<object class="NSCollectionViewItem" id="847545706"/>
 			<object class="NSView" id="508512105">
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">256</int>
-				<string key="NSFrameSize">{100, 100}</string>
+				<string key="NSFrameSize">{406, 99}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
+				<reference key="NSNextKeyView"/>
 			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
@@ -256,7 +261,7 @@
 					<string>6.IBPluginDependency</string>
 					<string>7.IBPluginDependency</string>
 				</object>
-				<object class="NSMutableArray" key="dict.values">
+				<object class="NSArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>

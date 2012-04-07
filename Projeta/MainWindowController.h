@@ -23,6 +23,7 @@
     __weak NSPopUpButton *addProjectButton;
     __weak NSMenuItem *addProjectMenuItem;
     __weak NSMenuItem *addSubProjectMenuItem;
+    __weak NSButton *removeProjectButton;
 }
 
 @property (strong) IBOutlet NSView *mainView;
@@ -44,6 +45,7 @@
 @property (weak) IBOutlet NSPopUpButton *addProjectButton;
 @property (weak) IBOutlet NSMenuItem *addProjectMenuItem;
 @property (weak) IBOutlet NSMenuItem *addSubProjectMenuItem;
+@property (weak) IBOutlet NSButton *removeProjectButton;
 
 - (IBAction)switchToMainView:(id)sender;
 - (IBAction)switchToProjectView:(id)sender;

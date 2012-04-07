@@ -232,6 +232,26 @@ static User *_loggedInUser = nil;
                 [taskListViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
             }
         }
+        else if (identifier == @"tasksPersonal") {
+            
+            [self removeViewsFromRightView];
+            
+            if (!taskListViewController) {
+                
+                taskListViewController = [[PTTaskListViewController alloc] init];
+                
+                // set reference to (parent) window
+                [taskListViewController setMainWindowController:mainWindowController];
+                
+                // resize the view to fit and fill the right splitview view
+                [taskListViewController.view setFrameSize:rightView.frame.size];
+                
+                [self.rightView addSubview:taskListViewController.view];
+                
+                // auto resize the view.
+                [taskListViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
+            }
+        }
         else if (identifier == @"bugs") {
             
             [self removeViewsFromRightView];

@@ -26,6 +26,7 @@
 @synthesize addProjectButton;
 @synthesize addProjectMenuItem;
 @synthesize addSubProjectMenuItem;
+@synthesize removeProjectButton;
 
 - (id)init
 {
@@ -89,6 +90,7 @@
     
     // cacher le bouton 'ajouter un projet'.
     [addProjectButton setHidden:YES];
+    [removeProjectButton setHidden:YES];
     
     // ajouter 'observer' pour savoir quand le bouton 'ajouter un projet' a été clicqué.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(popupButtonClicked:) name:NSPopUpButtonWillPopUpNotification object:nil];
@@ -130,6 +132,7 @@
     
     // cacher le bouton 'ajouter un projet'.
     [addProjectButton setHidden:YES];
+    [removeProjectButton setHidden:YES];
 }
 
 - (IBAction)switchToProjectView:(id)sender {
@@ -202,6 +205,7 @@
     
     // afficher le bouton 'ajouter un projet'.
     [addProjectButton setHidden:NO];
+    [removeProjectButton setHidden:NO];
 }
 
 // returns a frame which fits the ContentView
