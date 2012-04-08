@@ -256,6 +256,9 @@ static User *_loggedInUser = nil;
                 
                 // auto resize the view.
                 [taskListViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
+                
+                // cacher la colonne 'projet'.
+                [taskListViewController.outlineViewProjetColumn setHidden:YES];
             }
         }
         else if (identifier == @"bugs") {

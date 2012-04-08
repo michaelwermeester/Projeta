@@ -40,8 +40,8 @@
         arrTask = [[NSMutableArray alloc] init];
         
         // register for detecting changes in table view
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editingDidEnd:)
-                                                     name:NSControlTextDidEndEditingNotification object:nil];
+        //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editingDidEnd:)
+        //                                             name:NSControlTextDidEndEditingNotification object:nil];
     }
     
     return self;
@@ -58,7 +58,10 @@
     // get server URL as string
     NSString *urlString = [PTCommon serverURLString];
     // build URL by adding resource path
-    urlString = [urlString stringByAppendingString:@"resources/tasks/"];
+    if (isPersonalTask == YES)
+        urlString = [urlString stringByAppendingString:@"resources/tasks/personal"];
+    else
+        urlString = [urlString stringByAppendingString:@"resources/tasks/"];
     
     // convert to NSURL
     NSURL *url = [NSURL URLWithString:urlString];
@@ -161,7 +164,7 @@
 }
 
 // update user when finished editing cell in table view
-- (void)editingDidEnd:(NSNotification *)notification
+/*- (void)editingDidEnd:(NSNotification *)notification
 {
     //NSLog(@"notification object: %@", [notification object]);
     
@@ -177,7 +180,7 @@
             [self updateTask:task];
         }
     }
-}
+}*/
 
 - (void)updateTask:(Task *)aTask {
     
