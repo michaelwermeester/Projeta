@@ -14,6 +14,8 @@
 
 @implementation PTCommentairesViewController
 
+@synthesize task;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:@"PTCommentairesView" bundle:nibBundleOrNil];

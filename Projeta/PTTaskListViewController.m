@@ -10,6 +10,7 @@
 #import <Foundation/NSJSONSerialization.h>
 #import "MainWindowController.h"
 #import "MWConnectionController.h"
+#import "PTCommentairesWindowController.h"
 #import "PTProjectDetailsViewController.h"
 #import "PTCommon.h"
 #import "PTTaskHelper.h"
@@ -17,6 +18,7 @@
 #import "PTTaskDetailsWindowController.h"
 
 @implementation PTTaskListViewController
+
 @synthesize outlineViewProjetColumn;
 @synthesize projectButton;
 @synthesize checkBoxShowTasksFromSubProjects;
@@ -339,6 +341,17 @@
     } failureBlock:^(){
         //[self failUserExists];
     } mainWindowController:mainWindowController];
+}
+
+- (IBAction)commentButtonClicked:(id)sender {
+    
+    commentWindowController = [[PTCommentairesWindowController alloc] init];
+
+    NSArray *selectedObjects;
+    selectedObjects = [taskTreeCtrl selectedObjects];
+    commentWindowController.task = [selectedObjects objectAtIndex:0];
+    
+    [commentWindowController showWindow:self];
 }
 
 - (void)openTaskDetailsWindow:(BOOL)isNewTask isSubTask:(BOOL)isSubTask {

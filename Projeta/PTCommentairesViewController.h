@@ -8,6 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class Task;
+
 @interface PTCommentairesViewController : NSViewController
+
+@property (strong) Task *task;
 
 @end

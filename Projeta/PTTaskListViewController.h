@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 @class MainWindowController;
+@class PTCommentairesWindowController;
 @class PTProjectDetailsViewController;
 @class PTTaskDetailsWindowController;
 
@@ -25,6 +26,8 @@
     
     // task details window
     PTTaskDetailsWindowController *taskDetailsWindowController;
+    // fenêtre commentaires.
+    PTCommentairesWindowController *commentWindowController;
 }
 
 @property (strong) NSMutableArray *arrTask;
@@ -43,6 +46,7 @@
 - (IBAction)addNewSubTaskButtonClicked:(id)sender;
 - (IBAction)detailsButtonClicked:(id)sender;
 - (IBAction)removeTaskButtonClicked:(id)sender;
+- (IBAction)commentButtonClicked:(id)sender;
 
 // reference to the (parent) MainWindowController
 @property (assign) MainWindowController *mainWindowController;
