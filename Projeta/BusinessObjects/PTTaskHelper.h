@@ -22,5 +22,6 @@
 
 + (BOOL)createTask:(Task *)theTask successBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)())failureBlock_ mainWindowController:(id)sender;
 + (BOOL)deleteTask:(Task *)theTask successBlock:(void(^)(NSMutableData *))successBlock failureBlock:(void(^)())failureBlock mainWindowController:(id)sender;
++ (BOOL)updateTask:(Task *)theTask successBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)())failureBlock_ mainWindowController:(id)sender;
 
 @end

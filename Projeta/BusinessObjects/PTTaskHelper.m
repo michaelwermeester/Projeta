@@ -157,4 +157,46 @@
     return success;
 }
 
++ (BOOL)updateTask:(Task *)theTask successBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)())failureBlock_ mainWindowController:(id)sender {
+    
+    BOOL success = NO;
+    
+    if ([sender isKindOfClass:[MainWindowController class]]) {
+        // start animating the main window's circular progress indicator.
+        [sender startProgressIndicatorAnimation];
+    }
+    
+    // create dictionary from User object
+    //NSDictionary *dict = [theUser dictionaryWithValuesForKeys:[theUser allKeys]];
+    // update username, first name, last name and email address
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[theTask dictionaryWithValuesForKeys:[theTask updateTaskKeys]]];
+    
+    
+    // s'il s'agit d'un sous-projet...
+    /*if (theProject.parentProjectId) {
+     // créer dictionnaire 'parentProjectId'.
+     Project *parentProject = [[Project alloc] init];
+     parentProject.projectId = theProject.parentProjectId;
+     
+     NSDictionary *parentProjectDict = [parentProject dictionaryWithValuesForKeys:[parentProject projectIdKey]];
+     // ajouter ce dictionnaire sous la clé 'parentProjectId'.
+     [dict setObject:parentProjectDict forKey:@"parentProjectId"];
+     }*/
+    
+    
+    // API resource string.
+    NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/tasks/update"];
+    
+    // execute the PUT method on the webservice to update the record in the database.
+    //success = [PTCommon executePUTforDictionaryWithSuccessBlock:dict resourceString:resourceString successBlock:successBlock_];
+    success = [PTCommon executePUTforDictionaryWithBlocks:dict resourceString:resourceString successBlock:successBlock_ failureBlock:failureBlock_];
+    
+    if ([sender isKindOfClass:[MainWindowController class]]) {
+        // stop animating the main window's circular progress indicator.
+        [sender stopProgressIndicatorAnimation];
+    }
+    
+    return success;
+}
+
 @end

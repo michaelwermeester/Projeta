@@ -40,8 +40,8 @@
         arrTask = [[NSMutableArray alloc] init];
         
         // register for detecting changes in table view
-        //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editingDidEnd:)
-        //                                             name:NSControlTextDidEndEditingNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editingDidEnd:)
+                                                     name:NSControlTextDidEndEditingNotification object:nil];
     }
     
     return self;
@@ -163,17 +163,32 @@
 // update user when finished editing cell in table view
 - (void)editingDidEnd:(NSNotification *)notification
 {
+    //NSLog(@"notification object: %@", [notification object]);
+    
     // continue and update the user only if the object is the usersTableView
     if ([notification object] == taskOutlineView) {
-        
-        NSArray *selectedObjects = [taskArrayCtrl selectedObjects];
+        //NSLog(@"UPDATE");
+
+        NSArray *selectedObjects = [taskTreeCtrl selectedObjects];
         
         for (Task *task in selectedObjects)
         {
             // update Task
-            //[self updateUser:usr];
+            [self updateTask:task];
         }
     }
+}
+
+- (void)updateTask:(Task *)aTask {
+    
+    BOOL taskUpdSuc = NO;
+    
+    taskUpdSuc = [PTTaskHelper updateTask:aTask successBlock:^(NSMutableData *data) {
+        //[self finishedCreatingTask:data];
+    } failureBlock:^() {
+        
+    }
+                     mainWindowController:self];
 }
 
 - (IBAction)addNewTaskButtonClicked:(id)sender {

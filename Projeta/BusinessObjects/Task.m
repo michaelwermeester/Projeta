@@ -52,9 +52,9 @@
         self.completed = [(NSString *)[aDictionary objectForKey:@"completed"] boolValue];
     
     if ([[aDictionary objectForKey:@"isPersonal"] isKindOfClass:[NSNull class]])
-        self.completed = NO;
+        self.isPersonal = NO;
     else
-        self.completed = [(NSString *)[aDictionary objectForKey:@"isPersonal"] boolValue];
+        self.isPersonal = [(NSString *)[aDictionary objectForKey:@"isPersonal"] boolValue];
     
     self.userCreated = [User instanceFromDictionary:[aDictionary objectForKey:@"userCreated"]];
     
@@ -124,6 +124,15 @@
 
 - (NSArray *)taskIdKey {
     NSArray *retArr = [[NSArray alloc] initWithObjects:@"taskId", nil];
+    
+    return retArr;
+}
+
+- (NSArray *)updateTaskKeys
+{
+    //NSArray *retArr = [[NSArray alloc] initWithObjects: @"projectTitle", @"projectDescription", @"endDate", @"endDateReal", @"flagPublic", @"completed", @"parentProjectId", @"startDate", @"startDateReal", @"userCreated", nil];
+    //NSArray *retArr = [[NSArray alloc] initWithObjects: @"projectTitle", @"projectDescription", @"flagPublic", nil];
+    NSArray *retArr = [[NSArray alloc] initWithObjects: @"taskId", @"taskTitle", @"taskDescription", @"completed", @"startDate", @"endDate", nil];
     
     return retArr;
 }

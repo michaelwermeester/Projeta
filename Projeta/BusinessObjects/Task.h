@@ -45,5 +45,6 @@
 
 - (NSArray *)createTaskKeys;
 - (NSArray *)taskIdKey;
+- (NSArray *)updateTaskKeys;
 
 @end

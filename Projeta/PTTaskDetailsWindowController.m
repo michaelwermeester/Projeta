@@ -158,10 +158,12 @@ Task *taskCopy;
     }
     // mettre à jour projet existant.
     else {
-        /*taskUpdSuc = [PTProjectHelper updateProject:project successBlock:^(NSMutableData *data) {
-            [self finishedCreatingProject:data];
-        } 
-                              mainWindowController:parentProjectListViewController];*/
+        taskUpdSuc = [PTTaskHelper updateTask:task successBlock:^(NSMutableData *data) {
+            [self finishedCreatingTask:data];
+        } failureBlock:^() {
+            
+        }
+                              mainWindowController:parentTaskListViewController];
     }
 }
 
@@ -187,16 +189,16 @@ Task *taskCopy;
         for (Task *tsk in createdTaskArray) {
    
             
-            /*if (prj.parentProjectId) {
-                [parentProjectListViewController.prjTreeController remove:project];
+            if (tsk.parentTaskId) {
+                [parentTaskListViewController.taskTreeCtrl remove:task];
                 
-                NSIndexPath *indexPath = [parentProjectListViewController.prjTreeController selectionIndexPath];
+                NSIndexPath *indexPath = [parentTaskListViewController.taskTreeCtrl selectionIndexPath];
                 
-                [parentProjectListViewController.prjTreeController insertObject:prj atArrangedObjectIndexPath:[indexPath indexPathByAddingIndex:0]];
+                [parentTaskListViewController.taskTreeCtrl insertObject:tsk atArrangedObjectIndexPath:[indexPath indexPathByAddingIndex:0]];
             
             } else {
-                [[parentProjectListViewController mutableArrayValueForKey:@"arrPrj"] replaceObjectAtIndex:[parentProjectListViewController.arrPrj indexOfObject:project] withObject:prj];
-            }*/
+                [[parentTaskListViewController mutableArrayValueForKey:@"arrTask"] replaceObjectAtIndex:[parentTaskListViewController.arrTask indexOfObject:task] withObject:tsk];
+            }
             
             // reassign user with user returned from web-service. 
             self.task = tsk;
