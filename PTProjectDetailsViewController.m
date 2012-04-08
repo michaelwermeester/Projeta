@@ -90,6 +90,7 @@
     
     // cacher lo colonne "projet".
     [taskListViewController.outlineViewProjetColumn setHidden:YES];
+    [taskListViewController.checkBoxShowTasksFromSubProjects setHidden:NO];
     //[taskListViewController.projectButton removeFromSuperview];
     [taskListViewController.projectButton setHidden:YES];
 }
