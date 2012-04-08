@@ -40,7 +40,13 @@
     
     commentViewController.task = task;
     
+    // resize the view to fit and fill the right splitview view
+    [commentViewController.view setFrameSize:commentsView.frame.size];
+    
     [self.commentsView addSubview:commentViewController.view];
+    
+    // auto resize the view.
+    [commentViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
 }
 
 @end
