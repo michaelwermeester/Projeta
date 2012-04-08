@@ -20,6 +20,8 @@
     __weak NSTableColumn *outlineViewProjetColumn;
     __weak NSButton *projectButton;
     
+    BOOL isPersonalTask;
+    
     // task details window
     PTTaskDetailsWindowController *taskDetailsWindowController;
 }
@@ -33,9 +35,12 @@
 @property (weak) IBOutlet NSTableColumn *outlineViewProjetColumn;
 @property (weak) IBOutlet NSButton *projectButton;
 
+@property (assign) BOOL isPersonalTask;
+
 - (IBAction)addNewTaskButtonClicked:(id)sender;
 - (IBAction)addNewSubTaskButtonClicked:(id)sender;
 - (IBAction)detailsButtonClicked:(id)sender;
+- (IBAction)removeTaskButtonClicked:(id)sender;
 
 // reference to the (parent) MainWindowController
 @property (assign) MainWindowController *mainWindowController;

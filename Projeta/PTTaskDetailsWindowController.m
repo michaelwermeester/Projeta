@@ -21,6 +21,7 @@ Task *taskCopy;
 @synthesize task;
 
 @synthesize isNewTask;
+//@synthesize isPersonalTask;
 
 @synthesize arrDevelopers;
 
@@ -30,7 +31,7 @@ Task *taskCopy;
 @synthesize comboDevelopers;
 
 
-@synthesize prjTreeIndexPath;
+@synthesize tskTreeIndexPath;
 @synthesize prjArrCtrlIndex;
 
 @synthesize parentTaskListViewController;
@@ -85,7 +86,13 @@ Task *taskCopy;
     [self fetchDevelopersFromWebservice];
 }
 
-
+// lorsque l'utilisateur clique sur le "x rouge" pour fermer la fenêtre. 
+- (void)windowShouldClose:(NSNotification *)notification
+{
+    
+    // annuler les changements.
+    [self cancelButtonClicked:self];
+}
 
 - (IBAction)cancelButtonClicked:(id)sender {
     
@@ -95,7 +102,11 @@ Task *taskCopy;
         //[[parentProjectListViewController mutableArrayValueForKey:@"arrPrj"] replaceObjectAtIndex:[parentProjectListViewController.arrPrj indexOfObject:project] withObject:projectCopy];
         
         // cancel changes -> replace current project with previously made copy of project.
-        if (prjTreeIndexPath) {
+        if (tskTreeIndexPath) {
+            
+            [parentTaskListViewController.taskTreeCtrl removeObjectAtArrangedObjectIndexPath:tskTreeIndexPath];
+            
+            [parentTaskListViewController.taskTreeCtrl insertObject:taskCopy atArrangedObjectIndexPath:tskTreeIndexPath];
             
            /* [parentProjectListViewController.prjTreeController removeObjectAtArrangedObjectIndexPath:prjTreeIndexPath];
         
@@ -126,41 +137,35 @@ Task *taskCopy;
 
 - (IBAction)okButtonClicked:(id)sender {
     
-   /* BOOL taskUpdSuc = NO;
+    BOOL taskUpdSuc = NO;
     
     // donner le focus au bouton 'OK'.
     [self.window makeFirstResponder:okButton];
     
-    // créer un nouveau projet.
-    if (isNewProject == YES) {
+    // créer une nouvelle tâche.
+    if (isNewTask == YES) {
         
         // user created.
-        project.userCreated = mainWindowController.loggedInUser;
+        task.userCreated = mainWindowController.loggedInUser;
         
         
-        taskUpdSuc = [PTProjectHelper createProject:project successBlock:^(NSMutableData *data) {
-            [self finishedCreatingProject:data];
-        } 
-                        mainWindowController:parentProjectListViewController];
+        taskUpdSuc = [PTTaskHelper createTask:task successBlock:^(NSMutableData *data) { 
+                                    [self finishedCreatingTask:data];
+                                }
+                                 failureBlock:^() {
+                                     
+                                 } mainWindowController:parentTaskListViewController];
     }
     // mettre à jour projet existant.
     else {
-        taskUpdSuc = [PTProjectHelper updateProject:project successBlock:^(NSMutableData *data) {
+        /*taskUpdSuc = [PTProjectHelper updateProject:project successBlock:^(NSMutableData *data) {
             [self finishedCreatingProject:data];
         } 
-                              mainWindowController:parentProjectListViewController];
-    }*/
+                              mainWindowController:parentProjectListViewController];*/
+    }
 }
 
-// lorsque l'utilisateur clique sur le "x rouge" pour fermer la fenêtre. 
-- (void)windowShouldClose:(NSNotification *)notification
-{
-    
-    // annuler les changements.
-    [self cancelButtonClicked:self];
-}
-
-- (void)finishedCreatingProject:(NSMutableData*)data {
+- (void)finishedCreatingTask:(NSMutableData*)data {
     
     
     NSError *error;
@@ -168,18 +173,18 @@ Task *taskCopy;
     NSDictionary *dict = [[NSDictionary alloc] init];
     dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
     
-    NSMutableArray *createdProjectArray = [[NSMutableArray alloc] init];
+    NSMutableArray *createdTaskArray = [[NSMutableArray alloc] init];
     
     // see Cocoa and Objective-C up and running by Scott Stevenson.
     // page 242
     //[createdUserArray addObjectsFromArray:[PTUserHelper setAttributesFromDictionary2:dict]];
     /*[createdProjectArray addObjectsFromArray:[PTProjectHelper setAttributesFromJSONDictionary:dict]];*/
     
-    NSLog(@"count: %lu", [createdProjectArray count]);
+    NSLog(@"count: %lu", [createdTaskArray count]);
     
-    if ([createdProjectArray count] == 1) {
+    if ([createdTaskArray count] == 1) {
 
-        for (Task *tsk in createdProjectArray) {
+        for (Task *tsk in createdTaskArray) {
    
             
             /*if (prj.parentProjectId) {

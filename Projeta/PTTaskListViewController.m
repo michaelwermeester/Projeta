@@ -27,6 +27,8 @@
 @synthesize mainWindowController;
 @synthesize parentProjectDetailsViewController;
 
+@synthesize isPersonalTask;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     //self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -188,6 +190,8 @@
         
         Task *tsk = [[Task alloc] init];
         
+        tsk.isPersonal = isPersonalTask;
+        
         // get parent node.
         NSTreeNode *parent = [[[[taskTreeCtrl selectedNodes] objectAtIndex:0] parentNode] parentNode];
         NSMutableArray *parentTasks = [[parent representedObject] mutableArrayValueForKeyPath:
@@ -259,6 +263,8 @@
         Task *tsk = [[Task alloc] init];
         tsk.parentTaskId = parentID;
         
+        tsk.isPersonal = isPersonalTask;
+        
         Task *tmpTask = [selectedObjects objectAtIndex:0]; 
         
         if ([tmpTask childTask] == nil) {
@@ -289,6 +295,33 @@
     [self openTaskDetailsWindow:NO isSubTask:NO];
 }
 
+- (IBAction)removeTaskButtonClicked:(id)sender {
+    
+    // index du tab actuel.
+    //int selectedTabIndex = [prjTabView indexOfTabViewItem:[prjTabView selectedTabViewItem]];
+    
+    NSArray *selectedObjects;
+    
+    //if (selectedTabIndex == 1) {
+        selectedObjects = [taskTreeCtrl selectedObjects];
+    //} else if (selectedTabIndex == 0) {
+    //    selectedObjects = [prjArrayCtrl selectedObjects];
+    //}
+    
+    // supprimer en DB.
+    [PTTaskHelper deleteTask:[selectedObjects objectAtIndex:0] successBlock:^(NSMutableData *data){
+        //[self sucUserExists:userExists];
+        
+        //if (selectedTabIndex == 1) {
+            [taskTreeCtrl remove:self];
+        //} else if (selectedTabIndex == 0) {
+        //    [prjArrayCtrl remove:self];
+        //}
+    } failureBlock:^(){
+        //[self failUserExists];
+    } mainWindowController:mainWindowController];
+}
+
 - (void)openTaskDetailsWindow:(BOOL)isNewTask isSubTask:(BOOL)isSubTask {
     // get selected projects.
     //NSArray *selectedObjects = [prjArrayCtrl selectedObjects];
@@ -309,13 +342,13 @@
     //int selectedTabIndex = [prjTabView indexOfTabViewItem:[prjTabView selectedTabViewItem]];
     
     NSArray *selectedObjects;
-    NSIndexPath *prjTreeIndexPath;
+    NSIndexPath *tskTreeIndexPath;
     //NSUInteger prjArrCtrlIndex;
     
     //if (selectedTabIndex == 1) {
         selectedObjects = [taskTreeCtrl selectedObjects];
         
-        prjTreeIndexPath = [taskTreeCtrl selectionIndexPath];
+        tskTreeIndexPath = [taskTreeCtrl selectionIndexPath];
     //} else {
     //    selectedObjects = [prjArrayCtrl selectedObjects];
     //    
@@ -332,7 +365,7 @@
         taskDetailsWindowController.task = [selectedObjects objectAtIndex:0];
         
         if (isNewTask == NO) {
-            taskDetailsWindowController.prjTreeIndexPath = prjTreeIndexPath;
+            taskDetailsWindowController.tskTreeIndexPath = tskTreeIndexPath;
             //taskDetailsWindowControllers.prjArrCtrlIndex = prjArrCtrlIndex;
         }
         

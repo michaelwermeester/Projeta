@@ -21,6 +21,8 @@
 @synthesize completed = completed;
 @synthesize childTask = childTask;
 @synthesize parentTaskId = parentTaskId;
+@synthesize priority = priority;
+@synthesize isPersonal = isPersonal;
 
 + (Task *)instanceFromDictionary:(NSDictionary *)aDictionary {
     
@@ -49,7 +51,14 @@
     else
         self.completed = [(NSString *)[aDictionary objectForKey:@"completed"] boolValue];
     
+    if ([[aDictionary objectForKey:@"isPersonal"] isKindOfClass:[NSNull class]])
+        self.completed = NO;
+    else
+        self.completed = [(NSString *)[aDictionary objectForKey:@"isPersonal"] boolValue];
+    
     self.userCreated = [User instanceFromDictionary:[aDictionary objectForKey:@"userCreated"]];
+    
+    self.priority = [NSDecimalNumber decimalNumberWithString:(NSString *)[aDictionary objectForKey:@"priority"]];
     
     // child task
     if ([[aDictionary objectForKey:@"childTask"] isKindOfClass:[NSArray class]]) {
@@ -84,6 +93,7 @@
     copy.userCreated = [userCreated copyWithZone:zone];
     copy.childTask = [childTask copyWithZone:zone];
     copy.parentTaskId = [parentTaskId copyWithZone:zone];
+    copy.priority = [priority copyWithZone:zone];
     
     //copy.dateCreated = [dateCreated copyWithZone:zone];
     //copy.endDateReal = [endDateReal copyWithZone:zone];
@@ -101,6 +111,21 @@
         return NO;
     else
         return YES;
+}
+
+- (NSArray *)createTaskKeys
+{
+    //NSArray *retArr = [[NSArray alloc] initWithObjects: @"projectTitle", @"projectDescription", @"endDate", @"endDateReal", @"flagPublic", @"completed", @"parentProjectId", @"startDate", @"startDateReal", @"userCreated", nil];
+    //NSArray *retArr = [[NSArray alloc] initWithObjects: @"projectTitle", @"projectDescription", @"flagPublic", nil];
+    NSArray *retArr = [[NSArray alloc] initWithObjects: @"taskTitle", @"taskDescription", @"completed", @"startDate", @"endDate", nil];
+    
+    return retArr;
+}
+
+- (NSArray *)taskIdKey {
+    NSArray *retArr = [[NSArray alloc] initWithObjects:@"taskId", nil];
+    
+    return retArr;
 }
 
 @end

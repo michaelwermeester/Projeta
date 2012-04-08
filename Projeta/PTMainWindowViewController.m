@@ -220,6 +220,9 @@ static User *_loggedInUser = nil;
                 
                 taskListViewController = [[PTTaskListViewController alloc] init];
                 
+                // tâche public.
+                taskListViewController.isPersonalTask = NO;
+                
                 // set reference to (parent) window
                 [taskListViewController setMainWindowController:mainWindowController];
                 
@@ -239,6 +242,9 @@ static User *_loggedInUser = nil;
             if (!taskListViewController) {
                 
                 taskListViewController = [[PTTaskListViewController alloc] init];
+                
+                // tâche personnelle.
+                taskListViewController.isPersonalTask = YES;
                 
                 // set reference to (parent) window
                 [taskListViewController setMainWindowController:mainWindowController];

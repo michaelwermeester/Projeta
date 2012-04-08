@@ -15,6 +15,7 @@
 @interface PTTaskDetailsWindowController : NSWindowController {
     
     BOOL isNewTask;
+    //BOOL isPersonalTask;
     __weak NSButton *okButton;
     __weak NSComboBox *comboDevelopers;
     
@@ -25,10 +26,12 @@
 
 @property (assign) BOOL isNewTask;
 
+//@property (assign) BOOL isPersonalTask;
+
 @property (strong) NSMutableArray *arrDevelopers;
 
 // test -- can remove
-@property (strong) NSIndexPath *prjTreeIndexPath;
+@property (strong) NSIndexPath *tskTreeIndexPath;
 @property (assign) NSUInteger prjArrCtrlIndex;
 
 // parent project list view controller.

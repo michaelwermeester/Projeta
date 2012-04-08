@@ -18,8 +18,11 @@
     NSString *taskTitle;
     User *userCreated;
     BOOL completed;
+    BOOL isPersonal;
     NSMutableArray *childTask;
     NSNumber *parentTaskId;
+    
+    NSNumber *priority;
 }
 
 @property (nonatomic, retain) NSDate *endDate;
@@ -29,13 +32,18 @@
 @property (nonatomic, copy) NSString *taskTitle;
 @property (nonatomic, retain) User *userCreated;
 @property (nonatomic, assign) BOOL completed;
+@property (nonatomic, assign) BOOL isPersonal;
 @property (strong) NSMutableArray *childTask;
 @property (nonatomic, copy) NSNumber *parentTaskId;
+@property (nonatomic, copy) NSNumber *priority;
 
 // Required by NSCopying protocol.
 - (id) copyWithZone:(NSZone *)zone;
 
 + (Task *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
+
+- (NSArray *)createTaskKeys;
+- (NSArray *)taskIdKey;
 
 @end
