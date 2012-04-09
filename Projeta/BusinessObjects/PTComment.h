@@ -8,6 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PTComment : NSObject
+@class User;
+
+@interface PTComment : NSObject <NSCopying>
+
+
+@property (nonatomic, copy) NSString *comment;
+@property (nonatomic, copy) NSNumber *commentId;
+@property (nonatomic, copy) NSDate *dateCreated;
+@property (nonatomic, retain) User *userCreated;
+
++ (PTComment *)instanceFromDictionary:(NSDictionary *)aDictionary;
+- (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
+
+// Required by NSCopying protocol.
+- (id) copyWithZone:(NSZone *)zone;
 
 @end

@@ -36,6 +36,7 @@
 		4C2AA22215321BD70093E8C1 /* PTComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2AA22115321BD60093E8C1 /* PTComment.m */; };
 		4C2AA226153246590093E8C1 /* PTCommentairesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2AA224153246590093E8C1 /* PTCommentairesWindowController.m */; };
 		4C2AA227153246590093E8C1 /* PTCommentairesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C2AA225153246590093E8C1 /* PTCommentairesWindow.xib */; };
+		4C2AA22A1532E1DC0093E8C1 /* PTCommentHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2AA2291532E1DA0093E8C1 /* PTCommentHelper.m */; };
 		4C2C7CA613F335AB00D9AE3D /* SourceListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2C7CA513F335AB00D9AE3D /* SourceListItem.m */; };
 		4C32ECBB13DDE690009E7131 /* PTUserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C32ECB813DDE690009E7131 /* PTUserHelper.m */; };
 		4C32ECBC13DDE690009E7131 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C32ECBA13DDE690009E7131 /* User.m */; };
@@ -165,6 +166,8 @@
 		4C2AA223153246590093E8C1 /* PTCommentairesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTCommentairesWindowController.h; sourceTree = "<group>"; };
 		4C2AA224153246590093E8C1 /* PTCommentairesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTCommentairesWindowController.m; sourceTree = "<group>"; };
 		4C2AA225153246590093E8C1 /* PTCommentairesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTCommentairesWindow.xib; sourceTree = "<group>"; };
+		4C2AA2281532E1DA0093E8C1 /* PTCommentHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTCommentHelper.h; sourceTree = "<group>"; };
+		4C2AA2291532E1DA0093E8C1 /* PTCommentHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTCommentHelper.m; sourceTree = "<group>"; };
 		4C2C7CA413F335AB00D9AE3D /* SourceListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceListItem.h; sourceTree = "<group>"; };
 		4C2C7CA513F335AB00D9AE3D /* SourceListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceListItem.m; sourceTree = "<group>"; };
 		4C32ECB713DDE690009E7131 /* PTUserHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTUserHelper.h; sourceTree = "<group>"; };
@@ -417,6 +420,8 @@
 				4C6A256C14D9C47C00C66540 /* PTClientHelper.m */,
 				4C6A256714D9C45A00C66540 /* Client.h */,
 				4C6A256814D9C45A00C66540 /* Client.m */,
+				4C2AA2281532E1DA0093E8C1 /* PTCommentHelper.h */,
+				4C2AA2291532E1DA0093E8C1 /* PTCommentHelper.m */,
 				4C2AA22015321BD60093E8C1 /* PTComment.h */,
 				4C2AA22115321BD60093E8C1 /* PTComment.m */,
 				4C8173ED1407BE810012C0EB /* PTProjectHelper.h */,
@@ -873,6 +878,7 @@
 				4C2AA21F15321B450093E8C1 /* PTCommentairesViewController.m in Sources */,
 				4C2AA22215321BD70093E8C1 /* PTComment.m in Sources */,
 				4C2AA226153246590093E8C1 /* PTCommentairesWindowController.m in Sources */,
+				4C2AA22A1532E1DC0093E8C1 /* PTCommentHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
