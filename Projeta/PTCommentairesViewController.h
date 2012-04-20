@@ -10,8 +10,11 @@
 
 @class Task;
 
-@interface PTCommentairesViewController : NSViewController
+@interface PTCommentairesViewController : NSViewController {
+}
+
 
 @property (strong) Task *task;
+@property (strong) NSMutableArray *arrComment;
 
 @end
