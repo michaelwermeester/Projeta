@@ -27,6 +27,7 @@
 		4C23BB3013DA1F5400E18E43 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 4C23BB2F13DA1F5400E18E43 /* main.c */; };
 		4C23BB3213DA1F5400E18E43 /* GetMetadataForFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C23BB3113DA1F5400E18E43 /* GetMetadataForFile.m */; };
 		4C23BB3513DA1F5400E18E43 /* MySpotlightImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C23BB3413DA1F5400E18E43 /* MySpotlightImporter.m */; };
+		4C2728F71541D999002F7963 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C2728F61541D999002F7963 /* WebKit.framework */; };
 		4C27F3CA13E5C40900B1A8EC /* MWConnectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C27F3C913E5C40900B1A8EC /* MWConnectionController.m */; };
 		4C2AA20B152E113C0093E8C1 /* PTBugListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C2AA20A152E113C0093E8C1 /* PTBugListView.xib */; };
 		4C2AA211152E11840093E8C1 /* PTBugListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2AA210152E11840093E8C1 /* PTBugListViewController.m */; };
@@ -151,6 +152,7 @@
 		4C23BB3413DA1F5400E18E43 /* MySpotlightImporter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MySpotlightImporter.m; sourceTree = "<group>"; };
 		4C23BB3613DA1F5400E18E43 /* Importer Read Me.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Importer Read Me.txt"; sourceTree = "<group>"; };
 		4C23BB3713DA1F5400E18E43 /* ProjetaImporter-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ProjetaImporter-Prefix.pch"; sourceTree = "<group>"; };
+		4C2728F61541D999002F7963 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		4C27F3C813E5C40900B1A8EC /* MWConnectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWConnectionController.h; sourceTree = "<group>"; };
 		4C27F3C913E5C40900B1A8EC /* MWConnectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWConnectionController.m; sourceTree = "<group>"; };
 		4C2AA20A152E113C0093E8C1 /* PTBugListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTBugListView.xib; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C0BC5B513DA1D15003360E2 /* Cocoa.framework in Frameworks */,
+				4C2728F71541D999002F7963 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,6 +494,7 @@
 		4C74A60513A2BFA100E7DBF6 = {
 			isa = PBXGroup;
 			children = (
+				4C2728F61541D999002F7963 /* WebKit.framework */,
 				4C779FD3142699F500D8C8A0 /* projeta_icon.icns */,
 				4C74A61A13A2BFA100E7DBF6 /* Projeta */,
 				4C74A63A13A2BFA100E7DBF6 /* ProjetaTests */,

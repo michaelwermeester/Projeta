@@ -19,6 +19,7 @@
 
 @synthesize task;
 @synthesize arrComment;
+@synthesize commentWebView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,7 +33,7 @@
 }
 
 - (void)viewDidLoad {
-    // get server URL as string
+    /*// get server URL as string
     NSString *urlString = [PTCommon serverURLString];
     // build URL by adding resource path
     
@@ -57,6 +58,19 @@
     //[mainWindowController startProgressIndicatorAnimation];
     
     [connectionController startRequestForURL:url setRequest:urlRequest];
+    */
+    
+    // get server URL as string
+    NSString *commentUrlString = [[NSString alloc] initWithString:@"http://www.google.com"];
+    // build URL by adding resource path
+
+    
+    // convert to NSURL
+    NSURL *commentUrl = [NSURL URLWithString:commentUrlString];
+    
+    NSMutableURLRequest* commentRequest = [NSMutableURLRequest requestWithURL:commentUrl];
+    
+    [[commentWebView mainFrame] loadRequest:commentRequest];
 }
 
 - (void)loadView
@@ -66,6 +80,7 @@
     [self viewDidLoad];
 }
 
+/*
 // NSURLConnection
 - (void)requestFinished:(NSMutableData*)data
 {
@@ -107,6 +122,6 @@
     //[mainWindowController stopProgressIndicatorAnimation];
     
     NSLog(@"Failed %@ with code %ld and with userInfo %@",[error domain],[error code],[error userInfo]);
-}
+}*/
 
 @end
