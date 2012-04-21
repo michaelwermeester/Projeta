@@ -28,6 +28,8 @@
 		4C23BB3213DA1F5400E18E43 /* GetMetadataForFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C23BB3113DA1F5400E18E43 /* GetMetadataForFile.m */; };
 		4C23BB3513DA1F5400E18E43 /* MySpotlightImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C23BB3413DA1F5400E18E43 /* MySpotlightImporter.m */; };
 		4C2728F71541D999002F7963 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C2728F61541D999002F7963 /* WebKit.framework */; };
+		4C2728FE1542B335002F7963 /* Bug.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2728FD1542B335002F7963 /* Bug.m */; };
+		4C2729011542B352002F7963 /* PTBugHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2729001542B352002F7963 /* PTBugHelper.m */; };
 		4C27F3CA13E5C40900B1A8EC /* MWConnectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C27F3C913E5C40900B1A8EC /* MWConnectionController.m */; };
 		4C2AA20B152E113C0093E8C1 /* PTBugListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C2AA20A152E113C0093E8C1 /* PTBugListView.xib */; };
 		4C2AA211152E11840093E8C1 /* PTBugListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2AA210152E11840093E8C1 /* PTBugListViewController.m */; };
@@ -153,6 +155,10 @@
 		4C23BB3613DA1F5400E18E43 /* Importer Read Me.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Importer Read Me.txt"; sourceTree = "<group>"; };
 		4C23BB3713DA1F5400E18E43 /* ProjetaImporter-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ProjetaImporter-Prefix.pch"; sourceTree = "<group>"; };
 		4C2728F61541D999002F7963 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		4C2728FC1542B335002F7963 /* Bug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bug.h; sourceTree = "<group>"; };
+		4C2728FD1542B335002F7963 /* Bug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bug.m; sourceTree = "<group>"; };
+		4C2728FF1542B352002F7963 /* PTBugHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTBugHelper.h; sourceTree = "<group>"; };
+		4C2729001542B352002F7963 /* PTBugHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTBugHelper.m; sourceTree = "<group>"; };
 		4C27F3C813E5C40900B1A8EC /* MWConnectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWConnectionController.h; sourceTree = "<group>"; };
 		4C27F3C913E5C40900B1A8EC /* MWConnectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWConnectionController.m; sourceTree = "<group>"; };
 		4C2AA20A152E113C0093E8C1 /* PTBugListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTBugListView.xib; sourceTree = "<group>"; };
@@ -415,6 +421,10 @@
 			children = (
 				4CF8DB581466DEF1009FEB2F /* OutlineCollection.h */,
 				4CF8DB591466DEF1009FEB2F /* OutlineCollection.m */,
+				4C2728FF1542B352002F7963 /* PTBugHelper.h */,
+				4C2729001542B352002F7963 /* PTBugHelper.m */,
+				4C2728FC1542B335002F7963 /* Bug.h */,
+				4C2728FD1542B335002F7963 /* Bug.m */,
 				4C5B7ACB14DD50B400DC1F75 /* PTBugCategoryHelper.h */,
 				4C5B7ACC14DD50CA00DC1F75 /* PTBugCategoryHelper.m */,
 				4C5B7AC814DD4F4F00DC1F75 /* BugCategory.h */,
@@ -883,6 +893,8 @@
 				4C2AA22215321BD70093E8C1 /* PTComment.m in Sources */,
 				4C2AA226153246590093E8C1 /* PTCommentairesWindowController.m in Sources */,
 				4C2AA22A1532E1DC0093E8C1 /* PTCommentHelper.m in Sources */,
+				4C2728FE1542B335002F7963 /* Bug.m in Sources */,
+				4C2729011542B352002F7963 /* PTBugHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

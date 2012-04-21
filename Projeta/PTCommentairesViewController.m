@@ -10,6 +10,7 @@
 #import "PTCommentairesViewController.h"
 #import "PTcommentHelper.h"
 #import "PTCommon.h"
+#import "Task.h"
 
 @interface PTCommentairesViewController ()
 
@@ -60,8 +61,18 @@
     [connectionController startRequestForURL:url setRequest:urlRequest];
     */
     
+    NSString *commentUrlString;
+    
+    // afficher commentaires pour tâche...
+    if (task) {
+        if (task.taskId) {
+            commentUrlString = [[NSString alloc] initWithString:@"http://luckycode.be:8080/projeta-website/faces/commentsCocoa.xhtml?type=task&id="];
+            commentUrlString = [commentUrlString stringByAppendingString:[[task taskId] stringValue]];
+        }
+    }
+    
     // get server URL as string
-    NSString *commentUrlString = [[NSString alloc] initWithString:@"http://www.google.com"];
+    //NSString *commentUrlString = [[NSString alloc] initWithString:@"http://www.google.com"];
     // build URL by adding resource path
 
     
