@@ -70,10 +70,6 @@
             commentUrlString = [commentUrlString stringByAppendingString:[[task taskId] stringValue]];
         }
     }
-    
-    // get server URL as string
-    //NSString *commentUrlString = [[NSString alloc] initWithString:@"http://www.google.com"];
-    // build URL by adding resource path
 
     
     // convert to NSURL
@@ -81,6 +77,7 @@
     
     NSMutableURLRequest* commentRequest = [NSMutableURLRequest requestWithURL:commentUrl];
     
+    // charger et afficher le site web.
     [[commentWebView mainFrame] loadRequest:commentRequest];
 }
 
