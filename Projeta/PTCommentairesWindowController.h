@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class MainWindowController;
 @class PTCommentairesViewController;
 @class Task;
 
@@ -19,6 +20,9 @@
 @property (strong) Task *task;
 
 @property (strong) PTCommentairesViewController *commentViewController;
+
+// reference to the (parent) MainWindowController
+@property (assign) MainWindowController *mainWindowController;
 
 @property (weak) IBOutlet NSView *commentsView;
 

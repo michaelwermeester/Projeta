@@ -49,4 +49,13 @@
     return copy;
 }
 
+
+
+- (NSArray *)createCommentKeys
+{
+    NSArray *retArr = [[NSArray alloc] initWithObjects: @"comment", nil];
+    
+    return retArr;
+}
+
 @end

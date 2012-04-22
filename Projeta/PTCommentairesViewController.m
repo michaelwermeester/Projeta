@@ -6,7 +6,9 @@
 //  Copyright (c) 2012 Michael Wermeester. All rights reserved.
 //
 
+#import "MainWindowController.h"
 #import "MWConnectionController.h"
+#import "PTComment.h"
 #import "PTCommentairesViewController.h"
 #import "PTcommentHelper.h"
 #import "PTCommon.h"
@@ -18,9 +20,14 @@
 
 @implementation PTCommentairesViewController
 
+@synthesize comment;
 @synthesize task;
 @synthesize arrComment;
 @synthesize commentWebView;
+@synthesize commentTextView;
+@synthesize mainWindowController;
+@synthesize parentWindowController;
+@synthesize sendCommentButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,6 +35,9 @@
     if (self) {
         // Initialization code here.
         arrComment = [[NSMutableArray alloc] init];
+        
+        // instancier nouveau commentaire.
+        comment = [[PTComment alloc] init];
     }
     
     return self;
@@ -131,5 +141,60 @@
     
     NSLog(@"Failed %@ with code %ld and with userInfo %@",[error domain],[error code],[error userInfo]);
 }*/
+
+- (IBAction)sendCommentButtonClicked:(id)sender {
+    
+    BOOL commentUpdSuc = NO;
+    
+    // donner le focus au bouton 'OK'.
+    [parentWindowController.window makeFirstResponder:sendCommentButton];
+    
+    // créer une nouvelle tâche.
+
+    
+    // user created.
+    comment.userCreated = mainWindowController.loggedInUser;
+        
+    commentUpdSuc = [PTCommentHelper createComment:comment forTask:task successBlock:^(NSMutableData *data) { 
+            [self finishedCreatingComment:data];
+        } failureBlock:^() {
+                                     
+        } mainWindowController:mainWindowController];
+}
+
+- (void)finishedCreatingComment:(NSMutableData*)data {
+    
+    
+    NSError *error;
+    
+    NSDictionary *dict = [[NSDictionary alloc] init];
+    dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
+    
+    NSMutableArray *createdCommentArray = [[NSMutableArray alloc] init];
+    
+    // see Cocoa and Objective-C up and running by Scott Stevenson.
+    // page 242
+    //[createdUserArray addObjectsFromArray:[PTUserHelper setAttributesFromDictionary2:dict]];
+    /*[createdProjectArray addObjectsFromArray:[PTProjectHelper setAttributesFromJSONDictionary:dict]];*/
+    
+    NSLog(@"count: %lu", [createdCommentArray count]);
+    
+    if ([createdCommentArray count] == 1) {
+        
+        for (PTComment *cmt in createdCommentArray) {
+            
+            
+            
+            // reassign user with user returned from web-service. 
+            //self.task = tsk;
+            
+            //NSLog(@"id: %d", [prj.projectId intValue]);
+            //NSLog(@"title: %@", prj.projectTitle);
+        }
+    }
+    
+    // close this window.
+    //[self close];
+}
 
 @end

@@ -10,7 +10,9 @@
 
 @class User;
 
-@interface PTComment : NSObject <NSCopying>
+@interface PTComment : NSObject <NSCopying> {
+    User *userCreated;
+}
 
 
 @property (nonatomic, copy) NSString *comment;
@@ -23,5 +25,8 @@
 
 // Required by NSCopying protocol.
 - (id) copyWithZone:(NSZone *)zone;
+
+
+- (NSArray *)createCommentKeys;
 
 @end

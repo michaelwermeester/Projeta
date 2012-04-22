@@ -17,6 +17,7 @@
 
 @synthesize commentsView;
 @synthesize commentViewController;
+@synthesize mainWindowController;
 @synthesize task;
 
 - (id)init
@@ -39,6 +40,9 @@
     commentViewController = [[PTCommentairesViewController alloc] init];
     
     commentViewController.task = task;
+    // garder références.
+    commentViewController.parentWindowController = self;
+    commentViewController.mainWindowController = mainWindowController;
     
     // resize the view to fit and fill the right splitview view
     [commentViewController.view setFrameSize:commentsView.frame.size];

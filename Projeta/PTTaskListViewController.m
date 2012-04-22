@@ -351,6 +351,9 @@
     selectedObjects = [taskTreeCtrl selectedObjects];
     commentWindowController.task = [selectedObjects objectAtIndex:0];
     
+    // référence vers mainWindowController. 
+    commentWindowController.mainWindowController = mainWindowController;
+    
     [commentWindowController showWindow:self];
 }
 
