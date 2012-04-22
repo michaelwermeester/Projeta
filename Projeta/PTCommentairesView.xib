@@ -93,7 +93,7 @@
 												<string>public.url</string>
 											</object>
 										</object>
-										<string key="NSFrameSize">{615, 55}</string>
+										<string key="NSFrame">{{0, 10}, {615, 45}}</string>
 										<reference key="NSSuperview" ref="169253105"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="1042650380"/>
@@ -268,7 +268,7 @@
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="1060029463">
-							<int key="NSCellFlags">67239424</int>
+							<int key="NSCellFlags">604110336</int>
 							<int key="NSCellFlags2">134217728</int>
 							<string key="NSContents">Envoyer</string>
 							<object class="NSFont" key="NSSupport">
@@ -436,6 +436,14 @@
 					</object>
 					<int key="connectionID">279</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="213195498"/>
+						<reference key="destination" ref="1001"/>
+					</object>
+					<int key="connectionID">280</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -592,7 +600,7 @@
 				<reference key="dict.values" ref="1002"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">279</int>
+			<int key="maxID">280</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

@@ -43,6 +43,14 @@
     return self;
 }
 
+- (void)awakeFromNib {
+    NSNotificationCenter * center = [NSNotificationCenter defaultCenter];  
+    [center addObserver:self                                               
+               selector:@selector(textDidChange:)
+                   name:NSTextDidChangeNotification
+                 object:commentTextView];
+}
+
 - (void)viewDidLoad {
     /*// get server URL as string
     NSString *urlString = [PTCommon serverURLString];
@@ -195,6 +203,19 @@
     
     // close this window.
     //[self close];
+}
+
+- (void)textDidChange:(NSNotification *)aNotification
+{
+    // username NSTextField
+    if([aNotification object] == commentTextView)
+    {
+        if ([[commentTextView string] length] > 0) {
+            [sendCommentButton setEnabled:YES];
+        } else {
+            [sendCommentButton setEnabled:NO];
+        }
+    }
 }
 
 @end
