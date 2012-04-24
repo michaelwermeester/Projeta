@@ -10,4 +10,10 @@
 
 @interface PTBugHelper : NSObject
 
+@property (nonatomic, copy) NSArray *bug;
+
++ (PTBugHelper *)instanceFromDictionary:(NSDictionary *)aDictionary;
+- (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
++ (NSMutableArray *)setAttributesFromJSONDictionary:(NSDictionary *)aDictionary;
+
 @end

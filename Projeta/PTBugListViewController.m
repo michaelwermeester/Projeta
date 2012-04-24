@@ -8,11 +8,11 @@
 
 #import "PTBugListViewController.h"
 #import <Foundation/NSJSONSerialization.h>
+#import "Bug.h"
 #import "MainWindowController.h"
 #import "MWConnectionController.h"
+#import "PTBugHelper.h"
 #import "PTCommon.h"
-//#import "PTBugHelper.h"
-//#import "Bug.h"
 
 @implementation PTBugListViewController
 @synthesize outlineViewProjetColumn;
@@ -111,7 +111,7 @@
 
     //dispatch_async(dispatch_get_main_queue(), ^{
         
-        //[[self mutableArrayValueForKey:@"arrBug"] addObjectsFromArray:[PTBugHelper setAttributesFromJSONDictionary:dict]];
+        [[self mutableArrayValueForKey:@"arrBug"] addObjectsFromArray:[PTBugHelper setAttributesFromJSONDictionary:dict]];
         
         // stop animating the main window's circular progress indicator.
         [mainWindowController stopProgressIndicatorAnimation];
