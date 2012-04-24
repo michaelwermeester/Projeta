@@ -9,6 +9,8 @@
 #import <Cocoa/Cocoa.h>
 
 @class MainWindowController;
+@class PTCommentairesWindowController;
+@class PTProjectDetailsViewController;
 
 @interface PTBugListViewController : NSViewController {
     NSMutableArray *arrBug;     // array which holds the projects
@@ -17,6 +19,9 @@
     NSOutlineView *bugOutlineView;
     __weak NSTableColumn *outlineViewProjetColumn;
     __weak NSButton *projectButton;
+    
+    // fenêtre commentaires.
+    PTCommentairesWindowController *commentWindowController;
 }
 
 @property (strong) NSMutableArray *arrBug;
@@ -30,6 +35,9 @@
 
 // reference to the (parent) MainWindowController
 @property (assign) MainWindowController *mainWindowController;
+
+// reference to the (parent) PTProjectDetailsViewController
+@property (assign) PTProjectDetailsViewController *parentProjectDetailsViewController;
 
 - (void)requestFinished:(NSMutableData*)data;
 - (void)requestFailed:(NSError*)error;

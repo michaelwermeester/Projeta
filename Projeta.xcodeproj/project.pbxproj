@@ -80,6 +80,9 @@
 		4CBCE9C013ABC22200835F30 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBCE9BF13ABC22200835F30 /* MainWindowController.m */; };
 		4CBCEA2013AD180200835F30 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBCEA1F13AD180200835F30 /* PreferencesController.m */; };
 		4CC9FB9D13E9EED800A11EA7 /* PTCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC9FB9C13E9EED800A11EA7 /* PTCommon.m */; };
+		4CCD965B154750EF006F2921 /* PTBugDetailsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CCD965A154750EF006F2921 /* PTBugDetailsWindow.xib */; };
+		4CCD965E154750FE006F2921 /* PTBugDetailsWindowController.h in Resources */ = {isa = PBXBuildFile; fileRef = 4CCD965D154750FE006F2921 /* PTBugDetailsWindowController.h */; };
+		4CCD966015475111006F2921 /* PTBugDetailsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCD965F15475111006F2921 /* PTBugDetailsWindowController.m */; };
 		4CCDB32213F83CB80084FC84 /* PTProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCDB32013F83CB80084FC84 /* PTProjectViewController.m */; };
 		4CE32EC31527A4090082B0C9 /* calendar_small_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CE32EC21527A4090082B0C9 /* calendar_small_icon.png */; };
 		4CE69FDC14D9F1850008BAF0 /* PTClientDetailsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CE69FDB14D9F1850008BAF0 /* PTClientDetailsWindow.xib */; };
@@ -250,6 +253,9 @@
 		4CBCEA1F13AD180200835F30 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
 		4CC9FB9B13E9EED800A11EA7 /* PTCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTCommon.h; sourceTree = "<group>"; };
 		4CC9FB9C13E9EED800A11EA7 /* PTCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTCommon.m; sourceTree = "<group>"; };
+		4CCD965A154750EF006F2921 /* PTBugDetailsWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTBugDetailsWindow.xib; sourceTree = "<group>"; };
+		4CCD965D154750FE006F2921 /* PTBugDetailsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTBugDetailsWindowController.h; sourceTree = "<group>"; };
+		4CCD965F15475111006F2921 /* PTBugDetailsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTBugDetailsWindowController.m; sourceTree = "<group>"; };
 		4CCDB31F13F83CB80084FC84 /* PTProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTProjectViewController.h; sourceTree = "<group>"; };
 		4CCDB32013F83CB80084FC84 /* PTProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTProjectViewController.m; sourceTree = "<group>"; };
 		4CE32EC21527A4090082B0C9 /* calendar_small_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar_small_icon.png; sourceTree = "<group>"; };
@@ -465,6 +471,9 @@
 		4C5B7ABD14DD473400DC1F75 /* Bugs */ = {
 			isa = PBXGroup;
 			children = (
+				4CCD965D154750FE006F2921 /* PTBugDetailsWindowController.h */,
+				4CCD965F15475111006F2921 /* PTBugDetailsWindowController.m */,
+				4CCD965A154750EF006F2921 /* PTBugDetailsWindow.xib */,
 				4C5B7AC314DD47AE00DC1F75 /* PTBugCategoryManagementViewController.h */,
 				4C5B7AC414DD47CE00DC1F75 /* PTBugCategoryManagementViewController.m */,
 				4C5B7ABF14DD477900DC1F75 /* PTBugCategoryManagementView.xib */,
@@ -783,6 +792,8 @@
 				4C2AA20B152E113C0093E8C1 /* PTBugListView.xib in Resources */,
 				4C2AA213152E47C20093E8C1 /* PTTaskDetailsWindow.xib in Resources */,
 				4C2AA227153246590093E8C1 /* PTCommentairesWindow.xib in Resources */,
+				4CCD965B154750EF006F2921 /* PTBugDetailsWindow.xib in Resources */,
+				4CCD965E154750FE006F2921 /* PTBugDetailsWindowController.h in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -895,6 +906,7 @@
 				4C2AA22A1532E1DC0093E8C1 /* PTCommentHelper.m in Sources */,
 				4C2728FE1542B335002F7963 /* Bug.m in Sources */,
 				4C2729011542B352002F7963 /* PTBugHelper.m in Sources */,
+				4CCD966015475111006F2921 /* PTBugDetailsWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
