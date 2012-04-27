@@ -11,6 +11,7 @@
 #import "Bug.h"
 #import "MainWindowController.h"
 #import "MWConnectionController.h"
+#import "PTBugDetailsWindowController.h"
 #import "PTBugHelper.h"
 #import "PTCommon.h"
 
@@ -157,6 +158,10 @@
     
 }
 
+- (IBAction)detailsButtonClicked:(id)sender {
+    [self openBugDetailsWindow:NO];
+}
+
 // update user when finished editing cell in table view
 - (void)editingDidEnd:(NSNotification *)notification
 {
@@ -171,6 +176,62 @@
             //[self updateUser:usr];
         }*/
     }
+}
+
+
+
+- (void)openBugDetailsWindow:(BOOL)isNewBug {
+    // get selected projects.
+    //NSArray *selectedObjects = [prjArrayCtrl selectedObjects];
+    
+    
+    /*if (isNewProject == YES)
+     {
+     projectDetailsWindowController = [[PTProjectDetailsWindowController alloc] init];
+     projectDetailsWindowController.parentProjectListViewController = self;
+     projectDetailsWindowController.mainWindowController = mainWindowController;
+     projectDetailsWindowController.isNewProject = isNewProject;
+     
+     [projectDetailsWindowController showWindow:self];
+     }
+     else {*/
+    
+    
+    //int selectedTabIndex = [prjTabView indexOfTabViewItem:[prjTabView selectedTabViewItem]];
+    
+    NSArray *selectedObjects;
+    //NSIndexPath *tskTreeIndexPath;
+    //NSUInteger prjArrCtrlIndex;
+    NSLog(@"ok");
+    
+    //if (selectedTabIndex == 1) {
+    selectedObjects = [bugArrayCtrl selectedObjects];
+    
+    //tskTreeIndexPath = [taskTreeCtrl selectionIndexPath];
+    //} else {
+    //    selectedObjects = [prjArrayCtrl selectedObjects];
+    //    
+    //    prjArrCtrlIndex = [prjArrayCtrl selectionIndex];
+    //}
+    
+    // if a task is selected, open the window to show its details.
+    if ([selectedObjects count] == 1) {
+        NSLog(@"ok1");
+        bugDetailsWindowController = [[PTBugDetailsWindowController alloc] init];
+        bugDetailsWindowController.parentBugListViewController = self;
+        bugDetailsWindowController.mainWindowController = mainWindowController;
+        bugDetailsWindowController.isNewBug = isNewBug;
+        bugDetailsWindowController.bug = [selectedObjects objectAtIndex:0];
+        
+        if (isNewBug == NO) {
+            //bugDetailsWindowController.tskTreeIndexPath = tskTreeIndexPath;
+            //taskDetailsWindowControllers.prjArrCtrlIndex = prjArrCtrlIndex;
+        }
+        
+        [bugDetailsWindowController showWindow:self];
+        //}];
+    }
+    //}
 }
 
 @end

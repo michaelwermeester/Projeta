@@ -13,8 +13,8 @@
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>NSScroller</string>
 			<string>NSArrayController</string>
-			<string>NSButton</string>
 			<string>NSTableHeaderView</string>
+			<string>NSButton</string>
 			<string>NSScrollView</string>
 			<string>NSButtonCell</string>
 			<string>NSTextFieldCell</string>
@@ -28,7 +28,6 @@
 			<string>NSUserDefaultsController</string>
 			<string>NSTableColumn</string>
 			<string>NSTextField</string>
-			<string>NSTreeController</string>
 		</array>
 		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -745,18 +744,6 @@
 				<bool key="NSFilterRestrictsInsertion">YES</bool>
 				<bool key="NSClearsFilterPredicateOnInsertion">YES</bool>
 			</object>
-			<object class="NSTreeController" id="108820127">
-				<array class="NSMutableArray" key="NSDeclaredKeys">
-					<string>bugId</string>
-				</array>
-				<string key="NSObjectClassName">Bug</string>
-				<bool key="NSEditable">YES</bool>
-				<object class="_NSManagedProxy" key="_NSManagedProxy"/>
-				<bool key="NSAvoidsEmptySelection">YES</bool>
-				<bool key="NSPreservesSelection">YES</bool>
-				<bool key="NSSelectsInsertedObjects">YES</bool>
-				<string key="NSTreeContentChildrenKey">childBug</string>
-			</object>
 			<object class="NSUserDefaultsController" id="665358131">
 				<bool key="NSSharedInstance">YES</bool>
 			</object>
@@ -770,22 +757,6 @@
 						<reference key="destination" ref="1005"/>
 					</object>
 					<int key="connectionID">2</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">taskArrayCtrl</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="709179103"/>
-					</object>
-					<int key="connectionID">18</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">taskTreeCtrl</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="108820127"/>
-					</object>
-					<int key="connectionID">336</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -812,6 +783,22 @@
 					<int key="connectionID">362</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">detailsButtonClicked:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="526063154"/>
+					</object>
+					<int key="connectionID">1624</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">bugArrayCtrl</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="709179103"/>
+					</object>
+					<int key="connectionID">1625</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">contentArray: arrBug</string>
 						<reference key="source" ref="709179103"/>
@@ -826,30 +813,6 @@
 						</object>
 					</object>
 					<int key="connectionID">1509</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">add:</string>
-						<reference key="source" ref="108820127"/>
-						<reference key="destination" ref="923252563"/>
-					</object>
-					<int key="connectionID">1087</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">contentArray: arrBug</string>
-						<reference key="source" ref="108820127"/>
-						<reference key="destination" ref="1001"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="108820127"/>
-							<reference key="NSDestination" ref="1001"/>
-							<string key="NSLabel">contentArray: arrBug</string>
-							<string key="NSBinding">contentArray</string>
-							<string key="NSKeyPath">arrBug</string>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">1510</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -1159,7 +1122,7 @@
 						<string key="label">content: arrangedObjects</string>
 						<reference key="source" ref="874013316"/>
 						<reference key="destination" ref="709179103"/>
-						<object class="NSNibBindingConnector" key="connector">
+						<object class="NSNibBindingConnector" key="connector" id="249158388">
 							<reference key="NSSource" ref="874013316"/>
 							<reference key="NSDestination" ref="709179103"/>
 							<string key="NSLabel">content: arrangedObjects</string>
@@ -1169,6 +1132,23 @@
 						</object>
 					</object>
 					<int key="connectionID">1614</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">selectionIndexes: selectionIndexes</string>
+						<reference key="source" ref="874013316"/>
+						<reference key="destination" ref="709179103"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="874013316"/>
+							<reference key="NSDestination" ref="709179103"/>
+							<string key="NSLabel">selectionIndexes: selectionIndexes</string>
+							<string key="NSBinding">selectionIndexes</string>
+							<string key="NSKeyPath">selectionIndexes</string>
+							<reference key="NSPreviousConnector" ref="249158388"/>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">1637</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -1704,11 +1684,6 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">16</int>
 						<reference key="object" ref="709179103"/>
-						<reference key="parent" ref="0"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">17</int>
-						<reference key="object" ref="108820127"/>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -2326,7 +2301,7 @@
 								<int key="contentType">3</int>
 								<reference key="containingView" ref="241073561"/>
 							</object>
-							<object class="IBNSLayoutConstraint" id="952448628">
+							<object class="IBNSLayoutConstraint" id="455906218">
 								<reference key="firstItem" ref="294854854"/>
 								<int key="firstAttribute">5</int>
 								<int key="relation">0</int>
@@ -2350,7 +2325,7 @@
 						<reference key="object" ref="294854854"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="218632190"/>
-							<object class="IBNSLayoutConstraint" id="259950061">
+							<object class="IBNSLayoutConstraint" id="676391595">
 								<reference key="firstItem" ref="294854854"/>
 								<int key="firstAttribute">7</int>
 								<int key="relation">0</int>
@@ -2371,7 +2346,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">1616</int>
-						<reference key="object" ref="952448628"/>
+						<reference key="object" ref="455906218"/>
 						<reference key="parent" ref="241073561"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -2381,7 +2356,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">1615</int>
-						<reference key="object" ref="259950061"/>
+						<reference key="object" ref="676391595"/>
 						<reference key="parent" ref="294854854"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -3073,11 +3048,11 @@
 				<string key="1246.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<array class="NSMutableArray" key="1247.IBNSViewMetadataConstraints">
 					<reference ref="739316676"/>
-					<reference ref="952448628"/>
+					<reference ref="455906218"/>
 				</array>
 				<string key="1247.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<array class="NSMutableArray" key="1248.IBNSViewMetadataConstraints">
-					<reference ref="259950061"/>
+					<reference ref="676391595"/>
 				</array>
 				<boolean value="NO" key="1248.IBNSViewMetadataTranslatesAutoresizingMaskIntoConstraints"/>
 				<string key="1248.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -3187,7 +3162,6 @@
 				<string key="1620.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1621.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1622.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="17.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="NO" key="265.IBNSViewMetadataTranslatesAutoresizingMaskIntoConstraints"/>
 				<string key="265.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="266.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -3243,7 +3217,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1622</int>
+			<int key="maxID">1637</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3258,17 +3232,20 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">PTBugListViewController</string>
 					<string key="superclassName">NSViewController</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">addTaskButtonClick:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">addTaskButtonClick:</string>
-						<object class="IBActionInfo" key="NS.object.0">
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="addTaskButtonClick:">id</string>
+						<string key="detailsButtonClicked:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="addTaskButtonClick:">
 							<string key="name">addTaskButtonClick:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-					</object>
+						<object class="IBActionInfo" key="detailsButtonClicked:">
+							<string key="name">detailsButtonClicked:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="bugArrayCtrl">NSArrayController</string>
 						<string key="bugOutlineView">NSOutlineView</string>

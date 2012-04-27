@@ -70,6 +70,7 @@
 							<string key="NSFrame">{{567, 10}, {90, 32}}</string>
 							<reference key="NSSuperview" ref="1006"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="96544303">
@@ -821,83 +822,51 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: task.taskTitle</string>
+						<string key="label">value: bug.title</string>
 						<reference key="source" ref="503238462"/>
 						<reference key="destination" ref="1001"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="503238462"/>
 							<reference key="NSDestination" ref="1001"/>
-							<string key="NSLabel">value: task.taskTitle</string>
+							<string key="NSLabel">value: bug.title</string>
 							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">task.taskTitle</string>
+							<string key="NSKeyPath">bug.title</string>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
-					<int key="connectionID">1101</int>
+					<int key="connectionID">1307</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: task.taskDescription</string>
+						<string key="label">value: bug.details</string>
 						<reference key="source" ref="1034627527"/>
 						<reference key="destination" ref="1001"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="1034627527"/>
 							<reference key="NSDestination" ref="1001"/>
-							<string key="NSLabel">value: task.taskDescription</string>
+							<string key="NSLabel">value: bug.details</string>
 							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">task.taskDescription</string>
+							<string key="NSKeyPath">bug.details</string>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
-					<int key="connectionID">1302</int>
+					<int key="connectionID">1306</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: task.startDate</string>
-						<reference key="source" ref="678436403"/>
-						<reference key="destination" ref="1001"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="678436403"/>
-							<reference key="NSDestination" ref="1001"/>
-							<string key="NSLabel">value: task.startDate</string>
-							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">task.startDate</string>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">1103</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: task.endDate</string>
-						<reference key="source" ref="583609401"/>
-						<reference key="destination" ref="1001"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="583609401"/>
-							<reference key="NSDestination" ref="1001"/>
-							<string key="NSLabel">value: task.endDate</string>
-							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">task.endDate</string>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">1104</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: task.completed</string>
+						<string key="label">value: bug.fixed</string>
 						<reference key="source" ref="467647411"/>
 						<reference key="destination" ref="1001"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="467647411"/>
 							<reference key="NSDestination" ref="1001"/>
-							<string key="NSLabel">value: task.completed</string>
+							<string key="NSLabel">value: bug.fixed</string>
 							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">task.completed</string>
+							<string key="NSKeyPath">bug.fixed</string>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
-					<int key="connectionID">1105</int>
+					<int key="connectionID">1308</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -917,15 +886,15 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: task.priority</string>
+						<string key="label">value: bug.priority</string>
 						<reference key="source" ref="244222201"/>
 						<reference key="destination" ref="1001"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="244222201"/>
 							<reference key="NSDestination" ref="1001"/>
-							<string key="NSLabel">value: task.priority</string>
+							<string key="NSLabel">value: bug.priority</string>
 							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">task.priority</string>
+							<string key="NSKeyPath">bug.priority</string>
 							<object class="NSDictionary" key="NSOptions">
 								<string key="NS.key.0">NSNullPlaceholder</string>
 								<real value="1" key="NS.object.0"/>
@@ -933,23 +902,23 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
-					<int key="connectionID">1304</int>
+					<int key="connectionID">1305</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: task.priority</string>
+						<string key="label">value: bug.priority</string>
 						<reference key="source" ref="33087594"/>
 						<reference key="destination" ref="1001"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="33087594"/>
 							<reference key="NSDestination" ref="1001"/>
-							<string key="NSLabel">value: task.priority</string>
+							<string key="NSLabel">value: bug.priority</string>
 							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">task.priority</string>
+							<string key="NSKeyPath">bug.priority</string>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
-					<int key="connectionID">1181</int>
+					<int key="connectionID">1309</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -2925,7 +2894,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">1304</int>
+			<int key="maxID">1309</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

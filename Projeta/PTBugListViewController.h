@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 @class MainWindowController;
+@class PTBugDetailsWindowController;
 @class PTCommentairesWindowController;
 @class PTProjectDetailsViewController;
 
@@ -20,6 +21,8 @@
     __weak NSTableColumn *outlineViewProjetColumn;
     __weak NSButton *projectButton;
     
+    // task details window
+    PTBugDetailsWindowController *bugDetailsWindowController;
     // fenêtre commentaires.
     PTCommentairesWindowController *commentWindowController;
 }
@@ -29,6 +32,7 @@
 @property (strong) IBOutlet NSTreeController *bugTreeCtrl;
 @property (strong) IBOutlet NSOutlineView *bugOutlineView;
 - (IBAction)addTaskButtonClick:(id)sender;
+- (IBAction)detailsButtonClicked:(id)sender;
 
 @property (weak) IBOutlet NSTableColumn *outlineViewProjetColumn;
 @property (weak) IBOutlet NSButton *projectButton;
@@ -41,5 +45,7 @@
 
 - (void)requestFinished:(NSMutableData*)data;
 - (void)requestFailed:(NSError*)error;
+
+- (void)openBugDetailsWindow:(BOOL)isNewBug;
 
 @end
