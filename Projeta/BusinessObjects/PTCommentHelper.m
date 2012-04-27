@@ -77,6 +77,15 @@
         return parsedComments;
     }
     
+    // si dictionnaire contient qu'un seul commentaire.
+    else if ([[aDictionary objectForKey:@"comment"] isKindOfClass:[NSString class]]) {
+        NSMutableArray *parsedComments = [NSMutableArray arrayWithCapacity:1];
+        
+        [parsedComments addObject:[PTComment instanceFromDictionary:aDictionary]];
+        
+        return parsedComments;
+    }
+    
     return nil;
 }
 

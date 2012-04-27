@@ -97,6 +97,8 @@
     
     // charger et afficher le site web.
     [[commentWebView mainFrame] loadRequest:commentRequest];
+    
+    
 }
 
 - (void)loadView
@@ -180,10 +182,13 @@
     
     NSMutableArray *createdCommentArray = [[NSMutableArray alloc] init];
     
+    //NSLog(@"dict: %@", dict);
+    
     // see Cocoa and Objective-C up and running by Scott Stevenson.
     // page 242
     //[createdUserArray addObjectsFromArray:[PTUserHelper setAttributesFromDictionary2:dict]];
     /*[createdProjectArray addObjectsFromArray:[PTProjectHelper setAttributesFromJSONDictionary:dict]];*/
+    [createdCommentArray addObjectsFromArray:[PTCommentHelper setAttributesFromJSONDictionary:dict]];
     
     NSLog(@"count: %lu", [createdCommentArray count]);
     
@@ -191,13 +196,14 @@
         
         for (PTComment *cmt in createdCommentArray) {
             
+            // remettre textbox à vide.
+            comment.comment = [[NSString alloc] initWithString:@""];
             
+            // désactiver bouton pour envoyer commentaire.
+            [sendCommentButton setEnabled:NO];
             
-            // reassign user with user returned from web-service. 
-            //self.task = tsk;
-            
-            //NSLog(@"id: %d", [prj.projectId intValue]);
-            //NSLog(@"title: %@", prj.projectTitle);
+            // refresh commentaires.
+            [commentWebView reload:self];
         }
     }
     
@@ -216,6 +222,12 @@
             [sendCommentButton setEnabled:NO];
         }
     }
+}
+
+- (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame{
+    
+    // aller à la fin pour afficher dernier commentaire.
+    [commentWebView scrollToEndOfDocument:self];
 }
 
 @end
