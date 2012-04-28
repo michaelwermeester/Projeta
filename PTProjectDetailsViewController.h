@@ -25,6 +25,7 @@
     NSArrayController *availableUsergroupsArrayCtrl;
     NSArrayController *availableUsersArrayCtrl;
     __weak NSView *tabTaskView;
+    __weak NSView *tabBugView;
 }
 
 @property (strong) PTProjectViewController *projectViewController;
@@ -49,15 +50,20 @@
 @property (strong) NSMutableArray *availableUsers;
 @property (strong) IBOutlet NSArrayController *availableUsersArrayCtrl;
 @property (weak) IBOutlet NSView *tabTaskView;
+@property (weak) IBOutlet NSView *tabBugView;
 
 @property (assign) MainWindowController *mainWindowController;
 
 // task-list view
 @property (strong) PTTaskListViewController *taskListViewController;
+// bug-list view
+@property (strong) PTBugListViewController *bugListViewController;
 
 // charger les utilisateurs, groupes et clients liés au projet.
 - (void)loadProjectDetails;
 // charger les tâches liés au projet sélectionné.
 - (void)loadTasks;
+// charger les bogues liés au projet sélectionné.
+- (void)loadBugs;
 
 @end

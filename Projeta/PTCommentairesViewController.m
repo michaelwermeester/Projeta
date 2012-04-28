@@ -224,6 +224,7 @@
     }
 }
 
+// executé quand le WebView vient de terminer la page.
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame{
     
     // aller à la fin pour afficher dernier commentaire.

@@ -7,6 +7,7 @@
 //
 
 #import "MainWindowController.h"
+#import "PTBugListViewController.h"
 #import "PTClientHelper.h"
 #import "PTProjectDetailsViewController.h"
 #import "PTUsergroupHelper.h"
@@ -28,11 +29,13 @@
 @synthesize availableUsers;
 @synthesize availableUsersArrayCtrl;
 @synthesize tabTaskView;
+@synthesize tabBugView;
 @synthesize availableClients;
 @synthesize availableClientsArrayCtrl;
 
 @synthesize mainWindowController;
 
+@synthesize bugListViewController;
 @synthesize taskListViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -93,6 +96,30 @@
     [taskListViewController.checkBoxShowTasksFromSubProjects setHidden:NO];
     //[taskListViewController.projectButton removeFromSuperview];
     [taskListViewController.projectButton setHidden:YES];
+}
+
+- (void)loadBugs {
+    bugListViewController = [[PTBugListViewController alloc] init];
+    
+    // set reference to (parent) window
+    [bugListViewController setMainWindowController:mainWindowController];
+    
+    // set reference to (parent) project details view.
+    [bugListViewController setParentProjectDetailsViewController:self];
+    
+    // resize the view to fit and fill the right splitview view
+    [bugListViewController.view setFrameSize:tabTaskView.frame.size];
+    
+    [self.tabBugView addSubview:bugListViewController.view];
+    
+    // auto resize the view.
+    [bugListViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
+    
+    // cacher lo colonne "projet".
+    //[taskListViewController.outlineViewProjetColumn setHidden:YES];
+    //[taskListViewController.checkBoxShowTasksFromSubProjects setHidden:NO];
+    //[taskListViewController.projectButton removeFromSuperview];
+    //[taskListViewController.projectButton setHidden:YES];
 }
 
 - (IBAction)startDateRealCalendarButtonClicked:(id)sender {
