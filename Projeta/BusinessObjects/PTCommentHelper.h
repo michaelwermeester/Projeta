@@ -18,6 +18,7 @@
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
 + (NSMutableArray *)setAttributesFromJSONDictionary:(NSDictionary *)aDictionary;
 
++ (BOOL)createComment:(PTComment *)theComment forProject:(Project *)aProject successBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)())failureBlock_ mainWindowController:(id)sender;
 + (BOOL)createComment:(PTComment *)theComment forTask:(Task *)aTask successBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)())failureBlock_ mainWindowController:(id)sender;
 
 @end

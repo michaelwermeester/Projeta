@@ -142,6 +142,12 @@
     // auto resize the view.
     [commentViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
     
+    
+    commentViewController.project = [self project];
+    
+    // charger commentaires.
+    [commentViewController loadComments];
+    
     // cacher lo colonne "projet".
     //[taskListViewController.outlineViewProjetColumn setHidden:YES];
     //[taskListViewController.checkBoxShowTasksFromSubProjects setHidden:NO];

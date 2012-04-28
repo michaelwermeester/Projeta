@@ -6,8 +6,10 @@
 //  Copyright (c) 2012 Michael Wermeester. All rights reserved.
 //
 
+#import "Bug.h"
 #import "MainWindowController.h"
 #import "MWConnectionController.h"
+#import "Project.h"
 #import "PTComment.h"
 #import "PTCommentairesViewController.h"
 #import "PTcommentHelper.h"
@@ -20,7 +22,9 @@
 
 @implementation PTCommentairesViewController
 
+@synthesize bug;
 @synthesize comment;
+@synthesize project;
 @synthesize task;
 @synthesize arrComment;
 @synthesize commentWebView;
@@ -80,25 +84,8 @@
     [connectionController startRequestForURL:url setRequest:urlRequest];
     */
     
-    NSString *commentUrlString;
-    
-    // afficher commentaires pour tâche...
-    if (task) {
-        if (task.taskId) {
-            commentUrlString = [[NSString alloc] initWithString:@"http://luckycode.be:8080/projeta-website/faces/commentsCocoa.xhtml?type=task&id="];
-            commentUrlString = [commentUrlString stringByAppendingString:[[task taskId] stringValue]];
-        }
-    }
-
-    
-    // convert to NSURL
-    NSURL *commentUrl = [NSURL URLWithString:commentUrlString];
-    
-    NSMutableURLRequest* commentRequest = [NSMutableURLRequest requestWithURL:commentUrl];
-    
-    // charger et afficher le site web.
-    [[commentWebView mainFrame] loadRequest:commentRequest];
-    
+    // charger commentaires.
+    [self loadComments];
     
 }
 
@@ -107,6 +94,34 @@
     [super loadView];
     
     [self viewDidLoad];
+}
+
+- (void)loadComments {
+    
+    NSString *commentUrlString;
+    
+    // afficher commentaires pour tâche...
+    if (task) {
+        if (task.taskId) {
+            commentUrlString = [[NSString alloc] initWithString:@"https://luckycode.be:8181/projeta-website/faces/commentsCocoa.xhtml?type=task&id="];
+            commentUrlString = [commentUrlString stringByAppendingString:[[task taskId] stringValue]];
+        }
+    } else if (project) {
+        if (project.projectId) {
+            commentUrlString = [[NSString alloc] initWithString:@"https://luckycode.be:8181/projeta-website/faces/commentsCocoa.xhtml?type=project&id="];
+            commentUrlString = [commentUrlString stringByAppendingString:[[project projectId] stringValue]];
+        }
+    }
+    
+    
+    
+    // convert to NSURL
+    NSURL *commentUrl = [NSURL URLWithString:commentUrlString];
+    
+    NSMutableURLRequest* commentRequest = [NSMutableURLRequest requestWithURL:commentUrl];
+    
+    // charger et afficher le site web.
+    [[commentWebView mainFrame] loadRequest:commentRequest];
 }
 
 /*
@@ -158,19 +173,31 @@
     BOOL commentUpdSuc = NO;
     
     // donner le focus au bouton 'OK'.
-    [parentWindowController.window makeFirstResponder:sendCommentButton];
+    if (parentWindowController)
+        [parentWindowController.window makeFirstResponder:sendCommentButton];
+    else if (mainWindowController)
+        [mainWindowController.window makeFirstResponder:sendCommentButton];
     
     // créer une nouvelle tâche.
-
+    
     
     // user created.
     comment.userCreated = mainWindowController.loggedInUser;
-        
-    commentUpdSuc = [PTCommentHelper createComment:comment forTask:task successBlock:^(NSMutableData *data) { 
+    
+    if (task) {
+        commentUpdSuc = [PTCommentHelper createComment:comment forTask:task successBlock:^(NSMutableData *data) { 
             [self finishedCreatingComment:data];
         } failureBlock:^() {
-                                     
+            
         } mainWindowController:mainWindowController];
+    }
+    else if (project) {
+        commentUpdSuc = [PTCommentHelper createComment:comment forProject:project successBlock:^(NSMutableData *data) { 
+            [self finishedCreatingComment:data];
+        } failureBlock:^() {
+            
+        } mainWindowController:mainWindowController];
+    }
 }
 
 - (void)finishedCreatingComment:(NSMutableData*)data {

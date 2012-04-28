@@ -9,7 +9,9 @@
 #import <Cocoa/Cocoa.h>
 #import <Webkit/Webkit.h>
 
+@class Bug;
 @class MainWindowController;
+@class Project;
 @class PTComment;
 @class PTProjectDetailsViewController;
 @class Task;
@@ -30,11 +32,15 @@
 // reference to the (parent) PTProjectDetailsViewController
 @property (assign) PTProjectDetailsViewController *parentProjectDetailsViewController;
 
+@property (strong) Bug *bug;
+@property (strong) Project *project;
 @property (strong) Task *task;
 @property (strong) NSMutableArray *arrComment;
 @property (weak) IBOutlet WebView *commentWebView;
 @property (unsafe_unretained) IBOutlet NSTextView *commentTextView;
 @property (weak) IBOutlet NSButton *sendCommentButton;
 - (IBAction)sendCommentButtonClicked:(id)sender;
+
+- (void)loadComments;
 
 @end
