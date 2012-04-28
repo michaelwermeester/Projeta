@@ -2162,6 +2162,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 									<nil key="NSNextResponder"/>
 									<int key="NSvFlags">256</int>
 									<string key="NSFrame">{{10, 33}, {698, 591}}</string>
+									<reference key="NSNextKeyView" ref="448862610"/>
 								</object>
 								<string key="NSLabel">Commentaires</string>
 								<reference key="NSColor" ref="454502495"/>
@@ -2400,6 +2401,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 						<reference key="destination" ref="229584229"/>
 					</object>
 					<int key="connectionID">1798</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">tabCommentView</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="553473025"/>
+					</object>
+					<int key="connectionID">1799</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -7622,7 +7631,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1798</int>
+			<int key="maxID">1799</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -7668,6 +7677,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 						<string key="prjTreeController">NSTreeController</string>
 						<string key="startDateRealCalendarButton">NSButton</string>
 						<string key="tabBugView">NSView</string>
+						<string key="tabCommentView">NSView</string>
 						<string key="tabTaskView">NSView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -7701,6 +7711,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 						</object>
 						<object class="IBToOneOutletInfo" key="tabBugView">
 							<string key="name">tabBugView</string>
+							<string key="candidateClassName">NSView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="tabCommentView">
+							<string key="name">tabCommentView</string>
 							<string key="candidateClassName">NSView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="tabTaskView">

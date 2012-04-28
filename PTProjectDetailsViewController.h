@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 @class MainWindowController;
+@class PTCommentairesViewController;
 @class PTProjectViewController;
 @class Project;
 
@@ -26,6 +27,7 @@
     NSArrayController *availableUsersArrayCtrl;
     __weak NSView *tabTaskView;
     __weak NSView *tabBugView;
+    __weak NSView *tabCommentView;
 }
 
 @property (strong) PTProjectViewController *projectViewController;
@@ -51,6 +53,7 @@
 @property (strong) IBOutlet NSArrayController *availableUsersArrayCtrl;
 @property (weak) IBOutlet NSView *tabTaskView;
 @property (weak) IBOutlet NSView *tabBugView;
+@property (weak) IBOutlet NSView *tabCommentView;
 
 @property (assign) MainWindowController *mainWindowController;
 
@@ -58,6 +61,8 @@
 @property (strong) PTTaskListViewController *taskListViewController;
 // bug-list view
 @property (strong) PTBugListViewController *bugListViewController;
+// commentaires-list view
+@property (strong) PTCommentairesViewController *commentViewController;
 
 // charger les utilisateurs, groupes et clients liés au projet.
 - (void)loadProjectDetails;
@@ -65,5 +70,7 @@
 - (void)loadTasks;
 // charger les bogues liés au projet sélectionné.
 - (void)loadBugs;
+// charger les commentaires liés au projet sélectionné.
+- (void)loadComments;
 
 @end

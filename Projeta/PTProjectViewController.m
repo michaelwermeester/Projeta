@@ -75,6 +75,8 @@
     [projectDetailsViewController loadTasks];
     // charger les bogues liés au projet.
     [projectDetailsViewController loadBugs];
+    // charger les commentaires liés au projet.
+    [projectDetailsViewController loadComments];
 }
 
 #pragma mark -

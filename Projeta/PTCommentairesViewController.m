@@ -26,6 +26,7 @@
 @synthesize commentWebView;
 @synthesize commentTextView;
 @synthesize mainWindowController;
+@synthesize parentProjectDetailsViewController;
 @synthesize parentWindowController;
 @synthesize sendCommentButton;
 

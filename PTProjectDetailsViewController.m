@@ -9,6 +9,7 @@
 #import "MainWindowController.h"
 #import "PTBugListViewController.h"
 #import "PTClientHelper.h"
+#import "PTCommentairesViewController.h"
 #import "PTProjectDetailsViewController.h"
 #import "PTUsergroupHelper.h"
 #import "PTUserHelper.h"
@@ -30,12 +31,14 @@
 @synthesize availableUsersArrayCtrl;
 @synthesize tabTaskView;
 @synthesize tabBugView;
+@synthesize tabCommentView;
 @synthesize availableClients;
 @synthesize availableClientsArrayCtrl;
 
 @synthesize mainWindowController;
 
 @synthesize bugListViewController;
+@synthesize commentViewController;
 @synthesize taskListViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -114,6 +117,30 @@
     
     // auto resize the view.
     [bugListViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
+    
+    // cacher lo colonne "projet".
+    //[taskListViewController.outlineViewProjetColumn setHidden:YES];
+    //[taskListViewController.checkBoxShowTasksFromSubProjects setHidden:NO];
+    //[taskListViewController.projectButton removeFromSuperview];
+    //[taskListViewController.projectButton setHidden:YES];
+}
+
+- (void)loadComments {
+    commentViewController = [[PTCommentairesViewController alloc] init];
+    
+    // set reference to (parent) window
+    [commentViewController setMainWindowController:mainWindowController];
+    
+    // set reference to (parent) project details view.
+    [commentViewController setParentProjectDetailsViewController:self];
+    
+    // resize the view to fit and fill the right splitview view
+    [commentViewController.view setFrameSize:tabTaskView.frame.size];
+    
+    [self.tabCommentView addSubview:commentViewController.view];
+    
+    // auto resize the view.
+    [commentViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
     
     // cacher lo colonne "projet".
     //[taskListViewController.outlineViewProjetColumn setHidden:YES];

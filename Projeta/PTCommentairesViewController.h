@@ -11,6 +11,7 @@
 
 @class MainWindowController;
 @class PTComment;
+@class PTProjectDetailsViewController;
 @class Task;
 
 @interface PTCommentairesViewController : NSViewController {
@@ -26,6 +27,8 @@
 @property (strong) NSWindowController *parentWindowController;
 // reference to the (parent) MainWindowController
 @property (assign) MainWindowController *mainWindowController;
+// reference to the (parent) PTProjectDetailsViewController
+@property (assign) PTProjectDetailsViewController *parentProjectDetailsViewController;
 
 @property (strong) Task *task;
 @property (strong) NSMutableArray *arrComment;
