@@ -10,6 +10,7 @@
 
 @class MainWindowController;
 @class PTCommentairesWindowController;
+@class PTProgressWindowController;
 @class PTProjectDetailsViewController;
 @class PTTaskDetailsWindowController;
 
@@ -28,6 +29,8 @@
     PTTaskDetailsWindowController *taskDetailsWindowController;
     // fenêtre commentaires.
     PTCommentairesWindowController *commentWindowController;
+    // fenêtre avancement.
+    PTProgressWindowController *progressWindowController;
 }
 
 @property (strong) NSMutableArray *arrTask;
@@ -47,6 +50,7 @@
 - (IBAction)detailsButtonClicked:(id)sender;
 - (IBAction)removeTaskButtonClicked:(id)sender;
 - (IBAction)commentButtonClicked:(id)sender;
+- (IBAction)progressButtonClicked:(id)sender;
 
 // reference to the (parent) MainWindowController
 @property (assign) MainWindowController *mainWindowController;

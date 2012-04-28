@@ -11,11 +11,12 @@
 #import "MainWindowController.h"
 #import "MWConnectionController.h"
 #import "PTCommentairesWindowController.h"
+#import "PTProgressWindowController.h"
 #import "PTProjectDetailsViewController.h"
 #import "PTCommon.h"
+#import "PTTaskDetailsWindowController.h"
 #import "PTTaskHelper.h"
 #import "Task.h"
-#import "PTTaskDetailsWindowController.h"
 
 @implementation PTTaskListViewController
 
@@ -355,6 +356,20 @@
     commentWindowController.mainWindowController = mainWindowController;
     
     [commentWindowController showWindow:self];
+}
+
+- (IBAction)progressButtonClicked:(id)sender {
+    
+    progressWindowController = [[PTProgressWindowController alloc] init];
+    
+    NSArray *selectedObjects;
+    selectedObjects = [taskTreeCtrl selectedObjects];
+    progressWindowController.task = [selectedObjects objectAtIndex:0];
+    
+    // référence vers mainWindowController. 
+    progressWindowController.mainWindowController = mainWindowController;
+    
+    [progressWindowController showWindow:self];
 }
 
 - (void)openTaskDetailsWindow:(BOOL)isNewTask isSubTask:(BOOL)isSubTask {

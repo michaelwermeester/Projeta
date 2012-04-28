@@ -15,9 +15,11 @@
 
 @implementation PTCommentairesWindowController
 
+@synthesize bug;
 @synthesize commentsView;
 @synthesize commentViewController;
 @synthesize mainWindowController;
+@synthesize project;
 @synthesize task;
 
 - (id)init
@@ -40,6 +42,8 @@
     commentViewController = [[PTCommentairesViewController alloc] init];
     
     commentViewController.task = task;
+    commentViewController.project = project;
+    commentViewController.bug = bug;
     // garder références.
     commentViewController.parentWindowController = self;
     commentViewController.mainWindowController = mainWindowController;

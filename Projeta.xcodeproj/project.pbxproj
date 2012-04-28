@@ -83,6 +83,8 @@
 		4CCD965B154750EF006F2921 /* PTBugDetailsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CCD965A154750EF006F2921 /* PTBugDetailsWindow.xib */; };
 		4CCD965E154750FE006F2921 /* PTBugDetailsWindowController.h in Resources */ = {isa = PBXBuildFile; fileRef = 4CCD965D154750FE006F2921 /* PTBugDetailsWindowController.h */; };
 		4CCD966015475111006F2921 /* PTBugDetailsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCD965F15475111006F2921 /* PTBugDetailsWindowController.m */; };
+		4CCD9665154C9290006F2921 /* PTProgressWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCD9663154C9290006F2921 /* PTProgressWindowController.m */; };
+		4CCD9666154C9290006F2921 /* PTProgressWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CCD9664154C9290006F2921 /* PTProgressWindow.xib */; };
 		4CCDB32213F83CB80084FC84 /* PTProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCDB32013F83CB80084FC84 /* PTProjectViewController.m */; };
 		4CE32EC31527A4090082B0C9 /* calendar_small_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CE32EC21527A4090082B0C9 /* calendar_small_icon.png */; };
 		4CE69FDC14D9F1850008BAF0 /* PTClientDetailsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CE69FDB14D9F1850008BAF0 /* PTClientDetailsWindow.xib */; };
@@ -256,6 +258,9 @@
 		4CCD965A154750EF006F2921 /* PTBugDetailsWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTBugDetailsWindow.xib; sourceTree = "<group>"; };
 		4CCD965D154750FE006F2921 /* PTBugDetailsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTBugDetailsWindowController.h; sourceTree = "<group>"; };
 		4CCD965F15475111006F2921 /* PTBugDetailsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTBugDetailsWindowController.m; sourceTree = "<group>"; };
+		4CCD9662154C9290006F2921 /* PTProgressWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTProgressWindowController.h; sourceTree = "<group>"; };
+		4CCD9663154C9290006F2921 /* PTProgressWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTProgressWindowController.m; sourceTree = "<group>"; };
+		4CCD9664154C9290006F2921 /* PTProgressWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTProgressWindow.xib; sourceTree = "<group>"; };
 		4CCDB31F13F83CB80084FC84 /* PTProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTProjectViewController.h; sourceTree = "<group>"; };
 		4CCDB32013F83CB80084FC84 /* PTProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTProjectViewController.m; sourceTree = "<group>"; };
 		4CE32EC21527A4090082B0C9 /* calendar_small_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar_small_icon.png; sourceTree = "<group>"; };
@@ -657,6 +662,9 @@
 		4CCD9661154C7980006F2921 /* Progress */ = {
 			isa = PBXGroup;
 			children = (
+				4CCD9662154C9290006F2921 /* PTProgressWindowController.h */,
+				4CCD9663154C9290006F2921 /* PTProgressWindowController.m */,
+				4CCD9664154C9290006F2921 /* PTProgressWindow.xib */,
 			);
 			name = Progress;
 			sourceTree = "<group>";
@@ -802,6 +810,7 @@
 				4C2AA227153246590093E8C1 /* PTCommentairesWindow.xib in Resources */,
 				4CCD965B154750EF006F2921 /* PTBugDetailsWindow.xib in Resources */,
 				4CCD965E154750FE006F2921 /* PTBugDetailsWindowController.h in Resources */,
+				4CCD9666154C9290006F2921 /* PTProgressWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -915,6 +924,7 @@
 				4C2728FE1542B335002F7963 /* Bug.m in Sources */,
 				4C2729011542B352002F7963 /* PTBugHelper.m in Sources */,
 				4CCD966015475111006F2921 /* PTBugDetailsWindowController.m in Sources */,
+				4CCD9665154C9290006F2921 /* PTProgressWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
