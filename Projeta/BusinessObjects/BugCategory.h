@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BugCategory : NSObject {
+@interface BugCategory : NSObject <NSCopying> {
     NSString *categoryName;
     NSString *description;
     NSNumber *bugcategoryId;
@@ -22,5 +22,10 @@
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
 
 - (NSArray *)allKeys;
+
++ (BugCategory *)initWithId:(NSNumber *)anId name:(NSString *)aName;
+
+// Required by NSCopying protocol.
+- (id) copyWithZone:(NSZone *)zone;
 
 @end

@@ -68,4 +68,21 @@
     return retArr;
 }
 
+- (NSString *)description {
+    return categoryName;
+}
+
++ (BugCategory *)initWithId:(NSNumber *)anId name:(NSString *)aName {
+    
+    BugCategory *bugCategory = [[BugCategory alloc] init];
+    
+    if (bugCategory) {
+        
+        bugCategory.bugcategoryId = anId;
+        bugCategory.categoryName = aName;
+    }
+    
+    return bugCategory;
+}
+
 @end

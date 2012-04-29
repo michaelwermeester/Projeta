@@ -8,6 +8,7 @@
 
 #import "MainWindowController.h"
 #import "Bug.h"
+#import "BugCategory.h"
 #import "PTMainWindowViewController.h"
 #import "PTBugDetailsWindowController.h"
 #import "PTBugHelper.h"
@@ -23,12 +24,14 @@ Bug *bugCopy;
 @synthesize isNewBug;
 //@synthesize isPersonalTask;
 
+@synthesize arrBugCategory;
 @synthesize arrDevelopers;
 
 //@synthesize parentProjectListViewController;
 @synthesize mainWindowController;
 @synthesize okButton;
 @synthesize comboDevelopers;
+@synthesize bugCategoryComboBox;
 
 
 @synthesize tskTreeIndexPath;
@@ -43,6 +46,8 @@ Bug *bugCopy;
     if (self) {
         // Initialization code here.
         arrDevelopers = [[NSMutableArray alloc] init];
+        
+        arrBugCategory = [[NSMutableArray alloc] init];
     }
     
     return self;
@@ -82,8 +87,12 @@ Bug *bugCopy;
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     
+    [self initBugCategoryArray];
+    
     // charger la liste des développeurs à partir du webservice et les mettre dans la combobox.
     [self fetchDevelopersFromWebservice];
+    
+    
 }
 
 // lorsque l'utilisateur clique sur le "x rouge" pour fermer la fenêtre. 
@@ -235,6 +244,17 @@ Bug *bugCopy;
                 failureBlock:^(NSError *error) {
                     
                 }];
+}
+
+
+
+- (void)initBugCategoryArray {
+    
+    [[self mutableArrayValueForKey:@"arrBugCategory"] addObject:[BugCategory initWithId:[[NSNumber alloc] initWithInt:1] name:@"BLOCKER - Empêche l'utilisation et/ou les tests ; paralyse les travaux."]];
+    [[self mutableArrayValueForKey:@"arrBugCategory"] addObject:[BugCategory initWithId:[[NSNumber alloc] initWithInt:2] name:@"CRITICAL - Crashs, pertes de données, graves fuites de mémoire."]];
+    [[self mutableArrayValueForKey:@"arrBugCategory"] addObject:[BugCategory initWithId:[[NSNumber alloc] initWithInt:3] name:@"MAJOR - Perte de fonctionnalité majeure."]];
+    [[self mutableArrayValueForKey:@"arrBugCategory"] addObject:[BugCategory initWithId:[[NSNumber alloc] initWithInt:7] name:@"MINOR - Perte de fonctionnalité mineure, ou autre problème facilement corrigible."]];
+    [[self mutableArrayValueForKey:@"arrBugCategory"] addObject:[BugCategory initWithId:[[NSNumber alloc] initWithInt:9] name:@"TRIVIAL - Problème cosmétique comme une faute d'orthographe, ou un problème d'alignement de texte."]];
 }
 
 @end
