@@ -140,7 +140,7 @@
     requestData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
     
     // debug.
-    //NSLog(@"res: %@", [[NSString alloc] initWithData:requestData encoding:NSASCIIStringEncoding]);
+    NSLog(@"res: %@", [[NSString alloc] initWithData:requestData encoding:NSASCIIStringEncoding]);
     
     // get server URL as string
     NSString *urlString = [PTCommon serverURLString];

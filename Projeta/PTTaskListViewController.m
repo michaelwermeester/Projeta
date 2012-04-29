@@ -369,6 +369,9 @@
     // référence vers mainWindowController. 
     progressWindowController.mainWindowController = mainWindowController;
     
+    // initialiser statuts.
+    [progressWindowController initStatusArray];
+    
     [progressWindowController showWindow:self];
 }
 
