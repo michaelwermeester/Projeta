@@ -96,7 +96,22 @@
     [self viewDidLoad];
 }
 
+- (void)loadBackground {
+    
+    
+    
+    /*NSString* filePath = [[NSBundle mainBundle] pathForResource:@"background" 
+                                                         ofType:@"html"];
+    NSURL* fileURL = [NSURL fileURLWithPath:filePath];
+    NSURLRequest* request = [NSURLRequest requestWithURL:fileURL];
+    [[commentWebView mainFrame] loadRequest:request];*/
+}
+
 - (void)loadComments {
+    
+    // éviter un background blanc.
+    [commentWebView setDrawsBackground:NO];
+    
     
     NSString *commentUrlString;
     

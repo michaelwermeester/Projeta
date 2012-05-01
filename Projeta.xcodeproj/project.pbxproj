@@ -88,6 +88,8 @@
 		4CCD9669154C9ACF006F2921 /* Progress.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCD9668154C9ACE006F2921 /* Progress.m */; };
 		4CCD966C154CA369006F2921 /* PTStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCD966B154CA368006F2921 /* PTStatus.m */; };
 		4CCD9672154D4796006F2921 /* PTProgressHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCD9671154D4794006F2921 /* PTProgressHelper.m */; };
+		4CCD96761550760D006F2921 /* mainview_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CCD96751550760D006F2921 /* mainview_icon.png */; };
+		4CCD9678155079F1006F2921 /* background.html in Resources */ = {isa = PBXBuildFile; fileRef = 4CCD9677155079F1006F2921 /* background.html */; };
 		4CCDB32213F83CB80084FC84 /* PTProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCDB32013F83CB80084FC84 /* PTProjectViewController.m */; };
 		4CE32EC31527A4090082B0C9 /* calendar_small_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CE32EC21527A4090082B0C9 /* calendar_small_icon.png */; };
 		4CE69FDC14D9F1850008BAF0 /* PTClientDetailsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CE69FDB14D9F1850008BAF0 /* PTClientDetailsWindow.xib */; };
@@ -270,6 +272,8 @@
 		4CCD966B154CA368006F2921 /* PTStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTStatus.m; sourceTree = "<group>"; };
 		4CCD9670154D4793006F2921 /* PTProgressHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTProgressHelper.h; sourceTree = "<group>"; };
 		4CCD9671154D4794006F2921 /* PTProgressHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTProgressHelper.m; sourceTree = "<group>"; };
+		4CCD96751550760D006F2921 /* mainview_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainview_icon.png; sourceTree = "<group>"; };
+		4CCD9677155079F1006F2921 /* background.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = background.html; sourceTree = "<group>"; };
 		4CCDB31F13F83CB80084FC84 /* PTProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTProjectViewController.h; sourceTree = "<group>"; };
 		4CCDB32013F83CB80084FC84 /* PTProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTProjectViewController.m; sourceTree = "<group>"; };
 		4CE32EC21527A4090082B0C9 /* calendar_small_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar_small_icon.png; sourceTree = "<group>"; };
@@ -622,6 +626,7 @@
 		4C74A61B13A2BFA100E7DBF6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4CCD9677155079F1006F2921 /* background.html */,
 				4CE32EC01527A3E50082B0C9 /* icons */,
 				4C74A61C13A2BFA100E7DBF6 /* Projeta-Info.plist */,
 				4C74A61D13A2BFA100E7DBF6 /* InfoPlist.strings */,
@@ -687,6 +692,7 @@
 		4CE32EC01527A3E50082B0C9 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				4CCD96751550760D006F2921 /* mainview_icon.png */,
 				4CE32EC21527A4090082B0C9 /* calendar_small_icon.png */,
 			);
 			name = icons;
@@ -826,6 +832,8 @@
 				4CCD965B154750EF006F2921 /* PTBugDetailsWindow.xib in Resources */,
 				4CCD965E154750FE006F2921 /* PTBugDetailsWindowController.h in Resources */,
 				4CCD9666154C9290006F2921 /* PTProgressWindow.xib in Resources */,
+				4CCD96761550760D006F2921 /* mainview_icon.png in Resources */,
+				4CCD9678155079F1006F2921 /* background.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
