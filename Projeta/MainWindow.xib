@@ -67,7 +67,7 @@
 					<int key="NSToolbarDisplayMode">1</int>
 					<int key="NSToolbarSizeMode">1</int>
 					<dictionary class="NSMutableDictionary" key="NSToolbarIBIdentifiedItems">
-						<object class="NSToolbarItem" key="38BBBBD4-F0B4-47E3-B27A-AF0DD064BC09" id="226395265">
+						<object class="NSToolbarItem" key="38BBBBD4-F0B4-47E3-B27A-AF0DD064BC09" id="470124346">
 							<object class="NSMutableString" key="NSToolbarItemIdentifier">
 								<characters key="NS.bytes">38BBBBD4-F0B4-47E3-B27A-AF0DD064BC09</characters>
 							</object>
@@ -75,7 +75,7 @@
 							<string key="NSToolbarItemPaletteLabel">Vue principale</string>
 							<string key="NSToolbarItemToolTip"/>
 							<nil key="NSToolbarItemView"/>
-							<object class="NSCustomResource" key="NSToolbarItemImage" id="504967869">
+							<object class="NSCustomResource" key="NSToolbarItemImage" id="246296973">
 								<string key="NSClassName">NSImage</string>
 								<string key="NSResourceName">mainview_icon</string>
 							</object>
@@ -101,6 +101,7 @@
 								<int key="NSvFlags">268</int>
 								<string key="NSFrame">{{0, 14}, {96, 22}}</string>
 								<reference key="NSSuperview"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:918</string>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSSearchFieldCell" key="NSCell" id="817163927">
@@ -192,6 +193,7 @@
 								<int key="NSvFlags">268</int>
 								<string key="NSFrame">{{1, 14}, {82, 28}}</string>
 								<reference key="NSSuperview"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:161</string>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSButtonCell" key="NSCell" id="926700368">
@@ -203,14 +205,14 @@
 									<reference key="NSControlView" ref="493923520"/>
 									<int key="NSButtonFlags">-2033958657</int>
 									<int key="NSButtonFlags2">163</int>
-									<reference key="NSNormalImage" ref="504967869"/>
+									<reference key="NSNormalImage" ref="246296973"/>
 									<string key="NSAlternateContents"/>
 									<string key="NSKeyEquivalent"/>
 									<int key="NSPeriodicDelay">200</int>
 									<int key="NSPeriodicInterval">25</int>
 								</object>
 							</object>
-							<reference key="NSToolbarItemImage" ref="504967869"/>
+							<reference key="NSToolbarItemImage" ref="246296973"/>
 							<nil key="NSToolbarItemTarget"/>
 							<nil key="NSToolbarItemAction"/>
 							<string key="NSToolbarItemMinSize">{82, 28}</string>
@@ -221,7 +223,7 @@
 							<bool key="NSToolbarIsUserRemovable">YES</bool>
 							<int key="NSToolbarItemVisibilityPriority">0</int>
 						</object>
-						<object class="NSToolbarItem" key="9D265DF6-A032-4909-9FA9-DB1DAF867460" id="702574469">
+						<object class="NSToolbarItem" key="9D265DF6-A032-4909-9FA9-DB1DAF867460" id="263513558">
 							<object class="NSMutableString" key="NSToolbarItemIdentifier">
 								<characters key="NS.bytes">9D265DF6-A032-4909-9FA9-DB1DAF867460</characters>
 							</object>
@@ -252,6 +254,7 @@
 								<int key="NSvFlags">268</int>
 								<string key="NSFrame">{{5, 14}, {67, 28}}</string>
 								<reference key="NSSuperview"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:2177</string>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSSegmentedCell" key="NSCell" id="633345712">
@@ -303,6 +306,7 @@
 								<int key="NSvFlags">268</int>
 								<string key="NSFrame">{{0, 14}, {82, 28}}</string>
 								<reference key="NSSuperview"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:161</string>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSButtonCell" key="NSCell" id="461033299">
@@ -462,12 +466,11 @@
 						<reference ref="260827128"/>
 						<reference ref="143679888"/>
 						<reference ref="223606972"/>
-						<reference ref="226395265"/>
-						<reference ref="702574469"/>
+						<reference ref="470124346"/>
+						<reference ref="263513558"/>
 					</array>
 					<array key="NSToolbarIBDefaultItems">
-						<reference ref="226395265"/>
-						<reference ref="112041996"/>
+						<reference ref="470124346"/>
 						<reference ref="260827128"/>
 						<reference ref="407454994"/>
 						<reference ref="1050966758"/>
@@ -781,7 +784,7 @@
 					<object class="IBActionConnection" key="connection">
 						<string key="label">switchToMainView:</string>
 						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="226395265"/>
+						<reference key="destination" ref="470124346"/>
 					</object>
 					<int key="connectionID">740</int>
 				</object>
@@ -965,7 +968,7 @@
 							</object>
 							<reference ref="67113117"/>
 							<reference ref="564555443"/>
-							<object class="IBNSLayoutConstraint" id="593548179">
+							<object class="IBNSLayoutConstraint" id="707266443">
 								<reference key="firstItem" ref="1006"/>
 								<int key="firstAttribute">4</int>
 								<int key="relation">0</int>
@@ -981,7 +984,7 @@
 								<int key="contentType">3</int>
 								<reference key="containingView" ref="1006"/>
 							</object>
-							<object class="IBNSLayoutConstraint" id="527335272">
+							<object class="IBNSLayoutConstraint" id="594596050">
 								<reference key="firstItem" ref="1006"/>
 								<int key="firstAttribute">4</int>
 								<int key="relation">0</int>
@@ -997,7 +1000,7 @@
 								<int key="contentType">3</int>
 								<reference key="containingView" ref="1006"/>
 							</object>
-							<object class="IBNSLayoutConstraint" id="399206763">
+							<object class="IBNSLayoutConstraint" id="786157932">
 								<reference key="firstItem" ref="1006"/>
 								<int key="firstAttribute">4</int>
 								<int key="relation">0</int>
@@ -1013,7 +1016,7 @@
 								<int key="contentType">3</int>
 								<reference key="containingView" ref="1006"/>
 							</object>
-							<object class="IBNSLayoutConstraint" id="1066686386">
+							<object class="IBNSLayoutConstraint" id="185755835">
 								<reference key="firstItem" ref="1006"/>
 								<int key="firstAttribute">4</int>
 								<int key="relation">0</int>
@@ -1045,8 +1048,8 @@
 							<reference ref="260827128"/>
 							<reference ref="143679888"/>
 							<reference ref="223606972"/>
-							<reference ref="226395265"/>
-							<reference ref="702574469"/>
+							<reference ref="470124346"/>
+							<reference ref="263513558"/>
 						</array>
 						<reference key="parent" ref="1005"/>
 					</object>
@@ -1343,32 +1346,32 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">734</int>
-						<reference key="object" ref="593548179"/>
+						<reference key="object" ref="707266443"/>
 						<reference key="parent" ref="1006"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">735</int>
-						<reference key="object" ref="527335272"/>
+						<reference key="object" ref="594596050"/>
 						<reference key="parent" ref="1006"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">736</int>
-						<reference key="object" ref="399206763"/>
+						<reference key="object" ref="786157932"/>
 						<reference key="parent" ref="1006"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">737</int>
-						<reference key="object" ref="1066686386"/>
+						<reference key="object" ref="185755835"/>
 						<reference key="parent" ref="1006"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">738</int>
-						<reference key="object" ref="226395265"/>
+						<reference key="object" ref="470124346"/>
 						<reference key="parent" ref="781897383"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">739</int>
-						<reference key="object" ref="702574469"/>
+						<reference key="object" ref="263513558"/>
 						<reference key="parent" ref="781897383"/>
 					</object>
 				</array>
@@ -1391,10 +1394,10 @@
 					<reference ref="498618690"/>
 					<reference ref="423805793"/>
 					<reference ref="946721827"/>
-					<reference ref="593548179"/>
-					<reference ref="527335272"/>
-					<reference ref="399206763"/>
-					<reference ref="1066686386"/>
+					<reference ref="707266443"/>
+					<reference ref="594596050"/>
+					<reference ref="786157932"/>
+					<reference ref="185755835"/>
 				</array>
 				<string key="2.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="305.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
