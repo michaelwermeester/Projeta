@@ -110,7 +110,7 @@
 - (void)loadComments {
     
     // éviter un background blanc.
-    [commentWebView setDrawsBackground:NO];
+    //[commentWebView setDrawsBackground:NO];
     
     
     NSString *commentUrlString;
