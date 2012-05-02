@@ -85,7 +85,7 @@ static User *_loggedInUser = nil;
     // expand bugs.
     [sourceList expandItem:[sourceListItems objectAtIndex:2]];
     // expand messagerie.
-    [sourceList expandItem:[sourceListItems objectAtIndex:3]];
+    //[sourceList expandItem:[sourceListItems objectAtIndex:3]];
 }
 
 #pragma mark -
@@ -487,12 +487,12 @@ static User *_loggedInUser = nil;
     //[clientsHeaderItem setChildren:[NSArray arrayWithObjects:clientsItem, nil]];
     
     //Set up the "Clients" parent item and children
-	SourceListItem *messagerieHeaderItem = [SourceListItem itemWithTitle:@"MESSAGERIE" identifier:@"messagerieHeaderItem"];
+	/*SourceListItem *messagerieHeaderItem = [SourceListItem itemWithTitle:@"MESSAGERIE" identifier:@"messagerieHeaderItem"];
     SourceListItem *messagesRecusItem = [SourceListItem itemWithTitle:@"Reçu" identifier:@"messagesRecusItem"];
     SourceListItem *messagesEnvoyesItem = [SourceListItem itemWithTitle:@"Envoyé" identifier:@"messagesEnvoyesItem"];
     SourceListItem *messagesupprimesItem = [SourceListItem itemWithTitle:@"Supprimé" identifier:@"messagesupprimesItem"];
     
-    [messagerieHeaderItem setChildren:[NSArray arrayWithObjects:messagesRecusItem, messagesEnvoyesItem, messagesupprimesItem, nil]];
+    [messagerieHeaderItem setChildren:[NSArray arrayWithObjects:messagesRecusItem, messagesEnvoyesItem, messagesupprimesItem, nil]];*/
     
     
 	
@@ -500,7 +500,7 @@ static User *_loggedInUser = nil;
 	[sourceListItems addObject:tasksHeaderItem];
     [sourceListItems addObject:bugsHeaderItem];
     //[sourceListItems addObject:clientsHeaderItem];
-    [sourceListItems addObject:messagerieHeaderItem];
+    //[sourceListItems addObject:messagerieHeaderItem];
 	
 	[sourceList reloadData];
     
