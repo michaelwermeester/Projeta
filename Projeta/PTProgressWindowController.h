@@ -43,4 +43,6 @@
 
 - (void)initStatusArray;
 
+- (void)loadProgress;
+
 @end

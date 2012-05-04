@@ -10,6 +10,8 @@
 #import "PTProgressHelper.h"
 #import "PTProgressWindowController.h"
 #import "PTStatus.h"
+#import "Project.h"
+#import "Task.h"
 
 @interface PTProgressWindowController ()
 
@@ -49,6 +51,8 @@
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     
     [self initStatusArray];
+    
+    [self loadProgress];
 }
 
 - (void)initStatusArray {
@@ -142,6 +146,45 @@
     
     // close this window.
     //[self close];
+}
+
+- (void)loadProgress {
+    
+    // éviter un background blanc.
+    //[commentWebView setDrawsBackground:NO];
+    
+    
+    NSString *progressUrlString;
+    
+    // afficher commentaires pour tâche...
+    if (task) {
+        if (task.taskId) {
+            progressUrlString = [[NSString alloc] initWithString:@"https://luckycode.be:8181/projeta-website/faces/progressCocoa.xhtml?type=task&id="];
+            progressUrlString = [progressUrlString stringByAppendingString:[[task taskId] stringValue]];
+        }
+    } else if (project) {
+        if (project.projectId) {
+            progressUrlString = [[NSString alloc] initWithString:@"https://luckycode.be:8181/projeta-website/faces/progressCocoa.xhtml?type=project&id="];
+            progressUrlString = [progressUrlString stringByAppendingString:[[project projectId] stringValue]];
+        }
+    }
+    
+    
+    
+    // convert to NSURL
+    NSURL *progressUrl = [NSURL URLWithString:progressUrlString];
+    
+    NSMutableURLRequest* progressRequest = [NSMutableURLRequest requestWithURL:progressUrl];
+    
+    // charger et afficher le site web.
+    [[progressWebView mainFrame] loadRequest:progressRequest];
+}
+
+// executé quand le WebView vient de terminer le chargement de la page.
+- (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame{
+    
+    // aller à la fin pour afficher dernier commentaire.
+    [progressWebView scrollToEndOfDocument:self];
 }
 
 @end

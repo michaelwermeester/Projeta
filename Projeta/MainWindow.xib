@@ -75,9 +75,9 @@
 							<string key="NSToolbarItemPaletteLabel">Vue principale</string>
 							<string key="NSToolbarItemToolTip"/>
 							<nil key="NSToolbarItemView"/>
-							<object class="NSCustomResource" key="NSToolbarItemImage" id="246296973">
+							<object class="NSCustomResource" key="NSToolbarItemImage">
 								<string key="NSClassName">NSImage</string>
-								<string key="NSResourceName">mainview_icon</string>
+								<string key="NSResourceName">mainview_alt_icon</string>
 							</object>
 							<nil key="NSToolbarItemTarget"/>
 							<nil key="NSToolbarItemAction"/>
@@ -101,7 +101,6 @@
 								<int key="NSvFlags">268</int>
 								<string key="NSFrame">{{0, 14}, {96, 22}}</string>
 								<reference key="NSSuperview"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:918</string>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSSearchFieldCell" key="NSCell" id="817163927">
@@ -193,7 +192,6 @@
 								<int key="NSvFlags">268</int>
 								<string key="NSFrame">{{1, 14}, {82, 28}}</string>
 								<reference key="NSSuperview"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:161</string>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSButtonCell" key="NSCell" id="926700368">
@@ -205,14 +203,17 @@
 									<reference key="NSControlView" ref="493923520"/>
 									<int key="NSButtonFlags">-2033958657</int>
 									<int key="NSButtonFlags2">163</int>
-									<reference key="NSNormalImage" ref="246296973"/>
+									<object class="NSCustomResource" key="NSNormalImage" id="120470278">
+										<string key="NSClassName">NSImage</string>
+										<string key="NSResourceName">mainview_icon</string>
+									</object>
 									<string key="NSAlternateContents"/>
 									<string key="NSKeyEquivalent"/>
 									<int key="NSPeriodicDelay">200</int>
 									<int key="NSPeriodicInterval">25</int>
 								</object>
 							</object>
-							<reference key="NSToolbarItemImage" ref="246296973"/>
+							<reference key="NSToolbarItemImage" ref="120470278"/>
 							<nil key="NSToolbarItemTarget"/>
 							<nil key="NSToolbarItemAction"/>
 							<string key="NSToolbarItemMinSize">{82, 28}</string>
@@ -231,7 +232,10 @@
 							<string key="NSToolbarItemPaletteLabel">Vue projet</string>
 							<string key="NSToolbarItemToolTip"/>
 							<nil key="NSToolbarItemView"/>
-							<nil key="NSToolbarItemImage"/>
+							<object class="NSCustomResource" key="NSToolbarItemImage">
+								<string key="NSClassName">NSImage</string>
+								<string key="NSResourceName">projectview_alt_icon</string>
+							</object>
 							<nil key="NSToolbarItemTarget"/>
 							<nil key="NSToolbarItemAction"/>
 							<string key="NSToolbarItemMinSize">{0, 0}</string>
@@ -254,7 +258,6 @@
 								<int key="NSvFlags">268</int>
 								<string key="NSFrame">{{5, 14}, {67, 28}}</string>
 								<reference key="NSSuperview"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:2177</string>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSSegmentedCell" key="NSCell" id="633345712">
@@ -306,7 +309,6 @@
 								<int key="NSvFlags">268</int>
 								<string key="NSFrame">{{0, 14}, {82, 28}}</string>
 								<reference key="NSSuperview"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:161</string>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSButtonCell" key="NSCell" id="461033299">
@@ -456,7 +458,7 @@
 							</object>
 						</object>
 					</dictionary>
-					<array class="NSMutableArray" key="NSToolbarIBAllowedItems">
+					<array key="NSToolbarIBAllowedItems">
 						<reference ref="771407600"/>
 						<reference ref="1004158608"/>
 						<reference ref="1050966758"/>
@@ -471,7 +473,7 @@
 					</array>
 					<array key="NSToolbarIBDefaultItems">
 						<reference ref="470124346"/>
-						<reference ref="260827128"/>
+						<reference ref="263513558"/>
 						<reference ref="407454994"/>
 						<reference ref="1050966758"/>
 						<reference ref="434110115"/>
@@ -734,14 +736,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">detailViewToolbarItem</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="260827128"/>
-					</object>
-					<int key="connectionID">353</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">searchField</string>
 						<reference key="source" ref="1001"/>
 						<reference key="destination" ref="977408969"/>
@@ -787,6 +781,22 @@
 						<reference key="destination" ref="470124346"/>
 					</object>
 					<int key="connectionID">740</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">switchToProjectView:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="263513558"/>
+					</object>
+					<int key="connectionID">741</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">detailViewToolbarItem</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="263513558"/>
+					</object>
+					<int key="connectionID">742</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -1466,7 +1476,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">740</int>
+			<int key="maxID">742</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1566,7 +1576,9 @@
 			<string key="NSToolbarPrint">{32, 32}</string>
 			<string key="NSToolbarShowColors">{32, 32}</string>
 			<string key="NSToolbarShowFonts">{32, 32}</string>
+			<string key="mainview_alt_icon">{32, 32}</string>
 			<string key="mainview_icon">{36, 29}</string>
+			<string key="projectview_alt_icon">{32, 32}</string>
 		</dictionary>
 		<bool key="IBDocument.UseAutolayout">YES</bool>
 	</data>
