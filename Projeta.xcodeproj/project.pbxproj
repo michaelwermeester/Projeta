@@ -47,6 +47,7 @@
 		4C3E844A1554988D001EF7AA /* mainview_alt_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C3E84491554988D001EF7AA /* mainview_alt_icon.png */; };
 		4C3E844F15553055001EF7AA /* PTGanttViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3E844D15553055001EF7AA /* PTGanttViewController.m */; };
 		4C3E845015553055001EF7AA /* PTGanttViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C3E844E15553055001EF7AA /* PTGanttViewController.xib */; };
+		4C3E845315553440001EF7AA /* PTGanttView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3E845215553440001EF7AA /* PTGanttView.m */; };
 		4C568E3A14CC868F006AF039 /* PTUserGroupWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C568E3914CC868E006AF039 /* PTUserGroupWindowController.m */; };
 		4C5B671E14168859003C0F80 /* PTTaskListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5B671C14168859003C0F80 /* PTTaskListViewController.m */; };
 		4C5B7AC014DD477900DC1F75 /* PTBugCategoryManagementView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C5B7ABF14DD477900DC1F75 /* PTBugCategoryManagementView.xib */; };
@@ -203,6 +204,8 @@
 		4C3E844C15553055001EF7AA /* PTGanttViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTGanttViewController.h; sourceTree = "<group>"; };
 		4C3E844D15553055001EF7AA /* PTGanttViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTGanttViewController.m; sourceTree = "<group>"; };
 		4C3E844E15553055001EF7AA /* PTGanttViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTGanttViewController.xib; sourceTree = "<group>"; };
+		4C3E845115553440001EF7AA /* PTGanttView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTGanttView.h; sourceTree = "<group>"; };
+		4C3E845215553440001EF7AA /* PTGanttView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTGanttView.m; sourceTree = "<group>"; };
 		4C568E3814CC868E006AF039 /* PTUserGroupWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTUserGroupWindowController.h; sourceTree = "<group>"; };
 		4C568E3914CC868E006AF039 /* PTUserGroupWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTUserGroupWindowController.m; sourceTree = "<group>"; };
 		4C5B671B14168859003C0F80 /* PTTaskListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTTaskListViewController.h; sourceTree = "<group>"; };
@@ -512,6 +515,8 @@
 				4C3E844C15553055001EF7AA /* PTGanttViewController.h */,
 				4C3E844D15553055001EF7AA /* PTGanttViewController.m */,
 				4C3E844E15553055001EF7AA /* PTGanttViewController.xib */,
+				4C3E845115553440001EF7AA /* PTGanttView.h */,
+				4C3E845215553440001EF7AA /* PTGanttView.m */,
 			);
 			name = Gantt;
 			sourceTree = "<group>";
@@ -987,6 +992,7 @@
 				4CCD9672154D4796006F2921 /* PTProgressHelper.m in Sources */,
 				4CCD967E1550850F006F2921 /* PTWebView.m in Sources */,
 				4C3E844F15553055001EF7AA /* PTGanttViewController.m in Sources */,
+				4C3E845315553440001EF7AA /* PTGanttView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
