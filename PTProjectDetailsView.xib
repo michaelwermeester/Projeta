@@ -2393,20 +2393,36 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 					<int key="connectionID">1834</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">startDateRealCalendarButtonClicked:</string>
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">startDateCalendarButton</string>
 						<reference key="source" ref="1001"/>
 						<reference key="destination" ref="27783766"/>
 					</object>
-					<int key="connectionID">1951</int>
+					<int key="connectionID">2170</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">endDateRealCalendarButtonClicked:</string>
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">endDateCalendarButton</string>
 						<reference key="source" ref="1001"/>
 						<reference key="destination" ref="718129089"/>
 					</object>
-					<int key="connectionID">2138</int>
+					<int key="connectionID">2171</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">endDateCalendarButtonClicked:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="718129089"/>
+					</object>
+					<int key="connectionID">2173</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">startDateCalendarButtonClicked:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="27783766"/>
+					</object>
+					<int key="connectionID">2174</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -2535,22 +2551,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 						<reference key="destination" ref="626010156"/>
 					</object>
 					<int key="connectionID">2168</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: project.startDateReal</string>
-						<reference key="source" ref="626010156"/>
-						<reference key="destination" ref="1001"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="626010156"/>
-							<reference key="NSDestination" ref="1001"/>
-							<string key="NSLabel">value: project.startDateReal</string>
-							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">project.startDateReal</string>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">787</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -3071,7 +3071,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 								<int key="contentType">3</int>
 								<reference key="containingView" ref="1005"/>
 							</object>
-							<reference ref="448862610"/>
 							<object class="IBNSLayoutConstraint" id="781719049">
 								<reference key="firstItem" ref="448862610"/>
 								<int key="firstAttribute">5</int>
@@ -3120,6 +3119,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 								<int key="contentType">3</int>
 								<reference key="containingView" ref="1005"/>
 							</object>
+							<reference ref="448862610"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -7780,13 +7780,24 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">2169</int>
+			<int key="maxID">2174</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
 					<string key="className">MWCalendarViewController</string>
 					<string key="superclassName">NSViewController</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">datePicker</string>
+						<string key="NS.object.0">NSDatePicker</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">datePicker</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">datePicker</string>
+							<string key="candidateClassName">NSDatePicker</string>
+						</object>
+					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/MWCalendarViewController.h</string>
@@ -7812,12 +7823,22 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 					<string key="className">PTProjectDetailsViewController</string>
 					<string key="superclassName">NSViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="endDateCalendarButtonClicked:">id</string>
 						<string key="endDateRealCalendarButtonClicked:">id</string>
+						<string key="startDateCalendarButtonClicked:">id</string>
 						<string key="startDateRealCalendarButtonClicked:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="endDateCalendarButtonClicked:">
+							<string key="name">endDateCalendarButtonClicked:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 						<object class="IBActionInfo" key="endDateRealCalendarButtonClicked:">
 							<string key="name">endDateRealCalendarButtonClicked:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="startDateCalendarButtonClicked:">
+							<string key="name">startDateCalendarButtonClicked:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="startDateRealCalendarButtonClicked:">
@@ -7830,10 +7851,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 						<string key="availableUsergroupsArrayCtrl">NSArrayController</string>
 						<string key="availableUsersArrayCtrl">NSArrayController</string>
 						<string key="calendarPopover">NSPopover</string>
+						<string key="endDateCalendarButton">NSButton</string>
 						<string key="endDateRealCalendarButton">NSButton</string>
 						<string key="prjTreeController">NSTreeController</string>
 						<string key="projectEndDateDatePicker">NSDatePicker</string>
 						<string key="projectStartDateDatePicker">NSDatePicker</string>
+						<string key="startDateCalendarButton">NSButton</string>
 						<string key="startDateRealCalendarButton">NSButton</string>
 						<string key="tabBugView">NSView</string>
 						<string key="tabCommentView">NSView</string>
@@ -7857,6 +7880,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 							<string key="name">calendarPopover</string>
 							<string key="candidateClassName">NSPopover</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="endDateCalendarButton">
+							<string key="name">endDateCalendarButton</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="endDateRealCalendarButton">
 							<string key="name">endDateRealCalendarButton</string>
 							<string key="candidateClassName">NSButton</string>
@@ -7872,6 +7899,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 						<object class="IBToOneOutletInfo" key="projectStartDateDatePicker">
 							<string key="name">projectStartDateDatePicker</string>
 							<string key="candidateClassName">NSDatePicker</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="startDateCalendarButton">
+							<string key="name">startDateCalendarButton</string>
+							<string key="candidateClassName">NSButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="startDateRealCalendarButton">
 							<string key="name">startDateRealCalendarButton</string>

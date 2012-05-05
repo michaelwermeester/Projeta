@@ -22,6 +22,8 @@
     __weak NSButton *startDateRealCalendarButton;
     NSPopover *calendarPopover;
     __weak NSButton *endDateRealCalendarButton;
+    __weak NSButton *startDateCalendarButton;
+    __weak NSButton *endDateCalendarButton;
     
     NSArrayController *availableClientsArrayCtrl;
     NSArrayController *availableUsergroupsArrayCtrl;
@@ -33,8 +35,8 @@
     __weak NSDatePicker *projectStartDateDatePicker;
     __weak NSDatePicker *projectEndDateDatePicker;
     
-    NSDate *parenProjectStartDate;
-    NSDate *parenProjectEndDate;
+    NSDate *parentProjectStartDate;
+    NSDate *parentProjectEndDate;
 }
 
 @property (strong) PTProjectViewController *projectViewController;
@@ -45,9 +47,15 @@
 @property (weak) IBOutlet NSButton *startDateRealCalendarButton;
 @property (strong) IBOutlet NSPopover *calendarPopover;
 @property (weak) IBOutlet NSButton *endDateRealCalendarButton;
+@property (weak) IBOutlet NSButton *startDateCalendarButton;
+@property (weak) IBOutlet NSButton *endDateCalendarButton;
+
 
 - (IBAction)startDateRealCalendarButtonClicked:(id)sender;
 - (IBAction)endDateRealCalendarButtonClicked:(id)sender;
+- (IBAction)startDateCalendarButtonClicked:(id)sender;
+- (IBAction)endDateCalendarButtonClicked:(id)sender;
+
 
 // Holds the available clients which can be affected. 
 @property (strong) NSMutableArray *availableClients;
@@ -66,8 +74,9 @@
 @property (weak) IBOutlet NSDatePicker *projectStartDateDatePicker;
 @property (weak) IBOutlet NSDatePicker *projectEndDateDatePicker;
 
-@property (nonatomic, copy) NSDate *parenProjectStartDate;
-@property (nonatomic, copy) NSDate *parenProjectEndDate;
+
+@property (nonatomic, copy) NSDate *parentProjectStartDate;
+@property (nonatomic, copy) NSDate *parentProjectEndDate;
 
 @property (assign) MainWindowController *mainWindowController;
 

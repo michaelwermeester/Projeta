@@ -26,6 +26,8 @@
 @synthesize startDateRealCalendarButton;
 @synthesize calendarPopover;
 @synthesize endDateRealCalendarButton;
+@synthesize startDateCalendarButton;
+@synthesize endDateCalendarButton;
 
 @synthesize availableUsergroups;
 @synthesize availableUsergroupsArrayCtrl;
@@ -47,8 +49,8 @@
 @synthesize ganttViewController;
 @synthesize taskListViewController;
 
-@synthesize parenProjectStartDate;
-@synthesize parenProjectEndDate;
+@synthesize parentProjectStartDate;
+@synthesize parentProjectEndDate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -226,6 +228,40 @@
         // afficher le popup avec le calendrier.
         [self.calendarPopover showRelativeToRect:[endDateRealCalendarButton bounds]
                                           ofView:endDateRealCalendarButton
+                                   preferredEdge:NSMaxYEdge];
+    } else {
+        [self.calendarPopover close];
+    }
+}
+
+- (IBAction)startDateCalendarButtonClicked:(id)sender {
+    // si bouton clicked...
+    if (self.startDateCalendarButton.intValue == 1) {
+        
+        // binder la propriété 'value' du datepicker avec la propriété correspondante de l'objet 'projet'. 
+        MWCalendarViewController *calView = (MWCalendarViewController *)calendarPopover.contentViewController;
+        [calView.datePicker bind:@"value" toObject:self withKeyPath:@"project.startDate" options:nil];
+        
+        // afficher le popup avec le calendrier.
+        [self.calendarPopover showRelativeToRect:[startDateCalendarButton bounds]
+                                          ofView:startDateCalendarButton
+                                   preferredEdge:NSMaxYEdge];
+    } else {
+        [self.calendarPopover close];
+    }
+}
+
+- (IBAction)endDateCalendarButtonClicked:(id)sender {
+    // si bouton clicked...
+    if (self.endDateCalendarButton.intValue == 1) {
+        
+        // binder la propriété 'value' du datepicker avec la propriété correspondante de l'objet 'projet'. 
+        MWCalendarViewController *calView = (MWCalendarViewController *)calendarPopover.contentViewController;
+        [calView.datePicker bind:@"value" toObject:self withKeyPath:@"project.endDate" options:nil];
+        
+        // afficher le popup avec le calendrier.
+        [self.calendarPopover showRelativeToRect:[endDateCalendarButton bounds]
+                                          ofView:endDateCalendarButton
                                    preferredEdge:NSMaxYEdge];
     } else {
         [self.calendarPopover close];
