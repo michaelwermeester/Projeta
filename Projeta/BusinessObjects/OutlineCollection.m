@@ -13,6 +13,9 @@
 @synthesize childObject;
 @synthesize objectTitle;
 
+@synthesize startDate;
+@synthesize endDate;
+
 - (BOOL)isLeaf {
     if ([childObject count] > 0)
         return NO;

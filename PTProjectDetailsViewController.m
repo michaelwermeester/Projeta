@@ -205,6 +205,8 @@
         // binder la propriété 'value' du datepicker avec la propriété correspondante de l'objet 'projet'. 
         MWCalendarViewController *calView = (MWCalendarViewController *)calendarPopover.contentViewController;
         [calView.datePicker bind:@"value" toObject:self withKeyPath:@"project.startDateReal" options:nil];
+        //[calView.datePicker bind:@"minValue" toObject:self withKeyPath:@"parentProjectStartDate" options:nil];
+        //[calView.datePicker bind:@"maxValue" toObject:self withKeyPath:@"parentProjectEndDate" options:nil];
         
         // afficher le popup avec le calendrier.
         [self.calendarPopover showRelativeToRect:[startDateRealCalendarButton bounds]

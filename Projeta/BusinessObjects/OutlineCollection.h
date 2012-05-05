@@ -17,6 +17,9 @@
 @property (strong) NSMutableArray *childObject;
 @property (nonatomic, copy) NSString *objectTitle;
 
+@property (nonatomic, copy) NSDate *startDate;
+@property (nonatomic, copy) NSDate *endDate;
+
 - (BOOL)isLeaf;
 
 // Required by NSCopying protocol.

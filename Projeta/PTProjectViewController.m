@@ -259,10 +259,29 @@
     
         projectDetailsViewController.project = [[prjTreeController selectedObjects] objectAtIndex:0];
         
-        // mémoriser date début du projet parent.
-        //projectDetailsViewController.parentProjectStartDate = [[[prjTreeController selectedObjects] objectAtIndex:0] startDate];
-        // mémoriser date fin du projet parent.
-        //projectDetailsViewController.parentProjectEndDate = [[[prjTreeController selectedObjects] objectAtIndex:0] endDate];
+        
+        // mémoriser date début et date fin du projet parent.
+        
+        // get parent node.
+        NSTreeNode *parent = [[[[prjTreeController selectedNodes] objectAtIndex:0] parentNode] parentNode];
+        NSMutableArray *parentProjects = [[parent representedObject] mutableArrayValueForKeyPath:
+                                          [prjTreeController childrenKeyPathForNode:parent]];
+        // get projectid du projet parent. 
+        for (Project *p in parentProjects)
+        {
+            //Project *p = (Project *)tmpProj;
+            
+            if ([p.childObject containsObject:[[prjTreeController selectedObjects] objectAtIndex:0]])
+            {
+                if (p.startDate) {
+                    projectDetailsViewController.parentProjectStartDate = p.startDate;
+                }
+                if (p.endDate)
+                    projectDetailsViewController.parentProjectEndDate = p.endDate;
+
+                break;
+            }
+        }
     } 
     else {
         projectDetailsViewController.project = nil;
