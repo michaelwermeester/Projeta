@@ -7,6 +7,7 @@
 //
 
 #import "MainWindowController.h"
+#import "MWCalendarViewController.h"
 #import "PTBugListViewController.h"
 #import "PTClientHelper.h"
 #import "PTCommentairesViewController.h"
@@ -198,6 +199,12 @@
     
     // si bouton clicked...
     if (self.startDateRealCalendarButton.intValue == 1) {
+        
+        // binder la propriété 'value' du datepicker avec la propriété correspondante de l'objet 'projet'. 
+        MWCalendarViewController *calView = (MWCalendarViewController *)calendarPopover.contentViewController;
+        [calView.datePicker bind:@"value" toObject:self withKeyPath:@"project.startDateReal" options:nil];
+        
+        // afficher le popup avec le calendrier.
         [self.calendarPopover showRelativeToRect:[startDateRealCalendarButton bounds]
                                   ofView:startDateRealCalendarButton
                            preferredEdge:NSMaxYEdge];
@@ -211,6 +218,12 @@
     
     // si bouton clicked...
     if (self.endDateRealCalendarButton.intValue == 1) {
+        
+        // binder la propriété 'value' du datepicker avec la propriété correspondante de l'objet 'projet'. 
+        MWCalendarViewController *calView = (MWCalendarViewController *)calendarPopover.contentViewController;
+        [calView.datePicker bind:@"value" toObject:self withKeyPath:@"project.endDateReal" options:nil];
+        
+        // afficher le popup avec le calendrier.
         [self.calendarPopover showRelativeToRect:[endDateRealCalendarButton bounds]
                                           ofView:endDateRealCalendarButton
                                    preferredEdge:NSMaxYEdge];

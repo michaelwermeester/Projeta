@@ -48,6 +48,7 @@
 		4C3E844F15553055001EF7AA /* PTGanttViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3E844D15553055001EF7AA /* PTGanttViewController.m */; };
 		4C3E845015553055001EF7AA /* PTGanttViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C3E844E15553055001EF7AA /* PTGanttViewController.xib */; };
 		4C3E845315553440001EF7AA /* PTGanttView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3E845215553440001EF7AA /* PTGanttView.m */; };
+		4C3E845C1555A67A001EF7AA /* MWCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3E845B1555A67A001EF7AA /* MWCalendarViewController.m */; };
 		4C568E3A14CC868F006AF039 /* PTUserGroupWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C568E3914CC868E006AF039 /* PTUserGroupWindowController.m */; };
 		4C5B671E14168859003C0F80 /* PTTaskListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5B671C14168859003C0F80 /* PTTaskListViewController.m */; };
 		4C5B7AC014DD477900DC1F75 /* PTBugCategoryManagementView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C5B7ABF14DD477900DC1F75 /* PTBugCategoryManagementView.xib */; };
@@ -206,6 +207,8 @@
 		4C3E844E15553055001EF7AA /* PTGanttViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTGanttViewController.xib; sourceTree = "<group>"; };
 		4C3E845115553440001EF7AA /* PTGanttView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTGanttView.h; sourceTree = "<group>"; };
 		4C3E845215553440001EF7AA /* PTGanttView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTGanttView.m; sourceTree = "<group>"; };
+		4C3E845A1555A67A001EF7AA /* MWCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWCalendarViewController.h; sourceTree = "<group>"; };
+		4C3E845B1555A67A001EF7AA /* MWCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWCalendarViewController.m; sourceTree = "<group>"; };
 		4C568E3814CC868E006AF039 /* PTUserGroupWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTUserGroupWindowController.h; sourceTree = "<group>"; };
 		4C568E3914CC868E006AF039 /* PTUserGroupWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTUserGroupWindowController.m; sourceTree = "<group>"; };
 		4C5B671B14168859003C0F80 /* PTTaskListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTTaskListViewController.h; sourceTree = "<group>"; };
@@ -452,6 +455,8 @@
 				4C9198CB14672A56000CF6C2 /* MWTableCellView.m */,
 				4C996DBF1527BC3500BB6FCC /* MWDateFormatter.h */,
 				4C996DC01527BC3500BB6FCC /* MWDateFormatter.m */,
+				4C3E845A1555A67A001EF7AA /* MWCalendarViewController.h */,
+				4C3E845B1555A67A001EF7AA /* MWCalendarViewController.m */,
 			);
 			name = "Helper Classes";
 			path = HelperClasses;
@@ -993,6 +998,7 @@
 				4CCD967E1550850F006F2921 /* PTWebView.m in Sources */,
 				4C3E844F15553055001EF7AA /* PTGanttViewController.m in Sources */,
 				4C3E845315553440001EF7AA /* PTGanttView.m in Sources */,
+				4C3E845C1555A67A001EF7AA /* MWCalendarViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
