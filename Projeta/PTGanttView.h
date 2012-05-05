@@ -8,6 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class Project;
+
 @interface PTGanttView : NSView
+
+@property (strong) Project *project;
 
 @end

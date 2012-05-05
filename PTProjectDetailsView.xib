@@ -2319,6 +2319,22 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 					<int key="connectionID">1832</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">projectStartDateDatePicker</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="674308387"/>
+					</object>
+					<int key="connectionID">1833</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">projectEndDateDatePicker</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="20585504"/>
+					</object>
+					<int key="connectionID">1834</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">value: project.projectTitle</string>
 						<reference key="source" ref="808802465"/>
@@ -7331,7 +7347,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1832</int>
+			<int key="maxID">1834</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -7375,6 +7391,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 						<string key="calendarPopover">NSPopover</string>
 						<string key="endDateRealCalendarButton">NSButton</string>
 						<string key="prjTreeController">NSTreeController</string>
+						<string key="projectEndDateDatePicker">NSDatePicker</string>
+						<string key="projectStartDateDatePicker">NSDatePicker</string>
 						<string key="startDateRealCalendarButton">NSButton</string>
 						<string key="tabBugView">NSView</string>
 						<string key="tabCommentView">NSView</string>
@@ -7405,6 +7423,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 						<object class="IBToOneOutletInfo" key="prjTreeController">
 							<string key="name">prjTreeController</string>
 							<string key="candidateClassName">NSTreeController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="projectEndDateDatePicker">
+							<string key="name">projectEndDateDatePicker</string>
+							<string key="candidateClassName">NSDatePicker</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="projectStartDateDatePicker">
+							<string key="name">projectStartDateDatePicker</string>
+							<string key="candidateClassName">NSDatePicker</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="startDateRealCalendarButton">
 							<string key="name">startDateRealCalendarButton</string>

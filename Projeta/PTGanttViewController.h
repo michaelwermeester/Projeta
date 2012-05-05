@@ -10,9 +10,13 @@
 
 @class Project;
 @class MainWindowController;
+@class PTGanttView;
 @class PTProjectDetailsViewController;
 
-@interface PTGanttViewController : NSViewController
+@interface PTGanttViewController : NSViewController {
+    __weak PTGanttView *ganttView;
+}
+
 
 
 // reference to the (parent) MainWindowController
@@ -21,6 +25,7 @@
 @property (assign) PTProjectDetailsViewController *parentProjectDetailsViewController;
 
 @property (strong) Project *project;
+@property (weak) IBOutlet PTGanttView *ganttView;
 
 - (void)loadGantt;
 

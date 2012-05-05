@@ -34,6 +34,8 @@
 @synthesize tabBugView;
 @synthesize tabCommentView;
 @synthesize tabGanttView;
+@synthesize projectStartDateDatePicker;
+@synthesize projectEndDateDatePicker;
 @synthesize availableClients;
 @synthesize availableClientsArrayCtrl;
 
@@ -43,6 +45,9 @@
 @synthesize commentViewController;
 @synthesize ganttViewController;
 @synthesize taskListViewController;
+
+@synthesize parenProjectStartDate;
+@synthesize parenProjectEndDate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

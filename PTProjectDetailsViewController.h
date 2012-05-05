@@ -30,6 +30,11 @@
     __weak NSView *tabBugView;
     __weak NSView *tabCommentView;
     __weak NSView *tabGanttView;
+    __weak NSDatePicker *projectStartDateDatePicker;
+    __weak NSDatePicker *projectEndDateDatePicker;
+    
+    NSDate *parenProjectStartDate;
+    NSDate *parenProjectEndDate;
 }
 
 @property (strong) PTProjectViewController *projectViewController;
@@ -57,6 +62,12 @@
 @property (weak) IBOutlet NSView *tabBugView;
 @property (weak) IBOutlet NSView *tabCommentView;
 @property (weak) IBOutlet NSView *tabGanttView;
+
+@property (weak) IBOutlet NSDatePicker *projectStartDateDatePicker;
+@property (weak) IBOutlet NSDatePicker *projectEndDateDatePicker;
+
+@property (nonatomic, copy) NSDate *parenProjectStartDate;
+@property (nonatomic, copy) NSDate *parenProjectEndDate;
 
 @property (assign) MainWindowController *mainWindowController;
 
