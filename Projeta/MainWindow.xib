@@ -93,7 +93,7 @@
 							<object class="NSMutableString" key="NSToolbarItemIdentifier">
 								<characters key="NS.bytes">5030A7F7-7F73-4563-B0B7-C1FA6F9C10A8</characters>
 							</object>
-							<string key="NSToolbarItemLabel">Search</string>
+							<string key="NSToolbarItemLabel">Recherche</string>
 							<string key="NSToolbarItemPaletteLabel">Search</string>
 							<nil key="NSToolbarItemToolTip"/>
 							<object class="NSSearchField" key="NSToolbarItemView" id="977408969">
@@ -203,7 +203,7 @@
 									<reference key="NSControlView" ref="493923520"/>
 									<int key="NSButtonFlags">-2033958657</int>
 									<int key="NSButtonFlags2">163</int>
-									<object class="NSCustomResource" key="NSNormalImage" id="120470278">
+									<object class="NSCustomResource" key="NSNormalImage" id="531181432">
 										<string key="NSClassName">NSImage</string>
 										<string key="NSResourceName">mainview_icon</string>
 									</object>
@@ -213,7 +213,7 @@
 									<int key="NSPeriodicInterval">25</int>
 								</object>
 							</object>
-							<reference key="NSToolbarItemImage" ref="120470278"/>
+							<reference key="NSToolbarItemImage" ref="531181432"/>
 							<nil key="NSToolbarItemTarget"/>
 							<nil key="NSToolbarItemAction"/>
 							<string key="NSToolbarItemMinSize">{82, 28}</string>
@@ -372,9 +372,9 @@
 						</object>
 						<object class="NSToolbarItem" key="NSToolbarPrintItem" id="1050966758">
 							<string key="NSToolbarItemIdentifier">NSToolbarPrintItem</string>
-							<string key="NSToolbarItemLabel">Print</string>
-							<string key="NSToolbarItemPaletteLabel">Print</string>
-							<string key="NSToolbarItemToolTip">Print</string>
+							<string key="NSToolbarItemLabel">Imprimer</string>
+							<string key="NSToolbarItemPaletteLabel">Imprimer</string>
+							<string key="NSToolbarItemToolTip">Imprimer</string>
 							<nil key="NSToolbarItemView"/>
 							<object class="NSCustomResource" key="NSToolbarItemImage">
 								<string key="NSClassName">NSImage</string>
@@ -458,7 +458,7 @@
 							</object>
 						</object>
 					</dictionary>
-					<array key="NSToolbarIBAllowedItems">
+					<array class="NSMutableArray" key="NSToolbarIBAllowedItems">
 						<reference ref="771407600"/>
 						<reference ref="1004158608"/>
 						<reference ref="1050966758"/>
