@@ -88,7 +88,10 @@
     [connectionController startRequestForURL:url setRequest:urlRequest];
     
     // set label of 'detail view' toolbar item to 'Task view'.
-    [[mainWindowController detailViewToolbarItem] setLabel:NSLocalizedString(@"Task view", nil)];
+    //[[mainWindowController detailViewToolbarItem] setLabel:NSLocalizedString(@"Task view", nil)];
+    
+    // désactiver le bouton 'vue projet'.
+    [[mainWindowController detailViewToolbarItem] setEnabled:NO];
 }
 
 - (void)loadView

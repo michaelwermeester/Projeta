@@ -133,6 +133,9 @@
     // cacher le bouton 'ajouter un projet'.
     [addProjectButton setHidden:YES];
     [removeProjectButton setHidden:YES];
+    
+    // désactiver le bouton 'vue projet'.
+    [detailViewToolbarItem setEnabled:YES];
 }
 
 - (IBAction)switchToProjectView:(id)sender {
@@ -206,6 +209,9 @@
     // afficher le bouton 'ajouter un projet'.
     [addProjectButton setHidden:NO];
     [removeProjectButton setHidden:NO];
+    
+    // désactiver le bouton 'vue projet'.
+    [detailViewToolbarItem setEnabled:YES];
 }
 
 // returns a frame which fits the ContentView

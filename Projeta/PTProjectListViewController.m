@@ -72,7 +72,10 @@
     [connectionController startRequestForURL:url setRequest:urlRequest];
     
     // set label of 'detail view' toolbar item to 'Project view'.
-    [[mainWindowController detailViewToolbarItem] setLabel:NSLocalizedString(@"Project view", nil)];
+    [[mainWindowController detailViewToolbarItem] setLabel:NSLocalizedString(@"Vue projet", nil)];
+    
+    // désactiver le bouton 'vue projet'.
+    [[mainWindowController detailViewToolbarItem] setEnabled:YES];
     
     // bind the main window's search field to the arraycontroller.
     [[mainWindowController searchField] bind:@"predicate" toObject:prjArrayCtrl withKeyPath:@"filterPredicate" options:
