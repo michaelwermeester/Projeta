@@ -45,6 +45,8 @@
 		4C32ECBC13DDE690009E7131 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C32ECBA13DDE690009E7131 /* User.m */; };
 		4C3E8448155497B3001EF7AA /* projectview_alt_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C3E8447155497B3001EF7AA /* projectview_alt_icon.png */; };
 		4C3E844A1554988D001EF7AA /* mainview_alt_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C3E84491554988D001EF7AA /* mainview_alt_icon.png */; };
+		4C3E844F15553055001EF7AA /* PTGanttViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C3E844D15553055001EF7AA /* PTGanttViewController.m */; };
+		4C3E845015553055001EF7AA /* PTGanttViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C3E844E15553055001EF7AA /* PTGanttViewController.xib */; };
 		4C568E3A14CC868F006AF039 /* PTUserGroupWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C568E3914CC868E006AF039 /* PTUserGroupWindowController.m */; };
 		4C5B671E14168859003C0F80 /* PTTaskListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5B671C14168859003C0F80 /* PTTaskListViewController.m */; };
 		4C5B7AC014DD477900DC1F75 /* PTBugCategoryManagementView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C5B7ABF14DD477900DC1F75 /* PTBugCategoryManagementView.xib */; };
@@ -198,6 +200,9 @@
 		4C32ECBA13DDE690009E7131 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		4C3E8447155497B3001EF7AA /* projectview_alt_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = projectview_alt_icon.png; sourceTree = "<group>"; };
 		4C3E84491554988D001EF7AA /* mainview_alt_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainview_alt_icon.png; sourceTree = "<group>"; };
+		4C3E844C15553055001EF7AA /* PTGanttViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTGanttViewController.h; sourceTree = "<group>"; };
+		4C3E844D15553055001EF7AA /* PTGanttViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTGanttViewController.m; sourceTree = "<group>"; };
+		4C3E844E15553055001EF7AA /* PTGanttViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTGanttViewController.xib; sourceTree = "<group>"; };
 		4C568E3814CC868E006AF039 /* PTUserGroupWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTUserGroupWindowController.h; sourceTree = "<group>"; };
 		4C568E3914CC868E006AF039 /* PTUserGroupWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTUserGroupWindowController.m; sourceTree = "<group>"; };
 		4C5B671B14168859003C0F80 /* PTTaskListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTTaskListViewController.h; sourceTree = "<group>"; };
@@ -501,6 +506,16 @@
 			path = BusinessObjects;
 			sourceTree = "<group>";
 		};
+		4C3E844B1555300E001EF7AA /* Gantt */ = {
+			isa = PBXGroup;
+			children = (
+				4C3E844C15553055001EF7AA /* PTGanttViewController.h */,
+				4C3E844D15553055001EF7AA /* PTGanttViewController.m */,
+				4C3E844E15553055001EF7AA /* PTGanttViewController.xib */,
+			);
+			name = Gantt;
+			sourceTree = "<group>";
+		};
 		4C5B7ABD14DD473400DC1F75 /* Bugs */ = {
 			isa = PBXGroup;
 			children = (
@@ -596,6 +611,7 @@
 				4C0BA4D513F32669002EA4F2 /* PXSourceList */,
 				4C32ECB213DDE2C3009E7131 /* Helper Classes */,
 				4C32ECB613DDE492009E7131 /* Business Objects */,
+				4C3E844B1555300E001EF7AA /* Gantt */,
 				4CBCEA1B13AD161500835F30 /* Preferences */,
 				4C65763814DEAA980032CA04 /* Commentaires */,
 				4CCD9661154C7980006F2921 /* Progress */,
@@ -851,6 +867,7 @@
 				4C888B24155495A600F17398 /* projectview_icon.png in Resources */,
 				4C3E8448155497B3001EF7AA /* projectview_alt_icon.png in Resources */,
 				4C3E844A1554988D001EF7AA /* mainview_alt_icon.png in Resources */,
+				4C3E845015553055001EF7AA /* PTGanttViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -969,6 +986,7 @@
 				4CCD966C154CA369006F2921 /* PTStatus.m in Sources */,
 				4CCD9672154D4796006F2921 /* PTProgressHelper.m in Sources */,
 				4CCD967E1550850F006F2921 /* PTWebView.m in Sources */,
+				4C3E844F15553055001EF7AA /* PTGanttViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

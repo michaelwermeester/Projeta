@@ -10,6 +10,7 @@
 
 @class MainWindowController;
 @class PTCommentairesViewController;
+@class PTGanttViewController;
 @class PTProjectViewController;
 @class Project;
 
@@ -28,6 +29,7 @@
     __weak NSView *tabTaskView;
     __weak NSView *tabBugView;
     __weak NSView *tabCommentView;
+    __weak NSView *tabGanttView;
 }
 
 @property (strong) PTProjectViewController *projectViewController;
@@ -54,6 +56,7 @@
 @property (weak) IBOutlet NSView *tabTaskView;
 @property (weak) IBOutlet NSView *tabBugView;
 @property (weak) IBOutlet NSView *tabCommentView;
+@property (weak) IBOutlet NSView *tabGanttView;
 
 @property (assign) MainWindowController *mainWindowController;
 
@@ -63,6 +66,8 @@
 @property (strong) PTBugListViewController *bugListViewController;
 // commentaires-list view
 @property (strong) PTCommentairesViewController *commentViewController;
+// Gantt view
+@property (strong) PTGanttViewController *ganttViewController;
 
 // charger les utilisateurs, groupes et clients liés au projet.
 - (void)loadProjectDetails;
@@ -72,5 +77,7 @@
 - (void)loadBugs;
 // charger les commentaires liés au projet sélectionné.
 - (void)loadComments;
+// charger le diagramme de Gantt lié au projet sélectionné.
+- (void)loadGantt;
 
 @end

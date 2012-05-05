@@ -10,6 +10,7 @@
 #import "PTBugListViewController.h"
 #import "PTClientHelper.h"
 #import "PTCommentairesViewController.h"
+#import "PTGanttViewController.h"
 #import "PTProjectDetailsViewController.h"
 #import "PTUsergroupHelper.h"
 #import "PTUserHelper.h"
@@ -32,6 +33,7 @@
 @synthesize tabTaskView;
 @synthesize tabBugView;
 @synthesize tabCommentView;
+@synthesize tabGanttView;
 @synthesize availableClients;
 @synthesize availableClientsArrayCtrl;
 
@@ -39,6 +41,7 @@
 
 @synthesize bugListViewController;
 @synthesize commentViewController;
+@synthesize ganttViewController;
 @synthesize taskListViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -111,7 +114,7 @@
     [bugListViewController setParentProjectDetailsViewController:self];
     
     // resize the view to fit and fill the right splitview view
-    [bugListViewController.view setFrameSize:tabTaskView.frame.size];
+    [bugListViewController.view setFrameSize:tabBugView.frame.size];
     
     [self.tabBugView addSubview:bugListViewController.view];
     
@@ -135,7 +138,7 @@
     [commentViewController setParentProjectDetailsViewController:self];
     
     // resize the view to fit and fill the right splitview view
-    [commentViewController.view setFrameSize:tabTaskView.frame.size];
+    [commentViewController.view setFrameSize:tabCommentView.frame.size];
     
     [self.tabCommentView addSubview:commentViewController.view];
     
@@ -147,6 +150,37 @@
     
     // charger commentaires.
     [commentViewController loadComments];
+    
+    // cacher lo colonne "projet".
+    //[taskListViewController.outlineViewProjetColumn setHidden:YES];
+    //[taskListViewController.checkBoxShowTasksFromSubProjects setHidden:NO];
+    //[taskListViewController.projectButton removeFromSuperview];
+    //[taskListViewController.projectButton setHidden:YES];
+}
+
+// charger le diagramme de Gantt lié au projet sélectionné.
+- (void)loadGantt {
+    ganttViewController = [[PTGanttViewController alloc] init];
+    
+    // set reference to (parent) window
+    [ganttViewController setMainWindowController:mainWindowController];
+    
+    // set reference to (parent) project details view.
+    [ganttViewController setParentProjectDetailsViewController:self];
+    
+    // resize the view to fit and fill the right splitview view
+    [ganttViewController.view setFrameSize:tabGanttView.frame.size];
+    
+    [self.tabGanttView addSubview:ganttViewController.view];
+    
+    // auto resize the view.
+    [ganttViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
+    
+    
+    ganttViewController.project = [self project];
+    
+    // charger commentaires.
+    [ganttViewController loadGantt];
     
     // cacher lo colonne "projet".
     //[taskListViewController.outlineViewProjetColumn setHidden:YES];

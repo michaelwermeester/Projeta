@@ -77,6 +77,8 @@
     [projectDetailsViewController loadBugs];
     // charger les commentaires liés au projet.
     [projectDetailsViewController loadComments];
+    // charger le diagramme de Gantt lié au projet.
+    [projectDetailsViewController loadGantt];
 }
 
 #pragma mark -
