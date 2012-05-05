@@ -28,6 +28,9 @@
     NSDate *startDateReal;
     NSDate *endDateReal;
     
+    NSString *projectStatus;
+    NSNumber *projectPercentage;
+    
     NSMutableArray *childProject;
     
     //Project *project;
@@ -47,7 +50,15 @@
 @property (nonatomic, copy) NSDate *startDateReal;
 @property (nonatomic, retain) User *userCreated;
 @property (strong) NSMutableArray *childProject;
+
+// retourne le pourcentage d'avancement du projet.
+@property (readonly) NSString *percentageCompleteString;
+
 //@property (strong) Project *project;
+
+// état du projet
+@property (nonatomic, copy) NSString *projectStatus;
+@property (nonatomic, copy) NSNumber *projectPercentage;
 
 // pour calendar control.
 @property (nonatomic, copy) NSDate *calendarStartDateReal;

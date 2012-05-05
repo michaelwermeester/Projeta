@@ -258,6 +258,11 @@
     if ([[[prjTreeController selectedObjects] objectAtIndex:0] isKindOfClass:[Project class]]) {
     
         projectDetailsViewController.project = [[prjTreeController selectedObjects] objectAtIndex:0];
+        
+        // mémoriser date début du projet parent.
+        //projectDetailsViewController.parentProjectStartDate = [[[prjTreeController selectedObjects] objectAtIndex:0] startDate];
+        // mémoriser date fin du projet parent.
+        //projectDetailsViewController.parentProjectEndDate = [[[prjTreeController selectedObjects] objectAtIndex:0] endDate];
     } 
     else {
         projectDetailsViewController.project = nil;

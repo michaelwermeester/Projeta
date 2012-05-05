@@ -27,6 +27,9 @@
 @synthesize startDateReal = startDateReal;
 @synthesize userCreated = userCreated;
 @synthesize childProject = childProject;
+// état du projet.
+@synthesize projectStatus = projectStatus;
+@synthesize projectPercentage = projectPercentage;
 
 // pour calendar control.
 @synthesize calendarStartDateReal;
@@ -88,6 +91,13 @@
     if ([[aDictionary objectForKey:@"parentProjectId"] isKindOfClass:[NSArray class]] == NO) {
         self.parentProjectId = [NSDecimalNumber decimalNumberWithString:(NSString *)[aDictionary objectForKey:@"parentProjectId"]];
     }
+    
+    // état du projet.
+    if ([[aDictionary objectForKey:@"projectStatus"] isKindOfClass:[NSNull class]] == NO)
+        self.projectStatus = [aDictionary objectForKey:@"projectStatus"];
+    // pourcentage.
+    if ([[aDictionary objectForKey:@"projectPercentage"] isKindOfClass:[NSNull class]] == NO)
+        self.projectPercentage = [NSDecimalNumber decimalNumberWithString:(NSString *)[aDictionary objectForKey:@"projectPercentage"]];
     
     
     // child projects
@@ -187,6 +197,22 @@
 
 - (void)setCalendarStartDateReal:(NSDate *)aCalendarStartDateReal {
     startDateReal = aCalendarStartDateReal;
+}
+
+// retourne le pourcentage d'avancement du projet.
+- (NSString *)percentageCompleteString {
+    
+    NSString *retVal = [[NSString alloc] initWithString:@""];
+    
+    // si le percentage est un numéro.
+    if ([self.projectPercentage isEqualToNumber:[NSDecimalNumber notANumber]] == NO) {
+        // pourcentage.
+        retVal = [retVal stringByAppendingString:[self.projectPercentage stringValue]];
+        // ajouter le signe de pourcentage.
+        retVal = [retVal stringByAppendingString:@" %"];
+    } 
+    
+    return retVal;
 }
 
 @end
