@@ -357,10 +357,12 @@
         projectDetailsWindowController.isNewProject = isNewProject;
         projectDetailsWindowController.project = [selectedObjects objectAtIndex:0];
         
+        NSLog(@"PROJECTID: %@", [[selectedObjects objectAtIndex:0] projectId]);
+        
         if (isNewProject == NO) {
             projectDetailsWindowController.prjTreeIndexPath = prjTreeIndexPath;
             projectDetailsWindowController.prjArrCtrlIndex = prjArrCtrlIndex;
-        }
+        } 
         
         // fetch available roles.
         /*[PTRoleHelper rolesAvailable:^(NSMutableArray *availableRoles){

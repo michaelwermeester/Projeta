@@ -180,6 +180,11 @@ Project *projectCopy;
         for (Project *prj in createdProjectArray) {
    
             
+            //[parentProjectListViewController.prjTreeController removeObjectAtArrangedObjectIndexPath:prjTreeIndexPath];
+            
+            //[parentProjectListViewController.prjTreeController insertObject:prj atArrangedObjectIndexPath:prjTreeIndexPath];
+
+            
             /*if (prj.parentProjectId) {
                 [parentProjectListViewController.prjTreeController remove:project];
                 
@@ -191,8 +196,15 @@ Project *projectCopy;
                 [[parentProjectListViewController mutableArrayValueForKey:@"arrPrj"] replaceObjectAtIndex:[parentProjectListViewController.arrPrj indexOfObject:project] withObject:prj];
             }*/
             
-            // reassign user with user returned from web-service. 
+            
+            // reassign user with user returned from web-service.
+            //self.project = prj;
+            //self.project = [prj copy];
+            self.project.projectId = [[NSNumber alloc] initWithInt:[prj.projectId intValue]];
             self.project = prj;
+            
+            //NSLog(@"projectid: %@", self.project.projectId);
+            //NSLog(@"projectid: %d", [prj.projectId intValue]);
             
             //NSLog(@"id: %d", [prj.projectId intValue]);
             //NSLog(@"title: %@", prj.projectTitle);
@@ -224,8 +236,10 @@ Project *projectCopy;
                 }];
 }
 
+// Retourne le titre de la fenêtre.
 - (NSString *)windowTitle {
     
+    // afficher 'Projet : <nom du projet>'.
     NSString *retVal = [[NSString alloc] initWithString:@"Projet"];
     if (project) {
         if (project.projectTitle) {
@@ -234,6 +248,7 @@ Project *projectCopy;
         }
     }
     
+    // si nouveau projet, afficher 'Nouveau projet'.
     if (isNewProject)
         retVal = [[NSString alloc] initWithString:@"Nouveau projet"];
     

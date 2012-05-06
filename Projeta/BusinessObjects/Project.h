@@ -43,6 +43,7 @@
 @property (nonatomic, assign) BOOL completed;
 @property (nonatomic, assign) BOOL canceled;
 @property (nonatomic, copy) NSString *projectDescription;
+//@property (nonatomic, copy) NSNumber *projectId;
 @property (nonatomic, copy) NSNumber *projectId;
 @property (nonatomic, copy) NSNumber *parentProjectId;
 @property (nonatomic, copy) NSString *projectTitle;

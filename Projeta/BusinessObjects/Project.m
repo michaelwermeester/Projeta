@@ -34,9 +34,16 @@
 // pour calendar control.
 @synthesize calendarStartDateReal;
 
+
 //@synthesize project;
 
 /*- (Project *)project {
+    return self;
+}*/
+
+/*- (id)init {
+    self.projectId = [[NSNumber alloc] initWithInt:10];
+    
     return self;
 }*/
 
