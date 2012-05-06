@@ -180,7 +180,7 @@ Task *taskCopy;
     // see Cocoa and Objective-C up and running by Scott Stevenson.
     // page 242
     //[createdUserArray addObjectsFromArray:[PTUserHelper setAttributesFromDictionary2:dict]];
-    /*[createdProjectArray addObjectsFromArray:[PTProjectHelper setAttributesFromJSONDictionary:dict]];*/
+    [createdTaskArray addObjectsFromArray:[PTTaskHelper setAttributesFromJSONDictionary:dict]];
     
     NSLog(@"count: %lu", [createdTaskArray count]);
     
@@ -189,7 +189,7 @@ Task *taskCopy;
         for (Task *tsk in createdTaskArray) {
    
             
-            if (tsk.parentTaskId) {
+            /*if (tsk.parentTaskId) {
                 [parentTaskListViewController.taskTreeCtrl remove:task];
                 
                 NSIndexPath *indexPath = [parentTaskListViewController.taskTreeCtrl selectionIndexPath];
@@ -198,9 +198,10 @@ Task *taskCopy;
             
             } else {
                 [[parentTaskListViewController mutableArrayValueForKey:@"arrTask"] replaceObjectAtIndex:[parentTaskListViewController.arrTask indexOfObject:task] withObject:tsk];
-            }
+            }*/
             
             // reassign user with user returned from web-service. 
+            self.task.taskId = [[NSNumber alloc] initWithInt:[tsk.taskId intValue]];
             self.task = tsk;
             
             //NSLog(@"id: %d", [prj.projectId intValue]);
