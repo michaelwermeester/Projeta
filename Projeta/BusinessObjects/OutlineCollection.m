@@ -12,6 +12,18 @@
 
 @synthesize childObject;
 @synthesize objectTitle;
+@synthesize projectTitle;
+
+@synthesize projectDescription;
+@synthesize flagPublic;
+@synthesize startDateReal;
+@synthesize endDateReal;
+@synthesize completed;
+@synthesize projectStatus;
+@synthesize projectPercentage;
+@synthesize percentageCompleteString;
+@synthesize projectId;
+@synthesize childProject;
 
 @synthesize startDate;
 @synthesize endDate;

@@ -24,6 +24,7 @@
     __weak NSButton *endDateRealCalendarButton;
     __weak NSButton *startDateCalendarButton;
     __weak NSButton *endDateCalendarButton;
+    __weak NSButton *saveProjectButton;
     
     NSArrayController *availableClientsArrayCtrl;
     NSArrayController *availableUsergroupsArrayCtrl;
@@ -37,6 +38,8 @@
     
     NSDate *parentProjectStartDate;
     NSDate *parentProjectEndDate;
+    
+    //BOOL isNewProject;
 }
 
 @property (strong) PTProjectViewController *projectViewController;
@@ -49,12 +52,16 @@
 @property (weak) IBOutlet NSButton *endDateRealCalendarButton;
 @property (weak) IBOutlet NSButton *startDateCalendarButton;
 @property (weak) IBOutlet NSButton *endDateCalendarButton;
+@property (weak) IBOutlet NSButton *saveProjectButton;
+
+//@property (assign) BOOL isNewProject;
 
 
 - (IBAction)startDateRealCalendarButtonClicked:(id)sender;
 - (IBAction)endDateRealCalendarButtonClicked:(id)sender;
 - (IBAction)startDateCalendarButtonClicked:(id)sender;
 - (IBAction)endDateCalendarButtonClicked:(id)sender;
+- (IBAction)saveProjectButtonClicked:(id)sender;
 
 
 // Holds the available clients which can be affected. 

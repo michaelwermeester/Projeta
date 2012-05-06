@@ -9,6 +9,7 @@
 #import "MainWindowController.h"
 #import "OutlineCollection.h"
 #import "ProjetaAppDelegate.h"
+#import "PTProjectDetailsViewController.h"
 #import "PTMainWindowViewController.h"
 #import "User.h"
 
@@ -212,6 +213,108 @@
     
     // désactiver le bouton 'vue projet'.
     [detailViewToolbarItem setEnabled:YES];
+}
+
+- (IBAction)addProjectButtonClicked:(id)sender {
+    NSNumber *parentID;
+    
+    NSArray *selectedObjects = [projectViewController.prjTreeController selectedObjects];
+    
+    // if a project is selected, open the window to show its details.
+    if ([selectedObjects count] == 1) {
+        //NSLog(@"ok");
+        //parentID = [[selectedObjects objectAtIndex:0] projectId];
+        //parentID = [[selectedObjects objectAtIndex:0] parentProjectId];
+        
+        //[prjTreeController add:prj];
+        
+        Project *prj = [[Project alloc] init];
+        
+        // get parent node.
+        NSTreeNode *parent = [[[[projectViewController.prjTreeController selectedNodes] objectAtIndex:0] parentNode] parentNode];
+        NSMutableArray *parentProjects = [[parent representedObject] mutableArrayValueForKeyPath:
+                                          [projectViewController.prjTreeController childrenKeyPathForNode:parent]];
+        //NSLog(@"test: %@", [[[[projectViewController.prjTreeController selectedNodes] objectAtIndex:0] parentNode] projectTitle]); 
+        
+        //[prjTreeController 
+        //parentrowforrow
+        
+        //NSLog(@"test: %@", [[objects objectAtIndex:0] projectTitle]);
+        //int line = [prjOutlineView selectedRow];
+        //NSLog(@"test: %@", [[parentProjects objectAtIndex:0] projectTitle]);
+        
+        // get projectid du projet parent. 
+        for (Project *p in parentProjects)
+        {
+            if ([p.childProject containsObject:[selectedObjects objectAtIndex:0]])
+            {
+                parentID = p.projectId;
+                
+                //NSLog(@"TEST: %d", [[p projectId] intValue]);
+                
+                break;
+            }
+        }
+        
+        //NSLog(@"test: %@", [[parent representedObject] projectTitle]);
+        
+        //prj.parentProjectId = parentID;
+        //prj.parentProjectId = p.projectId;
+        if (parentID != nil){
+            prj.parentProjectId = parentID;
+        }
+        
+        //NSLog(@"parentprojectid: %@", p.projectTitle);
+        
+        //[prjTreeController add:prj];
+        NSIndexPath *indexPath = [projectViewController.prjTreeController selectionIndexPath];
+        
+        //NSLog(@"indexpath: %@", indexPath);
+        if ([indexPath length] > 1) {
+            [projectViewController.prjTreeController insertObject:prj atArrangedObjectIndexPath:indexPath];
+        } /*else {
+            // construire nouveau NSIndexPath avec comme valeur 0 -> l'élément sera inséré à la première position.
+            // https://discussions.apple.com/thread/1585148?start=0&tstart=0
+            NSUInteger indexes[1]={0};
+            indexPath=[NSIndexPath indexPathWithIndexes:indexes length:1];
+            
+            [projectViewController.prjTreeController insertObject:prj atArrangedObjectIndexPath:indexPath];
+        }*/
+    }
+}
+
+- (IBAction)addSubProjectButtonClicked:(id)sender {
+    NSNumber *parentID;
+    
+    NSArray *selectedObjects = [projectViewController.prjTreeController selectedObjects];
+    
+    // if a project is selected, open the window to show its details.
+    if ([selectedObjects count] == 1) {
+        parentID = [[selectedObjects objectAtIndex:0] projectId];
+        
+        
+        Project *prj = [[Project alloc] init];
+        prj.parentProjectId = parentID;
+        
+        Project *tmpPrj = [selectedObjects objectAtIndex:0]; 
+        
+        if ([tmpPrj childProject] == nil) {
+            
+            NSIndexPath *indexPath = [projectViewController.prjTreeController selectionIndexPath];
+            
+            tmpPrj.childProject = [[NSMutableArray alloc] init];
+            [projectViewController.prjTreeController insertObject:prj atArrangedObjectIndexPath:[indexPath indexPathByAddingIndex:0]];
+        } else {
+            //else if ([[tmpPrj childProject] count] > 0) {
+            
+            NSIndexPath *indexPath = [projectViewController.prjTreeController selectionIndexPath];
+            
+            [projectViewController.prjTreeController insertObject:prj atArrangedObjectIndexPath:[indexPath indexPathByAddingIndex:0]];
+        } 
+    }
+    
+    
+    //NSLog(@"count: %lu", [projectViewController.arrPrj count]);
 }
 
 // returns a frame which fits the ContentView

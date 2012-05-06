@@ -28,6 +28,7 @@
 @synthesize endDateRealCalendarButton;
 @synthesize startDateCalendarButton;
 @synthesize endDateCalendarButton;
+@synthesize saveProjectButton;
 
 @synthesize availableUsergroups;
 @synthesize availableUsergroupsArrayCtrl;
@@ -51,6 +52,8 @@
 
 @synthesize parentProjectStartDate;
 @synthesize parentProjectEndDate;
+
+//@synthesize isNewProject;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -268,6 +271,34 @@
     } else {
         [self.calendarPopover close];
     }
+}
+
+- (IBAction)saveProjectButtonClicked:(id)sender {
+    
+    BOOL prjUpdSuc = NO;
+    
+    // donner le focus au bouton 'OK'.
+    [mainWindowController.window makeFirstResponder:saveProjectButton];
+    /*
+    // créer un nouveau projet.
+    if (isNewProject == YES) {
+        
+        // user created.
+        project.userCreated = mainWindowController.loggedInUser;
+        
+        
+        prjUpdSuc = [PTProjectHelper createProject:project successBlock:^(NSMutableData *data) {
+            [self finishedCreatingProject:data];
+        } 
+                              mainWindowController:parentProjectListViewController];
+    }
+    // mettre à jour projet existant.
+    else {
+        prjUpdSuc = [PTProjectHelper updateProject:project successBlock:^(NSMutableData *data) {
+            [self finishedCreatingProject:data];
+        } 
+                              mainWindowController:parentProjectListViewController];
+    }*/
 }
 
 // charger les groupes d'utilisateurs à partir du webservice.

@@ -49,6 +49,8 @@
 
 - (IBAction)switchToMainView:(id)sender;
 - (IBAction)switchToProjectView:(id)sender;
+- (IBAction)addProjectButtonClicked:(id)sender;
+- (IBAction)addSubProjectButtonClicked:(id)sender;
 
 - (NSRect)frameWithContentViewFrameSize;
 

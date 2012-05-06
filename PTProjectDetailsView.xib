@@ -2487,6 +2487,22 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 					<int key="connectionID">2174</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">saveProjectButtonClicked:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="61802348"/>
+					</object>
+					<int key="connectionID">2316</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">saveProjectButton</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="61802348"/>
+					</object>
+					<int key="connectionID">2317</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">value: project.projectTitle</string>
 						<reference key="source" ref="808802465"/>
@@ -8150,7 +8166,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">2315</int>
+			<int key="maxID">2322</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -8195,6 +8211,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="endDateCalendarButtonClicked:">id</string>
 						<string key="endDateRealCalendarButtonClicked:">id</string>
+						<string key="saveProjectButtonClicked:">id</string>
 						<string key="startDateCalendarButtonClicked:">id</string>
 						<string key="startDateRealCalendarButtonClicked:">id</string>
 					</dictionary>
@@ -8205,6 +8222,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 						</object>
 						<object class="IBActionInfo" key="endDateRealCalendarButtonClicked:">
 							<string key="name">endDateRealCalendarButtonClicked:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="saveProjectButtonClicked:">
+							<string key="name">saveProjectButtonClicked:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="startDateCalendarButtonClicked:">
@@ -8226,6 +8247,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 						<string key="prjTreeController">NSTreeController</string>
 						<string key="projectEndDateDatePicker">NSDatePicker</string>
 						<string key="projectStartDateDatePicker">NSDatePicker</string>
+						<string key="saveProjectButton">NSButton</string>
 						<string key="startDateCalendarButton">NSButton</string>
 						<string key="startDateRealCalendarButton">NSButton</string>
 						<string key="tabBugView">NSView</string>
@@ -8269,6 +8291,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 						<object class="IBToOneOutletInfo" key="projectStartDateDatePicker">
 							<string key="name">projectStartDateDatePicker</string>
 							<string key="candidateClassName">NSDatePicker</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="saveProjectButton">
+							<string key="name">saveProjectButton</string>
+							<string key="candidateClassName">NSButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="startDateCalendarButton">
 							<string key="name">startDateCalendarButton</string>

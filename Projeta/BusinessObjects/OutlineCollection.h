@@ -20,6 +20,20 @@
 @property (nonatomic, copy) NSDate *startDate;
 @property (nonatomic, copy) NSDate *endDate;
 
+// test - 06 May 2012
+@property (nonatomic, copy) NSString *projectTitle;
+@property (nonatomic, copy) NSString *projectDescription;
+@property (nonatomic, assign) BOOL flagPublic;
+@property (nonatomic, copy) NSDate *startDateReal;
+@property (nonatomic, copy) NSDate *endDateReal;
+@property (nonatomic, assign) BOOL completed;
+@property (nonatomic, copy) NSString *projectStatus;
+@property (nonatomic, copy) NSNumber *projectPercentage;
+@property (readonly) NSString *percentageCompleteString;
+@property (nonatomic, copy) NSNumber *projectId;
+@property (strong) NSMutableArray *childProject;
+
+
 - (BOOL)isLeaf;
 
 // Required by NSCopying protocol.
