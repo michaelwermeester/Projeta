@@ -269,7 +269,6 @@
         // get projectid du projet parent. 
         for (Project *p in parentProjects)
         {
-            //Project *p = (Project *)tmpProj;
             
             if ([p.childObject containsObject:[[prjTreeController selectedObjects] objectAtIndex:0]])
             {

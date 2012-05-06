@@ -208,12 +208,14 @@
     NSString *retVal = [[NSString alloc] initWithString:@""];
     
     // si le percentage est un numéro.
-    if ([self.projectPercentage isEqualToNumber:[NSDecimalNumber notANumber]] == NO) {
-        // pourcentage.
-        retVal = [retVal stringByAppendingString:[self.projectPercentage stringValue]];
-        // ajouter le signe de pourcentage.
-        retVal = [retVal stringByAppendingString:@" %"];
-    } 
+    if (self.projectPercentage) {
+        if ([self.projectPercentage isEqualToNumber:[NSDecimalNumber notANumber]] == NO) {
+            // pourcentage.
+            retVal = [retVal stringByAppendingString:[self.projectPercentage stringValue]];
+            // ajouter le signe de pourcentage.
+            retVal = [retVal stringByAppendingString:@" %"];
+        } 
+    }
     
     return retVal;
 }

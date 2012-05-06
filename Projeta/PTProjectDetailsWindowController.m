@@ -224,4 +224,15 @@ Project *projectCopy;
                 }];
 }
 
+/*- (NSString *)windowTitle {
+    
+    NSString *retVal = [[NSString alloc] initWithString:@"Projet : "];
+    if (project)
+        if (project.projectTitle)
+            retVal = [retVal stringByAppendingString:project.projectTitle];
+    
+    return retVal;
+
+}*/
+
 @end
