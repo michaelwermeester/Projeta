@@ -38,7 +38,7 @@
 @property (weak) IBOutlet NSButton *okButton;
 @property (weak) IBOutlet NSComboBox *comboDevelopers;
 
-//@property (readonly) NSString *windowTitle;
+@property (readonly) NSString *windowTitle;
 
 - (IBAction)cancelButtonClicked:(id)sender;
 - (IBAction)okButtonClicked:(id)sender;
