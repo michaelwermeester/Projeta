@@ -23,6 +23,9 @@
     NSNumber *parentTaskId;
     
     NSNumber *priority;
+    
+    NSString *taskStatus;
+    NSNumber *taskPercentage;
 }
 
 @property (nonatomic, retain) NSDate *endDate;
@@ -36,6 +39,10 @@
 @property (strong) NSMutableArray *childTask;
 @property (nonatomic, copy) NSNumber *parentTaskId;
 @property (nonatomic, copy) NSNumber *priority;
+
+// état et pourcentage de la tâche.
+@property (nonatomic, copy) NSString *taskStatus;
+@property (nonatomic, copy) NSNumber *taskPercentage;
 
 // Required by NSCopying protocol.
 - (id) copyWithZone:(NSZone *)zone;

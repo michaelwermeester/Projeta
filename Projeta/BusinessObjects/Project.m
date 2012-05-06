@@ -147,6 +147,9 @@
     copy.userCreated = [userCreated copyWithZone:zone];
     copy.childProject = [childProject copyWithZone:zone];
     
+    copy.projectPercentage = [projectPercentage copyWithZone:zone];
+    copy.projectStatus = [projectStatus copyWithZone:zone];
+    
     return copy;
 }
 

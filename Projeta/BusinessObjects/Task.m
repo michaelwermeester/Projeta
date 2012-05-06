@@ -24,6 +24,9 @@
 @synthesize priority = priority;
 @synthesize isPersonal = isPersonal;
 
+@synthesize taskStatus = taskStatus;
+@synthesize taskPercentage = taskPercentage;
+
 + (Task *)instanceFromDictionary:(NSDictionary *)aDictionary {
     
     Task *instance = [[Task alloc] init];
@@ -60,6 +63,13 @@
     
     self.priority = [NSDecimalNumber decimalNumberWithString:(NSString *)[aDictionary objectForKey:@"priority"]];
     
+    // état de la tâche.
+    //if ([[aDictionary objectForKey:@"taskStatus"] isKindOfClass:[NSNull class]] == NO)
+        self.taskStatus = [aDictionary objectForKey:@"taskStatus"];
+    // pourcentage.
+    if (([[aDictionary objectForKey:@"taskPercentage"] isKindOfClass:[NSNull class]] == NO) && [aDictionary objectForKey:@"taskPercentage"] != nil)
+        self.taskPercentage = [NSDecimalNumber decimalNumberWithString:(NSString *)[aDictionary objectForKey:@"taskPercentage"]];
+    
     // child task
     if ([[aDictionary objectForKey:@"childTask"] isKindOfClass:[NSArray class]]) {
         
@@ -94,6 +104,9 @@
     copy.childTask = [childTask copyWithZone:zone];
     copy.parentTaskId = [parentTaskId copyWithZone:zone];
     copy.priority = [priority copyWithZone:zone];
+    
+    copy.taskPercentage = [taskPercentage copyWithZone:zone];
+    copy.taskStatus = [taskStatus copyWithZone:zone];
     
     //copy.dateCreated = [dateCreated copyWithZone:zone];
     //copy.endDateReal = [endDateReal copyWithZone:zone];
