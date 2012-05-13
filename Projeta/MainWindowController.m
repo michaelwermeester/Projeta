@@ -189,8 +189,6 @@
     
     
     
-    
-    
     // resize view to fit ContentView
 	projectViewController.view.frame = [self frameWithContentViewFrameSize];
     
@@ -213,6 +211,8 @@
     
     // désactiver le bouton 'vue projet'.
     [detailViewToolbarItem setEnabled:YES];
+    
+    [projectViewController selectMainProject];
 }
 
 - (IBAction)addProjectButtonClicked:(id)sender {

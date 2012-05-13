@@ -43,6 +43,6 @@
 @property (strong) IBOutlet NSOutlineView *altOutlineView;
 @property (strong) IBOutlet NSButton *testButton;
 
-
+- (void)selectMainProject;
 
 @end

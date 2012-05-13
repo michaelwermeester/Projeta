@@ -45,6 +45,13 @@
     [altOutlineView expandItem:nil expandChildren:YES];
     
     // sélectionner le premier élément de l'outlineview.
+    //[altOutlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:1] byExtendingSelection:NO];
+}
+
+// sélectionner project principal. 
+// Ne pas mettre cet appel de méthode dans awakeFromNib -> problème lors de création d'un nouveau projet.
+- (void)selectMainProject {
+    // sélectionner le premier élément de l'outlineview.
     [altOutlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:1] byExtendingSelection:NO];
 }
 
