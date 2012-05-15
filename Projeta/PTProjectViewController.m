@@ -267,6 +267,8 @@
         projectDetailsViewController.project = [[prjTreeController selectedObjects] objectAtIndex:0];
         
         
+        [projectDetailsViewController setIsNewProject:NO];
+        
         // mémoriser date début et date fin du projet parent.
         
         // get parent node.

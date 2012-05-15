@@ -39,7 +39,9 @@
     NSDate *parentProjectStartDate;
     NSDate *parentProjectEndDate;
     
-    //BOOL isNewProject;
+    BOOL isNewProject;
+    
+    Project *projectCopy;
 }
 
 @property (strong) PTProjectViewController *projectViewController;
@@ -54,7 +56,8 @@
 @property (weak) IBOutlet NSButton *endDateCalendarButton;
 @property (weak) IBOutlet NSButton *saveProjectButton;
 
-//@property (assign) BOOL isNewProject;
+@property (assign) BOOL isNewProject;
+@property (strong) Project *projectCopy;
 
 
 - (IBAction)startDateRealCalendarButtonClicked:(id)sender;

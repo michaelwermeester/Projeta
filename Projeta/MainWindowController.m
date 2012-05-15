@@ -280,6 +280,12 @@
             
             [projectViewController.prjTreeController insertObject:prj atArrangedObjectIndexPath:indexPath];
         }*/
+        
+        [projectViewController.projectDetailsViewController setIsNewProject:YES];
+        
+        // faire une copie du projet en cours.
+        projectViewController.projectDetailsViewController.projectCopy = [[Project alloc] init];
+        projectViewController.projectDetailsViewController.projectCopy = [projectViewController.projectDetailsViewController.project copy];
     }
 }
 
@@ -300,17 +306,27 @@
         
         if ([tmpPrj childProject] == nil) {
             
+            NSLog(@"111111111");
             NSIndexPath *indexPath = [projectViewController.prjTreeController selectionIndexPath];
             
             tmpPrj.childProject = [[NSMutableArray alloc] init];
+            //[tmpPrj.childObject addObject:prj];
+            
+            //[[tmpPrj mutableArrayValueForKey:@"childObject"] addObject:prj];
+            //[projectViewController.altOutlineView reloadData];
+            //[[self mutableArrayValueForKey:@"arrTask"] addObjectsFromArray:[PTTaskHelper setAttributesFromJSONDictionary:dict]];
+            
+            //[projectViewController.prjTreeController
             [projectViewController.prjTreeController insertObject:prj atArrangedObjectIndexPath:[indexPath indexPathByAddingIndex:0]];
         } else {
             //else if ([[tmpPrj childProject] count] > 0) {
-            
+
             NSIndexPath *indexPath = [projectViewController.prjTreeController selectionIndexPath];
             
             [projectViewController.prjTreeController insertObject:prj atArrangedObjectIndexPath:[indexPath indexPathByAddingIndex:0]];
         } 
+        
+        [projectViewController.projectDetailsViewController setIsNewProject:YES];
     }
     
     

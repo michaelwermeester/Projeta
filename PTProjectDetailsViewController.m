@@ -13,9 +13,12 @@
 #import "PTCommentairesViewController.h"
 #import "PTGanttViewController.h"
 #import "PTProjectDetailsViewController.h"
+#import "PTProjectHelper.h"
 #import "PTUsergroupHelper.h"
 #import "PTUserHelper.h"
 #import "Usergroup.h"
+
+
 
 @implementation PTProjectDetailsViewController
 
@@ -53,7 +56,8 @@
 @synthesize parentProjectStartDate;
 @synthesize parentProjectEndDate;
 
-//@synthesize isNewProject;
+@synthesize isNewProject;
+@synthesize projectCopy;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -68,6 +72,10 @@
         availableUsers = [[NSMutableArray alloc] init];
         // initialiser l'array qui contient les clients disponibles.
         availableClients = [[NSMutableArray alloc] init];
+        
+        // faire une copie du projet en cours.
+        projectCopy = [[Project alloc] init];
+        projectCopy = [project copy];
     }
     
     return self;
@@ -279,7 +287,7 @@
     
     // donner le focus au bouton 'OK'.
     [mainWindowController.window makeFirstResponder:saveProjectButton];
-    /*
+    
     // créer un nouveau projet.
     if (isNewProject == YES) {
         
@@ -290,15 +298,15 @@
         prjUpdSuc = [PTProjectHelper createProject:project successBlock:^(NSMutableData *data) {
             [self finishedCreatingProject:data];
         } 
-                              mainWindowController:parentProjectListViewController];
+                              mainWindowController:mainWindowController];
     }
     // mettre à jour projet existant.
     else {
         prjUpdSuc = [PTProjectHelper updateProject:project successBlock:^(NSMutableData *data) {
             [self finishedCreatingProject:data];
         } 
-                              mainWindowController:parentProjectListViewController];
-    }*/
+                              mainWindowController:mainWindowController];
+    }
 }
 
 // charger les groupes d'utilisateurs à partir du webservice.
@@ -374,6 +382,63 @@
         // stop animating the main window's circular progress indicator.
         [mainWindowController stopProgressIndicatorAnimation];
     }];
+}
+
+- (void)finishedCreatingProject:(NSMutableData*)data {
+    
+    
+    NSError *error;
+    
+    NSDictionary *dict = [[NSDictionary alloc] init];
+    dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
+    
+    NSMutableArray *createdProjectArray = [[NSMutableArray alloc] init];
+    
+    // see Cocoa and Objective-C up and running by Scott Stevenson.
+    // page 242
+    //[createdUserArray addObjectsFromArray:[PTUserHelper setAttributesFromDictionary2:dict]];
+    [createdProjectArray addObjectsFromArray:[PTProjectHelper setAttributesFromJSONDictionary:dict]];
+    
+    NSLog(@"count: %lu", [createdProjectArray count]);
+    
+    if ([createdProjectArray count] == 1) {
+        
+        for (Project *prj in createdProjectArray) {
+            
+            
+            //[parentProjectListViewController.prjTreeController removeObjectAtArrangedObjectIndexPath:prjTreeIndexPath];
+            
+            //[parentProjectListViewController.prjTreeController insertObject:prj atArrangedObjectIndexPath:prjTreeIndexPath];
+            
+            
+            /*if (prj.parentProjectId) {
+             [parentProjectListViewController.prjTreeController remove:project];
+             
+             NSIndexPath *indexPath = [parentProjectListViewController.prjTreeController selectionIndexPath];
+             
+             [parentProjectListViewController.prjTreeController insertObject:prj atArrangedObjectIndexPath:[indexPath indexPathByAddingIndex:0]];
+             
+             } else {
+             [[parentProjectListViewController mutableArrayValueForKey:@"arrPrj"] replaceObjectAtIndex:[parentProjectListViewController.arrPrj indexOfObject:project] withObject:prj];
+             }*/
+            
+            
+            // reassign user with user returned from web-service.
+            //self.project = prj;
+            //self.project = [prj copy];
+            self.project.projectId = [[NSNumber alloc] initWithInt:[prj.projectId intValue]];
+            self.project = prj;
+            
+            //NSLog(@"projectid: %@", self.project.projectId);
+            //NSLog(@"projectid: %d", [prj.projectId intValue]);
+            
+            //NSLog(@"id: %d", [prj.projectId intValue]);
+            //NSLog(@"title: %@", prj.projectTitle);
+        }
+    }
+    
+    // close this window.
+    //[self close];
 }
 
 @end
