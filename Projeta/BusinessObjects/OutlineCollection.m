@@ -35,13 +35,27 @@
         return YES;
 }
 
-/*- (id)copyWithZone:(NSZone *)zone {
+- (id)copyWithZone:(NSZone *)zone {
     
     OutlineCollection *copy = [[OutlineCollection alloc] init];
     
     copy.objectTitle = [objectTitle copyWithZone:zone];
     
+    copy.projectTitle = [projectTitle copyWithZone:zone];
+    copy.projectId = [projectId copyWithZone:zone];
+    copy.projectDescription = [projectDescription copyWithZone:zone];
+    copy.endDate = [endDate copyWithZone:zone];
+    copy.endDateReal = [endDateReal copyWithZone:zone];
+    copy.flagPublic = flagPublic;
+    copy.completed = completed;
+    copy.startDate = [startDate copyWithZone:zone];
+    copy.startDateReal = [startDateReal copyWithZone:zone];
+    copy.childProject = [childProject copyWithZone:zone];
+    
+    copy.projectPercentage = [projectPercentage copyWithZone:zone];
+    copy.projectStatus = [projectStatus copyWithZone:zone];
+    
     return copy;
-}*/
+}
 
 @end

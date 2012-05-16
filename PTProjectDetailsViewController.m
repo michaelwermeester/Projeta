@@ -116,7 +116,7 @@
     // auto resize the view.
     [taskListViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
     
-    // cacher lo colonne "projet".
+    // cacher la colonne "projet".
     [taskListViewController.outlineViewProjetColumn setHidden:YES];
     [taskListViewController.checkBoxShowTasksFromSubProjects setHidden:NO];
     //[taskListViewController.projectButton removeFromSuperview];
@@ -197,6 +197,7 @@
     
     
     ganttViewController.project = [self project];
+
     
     // charger commentaires.
     [ganttViewController loadGantt];

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface OutlineCollection : NSObject /*<NSCopying>*/ {
+@interface OutlineCollection : NSObject <NSCopying> {
 
     NSMutableArray *childObject;
     NSString *objectTitle;
@@ -37,6 +37,6 @@
 - (BOOL)isLeaf;
 
 // Required by NSCopying protocol.
-//- (id) copyWithZone:(NSZone *)zone;
+- (id) copyWithZone:(NSZone *)zone;
 
 @end

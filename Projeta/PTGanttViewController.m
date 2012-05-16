@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 Michael Wermeester. All rights reserved.
 //
 
+#import "Project.h"
 #import "PTGanttView.h"
 #import "PTGanttViewController.h"
 

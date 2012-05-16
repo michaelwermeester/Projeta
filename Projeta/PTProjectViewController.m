@@ -44,7 +44,7 @@
     // expand item ( http://stackoverflow.com/questions/519751/nsoutlineview-auto-expand-all-nodes )
     [altOutlineView expandItem:nil expandChildren:YES];
     
-    // sélectionner le premier élément de l'outlineview.
+    // sélectionner le premier élément de l'outlineview. => loadView
     //[altOutlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:1] byExtendingSelection:NO];
 }
 
@@ -74,7 +74,11 @@
     [projectDetailsViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
     
     // 
+    // sélectionner le premier élément de l'outlineview.
+    [altOutlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:1] byExtendingSelection:NO];
+    
     projectDetailsViewController.project = [[prjTreeController selectedObjects] objectAtIndex:0];
+    
     
     // charger les utilisateurs, groupes et clients liés au projet.
     [projectDetailsViewController loadProjectDetails];

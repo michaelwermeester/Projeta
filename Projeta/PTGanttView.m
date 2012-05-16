@@ -10,9 +10,11 @@
 
 #import "Project.h"
 
+#import "NSDate+MWExtensions.h"
+
 int counter;
 int totalProjects;
-int days;
+NSInteger days;
 
 @implementation PTGanttView
 
@@ -104,7 +106,7 @@ NSBezierPath *aPath ;
         
     }
     
-    NSLog(@"days: %d", days);
+    NSLog(@"days: %ld", days);
 }
 
 // retourne le nombre de projets (projet et ses sous-projets).
@@ -122,15 +124,18 @@ NSBezierPath *aPath ;
     return totalProjects;
 }
 
-- (int)daysBetweenDates:(NSDate *)dt1 maxDate:(NSDate *)dt2 {
+- (NSInteger)daysBetweenDates:(NSDate *)dt1 maxDate:(NSDate *)dt2 {
     
-    int numDays;
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSUInteger unitFlags = NSMonthCalendarUnit | NSDayCalendarUnit;
-    NSDateComponents *components = [gregorian components:unitFlags fromDate:dt1 toDate:dt2 options:0];
-    numDays = [components day];
+    //NSInteger numDays;
+//    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+//    NSUInteger unitFlags = NSMonthCalendarUnit | NSDayCalendarUnit;
+//    NSDateComponents *components = [gregorian components:unitFlags fromDate:dt1 toDate:dt2 options:0];
+//    numDays = [components day];
     
-    return numDays;
+    
+     return [dt1 numberOfDaysUntil:dt2];
+    
+    //return numDays;
 }
 
 
