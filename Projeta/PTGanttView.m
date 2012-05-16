@@ -76,6 +76,7 @@ NSBezierPath *aPath ;
     counter = 1;
     
     [self drawDays];
+    [self drawDates];
     [self drawProjectBar:project];
 }
 
@@ -99,14 +100,32 @@ NSBezierPath *aPath ;
 - (void)drawDays {
     
     [[NSColor darkGrayColor] set ] ;
+    //[[NSColor blackColor] set];
     
     for (int i = 0; i < days; i++) {
         
-        [NSBezierPath strokeRect: NSMakeRect( 20 * i, self.frame.size.height, 2, 8) ] ;
+        [NSBezierPath strokeRect: NSMakeRect( 20 * i, 10, 0.3, 50) ] ;
         
     }
     
     NSLog(@"days: %ld", days);
+}
+
+- (void)drawDates {
+    
+    [[NSColor blackColor] set];
+
+    
+    NSMutableDictionary *drawStringAttributes = [[NSMutableDictionary alloc] init];
+	[drawStringAttributes setValue:[NSColor blackColor] forKey:NSForegroundColorAttributeName];
+	[drawStringAttributes setValue:[NSFont fontWithName:@"American Typewriter" size:11] forKey:NSFontAttributeName];
+    
+    NSString *budgetString = [NSString stringWithFormat:@"TEST"];
+    NSSize stringSize = [budgetString sizeWithAttributes:drawStringAttributes];
+	NSPoint centerPoint;
+	centerPoint.x = (self.frame.size.width / 2) - (stringSize.width / 2);
+	centerPoint.y = self.frame.size.height / 2 - (stringSize.height / 2);
+	[budgetString drawAtPoint:centerPoint withAttributes:drawStringAttributes];
 }
 
 // retourne le nombre de projets (projet et ses sous-projets).
