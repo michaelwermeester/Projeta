@@ -230,33 +230,13 @@
 // Retourne la date de fin de projet en String en format yyyy-MM-dd.
 - (NSString *)stringEndDate {
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    NSLocale *enUSPOSIXLocale;
-    enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-    [formatter setLocale:enUSPOSIXLocale];
-    [formatter setDateFormat:@"yyyy'-'MM'-'dd"];
-    
-    //[formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-    
-    NSString *stringFromDate = [formatter stringFromDate:endDate];
-    
-    return stringFromDate;
+    return [PTCommon stringJSONFromDate:endDate];
 }
 
 // Retourne la date de début de projet en String en format yyyy-MM-dd.
 - (NSString *)stringStartDate {
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    NSLocale *enUSPOSIXLocale;
-    enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-    [formatter setLocale:enUSPOSIXLocale];
-    [formatter setDateFormat:@"yyyy'-'MM'-'dd"];
-    
-    //[formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-    
-    NSString *stringFromDate = [formatter stringFromDate:startDate];
-    
-    return stringFromDate;
+    return [PTCommon stringJSONFromDate:startDate];
 }
 
 @end

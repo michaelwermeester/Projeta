@@ -130,7 +130,7 @@
 {
     //NSArray *retArr = [[NSArray alloc] initWithObjects: @"projectTitle", @"projectDescription", @"endDate", @"endDateReal", @"flagPublic", @"completed", @"parentProjectId", @"startDate", @"startDateReal", @"userCreated", nil];
     //NSArray *retArr = [[NSArray alloc] initWithObjects: @"projectTitle", @"projectDescription", @"flagPublic", nil];
-    NSArray *retArr = [[NSArray alloc] initWithObjects: @"taskTitle", @"taskDescription", @"completed", @"startDate", @"isPersonal", @"endDate", nil];
+    NSArray *retArr = [[NSArray alloc] initWithObjects: @"taskTitle", @"taskDescription", @"completed", @"isPersonal", nil];
     
     return retArr;
 }
@@ -145,9 +145,21 @@
 {
     //NSArray *retArr = [[NSArray alloc] initWithObjects: @"projectTitle", @"projectDescription", @"endDate", @"endDateReal", @"flagPublic", @"completed", @"parentProjectId", @"startDate", @"startDateReal", @"userCreated", nil];
     //NSArray *retArr = [[NSArray alloc] initWithObjects: @"projectTitle", @"projectDescription", @"flagPublic", nil];
-    NSArray *retArr = [[NSArray alloc] initWithObjects: @"taskId", @"taskTitle", @"taskDescription", @"completed", @"startDate", @"endDate", nil];
+    NSArray *retArr = [[NSArray alloc] initWithObjects: @"taskId", @"taskTitle", @"taskDescription", @"completed", nil];
     
     return retArr;
+}
+
+// Retourne la date de fin de projet en String en format yyyy-MM-dd.
+- (NSString *)stringEndDate {
+    
+    return [PTCommon stringJSONFromDate:endDate];
+}
+
+// Retourne la date de début de projet en String en format yyyy-MM-dd.
+- (NSString *)stringStartDate {
+    
+    return [PTCommon stringJSONFromDate:startDate];
 }
 
 @end

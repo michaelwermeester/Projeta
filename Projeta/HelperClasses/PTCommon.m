@@ -28,8 +28,8 @@
     return [[NSUserDefaults standardUserDefaults] objectForKey:@"ServerURL"];
 }
 
-// returns NSDate from a given JSON date-string. 
-// Date format returned by the webservice: 2011-08-26T18:25:36+02:00
+// retourne un NSDate à partir d'un JSON date-string. 
+// Format de date retourné par le webservice: 2011-08-26T18:25:36+02:00
 + (NSDate*)dateFromJSONString:(NSString*)aDate {
     
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
@@ -46,6 +46,21 @@
     return nil;
 }
 
+// retourne un string pour envoyé au webservice à partir d'une date.
++ (NSString*)stringJSONFromDate:(NSDate *)aDate {
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSLocale *enUSPOSIXLocale;
+    enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+    [formatter setLocale:enUSPOSIXLocale];
+    [formatter setDateFormat:@"yyyy'-'MM'-'dd"];
+    
+    //[formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    
+    NSString *stringFromDate = [formatter stringFromDate:aDate];
+    
+    return stringFromDate;
+}
 
 #pragma mark Web service methods
 

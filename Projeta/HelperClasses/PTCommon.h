@@ -15,9 +15,11 @@
 // loads server URL from preferences file and returns it as NSString
 + (NSString*)serverURLString;
 
-// returns NSDate from a given JSON date-string. 
-// Date format returned by the webservice: 2011-08-26T18:25:36+02:00
+// retourne un NSDate à partir d'un JSON date-string. 
+// Format de date retourné par le webservice: 2011-08-26T18:25:36+02:00
 + (NSDate*)dateFromJSONString:(NSString*)aDate;
+// retourne un string pour envoyé au webservice à partir d'une date.
++ (NSString*)stringJSONFromDate:(NSDate *)aDate;
 
 #pragma mark Web service methods
 // executes a given HTTP method on a given resource with a given dictionary.

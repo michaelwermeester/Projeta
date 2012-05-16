@@ -116,6 +116,12 @@
     }
     
     
+    // Dates début et fin de projet.
+    if ([theTask stringStartDate])
+        [dict setObject:[theTask stringStartDate] forKey:@"startDate"];
+    if ([theTask stringEndDate])
+        [dict setObject:[theTask stringEndDate] forKey:@"endDate"];
+    
     // API resource string.
     NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/tasks/create"];
     
@@ -182,6 +188,12 @@
      // ajouter ce dictionnaire sous la clé 'parentProjectId'.
      [dict setObject:parentProjectDict forKey:@"parentProjectId"];
      }*/
+    
+    // Dates début et fin de projet.
+    if ([theTask stringStartDate])
+        [dict setObject:[theTask stringStartDate] forKey:@"startDate"];
+    if ([theTask stringEndDate])
+        [dict setObject:[theTask stringEndDate] forKey:@"endDate"];
     
     
     // API resource string.

@@ -54,4 +54,8 @@
 - (NSArray *)taskIdKey;
 - (NSArray *)updateTaskKeys;
 
+@property (nonatomic, copy) NSString *stringEndDate;
+@property (nonatomic, copy) NSString *stringStartDate;
+
+
 @end
