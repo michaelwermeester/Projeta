@@ -437,7 +437,7 @@ static User *_loggedInUser = nil;
 	//[tasksItem setIcon:[NSImage imageNamed:@"movies.png"]];
 	SourceListItem *projectsParClientItem = [SourceListItem itemWithTitle:@"Par client" identifier:@"projectsParClientItem"];
 	[projectsParClientItem setIcon:[NSImage imageNamed:@"podcasts.png"]];
-	[projectsParClientItem setBadgeValue:105];
+	//[projectsParClientItem setBadgeValue:105];
 	SourceListItem *projectsParDeveloppeurItem = [SourceListItem itemWithTitle:@"Par développeur" identifier:@"projectsParDeveloppeurItem"];
 	[projectsParDeveloppeurItem setIcon:[NSImage imageNamed:@"audiobooks.png"]];
 	[projectsHeaderItem setChildren:[NSArray arrayWithObjects:projectsItem, projectsAssignedItem, projectsParClientItem, projectsParDeveloppeurItem, nil]];
