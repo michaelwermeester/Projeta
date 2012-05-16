@@ -197,6 +197,14 @@
         [dict setObject:parentProjectDict forKey:@"parentProjectId"];
     }*/
     
+    //NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    //[[dict objectForKey:@"startDate"] addObject:[theProject stringStartDate]];
+    //[[dict objectForKey:@"endDate"] addObject:[theProject stringEndDate]];
+    
+    if ([theProject stringStartDate])
+        [dict setObject:[theProject stringStartDate] forKey:@"startDate"];
+    if ([theProject stringEndDate])
+        [dict setObject:[theProject stringEndDate] forKey:@"endDate"];
     
     // API resource string.
     NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/projects/update"];

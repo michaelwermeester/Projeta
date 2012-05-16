@@ -10,9 +10,16 @@
 
 #import "Project.h"
 
+int counter;
+int totalProjects;
+int days;
+
 @implementation PTGanttView
 
 @synthesize project;
+
+@synthesize minDate;
+@synthesize maxDate;
 
 NSBezierPath *aPath ;
 
@@ -21,6 +28,8 @@ NSBezierPath *aPath ;
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code here.
+        
+        
     }
     
     return self;
@@ -28,10 +37,13 @@ NSBezierPath *aPath ;
 
 - (void)drawRect:(NSRect)dirtyRect
 {
+    totalProjects = [self countTotalProjects:project];
+    
     // Drawing code here.
     NSRect f = self.frame;
     f.size.width = 1280;
-    f.size.height = 8000;
+    //f.size.height = 8000;
+    f.size.height = totalProjects * 20;
     self.frame = f;
     
     [[NSColor redColor] set ] ;
@@ -51,11 +63,75 @@ NSBezierPath *aPath ;
     
     //NSLog(@"test: %@", project.projectTitle);
     
-    for (Project *p in project.childProject) {
+    
+    minDate = project.startDate;
+    maxDate = project.endDate;
+    // 
+    days = [self daysBetweenDates:minDate maxDate:maxDate];
+    
+    
+    
+    counter = 1;
+    
+    [self drawDays];
+    [self drawProjectBar:project];
+}
+
+- (void)drawProjectBar:(OutlineCollection *)aProject {
+    
+    [[NSColor greenColor] set ] ;
+
+    for (OutlineCollection *p in aProject.childObject) {
         
+        //aPath = [NSBezierPath bezierPathWithRect: NSMakeRect( 110, counter * 5, 10, 10) ] ;
+        ///[aPath stroke] ;
+        
+        [NSBezierPath strokeRect: NSMakeRect( 50,counter * 10,5,8 ) ] ;
+        
+        counter++;
+        
+        [self drawProjectBar:p];
     }
 }
 
+- (void)drawDays {
+    
+    [[NSColor darkGrayColor] set ] ;
+    
+    for (int i = 0; i < days; i++) {
+        
+        [NSBezierPath strokeRect: NSMakeRect( 20 * i, self.frame.size.height, 2, 8) ] ;
+        
+    }
+    
+    NSLog(@"days: %d", days);
+}
+
+// retourne le nombre de projets (projet et ses sous-projets).
+- (int)countTotalProjects:(OutlineCollection *)aProject {
+    
+    int totalProjects = 0;
+    
+    for (OutlineCollection *p in aProject.childObject) {
+     
+        totalProjects++;
+        
+        totalProjects += [self countTotalProjects:p];
+    }
+    
+    return totalProjects;
+}
+
+- (int)daysBetweenDates:(NSDate *)dt1 maxDate:(NSDate *)dt2 {
+    
+    int numDays;
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSUInteger unitFlags = NSMonthCalendarUnit | NSDayCalendarUnit;
+    NSDateComponents *components = [gregorian components:unitFlags fromDate:dt1 toDate:dt2 options:0];
+    numDays = [components day];
+    
+    return numDays;
+}
 
 
 @end

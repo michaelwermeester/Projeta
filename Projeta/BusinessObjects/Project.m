@@ -227,4 +227,38 @@
     return retVal;
 }
 
+// retourne le pourcentage d'avancement du projet.
+- (NSString *)stringEndDate {
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSLocale *enUSPOSIXLocale;
+    enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+    [formatter setLocale:enUSPOSIXLocale];
+    [formatter setDateFormat:@"yyyy'-'MM'-'dd"];
+    
+    //Optionally for time zone converstions
+    //[formatter setTimeZone:[NSTimeZone timeZoneWithName:@"..."]];
+    [formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    
+    NSString *stringFromDate = [formatter stringFromDate:endDate];
+    
+    return stringFromDate;
+}
+
+- (NSString *)stringStartDate {
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSLocale *enUSPOSIXLocale;
+    enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+    [formatter setLocale:enUSPOSIXLocale];
+    [formatter setDateFormat:@"yyyy'-'MM'-'dd"];
+    
+    //Optionally for time zone converstions
+    [formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    
+    NSString *stringFromDate = [formatter stringFromDate:startDate];
+    
+    return stringFromDate;
+}
+
 @end

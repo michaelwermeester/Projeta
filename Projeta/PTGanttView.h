@@ -10,8 +10,13 @@
 
 @class Project;
 
-@interface PTGanttView : NSView
+@interface PTGanttView : NSView {
+    
+}
 
 @property (strong) Project *project;
+
+@property (nonatomic, copy) NSDate *minDate;
+@property (nonatomic, copy) NSDate *maxDate;
 
 @end
