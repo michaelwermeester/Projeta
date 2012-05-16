@@ -227,7 +227,7 @@
     return retVal;
 }
 
-// retourne le pourcentage d'avancement du projet.
+// Retourne la date de fin de projet en String en format yyyy-MM-dd.
 - (NSString *)stringEndDate {
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -236,15 +236,14 @@
     [formatter setLocale:enUSPOSIXLocale];
     [formatter setDateFormat:@"yyyy'-'MM'-'dd"];
     
-    //Optionally for time zone converstions
-    //[formatter setTimeZone:[NSTimeZone timeZoneWithName:@"..."]];
-    [formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    //[formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
     
     NSString *stringFromDate = [formatter stringFromDate:endDate];
     
     return stringFromDate;
 }
 
+// Retourne la date de début de projet en String en format yyyy-MM-dd.
 - (NSString *)stringStartDate {
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -253,8 +252,7 @@
     [formatter setLocale:enUSPOSIXLocale];
     [formatter setDateFormat:@"yyyy'-'MM'-'dd"];
     
-    //Optionally for time zone converstions
-    [formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    //[formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
     
     NSString *stringFromDate = [formatter stringFromDate:startDate];
     
