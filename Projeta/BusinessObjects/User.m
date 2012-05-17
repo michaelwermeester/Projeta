@@ -154,6 +154,7 @@
 
 - (NSString *)fullName
 {
+    //NSString *fullname = [[NSString alloc] initWithString:@""];
     NSString *fullname = [NSString stringWithString:@""];
     if (firstName != nil) {
         fullname = [fullname stringByAppendingString:firstName];
@@ -172,8 +173,14 @@
     
     NSString *description = [NSString stringWithString:@""];
     
-    if (fullName != nil)
-        description = [description stringByAppendingString:fullName];
+    
+    if ([self fullName] != nil) {
+        description = [description stringByAppendingString:[self fullName]];
+        //NSLog(@"fullname : %@", fullName);
+    }
+    
+    if ([self fullName] != nil && username != nil)
+         description = [description stringByAppendingString:@" "];
     
     if (username != nil) {
         description = [description stringByAppendingString:@"("];

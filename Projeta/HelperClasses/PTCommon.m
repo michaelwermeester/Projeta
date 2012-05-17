@@ -28,6 +28,8 @@
     return [[NSUserDefaults standardUserDefaults] objectForKey:@"ServerURL"];
 }
 
+#pragma mark Date helper methods
+
 // retourne un NSDate à partir d'un JSON date-string. 
 // Format de date retourné par le webservice: 2011-08-26T18:25:36+02:00
 + (NSDate*)dateFromJSONString:(NSString*)aDate {
@@ -61,18 +63,6 @@
     
     return stringFromDate;
 }
-
-/*- (NSDate *)currentDate {
-    
-    NSDate* now = [NSDate date];
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *dateComponents = [gregorian components:(NSHourCalendarUnit  | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:now];
-    NSInteger hour = [dateComponents hour];
-    NSInteger minute = [dateComponents minute];
-    NSInteger second = [dateComponents second];
-    
-    return now;
-}*/
 
 #pragma mark Web service methods
 

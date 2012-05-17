@@ -24,6 +24,7 @@
     NSNumber *parentProjectId;
     NSString *projectTitle;
     NSDate *startDate;
+    User *userAssigned;
     User *userCreated;
     NSDate *startDateReal;
     NSDate *endDateReal;
@@ -49,6 +50,7 @@
 @property (nonatomic, copy) NSString *projectTitle;
 @property (nonatomic, copy) NSDate *startDate;
 @property (nonatomic, copy) NSDate *startDateReal;
+@property (nonatomic, retain) User *userAssigned;
 @property (nonatomic, retain) User *userCreated;
 @property (strong) NSMutableArray *childProject;
 

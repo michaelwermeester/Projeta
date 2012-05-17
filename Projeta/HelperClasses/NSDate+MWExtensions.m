@@ -8,8 +8,11 @@
 
 #import "NSDate+MWExtensions.h"
 
+// Catégorie pour la classe NSDate.
+
 @implementation NSDate (MWExtensions)
 
+// retourne le nombre de jours entre 2 dates.
 - (NSInteger)numberOfDaysUntil:(NSDate *)aDate {
     NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     

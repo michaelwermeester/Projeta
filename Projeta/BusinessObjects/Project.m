@@ -25,6 +25,7 @@
 @synthesize projectTitle = projectTitle;
 @synthesize startDate = startDate;
 @synthesize startDateReal = startDateReal;
+@synthesize userAssigned = userAssigned;
 @synthesize userCreated = userCreated;
 @synthesize childProject = childProject;
 // état du projet.
@@ -93,6 +94,8 @@
     self.projectId = [NSDecimalNumber decimalNumberWithString:(NSString *)[aDictionary objectForKey:@"projectId"]];
     self.projectTitle = [aDictionary objectForKey:@"projectTitle"];
     
+    self.userAssigned = [User instanceFromDictionary:[aDictionary objectForKey:@"userAssigned"]];
+    
     self.userCreated = [User instanceFromDictionary:[aDictionary objectForKey:@"userCreated"]];
     
     if ([[aDictionary objectForKey:@"parentProjectId"] isKindOfClass:[NSArray class]] == NO) {
@@ -151,6 +154,7 @@
     copy.parentProjectId = [parentProjectId copyWithZone:zone];
     copy.startDate = [startDate copyWithZone:zone];
     copy.startDateReal = [startDateReal copyWithZone:zone];
+    copy.userAssigned = [userAssigned copyWithZone:zone];
     copy.userCreated = [userCreated copyWithZone:zone];
     copy.childProject = [childProject copyWithZone:zone];
     

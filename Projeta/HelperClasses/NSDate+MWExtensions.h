@@ -10,6 +10,7 @@
 
 @interface NSDate (MWExtensions)
 
+// retourne le nombre de jours entre 2 dates.
 - (NSInteger)numberOfDaysUntil:(NSDate *)aDate;
 
 @end
