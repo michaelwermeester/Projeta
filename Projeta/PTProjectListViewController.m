@@ -161,6 +161,9 @@
         //[prjTreeController add:prj];
 
         Project *prj = [[Project alloc] init];
+        // set current date.
+        prj.startDate = [NSDate date];
+        prj.endDate = [NSDate date];
         
         // get parent node.
         NSTreeNode *parent = [[[[prjTreeController selectedNodes] objectAtIndex:0] parentNode] parentNode];
@@ -232,6 +235,10 @@
         
         
         Project *prj = [[Project alloc] init];
+        // set current date.
+        prj.startDate = [NSDate date];
+        prj.endDate = [NSDate date];
+        
         prj.parentProjectId = parentID;
         
         Project *tmpPrj = [selectedObjects objectAtIndex:0]; 

@@ -214,6 +214,9 @@
         //[prjTreeController add:prj];
         
         Task *tsk = [[Task alloc] init];
+        // set current date.
+        tsk.startDate = [NSDate date];
+        tsk.endDate = [NSDate date];
         
         tsk.isPersonal = isPersonalTask;
         
@@ -286,6 +289,10 @@
         
         
         Task *tsk = [[Task alloc] init];
+        // set current date.
+        tsk.startDate = [NSDate date];
+        tsk.endDate = [NSDate date];
+        
         tsk.parentTaskId = parentID;
         
         tsk.isPersonal = isPersonalTask;
