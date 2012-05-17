@@ -61,8 +61,11 @@
 @property (nonatomic, copy) NSString *projectStatus;
 @property (nonatomic, copy) NSNumber *projectPercentage;
 
-@property (nonatomic, copy) NSString *stringEndDate;
-@property (nonatomic, copy) NSString *stringStartDate;
+//@property (nonatomic, copy) NSString *stringEndDate;
+//@property (nonatomic, copy) NSString *stringStartDate;
+@property (readonly, nonatomic, copy) NSString *stringEndDate;
+@property (readonly, nonatomic, copy) NSString *stringStartDate;
+
 
 // pour calendar control.
 @property (nonatomic, copy) NSDate *calendarStartDateReal;
