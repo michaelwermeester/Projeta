@@ -298,7 +298,7 @@
 																	<reference key="NSTableView" ref="873091670"/>
 																</object>
 																<object class="NSTableColumn" id="306454382">
-																	<double key="NSWidth">102</double>
+																	<double key="NSWidth">80.94921875</double>
 																	<double key="NSMinWidth">40</double>
 																	<double key="NSMaxWidth">1000</double>
 																	<object class="NSTableHeaderCell" key="NSHeaderCell">
@@ -314,23 +314,21 @@
 																		<int key="NSCellFlags2">-2147481600</int>
 																		<string key="NSContents">Text Cell</string>
 																		<reference key="NSSupport" ref="1030773520"/>
-																		<object class="NSDateFormatter" key="NSFormatter" id="502773870">
+																		<object class="NSDateFormatter" key="NSFormatter" id="937569698">
 																			<object class="NSMutableDictionary" key="NS.attributes">
 																				<bool key="EncodedWithXMLCoder">YES</bool>
 																				<object class="NSArray" key="dict.sortedKeys">
 																					<bool key="EncodedWithXMLCoder">YES</bool>
-																					<string>dateStyle</string>
+																					<string>dateFormat</string>
 																					<string>formatterBehavior</string>
-																					<string>timeStyle</string>
 																				</object>
 																				<object class="NSArray" key="dict.values">
 																					<bool key="EncodedWithXMLCoder">YES</bool>
-																					<integer value="1"/>
+																					<string>dd/MM/yyyy</string>
 																					<integer value="1040"/>
-																					<integer value="1"/>
 																				</object>
 																			</object>
-																			<string key="NS.format">M/d/yy h:mm a</string>
+																			<string key="NS.format">dd/MM/yyyy</string>
 																			<bool key="NS.natural">NO</bool>
 																		</object>
 																		<reference key="NSControlView" ref="873091670"/>
@@ -343,7 +341,7 @@
 																	<reference key="NSTableView" ref="873091670"/>
 																</object>
 																<object class="NSTableColumn" id="891740560">
-																	<double key="NSWidth">64</double>
+																	<double key="NSWidth">82.55078125</double>
 																	<double key="NSMinWidth">10</double>
 																	<double key="NSMaxWidth">3.4028234663852886e+38</double>
 																	<object class="NSTableHeaderCell" key="NSHeaderCell">
@@ -364,9 +362,26 @@
 																	</object>
 																	<object class="NSTextFieldCell" key="NSDataCell" id="783447106">
 																		<int key="NSCellFlags">337772096</int>
-																		<int key="NSCellFlags2">2048</int>
+																		<int key="NSCellFlags2">-2147481600</int>
 																		<string key="NSContents">Text Cell</string>
 																		<reference key="NSSupport" ref="1030773520"/>
+																		<object class="NSDateFormatter" key="NSFormatter" id="828189066">
+																			<object class="NSMutableDictionary" key="NS.attributes">
+																				<bool key="EncodedWithXMLCoder">YES</bool>
+																				<object class="NSArray" key="dict.sortedKeys">
+																					<bool key="EncodedWithXMLCoder">YES</bool>
+																					<string>dateFormat</string>
+																					<string>formatterBehavior</string>
+																				</object>
+																				<object class="NSArray" key="dict.values">
+																					<bool key="EncodedWithXMLCoder">YES</bool>
+																					<string>dd/MM/yyyy</string>
+																					<integer value="1040"/>
+																				</object>
+																			</object>
+																			<string key="NS.format">dd/MM/yyyy</string>
+																			<bool key="NS.natural">NO</bool>
+																		</object>
 																		<reference key="NSControlView" ref="873091670"/>
 																		<reference key="NSBackgroundColor" ref="1017540249"/>
 																		<reference key="NSTextColor" ref="107989933"/>
@@ -468,7 +483,7 @@
 													<string key="NSFrame">{{224, 17}, {15, 102}}</string>
 													<reference key="NSSuperview" ref="836911323"/>
 													<reference key="NSWindow"/>
-													<reference key="NSNextKeyView" ref="1005624234"/>
+													<reference key="NSNextKeyView" ref="993591620"/>
 													<string key="NSReuseIdentifierKey">_NS:1798</string>
 													<reference key="NSTarget" ref="836911323"/>
 													<string key="NSAction">_doScroller:</string>
@@ -554,7 +569,7 @@
 															<int key="NSvFlags">4352</int>
 															<string key="NSFrameSize">{916, 228}</string>
 															<reference key="NSSuperview" ref="969305185"/>
-															<reference key="NSNextKeyView" ref="60981642"/>
+															<reference key="NSNextKeyView" ref="54271979"/>
 															<string key="NSReuseIdentifierKey">_NS:1703</string>
 															<bool key="NSEnabled">YES</bool>
 															<object class="NSTableHeaderView" key="NSHeaderView" id="965107564">
@@ -604,7 +619,7 @@
 																	<reference key="NSTableView" ref="248986689"/>
 																</object>
 																<object class="NSTableColumn" id="43181262">
-																	<double key="NSWidth">109.5078125</double>
+																	<double key="NSWidth">81.9140625</double>
 																	<double key="NSMinWidth">40</double>
 																	<double key="NSMaxWidth">1000</double>
 																	<object class="NSTableHeaderCell" key="NSHeaderCell">
@@ -625,18 +640,20 @@
 																				<bool key="EncodedWithXMLCoder">YES</bool>
 																				<object class="NSArray" key="dict.sortedKeys">
 																					<bool key="EncodedWithXMLCoder">YES</bool>
+																					<string>dateFormat</string>
 																					<string>dateStyle</string>
 																					<string>formatterBehavior</string>
 																					<string>timeStyle</string>
 																				</object>
 																				<object class="NSArray" key="dict.values">
 																					<bool key="EncodedWithXMLCoder">YES</bool>
+																					<string>dd/MM/yyyy</string>
 																					<integer value="1"/>
 																					<integer value="1040"/>
 																					<integer value="1"/>
 																				</object>
 																			</object>
-																			<string key="NS.format">M/d/yy h:mm a</string>
+																			<string key="NS.format">dd/MM/yyyy</string>
 																			<bool key="NS.natural">NO</bool>
 																		</object>
 																		<reference key="NSControlView" ref="248986689"/>
@@ -649,22 +666,39 @@
 																	<reference key="NSTableView" ref="248986689"/>
 																</object>
 																<object class="NSTableColumn" id="895973791">
-																	<double key="NSWidth">64</double>
+																	<double key="NSWidth">83.60546875</double>
 																	<double key="NSMinWidth">10</double>
 																	<double key="NSMaxWidth">3.4028234663852886e+38</double>
 																	<object class="NSTableHeaderCell" key="NSHeaderCell">
 																		<int key="NSCellFlags">75628096</int>
 																		<int key="NSCellFlags2">2048</int>
-																		<string key="NSContents"/>
+																		<string key="NSContents">Date fin</string>
 																		<reference key="NSSupport" ref="26"/>
 																		<reference key="NSBackgroundColor" ref="144204874"/>
 																		<reference key="NSTextColor" ref="15931072"/>
 																	</object>
 																	<object class="NSTextFieldCell" key="NSDataCell" id="307292988">
 																		<int key="NSCellFlags">337772096</int>
-																		<int key="NSCellFlags2">2048</int>
+																		<int key="NSCellFlags2">-2147481600</int>
 																		<string key="NSContents">Text Cell</string>
 																		<reference key="NSSupport" ref="1030773520"/>
+																		<object class="NSDateFormatter" key="NSFormatter" id="464606016">
+																			<object class="NSMutableDictionary" key="NS.attributes">
+																				<bool key="EncodedWithXMLCoder">YES</bool>
+																				<object class="NSArray" key="dict.sortedKeys">
+																					<bool key="EncodedWithXMLCoder">YES</bool>
+																					<string>dateFormat</string>
+																					<string>formatterBehavior</string>
+																				</object>
+																				<object class="NSArray" key="dict.values">
+																					<bool key="EncodedWithXMLCoder">YES</bool>
+																					<string>dd/MM/yyyy</string>
+																					<integer value="1040"/>
+																				</object>
+																			</object>
+																			<string key="NS.format">dd/MM/yyyy</string>
+																			<bool key="NS.natural">NO</bool>
+																		</object>
 																		<reference key="NSControlView" ref="248986689"/>
 																		<reference key="NSBackgroundColor" ref="1017540249"/>
 																		<reference key="NSTextColor" ref="107989933"/>
@@ -796,7 +830,7 @@
 											</object>
 											<string key="NSFrame">{{2, 4}, {918, 246}}</string>
 											<reference key="NSSuperview" ref="587396652"/>
-											<reference key="NSNextKeyView" ref="54271979"/>
+											<reference key="NSNextKeyView" ref="969305185"/>
 											<string key="NSReuseIdentifierKey">_NS:1699</string>
 											<int key="NSsFlags">133682</int>
 											<reference key="NSVScroller" ref="60981642"/>
@@ -831,7 +865,6 @@
 						<string key="NSFrame">{{846, 13}, {108, 32}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:687</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="559369862">
@@ -923,6 +956,7 @@
 								<bool key="NSNoAutoenable">YES</bool>
 								<reference key="NSMenuFont" ref="1030773520"/>
 							</object>
+							<int key="NSSelectedIndex">1</int>
 							<bool key="NSPullDown">YES</bool>
 							<int key="NSPreferredEdge">1</int>
 							<bool key="NSUsesItemFromMenu">YES</bool>
@@ -960,7 +994,7 @@
 					</object>
 					<object class="NSButton" id="438753402">
 						<reference key="NSNextResponder" ref="1005"/>
-						<int key="NSvFlags">268</int>
+						<int key="NSvFlags">-2147483380</int>
 						<string key="NSFrame">{{111, 19}, {23, 23}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
@@ -1413,6 +1447,22 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: arrangedObjects.endDate</string>
+						<reference key="source" ref="891740560"/>
+						<reference key="destination" ref="577437398"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="891740560"/>
+							<reference key="NSDestination" ref="577437398"/>
+							<string key="NSLabel">value: arrangedObjects.endDate</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">arrangedObjects.endDate</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">859</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
 						<string key="label">value: arrangedObjects.projectStatus</string>
 						<reference key="source" ref="578834666"/>
 						<reference key="destination" ref="577437398"/>
@@ -1426,6 +1476,22 @@
 						</object>
 					</object>
 					<int key="connectionID">857</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: arrangedObjects.endDate</string>
+						<reference key="source" ref="895973791"/>
+						<reference key="destination" ref="856142623"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="895973791"/>
+							<reference key="NSDestination" ref="856142623"/>
+							<string key="NSLabel">value: arrangedObjects.endDate</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">arrangedObjects.endDate</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">861</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -1526,7 +1592,6 @@
 								<int key="contentType">3</int>
 								<reference key="containingView" ref="1005"/>
 							</object>
-							<reference ref="993591620"/>
 							<object class="IBNSLayoutConstraint" id="930088907">
 								<reference key="firstItem" ref="914089396"/>
 								<int key="firstAttribute">5</int>
@@ -1806,7 +1871,6 @@
 								<int key="contentType">3</int>
 								<reference key="containingView" ref="1005"/>
 							</object>
-							<reference ref="337474894"/>
 							<reference ref="502721954"/>
 							<object class="IBNSLayoutConstraint" id="245731639">
 								<reference key="firstItem" ref="1005"/>
@@ -2018,6 +2082,8 @@
 								<int key="contentType">3</int>
 								<reference key="containingView" ref="1005"/>
 							</object>
+							<reference ref="993591620"/>
+							<reference ref="337474894"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -2527,14 +2593,9 @@
 						<reference key="object" ref="578972062"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="502773870"/>
+							<reference ref="937569698"/>
 						</object>
 						<reference key="parent" ref="306454382"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">345</int>
-						<reference key="object" ref="502773870"/>
-						<reference key="parent" ref="578972062"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">676</int>
@@ -2720,6 +2781,10 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">744</int>
 						<reference key="object" ref="783447106"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="828189066"/>
+						</object>
 						<reference key="parent" ref="891740560"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -2977,6 +3042,10 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">815</int>
 						<reference key="object" ref="307292988"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="464606016"/>
+						</object>
 						<reference key="parent" ref="895973791"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -3007,6 +3076,21 @@
 						<reference key="object" ref="891515709"/>
 						<reference key="parent" ref="6327176"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">862</int>
+						<reference key="object" ref="828189066"/>
+						<reference key="parent" ref="783447106"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">863</int>
+						<reference key="object" ref="464606016"/>
+						<reference key="parent" ref="307292988"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">864</int>
+						<reference key="object" ref="937569698"/>
+						<reference key="parent" ref="578972062"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -3036,8 +3120,6 @@
 					<string>310.IBPluginDependency</string>
 					<string>311.IBPluginDependency</string>
 					<string>312.IBPluginDependency</string>
-					<string>345.IBDateFormatterBehaviorMetadataKey</string>
-					<string>345.IBPluginDependency</string>
 					<string>346.IBNSViewMetadataConstraints</string>
 					<string>346.IBNSViewMetadataTranslatesAutoresizingMaskIntoConstraints</string>
 					<string>346.IBPluginDependency</string>
@@ -3159,6 +3241,12 @@
 					<string>817.IBPluginDependency</string>
 					<string>820.IBPluginDependency</string>
 					<string>822.IBPluginDependency</string>
+					<string>862.IBDateFormatterBehaviorMetadataKey</string>
+					<string>862.IBPluginDependency</string>
+					<string>863.IBDateFormatterBehaviorMetadataKey</string>
+					<string>863.IBPluginDependency</string>
+					<string>864.IBDateFormatterBehaviorMetadataKey</string>
+					<string>864.IBPluginDependency</string>
 				</object>
 				<object class="NSArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -3219,8 +3307,6 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<integer value="1"/>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<object class="NSMutableArray">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<reference ref="722312612"/>
@@ -3240,7 +3326,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<integer value="1"/>
+					<integer value="2"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="NO"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -3371,6 +3457,12 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<integer value="2"/>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<integer value="2"/>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<integer value="2"/>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="unlocalizedProperties">
@@ -3385,7 +3477,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">857</int>
+			<int key="maxID">864</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
