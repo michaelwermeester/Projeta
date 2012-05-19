@@ -33,6 +33,7 @@
     __weak NSView *tabBugView;
     __weak NSView *tabCommentView;
     __weak NSView *tabGanttView;
+    __weak NSComboBox *comboDevelopers;
     __weak NSDatePicker *projectStartDateDatePicker;
     __weak NSDatePicker *projectEndDateDatePicker;
     
@@ -42,10 +43,14 @@
     BOOL isNewProject;
     
     Project *projectCopy;
+    
+    NSMutableArray *arrDevelopers;
 }
 
 @property (strong) PTProjectViewController *projectViewController;
 @property (assign) IBOutlet NSTreeController *prjTreeController;
+
+@property (strong) NSMutableArray *arrDevelopers;
 
 @property (strong) Project *project;
 
@@ -80,6 +85,7 @@
 @property (weak) IBOutlet NSView *tabBugView;
 @property (weak) IBOutlet NSView *tabCommentView;
 @property (weak) IBOutlet NSView *tabGanttView;
+@property (weak) IBOutlet NSComboBox *comboDevelopers;
 
 @property (weak) IBOutlet NSDatePicker *projectStartDateDatePicker;
 @property (weak) IBOutlet NSDatePicker *projectEndDateDatePicker;

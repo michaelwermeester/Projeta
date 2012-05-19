@@ -41,6 +41,7 @@
 @synthesize tabBugView;
 @synthesize tabCommentView;
 @synthesize tabGanttView;
+@synthesize comboDevelopers;
 @synthesize projectStartDateDatePicker;
 @synthesize projectEndDateDatePicker;
 @synthesize availableClients;
@@ -59,6 +60,8 @@
 @synthesize isNewProject;
 @synthesize projectCopy;
 
+@synthesize arrDevelopers;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:@"PTProjectDetailsView" bundle:nibBundleOrNil];
@@ -73,6 +76,8 @@
         // initialiser l'array qui contient les clients disponibles.
         availableClients = [[NSMutableArray alloc] init];
         
+        arrDevelopers = [[NSMutableArray alloc] init];
+        
         // faire une copie du projet en cours.
         projectCopy = [[Project alloc] init];
         projectCopy = [project copy];
@@ -86,6 +91,9 @@
     [super loadView];
     
     //[self viewDidLoad];
+    
+    // charger la liste des développeurs à partir du webservice et les mettre dans la combobox.
+    [self fetchDevelopersFromWebservice];
 }
 
 // charger les utilisateurs, groupes et clients liés au projet.
@@ -440,6 +448,27 @@
     
     // close this window.
     //[self close];
+}
+
+// charger la liste des développeurs à partir du webservice et les mettre dans la combobox.
+- (void)fetchDevelopersFromWebservice
+{
+    // get developers from webservice.
+    [PTUserHelper developers:^(NSMutableArray *developers) {
+        
+        // sort descriptors for array.
+        NSSortDescriptor *firstDescriptor = [[NSSortDescriptor alloc] initWithKey:@"fullNameAndUsername"
+                                                                        ascending:YES];
+        NSArray *sortDescriptors = [NSArray arrayWithObjects:firstDescriptor, nil];
+        
+        // sort array and affect fetched array to local array.
+        [[self mutableArrayValueForKey:@"arrDevelopers"] addObjectsFromArray:[developers sortedArrayUsingDescriptors:sortDescriptors]];
+        
+        
+    }
+                failureBlock:^(NSError *error) {
+                    
+                }];
 }
 
 @end
