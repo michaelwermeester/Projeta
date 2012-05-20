@@ -6,15 +6,18 @@
 //  Copyright (c) 2012 Michael Wermeester. All rights reserved.
 //
 
+
 #import "PTGanttView.h"
 
-#import "Project.h"
-
 #import "NSDate+MWExtensions.h"
+#import "Project.h"
+#import "PTCommon.h"
 
 int counter;
 int totalProjects;
 NSInteger days;
+
+CGFloat headerHeight = 70.0f; 
 
 @implementation PTGanttView
 
@@ -22,6 +25,8 @@ NSInteger days;
 
 @synthesize minDate;
 @synthesize maxDate;
+
+@synthesize parentViewSize;
 
 NSBezierPath *aPath ;
 
@@ -31,7 +36,7 @@ NSBezierPath *aPath ;
     if (self) {
         // Initialization code here.
         
-        
+        //headerHeight = 70.0f;
     }
     
     return self;
@@ -41,11 +46,22 @@ NSBezierPath *aPath ;
 {
     totalProjects = [self countTotalProjects:project];
     
+    minDate = project.startDate;
+    maxDate = project.endDate;
+    // 
+    days = [self daysBetweenDates:minDate maxDate:maxDate];
+    
+    
     // Drawing code here.
     NSRect f = self.frame;
-    f.size.width = 1280;
-    //f.size.height = 8000;
-    f.size.height = totalProjects * 20;
+    f.size.width = days * 20;
+    // height of header (dates): 39
+    f.size.height = totalProjects * 20 + headerHeight;
+    
+    if (f.size.height < parentViewSize.height) {
+        f.size.height = parentViewSize.height - 60;
+    }
+    
     self.frame = f;
     
     [[NSColor redColor] set ] ;
@@ -66,11 +82,6 @@ NSBezierPath *aPath ;
     //NSLog(@"test: %@", project.projectTitle);
     
     
-    minDate = project.startDate;
-    maxDate = project.endDate;
-    // 
-    days = [self daysBetweenDates:minDate maxDate:maxDate];
-    
     
     
     counter = 1;
@@ -78,6 +89,13 @@ NSBezierPath *aPath ;
     [self drawDays];
     [self drawDates];
     [self drawProjectBar:project];
+    
+    
+    //[[parentScrollView contentView] scrollToPoint: point];
+    //[parentScrollView reflectScrolledClipView: [parentScrollView contentView]];
+    
+    //[[parentScrollView verticalScroller] setFloatValue:0.0];
+    //[[parentScrollView contentView] scrollToPoint:NSMakePoint(0.0, self.frame.size.height - parentScrollView.contentView.si.height)];
 }
 
 - (void)drawProjectBar:(OutlineCollection *)aProject {
@@ -89,7 +107,8 @@ NSBezierPath *aPath ;
         //aPath = [NSBezierPath bezierPathWithRect: NSMakeRect( 110, counter * 5, 10, 10) ] ;
         ///[aPath stroke] ;
         
-        [NSBezierPath strokeRect: NSMakeRect( 50,counter * 10,5,8 ) ] ;
+        [NSBezierPath strokeRect: NSMakeRect( 50, self.frame.size.height - (counter * 20),5, 20 ) ] ;
+        //[NSBezierPath strokeRect: NSMakeRect( 50, self.frame.size.height - (counter * 20),5, 20 ) ] ;
         
         counter++;
         
@@ -103,12 +122,13 @@ NSBezierPath *aPath ;
     //[[NSColor blackColor] set];
     
     for (int i = 0; i < days; i++) {
-        
-        [NSBezierPath strokeRect: NSMakeRect( 20 * i, 10, 0.3, 50) ] ;
-        
+        // standard coordinate system.
+        //[NSBezierPath strokeRect: NSMakeRect( 20 * i, 0, 0.3, self.frame.size.height - headerHeight) ] ;
+        // flipped coordinate system.
+        [NSBezierPath strokeRect: NSMakeRect( 20 * i, headerHeight + 5, 0.3, self.frame.size.height) ] ;
     }
     
-    NSLog(@"days: %ld", days);
+    //NSLog(@"days: %ld", days);
 }
 
 - (void)drawDates {
@@ -116,16 +136,40 @@ NSBezierPath *aPath ;
     [[NSColor blackColor] set];
 
     
+    [NSGraphicsContext saveGraphicsState];
+    
+    
     NSMutableDictionary *drawStringAttributes = [[NSMutableDictionary alloc] init];
 	[drawStringAttributes setValue:[NSColor blackColor] forKey:NSForegroundColorAttributeName];
-	[drawStringAttributes setValue:[NSFont fontWithName:@"American Typewriter" size:11] forKey:NSFontAttributeName];
+	//[drawStringAttributes setValue:[NSFont fontWithName:@"American Typewriter" size:11] forKey:NSFontAttributeName];
+    [drawStringAttributes setValue:[NSFont boldSystemFontOfSize:11] forKey:NSFontAttributeName];
     
-    NSString *budgetString = [NSString stringWithFormat:@"TEST"];
-    NSSize stringSize = [budgetString sizeWithAttributes:drawStringAttributes];
+    //NSString *budgetString = [NSString stringWithFormat:@"TEST"];
+    NSString *budgetString = [NSString stringWithFormat:[PTCommon stringFromDate:minDate]];
+    //NSSize stringSize = [budgetString sizeWithAttributes:drawStringAttributes];
+    //NSLog(@"height: %f", stringSize.height);
 	NSPoint centerPoint;
-	centerPoint.x = (self.frame.size.width / 2) - (stringSize.width / 2);
-	centerPoint.y = self.frame.size.height / 2 - (stringSize.height / 2);
+	//centerPoint.x = (self.frame.size.width / 2) - (stringSize.width / 2);
+    centerPoint.x = 20;
+    // standard coordinate system.
+    centerPoint.y = self.frame.size.height - headerHeight;
+    // flipped coordinate system.
+    centerPoint.y = headerHeight;
+	//centerPoint.y = self.frame.size.height / 2 - (stringSize.height / 2);
+    
+    // rotation du texte.
+    NSAffineTransform* transform = [NSAffineTransform transform];
+    [transform translateXBy:centerPoint.x yBy:centerPoint.y];
+    //[transform rotateByDegrees:70];
+    [transform rotateByDegrees:290];
+    [transform translateXBy:-centerPoint.x yBy:-centerPoint.y];
+    [transform concat];
+    
 	[budgetString drawAtPoint:centerPoint withAttributes:drawStringAttributes];
+    
+    
+    [NSGraphicsContext restoreGraphicsState];
+
 }
 
 // retourne le nombre de projets (projet et ses sous-projets).
@@ -157,5 +201,10 @@ NSBezierPath *aPath ;
     //return numDays;
 }
 
+// inverser les coordonnées de l'axe y.
+- (BOOL)isFlipped
+{
+    return YES;
+}
 
 @end

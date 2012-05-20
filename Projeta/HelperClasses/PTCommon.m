@@ -64,6 +64,22 @@
     return stringFromDate;
 }
 
+// retourne un string à partir d'une date.
++ (NSString*)stringFromDate:(NSDate *)aDate {
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSLocale *enUSPOSIXLocale;
+    enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+    [formatter setLocale:enUSPOSIXLocale];
+    [formatter setDateFormat:@"dd'-'MM'-'yyyy"];
+    
+    //[formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    
+    NSString *stringFromDate = [formatter stringFromDate:aDate];
+    
+    return stringFromDate;
+}
+
 #pragma mark Web service methods
 
 // executes a given HTTP method on a given resource with a given dictionary.

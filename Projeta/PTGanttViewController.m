@@ -18,6 +18,7 @@
 
 @synthesize mainWindowController;
 @synthesize parentProjectDetailsViewController;
+@synthesize scrollView;
 
 @synthesize project;
 @synthesize ganttView;
@@ -36,6 +37,10 @@
 - (void)loadGantt {
     
     [ganttView setProject:project];
+
+    [ganttView setParentViewSize:self.view.frame.size];
+    
 }
+
 
 @end

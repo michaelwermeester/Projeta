@@ -19,4 +19,6 @@
 @property (nonatomic, copy) NSDate *minDate;
 @property (nonatomic, copy) NSDate *maxDate;
 
+@property NSSize parentViewSize;
+
 @end

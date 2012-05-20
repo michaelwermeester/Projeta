@@ -20,6 +20,8 @@
 + (NSDate*)dateFromJSONString:(NSString*)aDate;
 // retourne un string pour envoyé au webservice à partir d'une date.
 + (NSString*)stringJSONFromDate:(NSDate *)aDate;
+// retourne un string à partir d'une date.
++ (NSString*)stringFromDate:(NSDate *)aDate;
 
 #pragma mark Web service methods
 // executes a given HTTP method on a given resource with a given dictionary.

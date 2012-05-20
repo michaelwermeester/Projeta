@@ -15,6 +15,7 @@
 
 @interface PTGanttViewController : NSViewController {
     __weak PTGanttView *ganttView;
+    __weak NSScrollView *scrollView;
 }
 
 
@@ -23,6 +24,7 @@
 @property (assign) MainWindowController *mainWindowController;
 // reference to the (parent) PTProjectDetailsViewController
 @property (assign) PTProjectDetailsViewController *parentProjectDetailsViewController;
+@property (weak) IBOutlet NSScrollView *scrollView;
 
 @property (strong) Project *project;
 @property (weak) IBOutlet PTGanttView *ganttView;

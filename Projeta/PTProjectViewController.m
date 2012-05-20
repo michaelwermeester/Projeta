@@ -117,7 +117,7 @@
 #pragma mark -
 #pragma mark Gestures handling (trackpad and mouse events)
 
-- (BOOL)wantsScrollEventsForSwipeTrackingOnAxis:(NSEventGestureAxis)axis 
+/*- (BOOL)wantsScrollEventsForSwipeTrackingOnAxis:(NSEventGestureAxis)axis 
 {
     return (axis == NSEventGestureAxisHorizontal) ? YES : NO;
 }
@@ -172,7 +172,7 @@
                                  //self->_swipeAnimationCanceled = NULL;
                              }
                          }];
-}
+}*/
 
 
 - (void)removeViewsFromRightView
