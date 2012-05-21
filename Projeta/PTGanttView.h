@@ -21,4 +21,12 @@
 
 @property NSSize parentViewSize;
 
+// ajouter un nombre de jours à une date et retourne la nouvelle date.
+- (NSDate *)dateByAddingDays:(NSInteger)daysToAdd toDate:(NSDate *)aDate;
+
+- (void)drawProjectNames:(Project *)aProject 
+           startPosition:(NSInteger)startPositionX 
+                  length:(NSInteger)length
+               positionY:(NSInteger)positionY;
+
 @end

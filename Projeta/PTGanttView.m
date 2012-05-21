@@ -44,7 +44,13 @@ NSBezierPath *aPath ;
 
 - (void)drawRect:(NSRect)dirtyRect
 {
-    totalProjects = [self countTotalProjects:project];
+    
+    Project *dummyProject = [[Project alloc] init];
+    dummyProject.childProject = [[NSMutableArray alloc] init];
+    [dummyProject.childProject addObject:project];
+    
+    //totalProjects = [self countTotalProjects:project];
+    totalProjects = [self countTotalProjects:dummyProject];
     
     minDate = project.startDate;
     maxDate = project.endDate;
@@ -64,7 +70,7 @@ NSBezierPath *aPath ;
     
     self.frame = f;
     
-    [[NSColor redColor] set ] ;
+    /*[[NSColor redColor] set ] ;
     
     // drawing a rectangle using a class method of NSBezierPath
     [NSBezierPath strokeRect: NSMakeRect( 50,50,8,8 ) ] ;
@@ -77,7 +83,7 @@ NSBezierPath *aPath ;
     
     [[NSColor blueColor] set ];
     aPath = [NSBezierPath bezierPathWithRect: NSMakeRect( 110, -110, 8, 8) ] ;
-    [aPath stroke] ;
+    [aPath stroke] ;*/
     
     //NSLog(@"test: %@", project.projectTitle);
     
@@ -88,7 +94,8 @@ NSBezierPath *aPath ;
     
     [self drawDays];
     [self drawDates];
-    [self drawProjectBar:project];
+    //[self drawProjectBar:project];
+    [self drawProjectBar:dummyProject];
     
     
     //[[parentScrollView contentView] scrollToPoint: point];
@@ -96,24 +103,73 @@ NSBezierPath *aPath ;
     
     //[[parentScrollView verticalScroller] setFloatValue:0.0];
     //[[parentScrollView contentView] scrollToPoint:NSMakePoint(0.0, self.frame.size.height - parentScrollView.contentView.si.height)];
+    
+    
+    
+    
+    
 }
 
 - (void)drawProjectBar:(OutlineCollection *)aProject {
     
-    [[NSColor greenColor] set ] ;
+    
 
     for (OutlineCollection *p in aProject.childObject) {
         
         //aPath = [NSBezierPath bezierPathWithRect: NSMakeRect( 110, counter * 5, 10, 10) ] ;
         ///[aPath stroke] ;
         
-        [NSBezierPath strokeRect: NSMakeRect( 50, self.frame.size.height - (counter * 20),5, 20 ) ] ;
         //[NSBezierPath strokeRect: NSMakeRect( 50, self.frame.size.height - (counter * 20),5, 20 ) ] ;
+        
+        NSInteger start = [self daysBetweenDates:minDate maxDate:p.startDate] * 20;
+        NSInteger length = [self daysBetweenDates:p.startDate maxDate:p.endDate] * 20;
+        
+        // 
+        [[NSColor greenColor] set ] ;
+        [NSBezierPath fillRect: NSMakeRect(start, headerHeight + counter * (20 + 4), length, 20 ) ] ;
+        // bordure noir.
+        [[NSColor blackColor] set ] ;
+        [NSBezierPath strokeRect: NSMakeRect(start, headerHeight + counter * (20 + 4), length, 20 ) ] ;
+        
+        [self drawProjectNames:(Project *)p startPosition:start length:length positionY:headerHeight + counter * (20 + 4)];
+        
         
         counter++;
         
+        
+        
         [self drawProjectBar:p];
     }
+}
+
+- (void)drawProjectNames:(Project *)aProject 
+           startPosition:(NSInteger)startPositionX 
+                  length:(NSInteger)length
+               positionY:(NSInteger)positionY {
+    
+    NSMutableDictionary *drawStringAttributes = [[NSMutableDictionary alloc] init];
+    [drawStringAttributes setValue:[NSColor blackColor] forKey:NSForegroundColorAttributeName];
+    //[drawStringAttributes setValue:[NSFont fontWithName:@"American Typewriter" size:11] forKey:NSFontAttributeName];
+    [drawStringAttributes setValue:[NSFont boldSystemFontOfSize:11] forKey:NSFontAttributeName];
+    
+    NSString *projTitleString = [NSString stringWithFormat:aProject.projectTitle];
+    NSSize stringSize = [projTitleString sizeWithAttributes:drawStringAttributes];
+
+    NSPoint centerPoint;
+
+    // si longueur du texte plus grand que la barre, afficher le titre à côté de la barre.
+    if (stringSize.width > length) {
+        centerPoint.x = startPositionX + length + 5;// + (stringSize.width / 2);
+    } else {    // afficher le titre du projet dans la barre. 
+        centerPoint.x = startPositionX + (length / 2) - (stringSize.width / 2);
+    }
+    // standard coordinate system.
+    //centerPoint.y = self.frame.size.height - headerHeight;
+    // flipped coordinate system.
+    centerPoint.y = positionY + 10 - stringSize.height / 2;
+    
+    [projTitleString drawAtPoint:centerPoint withAttributes:drawStringAttributes];
+
 }
 
 - (void)drawDays {
@@ -125,7 +181,13 @@ NSBezierPath *aPath ;
         // standard coordinate system.
         //[NSBezierPath strokeRect: NSMakeRect( 20 * i, 0, 0.3, self.frame.size.height - headerHeight) ] ;
         // flipped coordinate system.
-        [NSBezierPath strokeRect: NSMakeRect( 20 * i, headerHeight + 5, 0.3, self.frame.size.height) ] ;
+        
+        [NSBezierPath setDefaultLineWidth:1];
+        //[NSBezierPath strokeRect: NSMakeRect( 20 * i, headerHeight + 5, 0, self.frame.size.height) ] ;
+        
+        NSPoint startPoint = {20 * i, headerHeight + 5};
+        NSPoint endPoint = {20 * i, self.frame.size.height};
+        [NSBezierPath strokeLineFromPoint:startPoint toPoint:endPoint];
     }
     
     //NSLog(@"days: %ld", days);
@@ -136,39 +198,45 @@ NSBezierPath *aPath ;
     [[NSColor blackColor] set];
 
     
-    [NSGraphicsContext saveGraphicsState];
+    
+    for (int i = 0; i < days; i++) {
+        
+        [NSGraphicsContext saveGraphicsState];
+        
+        NSMutableDictionary *drawStringAttributes = [[NSMutableDictionary alloc] init];
+        [drawStringAttributes setValue:[NSColor blackColor] forKey:NSForegroundColorAttributeName];
+        //[drawStringAttributes setValue:[NSFont fontWithName:@"American Typewriter" size:11] forKey:NSFontAttributeName];
+        [drawStringAttributes setValue:[NSFont boldSystemFontOfSize:11] forKey:NSFontAttributeName];
+        
+        // incrementer la date par 1 jour.
+        NSDate *date = [self dateByAddingDays:i toDate:minDate];
+       
+        NSString *dateString = [NSString stringWithFormat:[PTCommon stringFromDate:date]];
+        //NSSize stringSize = [budgetString sizeWithAttributes:drawStringAttributes];
+        //NSLog(@"height: %f", stringSize.height);
+        NSPoint centerPoint;
+        //centerPoint.x = (self.frame.size.width / 2) - (stringSize.width / 2);
+        centerPoint.x = (20 * i) - 6;
+        // standard coordinate system.
+        //centerPoint.y = self.frame.size.height - headerHeight;
+        // flipped coordinate system.
+        centerPoint.y = headerHeight;
+        //centerPoint.y = self.frame.size.height / 2 - (stringSize.height / 2);
+        
+        // rotation du texte.
+        NSAffineTransform* transform = [NSAffineTransform transform];
+        [transform translateXBy:centerPoint.x yBy:centerPoint.y];
+        //[transform rotateByDegrees:70];
+        [transform rotateByDegrees:290];
+        [transform translateXBy:-centerPoint.x yBy:-centerPoint.y];
+        [transform concat];
+        
+        [dateString drawAtPoint:centerPoint withAttributes:drawStringAttributes];
+        
+        [NSGraphicsContext restoreGraphicsState];
+    }
     
     
-    NSMutableDictionary *drawStringAttributes = [[NSMutableDictionary alloc] init];
-	[drawStringAttributes setValue:[NSColor blackColor] forKey:NSForegroundColorAttributeName];
-	//[drawStringAttributes setValue:[NSFont fontWithName:@"American Typewriter" size:11] forKey:NSFontAttributeName];
-    [drawStringAttributes setValue:[NSFont boldSystemFontOfSize:11] forKey:NSFontAttributeName];
-    
-    //NSString *budgetString = [NSString stringWithFormat:@"TEST"];
-    NSString *budgetString = [NSString stringWithFormat:[PTCommon stringFromDate:minDate]];
-    //NSSize stringSize = [budgetString sizeWithAttributes:drawStringAttributes];
-    //NSLog(@"height: %f", stringSize.height);
-	NSPoint centerPoint;
-	//centerPoint.x = (self.frame.size.width / 2) - (stringSize.width / 2);
-    centerPoint.x = 20;
-    // standard coordinate system.
-    centerPoint.y = self.frame.size.height - headerHeight;
-    // flipped coordinate system.
-    centerPoint.y = headerHeight;
-	//centerPoint.y = self.frame.size.height / 2 - (stringSize.height / 2);
-    
-    // rotation du texte.
-    NSAffineTransform* transform = [NSAffineTransform transform];
-    [transform translateXBy:centerPoint.x yBy:centerPoint.y];
-    //[transform rotateByDegrees:70];
-    [transform rotateByDegrees:290];
-    [transform translateXBy:-centerPoint.x yBy:-centerPoint.y];
-    [transform concat];
-    
-	[budgetString drawAtPoint:centerPoint withAttributes:drawStringAttributes];
-    
-    
-    [NSGraphicsContext restoreGraphicsState];
 
 }
 
@@ -205,6 +273,21 @@ NSBezierPath *aPath ;
 - (BOOL)isFlipped
 {
     return YES;
+}
+
+// ajouter un nombre de jours à une date et retourne la nouvelle date.
+- (NSDate *)dateByAddingDays:(NSInteger)daysToAdd toDate:(NSDate *)aDate {
+    
+    // set up date components
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    [components setDay:daysToAdd];
+    
+    // create a calendar
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    
+    NSDate *newDate = [gregorian dateByAddingComponents:components toDate:aDate options:0];
+    
+    return newDate;
 }
 
 @end
