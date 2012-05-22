@@ -124,8 +124,12 @@ NSBezierPath *aPath ;
         NSInteger start = [self daysBetweenDates:minDate maxDate:p.startDate] * 20;
         NSInteger length = [self daysBetweenDates:p.startDate maxDate:p.endDate] * 20;
         
-        // 
-        [[NSColor greenColor] set ] ;
+        //[[NSColor lightGrayColor] set];
+        // arrière-plan du rectangle en blanc.
+        [[NSColor whiteColor] set];
+        [NSBezierPath fillRect: NSMakeRect(start, headerHeight + counter * (20 + 4), length, 20 ) ] ;
+        // dessiner le rectangle en bleu (avec une légère transparence).
+        [[NSColor colorWithCalibratedRed:0.039f green:0.36f blue:0.56f alpha:0.5f] set];
         [NSBezierPath fillRect: NSMakeRect(start, headerHeight + counter * (20 + 4), length, 20 ) ] ;
         // bordure noir.
         [[NSColor blackColor] set ] ;
