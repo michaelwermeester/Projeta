@@ -159,7 +159,7 @@
     if (firstName != nil) {
         fullname = [fullname stringByAppendingString:firstName];
     }
-    if (firstName != nil && lastName != nil) {
+    if (firstName != nil && [firstName length] > 0 && lastName != nil && [lastName length] > 0) {
         fullname = [fullname stringByAppendingString:@" "];
     }
     if (lastName != nil) {
@@ -179,7 +179,7 @@
         //NSLog(@"fullname : %@", fullName);
     }
     
-    if ([self fullName] != nil && username != nil)
+    if ([self fullName] != nil && [[self fullName] length] > 0 && username != nil)
          description = [description stringByAppendingString:@" "];
     
     if (username != nil) {
