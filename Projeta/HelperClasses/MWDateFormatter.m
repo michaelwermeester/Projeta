@@ -10,6 +10,7 @@
 
 @implementation MWDateFormatter
 
+// convertit un string en date. 
 - (NSDate *)dateFromString:(NSString *)string {
  
     if ((string == nil) || [[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualTo:@""]) {
