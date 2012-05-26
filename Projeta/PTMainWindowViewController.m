@@ -795,4 +795,8 @@ SourceListItem *personalTasksItem;
                          }];
 }
 
+- (NSMutableArray *)currentUserRoles {
+    return _currentUserRoles;
+}
+
 @end

@@ -45,10 +45,16 @@
     Project *projectCopy;
     
     NSMutableArray *arrDevelopers;
+    __weak NSTabView *tabView;
+    
+    NSTabViewItem *activityTab;
+    NSTabViewItem *clientTab;
+    NSTabViewItem *visibilityTab;
 }
 
 @property (strong) PTProjectViewController *projectViewController;
 @property (assign) IBOutlet NSTreeController *prjTreeController;
+@property (weak) IBOutlet NSTabView *tabView;
 
 @property (strong) NSMutableArray *arrDevelopers;
 
@@ -115,5 +121,8 @@
 - (void)loadComments;
 // charger le diagramme de Gantt lié au projet sélectionné.
 - (void)loadGantt;
+
+// affiche l'onglet 'Visibilité' et 'Client(s)' si l'utilisateur authentifié est un développeur ou administrateur.
+- (void)showClientAndVisibilityTab;
 
 @end

@@ -32,6 +32,8 @@
 // reference to the (parent) MainWindowController
 @property (assign) MainWindowController *mainWindowController;
 
+@property (readonly) NSMutableArray *currentUserRoles;
+
 // project-list view
 @property (strong) PTProjectListViewController *projectListViewController;
 // task-list view

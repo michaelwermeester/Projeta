@@ -16,6 +16,7 @@
 #import "PTProjectHelper.h"
 #import "PTUsergroupHelper.h"
 #import "PTUserHelper.h"
+#import "Role.h"
 #import "Usergroup.h"
 
 
@@ -24,6 +25,7 @@
 
 @synthesize projectViewController;
 @synthesize prjTreeController;
+@synthesize tabView;
 
 @synthesize project;
 @synthesize startDateRealCalendarButton;
@@ -90,10 +92,32 @@
 {
     [super loadView];
     
+    // cacher l'onglet 'Activité'.
+    activityTab = [tabView tabViewItemAtIndex:7];
+    [tabView removeTabViewItem:activityTab];
+    
+    [self showClientAndVisibilityTab];
+    
     //[self viewDidLoad];
     
     // charger la liste des développeurs à partir du webservice et les mettre dans la combobox.
     [self fetchDevelopersFromWebservice];
+}
+
+// affiche l'onglet 'Visibilité' et 'Client(s)' si l'utilisateur authentifié est un développeur ou administrateur.
+- (void)showClientAndVisibilityTab {
+    
+    for (Role *r in mainWindowController.mainWindowViewController.currentUserRoles) {
+        
+        // if user is in administrator role, add the admin menu to the sidebar.
+        if ([r.code isEqualToString:@"administrator"] == NO && [r.code isEqualToString:@"developer"] == NO) {
+            
+            visibilityTab = [tabView tabViewItemAtIndex:4];
+            [tabView removeTabViewItem:visibilityTab];
+            clientTab = [tabView tabViewItemAtIndex:4];
+            [tabView removeTabViewItem:clientTab];
+        }
+    }
 }
 
 // charger les utilisateurs, groupes et clients liés au projet.
