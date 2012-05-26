@@ -45,6 +45,8 @@
 
 @property (assign) BOOL isPersonalTask;
 
+@property (strong) NSString *taskURL;
+
 - (IBAction)addNewTaskButtonClicked:(id)sender;
 - (IBAction)addNewSubTaskButtonClicked:(id)sender;
 - (IBAction)detailsButtonClicked:(id)sender;

@@ -209,13 +209,16 @@ SourceListItem *personalTasksItem;
 	else if([selectedIndexes count]==1) {
 		NSString *identifier = [[sourceList itemAtRow:[selectedIndexes firstIndex]] identifier];
 		
-        if (identifier == @"projects") {
+        if (identifier == @"projects" || identifier == @"projectsPublic") {
             
             [self removeViewsFromRightView];
             
             if (!projectListViewController) {
        
                 projectListViewController = [[PTProjectListViewController alloc] init];
+                
+                if (identifier == @"projectsPublic")
+                    projectListViewController.projectURL = @"resources/projects/public";
                 
                 // set reference to (parent) window
                 [projectListViewController setMainWindowController:mainWindowController];

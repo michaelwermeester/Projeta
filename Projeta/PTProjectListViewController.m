@@ -29,6 +29,8 @@
 @synthesize prjArrayCtrl;
 @synthesize prjCollectionView;
 
+@synthesize projectURL;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     //self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -48,7 +50,11 @@
     // get server URL as string
     NSString *urlString = [PTCommon serverURLString];
     // build URL by adding resource path
-    urlString = [urlString stringByAppendingString:@"resources/projects/"];
+    if (projectURL) {
+        urlString = [urlString stringByAppendingString:projectURL];
+    } else {
+        urlString = [urlString stringByAppendingString:@"resources/projects/"];
+    }
     
     // convert to NSURL
     NSURL *url = [NSURL URLWithString:urlString];

@@ -33,6 +33,8 @@
 
 @synthesize isPersonalTask;
 
+@synthesize taskURL;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     //self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -64,6 +66,9 @@
     // build URL by adding resource path
     if (isPersonalTask == YES)
         urlString = [urlString stringByAppendingString:@"resources/tasks/personal"];
+    /*else if (taskUrl) {
+        
+    }*/
     else
         urlString = [urlString stringByAppendingString:@"resources/tasks/"];
     

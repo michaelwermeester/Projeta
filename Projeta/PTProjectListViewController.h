@@ -35,6 +35,8 @@
 @property (weak) IBOutlet NSOutlineView *prjOutlineView;
 @property (weak) IBOutlet NSMenuItem *addSubProjectButton;
 
+@property (strong) NSString *projectURL;
+
 - (void)requestFinished:(NSMutableData*)data;
 - (void)requestFailed:(NSError*)error;
 
