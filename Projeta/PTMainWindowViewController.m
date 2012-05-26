@@ -25,6 +25,17 @@ static NSMutableArray *_currentUserRoles = nil;
 // logged in User.
 static User *_loggedInUser = nil;
 
+SourceListItem *bugsHeaderItem;
+SourceListItem *bugsItem;
+
+SourceListItem *projectsHeaderItem;
+SourceListItem *projectsItem;
+SourceListItem *projectsPublicItem;
+
+SourceListItem *tasksHeaderItem;
+SourceListItem *tasksItem;
+SourceListItem *personalTasksItem;
+
 @implementation PTMainWindowViewController
 
 @synthesize sourceList;
@@ -68,7 +79,13 @@ static User *_loggedInUser = nil;
     
     // if value for _currentUserRoles array changes. 
     if ( [keyPath isEqualToString:@"_currentUserRoles"] ) {
-        // Show the admin menu
+        
+        // afficher points de menu supplémentaires si l'utilisateur est un administrateur ou développeur.
+        [self showBugMenuByUserRole];
+        [self showProjectMenuByUserRole];
+        [self showTaskMenuByUserRole];
+        
+        // Afficher menu administrateur si l'utilisateur est un administrateur.
         [self showAdminMenu];
     }
 }
@@ -428,84 +445,38 @@ static User *_loggedInUser = nil;
 {
     sourceListItems = [[NSMutableArray alloc] init];
 	
-	//Set up the "Projects" parent item and children
-    SourceListItem *projectsHeaderItem = [SourceListItem itemWithTitle:NSLocalizedString(@"PROJETS", nil) identifier:@"projectsHeader"];
-	SourceListItem *projectsItem = [SourceListItem itemWithTitle:@"Projets" identifier:@"projects"];
-	[projectsItem setIcon:[NSImage imageNamed:@"music.png"]];
-    SourceListItem *projectsAssignedItem = [SourceListItem itemWithTitle:@"Assignés" identifier:@"projectsAssigned"];
-	//SourceListItem *tasksItem = [SourceListItem itemWithTitle:@"Tasks" identifier:@"tasks"];
-	//[tasksItem setIcon:[NSImage imageNamed:@"movies.png"]];
-	SourceListItem *projectsParClientItem = [SourceListItem itemWithTitle:@"Par client" identifier:@"projectsParClientItem"];
-	[projectsParClientItem setIcon:[NSImage imageNamed:@"podcasts.png"]];
-	//[projectsParClientItem setBadgeValue:105];
-	SourceListItem *projectsParDeveloppeurItem = [SourceListItem itemWithTitle:@"Par développeur" identifier:@"projectsParDeveloppeurItem"];
-	[projectsParDeveloppeurItem setIcon:[NSImage imageNamed:@"audiobooks.png"]];
-	[projectsHeaderItem setChildren:[NSArray arrayWithObjects:projectsItem, projectsAssignedItem, projectsParClientItem, projectsParDeveloppeurItem, nil]];
+	// Point de menu 'PROJETS'.
+    projectsHeaderItem = [SourceListItem itemWithTitle:NSLocalizedString(@"PROJETS", nil) identifier:@"projectsHeader"];
+	projectsItem = [SourceListItem itemWithTitle:@"Projets" identifier:@"projects"];
+    projectsPublicItem = [SourceListItem itemWithTitle:@"Publics" identifier:@"projectsPublic"];
+
+    [projectsHeaderItem setChildren:[NSArray arrayWithObjects:projectsItem, projectsPublicItem, nil]];
     
 	
-	//Set up the "Tasks" parent item and children
-	SourceListItem *tasksHeaderItem = [SourceListItem itemWithTitle:@"TÂCHES" identifier:@"tasksHeader"];
+	// Point de menu 'TÂCHES'.
+	tasksHeaderItem = [SourceListItem itemWithTitle:@"TÂCHES" identifier:@"tasksHeader"];
     // all tasks
-    SourceListItem *tasksItem = [SourceListItem itemWithTitle:@"Tâches" identifier:@"tasks"];
-    SourceListItem *tasksAssignedItem = [SourceListItem itemWithTitle:@"Assignés" identifier:@"tasksAssigned"];
+    tasksItem = [SourceListItem itemWithTitle:@"Tâches" identifier:@"tasks"];
+    personalTasksItem = [SourceListItem itemWithTitle:@"Personnels" identifier:@"tasksPersonal"];
     
-	SourceListItem *personalTasksItem = [SourceListItem itemWithTitle:@"Personnels" identifier:@"tasksPersonal"];
-    SourceListItem *tasksParClientItem = [SourceListItem itemWithTitle:@"Par client" identifier:@"tasksParClientItem"];
-    SourceListItem *tasksParDeveloppeurItem = [SourceListItem itemWithTitle:@"Par développeur" identifier:@"tasksParDeveloppeurItem"];
-	
-	//Create a second-level group to demonstrate
-	/*SourceListItem *playlist2Item = [SourceListItem itemWithTitle:@"Playlist2" identifier:@"playlist2"];
-	SourceListItem *playlist3Item = [SourceListItem itemWithTitle:@"Playlist3Playlist3Playlist3Playlist3Playlist3" identifier:@"playlist3"];
-    [playlist3Item setBadgeValue:50];
-	//[playlist1Item setIcon:[NSImage imageNamed:@"playlist.png"]];
-	[playlist2Item setIcon:[NSImage imageNamed:@"playlist.png"]];
-	[playlist3Item setIcon:[NSImage imageNamed:@"playlist.png"]];
-	
-	SourceListItem *playlistGroup = [SourceListItem itemWithTitle:@"Playlist Group" identifier:@"playlistgroup"];
-	SourceListItem *playlistGroupItem = [SourceListItem itemWithTitle:@"Child Playlist" identifier:@"childplaylist"];
-	[playlistGroup setIcon:[NSImage imageNamed:@"playlistFolder.png"]];
-	[playlistGroupItem setIcon:[NSImage imageNamed:@"playlist.png"]];
-	[playlistGroup setChildren:[NSArray arrayWithObject:playlistGroupItem]];*/
-	
-	[tasksHeaderItem setChildren:[NSArray arrayWithObjects:tasksItem, personalTasksItem, tasksAssignedItem, tasksParClientItem, tasksParDeveloppeurItem, nil]];
+    [tasksHeaderItem setChildren:[NSArray arrayWithObjects:tasksItem, personalTasksItem, nil]];
     
-    //Set up the "Bugs" parent item and children
-	SourceListItem *bugsHeaderItem = [SourceListItem itemWithTitle:@"BOGUES" identifier:@"bugsHeader"];
-    SourceListItem *bugsItem = [SourceListItem itemWithTitle:@"Bogues" identifier:@"bugs"];
-    SourceListItem *bugsAssignedItem = [SourceListItem itemWithTitle:@"Assignés" identifier:@"bugsAssigned"];
-    SourceListItem *bugsParClientItem = [SourceListItem itemWithTitle:@"Par client" identifier:@"bugsParClientItem"];
-    SourceListItem *bugsParDeveloppeurItem = [SourceListItem itemWithTitle:@"Par développeur" identifier:@"bugsParDeveloppeurItem"];
+    // Point de menu 'BOGUES'.
+	bugsHeaderItem = [SourceListItem itemWithTitle:@"BOGUES" identifier:@"bugsHeader"];
+    bugsItem = [SourceListItem itemWithTitle:@"Bogues" identifier:@"bugs"];
     
-    [bugsHeaderItem setChildren:[NSArray arrayWithObjects:bugsItem, bugsAssignedItem, bugsParClientItem, bugsParDeveloppeurItem, nil]];
-    
-    //Set up the "Clients" parent item and children
-	//SourceListItem *clientsHeaderItem = [SourceListItem itemWithTitle:@"CLIENTS" identifier:@"clientsHeader"];
-    //SourceListItem *clientsItem = [SourceListItem itemWithTitle:@"Clients" identifier:@"clientsItem"];
-    //SourceListItem *clientProjetsItem = [SourceListItem itemWithTitle:@"Projets par client" identifier:@"clientProjetsItem"];
-    //SourceListItem *clientBugsItem = [SourceListItem itemWithTitle:@"Assignés" identifier:@"bugsAssigned"];
-    
-    //[clientsHeaderItem setChildren:[NSArray arrayWithObjects:clientsItem, nil]];
-    
-    //Set up the "Clients" parent item and children
-	/*SourceListItem *messagerieHeaderItem = [SourceListItem itemWithTitle:@"MESSAGERIE" identifier:@"messagerieHeaderItem"];
-    SourceListItem *messagesRecusItem = [SourceListItem itemWithTitle:@"Reçu" identifier:@"messagesRecusItem"];
-    SourceListItem *messagesEnvoyesItem = [SourceListItem itemWithTitle:@"Envoyé" identifier:@"messagesEnvoyesItem"];
-    SourceListItem *messagesupprimesItem = [SourceListItem itemWithTitle:@"Supprimé" identifier:@"messagesupprimesItem"];
-    
-    [messagerieHeaderItem setChildren:[NSArray arrayWithObjects:messagesRecusItem, messagesEnvoyesItem, messagesupprimesItem, nil]];*/
+    [bugsHeaderItem setChildren:[NSArray arrayWithObjects:bugsItem, nil]];
     
     
 	
 	[sourceListItems addObject:projectsHeaderItem];
 	[sourceListItems addObject:tasksHeaderItem];
     [sourceListItems addObject:bugsHeaderItem];
-    //[sourceListItems addObject:clientsHeaderItem];
-    //[sourceListItems addObject:messagerieHeaderItem];
 	
 	[sourceList reloadData];
     
     
-    // fetch logged in user its roles from web service.
+    // charger l'infos de l'utilisateur authentifié (données utilisateur et rôles).
     [self loggedInUserInitializations];
 }
 
@@ -657,7 +628,7 @@ static User *_loggedInUser = nil;
     [mainWindowController stopProgressIndicatorAnimation];
 }
 
-// shows the admin menu in the sidebar if the user is in the administrator role.
+// affiche le menu administrateur si l'utilisateur authentifié appartient au role 'administrator'.
 - (void)showAdminMenu {
     
     for (Role *r in _currentUserRoles) {
@@ -674,11 +645,7 @@ static User *_loggedInUser = nil;
             SourceListItem *groupAdminItem = [SourceListItem itemWithTitle:NSLocalizedString(@"Groupes", nil) identifier:@"groupAdmin"];
             // clients admin.
             SourceListItem *clientAdminItem = [SourceListItem itemWithTitle:NSLocalizedString(@"Clients", nil) identifier:@"clientAdmin"];
-            // contacts admin.
-            //SourceListItem *contactAdminItem = [SourceListItem itemWithTitle:NSLocalizedString(@"Contacts", nil) identifier:@"contactAdmin"];
-            // products admin.
-            //SourceListItem *productAdminItem = [SourceListItem itemWithTitle:NSLocalizedString(@"Products", nil) identifier:@"productAdmin"];
-            // tpe de bogue.
+            // type de bogue.
             SourceListItem *bugCategoryAdminItem = [SourceListItem itemWithTitle:NSLocalizedString(@"Types de bogue", nil) identifier:@"bugCategoryAdmin"];
             
             [administrationHeaderItem setChildren:[NSArray arrayWithObjects:userAdminItem, groupAdminItem, clientAdminItem, bugCategoryAdminItem, nil]];
@@ -688,6 +655,60 @@ static User *_loggedInUser = nil;
             [sourceList reloadData];
         }
     }
+}
+
+// afficher points de menu supplémentaires sous 'BOGUES' si l'utilisateur est un administrateur ou développeur.
+- (void)showBugMenuByUserRole {
+    
+    for (Role *r in _currentUserRoles) {
+        
+        // if user is in administrator role, add the admin menu to the sidebar.
+        if ([r.code isEqualToString:@"administrator"] || [r.code isEqualToString:@"developer"]) {
+            SourceListItem *bugsAssignedItem = [SourceListItem itemWithTitle:@"Assignés" identifier:@"bugsAssigned"];
+            SourceListItem *bugsParClientItem = [SourceListItem itemWithTitle:@"Par client" identifier:@"bugsParClientItem"];
+            SourceListItem *bugsParDeveloppeurItem = [SourceListItem itemWithTitle:@"Par développeur" identifier:@"bugsParDeveloppeurItem"];
+            
+            [bugsHeaderItem setChildren:[NSArray arrayWithObjects:bugsItem, bugsAssignedItem, bugsParClientItem, bugsParDeveloppeurItem, nil]];
+        }
+    }
+    
+    [sourceList reloadData];
+}
+
+// afficher points de menu supplémentaires sous 'PROJETS' si l'utilisateur est un administrateur ou développeur.
+- (void)showProjectMenuByUserRole {
+    
+    for (Role *r in _currentUserRoles) {
+        
+        // if user is in administrator role, add the admin menu to the sidebar.
+        if ([r.code isEqualToString:@"administrator"] || [r.code isEqualToString:@"developer"]) {
+            SourceListItem *projectsAssignedItem = [SourceListItem itemWithTitle:@"Assignés" identifier:@"projectsAssigned"];
+            SourceListItem *projectsParClientItem = [SourceListItem itemWithTitle:@"Par client" identifier:@"projectsParClientItem"];
+            SourceListItem *projectsParDeveloppeurItem = [SourceListItem itemWithTitle:@"Par développeur" identifier:@"projectsParDeveloppeurItem"];
+            
+            [projectsHeaderItem setChildren:[NSArray arrayWithObjects:projectsItem, projectsPublicItem, projectsAssignedItem, projectsParClientItem, projectsParDeveloppeurItem, nil]];
+        }
+    }
+    
+    [sourceList reloadData];
+}
+
+// afficher points de menu supplémentaires sous 'TÂCHES' si l'utilisateur est un administrateur ou développeur.
+- (void)showTaskMenuByUserRole {
+    
+    for (Role *r in _currentUserRoles) {
+        
+        // if user is in administrator role, add the admin menu to the sidebar.
+        if ([r.code isEqualToString:@"administrator"] || [r.code isEqualToString:@"developer"]) {
+            SourceListItem *tasksAssignedItem = [SourceListItem itemWithTitle:@"Assignés" identifier:@"tasksAssigned"];
+            SourceListItem *tasksParClientItem = [SourceListItem itemWithTitle:@"Par client" identifier:@"tasksParClientItem"];
+            SourceListItem *tasksParDeveloppeurItem = [SourceListItem itemWithTitle:@"Par développeur" identifier:@"tasksParDeveloppeurItem"];
+            
+            [tasksHeaderItem setChildren:[NSArray arrayWithObjects:tasksItem, personalTasksItem, tasksAssignedItem, tasksParClientItem, tasksParDeveloppeurItem, nil]];
+        }
+    }
+    
+    [sourceList reloadData];
 }
 
 

@@ -69,7 +69,13 @@
 - (void)userRoleInitializationsRequestFinished:(NSMutableData*)data;
 - (void)userRoleInitializationsRequestFailed:(NSError*)error;
 
-// shows the admin menu in the sidebar if the user is in the administrator role.
+// affiche le menu administrateur si l'utilisateur authentifié appartient au role 'administrator'.
 - (void)showAdminMenu;
+// afficher points de menu supplémentaires sous 'BOGUES' si l'utilisateur est un administrateur ou développeur.
+- (void)showBugMenuByUserRole;
+// afficher points de menu supplémentaires sous 'PROJETS' si l'utilisateur est un administrateur ou développeur.
+- (void)showProjectMenuByUserRole;
+// afficher points de menu supplémentaires sous 'TÂCHES' si l'utilisateur est un administrateur ou développeur.
+- (void)showTaskMenuByUserRole;
 
 @end
