@@ -63,6 +63,8 @@
 @property (nonatomic, copy) NSString *projectStatus;
 @property (nonatomic, copy) NSNumber *projectPercentage;
 
+//@property (readonly, nonatomic, copy) NSString *projectPercentageStatus;
+
 //@property (nonatomic, copy) NSString *stringEndDate;
 //@property (nonatomic, copy) NSString *stringStartDate;
 @property (readonly, nonatomic, copy) NSString *stringEndDate;
