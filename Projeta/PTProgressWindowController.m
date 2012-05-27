@@ -62,6 +62,14 @@
         [arrStatus addObject:[PTStatus initWithId:[[NSNumber alloc] initWithInt:10] name:@"En cours"]];
         [arrStatus addObject:[PTStatus initWithId:[[NSNumber alloc] initWithInt:11] name:@"Attente d'infos"]];
         [arrStatus addObject:[PTStatus initWithId:[[NSNumber alloc] initWithInt:12] name:@"Clôturé"]];
+    } else if (project) {
+        [arrStatus addObject:[PTStatus initWithId:[[NSNumber alloc] initWithInt:1] name:@"Point zéro"]];
+        [arrStatus addObject:[PTStatus initWithId:[[NSNumber alloc] initWithInt:2] name:@"En cours"]];
+        [arrStatus addObject:[PTStatus initWithId:[[NSNumber alloc] initWithInt:3] name:@"Attente d'infos"]];
+        [arrStatus addObject:[PTStatus initWithId:[[NSNumber alloc] initWithInt:4] name:@"Analyse"]];
+        [arrStatus addObject:[PTStatus initWithId:[[NSNumber alloc] initWithInt:6] name:@"Demande de mise en production"]];
+        [arrStatus addObject:[PTStatus initWithId:[[NSNumber alloc] initWithInt:7] name:@"Mis en production"]];
+        [arrStatus addObject:[PTStatus initWithId:[[NSNumber alloc] initWithInt:5] name:@"Clôturé"]];
     }
 }
 
@@ -87,6 +95,12 @@
     
     if (task) {
         progressUpdSuc = [PTProgressHelper createProgress:progress forTask:task successBlock:^(NSMutableData *data) { 
+            [self finishedCreatingProgress:data];
+        } failureBlock:^() {
+            
+        } mainWindowController:mainWindowController];
+    } else if (project) {
+        progressUpdSuc = [PTProgressHelper createProgress:progress forProject:project successBlock:^(NSMutableData *data) { 
             [self finishedCreatingProgress:data];
         } failureBlock:^() {
             

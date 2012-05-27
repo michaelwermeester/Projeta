@@ -10,6 +10,7 @@
 #import "Project.h"
 
 @class MainWindowController;
+@class PTProgressWindowController;
 @class PTProjectDetailsWindowController;
 
 @interface PTProjectListViewController : NSViewController {
@@ -23,6 +24,9 @@
     __weak NSTabView *prjTabView;
     __weak NSOutlineView *prjOutlineView;
     __weak NSMenuItem *addSubProjectButton;
+    
+    // fenêtre avancement.
+    PTProgressWindowController *progressWindowController;
 }
 
 @property (strong) NSMutableArray *arrPrj;
@@ -45,6 +49,7 @@
 - (IBAction)detailsButtonClicked:(id)sender;
 - (IBAction)removeProjectButtonClicked:(id)sender;
 - (IBAction)switchToProjectViewButtonClicked:(id)sender;
+- (IBAction)progressButtonClicked:(id)sender;
 
 - (void)openProjectDetailsWindow:(BOOL)isNewProject isSubProject:(BOOL)isSubProject ;
 

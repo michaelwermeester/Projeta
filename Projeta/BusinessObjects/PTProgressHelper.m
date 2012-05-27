@@ -10,14 +10,12 @@
 #import "PTCommon.h"
 #import "PTProgressHelper.h"
 #import "PTStatus.h"
+#import "Project.h"
 #import "Task.h"
 
 @implementation PTProgressHelper
 
-
-
-// Crée une nouvelle tâche dans la base de données.
-// mainWindowController parameter is used for animating the main window's progress indicator.
+// Met à jour l'état d'avancement d'une tâche. 
 + (BOOL)createProgress:(Progress *)theProgress forTask:(Task *)aTask successBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)())failureBlock_ mainWindowController:(id)sender {
     
     BOOL success = NO;
@@ -60,5 +58,33 @@
     return success;
 }
 
+
+// Met à jour l'état d'avancement d'un projet. 
++ (BOOL)createProgress:(Progress *)theProgress forProject:(Project *)aProject successBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)())failureBlock_ mainWindowController:(id)sender {
+    
+    BOOL success = NO;
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[theProgress dictionaryWithValuesForKeys:[theProgress createProgressKeys]]];
+    
+    // créer dictionnaire 'task_id'.
+    NSDictionary *projectIdDict = [aProject dictionaryWithValuesForKeys:[aProject projectIdKey]];
+    // ajouter ce dictionnaire sous la clé 'userCreated'.
+    [dict setObject:projectIdDict forKey:@"projectId"];
+    
+    if (theProgress.status) {
+        // créer dictionnaire 'task_id'.
+        NSDictionary *statusIdDict = [theProgress.status dictionaryWithValuesForKeys:[theProgress.status statusIdKey]];
+        // ajouter ce dictionnaire sous la clé 'userCreated'.
+        [dict setObject:statusIdDict forKey:@"statusId"];
+    }
+    
+    // API resource string.
+    NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/progress/create"];
+    
+    // execute the PUT method on the webservice to update the record in the database.
+    [PTCommon executePOSTforDictionaryWithBlocks:dict resourceString:resourceString successBlock:successBlock_ failureBlock:failureBlock_];
+    
+    return success;
+}
 
 @end

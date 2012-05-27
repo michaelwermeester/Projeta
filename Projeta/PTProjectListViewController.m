@@ -12,6 +12,7 @@
 #import "MWConnectionController.h"
 #import "PTCommon.h"
 #import "Project.h"
+#import "PTProgressWindowController.h"
 #import "PTProjectHelper.h"
 #import "PTProjectDetailsWindowController.h"
 
@@ -309,6 +310,22 @@
 
 - (IBAction)switchToProjectViewButtonClicked:(id)sender {
     [mainWindowController switchToProjectView:sender];
+}
+
+- (IBAction)progressButtonClicked:(id)sender {
+    progressWindowController = [[PTProgressWindowController alloc] init];
+    
+    NSArray *selectedObjects;
+    selectedObjects = [prjTreeController selectedObjects];
+    progressWindowController.project = [selectedObjects objectAtIndex:0];
+    
+    // référence vers mainWindowController. 
+    progressWindowController.mainWindowController = mainWindowController;
+    
+    // initialiser statuts.
+    [progressWindowController initStatusArray];
+    
+    [progressWindowController showWindow:self];
 }
 
 
