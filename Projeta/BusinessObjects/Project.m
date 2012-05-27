@@ -243,4 +243,29 @@
     return [PTCommon stringJSONFromDate:startDate];
 }
 
+- (NSString *)projectPercentageStatus {
+    
+    NSString *retString = [[NSString alloc] initWithString:@""];
+    
+    if ([self projectPercentage]) {
+        if ([self.projectPercentage isEqualToNumber:[NSDecimalNumber notANumber]] == NO) {
+            retString = [retString stringByAppendingString:[[self projectPercentage] stringValue]];
+            // ajouter signe %.
+            retString = [retString stringByAppendingString:@"%"];
+        }
+    }
+    
+    if ([self projectPercentage] && [self projectStatus]) {
+        if ([self.projectPercentage isEqualToNumber:[NSDecimalNumber notANumber]] == NO) {
+            retString = [retString stringByAppendingString:@" - "];
+        }
+    }
+    
+    if ([self projectStatus]) {
+        retString = [retString stringByAppendingString:[self projectStatus]];
+    }
+    
+    return retString;
+}
+
 @end
