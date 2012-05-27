@@ -22,6 +22,7 @@
     __weak NSTableColumn *outlineViewProjetColumn;
     __weak NSButton *projectButton;
     __weak NSButton *checkBoxShowTasksFromSubProjects;
+    __weak NSSearchField *searchField;
     
     BOOL isPersonalTask;
     
@@ -42,6 +43,7 @@
 @property (weak) IBOutlet NSTableColumn *outlineViewProjetColumn;
 @property (weak) IBOutlet NSButton *projectButton;
 @property (weak) IBOutlet NSButton *checkBoxShowTasksFromSubProjects;
+@property (weak) IBOutlet NSSearchField *searchField;
 
 @property (assign) BOOL isPersonalTask;
 

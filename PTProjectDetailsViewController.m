@@ -153,6 +153,8 @@
     [taskListViewController.checkBoxShowTasksFromSubProjects setHidden:NO];
     //[taskListViewController.projectButton removeFromSuperview];
     [taskListViewController.projectButton setHidden:YES];
+    // afficher champ de recherche.
+    [taskListViewController.searchField setHidden:NO];
 }
 
 - (void)loadBugs {

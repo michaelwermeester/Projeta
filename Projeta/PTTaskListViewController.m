@@ -23,6 +23,7 @@
 @synthesize outlineViewProjetColumn;
 @synthesize projectButton;
 @synthesize checkBoxShowTasksFromSubProjects;
+@synthesize searchField;
 
 @synthesize arrTask;
 @synthesize taskArrayCtrl;
