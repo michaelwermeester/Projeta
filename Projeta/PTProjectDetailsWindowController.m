@@ -7,6 +7,7 @@
 //
 
 #import "MainWindowController.h"
+#import "MWCalendarViewController.h"
 #import "Project.h"
 #import "PTMainWindowViewController.h"
 #import "PTProjectDetailsWindowController.h"
@@ -32,6 +33,12 @@ Project *projectCopy;
 
 @synthesize prjTreeIndexPath;
 @synthesize prjArrCtrlIndex;
+
+@synthesize startDateRealCalendarButton;
+@synthesize calendarPopover;
+@synthesize endDateRealCalendarButton;
+@synthesize startDateCalendarButton;
+@synthesize endDateCalendarButton;
 
 - (id)init
 {
@@ -254,6 +261,80 @@ Project *projectCopy;
     
     return retVal;
 
+}
+
+
+- (IBAction)startDateRealCalendarButtonClicked:(id)sender {
+    
+    // si bouton clicked...
+    if (self.startDateRealCalendarButton.intValue == 1) {
+        
+        // binder la propriété 'value' du datepicker avec la propriété correspondante de l'objet 'projet'. 
+        MWCalendarViewController *calView = (MWCalendarViewController *)calendarPopover.contentViewController;
+        [calView.datePicker bind:@"value" toObject:self withKeyPath:@"project.startDateReal" options:nil];
+        //[calView.datePicker bind:@"minValue" toObject:self withKeyPath:@"parentProjectStartDate" options:nil];
+        //[calView.datePicker bind:@"maxValue" toObject:self withKeyPath:@"parentProjectEndDate" options:nil];
+        
+        // afficher le popup avec le calendrier.
+        [self.calendarPopover showRelativeToRect:[startDateRealCalendarButton bounds]
+                                          ofView:startDateRealCalendarButton
+                                   preferredEdge:NSMaxYEdge];
+    } else {
+        [self.calendarPopover close];
+    }
+    
+}
+
+- (IBAction)endDateRealCalendarButtonClicked:(id)sender {
+    
+    // si bouton clicked...
+    if (self.endDateRealCalendarButton.intValue == 1) {
+        
+        // binder la propriété 'value' du datepicker avec la propriété correspondante de l'objet 'projet'. 
+        MWCalendarViewController *calView = (MWCalendarViewController *)calendarPopover.contentViewController;
+        [calView.datePicker bind:@"value" toObject:self withKeyPath:@"project.endDateReal" options:nil];
+        
+        // afficher le popup avec le calendrier.
+        [self.calendarPopover showRelativeToRect:[endDateRealCalendarButton bounds]
+                                          ofView:endDateRealCalendarButton
+                                   preferredEdge:NSMaxYEdge];
+    } else {
+        [self.calendarPopover close];
+    }
+}
+
+- (IBAction)startDateCalendarButtonClicked:(id)sender {
+    // si bouton clicked...
+    if (self.startDateCalendarButton.intValue == 1) {
+        
+        // binder la propriété 'value' du datepicker avec la propriété correspondante de l'objet 'projet'. 
+        MWCalendarViewController *calView = (MWCalendarViewController *)calendarPopover.contentViewController;
+        [calView.datePicker bind:@"value" toObject:self withKeyPath:@"project.startDate" options:nil];
+        
+        // afficher le popup avec le calendrier.
+        [self.calendarPopover showRelativeToRect:[startDateCalendarButton bounds]
+                                          ofView:startDateCalendarButton
+                                   preferredEdge:NSMaxYEdge];
+    } else {
+        [self.calendarPopover close];
+    }
+}
+
+- (IBAction)endDateCalendarButtonClicked:(id)sender {
+    // si bouton clicked...
+    if (self.endDateCalendarButton.intValue == 1) {
+        
+        // binder la propriété 'value' du datepicker avec la propriété correspondante de l'objet 'projet'. 
+        MWCalendarViewController *calView = (MWCalendarViewController *)calendarPopover.contentViewController;
+        [calView.datePicker bind:@"value" toObject:self withKeyPath:@"project.endDate" options:nil];
+        
+        // afficher le popup avec le calendrier.
+        [self.calendarPopover showRelativeToRect:[endDateCalendarButton bounds]
+                                          ofView:endDateCalendarButton
+                                   preferredEdge:NSMaxYEdge];
+    } else {
+        [self.calendarPopover close];
+    }
 }
 
 @end

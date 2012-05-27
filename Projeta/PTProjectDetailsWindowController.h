@@ -18,6 +18,8 @@
     __weak NSButton *okButton;
     __weak NSComboBox *comboDevelopers;
     
+    NSPopover *calendarPopover;
+    
     NSMutableArray *arrDevelopers;
 }
 
@@ -26,6 +28,12 @@
 @property (assign) BOOL isNewProject;
 
 @property (strong) NSMutableArray *arrDevelopers;
+
+@property (weak) IBOutlet NSButton *startDateRealCalendarButton;
+@property (strong) IBOutlet NSPopover *calendarPopover;
+@property (weak) IBOutlet NSButton *endDateRealCalendarButton;
+@property (weak) IBOutlet NSButton *startDateCalendarButton;
+@property (weak) IBOutlet NSButton *endDateCalendarButton;
 
 // test -- can remove
 @property (strong) NSIndexPath *prjTreeIndexPath;
@@ -45,5 +53,10 @@
 
 // charger la liste des développeurs à partir du webservice et les mettre dans la combobox.
 - (void)fetchDevelopersFromWebservice;
+
+- (IBAction)startDateRealCalendarButtonClicked:(id)sender;
+- (IBAction)endDateRealCalendarButtonClicked:(id)sender;
+- (IBAction)startDateCalendarButtonClicked:(id)sender;
+- (IBAction)endDateCalendarButtonClicked:(id)sender;
 
 @end
