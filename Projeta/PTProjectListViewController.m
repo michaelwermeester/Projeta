@@ -15,6 +15,9 @@
 #import "PTProgressWindowController.h"
 #import "PTProjectHelper.h"
 #import "PTProjectDetailsWindowController.h"
+#import "PTCommentairesWindowController.h"
+
+PTCommentairesWindowController *commentWindowController;
 
 @implementation PTProjectListViewController
 
@@ -326,6 +329,19 @@
     [progressWindowController initStatusArray];
     
     [progressWindowController showWindow:self];
+}
+
+- (IBAction)commentButtonClicked:(id)sender {
+    commentWindowController = [[PTCommentairesWindowController alloc] init];
+    
+    NSArray *selectedObjects;
+    selectedObjects = [prjTreeController selectedObjects];
+    commentWindowController.project = [selectedObjects objectAtIndex:0];
+    
+    // référence vers mainWindowController. 
+    commentWindowController.mainWindowController = mainWindowController;
+    
+    [commentWindowController showWindow:self];
 }
 
 

@@ -598,7 +598,6 @@
 						<string key="NSFrame">{{13, 41}, {942, 292}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="892409211"/>
 						<string key="NSReuseIdentifierKey">_NS:608</string>
 						<object class="NSMutableArray" key="NSTabViewItems">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -625,7 +624,7 @@
 															<string key="NSFrameSize">{919, 221}</string>
 															<reference key="NSSuperview" ref="145514021"/>
 															<reference key="NSWindow"/>
-															<reference key="NSNextKeyView" ref="271060242"/>
+															<reference key="NSNextKeyView" ref="752555152"/>
 															<string key="NSReuseIdentifierKey">_NS:1781</string>
 															<bool key="NSEnabled">YES</bool>
 															<object class="NSTableHeaderView" key="NSHeaderView" id="549254064">
@@ -945,7 +944,7 @@
 											<string key="NSFrame">{{1, 4}, {921, 239}}</string>
 											<reference key="NSSuperview" ref="892409211"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="752555152"/>
+											<reference key="NSNextKeyView" ref="145514021"/>
 											<string key="NSReuseIdentifierKey">_NS:1777</string>
 											<int key="NSsFlags">133682</int>
 											<reference key="NSVScroller" ref="271060242"/>
@@ -987,7 +986,7 @@
 															<int key="NSvFlags">4352</int>
 															<string key="NSFrameSize">{916, 228}</string>
 															<reference key="NSSuperview" ref="969305185"/>
-															<reference key="NSNextKeyView" ref="60981642"/>
+															<reference key="NSNextKeyView" ref="54271979"/>
 															<string key="NSReuseIdentifierKey">_NS:1703</string>
 															<bool key="NSEnabled">YES</bool>
 															<object class="NSTableHeaderView" key="NSHeaderView" id="965107564">
@@ -1275,7 +1274,7 @@
 											</object>
 											<string key="NSFrame">{{2, -3}, {918, 246}}</string>
 											<reference key="NSSuperview" ref="587396652"/>
-											<reference key="NSNextKeyView" ref="54271979"/>
+											<reference key="NSNextKeyView" ref="969305185"/>
 											<string key="NSReuseIdentifierKey">_NS:1699</string>
 											<int key="NSsFlags">133682</int>
 											<reference key="NSVScroller" ref="60981642"/>
@@ -1310,7 +1309,6 @@
 						<string key="NSFrame">{{846, 13}, {108, 32}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:687</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="559369862">
@@ -1727,6 +1725,14 @@
 						<reference key="destination" ref="92482076"/>
 					</object>
 					<int key="connectionID">1230</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">commentButtonClicked:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="704879707"/>
+					</object>
+					<int key="connectionID">1345</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -5036,7 +5042,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">1344</int>
+			<int key="maxID">1345</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -5105,6 +5111,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>addNewProjectButtonClicked:</string>
 							<string>addNewSubProjectButtonClicked:</string>
+							<string>commentButtonClicked:</string>
 							<string>detailsButtonClicked:</string>
 							<string>progressButtonClicked:</string>
 							<string>removeProjectButtonClicked:</string>
@@ -5112,6 +5119,7 @@
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -5126,6 +5134,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>addNewProjectButtonClicked:</string>
 							<string>addNewSubProjectButtonClicked:</string>
+							<string>commentButtonClicked:</string>
 							<string>detailsButtonClicked:</string>
 							<string>progressButtonClicked:</string>
 							<string>removeProjectButtonClicked:</string>
@@ -5139,6 +5148,10 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">addNewSubProjectButtonClicked:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">commentButtonClicked:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">

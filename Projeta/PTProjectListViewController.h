@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "Project.h"
+//#import "PTCommentairesWindowController.m"
 
 @class MainWindowController;
 @class PTProgressWindowController;
@@ -25,6 +26,8 @@
     __weak NSOutlineView *prjOutlineView;
     __weak NSMenuItem *addSubProjectButton;
     
+    // fenêtre commentaires.
+    //PTCommentairesWindowController *commentWindowController;
     // fenêtre avancement.
     PTProgressWindowController *progressWindowController;
 }
@@ -50,6 +53,7 @@
 - (IBAction)removeProjectButtonClicked:(id)sender;
 - (IBAction)switchToProjectViewButtonClicked:(id)sender;
 - (IBAction)progressButtonClicked:(id)sender;
+- (IBAction)commentButtonClicked:(id)sender;
 
 - (void)openProjectDetailsWindow:(BOOL)isNewProject isSubProject:(BOOL)isSubProject ;
 
