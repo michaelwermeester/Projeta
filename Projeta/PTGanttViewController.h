@@ -18,17 +18,18 @@
     __weak NSScrollView *scrollView;
 }
 
-
-
 // reference to the (parent) MainWindowController
 @property (assign) MainWindowController *mainWindowController;
 // reference to the (parent) PTProjectDetailsViewController
 @property (assign) PTProjectDetailsViewController *parentProjectDetailsViewController;
 @property (weak) IBOutlet NSScrollView *scrollView;
 
+// Le projet.
 @property (strong) Project *project;
+// La view Gantt.
 @property (weak) IBOutlet PTGanttView *ganttView;
 
+// initialiser les paramètres du diagramme de Gantt. 
 - (void)loadGantt;
 
 @end
