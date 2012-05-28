@@ -27,6 +27,8 @@
 @synthesize taskStatus = taskStatus;
 @synthesize taskPercentage = taskPercentage;
 
+@synthesize projectTitle = projectTitle;
+
 + (Task *)instanceFromDictionary:(NSDictionary *)aDictionary {
     
     Task *instance = [[Task alloc] init];
@@ -69,6 +71,9 @@
     // pourcentage.
     if (([[aDictionary objectForKey:@"taskPercentage"] isKindOfClass:[NSNull class]] == NO) && [aDictionary objectForKey:@"taskPercentage"] != nil)
         self.taskPercentage = [NSDecimalNumber decimalNumberWithString:(NSString *)[aDictionary objectForKey:@"taskPercentage"]];
+    
+    // titre du projet.
+    self.projectTitle = [aDictionary objectForKey:@"projectTitle"];
     
     // child task
     if ([[aDictionary objectForKey:@"childTask"] isKindOfClass:[NSArray class]]) {

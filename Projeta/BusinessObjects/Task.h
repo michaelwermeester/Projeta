@@ -26,6 +26,8 @@
     
     NSString *taskStatus;
     NSNumber *taskPercentage;
+    
+    NSString *projectTitle;
 }
 
 @property (nonatomic, retain) NSDate *endDate;
@@ -39,6 +41,9 @@
 @property (strong) NSMutableArray *childTask;
 @property (nonatomic, copy) NSNumber *parentTaskId;
 @property (nonatomic, copy) NSNumber *priority;
+
+@property (nonatomic, copy) NSString *projectTitle;
+
 
 // état et pourcentage de la tâche.
 @property (nonatomic, copy) NSString *taskStatus;
