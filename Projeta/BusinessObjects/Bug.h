@@ -47,4 +47,6 @@
 + (Bug *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
 
+- (NSArray *)bugIdKey;
+
 @end

@@ -13,7 +13,7 @@
 @synthesize code = code;
 @synthesize roleId = roleId;
 
-// Required by NSCopying protocol.
+// Requis pour le protocole NSCopying.
 - (id) copyWithZone:(NSZone *)zone {
     
     Role *copy = [[Role alloc] init];
@@ -25,13 +25,14 @@
 }
 
 // Override isEqual method.
+// Compare deux objets et retourne 'YES' s'ils sont égaux.
 - (BOOL)isEqual:(id)anObject {
     
     if (self == anObject) {
         return YES;
     } else if (!anObject || ![anObject isKindOfClass:[self class]]) {
         return NO;
-    } // compare if id and code are equal.
+    } // comparer si ID et 'code' sont les mêmes.
     else if ([[self code] isEqual:[(Role *)anObject code]] && [[self roleId] isEqual:[(Role *)anObject roleId]]) {
         return YES;
     } else {

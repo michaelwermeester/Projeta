@@ -12,10 +12,11 @@
     NSMutableData* receivedData;
 }
 
+// executé 
 @property (nonatomic, copy) void (^succeededAction)(NSMutableData *);
 @property (nonatomic, copy) void (^failedAction)(NSError *);
 
-// executed after succeededAction.
+// executé après succeededAction.
 @property (nonatomic, copy) void (^postSuccessAction)(void);
 
 

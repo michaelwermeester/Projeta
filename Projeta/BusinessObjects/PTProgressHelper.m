@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 Michael Wermeester. All rights reserved.
 //
 
+#import "Bug.h"
 #import "Progress.h"
 #import "PTCommon.h"
 #import "PTProgressHelper.h"
@@ -14,6 +15,34 @@
 #import "Task.h"
 
 @implementation PTProgressHelper
+
+// Met à jour l'état d'avancement d'un bogue. 
++ (BOOL)createProgress:(Progress *)theProgress forBug:(Bug *)aBug successBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)())failureBlock_ mainWindowController:(id)sender {
+    
+    BOOL success = NO;
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[theProgress dictionaryWithValuesForKeys:[theProgress createProgressKeys]]];
+    
+    // créer dictionnaire 'task_id'.
+    NSDictionary *bugIdDict = [aBug dictionaryWithValuesForKeys:[aBug bugIdKey]];
+    // ajouter ce dictionnaire sous la clé 'userCreated'.
+    [dict setObject:bugIdDict forKey:@"bugId"];
+    
+    if (theProgress.status) {
+        // créer dictionnaire 'task_id'.
+        NSDictionary *statusIdDict = [theProgress.status dictionaryWithValuesForKeys:[theProgress.status statusIdKey]];
+        // ajouter ce dictionnaire sous la clé 'userCreated'.
+        [dict setObject:statusIdDict forKey:@"statusId"];
+    }
+    
+    // API resource string.
+    NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/progress/create"];
+    
+    // execute the PUT method on the webservice to update the record in the database.
+    [PTCommon executePOSTforDictionaryWithBlocks:dict resourceString:resourceString successBlock:successBlock_ failureBlock:failureBlock_];
+    
+    return success;
+}
 
 // Met à jour l'état d'avancement d'une tâche. 
 + (BOOL)createProgress:(Progress *)theProgress forTask:(Task *)aTask successBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)())failureBlock_ mainWindowController:(id)sender {

@@ -10,12 +10,14 @@
 
 @interface PTStatus : NSObject <NSCopying>
 
+// propriétés.
 @property (nonatomic, copy) NSString *statusName;
 @property (nonatomic, copy) NSNumber *statusId;
 
+// constructeur qui crée un nouveau statut avec une ID et un nom.
 + (PTStatus *)initWithId:(NSNumber *)anId name:(NSString *)aName;
 
-// Required by NSCopying protocol.
+// Requis par protocole NSCopying.
 - (id) copyWithZone:(NSZone *)zone;
 
 - (NSArray *)statusIdKey;

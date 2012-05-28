@@ -129,4 +129,10 @@
     return copy;
 }
 
+- (NSArray *)bugIdKey {
+    NSArray *retArr = [[NSArray alloc] initWithObjects:@"bugId", nil];
+    
+    return retArr;
+}
+
 @end
