@@ -1220,11 +1220,12 @@
 										<reference key="NSSupport" ref="169508843"/>
 										<object class="NSDateFormatter" key="NSFormatter" id="448181788">
 											<dictionary class="NSMutableDictionary" key="NS.attributes">
+												<string key="dateFormat">dd/MM/yyyy</string>
 												<integer value="1" key="dateStyle"/>
 												<integer value="1040" key="formatterBehavior"/>
 												<integer value="1" key="timeStyle"/>
 											</dictionary>
-											<string key="NS.format">M/d/yy h:mm a</string>
+											<string key="NS.format">dd/MM/yyyy</string>
 											<bool key="NS.natural">NO</bool>
 										</object>
 										<reference key="NSControlView" ref="919145668"/>
@@ -1445,9 +1446,17 @@
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSTextFieldCell" key="NSCell" id="810700239">
 										<int key="NSCellFlags">67239488</int>
-										<int key="NSCellFlags2">272631808</int>
+										<int key="NSCellFlags2">-1874851840</int>
 										<string key="NSContents">Table View Cell</string>
 										<reference key="NSSupport" ref="169508843"/>
+										<object class="NSDateFormatter" key="NSFormatter" id="923330967">
+											<dictionary class="NSMutableDictionary" key="NS.attributes">
+												<string key="dateFormat">dd/MM/yyyy</string>
+												<integer value="1040" key="formatterBehavior"/>
+											</dictionary>
+											<string key="NS.format">dd/MM/yyyy</string>
+											<bool key="NS.natural">NO</bool>
+										</object>
 										<reference key="NSControlView" ref="777710384"/>
 										<reference key="NSBackgroundColor" ref="328436112"/>
 										<reference key="NSTextColor" ref="216048411"/>
@@ -1460,6 +1469,22 @@
 						<reference key="destination" ref="777710384"/>
 					</object>
 					<int key="connectionID">1630</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: objectValue.endDate</string>
+						<reference key="source" ref="777710384"/>
+						<reference key="destination" ref="8561039"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="777710384"/>
+							<reference key="NSDestination" ref="8561039"/>
+							<string key="NSLabel">value: objectValue.endDate</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">objectValue.endDate</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">1867</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -2948,6 +2973,9 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">1629</int>
 						<reference key="object" ref="810700239"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="923330967"/>
+						</array>
 						<reference key="parent" ref="777710384"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -3679,6 +3707,11 @@
 						<reference key="object" ref="855971974"/>
 						<reference key="parent" ref="739464847"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1865</int>
+						<reference key="object" ref="923330967"/>
+						<reference key="parent" ref="810700239"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -3956,6 +3989,8 @@
 				<string key="1858.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1859.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1860.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<integer value="2" key="1865.IBDateFormatterBehaviorMetadataKey"/>
+				<string key="1865.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="NO" key="265.IBNSViewMetadataTranslatesAutoresizingMaskIntoConstraints"/>
 				<string key="265.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="266.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -4002,14 +4037,14 @@
 				<string key="43.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="818.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="823.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<integer value="1" key="828.IBDateFormatterBehaviorMetadataKey"/>
+				<integer value="2" key="828.IBDateFormatterBehaviorMetadataKey"/>
 				<string key="828.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1864</int>
+			<int key="maxID">1867</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
