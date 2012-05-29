@@ -29,16 +29,20 @@ PTCommentairesWindowController *commentWindowController;
 @synthesize prjTabView;
 @synthesize prjOutlineView;
 @synthesize addSubProjectButton;
+@synthesize clientComboBox;
 @synthesize prjTreeController;
 @synthesize prjArrayCtrl;
 @synthesize prjCollectionView;
+
+@synthesize nibFileName;
 
 @synthesize projectURL;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     //self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    self = [super initWithNibName:@"PTProjectListView" bundle:nibBundleOrNil];
+    //self = [super initWithNibName:@"PTProjectListView" bundle:nibBundleOrNil];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Initialization code here.
         

@@ -101,6 +101,8 @@
 		4CCD9678155079F1006F2921 /* background.html in Resources */ = {isa = PBXBuildFile; fileRef = 4CCD9677155079F1006F2921 /* background.html */; };
 		4CCD967E1550850F006F2921 /* PTWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCD967D1550850F006F2921 /* PTWebView.m */; };
 		4CCDB32213F83CB80084FC84 /* PTProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCDB32013F83CB80084FC84 /* PTProjectViewController.m */; };
+		4CE13E16157540A500B14C43 /* PTProjectListViewClient.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CE13E15157540A500B14C43 /* PTProjectListViewClient.xib */; };
+		4CE13E19157540AE00B14C43 /* PTProjectListViewDeveloper.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CE13E18157540AE00B14C43 /* PTProjectListViewDeveloper.xib */; };
 		4CE32EC31527A4090082B0C9 /* calendar_small_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CE32EC21527A4090082B0C9 /* calendar_small_icon.png */; };
 		4CE69FDC14D9F1850008BAF0 /* PTClientDetailsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CE69FDB14D9F1850008BAF0 /* PTClientDetailsWindow.xib */; };
 		4CE69FE014D9F1AA0008BAF0 /* PTClientDetailsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE69FDF14D9F1AA0008BAF0 /* PTClientDetailsWindowController.m */; };
@@ -301,6 +303,8 @@
 		4CCD967D1550850F006F2921 /* PTWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTWebView.m; sourceTree = "<group>"; };
 		4CCDB31F13F83CB80084FC84 /* PTProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTProjectViewController.h; sourceTree = "<group>"; };
 		4CCDB32013F83CB80084FC84 /* PTProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTProjectViewController.m; sourceTree = "<group>"; };
+		4CE13E15157540A500B14C43 /* PTProjectListViewClient.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTProjectListViewClient.xib; sourceTree = "<group>"; };
+		4CE13E18157540AE00B14C43 /* PTProjectListViewDeveloper.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTProjectListViewDeveloper.xib; sourceTree = "<group>"; };
 		4CE32EC21527A4090082B0C9 /* calendar_small_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar_small_icon.png; sourceTree = "<group>"; };
 		4CE69FDB14D9F1850008BAF0 /* PTClientDetailsWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTClientDetailsWindow.xib; sourceTree = "<group>"; };
 		4CE69FDE14D9F1AA0008BAF0 /* PTClientDetailsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTClientDetailsWindowController.h; sourceTree = "<group>"; };
@@ -650,6 +654,8 @@
 				4C8173E41407A89D0012C0EB /* PTProjectListViewController.h */,
 				4C8173E51407A89D0012C0EB /* PTProjectListViewController.m */,
 				4CE69FF414DC6B2D0008BAF0 /* PTProjectListView.xib */,
+				4CE13E15157540A500B14C43 /* PTProjectListViewClient.xib */,
+				4CE13E18157540AE00B14C43 /* PTProjectListViewDeveloper.xib */,
 				4CCDB31F13F83CB80084FC84 /* PTProjectViewController.h */,
 				4CCDB32013F83CB80084FC84 /* PTProjectViewController.m */,
 				4CE69FF614DC6B3B0008BAF0 /* PTProjectView.xib */,
@@ -887,6 +893,8 @@
 				4C3E844A1554988D001EF7AA /* mainview_alt_icon.png in Resources */,
 				4C3E845015553055001EF7AA /* PTGanttViewController.xib in Resources */,
 				4C91F2D11565675600D1D5D3 /* PTBugListViewBackup.xib in Resources */,
+				4CE13E16157540A500B14C43 /* PTProjectListViewClient.xib in Resources */,
+				4CE13E19157540AE00B14C43 /* PTProjectListViewDeveloper.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

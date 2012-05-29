@@ -103,6 +103,27 @@ SourceListItem *personalTasksItem;
     [sourceList expandItem:[sourceListItems objectAtIndex:2]];
     // expand messagerie.
     //[sourceList expandItem:[sourceListItems objectAtIndex:3]];
+    
+    [self removeViewsFromRightView];
+    
+    if (!projectListViewController) {
+        
+        //projectListViewController = [[PTProjectListViewController alloc] init];
+        projectListViewController = [[PTProjectListViewController alloc] initWithNibName:@"PTProjectListView" bundle:nil];
+        
+        projectListViewController.projectURL = @"resources/projects/public";
+        
+        // set reference to (parent) window
+        [projectListViewController setMainWindowController:mainWindowController];
+        
+        // resize the view to fit and fill the right splitview view
+        [projectListViewController.view setFrameSize:rightView.frame.size];
+        
+        [self.rightView addSubview:projectListViewController.view];
+        
+        // auto resize the view.
+        [projectListViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
+    }
 }
 
 #pragma mark -
@@ -209,13 +230,19 @@ SourceListItem *personalTasksItem;
 	else if([selectedIndexes count]==1) {
 		NSString *identifier = [[sourceList itemAtRow:[selectedIndexes firstIndex]] identifier];
 		
-        if (identifier == @"projects" || identifier == @"projectsPublic") {
+        if (identifier == @"projects" || identifier == @"projectsPublic" || identifier == @"projectsAssigned" || identifier == @"projectsParClientItem" || identifier == @"projectsParDeveloppeurItem") {
             
             [self removeViewsFromRightView];
             
             if (!projectListViewController) {
        
-                projectListViewController = [[PTProjectListViewController alloc] init];
+                //projectListViewController = [[PTProjectListViewController alloc] init];
+                if (identifier == @"projects" || identifier == @"projectsPublic" || identifier == @"projectsAssigned") 
+                    projectListViewController = [[PTProjectListViewController alloc] initWithNibName:@"PTProjectListView" bundle:nil];
+                else if (identifier == @"projectsParClientItem") 
+                    projectListViewController = [[PTProjectListViewController alloc] initWithNibName:@"PTProjectListViewClient" bundle:nil];
+                else if (identifier == @"projectsParDeveloppeurItem")
+                    projectListViewController = [[PTProjectListViewController alloc] initWithNibName:@"PTProjectListViewDeveloper" bundle:nil];
                 
                 if (identifier == @"projectsPublic")
                     projectListViewController.projectURL = @"resources/projects/public";
@@ -687,7 +714,7 @@ SourceListItem *personalTasksItem;
         if ([r.code isEqualToString:@"administrator"] || [r.code isEqualToString:@"developer"]) {
             SourceListItem *projectsAssignedItem = [SourceListItem itemWithTitle:@"Assignés" identifier:@"projectsAssigned"];
             SourceListItem *projectsParClientItem = [SourceListItem itemWithTitle:@"Par client" identifier:@"projectsParClientItem"];
-            SourceListItem *projectsParDeveloppeurItem = [SourceListItem itemWithTitle:@"Par développeur" identifier:@"projectsParDeveloppeurItem"];
+            SourceListItem *projectsParDeveloppeurItem = [SourceListItem itemWithTitle:@"Par responsable" identifier:@"projectsParDeveloppeurItem"];
             
             [projectsHeaderItem setChildren:[NSArray arrayWithObjects:projectsItem, projectsPublicItem, projectsAssignedItem, projectsParClientItem, projectsParDeveloppeurItem, nil]];
         }

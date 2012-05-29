@@ -25,6 +25,7 @@
     __weak NSTabView *prjTabView;
     __weak NSOutlineView *prjOutlineView;
     __weak NSMenuItem *addSubProjectButton;
+    __weak NSComboBox *clientComboBox;
     
     // fenêtre commentaires.
     //PTCommentairesWindowController *commentWindowController;
@@ -41,6 +42,9 @@
 @property (weak) IBOutlet NSTabView *prjTabView;
 @property (weak) IBOutlet NSOutlineView *prjOutlineView;
 @property (weak) IBOutlet NSMenuItem *addSubProjectButton;
+@property (weak) IBOutlet NSComboBox *clientComboBox;
+
+@property (strong) NSString *nibFileName;
 
 @property (strong) NSString *projectURL;
 
