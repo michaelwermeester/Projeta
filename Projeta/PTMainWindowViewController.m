@@ -259,7 +259,7 @@ SourceListItem *personalTasksItem;
                 [projectListViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
             }
         }
-        else if (identifier == @"tasks") {
+        else if (identifier == @"tasks" || identifier == @"tasksPersonal" || identifier == @"tasksAssigned" || identifier == @"tasksParClientItem" || identifier == @"tasksParDeveloppeurItem") {
             
             [self removeViewsFromRightView];
             
@@ -268,7 +268,13 @@ SourceListItem *personalTasksItem;
                 taskListViewController = [[PTTaskListViewController alloc] init];
                 
                 // tâche public.
-                taskListViewController.isPersonalTask = NO;
+                if (identifier == @"tasksPersonal") {
+                    taskListViewController.isPersonalTask = YES;
+                    // cacher la colonne 'projet'.
+                    [taskListViewController.outlineViewProjetColumn setHidden:YES];
+                }
+                else
+                    taskListViewController.isPersonalTask = NO;
                 
                 // set reference to (parent) window
                 [taskListViewController setMainWindowController:mainWindowController];
@@ -282,7 +288,7 @@ SourceListItem *personalTasksItem;
                 [taskListViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
             }
         }
-        else if (identifier == @"tasksPersonal") {
+        /*else if (identifier == @"tasksPersonal") {
             
             [self removeViewsFromRightView];
             
@@ -307,8 +313,8 @@ SourceListItem *personalTasksItem;
                 // cacher la colonne 'projet'.
                 [taskListViewController.outlineViewProjetColumn setHidden:YES];
             }
-        }
-        else if (identifier == @"bugs") {
+        }*/
+        else if (identifier == @"bugs" || identifier == @"bugsAssigned" || identifier == @"bugsParClientItem" || identifier == @"bugsParDeveloppeurItem") {
             
             [self removeViewsFromRightView];
             
