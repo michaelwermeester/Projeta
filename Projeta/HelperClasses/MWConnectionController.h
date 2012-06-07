@@ -9,19 +9,22 @@
 #import <Foundation/Foundation.h>
 
 @interface MWConnectionController : NSObject <NSURLConnectionDelegate> {
+    // données reçues.
     NSMutableData* receivedData;
 }
 
-// executé 
+// blocks qui sont executés lors du succés ou échec d'une NSURLConnection.
 @property (nonatomic, copy) void (^succeededAction)(NSMutableData *);
 @property (nonatomic, copy) void (^failedAction)(NSError *);
 
-// executé après succeededAction.
-@property (nonatomic, copy) void (^postSuccessAction)(void);
-
-
+// méthode d'initialisation. Permet de définir les blocks a exécuter. 
 - (id)initWithSuccessBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)(NSError *))failureBlock_;
 
+// lancer une requête HTTP pour une URL spécifié.
 - (BOOL)startRequestForURL:(NSURL*)url setRequest:(NSURLRequest *)request;
 
 @end
+
+
+// executé après succeededAction.
+//@property (nonatomic, copy) void (^postSuccessAction)(void);

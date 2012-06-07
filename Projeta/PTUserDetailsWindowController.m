@@ -67,7 +67,7 @@ User *userCopy;
             // if role found.
             if ([[availableRoles objectAtIndex:i] isEqual:r]) {
                 
-                // remove role.
+                // retirer le rôle.
                 [[self mutableArrayValueForKey:@"availableRoles"] removeObjectAtIndex:i];
             }
         }
@@ -75,54 +75,33 @@ User *userCopy;
     
 }
 
+// executé aprés le chargement de la fenêtre ait terminé.
 - (void)windowDidLoad
 {
-    [super windowDidLoad];
-    
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
-    
-    // sort user roles alphabetically. 
-    //[self willChangeValueForKey:@"user.roles"];
-    
-    //[user.roles sortUsingComparator:^NSComparisonResult(Role *r1, Role *r2) {
-    //    
-    //    return [r1.code compare:r2.code];
-    //    
-    //    /*if ([r1.code compare:r2.code] == NSOrderedSame) {
-    //        return [r1.code compare:r2.code];
-    //    } else {
-    //        return [r1.code compare:r2.code];
-    //    }*/
-    //}];
-    //[self didChangeValueForKey:@"user.roles"];
-    
-    /*if ([user.roles isKindOfClass:[NSMutableArray class]])
-        NSLog(@"mutable");
-    else
-        NSLog(@"nonmutable");*/
-    
-    
+    [super windowDidLoad];    
 }
 
-// assign selected user role(s) to user. 
+// affecter les rôles sélectionnez à l'utilisateur. 
 - (IBAction)assignUserRoles:(id)sender {
     
-    // get selection of roles to be affected to user.
+    // rôles sélectionnez à affecter.
     NSArray *selectedRoles = [availableRolesArrayCtrl selectedObjects];
      
+    // pour chaque rôle...
     for (Role *role in selectedRoles) {
         
+        // si l'utilisateur n'a pas encore de rôles affectés, initialiser le tableau. 
         if (!user.roles) {
             user.roles = [[NSMutableArray alloc] init];
         }
         
-        // affect new role to user.
+        // affecter la nouvelle rôle.
         [userRolesArrayCtrl addObject:role];
         
-        // remove role from available roles.
+        // supprimer la rôle de la liste des rôle disponibles. 
         [availableRolesArrayCtrl removeObject:role];
         
-        // sort user roles alphabetically.
+        // trier les rôles par ordre alphaphetique. 
         [user.roles sortUsingComparator:^NSComparisonResult(Role *r1, Role *r2) {
             
             return [r1.code compare:r2.code];
@@ -130,7 +109,7 @@ User *userCopy;
     }
 }
 
-// remove selected user role(s) from user.
+// desaffecter les rôles sélectionnez de l'utilisateur.
 - (IBAction)removeUserRoles:(id)sender {
     
     // get selection of roles to be removed from user.

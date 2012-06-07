@@ -99,9 +99,9 @@
                                                         //[self rolesForUserRequestFailed:error];
                                                     }];
     
-    [connectionController setPostSuccessAction:^{
+    //[connectionController setPostSuccessAction:^{
         //NSLog(@"postSuccessAction.");
-    }];
+    //}];
     
     NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
     

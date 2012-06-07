@@ -67,7 +67,10 @@ PTCommentairesWindowController *commentWindowController;
     // convert to NSURL
     NSURL *url = [NSURL URLWithString:urlString];
     
+    //NSURL *url = [NSURL URLWithString:@"https://luckycode.be:8181/projeta-webservice/resources/projects/public"];
+    
     // NSURLConnection - MWConnectionController
+    // instantier et passer les blocks avec les méthodes à exécuter. 
     MWConnectionController* connectionController = [[MWConnectionController alloc] 
                                                     initWithSuccessBlock:^(NSMutableData *data) {
                                                         [self requestFinished:data];
@@ -76,13 +79,15 @@ PTCommentairesWindowController *commentWindowController;
                                                         [self requestFailed:error];
                                                     }];
     
-    
+    // créer l'URLRequest à partir de l'URL. 
     NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
+    
     //[urlRequest setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
     
     // start animating the main window's circular progress indicator.
     [mainWindowController startProgressIndicatorAnimation];
     
+    // lancer la requête. 
     [connectionController startRequestForURL:url setRequest:urlRequest];
     
     // set label of 'detail view' toolbar item to 'Project view'.
@@ -115,50 +120,61 @@ PTCommentairesWindowController *commentWindowController;
 {
     NSError *error;
     
-    // Use when fetching text data
-    //NSString *responseString = [request responseString];
-    //NSLog(@"response: %@", responseString);
-    //NSDictionary *dict = [[NSDictionary alloc] init];
+    // Lire les données JSON reçues dans un nouveau dictionnaire. 
     NSDictionary *dict = [[NSDictionary alloc] init];
     dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
     
-    //NSLog(@"DESC: %@", [dict description]);
-    
-    // see Cocoa and Objective-C up and running by Scott Stevenson.
-    // page 242
+    // Créer un array d'objets Projet à partir du dictionnaire et les assigner au array arrPrj.
     [[self mutableArrayValueForKey:@"arrPrj"] addObjectsFromArray:[PTProjectHelper setAttributesFromJSONDictionary:dict]];
     
     // stop animating the main window's circular progress indicator.
     [mainWindowController stopProgressIndicatorAnimation];
-    
-    for (Project *p in arrPrj)
-    {
-        NSLog(@"ID: %@", p.projectId);
-        NSLog(@"Title: %@", p.projectTitle);
-        NSLog(@"Description: %@", p.projectDescription);
-        //NSLog(@"User: %@",[[p userCreated] objectForKey:@"username"]);
-        NSLog(@"User: %@", p.userCreated.username);
-        NSLog(@"Date: %@", p.dateCreated);
-    }
-    
-    NSLog(@"%lu", [arrPrj count]);
-    
-    //[prjArrayCtrl addObjects:[PTProjectHelper setAttributesFromJSONDictionary:dict]];
-    
-    // add a new user programmatically
-    /*
-     User *user = [[User alloc] init];
-     user.username = @"test";
-     [arrayCtrl addObject:user];
-     */
 }
+    
+//    // Use when fetching text data
+//    //NSString *responseString = [request responseString];
+//    //NSLog(@"response: %@", responseString);
+//    //NSDictionary *dict = [[NSDictionary alloc] init];
+//    NSDictionary *dict = [[NSDictionary alloc] init];
+//    dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
+//    
+//    //NSLog(@"DESC: %@", [dict description]);
+//    
+//    // see Cocoa and Objective-C up and running by Scott Stevenson.
+//    // page 242
+//    [[self mutableArrayValueForKey:@"arrPrj"] addObjectsFromArray:[PTProjectHelper setAttributesFromJSONDictionary:dict]];
+//    
+//    // stop animating the main window's circular progress indicator.
+//    [mainWindowController stopProgressIndicatorAnimation];
+//    
+//    for (Project *p in arrPrj)
+//    {
+//        NSLog(@"ID: %@", p.projectId);
+//        NSLog(@"Title: %@", p.projectTitle);
+//        NSLog(@"Description: %@", p.projectDescription);
+//        //NSLog(@"User: %@",[[p userCreated] objectForKey:@"username"]);
+//        NSLog(@"User: %@", p.userCreated.username);
+//        NSLog(@"Date: %@", p.dateCreated);
+//    }
+//    
+//    NSLog(@"%lu", [arrPrj count]);
+//    
+//    //[prjArrayCtrl addObjects:[PTProjectHelper setAttributesFromJSONDictionary:dict]];
+//    
+//    // add a new user programmatically
+//    /*
+//     User *user = [[User alloc] init];
+//     user.username = @"test";
+//     [arrayCtrl addObject:user];
+//     */
+//}
 
 - (void)requestFailed:(NSError*)error
 {
     // stop animating the main window's circular progress indicator.
     [mainWindowController stopProgressIndicatorAnimation];
     
-    NSLog(@"Failed %@ with code %ld and with userInfo %@",[error domain],[error code],[error userInfo]);
+    NSLog(@"Failed %@ with code %ld and with userInfo %@", [error domain], [error code], [error userInfo]);
 }
 
 - (IBAction)addNewProjectButtonClicked:(id)sender {

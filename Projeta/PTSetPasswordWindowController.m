@@ -36,8 +36,6 @@
 
 - (void)windowWillClose:(NSNotification *)notification
 {
-    //[NSApp stopModal];
-    
     [self endSheet];
 }
 
@@ -65,6 +63,7 @@
          
 - (void)updateFinished:(NSMutableData *)data {
     
+    // arrêter l'animation. 
     [updatePasswordProgressIndicator stopAnimation:self];
     
     // close this window.

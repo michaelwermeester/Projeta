@@ -10,12 +10,12 @@
 
 @implementation MWConnectionController
 
+#pragma mark propriétés
+
 @synthesize succeededAction;
 @synthesize failedAction;
 
-@synthesize postSuccessAction;
-
-
+// méthode d'initialisation. Permet de définir les blocks a exécuter. 
 - (id)initWithSuccessBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)(NSError *))failureBlock_ {
     
     if ((self = [super init])) {
@@ -27,20 +27,17 @@
     return self;
 }
 
+// lancer une requête HTTP pour une URL spécifié. 
 - (BOOL)startRequestForURL:(NSURL*)url setRequest:(NSMutableURLRequest *)request {
     
-    //NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
-    // cache & policy stuff here
-    //[[NSURLCache sharedURLCache] removeAllCachedResponses];
-    //[urlRequest setHTTPMethod:@"POST"];
-    //[urlRequest setHTTPShouldHandleCookies:YES];
-    
-    // enable gzip compression
+    // activer compression gzip.
     [request setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
-    // set http-header User-Agent.
+    // définir un http-header User-Agent.
 	[request setValue:@"Projeta" forHTTPHeaderField:@"User-Agent"];
     
+    // appeler NSURLConnection. 
     NSURLConnection* __autoreleasing connectionResponse = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    
     if (!connectionResponse)
     {
         // handle error
@@ -52,19 +49,37 @@
     return YES;
 }
 
+#pragma mark méthodes de callback pour le delegate de NSURLConnection
+
+// lorsque le serveur renvoye une réponse, remettre la longueur de données à 0. 
 - (void)connection:(NSURLConnection*)connection didReceiveResponse:(NSURLResponse*)response {
     [receivedData setLength:0];
 }
+
+// lecture de données et les garder/attacher en mémoire à la variable receivedData.
 - (void)connection:(NSURLConnection*)connection didReceiveData:(NSData*)data {
     [receivedData appendData:data];
 }
 
+// gérer les erreurs de connexion/lecture. 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     
+    // exécuter le failure-block et lui passer l'erreur. 
     [self failedAction](error);
 }
 
+// exécute lorsque la requête ait terminé. 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    
+    // exécuter le success-block et lui passer les donées reçues. 
+    [self succeededAction](receivedData);
+}
+
+@end
+
+
+// exécute lorsque la requête ait terminé. 
+/*- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     
     // for easier debugging
     NSString* newStr = [[NSString alloc] initWithData:receivedData
@@ -73,12 +88,14 @@
     NSLog(@"JSON result: %@", newStr);
     // end debug
     
+    // exécuter le success-block et lui passer les donées reçues. 
     [self succeededAction](receivedData);
     
-    // if there's an postSuccessAction, execute it. 
+    // s'il y a un block postSuccessAction défini, l'exécuter maintenant.  
     if (postSuccessAction) {
         [self postSuccessAction]();
     }
-}
+}*/
     
-@end
+
+
