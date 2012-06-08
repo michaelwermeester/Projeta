@@ -13,6 +13,7 @@
 @class PTGanttViewController;
 @class PTProjectViewController;
 @class Project;
+//@class Usergroup;
 
 @interface PTProjectDetailsViewController : NSViewController {
     
@@ -50,7 +51,11 @@
     NSTabViewItem *activityTab;
     NSTabViewItem *clientTab;
     NSTabViewItem *visibilityTab;
+    __weak NSButton *removeUser;
 }
+
+@property (strong) NSMutableArray *assignedUsers;
+@property (strong) IBOutlet NSArrayController *assignedUsersArrayCtrl;
 
 @property (strong) PTProjectViewController *projectViewController;
 @property (assign) IBOutlet NSTreeController *prjTreeController;
@@ -76,6 +81,9 @@
 - (IBAction)startDateCalendarButtonClicked:(id)sender;
 - (IBAction)endDateCalendarButtonClicked:(id)sender;
 - (IBAction)saveProjectButtonClicked:(id)sender;
+- (IBAction)assignUser:(id)sender;
+- (IBAction)removeUser:(id)sender;
+
 
 
 // Holds the available clients which can be affected. 

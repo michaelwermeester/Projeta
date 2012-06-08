@@ -64,6 +64,9 @@
 
 @synthesize arrDevelopers;
 
+@synthesize assignedUsers;
+@synthesize assignedUsersArrayCtrl;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:@"PTProjectDetailsView" bundle:nibBundleOrNil];
@@ -341,6 +344,49 @@
             [self finishedCreatingProject:data];
         } 
                               mainWindowController:mainWindowController];
+    }
+}
+
+- (IBAction)assignUser:(id)sender {
+    // get selection of users to be affected to usergroup.
+    NSArray *selectedUsers = [availableUsersArrayCtrl selectedObjects];
+    
+    for (User *user in selectedUsers) {
+        
+        if (!assignedUsers) {
+            assignedUsers = [[NSMutableArray alloc] init];
+        }
+        
+        // affect new user to usergroup.
+        [assignedUsersArrayCtrl addObject:user];
+        
+        // remove user from available users.
+        [availableUsersArrayCtrl removeObject:user];
+        
+        // sort user roles alphabetically.
+        [assignedUsers sortUsingComparator:^NSComparisonResult(User *u1, User *u2) {
+            
+            return [u1.username compare:u2.username];
+        }];
+    }
+}
+
+- (IBAction)removeUser:(id)sender {
+    // get selection of users to be removed from usergroup.
+    NSArray *selectedUsers = [assignedUsersArrayCtrl selectedObjects];
+    
+    for (User *user in selectedUsers) {
+        // make usergroup available.
+        [availableUsersArrayCtrl addObject:user];
+        
+        // remove usergroup from user's usergroups.
+        [assignedUsersArrayCtrl removeObject:user];
+        
+        // sort user groups alphabetically.
+        [availableUsers sortUsingComparator:^NSComparisonResult(User *u1, User *u2) {
+            
+            return [u1.username compare:u2.username];
+        }];
     }
 }
 
