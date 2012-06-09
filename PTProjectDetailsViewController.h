@@ -54,6 +54,8 @@
     __weak NSButton *removeUser;
 }
 
+@property (strong) NSMutableArray *assignedClients;
+@property (strong) IBOutlet NSArrayController *assignedClientsArrayCtrl;
 @property (strong) NSMutableArray *assignedUsers;
 @property (strong) IBOutlet NSArrayController *assignedUsersArrayCtrl;
 @property (strong) NSMutableArray *assignedUsergroups;
@@ -87,6 +89,8 @@
 - (IBAction)removeUser:(id)sender;
 - (IBAction)assignGroup:(id)sender;
 - (IBAction)removeGroup:(id)sender;
+- (IBAction)assignClient:(id)sender;
+- (IBAction)removeClient:(id)sender;
 
 
 

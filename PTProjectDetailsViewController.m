@@ -64,6 +64,9 @@
 
 @synthesize arrDevelopers;
 
+@synthesize assignedClients;
+@synthesize assignedClientsArrayCtrl;
+
 @synthesize assignedUsers;
 @synthesize assignedUsersArrayCtrl;
 
@@ -432,6 +435,49 @@
         [availableUsergroups sortUsingComparator:^NSComparisonResult(Usergroup *u1, Usergroup *u2) {
             
             return [u1.code compare:u2.code];
+        }];
+    }
+}
+
+- (IBAction)assignClient:(id)sender {
+    // get selection of users to be affected to usergroup.
+    NSArray *selectedClients = [availableClientsArrayCtrl selectedObjects];
+    
+    for (Client *client in selectedClients) {
+        
+        if (!assignedClients) {
+            assignedClients = [[NSMutableArray alloc] init];
+        }
+        
+        // affect new user to usergroup.
+        [assignedClientsArrayCtrl addObject:client];
+        
+        // remove user from available users.
+        [availableClientsArrayCtrl removeObject:client];
+        
+        // sort user roles alphabetically.
+        [assignedClients sortUsingComparator:^NSComparisonResult(Client *c1, Client *c2) {
+            
+            return [c1.clientName compare:c2.clientName];
+        }];
+    }
+}
+
+- (IBAction)removeClient:(id)sender {
+    // get selection of users to be removed from usergroup.
+    NSArray *selectedClients = [assignedClientsArrayCtrl selectedObjects];
+    
+    for (Client *client in selectedClients) {
+        // make usergroup available.
+        [availableClientsArrayCtrl addObject:client];
+        
+        // remove usergroup from user's usergroups.
+        [assignedClientsArrayCtrl removeObject:client];
+        
+        // sort user groups alphabetically.
+        [availableClients sortUsingComparator:^NSComparisonResult(Client *c1, Client *c2) {
+            
+            return [c1.clientName compare:c2.clientName];
         }];
     }
 }
