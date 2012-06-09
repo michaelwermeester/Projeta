@@ -15,6 +15,7 @@
 
 int counter;
 int totalProjects;
+int max;
 NSInteger days;
 
 CGFloat headerHeight = 70.0f; 
@@ -57,10 +58,22 @@ NSBezierPath *aPath ;
     // 
     days = [self daysBetweenDates:minDate maxDate:maxDate];
     
+    // s'il y a moins de jours que la vue est large, prendre la largeur de la vue comme largeur pour la grille.
+    max = days;
+    
+    NSRect f = self.frame;
+    if (self.frame.size.width / 20 > days) {
+        max = self.frame.size.width;
+        f.size.width = max;
+    } else {
+        f.size.width = days * 20;
+    }
+    
     
     // Drawing code here.
-    NSRect f = self.frame;
-    f.size.width = days * 20;
+    
+    //f.size.width = days * 20;
+    
     // height of header (dates): 39
     f.size.height = totalProjects * 20 + headerHeight;
     
@@ -181,7 +194,9 @@ NSBezierPath *aPath ;
     [[NSColor darkGrayColor] set ] ;
     //[[NSColor blackColor] set];
     
-    for (int i = 0; i < days; i++) {
+    //for (int i = 0; i < days; i++) {
+    for (int i = 0; i < max; i++) {
+    
         // standard coordinate system.
         //[NSBezierPath strokeRect: NSMakeRect( 20 * i, 0, 0.3, self.frame.size.height - headerHeight) ] ;
         // flipped coordinate system.
@@ -203,7 +218,7 @@ NSBezierPath *aPath ;
 
     
     
-    for (int i = 0; i < days; i++) {
+    for (int i = 0; i < max; i++) {
         
         [NSGraphicsContext saveGraphicsState];
         
