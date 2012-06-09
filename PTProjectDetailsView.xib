@@ -2474,7 +2474,16 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 				<bool key="NSFilterRestrictsInsertion">YES</bool>
 				<bool key="NSClearsFilterPredicateOnInsertion">YES</bool>
 			</object>
-			<object class="NSArrayController" id="313635244">
+			<object class="NSArrayController" id="233834103">
+				<bool key="NSEditable">YES</bool>
+				<object class="_NSManagedProxy" key="_NSManagedProxy"/>
+				<bool key="NSAvoidsEmptySelection">YES</bool>
+				<bool key="NSPreservesSelection">YES</bool>
+				<bool key="NSSelectsInsertedObjects">YES</bool>
+				<bool key="NSFilterRestrictsInsertion">YES</bool>
+				<bool key="NSClearsFilterPredicateOnInsertion">YES</bool>
+			</object>
+			<object class="NSArrayController" id="728270024">
 				<bool key="NSEditable">YES</bool>
 				<object class="_NSManagedProxy" key="_NSManagedProxy"/>
 				<bool key="NSAvoidsEmptySelection">YES</bool>
@@ -2742,9 +2751,33 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">assignedUsersArrayCtrl</string>
 						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="313635244"/>
+						<reference key="destination" ref="233834103"/>
 					</object>
 					<int key="connectionID">2772</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">assignGroup:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="672884108"/>
+					</object>
+					<int key="connectionID">2779</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">removeGroup:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="88524560"/>
+					</object>
+					<int key="connectionID">2780</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">assignedUsersgroupsArrayCtrl</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="728270024"/>
+					</object>
+					<int key="connectionID">2791</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -3116,6 +3149,42 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: arrangedObjects.comment</string>
+						<reference key="source" ref="981443604"/>
+						<reference key="destination" ref="728270024"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="981443604"/>
+							<reference key="NSDestination" ref="728270024"/>
+							<string key="NSLabel">value: arrangedObjects.comment</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">arrangedObjects.comment</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">2788</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: arrangedObjects.code</string>
+						<reference key="source" ref="689078693"/>
+						<reference key="destination" ref="728270024"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="689078693"/>
+							<reference key="NSDestination" ref="728270024"/>
+							<string key="NSLabel">value: arrangedObjects.code</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">arrangedObjects.code</string>
+							<object class="NSDictionary" key="NSOptions">
+								<string key="NS.key.0">NSConditionallySetsEditable</string>
+								<boolean value="YES" key="NS.object.0"/>
+							</object>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">2786</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
 						<string key="label">hidden: project.flagPublic</string>
 						<reference key="source" ref="756317434"/>
 						<reference key="destination" ref="1001"/>
@@ -3286,10 +3355,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">value: arrangedObjects.fullName</string>
 						<reference key="source" ref="169367011"/>
-						<reference key="destination" ref="313635244"/>
+						<reference key="destination" ref="233834103"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="169367011"/>
-							<reference key="NSDestination" ref="313635244"/>
+							<reference key="NSDestination" ref="233834103"/>
 							<string key="NSLabel">value: arrangedObjects.fullName</string>
 							<string key="NSBinding">value</string>
 							<string key="NSKeyPath">arrangedObjects.fullName</string>
@@ -3302,10 +3371,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">value: arrangedObjects.username</string>
 						<reference key="source" ref="779457338"/>
-						<reference key="destination" ref="313635244"/>
+						<reference key="destination" ref="233834103"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="779457338"/>
-							<reference key="NSDestination" ref="313635244"/>
+							<reference key="NSDestination" ref="233834103"/>
 							<string key="NSLabel">value: arrangedObjects.username</string>
 							<string key="NSBinding">value</string>
 							<string key="NSKeyPath">arrangedObjects.username</string>
@@ -3449,10 +3518,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">contentArray: assignedUsers</string>
-						<reference key="source" ref="313635244"/>
+						<reference key="source" ref="233834103"/>
 						<reference key="destination" ref="1001"/>
 						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="313635244"/>
+							<reference key="NSSource" ref="233834103"/>
 							<reference key="NSDestination" ref="1001"/>
 							<string key="NSLabel">contentArray: assignedUsers</string>
 							<string key="NSBinding">contentArray</string>
@@ -3461,6 +3530,22 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 						</object>
 					</object>
 					<int key="connectionID">2771</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">contentArray: assignedUsergroups</string>
+						<reference key="source" ref="728270024"/>
+						<reference key="destination" ref="1001"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="728270024"/>
+							<reference key="NSDestination" ref="1001"/>
+							<string key="NSLabel">contentArray: assignedUsergroups</string>
+							<string key="NSBinding">contentArray</string>
+							<string key="NSKeyPath">assignedUsergroups</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">2784</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -8315,9 +8400,15 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">2768</int>
-						<reference key="object" ref="313635244"/>
+						<reference key="object" ref="233834103"/>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Assigned users array controller</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">2781</int>
+						<reference key="object" ref="728270024"/>
+						<reference key="parent" ref="0"/>
+						<string key="objectName">Assigned usergroups array controller</string>
 					</object>
 				</array>
 			</object>
@@ -8830,6 +8921,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 				<string key="2763.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="2764.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="2768.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="2781.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="NO" key="287.IBNSViewMetadataTranslatesAutoresizingMaskIntoConstraints"/>
 				<string key="287.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="289.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -8969,7 +9061,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">2778</int>
+			<int key="maxID">2791</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -9012,15 +9104,21 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 					<string key="className">PTProjectDetailsViewController</string>
 					<string key="superclassName">NSViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="assignGroup:">id</string>
 						<string key="assignUser:">id</string>
 						<string key="endDateCalendarButtonClicked:">id</string>
 						<string key="endDateRealCalendarButtonClicked:">id</string>
+						<string key="removeGroup:">id</string>
 						<string key="removeUser:">id</string>
 						<string key="saveProjectButtonClicked:">id</string>
 						<string key="startDateCalendarButtonClicked:">id</string>
 						<string key="startDateRealCalendarButtonClicked:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="assignGroup:">
+							<string key="name">assignGroup:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 						<object class="IBActionInfo" key="assignUser:">
 							<string key="name">assignUser:</string>
 							<string key="candidateClassName">id</string>
@@ -9031,6 +9129,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 						</object>
 						<object class="IBActionInfo" key="endDateRealCalendarButtonClicked:">
 							<string key="name">endDateRealCalendarButtonClicked:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="removeGroup:">
+							<string key="name">removeGroup:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="removeUser:">
@@ -9052,6 +9154,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="assignedUsersArrayCtrl">NSArrayController</string>
+						<string key="assignedUsersgroupsArrayCtrl">NSArrayController</string>
 						<string key="availableClientsArrayCtrl">NSArrayController</string>
 						<string key="availableUsergroupsArrayCtrl">NSArrayController</string>
 						<string key="availableUsersArrayCtrl">NSArrayController</string>
@@ -9074,6 +9177,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="assignedUsersArrayCtrl">
 							<string key="name">assignedUsersArrayCtrl</string>
+							<string key="candidateClassName">NSArrayController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="assignedUsersgroupsArrayCtrl">
+							<string key="name">assignedUsersgroupsArrayCtrl</string>
 							<string key="candidateClassName">NSArrayController</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="availableClientsArrayCtrl">

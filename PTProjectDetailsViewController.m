@@ -67,6 +67,9 @@
 @synthesize assignedUsers;
 @synthesize assignedUsersArrayCtrl;
 
+@synthesize assignedUsergroups;
+@synthesize assignedUsersgroupsArrayCtrl;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:@"PTProjectDetailsView" bundle:nibBundleOrNil];
@@ -386,6 +389,49 @@
         [availableUsers sortUsingComparator:^NSComparisonResult(User *u1, User *u2) {
             
             return [u1.username compare:u2.username];
+        }];
+    }
+}
+
+- (IBAction)assignGroup:(id)sender {
+    // get selection of users to be affected to usergroup.
+    NSArray *selectedUsergroups = [availableUsergroupsArrayCtrl selectedObjects];
+    
+    for (Usergroup *usergroup in selectedUsergroups) {
+        
+        if (!assignedUsergroups) {
+            assignedUsergroups = [[NSMutableArray alloc] init];
+        }
+        
+        // affect new user to usergroup.
+        [assignedUsersgroupsArrayCtrl addObject:usergroup];
+        
+        // remove user from available users.
+        [availableUsergroupsArrayCtrl removeObject:usergroup];
+        
+        // sort user roles alphabetically.
+        [assignedUsergroups sortUsingComparator:^NSComparisonResult(Usergroup *u1, Usergroup *u2) {
+            
+            return [u1.code compare:u2.code];
+        }];
+    }
+}
+
+- (IBAction)removeGroup:(id)sender {
+    // get selection of users to be removed from usergroup.
+    NSArray *selectedUsergroups = [assignedUsersgroupsArrayCtrl selectedObjects];
+    
+    for (Usergroup *usergroup in selectedUsergroups) {
+        // make usergroup available.
+        [availableUsergroupsArrayCtrl addObject:usergroup];
+        
+        // remove usergroup from user's usergroups.
+        [assignedUsersgroupsArrayCtrl removeObject:usergroup];
+        
+        // sort user groups alphabetically.
+        [availableUsergroups sortUsingComparator:^NSComparisonResult(Usergroup *u1, Usergroup *u2) {
+            
+            return [u1.code compare:u2.code];
         }];
     }
 }

@@ -56,6 +56,8 @@
 
 @property (strong) NSMutableArray *assignedUsers;
 @property (strong) IBOutlet NSArrayController *assignedUsersArrayCtrl;
+@property (strong) NSMutableArray *assignedUsergroups;
+@property (strong) IBOutlet NSArrayController *assignedUsersgroupsArrayCtrl;
 
 @property (strong) PTProjectViewController *projectViewController;
 @property (assign) IBOutlet NSTreeController *prjTreeController;
@@ -83,6 +85,8 @@
 - (IBAction)saveProjectButtonClicked:(id)sender;
 - (IBAction)assignUser:(id)sender;
 - (IBAction)removeUser:(id)sender;
+- (IBAction)assignGroup:(id)sender;
+- (IBAction)removeGroup:(id)sender;
 
 
 
