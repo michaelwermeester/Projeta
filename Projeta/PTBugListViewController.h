@@ -20,11 +20,13 @@
     NSOutlineView *bugOutlineView;
     __weak NSTableColumn *outlineViewProjetColumn;
     __weak NSButton *projectButton;
+    __weak NSButton *removeBugButton;
     
     // task details window
     PTBugDetailsWindowController *bugDetailsWindowController;
     // fenêtre commentaires.
     PTCommentairesWindowController *commentWindowController;
+    __weak NSButton *addBugButton;
 }
 
 @property (strong) NSMutableArray *arrBug;
@@ -32,9 +34,11 @@
 @property (strong) IBOutlet NSTreeController *bugTreeCtrl;
 @property (strong) IBOutlet NSOutlineView *bugOutlineView;
 - (IBAction)detailsButtonClicked:(id)sender;
+@property (weak) IBOutlet NSButton *addBugButton;
 
 @property (weak) IBOutlet NSTableColumn *outlineViewProjetColumn;
 @property (weak) IBOutlet NSButton *projectButton;
+@property (weak) IBOutlet NSButton *removeBugButton;
 
 // reference to the (parent) MainWindowController
 @property (assign) MainWindowController *mainWindowController;

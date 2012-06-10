@@ -90,6 +90,7 @@
         // start animating the main window's circular progress indicator.
         [sender startProgressIndicatorAnimation];
     }
+
     
     // create dictionary from User object
     //NSDictionary *dict = [theUser dictionaryWithValuesForKeys:[theUser allKeys]];
@@ -111,7 +112,6 @@
 //        // ajouter ce dictionnaire sous la clé 'parentProjectId'.
 //        [dict setObject:parentTaskDict forKey:@"parentTaskId"];
 //    }
-    
     
     // Dates début et fin de projet.
 //    if ([theTask stringStartDate])

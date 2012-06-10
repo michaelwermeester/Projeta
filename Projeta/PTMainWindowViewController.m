@@ -330,6 +330,10 @@ SourceListItem *personalTasksItem;
                 
                 [self.rightView addSubview:bugListViewController.view];
                 
+                // ne pas afficher les boutons pour ajouter ou supprimer des bogues.
+                [bugListViewController.addBugButton setHidden:YES];
+                [bugListViewController.removeBugButton setHidden:YES];
+                
                 // auto resize the view.
                 [bugListViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
             }

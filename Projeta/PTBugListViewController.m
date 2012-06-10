@@ -17,8 +17,10 @@
 #import "PTProjectDetailsViewController.h"
 
 @implementation PTBugListViewController
+@synthesize addBugButton;
 @synthesize outlineViewProjetColumn;
 @synthesize projectButton;
+@synthesize removeBugButton;
 
 @synthesize arrBug;
 @synthesize bugArrayCtrl;

@@ -846,6 +846,22 @@
 					<int key="connectionID">1862</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">addBugButton</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="245566821"/>
+					</object>
+					<int key="connectionID">1863</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">removeBugButton</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="501416719"/>
+					</object>
+					<int key="connectionID">1864</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">contentArray: arrBug</string>
 						<reference key="source" ref="709179103"/>
@@ -2950,7 +2966,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1862</int>
+			<int key="maxID">1864</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2967,16 +2983,11 @@
 					<string key="superclassName">NSViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="addNewBugButtonClicked:">id</string>
-						<string key="addTaskButtonClick:">id</string>
 						<string key="detailsButtonClicked:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="addNewBugButtonClicked:">
 							<string key="name">addNewBugButtonClicked:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="addTaskButtonClick:">
-							<string key="name">addTaskButtonClick:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="detailsButtonClicked:">
@@ -2985,13 +2996,19 @@
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="addBugButton">NSButton</string>
 						<string key="bugArrayCtrl">NSArrayController</string>
 						<string key="bugOutlineView">NSOutlineView</string>
 						<string key="bugTreeCtrl">NSTreeController</string>
 						<string key="outlineViewProjetColumn">NSTableColumn</string>
 						<string key="projectButton">NSButton</string>
+						<string key="removeBugButton">NSButton</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="addBugButton">
+							<string key="name">addBugButton</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="bugArrayCtrl">
 							<string key="name">bugArrayCtrl</string>
 							<string key="candidateClassName">NSArrayController</string>
@@ -3010,6 +3027,10 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="projectButton">
 							<string key="name">projectButton</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="removeBugButton">
+							<string key="name">removeBugButton</string>
 							<string key="candidateClassName">NSButton</string>
 						</object>
 					</dictionary>
