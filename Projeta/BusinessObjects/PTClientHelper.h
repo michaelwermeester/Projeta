@@ -10,6 +10,8 @@
 
 #import "Client.h"
 
+@class Project;
+
 @interface PTClientHelper : NSObject {
     NSArray *clients;
 }
@@ -25,5 +27,8 @@
 + (void)serverClientsToArray:(NSString *)urlString successBlock:(void (^)(NSMutableArray*))successBlock failureBlock:(void(^)(NSError *))failureBlock;
 // fetch all client names from web service.
 + (void)getClientNames:(void(^)(NSMutableArray *))successBlock failureBlock:(void(^)(NSError *))failureBlock;
+
++ (void)clientsVisibleForProject:(Project *)aProject successBlock:(void(^)(NSMutableArray *))successBlock failureBlock:(void(^)(NSError *))failureBlock;
++ (void)clientsVisibleForProjectId:(NSNumber *)aProjectId successBlock:(void(^)(NSMutableArray *))successBlock failureBlock:(void(^)(NSError *))failureBlock;
 
 @end

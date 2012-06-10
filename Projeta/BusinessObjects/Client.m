@@ -61,4 +61,13 @@
     
 }
 
+// keys needed for updating user's usergroups.
+- (NSArray *)updateClientsKeys {
+    
+    //NSArray *retArr = [[NSArray alloc] initWithObjects: @"roles", @"userId", nil];
+    NSArray *retArr = [[NSArray alloc] initWithObjects: @"clientName", @"clientId", nil];
+    
+    return retArr;
+}
+
 @end

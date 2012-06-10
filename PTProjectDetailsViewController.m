@@ -136,6 +136,23 @@
     }
 }
 
+- (void)loadClientVisibility {
+    
+    // remove users already affected to user from available users list.
+    for (Client *c in assignedClients) {
+        
+        for (NSUInteger i = 0; i < [availableClients count]; i++) {
+            
+            // if user found.
+            if ([[availableClients objectAtIndex:i] isEqual:c]) {
+                
+                // remove user.
+                [[self mutableArrayValueForKey:@"availableClients"] removeObjectAtIndex:i];
+            }
+        }
+    }
+}
+
 - (void)loadUserVisibility {
     
     // remove users already affected to user from available users list.
@@ -181,6 +198,7 @@
     [self fetchAssignedUsers];
     // charger la liste des clients disponibles.
     [self fetchAvailableClients];
+    [self fetchAssignedClients];
 }
 
 - (void)loadTasks {
@@ -512,6 +530,8 @@
             return [c1.clientName compare:c2.clientName];
         }];
     }
+    
+    [self updateClientVisibility];
 }
 
 - (IBAction)removeClient:(id)sender {
@@ -531,6 +551,39 @@
             return [c1.clientName compare:c2.clientName];
         }];
     }
+    
+    [self updateClientVisibility];
+}
+
+- (void)fetchAssignedClients {
+    // fetch usergroup's users.
+    [PTClientHelper clientsVisibleForProject:project successBlock:^(NSMutableArray *clients) {
+        
+        // sort user roles alphabetically.
+        [clients sortUsingComparator:^NSComparisonResult(Client *c1, Client *c2) {
+            
+            return [c1.clientName compare:c2.clientName];
+        }];
+        
+        //if (isNewUser == NO) {
+        [[self mutableArrayValueForKey:@"assignedClients"] addObjectsFromArray:clients];
+        //[assignedUsersArrayCtrl addObjects:users];
+        //assignedUsers = users;
+        
+        //NSLog(@"count: %@", [userGroups count]);
+        //} else {
+        //    userDetailsWindowController.user.roles = [[NSMutableArray alloc] init];
+        //}
+        
+        //[[userDetailsWindowController.user mutableArrayValueForKey:@"roles"] addObjectsFromArray:userRoles];
+        
+        NSLog(@"Assigned clients : %lu", [assignedClients count] );
+        
+        [self loadClientVisibility];
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
 }
 
 - (void)fetchAssignedUsers {
@@ -586,7 +639,7 @@
         
         //[[userDetailsWindowController.user mutableArrayValueForKey:@"roles"] addObjectsFromArray:userRoles];
         
-        NSLog(@"Assigned users : %lu", [assignedUsergroups count] );
+        //NSLog(@"Assigned users : %lu", [assignedUsergroups count] );
         
         [self loadUsergroupVisibility];
         
@@ -799,7 +852,7 @@
     BOOL success;
     
     // Initialize a new array to hold the roles.
-    NSMutableArray *usersArray = [[NSMutableArray alloc] init];
+    NSMutableArray *usergroupsArray = [[NSMutableArray alloc] init];
     
     
     
@@ -808,16 +861,16 @@
         
         NSDictionary *tmpUsergroupDict = [usergroup dictionaryWithValuesForKeys:[usergroup updateUsergroupsKeys]];
         
-        [usersArray addObject:tmpUsergroupDict];
+        [usergroupsArray addObject:tmpUsergroupDict];
     }
     
     // create a new dictionary which holds the users.
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-    [dict setObject:usersArray forKey:@"usergroup"];
+    [dict setObject:usergroupsArray forKey:@"usergroup"];
     
     //
     // update usergroups in database via web service.
-    success = [PTProjectHelper updateUsergroupsVisibleForProject:project usergroups:dict successBlock:^(NSMutableData *data) {[self finishedUpdatingUsersVisible:data];} failureBlock:^(NSError *error) {[self failedUpdatingUsersVisible:error];}];
+    success = [PTProjectHelper updateUsergroupsVisibleForProject:project usergroups:dict successBlock:^(NSMutableData *data) {[self finishedUpdatingUsergroupsVisible:data];} failureBlock:^(NSError *error) {[self failedUpdatingUsergroupsVisible:error];}];
     
     return success;
 }
@@ -833,6 +886,48 @@
     //[progressIndicator stopAnimation:self];
     //[updatingUsergroupsLabel setHidden:YES];
     NSLog(@"ok, updated usergroups visibility for project.");
+}
+
+
+- (BOOL)updateClientVisibility {
+    
+    BOOL success;
+    
+    // Initialize a new array to hold the roles.
+    NSMutableArray *clientsArray = [[NSMutableArray alloc] init];
+    
+    
+    
+    // add (assigned) user roles to the array.
+    for (Client *client in assignedClients) {
+        
+        NSDictionary *tmpClientDict = [client dictionaryWithValuesForKeys:[client updateClientsKeys]];
+        
+        [clientsArray addObject:tmpClientDict];
+    }
+    
+    // create a new dictionary which holds the users.
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    [dict setObject:clientsArray forKey:@"client"];
+    
+    //
+    // update usergroups in database via web service.
+    success = [PTProjectHelper updateClientsVisibleForProject:project clients:dict successBlock:^(NSMutableData *data) {[self finishedUpdatingClientsVisible:data];} failureBlock:^(NSError *error) {[self failedUpdatingClientsVisible:error];}];
+    
+    return success;
+}
+
+- (void)failedUpdatingClientsVisible:(NSError *)failure {
+    
+    //[progressIndicator stopAnimation:self];
+    //[updatingUsergroupsLabel setHidden:YES];
+}
+
+- (void)finishedUpdatingClientsVisible:(NSMutableData *)data {
+    
+    //[progressIndicator stopAnimation:self];
+    //[updatingUsergroupsLabel setHidden:YES];
+    NSLog(@"ok, updated clients visibility for project.");
 }
 
 @end

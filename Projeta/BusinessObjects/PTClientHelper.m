@@ -11,6 +11,7 @@
 #import "PTCommon.h"
 
 #import "Client.h"
+#import "Project.h"
 #import "User.h"
 
 @implementation PTClientHelper
@@ -112,6 +113,24 @@
     urlString = [urlString stringByAppendingString:@"resources/clients/names"];
     
     [self serverClientsToArray:urlString successBlock:successBlock failureBlock:failureBlock];
+}
+
+
++ (void)clientsVisibleForProject:(Project *)aProject successBlock:(void(^)(NSMutableArray *))successBlock failureBlock:(void(^)(NSError *))failureBlock {
+    
+    if (aProject.projectId)
+        //return [self rolesForUserName:aUser.username successBlock:^{}];
+        [self clientsVisibleForProjectId:aProject.projectId successBlock:successBlock failureBlock:failureBlock];
+}
+
++ (void)clientsVisibleForProjectId:(NSNumber *)aProjectId successBlock:(void(^)(NSMutableArray *))successBlock failureBlock:(void(^)(NSError *))failureBlock {
+    
+    NSString *urlString = [PTCommon serverURLString];
+    // build URL by adding resource path
+    urlString = [urlString stringByAppendingString:@"resources/clients/project/"];
+    urlString = [urlString stringByAppendingString:[aProjectId stringValue]];
+    
+    [PTClientHelper serverClientsToArray:urlString successBlock:successBlock failureBlock:failureBlock];
 }
 
 

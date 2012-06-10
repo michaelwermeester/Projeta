@@ -27,5 +27,6 @@
 
 + (BOOL)updateUsersVisibleForProject:(Project *)aProject users:(NSMutableDictionary *)users successBlock:(void(^)(NSMutableData *))successBlock failureBlock:(void(^)(NSError *))failureBlock;
 + (BOOL)updateUsergroupsVisibleForProject:(Project *)aProject usergroups:(NSMutableDictionary *)usergroups successBlock:(void(^)(NSMutableData *))successBlock failureBlock:(void(^)(NSError *))failureBlock;
++ (BOOL)updateClientsVisibleForProject:(Project *)aProject clients:(NSMutableDictionary *)clients successBlock:(void(^)(NSMutableData *))successBlock failureBlock:(void(^)(NSError *))failureBlock;
 
 @end

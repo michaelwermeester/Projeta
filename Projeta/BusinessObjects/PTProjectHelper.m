@@ -314,4 +314,19 @@
     return success;
 }
 
++ (BOOL)updateClientsVisibleForProject:(Project *)aProject clients:(NSMutableDictionary *)clients successBlock:(void(^)(NSMutableData *))successBlock failureBlock:(void(^)(NSError *))failureBlock {
+    
+    BOOL success;
+    
+    // build URL by adding resource path
+    NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/projects/updateClientsVisibleForProject?projectId="];
+    resourceString = [resourceString stringByAppendingString:[aProject.projectId stringValue]];
+    
+    
+    // execute the PUT method on the webservice to update the record in the database.
+    [PTCommon executePUTforDictionaryWithBlocks:clients resourceString:resourceString successBlock:successBlock failureBlock:failureBlock];
+    
+    return success;
+}
+
 @end
