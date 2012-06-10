@@ -52,6 +52,8 @@
     NSTabViewItem *clientTab;
     NSTabViewItem *visibilityTab;
     __weak NSButton *removeUser;
+    
+    //NSMutableArray *assignedUsers;
 }
 
 @property (strong) NSMutableArray *assignedClients;
@@ -140,5 +142,7 @@
 
 // affiche l'onglet 'Visibilité' et 'Client(s)' si l'utilisateur authentifié est un développeur ou administrateur.
 - (void)showClientAndVisibilityTab;
+
+- (BOOL)updateUserVisibility;
 
 @end

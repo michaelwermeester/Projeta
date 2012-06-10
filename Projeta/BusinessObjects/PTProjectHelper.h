@@ -25,4 +25,6 @@
 //+ (BOOL)deleteProject:(Project *)theProject successBlock:(void(^)(BOOL))successBlock failureBlock:(void(^)())failureBlock mainWindowController:(id)sender;
 + (BOOL)deleteProject:(Project *)theProject successBlock:(void(^)(NSMutableData *))successBlock failureBlock:(void(^)())failureBlock mainWindowController:(id)sender;
 
++ (BOOL)updateUsersVisibleForProject:(Project *)aProject users:(NSMutableDictionary *)users successBlock:(void(^)(NSMutableData *))successBlock failureBlock:(void(^)(NSError *))failureBlock;
+
 @end

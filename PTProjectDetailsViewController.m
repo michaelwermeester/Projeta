@@ -80,6 +80,10 @@
         
         // Initialization code here.
         
+        assignedUsers = [[NSMutableArray alloc] init];
+        assignedUsergroups = [[NSMutableArray alloc] init];
+        assignedClients = [[NSMutableArray alloc] init];
+        
         // initialiser l'array qui contient les groupes d'utilisateurs disponibles.
         availableUsergroups = [[NSMutableArray alloc] init];
         // initialiser l'array qui contient les utilisateurs disponibles.
@@ -125,6 +129,26 @@
             [tabView removeTabViewItem:visibilityTab];
             clientTab = [tabView tabViewItemAtIndex:4];
             [tabView removeTabViewItem:clientTab];
+            
+            // charger la liste des utilisateurs pour lesquelles le projet est visible. 
+            [self loadUserVisibility];
+        }
+    }
+}
+
+- (void)loadUserVisibility {
+    
+    // remove users already affected to user from available users list.
+    for (User *u in assignedUsers) {
+        
+        for (NSUInteger i = 0; i < [availableUsers count]; i++) {
+            
+            // if user found.
+            if ([[availableUsers objectAtIndex:i] isEqual:u]) {
+                
+                // remove user.
+                [[self mutableArrayValueForKey:@"availableUsers"] removeObjectAtIndex:i];
+            }
         }
     }
 }
@@ -136,6 +160,7 @@
     [self fetchAvailableUsergroups];
     // charger la liste des utilisateurs disponibles.
     [self fetchAvailableUsers];
+    [self fetchAssignedUsers];
     // charger la liste des clients disponibles.
     [self fetchAvailableClients];
 }
@@ -373,8 +398,10 @@
         [assignedUsers sortUsingComparator:^NSComparisonResult(User *u1, User *u2) {
             
             return [u1.username compare:u2.username];
-        }];
+        }]; 
     }
+    
+    [self updateUserVisibility];
 }
 
 - (IBAction)removeUser:(id)sender {
@@ -394,6 +421,8 @@
             return [u1.username compare:u2.username];
         }];
     }
+    
+    [self updateUserVisibility];
 }
 
 - (IBAction)assignGroup:(id)sender {
@@ -482,6 +511,37 @@
     }
 }
 
+- (void)fetchAssignedUsers {
+    // fetch usergroup's users.
+    [PTUserHelper usersVisibleForProject:project successBlock:^(NSMutableArray *users) {
+        
+        // sort user roles alphabetically.
+        [users sortUsingComparator:^NSComparisonResult(User *u1, User *u2) {
+            
+            return [u1.username compare:u2.username];
+        }];
+        
+        //if (isNewUser == NO) {
+        [[self mutableArrayValueForKey:@"assignedUsers"] addObjectsFromArray:users];
+        //[assignedUsersArrayCtrl addObjects:users];
+        //assignedUsers = users;
+        
+        //NSLog(@"count: %@", [userGroups count]);
+        //} else {
+        //    userDetailsWindowController.user.roles = [[NSMutableArray alloc] init];
+        //}
+        
+        //[[userDetailsWindowController.user mutableArrayValueForKey:@"roles"] addObjectsFromArray:userRoles];
+        
+        //NSLog(@"Assigned users : %lu", [assignedUsers count] );
+        
+        [self loadUserVisibility];
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
+}
+
 // charger les groupes d'utilisateurs à partir du webservice.
 - (void)fetchAvailableUsergroups {
     
@@ -525,6 +585,8 @@
         
         // stop animating the main window's circular progress indicator.
         [mainWindowController stopProgressIndicatorAnimation];
+        
+        [self loadUserVisibility];
         
     } failureBlock:^(NSError *error) { 
         // stop animating the main window's circular progress indicator.
@@ -633,6 +695,49 @@
                 failureBlock:^(NSError *error) {
                     
                 }];
+}
+
+
+// update user's usergroups (in database).
+- (BOOL)updateUserVisibility {
+    
+    BOOL success;
+    
+    // Initialize a new array to hold the roles.
+    NSMutableArray *usersArray = [[NSMutableArray alloc] init];
+    
+    
+    
+    // add (assigned) user roles to the array.
+    for (User *user in assignedUsers) {
+        
+        NSDictionary *tmpUserDict = [user dictionaryWithValuesForKeys:[user userIdKey]];
+        
+        [usersArray addObject:tmpUserDict];
+    }
+    
+    // create a new dictionary which holds the users.
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    [dict setObject:usersArray forKey:@"user"];
+    
+    //
+    // update usergroups in database via web service.
+    success = [PTProjectHelper updateUsersVisibleForProject:project users:dict successBlock:^(NSMutableData *data) {[self finishedUpdatingUsersVisible:data];} failureBlock:^(NSError *error) {[self failedUpdatingUsersVisible:error];}];
+    
+    return success;
+}
+
+- (void)failedUpdatingUsersVisible:(NSError *)failure {
+    
+    //[progressIndicator stopAnimation:self];
+    //[updatingUsergroupsLabel setHidden:YES];
+}
+
+- (void)finishedUpdatingUsersVisible:(NSMutableData *)data {
+    
+    //[progressIndicator stopAnimation:self];
+    //[updatingUsergroupsLabel setHidden:YES];
+    NSLog(@"ok, updated user visibility for project.");
 }
 
 @end

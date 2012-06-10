@@ -224,6 +224,23 @@
     [PTUserHelper serverUsersToArray:urlString successBlock:successBlock failureBlock:failureBlock];
 }
 
++ (void)usersVisibleForProject:(Project *)aProject successBlock:(void(^)(NSMutableArray *))successBlock failureBlock:(void(^)(NSError *))failureBlock {
+    
+    if (aProject.projectId)
+        //return [self rolesForUserName:aUser.username successBlock:^{}];
+        [self usersVisibleForProjectId:aProject.projectId successBlock:successBlock failureBlock:failureBlock];
+}
+
++ (void)usersVisibleForProjectId:(NSNumber *)aProjectId successBlock:(void(^)(NSMutableArray *))successBlock failureBlock:(void(^)(NSError *))failureBlock {
+    
+    NSString *urlString = [PTCommon serverURLString];
+    // build URL by adding resource path
+    urlString = [urlString stringByAppendingString:@"resources/users/project/"];
+    urlString = [urlString stringByAppendingString:[aProjectId stringValue]];
+    
+    [PTUserHelper serverUsersToArray:urlString successBlock:successBlock failureBlock:failureBlock];
+}
+
 // Fetches users for the given resource URL into an NSMutableArray and executes the successBlock upon success.
 + (void)serverUsersToArray:(NSString *)urlString successBlock:(void (^)(NSMutableArray*))successBlock failureBlock:(void(^)(NSError *))failureBlock {
     

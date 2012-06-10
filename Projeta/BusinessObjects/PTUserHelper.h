@@ -11,6 +11,8 @@
 #import "User.h"
 #import "Usergroup.h"
 
+@class Project;
+
 @interface PTUserHelper : NSObject {
     NSArray *users;
 }
@@ -40,6 +42,9 @@
 // 28-01-2012
 + (void)usersForUsergroup:(Usergroup *)aGroup successBlock:(void(^)(NSMutableArray *))successBlock failureBlock:(void(^)(NSError *))failureBlock;
 + (void)usersForUsergroupId:(NSNumber *)aGroupId successBlock:(void(^)(NSMutableArray *))successBlock failureBlock:(void(^)(NSError *))failureBlock;
+
++ (void)usersVisibleForProject:(Project *)aProject successBlock:(void(^)(NSMutableArray *))successBlock failureBlock:(void(^)(NSError *))failureBlock;
++ (void)usersVisibleForProjectId:(NSNumber *)aProjectId successBlock:(void(^)(NSMutableArray *))successBlock failureBlock:(void(^)(NSError *))failureBlock;
 
 // Fetches users for the given resource URL into an NSMutableArray and executes the successBlock upon success.
 + (void)serverUsersToArray:(NSString *)urlString successBlock:(void (^)(NSMutableArray*))successBlock failureBlock:(void(^)(NSError *))failureBlock;
