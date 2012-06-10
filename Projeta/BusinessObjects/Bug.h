@@ -40,6 +40,13 @@
 @property (nonatomic, retain) User *userAssigned;
 @property (nonatomic, retain) User *userReported;
 
+@property (nonatomic, copy) NSString *projectTitle;
+
+// état du bogue.
+@property (nonatomic, copy) NSString *bugStatus;
+@property (nonatomic, copy) NSNumber *bugPercentage;
+
+@property (readonly, nonatomic, copy) NSString *bugPercentageStatus;
 
 // Required by NSCopying protocol.
 - (id) copyWithZone:(NSZone *)zone;

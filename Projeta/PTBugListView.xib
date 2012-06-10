@@ -945,6 +945,22 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: objectValue.bugPercentageStatus</string>
+						<reference key="source" ref="920982834"/>
+						<reference key="destination" ref="808401001"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="920982834"/>
+							<reference key="NSDestination" ref="808401001"/>
+							<string key="NSLabel">value: objectValue.bugPercentageStatus</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">objectValue.bugPercentageStatus</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">1866</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
 						<string key="label">value: objectValue.title</string>
 						<object class="NSTextField" key="source" id="840201700">
 							<reference key="NSNextResponder" ref="558137675"/>
@@ -1123,6 +1139,22 @@
 					<int key="connectionID">1793</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: objectValue.bugCategory.categoryName</string>
+						<reference key="source" ref="787984023"/>
+						<reference key="destination" ref="791044800"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="787984023"/>
+							<reference key="NSDestination" ref="791044800"/>
+							<string key="NSLabel">value: objectValue.bugCategory.categoryName</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">objectValue.bugCategory.categoryName</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">1870</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">textField</string>
 						<object class="NSTableCellView" key="source" id="197052907">
@@ -1154,6 +1186,22 @@
 						<reference key="destination" ref="1010328228"/>
 					</object>
 					<int key="connectionID">1811</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: objectValue.projectTitle</string>
+						<reference key="source" ref="1010328228"/>
+						<reference key="destination" ref="197052907"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="1010328228"/>
+							<reference key="NSDestination" ref="197052907"/>
+							<string key="NSLabel">value: objectValue.projectTitle</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">objectValue.projectTitle</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">1868</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -2966,7 +3014,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1864</int>
+			<int key="maxID">1870</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">

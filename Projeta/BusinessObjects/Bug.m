@@ -28,6 +28,12 @@
 @synthesize userReported;
 
 
+@synthesize projectTitle;
+
+// état du bug.
+@synthesize bugStatus = bugStatus;
+@synthesize bugPercentage = bugPercentage;
+
 
 + (Bug *)instanceFromDictionary:(NSDictionary *)aDictionary {
     
@@ -80,6 +86,20 @@
     self.userAssigned = [User instanceFromDictionary:[aDictionary objectForKey:@"userAssigned"]];
     
     self.userReported = [User instanceFromDictionary:[aDictionary objectForKey:@"userReported"]];
+    
+    
+    // état du bogue.
+    if ([[aDictionary objectForKey:@"bugStatus"] isKindOfClass:[NSNull class]] == NO)
+        self.bugStatus = [aDictionary objectForKey:@"bugStatus"];
+    // pourcentage.
+    if ([[aDictionary objectForKey:@"bugPercentage"] isKindOfClass:[NSNull class]] == NO)
+        self.bugPercentage = [NSDecimalNumber decimalNumberWithString:(NSString *)[aDictionary objectForKey:@"bugPercentage"]];
+    
+    // titre du projet.
+    self.projectTitle = [aDictionary objectForKey:@"projectTitle"];
+    
+    if ([[aDictionary objectForKey:@"bugCategory"] isKindOfClass:[NSNull class]] == NO)
+        self.bugCategory = [BugCategory instanceFromDictionary:[aDictionary objectForKey:@"bugCategory"]];
     
     /*if ([[aDictionary objectForKey:@"parentProjectId"] isKindOfClass:[NSArray class]] == NO) {
         self.parentProjectId = [NSDecimalNumber decimalNumberWithString:(NSString *)[aDictionary objectForKey:@"parentProjectId"]];
@@ -150,6 +170,31 @@
     NSArray *retArr = [[NSArray alloc] initWithObjects: @"bugId", @"title", @"details", @"fixed", nil];
     
     return retArr;
+}
+
+- (NSString *)bugPercentageStatus {
+    
+    NSString *retString = [[NSString alloc] initWithString:@""];
+    
+    if ([self bugPercentage]) {
+        if ([self.bugPercentage isEqualToNumber:[NSDecimalNumber notANumber]] == NO) {
+            retString = [retString stringByAppendingString:[[self bugPercentage] stringValue]];
+            // ajouter signe %.
+            retString = [retString stringByAppendingString:@"%"];
+        }
+    }
+    
+    if ([self bugPercentage] && [self bugStatus]) {
+        if ([self.bugPercentage isEqualToNumber:[NSDecimalNumber notANumber]] == NO) {
+            retString = [retString stringByAppendingString:@" - "];
+        }
+    }
+    
+    if ([self bugStatus]) {
+        retString = [retString stringByAppendingString:[self bugStatus]];
+    }
+    
+    return retString;
 }
 
 @end
