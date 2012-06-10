@@ -140,4 +140,53 @@
     return success;
 }
 
+
++ (BOOL)updateBug:(Bug *)theBug successBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)())failureBlock_ mainWindowController:(id)sender {
+    
+    BOOL success = NO;
+    
+    if ([sender isKindOfClass:[MainWindowController class]]) {
+        // start animating the main window's circular progress indicator.
+        [sender startProgressIndicatorAnimation];
+    }
+    
+    // create dictionary from User object
+    //NSDictionary *dict = [theUser dictionaryWithValuesForKeys:[theUser allKeys]];
+    // update username, first name, last name and email address
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[theBug dictionaryWithValuesForKeys:[theBug updateBugKeys]]];
+    
+    
+    // s'il s'agit d'un sous-projet...
+    /*if (theProject.parentProjectId) {
+     // créer dictionnaire 'parentProjectId'.
+     Project *parentProject = [[Project alloc] init];
+     parentProject.projectId = theProject.parentProjectId;
+     
+     NSDictionary *parentProjectDict = [parentProject dictionaryWithValuesForKeys:[parentProject projectIdKey]];
+     // ajouter ce dictionnaire sous la clé 'parentProjectId'.
+     [dict setObject:parentProjectDict forKey:@"parentProjectId"];
+     }*/
+    
+    // Dates début et fin de projet.
+    //if ([theTask stringStartDate])
+    //    [dict setObject:[theTask stringStartDate] forKey:@"startDate"];
+    //if ([theTask stringEndDate])
+    //    [dict setObject:[theTask stringEndDate] forKey:@"endDate"];
+    
+    
+    // API resource string.
+    NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/bugs/update"];
+    
+    // execute the PUT method on the webservice to update the record in the database.
+    //success = [PTCommon executePUTforDictionaryWithSuccessBlock:dict resourceString:resourceString successBlock:successBlock_];
+    success = [PTCommon executePUTforDictionaryWithBlocks:dict resourceString:resourceString successBlock:successBlock_ failureBlock:failureBlock_];
+    
+    if ([sender isKindOfClass:[MainWindowController class]]) {
+        // stop animating the main window's circular progress indicator.
+        [sender stopProgressIndicatorAnimation];
+    }
+    
+    return success;
+}
+
 @end

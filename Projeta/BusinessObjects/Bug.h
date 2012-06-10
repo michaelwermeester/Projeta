@@ -50,5 +50,6 @@
 - (NSArray *)bugIdKey;
 
 - (NSArray *)createBugKeys;
+- (NSArray *)updateBugKeys;
 
 @end

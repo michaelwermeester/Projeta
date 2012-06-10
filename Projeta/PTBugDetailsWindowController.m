@@ -169,14 +169,14 @@ Bug *bugCopy;
     }
     // mettre à jour projet existant.
     else {
-        /*
-        bugUpdSuc = [PTTaskHelper updateTask:task successBlock:^(NSMutableData *data) {
-            [self finishedCreatingTask:data];
+        
+        bugUpdSuc = [PTBugHelper updateBug:bug successBlock:^(NSMutableData *data) {
+            [self finishedCreatingBug:data];
         } failureBlock:^() {
             
         }
-                              mainWindowController:parentTaskListViewController];
-         */
+                              mainWindowController:parentBugListViewController];
+         
     }
 }
 

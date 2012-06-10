@@ -17,5 +17,6 @@
 + (NSMutableArray *)setAttributesFromJSONDictionary:(NSDictionary *)aDictionary;
 
 + (BOOL)createBug:(Bug *)theBug successBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)())failureBlock_ mainWindowController:(id)sender;
++ (BOOL)updateBug:(Bug *)theBug successBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)())failureBlock_ mainWindowController:(id)sender;
 
 @end

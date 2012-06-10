@@ -143,4 +143,13 @@
     return retArr;
 }
 
+- (NSArray *)updateBugKeys
+{
+    //NSArray *retArr = [[NSArray alloc] initWithObjects: @"projectTitle", @"projectDescription", @"endDate", @"endDateReal", @"flagPublic", @"completed", @"parentProjectId", @"startDate", @"startDateReal", @"userCreated", nil];
+    //NSArray *retArr = [[NSArray alloc] initWithObjects: @"projectTitle", @"projectDescription", @"flagPublic", nil];
+    NSArray *retArr = [[NSArray alloc] initWithObjects: @"bugId", @"title", @"details", @"fixed", nil];
+    
+    return retArr;
+}
+
 @end
