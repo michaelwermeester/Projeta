@@ -16,6 +16,7 @@
     NSString *taskDescription;
     NSNumber *taskId;
     NSString *taskTitle;
+    User *userAssigned;
     User *userCreated;
     BOOL completed;
     BOOL isPersonal;
@@ -35,6 +36,7 @@
 @property (nonatomic, copy) NSString *taskDescription;
 @property (nonatomic, copy) NSNumber *taskId;
 @property (nonatomic, copy) NSString *taskTitle;
+@property (nonatomic, retain) User *userAssigned;
 @property (nonatomic, retain) User *userCreated;
 @property (nonatomic, assign) BOOL completed;
 @property (nonatomic, assign) BOOL isPersonal;

@@ -228,6 +228,17 @@ Task *taskCopy;
         [[self mutableArrayValueForKey:@"arrDevelopers"] addObjectsFromArray:[developers sortedArrayUsingDescriptors:sortDescriptors]];
         
         
+        // sélectionner développeur attribué (responsable du projet).
+        for (NSInteger i = 0; i < [arrDevelopers count]; i++) {
+            
+            User *u = [arrDevelopers objectAtIndex:i];
+            
+            if ([u.userId intValue] == [task.userAssigned.userId intValue]) {
+                
+                [comboDevelopers selectItemAtIndex:i];
+                break;
+            }
+        }
     }
                 failureBlock:^(NSError *error) {
                     

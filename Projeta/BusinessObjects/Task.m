@@ -17,6 +17,7 @@
 @synthesize taskDescription = taskDescription;
 @synthesize taskId = taskId;
 @synthesize taskTitle = taskTitle;
+@synthesize userAssigned = userAssigned;
 @synthesize userCreated = userCreated;
 @synthesize completed = completed;
 @synthesize childTask = childTask;
@@ -61,6 +62,7 @@
     else
         self.isPersonal = [(NSString *)[aDictionary objectForKey:@"isPersonal"] boolValue];
     
+    self.userAssigned = [User instanceFromDictionary:[aDictionary objectForKey:@"userAssigned"]];
     self.userCreated = [User instanceFromDictionary:[aDictionary objectForKey:@"userCreated"]];
     
     self.priority = [NSDecimalNumber decimalNumberWithString:(NSString *)[aDictionary objectForKey:@"priority"]];
@@ -105,6 +107,7 @@
     copy.endDate = [endDate copyWithZone:zone];
     copy.completed = completed;
     copy.startDate = [startDate copyWithZone:zone];
+    copy.userAssigned = [userAssigned copyWithZone:zone];
     copy.userCreated = [userCreated copyWithZone:zone];
     copy.childTask = [childTask copyWithZone:zone];
     copy.parentTaskId = [parentTaskId copyWithZone:zone];
