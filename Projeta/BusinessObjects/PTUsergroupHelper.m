@@ -7,6 +7,7 @@
 //
 
 #import "MWConnectionController.h"
+#import "Project.h"
 #import "PTCommon.h"
 #import "PTUsergroupHelper.h"
 #import "PTUserHelper.h"
@@ -56,8 +57,11 @@
     }
     
     
-    NSArray *receivedUsergroups = [aDictionary objectForKey:@"usergroup"];
-    if (receivedUsergroups) {
+    //NSArray *receivedUsergroups = [aDictionary objectForKey:@"usergroup"];
+    //if (receivedUsergroups) {
+    if ([[aDictionary objectForKey:@"usergroup"] isKindOfClass:[NSArray class]]) {
+        
+        NSArray *receivedUsergroups = [aDictionary objectForKey:@"usergroup"];
         
         NSMutableArray *parsedUsergroups = [NSMutableArray arrayWithCapacity:[receivedUsergroups count]];
         for (id item in receivedUsergroups) {
@@ -68,6 +72,17 @@
         
         return parsedUsergroups;
     }
+    
+    // if dictionary contains just a dictionary
+    else if ([[aDictionary objectForKey:@"usergroup"] isKindOfClass:[NSDictionary class]]) {
+        
+        NSMutableArray *parsedUsergroups = [NSMutableArray arrayWithCapacity:1];
+        
+        [parsedUsergroups addObject:[Usergroup instanceFromDictionary:[aDictionary objectForKey:@"usergroup"]]];
+        
+        return parsedUsergroups;
+    }
+
     
     return nil;
 }
@@ -91,8 +106,10 @@
                                                         NSDictionary *dict = [[NSDictionary alloc] init];
                                                         dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
                                                         
-                                                        [usergroups addObjectsFromArray:[PTUsergroupHelper setAttributesFromJSONDictionary:dict]];
+                                                        NSLog(@"ugdict: %@", dict);
                                                         
+                                                        [usergroups addObjectsFromArray:[PTUsergroupHelper setAttributesFromJSONDictionary:dict]];
+                                                        //NSLog(@"ugcount: %lu", [usergroups count]);
                                                         successBlock(usergroups);
                                                     }
                                                     failureBlock:^(NSError *error) {
@@ -167,6 +184,23 @@
     [PTCommon executePUTforDictionaryWithBlocks:users resourceString:resourceString successBlock:successBlock failureBlock:failureBlock];
     
     return success;
+}
+
++ (void)usergroupsVisibleForProject:(Project *)aProject successBlock:(void(^)(NSMutableArray *))successBlock failureBlock:(void(^)(NSError *))failureBlock {
+    
+    if (aProject.projectId)
+        //return [self rolesForUserName:aUser.username successBlock:^{}];
+        [self usergroupsVisibleForProjectId:aProject.projectId successBlock:successBlock failureBlock:failureBlock];
+}
+
++ (void)usergroupsVisibleForProjectId:(NSNumber *)aProjectId successBlock:(void(^)(NSMutableArray *))successBlock failureBlock:(void(^)(NSError *))failureBlock {
+    
+    NSString *urlString = [PTCommon serverURLString];
+    // build URL by adding resource path
+    urlString = [urlString stringByAppendingString:@"resources/usergroups/project/"];
+    urlString = [urlString stringByAppendingString:[aProjectId stringValue]];
+    
+    [PTUsergroupHelper serverUsergroupsToArray:urlString successBlock:successBlock];
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+@class Project;
 @class User;
 @class Usergroup;
 
@@ -28,5 +29,8 @@
 
 + (BOOL)updateUsergroupsForUser:(User *)aUser usergroups:(NSMutableDictionary *)usergroups successBlock:(void(^)(NSMutableData *))successBlock failureBlock:(void(^)(NSError *))failureBlock;
 + (BOOL)updateUsersForUsergroup:(Usergroup *)aUsergroup users:(NSMutableDictionary *)users successBlock:(void(^)(NSMutableData *))successBlock failureBlock:(void(^)(NSError *))failureBlock;
+
++ (void)usergroupsVisibleForProject:(Project *)aProject successBlock:(void(^)(NSMutableArray *))successBlock failureBlock:(void(^)(NSError *))failureBlock;
++ (void)usergroupsVisibleForProjectId:(NSNumber *)aProjectId successBlock:(void(^)(NSMutableArray *))successBlock failureBlock:(void(^)(NSError *))failureBlock;
 
 @end

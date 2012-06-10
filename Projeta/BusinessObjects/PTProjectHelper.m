@@ -299,4 +299,19 @@
     return success;
 }
 
++ (BOOL)updateUsergroupsVisibleForProject:(Project *)aProject usergroups:(NSMutableDictionary *)usergroups successBlock:(void(^)(NSMutableData *))successBlock failureBlock:(void(^)(NSError *))failureBlock {
+    
+    BOOL success;
+    
+    // build URL by adding resource path
+    NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/projects/updateUsergroupsVisibleForProject?projectId="];
+    resourceString = [resourceString stringByAppendingString:[aProject.projectId stringValue]];
+    
+    
+    // execute the PUT method on the webservice to update the record in the database.
+    [PTCommon executePUTforDictionaryWithBlocks:usergroups resourceString:resourceString successBlock:successBlock failureBlock:failureBlock];
+    
+    return success;
+}
+
 @end

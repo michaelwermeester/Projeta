@@ -153,11 +153,29 @@
     }
 }
 
+- (void)loadUsergroupVisibility {
+    
+    // remove users already affected to user from available users list.
+    for (User *u in assignedUsergroups) {
+        
+        for (NSUInteger i = 0; i < [availableUsergroups count]; i++) {
+            
+            // if user found.
+            if ([[availableUsergroups objectAtIndex:i] isEqual:u]) {
+                
+                // remove user.
+                [[self mutableArrayValueForKey:@"availableUsergroups"] removeObjectAtIndex:i];
+            }
+        }
+    }
+}
+
 // charger les utilisateurs, groupes et clients liés au projet.
 - (void)loadProjectDetails {
     
     // charger la liste des groupes d'utilisateurs disponibles.
     [self fetchAvailableUsergroups];
+    [self fetchAssignedUsergroups];
     // charger la liste des utilisateurs disponibles.
     [self fetchAvailableUsers];
     [self fetchAssignedUsers];
@@ -447,6 +465,8 @@
             return [u1.code compare:u2.code];
         }];
     }
+    
+    [self updateUsergroupVisibility];
 }
 
 - (IBAction)removeGroup:(id)sender {
@@ -466,6 +486,8 @@
             return [u1.code compare:u2.code];
         }];
     }
+    
+    [self updateUsergroupVisibility];
 }
 
 - (IBAction)assignClient:(id)sender {
@@ -536,6 +558,37 @@
         //NSLog(@"Assigned users : %lu", [assignedUsers count] );
         
         [self loadUserVisibility];
+        
+    } failureBlock:^(NSError *error) {
+        
+    }];
+}
+
+- (void)fetchAssignedUsergroups {
+    // fetch usergroup's users.
+    [PTUsergroupHelper usergroupsVisibleForProject:project successBlock:^(NSMutableArray *usergroups) {
+        
+        // sort user roles alphabetically.
+        [usergroups sortUsingComparator:^NSComparisonResult(Usergroup *u1, Usergroup *u2) {
+            
+            return [u1.code compare:u2.code];
+        }];
+        
+        //if (isNewUser == NO) {
+        [[self mutableArrayValueForKey:@"assignedUsergroups"] addObjectsFromArray:usergroups];
+        //[assignedUsersArrayCtrl addObjects:users];
+        //assignedUsers = users;
+        
+        //NSLog(@"count: %@", [userGroups count]);
+        //} else {
+        //    userDetailsWindowController.user.roles = [[NSMutableArray alloc] init];
+        //}
+        
+        //[[userDetailsWindowController.user mutableArrayValueForKey:@"roles"] addObjectsFromArray:userRoles];
+        
+        NSLog(@"Assigned users : %lu", [assignedUsergroups count] );
+        
+        [self loadUsergroupVisibility];
         
     } failureBlock:^(NSError *error) {
         
@@ -738,6 +791,48 @@
     //[progressIndicator stopAnimation:self];
     //[updatingUsergroupsLabel setHidden:YES];
     NSLog(@"ok, updated user visibility for project.");
+}
+
+
+- (BOOL)updateUsergroupVisibility {
+    
+    BOOL success;
+    
+    // Initialize a new array to hold the roles.
+    NSMutableArray *usersArray = [[NSMutableArray alloc] init];
+    
+    
+    
+    // add (assigned) user roles to the array.
+    for (Usergroup *usergroup in assignedUsergroups) {
+        
+        NSDictionary *tmpUsergroupDict = [usergroup dictionaryWithValuesForKeys:[usergroup updateUsergroupsKeys]];
+        
+        [usersArray addObject:tmpUsergroupDict];
+    }
+    
+    // create a new dictionary which holds the users.
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    [dict setObject:usersArray forKey:@"usergroup"];
+    
+    //
+    // update usergroups in database via web service.
+    success = [PTProjectHelper updateUsergroupsVisibleForProject:project usergroups:dict successBlock:^(NSMutableData *data) {[self finishedUpdatingUsersVisible:data];} failureBlock:^(NSError *error) {[self failedUpdatingUsersVisible:error];}];
+    
+    return success;
+}
+
+- (void)failedUpdatingUsergroupsVisible:(NSError *)failure {
+    
+    //[progressIndicator stopAnimation:self];
+    //[updatingUsergroupsLabel setHidden:YES];
+}
+
+- (void)finishedUpdatingUsergroupsVisible:(NSMutableData *)data {
+    
+    //[progressIndicator stopAnimation:self];
+    //[updatingUsergroupsLabel setHidden:YES];
+    NSLog(@"ok, updated usergroups visibility for project.");
 }
 
 @end

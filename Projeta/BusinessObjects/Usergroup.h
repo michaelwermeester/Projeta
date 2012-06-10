@@ -26,4 +26,6 @@
 
 - (NSArray *)allKeys;
 
+- (NSArray *)updateUsergroupsKeys;
+
 @end
