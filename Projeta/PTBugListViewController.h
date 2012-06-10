@@ -31,7 +31,6 @@
 @property (strong) IBOutlet NSArrayController *bugArrayCtrl;
 @property (strong) IBOutlet NSTreeController *bugTreeCtrl;
 @property (strong) IBOutlet NSOutlineView *bugOutlineView;
-- (IBAction)addTaskButtonClick:(id)sender;
 - (IBAction)detailsButtonClicked:(id)sender;
 
 @property (weak) IBOutlet NSTableColumn *outlineViewProjetColumn;
@@ -42,6 +41,7 @@
 
 // reference to the (parent) PTProjectDetailsViewController
 @property (assign) PTProjectDetailsViewController *parentProjectDetailsViewController;
+- (IBAction)addNewBugButtonClicked:(id)sender;
 
 - (void)requestFinished:(NSMutableData*)data;
 - (void)requestFailed:(NSError*)error;

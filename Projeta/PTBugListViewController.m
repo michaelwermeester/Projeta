@@ -14,6 +14,7 @@
 #import "PTBugDetailsWindowController.h"
 #import "PTBugHelper.h"
 #import "PTCommon.h"
+#import "PTProjectDetailsViewController.h"
 
 @implementation PTBugListViewController
 @synthesize outlineViewProjetColumn;
@@ -93,6 +94,82 @@
 }
 
 // NSURLConnection
+- (IBAction)addNewBugButtonClicked:(id)sender {
+    NSNumber *parentID;
+    
+    NSArray *selectedObjects = [bugArrayCtrl selectedObjects];
+    
+    // if a project is selected, open the window to show its details.
+    if ([selectedObjects count] == 1) {
+        //parentID = [[selectedObjects objectAtIndex:0] projectId];
+        //parentID = [[selectedObjects objectAtIndex:0] parentProjectId];
+        
+        //[prjTreeController add:prj];
+        
+        Bug *bug = [[Bug alloc] init];
+        // set current date.
+        //bugAr.startDate = [NSDate date];
+        //prj.endDate = [NSDate date];
+        
+        // get parent node.
+        //NSTreeNode *parent = [[[[prjTreeController selectedNodes] objectAtIndex:0] parentNode] parentNode];
+        //NSMutableArray *parentProjects = [[parent representedObject] mutableArrayValueForKeyPath:
+  //                                        [prjTreeController childrenKeyPathForNode:parent]];
+        //NSLog(@"test: %@", [[[[prjTreeController selectedNodes] objectAtIndex:] parent] projectTitle]); 
+        
+        //[prjTreeController 
+        //parentrowforrow
+        
+        //NSLog(@"test: %@", [[objects objectAtIndex:0] projectTitle]);
+        //int line = [prjOutlineView selectedRow];
+        //NSLog(@"test: %@", [[parentProjects objectAtIndex:line] projectTitle]);
+        
+        // get projectid du projet parent. 
+//        for (Project *p in parentProjects)
+//        {
+//            if ([p.childProject containsObject:[selectedObjects objectAtIndex:0]])
+//            {
+//                parentID = p.projectId;
+//                
+//                //NSLog(@"TEST: %d", [[p projectId] intValue]);
+//                
+//                break;
+//            }
+//        }
+        
+        //NSLog(@"test: %@", [[parent representedObject] projectTitle]);
+        
+        //prj.parentProjectId = parentID;
+        //prj.parentProjectId = p.projectId;
+//        /if (parentID != nil){
+//            prj.parentProjectId = parentID;
+//        }
+        
+        //NSLog(@"parentprojectid: %@", p.projectTitle);
+        
+        //[prjTreeController add:prj];
+//        NSIndexPath *indexPath = [prjTreeController selectionIndexPath];
+//        //NSLog(@"indexpath: %@", indexPath);
+//        if ([indexPath length] > 1) {
+//            [prjTreeController insertObject:prj atArrangedObjectIndexPath:indexPath];
+//        } else {
+//            // construire nouveau NSIndexPath avec comme valeur 0 -> l'élément sera inséré à la première position.
+//            // https://discussions.apple.com/thread/1585148?start=0&tstart=0
+//            NSUInteger indexes[1]={0};
+//            indexPath=[NSIndexPath indexPathWithIndexes:indexes length:1];
+//            
+//            [prjTreeController insertObject:prj atArrangedObjectIndexPath:indexPath];
+//        }
+        
+        [bugArrayCtrl insertObject:bug atArrangedObjectIndex:[bugArrayCtrl selectionIndex]];
+    }
+    
+    // il s'agit d'un nouveau projet.
+    //isNewProject = true;
+    
+    [self openBugDetailsWindow:YES];
+}
+
 - (void)requestFinished:(NSMutableData*)data
 {
     // http://stackoverflow.com/questions/5037545/nsurlconnection-and-grand-central-dispatch
@@ -155,10 +232,6 @@
 - (void)outlineView:(NSTableView *)outlineView sortDescriptorsDidChange:(NSArray *)oldDescriptors
 {
     [[self mutableArrayValueForKey:@"arrBug"] sortUsingDescriptors:[outlineView sortDescriptors]];
-}
-
-- (IBAction)addTaskButtonClick:(id)sender {
-    
 }
 
 - (IBAction)detailsButtonClicked:(id)sender {
@@ -225,6 +298,7 @@
         bugDetailsWindowController.mainWindowController = mainWindowController;
         bugDetailsWindowController.isNewBug = isNewBug;
         bugDetailsWindowController.bug = [selectedObjects objectAtIndex:0];
+        bugDetailsWindowController.bug.project = [parentProjectDetailsViewController project];
         
         if (isNewBug == NO) {
             //bugDetailsWindowController.tskTreeIndexPath = tskTreeIndexPath;

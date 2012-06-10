@@ -108,7 +108,7 @@ Bug *bugCopy;
     if (isNewBug == NO) {
         
         // cancel changes -> replace current project with previously made copy of project.
-        //[[parentProjectListViewController mutableArrayValueForKey:@"arrPrj"] replaceObjectAtIndex:[parentProjectListViewController.arrPrj indexOfObject:project] withObject:projectCopy];
+        [[parentBugListViewController mutableArrayValueForKey:@"arrBug"] replaceObjectAtIndex:[parentBugListViewController.arrBug indexOfObject:bug] withObject:bugCopy];
         
         // cancel changes -> replace current project with previously made copy of project.
         if (tskTreeIndexPath) {
@@ -133,11 +133,11 @@ Bug *bugCopy;
         
     } else {
         // remove the temporary inserted/created user.
-        //[[parentProjectListViewController mutableArrayValueForKey:@"arrPrj"] removeObject:project];
+        [[parentBugListViewController mutableArrayValueForKey:@"arrBug"] removeObject:bug];
         
        /* [[parentProjectListViewController prjTreeController] remove:self];*/
         
-        //[[parentProjectListViewController mutableArrayValueForKey:@"arrPrj"] removeObjectIdenticalTo:project];
+        //[[parentBugListViewController mutableArrayValueForKey:@"arrBug"] removeObjectIdenticalTo:bug];
     }
        
     // close this window.
@@ -157,15 +157,15 @@ Bug *bugCopy;
         
         // user created.
         bug.userReported = mainWindowController.loggedInUser;
+    
         
-        /*
-        bugUpdSuc = [PTTaskHelper createTask:task successBlock:^(NSMutableData *data) { 
-                                    [self finishedCreatingTask:data];
+        bugUpdSuc = [PTBugHelper createBug:bug successBlock:^(NSMutableData *data) { 
+                                    [self finishedCreatingBug:data];
                                 }
                                  failureBlock:^() {
                                      
-                                 } mainWindowController:parentTaskListViewController];
-         */
+                                 } mainWindowController:parentBugListViewController];
+         
     }
     // mettre à jour projet existant.
     else {

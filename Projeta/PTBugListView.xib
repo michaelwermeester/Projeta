@@ -838,6 +838,14 @@
 					<int key="connectionID">1625</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">addNewBugButtonClicked:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="245566821"/>
+					</object>
+					<int key="connectionID">1862</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">contentArray: arrBug</string>
 						<reference key="source" ref="709179103"/>
@@ -2942,7 +2950,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1861</int>
+			<int key="maxID">1862</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2958,10 +2966,15 @@
 					<string key="className">PTBugListViewController</string>
 					<string key="superclassName">NSViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="addNewBugButtonClicked:">id</string>
 						<string key="addTaskButtonClick:">id</string>
 						<string key="detailsButtonClicked:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="addNewBugButtonClicked:">
+							<string key="name">addNewBugButtonClicked:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 						<object class="IBActionInfo" key="addTaskButtonClick:">
 							<string key="name">addTaskButtonClick:</string>
 							<string key="candidateClassName">id</string>

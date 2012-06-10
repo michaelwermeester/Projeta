@@ -49,4 +49,6 @@
 
 - (NSArray *)bugIdKey;
 
+- (NSArray *)createBugKeys;
+
 @end

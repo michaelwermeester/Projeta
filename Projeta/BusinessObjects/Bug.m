@@ -7,6 +7,7 @@
 //
 
 #import "Bug.h"
+#import "BugCategory.h"
 #import "Project.h"
 #import "PTCommon.h"
 #import "User.h"
@@ -112,25 +113,32 @@
     
     
     copy.bugId = [bugId copyWithZone:zone];
-    /*copy.projectTitle = [projectTitle copyWithZone:zone];
-    copy.projectDescription = [projectDescription copyWithZone:zone];
-    copy.endDate = [endDate copyWithZone:zone];
-    copy.dateCreated = [dateCreated copyWithZone:zone];
-    copy.endDateReal = [endDateReal copyWithZone:zone];
-    copy.flagPublic = flagPublic;
-    copy.completed = completed;
+    copy.bugCategory = [bugCategory copyWithZone:zone];
     copy.canceled = canceled;
-    copy.parentProjectId = [parentProjectId copyWithZone:zone];
-    copy.startDate = [startDate copyWithZone:zone];
-    copy.startDateReal = [startDateReal copyWithZone:zone];
-    copy.userCreated = [userCreated copyWithZone:zone];
-    copy.childProject = [childProject copyWithZone:zone];*/
+    copy.deleted = deleted;
+    copy.dateReported = [dateReported copyWithZone:zone];
+    copy.details = [details copyWithZone:zone];
+    copy.fixed = fixed;
+    copy.priority = [priority copyWithZone:zone];
+    copy.project = [project copyWithZone:zone];
+    copy.title = [title copyWithZone:zone];
+    copy.userAssigned = [userAssigned copyWithZone:zone];
+    copy.userReported = [userReported copyWithZone:zone];
     
     return copy;
 }
 
 - (NSArray *)bugIdKey {
     NSArray *retArr = [[NSArray alloc] initWithObjects:@"bugId", nil];
+    
+    return retArr;
+}
+
+- (NSArray *)createBugKeys
+{
+    //NSArray *retArr = [[NSArray alloc] initWithObjects: @"projectTitle", @"projectDescription", @"endDate", @"endDateReal", @"flagPublic", @"completed", @"parentProjectId", @"startDate", @"startDateReal", @"userCreated", nil];
+    //NSArray *retArr = [[NSArray alloc] initWithObjects: @"projectTitle", @"projectDescription", @"flagPublic", nil];
+    NSArray *retArr = [[NSArray alloc] initWithObjects: @"title", @"details", @"fixed", nil];
     
     return retArr;
 }

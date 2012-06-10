@@ -7,7 +7,9 @@
 //
 
 #import "Bug.h"
+#import "MainWindowController.h"
 #import "PTBugHelper.h"
+#import "PTCommon.h"
 
 @implementation PTBugHelper
 
@@ -77,5 +79,65 @@
     return nil;
 }
 
+
+// Crée une nouvelle tâche dans la base de données.
+// mainWindowController parameter is used for animating the main window's progress indicator.
++ (BOOL)createBug:(Bug *)theBug successBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)())failureBlock_ mainWindowController:(id)sender {
+    
+    BOOL success = NO;
+    
+    if ([sender isKindOfClass:[MainWindowController class]]) {
+        // start animating the main window's circular progress indicator.
+        [sender startProgressIndicatorAnimation];
+    }
+    
+    // create dictionary from User object
+    //NSDictionary *dict = [theUser dictionaryWithValuesForKeys:[theUser allKeys]];
+    // update username, first name, last name and email address
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[theBug dictionaryWithValuesForKeys:[theBug createBugKeys]]];
+    
+    // créer dictionnaire 'user création'.
+    NSDictionary *userDict = [theBug.userReported dictionaryWithValuesForKeys:[theBug.userReported userIdKey]];
+    // ajouter ce dictionnaire sous la clé 'userCreated'.
+    [dict setObject:userDict forKey:@"userReported"];
+    
+    // s'il s'agit d'un sous-projet...
+//    if (theTask.parentTaskId) {
+//        // créer dictionnaire 'parentProjectId'.
+//        Task *parentTask = [[Task alloc] init];
+//        parentTask.taskId = theTask.parentTaskId;
+//        
+//        NSDictionary *parentTaskDict = [parentTask dictionaryWithValuesForKeys:[parentTask taskIdKey]];
+//        // ajouter ce dictionnaire sous la clé 'parentProjectId'.
+//        [dict setObject:parentTaskDict forKey:@"parentTaskId"];
+//    }
+    
+    
+    // Dates début et fin de projet.
+//    if ([theTask stringStartDate])
+//        [dict setObject:[theTask stringStartDate] forKey:@"startDate"];
+//    if ([theTask stringEndDate])
+//        [dict setObject:[theTask stringEndDate] forKey:@"endDate"];
+    
+    // créer dictionnaire 'user création'.
+    NSDictionary *projectDict = [theBug.project dictionaryWithValuesForKeys:[theBug.project projectIdKey]];
+    // ajouter ce dictionnaire sous la clé 'userCreated'.
+    [dict setObject:projectDict forKey:@"projectId"];
+    //[dict setObject:theBug.project.projectIdKey forKey:@"projectId"];
+    
+    // API resource string.
+    NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/bugs/create"];
+    
+    // execute the PUT method on the webservice to update the record in the database.
+    //success = [PTCommon executePOSTforDictionary:dict resourceString:resourceString successBlock:successBlock_];
+    [PTCommon executePOSTforDictionaryWithBlocks:dict resourceString:resourceString successBlock:successBlock_ failureBlock:failureBlock_];
+    
+    if ([sender isKindOfClass:[MainWindowController class]]) {
+        // stop animating the main window's circular progress indicator.
+        [sender stopProgressIndicatorAnimation];
+    }
+    
+    return success;
+}
 
 @end
