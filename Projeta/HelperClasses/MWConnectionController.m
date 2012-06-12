@@ -71,38 +71,11 @@
 // exécute lorsque la requête ait terminé. 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     
-    // for easier debugging
-    NSString* newStr = [[NSString alloc] initWithData:receivedData
-                                             encoding:NSUTF8StringEncoding];
-    
-    NSLog(@"JSON result: %@", newStr);
-    // end debug
-    
     // exécuter le success-block et lui passer les donées reçues. 
     [self succeededAction](receivedData);
 }
 
 @end
-
-
-// exécute lorsque la requête ait terminé. 
-/*- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    
-    // for easier debugging
-    NSString* newStr = [[NSString alloc] initWithData:receivedData
-                                             encoding:NSUTF8StringEncoding];
-    
-    NSLog(@"JSON result: %@", newStr);
-    // end debug
-    
-    // exécuter le success-block et lui passer les donées reçues. 
-    [self succeededAction](receivedData);
-    
-    // s'il y a un block postSuccessAction défini, l'exécuter maintenant.  
-    if (postSuccessAction) {
-        [self postSuccessAction]();
-    }
-}*/
     
 
 

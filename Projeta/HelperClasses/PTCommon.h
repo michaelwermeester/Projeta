@@ -10,15 +10,17 @@
 
 @interface PTCommon : NSObject
 
-// loads server URL from preferences file and returns it as NSURL
+// charge l'URL serveur à partir du fichier de préférences/configuration
+// et le retourne comme NSURL. 
 + (NSURL*)serverURL;
-// loads server URL from preferences file and returns it as NSString
+// charge l'URL serveur à partir du fichier de préférences/configuration
+// et le retourne comme NSString. 
 + (NSString*)serverURLString;
 
 // retourne un NSDate à partir d'un JSON date-string. 
 // Format de date retourné par le webservice: 2011-08-26T18:25:36+02:00
 + (NSDate*)dateFromJSONString:(NSString*)aDate;
-// retourne un string pour envoyé au webservice à partir d'une date.
+// retourne un string qui peut être envoyé au webservice à partir d'une date.
 + (NSString*)stringJSONFromDate:(NSDate *)aDate;
 // retourne un string à partir d'une date.
 + (NSString*)stringFromDate:(NSDate *)aDate;
@@ -27,18 +29,18 @@
 // executes a given HTTP method on a given resource with a given dictionary.
 + (BOOL)executeHTTPMethodForDictionary:(NSDictionary *)dict resourceString:(NSString *)resourceString httpMethod:(NSString *)httpMethod successBlock:(void(^)(NSMutableData *))successBlock_;
 
-// executes the HTTP POST method on a given resource with a given dictionary.
+// exécute une méthode HTTP POST sur une ressource spécifié avec un dictionnaire spécifié. 
 + (BOOL)executePOSTforDictionary:(NSDictionary *)dict resourceString:(NSString *)resourceString successBlock:(void(^)(NSMutableData *))successBlock_;
 + (BOOL)executePOSTforDictionaryWithBlocks:(NSDictionary *)dict resourceString:(NSString *)resourceString successBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)(NSError *))failureBlock_;
 
 // executes the HTTP PUT method on a given resource with a given dictionary.
 + (BOOL)executePUTforDictionary:(NSDictionary *)dict resourceString:(NSString *)resourceString;
 
-// 22-01-2012
+// exécute une méthode HTTP POST sur une ressource spécifié avec un dictionnaire spécifié avec failure block en plus. 
 + (BOOL)executePUTforDictionaryWithBlocks:(NSDictionary *)dict resourceString:(NSString *)resourceString successBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)(NSError *))failureBlock_;
-// 22-01-2012
+// exécute une méthode HTTP sur une ressource spécifié avec un dictionnaire spécifié avec possibilité de définir des blocks success et failure.
 + (BOOL)executeHTTPMethodForDictionaryWithFailureBlock:(NSDictionary *)dict resourceString:(NSString *)resourceString httpMethod:(NSString *)httpMethod successBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)(NSError *))failureBlock_;
-// 25-03-2012
+// exécute une méthode HTTP PUT sur une ressource spécifié avec un dictionnaire spécifié. 
 + (BOOL)executePUTforDictionaryWithSuccessBlock:(NSDictionary *)dict resourceString:(NSString *)resourceString successBlock:(void(^)(NSMutableData *))successBlock_;
 
 #pragma mark JSON

@@ -24,7 +24,3 @@
 - (BOOL)startRequestForURL:(NSURL*)url setRequest:(NSURLRequest *)request;
 
 @end
-
-
-// executé après succeededAction.
-//@property (nonatomic, copy) void (^postSuccessAction)(void);

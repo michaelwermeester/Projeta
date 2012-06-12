@@ -80,109 +80,61 @@
 
 #pragma mark Web service methods
 
-// executes a given HTTP method on a given resource with a given dictionary.
+// exécute une méthode HTTP spécifié sur une ressource spécifié avec un dictionnaire spécifié.
 + (BOOL)executeHTTPMethodForDictionary:(NSDictionary *)dict resourceString:(NSString *)resourceString httpMethod:(NSString *)httpMethod successBlock:(void(^)(NSMutableData *))successBlock_
 {
-    // create NSData from dictionary
-    BOOL success;
-    NSError* error;
-    NSData *requestData = [[NSData alloc] init];
-    requestData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
-    
-    //debug.
-    NSLog(@"res: %@", [[NSString alloc] initWithData:requestData encoding:NSASCIIStringEncoding]);
-    
-    // get server URL as string
-    NSString *urlString = [PTCommon serverURLString];
-    // build URL by adding resource path
-    //urlString = [urlString stringByAppendingString:@"resources/users"];
-    urlString = [urlString stringByAppendingString:resourceString];
-    
-    // convert to NSURL
-    NSURL *url = [NSURL URLWithString:urlString];
-    
-    
-    MWConnectionController* connectionController = [[MWConnectionController alloc] 
-                                                    initWithSuccessBlock:^(NSMutableData *data) {
-                                                        successBlock_(data);
-                                                    }
-                                                    failureBlock:^(NSError *error) {
-                                                        
-                                                    }];
-    
-    
-    NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
-    
-    NSString* requestDataLengthString = [[NSString alloc] initWithFormat:@"%d", [requestData length]];
-    
-    //[urlRequest setHTTPMethod:@"POST"]; // create
-    //[urlRequest setHTTPMethod:@"PUT"]; // update
-    [urlRequest setHTTPMethod:httpMethod];
-    [urlRequest setHTTPBody:requestData];
-    [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [urlRequest setValue:requestDataLengthString forHTTPHeaderField:@"Content-Length"];
-    [urlRequest setTimeoutInterval:30.0];
-    
-    success = [connectionController startRequestForURL:url setRequest:urlRequest];
-    
-    return success;
+    return [self executeHTTPMethodForDictionaryWithFailureBlock:dict resourceString:resourceString httpMethod:httpMethod successBlock:successBlock_ failureBlock:^(NSError *error){}];
 }
 
-// executes the HTTP POST method on a given resource with a given dictionary.
+// exécute une méthode HTTP POST sur une ressource spécifié avec un dictionnaire spécifié. 
 + (BOOL)executePOSTforDictionary:(NSDictionary *)dict resourceString:(NSString *)resourceString successBlock:(void(^)(NSMutableData *))successBlock_ {
     
     return [PTCommon executeHTTPMethodForDictionary:dict resourceString:resourceString httpMethod:@"POST" successBlock:successBlock_];
 }
 
-// 19-03-2012
+// exécute une méthode HTTP POST sur une ressource spécifié avec un dictionnaire spécifié avec failure block en plus. 
 + (BOOL)executePOSTforDictionaryWithBlocks:(NSDictionary *)dict resourceString:(NSString *)resourceString successBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)(NSError *))failureBlock_ {
     
     return [PTCommon executeHTTPMethodForDictionaryWithFailureBlock:dict resourceString:resourceString httpMethod:@"POST" successBlock:successBlock_ failureBlock:failureBlock_];
 }
 
-// executes the HTTP PUT method on a given resource with a given dictionary.
+// exécute une méthode HTTP PUT sur une ressource spécifié avec un dictionnaire spécifié. 
 + (BOOL)executePUTforDictionary:(NSDictionary *)dict resourceString:(NSString *)resourceString {
     
     return [PTCommon executeHTTPMethodForDictionary:dict resourceString:resourceString httpMethod:@"PUT" successBlock:^(NSMutableData *data){}];
 }
 
-// 25-03-2012
+// exécute une méthode HTTP PUT sur une ressource spécifié avec un dictionnaire spécifié avec failure block en plus. 
 + (BOOL)executePUTforDictionaryWithSuccessBlock:(NSDictionary *)dict resourceString:(NSString *)resourceString successBlock:(void(^)(NSMutableData *))successBlock_ {
     
     return [PTCommon executeHTTPMethodForDictionary:dict resourceString:resourceString httpMethod:@"PUT" successBlock:successBlock_];
 }
 
-// 22-01-2012
-// executes the HTTP PUT method on a given resource with a given dictionary.
+// exécute une méthode HTTP PUT sur une ressource spécifié avec un dictionnaire spécifié avec success et failure blocks en plus. 
 + (BOOL)executePUTforDictionaryWithBlocks:(NSDictionary *)dict resourceString:(NSString *)resourceString successBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)(NSError *))failureBlock_
 {
     
     return [PTCommon executeHTTPMethodForDictionaryWithFailureBlock:dict resourceString:resourceString httpMethod:@"PUT" successBlock:successBlock_ failureBlock:failureBlock_];
 }
 
-// 22-01-2012
-// executes a given HTTP method on a given resource with a given dictionary.
+// exécute une méthode HTTP sur une ressource spécifié avec un dictionnaire spécifié avec possibilité de définir des blocks success et failure.
 + (BOOL)executeHTTPMethodForDictionaryWithFailureBlock:(NSDictionary *)dict resourceString:(NSString *)resourceString httpMethod:(NSString *)httpMethod successBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)(NSError *))failureBlock_
 {
-    // create NSData from dictionary
+    // créer NSData à partir du dictionnaire. 
     BOOL success;
     NSError* error;
     NSData *requestData = [[NSData alloc] init];
     requestData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
     
-    // debug.
-    NSLog(@"res: %@", [[NSString alloc] initWithData:requestData encoding:NSASCIIStringEncoding]);
-    
-    // get server URL as string
+    // récupérer URL du serveur.
     NSString *urlString = [PTCommon serverURLString];
-    // build URL by adding resource path
-    //urlString = [urlString stringByAppendingString:@"resources/users"];
+    // construire l'URL en rajoutant le ressource path. 
     urlString = [urlString stringByAppendingString:resourceString];
     
-    // convert to NSURL
+    // convertir en NSURL. 
     NSURL *url = [NSURL URLWithString:urlString];
     
-    
+    // créer nouvau connection controller afin de pouvoir exécuter la requête.
     MWConnectionController* connectionController = [[MWConnectionController alloc] 
                                                     initWithSuccessBlock:^(NSMutableData *data) {
                                                         successBlock_(data);
@@ -196,22 +148,21 @@
     
     NSString* requestDataLengthString = [[NSString alloc] initWithFormat:@"%d", [requestData length]];
     
-    //[urlRequest setHTTPMethod:@"POST"]; // create
-    //[urlRequest setHTTPMethod:@"PUT"]; // update
-    [urlRequest setHTTPMethod:httpMethod];
+    [urlRequest setHTTPMethod:httpMethod]; // PUT, POST, ...
     [urlRequest setHTTPBody:requestData];
     [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [urlRequest setValue:requestDataLengthString forHTTPHeaderField:@"Content-Length"];
     [urlRequest setTimeoutInterval:30.0];
     
+    // exécuter la requête.
     success = [connectionController startRequestForURL:url setRequest:urlRequest];
     
     return success;
 }
 
-#pragma mark JSON
+#pragma mark JSON helper methods. 
 
-// generates a UUID.
+// génère un UUID.
 + (NSString *)GenerateUUID
 {    
     CFUUIDRef   uuid;
@@ -220,7 +171,7 @@
     uuid = CFUUIDCreate( NULL );
     string = CFUUIDCreateString( NULL, uuid );
     
-    // http://www.mikeash.com/pyblog/friday-qa-2011-09-30-automatic-reference-counting.html
+    // source : http://www.mikeash.com/pyblog/friday-qa-2011-09-30-automatic-reference-counting.html
     NSString *uuidString = (__bridge NSString *)string;
     CFRelease(string);
     
