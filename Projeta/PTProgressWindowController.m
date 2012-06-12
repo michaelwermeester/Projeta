@@ -50,11 +50,14 @@
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     
+    // populer la dropdownbox avec les différents statuts.
     [self initStatusArray];
     
+    // charger les états d'avancement. 
     [self loadProgress];
 }
 
+// populer la dropdownbox avec les différents statuts.
 - (void)initStatusArray {
     
     if (task) {
@@ -73,26 +76,22 @@
     }
 }
 
+// Clic sur bouton 'Envoyer'. 
 - (IBAction)sendProgressButtonClicked:(id)sender {
+    
+    BOOL progressUpdSuc = NO;
     
     int selectedIndex = [statusComboBox indexOfSelectedItem];
     
+    // statut.
     if (selectedIndex > -1) {
-    
-        //PTStatus *tmp_status = [statusComboBox itemObjectValueAtIndex:selectedIndex];
-    
         progress.status = [statusComboBox itemObjectValueAtIndex:selectedIndex];
-        
-        //NSLog(@"item: %d", [tmp_status.statusId intValue]);
     }
-    
-    //
-    
-    BOOL progressUpdSuc = NO;
     
     // donner le focus au bouton 'OK'.
     [self.window makeFirstResponder:sendProgressButton];
     
+    // créer l'état d'avanacement dans la base de données. 
     if (task) {
         progressUpdSuc = [PTProgressHelper createProgress:progress forTask:task successBlock:^(NSMutableData *data) { 
             [self finishedCreatingProgress:data];
@@ -108,45 +107,8 @@
     }
 }
 
-
-- (void)finishedCreatingProgress:(NSMutableData*)data {
-    
-    
-    /*NSError *error;
-    
-    NSDictionary *dict = [[NSDictionary alloc] init];
-    dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
-    
-    NSMutableArray *createdCommentArray = [[NSMutableArray alloc] init];*/
-    
-    //NSLog(@"dict: %@", dict);
-    
-    // see Cocoa and Objective-C up and running by Scott Stevenson.
-    // page 242
-    //[createdUserArray addObjectsFromArray:[PTUserHelper setAttributesFromDictionary2:dict]];
-    /*[createdProjectArray addObjectsFromArray:[PTProjectHelper setAttributesFromJSONDictionary:dict]];*/
-    
-    
-    
-    /*[createdCommentArray addObjectsFromArray:[PTCommentHelper setAttributesFromJSONDictionary:dict]];
-    
-    NSLog(@"count: %lu", [createdCommentArray count]);
-    
-    if ([createdCommentArray count] == 1) {
-        
-        for (PTComment *cmt in createdCommentArray) {
-            
-            // remettre textbox à vide.
-            comment.comment = [[NSString alloc] initWithString:@""];
-            
-            // désactiver bouton pour envoyer commentaire.
-            [sendCommentButton setEnabled:NO];
-            
-            // refresh commentaires.
-            [commentWebView reload:self];
-        }
-    }*/
-    
+// exécuté lorsque l'état d'avancement a été créé. 
+- (void)finishedCreatingProgress:(NSMutableData*)data {    
     
     // remettre champs à vide.
     progress.progressComment = [[NSString alloc] initWithString:@""];
@@ -157,16 +119,10 @@
     
     // refresh web view.
     [progressWebView reload:self];
-    
-    // close this window.
-    //[self close];
 }
 
+// charger les états d'avancement. 
 - (void)loadProgress {
-    
-    // éviter un background blanc.
-    //[commentWebView setDrawsBackground:NO];
-    
     
     NSString *progressUrlString;
     
@@ -176,16 +132,14 @@
             progressUrlString = [[NSString alloc] initWithString:@"https://luckycode.be:8181/projeta-website/faces/progressCocoa.xhtml?type=task&id="];
             progressUrlString = [progressUrlString stringByAppendingString:[[task taskId] stringValue]];
         }
-    } else if (project) {
+    } else if (project) {   // pour un projet...
         if (project.projectId) {
             progressUrlString = [[NSString alloc] initWithString:@"https://luckycode.be:8181/projeta-website/faces/progressCocoa.xhtml?type=project&id="];
             progressUrlString = [progressUrlString stringByAppendingString:[[project projectId] stringValue]];
         }
     }
     
-    
-    
-    // convert to NSURL
+    // convertir en NSURL
     NSURL *progressUrl = [NSURL URLWithString:progressUrlString];
     
     NSMutableURLRequest* progressRequest = [NSMutableURLRequest requestWithURL:progressUrl];

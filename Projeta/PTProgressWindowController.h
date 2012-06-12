@@ -43,6 +43,7 @@
 
 - (void)initStatusArray;
 
+// charger les états d'avancement. 
 - (void)loadProgress;
 
 @end

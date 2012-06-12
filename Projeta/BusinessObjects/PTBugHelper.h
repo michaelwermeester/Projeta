@@ -16,7 +16,9 @@
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
 + (NSMutableArray *)setAttributesFromJSONDictionary:(NSDictionary *)aDictionary;
 
+// Crée un nouveau rapport de bogue dans la base de données.
 + (BOOL)createBug:(Bug *)theBug successBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)())failureBlock_ mainWindowController:(id)sender;
+// met à jour un rapport de bogue existant.
 + (BOOL)updateBug:(Bug *)theBug successBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)())failureBlock_ mainWindowController:(id)sender;
 
 @end

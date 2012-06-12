@@ -87,16 +87,6 @@ static NSString *realm = @"ProjetaRealm";
     
     [[self.window contentView] replaceSubview:previousView with:emptyView];
     
-    //NSRect frame = [self.window frame];
-    //frame.origin = newFrame.origin;
-    
-    //NSRect newFrameRect = [self.window frameRectForContentRect:[view frame]];
-    //NSSize newSize = newFrameRect.size;
-    //NSSize newSize = newFrame.size;
-    
-    //frame.size = newSize;
-    
-    //[self.window setFrame:frame display:YES animate:YES];
     [self.window setFrame:newFrame display:YES animate:YES];
     
    

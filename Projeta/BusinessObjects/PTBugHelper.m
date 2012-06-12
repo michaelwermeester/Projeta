@@ -80,109 +80,65 @@
 }
 
 
-// Crée une nouvelle tâche dans la base de données.
+// Crée un nouveau rapport de bogue dans la base de données.
 // mainWindowController parameter is used for animating the main window's progress indicator.
 + (BOOL)createBug:(Bug *)theBug successBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)())failureBlock_ mainWindowController:(id)sender {
     
     BOOL success = NO;
     
     if ([sender isKindOfClass:[MainWindowController class]]) {
-        // start animating the main window's circular progress indicator.
+        // démarrer l'animation du circular progress indicator sur la fenêtre principale.
         [sender startProgressIndicatorAnimation];
     }
 
-    
-    // create dictionary from User object
-    //NSDictionary *dict = [theUser dictionaryWithValuesForKeys:[theUser allKeys]];
-    // update username, first name, last name and email address
+    // créer dictionnaire à partir de l'objet theBug.
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[theBug dictionaryWithValuesForKeys:[theBug createBugKeys]]];
     
-    // créer dictionnaire 'user création'.
+    // créer dictionnaire 'user reported'.
     NSDictionary *userDict = [theBug.userReported dictionaryWithValuesForKeys:[theBug.userReported userIdKey]];
-    // ajouter ce dictionnaire sous la clé 'userCreated'.
+    // ajouter ce dictionnaire sous la clé 'userReported'.
     [dict setObject:userDict forKey:@"userReported"];
     
-    // s'il s'agit d'un sous-projet...
-//    if (theTask.parentTaskId) {
-//        // créer dictionnaire 'parentProjectId'.
-//        Task *parentTask = [[Task alloc] init];
-//        parentTask.taskId = theTask.parentTaskId;
-//        
-//        NSDictionary *parentTaskDict = [parentTask dictionaryWithValuesForKeys:[parentTask taskIdKey]];
-//        // ajouter ce dictionnaire sous la clé 'parentProjectId'.
-//        [dict setObject:parentTaskDict forKey:@"parentTaskId"];
-//    }
-    
-    // Dates début et fin de projet.
-//    if ([theTask stringStartDate])
-//        [dict setObject:[theTask stringStartDate] forKey:@"startDate"];
-//    if ([theTask stringEndDate])
-//        [dict setObject:[theTask stringEndDate] forKey:@"endDate"];
-    
-    // créer dictionnaire 'user création'.
+    // créer dictionnaire 'projectId'.
     NSDictionary *projectDict = [theBug.project dictionaryWithValuesForKeys:[theBug.project projectIdKey]];
-    // ajouter ce dictionnaire sous la clé 'userCreated'.
+    // ajouter ce dictionnaire sous la clé 'projectId'.
     [dict setObject:projectDict forKey:@"projectId"];
-    //[dict setObject:theBug.project.projectIdKey forKey:@"projectId"];
     
     // API resource string.
     NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/bugs/create"];
     
-    // execute the PUT method on the webservice to update the record in the database.
-    //success = [PTCommon executePOSTforDictionary:dict resourceString:resourceString successBlock:successBlock_];
+    // exécuter la méthode POST sur le web-service pour créer l'enregistrement dans la base de données. 
     [PTCommon executePOSTforDictionaryWithBlocks:dict resourceString:resourceString successBlock:successBlock_ failureBlock:failureBlock_];
     
     if ([sender isKindOfClass:[MainWindowController class]]) {
-        // stop animating the main window's circular progress indicator.
+        // arrêter l'animation du circular progress indicator sur la fenêtre principale.
         [sender stopProgressIndicatorAnimation];
     }
     
     return success;
 }
 
-
+// met à jour un rapport de bogue existant. 
 + (BOOL)updateBug:(Bug *)theBug successBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)())failureBlock_ mainWindowController:(id)sender {
     
     BOOL success = NO;
     
     if ([sender isKindOfClass:[MainWindowController class]]) {
-        // start animating the main window's circular progress indicator.
+        // démarrer l'animation du circular progress indicator sur la fenêtre principale.
         [sender startProgressIndicatorAnimation];
     }
     
-    // create dictionary from User object
-    //NSDictionary *dict = [theUser dictionaryWithValuesForKeys:[theUser allKeys]];
-    // update username, first name, last name and email address
+    // créer dictionnaire à partir de l'objet theBug.
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[theBug dictionaryWithValuesForKeys:[theBug updateBugKeys]]];
-    
-    
-    // s'il s'agit d'un sous-projet...
-    /*if (theProject.parentProjectId) {
-     // créer dictionnaire 'parentProjectId'.
-     Project *parentProject = [[Project alloc] init];
-     parentProject.projectId = theProject.parentProjectId;
-     
-     NSDictionary *parentProjectDict = [parentProject dictionaryWithValuesForKeys:[parentProject projectIdKey]];
-     // ajouter ce dictionnaire sous la clé 'parentProjectId'.
-     [dict setObject:parentProjectDict forKey:@"parentProjectId"];
-     }*/
-    
-    // Dates début et fin de projet.
-    //if ([theTask stringStartDate])
-    //    [dict setObject:[theTask stringStartDate] forKey:@"startDate"];
-    //if ([theTask stringEndDate])
-    //    [dict setObject:[theTask stringEndDate] forKey:@"endDate"];
-    
     
     // API resource string.
     NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/bugs/update"];
     
-    // execute the PUT method on the webservice to update the record in the database.
-    //success = [PTCommon executePUTforDictionaryWithSuccessBlock:dict resourceString:resourceString successBlock:successBlock_];
+    // exécuter la méthode PUT sur le web-service pour mettre à jour l'enregistrement dans la base de données. 
     success = [PTCommon executePUTforDictionaryWithBlocks:dict resourceString:resourceString successBlock:successBlock_ failureBlock:failureBlock_];
     
     if ([sender isKindOfClass:[MainWindowController class]]) {
-        // stop animating the main window's circular progress indicator.
+        // arrêter l'animation du circular progress indicator sur la fenêtre principale.
         [sender stopProgressIndicatorAnimation];
     }
     

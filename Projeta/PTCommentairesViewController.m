@@ -57,32 +57,6 @@
 }
 
 - (void)viewDidLoad {
-    /*// get server URL as string
-    NSString *urlString = [PTCommon serverURLString];
-    // build URL by adding resource path
-    
-    urlString = [urlString stringByAppendingString:@"resources/comments/task/2"];
-    
-    // convert to NSURL
-    NSURL *url = [NSURL URLWithString:urlString];
-    
-    // NSURLConnection - MWConnectionController
-    MWConnectionController* connectionController = [[MWConnectionController alloc] 
-                                                    initWithSuccessBlock:^(NSMutableData *data) {
-                                                        [self requestFinished:data];
-                                                    }
-                                                    failureBlock:^(NSError *error) {
-                                                        [self requestFailed:error];
-                                                    }];
-    
-    
-    NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
-    
-    // start animating the main window's circular progress indicator.
-    //[mainWindowController startProgressIndicatorAnimation];
-    
-    [connectionController startRequestForURL:url setRequest:urlRequest];
-    */
     
     // charger commentaires.
     [self loadComments];
@@ -98,20 +72,10 @@
 
 - (void)loadBackground {
     
-    
-    
-    /*NSString* filePath = [[NSBundle mainBundle] pathForResource:@"background" 
-                                                         ofType:@"html"];
-    NSURL* fileURL = [NSURL fileURLWithPath:filePath];
-    NSURLRequest* request = [NSURLRequest requestWithURL:fileURL];
-    [[commentWebView mainFrame] loadRequest:request];*/
 }
 
+// charger les commentaires.
 - (void)loadComments {
-    
-    // éviter un background blanc.
-    //[commentWebView setDrawsBackground:NO];
-    
     
     NSString *commentUrlString;
     
@@ -121,16 +85,17 @@
             commentUrlString = [[NSString alloc] initWithString:@"https://luckycode.be:8181/projeta-website/faces/commentsCocoa.xhtml?type=task&id="];
             commentUrlString = [commentUrlString stringByAppendingString:[[task taskId] stringValue]];
         }
-    } else if (project) {
+    } else if (project) {   // afficher commentaires pour projet.
         if (project.projectId) {
             commentUrlString = [[NSString alloc] initWithString:@"https://luckycode.be:8181/projeta-website/faces/commentsCocoa.xhtml?type=project&id="];
             commentUrlString = [commentUrlString stringByAppendingString:[[project projectId] stringValue]];
         }
+    } else if (bug) {   // afficher commentaires pour bogue.
+        commentUrlString = [[NSString alloc] initWithString:@"https://luckycode.be:8181/projeta-website/faces/commentsCocoa.xhtml?type=bug&id="];
+        commentUrlString = [commentUrlString stringByAppendingString:[[bug bugId] stringValue]];
     }
     
-    
-    
-    // convert to NSURL
+    // convertir en NSURL
     NSURL *commentUrl = [NSURL URLWithString:commentUrlString];
     
     NSMutableURLRequest* commentRequest = [NSMutableURLRequest requestWithURL:commentUrl];
@@ -139,50 +104,7 @@
     [[commentWebView mainFrame] loadRequest:commentRequest];
 }
 
-/*
-// NSURLConnection
-- (void)requestFinished:(NSMutableData*)data
-{
-    // http://stackoverflow.com/questions/5037545/nsurlconnection-and-grand-central-dispatch
-    
-    //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-    
-    NSError *error;
-    
-    // Use when fetching text data
-    //NSString *responseString = [request responseString];
-    //NSLog(@"response: %@", responseString);
-    //NSDictionary *dict = [[NSDictionary alloc] init];
-    NSDictionary *dict = [[NSDictionary alloc] init];
-    dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
-    //NSLog(@"DESC: %@", [dict description]);
-    
-    // see Cocoa and Objective-C up and running by Scott Stevenson.
-    // page 242
-    
-    //});    
-    
-    
-    //dispatch_async(dispatch_get_main_queue(), ^{
-    
-    [[self mutableArrayValueForKey:@"arrComment"] addObjectsFromArray:[PTCommentHelper setAttributesFromJSONDictionary:dict]];
-    
-    //NSLog(@"count: %lu", [arrComment count]);
-    
-    // stop animating the main window's circular progress indicator.
-    //[mainWindowController stopProgressIndicatorAnimation];
-    //});
-    //});
-}
-
-- (void)requestFailed:(NSError*)error
-{
-    // stop animating the main window's circular progress indicator.
-    //[mainWindowController stopProgressIndicatorAnimation];
-    
-    NSLog(@"Failed %@ with code %ld and with userInfo %@",[error domain],[error code],[error userInfo]);
-}*/
-
+// bouton 'Envoyer' cliqué.
 - (IBAction)sendCommentButtonClicked:(id)sender {
     
     BOOL commentUpdSuc = NO;
@@ -191,14 +113,12 @@
     if (parentWindowController)
         [parentWindowController.window makeFirstResponder:sendCommentButton];
     else if (mainWindowController)
-        [mainWindowController.window makeFirstResponder:sendCommentButton];
+        [mainWindowController.window makeFirstResponder:sendCommentButton];    
     
-    // créer une nouvelle tâche.
-    
-    
-    // user created.
+    // utilisateur émetteur.
     comment.userCreated = mainWindowController.loggedInUser;
     
+    // envoyer le commentaire et l'enregistrer dans la base de données. 
     if (task) {
         commentUpdSuc = [PTCommentHelper createComment:comment forTask:task successBlock:^(NSMutableData *data) { 
             [self finishedCreatingComment:data];
@@ -215,25 +135,19 @@
     }
 }
 
+// exécuté lorsque le commentaire a été envoyé. 
 - (void)finishedCreatingComment:(NSMutableData*)data {
-    
     
     NSError *error;
     
+    // Créer un dictionnaire à partir des données reçus. 
     NSDictionary *dict = [[NSDictionary alloc] init];
     dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
     
+    // ajouter commentaire reçu dans un array.
     NSMutableArray *createdCommentArray = [[NSMutableArray alloc] init];
-    
-    //NSLog(@"dict: %@", dict);
-    
-    // see Cocoa and Objective-C up and running by Scott Stevenson.
-    // page 242
-    //[createdUserArray addObjectsFromArray:[PTUserHelper setAttributesFromDictionary2:dict]];
-    /*[createdProjectArray addObjectsFromArray:[PTProjectHelper setAttributesFromJSONDictionary:dict]];*/
     [createdCommentArray addObjectsFromArray:[PTCommentHelper setAttributesFromJSONDictionary:dict]];
     
-    NSLog(@"count: %lu", [createdCommentArray count]);
     
     if ([createdCommentArray count] == 1) {
         
@@ -250,10 +164,9 @@
         }
     }
     
-    // close this window.
-    //[self close];
 }
 
+// activer/désactiver le bouton 'Envoyer' selon le contenu de la textbox. 
 - (void)textDidChange:(NSNotification *)aNotification
 {
     // username NSTextField

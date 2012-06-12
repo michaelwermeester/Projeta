@@ -49,29 +49,6 @@
         return;
     }
     
-    // dates
-    //self.dateCreated = [PTCommon webserviceStringToDate:[aDictionary objectForKey:@"dateCreated"]];
-    //self.endDate = [PTCommon webserviceStringToDate:[aDictionary objectForKey:@"endDate"]];
-    //self.startDate = [PTCommon webserviceStringToDate:[aDictionary objectForKey:@"startDate"]];
-    
-    /*NSDateFormatter *df = [[NSDateFormatter alloc] init];
-     NSLocale *enUSPOSIXLocale;
-     enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-     [df setLocale:enUSPOSIXLocale];
-     [df setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ssZ'"];
-     [df setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-     
-     NSString *dateCreatedString = [aDictionary objectForKey:@"dateCreated"];
-     if (dateCreatedString && ![dateCreatedString isKindOfClass:[NSNull class]]) {
-     self.dateCreated = [df dateFromString:dateCreatedString];
-     }*/
-    
-   /* @synthesize bugCategory;
-    @synthesize priority;
-    @synthesize project;
-*/
-    
-    
     self.dateReported = [PTCommon dateFromJSONString:[aDictionary objectForKey:@"dateReported"]];
     
     self.canceled = [(NSString *)[aDictionary objectForKey:@"canceled"] boolValue];
@@ -100,29 +77,6 @@
     
     if ([[aDictionary objectForKey:@"bugCategory"] isKindOfClass:[NSNull class]] == NO)
         self.bugCategory = [BugCategory instanceFromDictionary:[aDictionary objectForKey:@"bugCategory"]];
-    
-    /*if ([[aDictionary objectForKey:@"parentProjectId"] isKindOfClass:[NSArray class]] == NO) {
-        self.parentProjectId = [NSDecimalNumber decimalNumberWithString:(NSString *)[aDictionary objectForKey:@"parentProjectId"]];
-    }
-    
-    
-    // child projects
-    if ([[aDictionary objectForKey:@"childProject"] isKindOfClass:[NSArray class]]) {
-        
-        NSArray *tmpChildProjects = [aDictionary objectForKey:@"childProject"];
-        if (tmpChildProjects) {
-            
-            NSMutableArray *parsedProjects = [NSMutableArray arrayWithCapacity:[tmpChildProjects count]];
-            
-            for (id item in tmpChildProjects) {
-                if ([item isKindOfClass:[NSDictionary class]]) {
-                    [parsedProjects addObject:[Project instanceFromDictionary:item]];
-                }
-            }
-            
-            childProject = parsedProjects;
-        }
-    }*/
     
 }
 
@@ -156,8 +110,6 @@
 
 - (NSArray *)createBugKeys
 {
-    //NSArray *retArr = [[NSArray alloc] initWithObjects: @"projectTitle", @"projectDescription", @"endDate", @"endDateReal", @"flagPublic", @"completed", @"parentProjectId", @"startDate", @"startDateReal", @"userCreated", nil];
-    //NSArray *retArr = [[NSArray alloc] initWithObjects: @"projectTitle", @"projectDescription", @"flagPublic", nil];
     NSArray *retArr = [[NSArray alloc] initWithObjects: @"title", @"details", @"fixed", nil];
     
     return retArr;
@@ -165,8 +117,6 @@
 
 - (NSArray *)updateBugKeys
 {
-    //NSArray *retArr = [[NSArray alloc] initWithObjects: @"projectTitle", @"projectDescription", @"endDate", @"endDateReal", @"flagPublic", @"completed", @"parentProjectId", @"startDate", @"startDateReal", @"userCreated", nil];
-    //NSArray *retArr = [[NSArray alloc] initWithObjects: @"projectTitle", @"projectDescription", @"flagPublic", nil];
     NSArray *retArr = [[NSArray alloc] initWithObjects: @"bugId", @"title", @"details", @"fixed", nil];
     
     return retArr;

@@ -25,9 +25,7 @@
 - (id)init
 {
     self = [super initWithWindowNibName:@"PTCommentairesWindow"];
-    //self = [super initWithWindow:window];
     if (self) {
-        // Initialization code here.
         
     }
     
@@ -53,7 +51,7 @@
     
     [self.commentsView addSubview:commentViewController.view];
     
-    // auto resize the view.
+    // auto resize view.
     [commentViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
 }
 

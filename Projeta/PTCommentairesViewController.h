@@ -39,8 +39,11 @@
 @property (weak) IBOutlet WebView *commentWebView;
 @property (unsafe_unretained) IBOutlet NSTextView *commentTextView;
 @property (weak) IBOutlet NSButton *sendCommentButton;
+
+// bouton 'Envoyer' cliqué.
 - (IBAction)sendCommentButtonClicked:(id)sender;
 
+// charger les commentaires.
 - (void)loadComments;
 
 @end

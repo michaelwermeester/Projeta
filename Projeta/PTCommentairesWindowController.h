@@ -16,7 +16,6 @@
 
 @interface PTCommentairesWindowController : NSWindowController {
     __weak NSView *commentsView;
-    
 }
 
 @property (strong) Bug *bug;
