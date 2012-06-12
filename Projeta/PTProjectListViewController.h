@@ -31,6 +31,8 @@
     //PTCommentairesWindowController *commentWindowController;
     // fenêtre avancement.
     PTProgressWindowController *progressWindowController;
+    
+    NSMutableArray *arrDevelopers;
 }
 
 @property (strong) NSMutableArray *arrPrj;
@@ -43,6 +45,8 @@
 @property (weak) IBOutlet NSOutlineView *prjOutlineView;
 @property (weak) IBOutlet NSMenuItem *addSubProjectButton;
 @property (weak) IBOutlet NSComboBox *clientComboBox;
+
+@property (strong) NSMutableArray *arrDevelopers;
 
 @property (strong) NSString *nibFileName;
 

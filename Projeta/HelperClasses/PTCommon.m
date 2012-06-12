@@ -11,20 +11,22 @@
 
 @implementation PTCommon
 
-// loads server URL from preferences file and returns it as NSURL
+// charge l'URL serveur à partir du fichier de préférences/configuration
+// et le retourne comme NSURL. 
 + (NSURL*)serverURL
 {
-    // load user defaults from preferences file
+    // charger les 'user defaults' à partir du fichier de configuration.
     NSString *strURL = [[NSUserDefaults standardUserDefaults] objectForKey:@"ServerURL"];
     
-    // return URL
+    // retourner l'URL serveur. 
     return [NSURL URLWithString:[strURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 }
 
-// loads server URL from preferences file and returns it as NSString
+// charge l'URL serveur à partir du fichier de préférences/configuration
+// et le retourne comme NSString. 
 + (NSString*)serverURLString
 {
-    // load user defaults from preferences file
+    // charger les 'user defaults' à partir du fichier de configuration.
     return [[NSUserDefaults standardUserDefaults] objectForKey:@"ServerURL"];
 }
 
@@ -48,7 +50,7 @@
     return nil;
 }
 
-// retourne un string pour envoyé au webservice à partir d'une date.
+// retourne un string qui peut être envoyé au webservice à partir d'une date.
 + (NSString*)stringJSONFromDate:(NSDate *)aDate {
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -56,8 +58,6 @@
     enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
     [formatter setLocale:enUSPOSIXLocale];
     [formatter setDateFormat:@"yyyy'-'MM'-'dd"];
-    
-    //[formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
     
     NSString *stringFromDate = [formatter stringFromDate:aDate];
     
@@ -72,8 +72,6 @@
     enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
     [formatter setLocale:enUSPOSIXLocale];
     [formatter setDateFormat:@"dd'-'MM'-'yyyy"];
-    
-    //[formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
     
     NSString *stringFromDate = [formatter stringFromDate:aDate];
     

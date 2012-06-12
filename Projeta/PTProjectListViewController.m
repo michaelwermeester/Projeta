@@ -16,6 +16,7 @@
 #import "PTProjectHelper.h"
 #import "PTProjectDetailsWindowController.h"
 #import "PTCommentairesWindowController.h"
+#import "PTUserHelper.h"
 
 PTCommentairesWindowController *commentWindowController;
 
@@ -36,18 +37,25 @@ PTCommentairesWindowController *commentWindowController;
 
 @synthesize nibFileName;
 
+@synthesize arrDevelopers;
+
 @synthesize projectURL;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     //self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     //self = [super initWithNibName:@"PTProjectListView" bundle:nibBundleOrNil];
+    nibFileName = nibNameOrNil;
+    
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Initialization code here.
         
         // Initialize the array which holds the list of projects 
         arrPrj = [[NSMutableArray alloc] init];
+        
+        // Initialization code here.
+        arrDevelopers = [[NSMutableArray alloc] init];
     }
     
     return self;
@@ -63,6 +71,11 @@ PTCommentairesWindowController *commentWindowController;
     } else {
         urlString = [urlString stringByAppendingString:@"resources/projects/"];
     }
+    
+    if ([nibFileName isEqualToString:@"PTProjectListViewDeveloper"]) {
+        [self fetchDevelopersFromWebservice];
+    }
+    
     
     // convert to NSURL
     NSURL *url = [NSURL URLWithString:urlString];
@@ -457,6 +470,27 @@ PTCommentairesWindowController *commentWindowController;
     } else {
         [addSubProjectButton setEnabled:YES];
     }
+}
+
+
+// charger la liste des développeurs à partir du webservice et les mettre dans la combobox.
+- (void)fetchDevelopersFromWebservice
+{
+    // get developers from webservice.
+    [PTUserHelper developers:^(NSMutableArray *developers) {
+        
+        // sort descriptors for array.
+        NSSortDescriptor *firstDescriptor = [[NSSortDescriptor alloc] initWithKey:@"fullNameAndUsername"
+                                                                        ascending:YES];
+        NSArray *sortDescriptors = [NSArray arrayWithObjects:firstDescriptor, nil];
+        
+        // sort array and affect fetched array to local array.
+        [[self mutableArrayValueForKey:@"arrDevelopers"] addObjectsFromArray:[developers sortedArrayUsingDescriptors:sortDescriptors]];
+        
+        }
+                failureBlock:^(NSError *error) {
+                    
+                }];
 }
 
 
