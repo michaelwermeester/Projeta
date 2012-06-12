@@ -20,6 +20,7 @@
     }
 }
 
+// retourne la valeur (date ou string vide).
 - (BOOL)getObjectValue:(out id *)obj forString:(NSString *)string range:(inout NSRange *)rangep error:(out NSError **)error {
     
     if ((string == nil) || [[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualTo:@""]) {

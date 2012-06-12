@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+// sous-classer NSDateFormatter
 @interface MWDateFormatter : NSDateFormatter
 
 @end

@@ -50,20 +50,6 @@
     return nil;
 }
 
-// retourne un string qui peut être envoyé au webservice à partir d'une date.
-+ (NSString*)stringJSONFromDate:(NSDate *)aDate {
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    NSLocale *enUSPOSIXLocale;
-    enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-    [formatter setLocale:enUSPOSIXLocale];
-    [formatter setDateFormat:@"yyyy'-'MM'-'dd"];
-    
-    NSString *stringFromDate = [formatter stringFromDate:aDate];
-    
-    return stringFromDate;
-}
-
 // retourne un string à partir d'une date.
 + (NSString*)stringFromDate:(NSDate *)aDate {
     
@@ -78,43 +64,26 @@
     return stringFromDate;
 }
 
+// retourne un string qui peut être envoyé au webservice à partir d'une date.
++ (NSString*)stringJSONFromDate:(NSDate *)aDate {
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSLocale *enUSPOSIXLocale;
+    enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+    [formatter setLocale:enUSPOSIXLocale];
+    [formatter setDateFormat:@"yyyy'-'MM'-'dd"];
+    
+    NSString *stringFromDate = [formatter stringFromDate:aDate];
+    
+    return stringFromDate;
+}
+
 #pragma mark Web service methods
 
 // exécute une méthode HTTP spécifié sur une ressource spécifié avec un dictionnaire spécifié.
 + (BOOL)executeHTTPMethodForDictionary:(NSDictionary *)dict resourceString:(NSString *)resourceString httpMethod:(NSString *)httpMethod successBlock:(void(^)(NSMutableData *))successBlock_
 {
     return [self executeHTTPMethodForDictionaryWithFailureBlock:dict resourceString:resourceString httpMethod:httpMethod successBlock:successBlock_ failureBlock:^(NSError *error){}];
-}
-
-// exécute une méthode HTTP POST sur une ressource spécifié avec un dictionnaire spécifié. 
-+ (BOOL)executePOSTforDictionary:(NSDictionary *)dict resourceString:(NSString *)resourceString successBlock:(void(^)(NSMutableData *))successBlock_ {
-    
-    return [PTCommon executeHTTPMethodForDictionary:dict resourceString:resourceString httpMethod:@"POST" successBlock:successBlock_];
-}
-
-// exécute une méthode HTTP POST sur une ressource spécifié avec un dictionnaire spécifié avec failure block en plus. 
-+ (BOOL)executePOSTforDictionaryWithBlocks:(NSDictionary *)dict resourceString:(NSString *)resourceString successBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)(NSError *))failureBlock_ {
-    
-    return [PTCommon executeHTTPMethodForDictionaryWithFailureBlock:dict resourceString:resourceString httpMethod:@"POST" successBlock:successBlock_ failureBlock:failureBlock_];
-}
-
-// exécute une méthode HTTP PUT sur une ressource spécifié avec un dictionnaire spécifié. 
-+ (BOOL)executePUTforDictionary:(NSDictionary *)dict resourceString:(NSString *)resourceString {
-    
-    return [PTCommon executeHTTPMethodForDictionary:dict resourceString:resourceString httpMethod:@"PUT" successBlock:^(NSMutableData *data){}];
-}
-
-// exécute une méthode HTTP PUT sur une ressource spécifié avec un dictionnaire spécifié avec failure block en plus. 
-+ (BOOL)executePUTforDictionaryWithSuccessBlock:(NSDictionary *)dict resourceString:(NSString *)resourceString successBlock:(void(^)(NSMutableData *))successBlock_ {
-    
-    return [PTCommon executeHTTPMethodForDictionary:dict resourceString:resourceString httpMethod:@"PUT" successBlock:successBlock_];
-}
-
-// exécute une méthode HTTP PUT sur une ressource spécifié avec un dictionnaire spécifié avec success et failure blocks en plus. 
-+ (BOOL)executePUTforDictionaryWithBlocks:(NSDictionary *)dict resourceString:(NSString *)resourceString successBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)(NSError *))failureBlock_
-{
-    
-    return [PTCommon executeHTTPMethodForDictionaryWithFailureBlock:dict resourceString:resourceString httpMethod:@"PUT" successBlock:successBlock_ failureBlock:failureBlock_];
 }
 
 // exécute une méthode HTTP sur une ressource spécifié avec un dictionnaire spécifié avec possibilité de définir des blocks success et failure.
@@ -158,6 +127,37 @@
     success = [connectionController startRequestForURL:url setRequest:urlRequest];
     
     return success;
+}
+
+// exécute une méthode HTTP POST sur une ressource spécifié avec un dictionnaire spécifié. 
++ (BOOL)executePOSTforDictionary:(NSDictionary *)dict resourceString:(NSString *)resourceString successBlock:(void(^)(NSMutableData *))successBlock_ {
+    
+    return [PTCommon executeHTTPMethodForDictionary:dict resourceString:resourceString httpMethod:@"POST" successBlock:successBlock_];
+}
+
+// exécute une méthode HTTP POST sur une ressource spécifié avec un dictionnaire spécifié avec failure block en plus. 
++ (BOOL)executePOSTforDictionaryWithBlocks:(NSDictionary *)dict resourceString:(NSString *)resourceString successBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)(NSError *))failureBlock_ {
+    
+    return [PTCommon executeHTTPMethodForDictionaryWithFailureBlock:dict resourceString:resourceString httpMethod:@"POST" successBlock:successBlock_ failureBlock:failureBlock_];
+}
+
+// exécute une méthode HTTP PUT sur une ressource spécifié avec un dictionnaire spécifié. 
++ (BOOL)executePUTforDictionary:(NSDictionary *)dict resourceString:(NSString *)resourceString {
+    
+    return [PTCommon executeHTTPMethodForDictionary:dict resourceString:resourceString httpMethod:@"PUT" successBlock:^(NSMutableData *data){}];
+}
+
+// exécute une méthode HTTP PUT sur une ressource spécifié avec un dictionnaire spécifié avec success et failure blocks en plus. 
++ (BOOL)executePUTforDictionaryWithBlocks:(NSDictionary *)dict resourceString:(NSString *)resourceString successBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)(NSError *))failureBlock_
+{
+    
+    return [PTCommon executeHTTPMethodForDictionaryWithFailureBlock:dict resourceString:resourceString httpMethod:@"PUT" successBlock:successBlock_ failureBlock:failureBlock_];
+}
+
+// exécute une méthode HTTP PUT sur une ressource spécifié avec un dictionnaire spécifié avec failure block en plus. 
++ (BOOL)executePUTforDictionaryWithSuccessBlock:(NSDictionary *)dict resourceString:(NSString *)resourceString successBlock:(void(^)(NSMutableData *))successBlock_ {
+    
+    return [PTCommon executeHTTPMethodForDictionary:dict resourceString:resourceString httpMethod:@"PUT" successBlock:successBlock_];
 }
 
 #pragma mark JSON helper methods. 

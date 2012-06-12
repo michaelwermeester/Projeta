@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
+// Catégorie pour la classe NSDate.
 @interface NSDate (MWExtensions)
 
 // retourne le nombre de jours entre 2 dates.
