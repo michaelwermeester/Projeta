@@ -22,10 +22,10 @@ PTCommentairesWindowController *commentWindowController;
 
 @implementation PTProjectListViewController
 
-// true si on crée un nouveau projet.
-//BOOL isNewProject = false;
-
-@synthesize arrPrj;
+// array qui contient les projets.
+@synthesize arrPrj; 
+// array qui contient les développeurs/responsables. 
+@synthesize arrDevelopers;
 @synthesize mainWindowController;
 @synthesize prjTabView;
 @synthesize prjOutlineView;
@@ -35,26 +35,24 @@ PTCommentairesWindowController *commentWindowController;
 @synthesize prjArrayCtrl;
 @synthesize prjCollectionView;
 
+// nom de la nib file. 
 @synthesize nibFileName;
 
-@synthesize arrDevelopers;
-
+// URL à utiliser.
 @synthesize projectURL;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    //self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    //self = [super initWithNibName:@"PTProjectListView" bundle:nibBundleOrNil];
+    // mémoriser le nom de la nib file. 
     nibFileName = nibNameOrNil;
     
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Initialization code here.
         
-        // Initialize the array which holds the list of projects 
+        // Initialise l'array qui contient les projets. 
         arrPrj = [[NSMutableArray alloc] init];
         
-        // Initialization code here.
+        // Initialise l'array qui contient les développeurs/responsables. 
         arrDevelopers = [[NSMutableArray alloc] init];
     }
     
@@ -63,24 +61,22 @@ PTCommentairesWindowController *commentWindowController;
 
 - (void)viewDidLoad {
     
-    // get server URL as string
+    // get URL du serveur. 
     NSString *urlString = [PTCommon serverURLString];
-    // build URL by adding resource path
+    // construire l'URL en rajoutant le ressource path. 
     if (projectURL) {
         urlString = [urlString stringByAppendingString:projectURL];
     } else {
         urlString = [urlString stringByAppendingString:@"resources/projects/"];
     }
     
+    // charger la liste des développeurs/responsables si nécessaire. 
     if ([nibFileName isEqualToString:@"PTProjectListViewDeveloper"]) {
         [self fetchDevelopersFromWebservice];
     }
-    
-    
-    // convert to NSURL
+
+    // convertir en NSURL
     NSURL *url = [NSURL URLWithString:urlString];
-    
-    //NSURL *url = [NSURL URLWithString:@"https://luckycode.be:8181/projeta-webservice/resources/projects/public"];
     
     // NSURLConnection - MWConnectionController
     // instantier et passer les blocks avec les méthodes à exécuter. 
@@ -95,9 +91,7 @@ PTCommentairesWindowController *commentWindowController;
     // créer l'URLRequest à partir de l'URL. 
     NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
     
-    //[urlRequest setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
-    
-    // start animating the main window's circular progress indicator.
+    // démarrer l'animation du circular progress indicator sur la fenêtre principale. 
     [mainWindowController startProgressIndicatorAnimation];
     
     // lancer la requête. 
@@ -109,7 +103,7 @@ PTCommentairesWindowController *commentWindowController;
     // désactiver le bouton 'vue projet'.
     [[mainWindowController detailViewToolbarItem] setEnabled:YES];
     
-    // bind the main window's search field to the arraycontroller.
+    // binder le champ de recherche de la fenêtre principale à l'arraycontroller.
     [[mainWindowController searchField] bind:@"predicate" toObject:prjArrayCtrl withKeyPath:@"filterPredicate" options:
      [NSDictionary dictionaryWithObjectsAndKeys:
       @"predicate", NSDisplayNameBindingOption,
@@ -140,71 +134,30 @@ PTCommentairesWindowController *commentWindowController;
     // Créer un array d'objets Projet à partir du dictionnaire et les assigner au array arrPrj.
     [[self mutableArrayValueForKey:@"arrPrj"] addObjectsFromArray:[PTProjectHelper setAttributesFromJSONDictionary:dict]];
     
-    // stop animating the main window's circular progress indicator.
+    // arrêter l'animation du circular progress indicator sur la fenêtre principale.
     [mainWindowController stopProgressIndicatorAnimation];
 }
-    
-//    // Use when fetching text data
-//    //NSString *responseString = [request responseString];
-//    //NSLog(@"response: %@", responseString);
-//    //NSDictionary *dict = [[NSDictionary alloc] init];
-//    NSDictionary *dict = [[NSDictionary alloc] init];
-//    dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
-//    
-//    //NSLog(@"DESC: %@", [dict description]);
-//    
-//    // see Cocoa and Objective-C up and running by Scott Stevenson.
-//    // page 242
-//    [[self mutableArrayValueForKey:@"arrPrj"] addObjectsFromArray:[PTProjectHelper setAttributesFromJSONDictionary:dict]];
-//    
-//    // stop animating the main window's circular progress indicator.
-//    [mainWindowController stopProgressIndicatorAnimation];
-//    
-//    for (Project *p in arrPrj)
-//    {
-//        NSLog(@"ID: %@", p.projectId);
-//        NSLog(@"Title: %@", p.projectTitle);
-//        NSLog(@"Description: %@", p.projectDescription);
-//        //NSLog(@"User: %@",[[p userCreated] objectForKey:@"username"]);
-//        NSLog(@"User: %@", p.userCreated.username);
-//        NSLog(@"Date: %@", p.dateCreated);
-//    }
-//    
-//    NSLog(@"%lu", [arrPrj count]);
-//    
-//    //[prjArrayCtrl addObjects:[PTProjectHelper setAttributesFromJSONDictionary:dict]];
-//    
-//    // add a new user programmatically
-//    /*
-//     User *user = [[User alloc] init];
-//     user.username = @"test";
-//     [arrayCtrl addObject:user];
-//     */
-//}
 
 - (void)requestFailed:(NSError*)error
 {
-    // stop animating the main window's circular progress indicator.
+    // arrêter l'animation du circular progress indicator sur la fenêtre principale. 
     [mainWindowController stopProgressIndicatorAnimation];
-    
-    NSLog(@"Failed %@ with code %ld and with userInfo %@", [error domain], [error code], [error userInfo]);
 }
 
+// Bouton 'ajouter un projet' cliqué...
 - (IBAction)addNewProjectButtonClicked:(id)sender {
     
+    // id du projet parent. 
     NSNumber *parentID;
     
+    // le projet sélectionné
     NSArray *selectedObjects = [prjTreeController selectedObjects];
     
-    // if a project is selected, open the window to show its details.
+    // si un projet a été sélectionné...
     if ([selectedObjects count] == 1) {
-        //parentID = [[selectedObjects objectAtIndex:0] projectId];
-        //parentID = [[selectedObjects objectAtIndex:0] parentProjectId];
-        
-        //[prjTreeController add:prj];
-
+        // instancier nouveau projet. 
         Project *prj = [[Project alloc] init];
-        // set current date.
+        // date actuelle. 
         prj.startDate = [NSDate date];
         prj.endDate = [NSDate date];
         
@@ -212,14 +165,6 @@ PTCommentairesWindowController *commentWindowController;
         NSTreeNode *parent = [[[[prjTreeController selectedNodes] objectAtIndex:0] parentNode] parentNode];
         NSMutableArray *parentProjects = [[parent representedObject] mutableArrayValueForKeyPath:
                                    [prjTreeController childrenKeyPathForNode:parent]];
-        //NSLog(@"test: %@", [[[[prjTreeController selectedNodes] objectAtIndex:] parent] projectTitle]); 
-        
-        //[prjTreeController 
-        //parentrowforrow
-        
-        //NSLog(@"test: %@", [[objects objectAtIndex:0] projectTitle]);
-        //int line = [prjOutlineView selectedRow];
-        //NSLog(@"test: %@", [[parentProjects objectAtIndex:line] projectTitle]);
         
         // get projectid du projet parent. 
         for (Project *p in parentProjects)
@@ -227,26 +172,19 @@ PTCommentairesWindowController *commentWindowController;
             if ([p.childProject containsObject:[selectedObjects objectAtIndex:0]])
             {
                 parentID = p.projectId;
-                
-                //NSLog(@"TEST: %d", [[p projectId] intValue]);
-                
                 break;
             }
         }
-        
-        //NSLog(@"test: %@", [[parent representedObject] projectTitle]);
-        
-        //prj.parentProjectId = parentID;
-        //prj.parentProjectId = p.projectId;
+
+        // s'il y a un projet parent, mémoriser son id.
         if (parentID != nil){
             prj.parentProjectId = parentID;
         }
         
-        //NSLog(@"parentprojectid: %@", p.projectTitle);
-    
-        //[prjTreeController add:prj];
+        // indexpath du projet sélectionnée.
         NSIndexPath *indexPath = [prjTreeController selectionIndexPath];
-        //NSLog(@"indexpath: %@", indexPath);
+        
+        // ajouter le projet dans l'outlineview en passant par le tree controller.
         if ([indexPath length] > 1) {
             [prjTreeController insertObject:prj atArrangedObjectIndexPath:indexPath];
         } else {
@@ -259,33 +197,37 @@ PTCommentairesWindowController *commentWindowController;
         }
     }
 
-    // il s'agit d'un nouveau projet.
-    //isNewProject = true;
-    
+    // ouvrir fenêtre qui permet à l'utilisateur d'encoder les détails.
     [self openProjectDetailsWindow:YES isSubProject:NO];
 }
 
+// bouton 'Nouveau sous-projet' cliqué.
+// ajoute un nouveau sous-projet dans l'outline view et ouvre la fenêtre pour encoder les détails. 
 - (IBAction)addNewSubProjectButtonClicked:(id)sender {
     
-    
+    // id du projet parent. 
     NSNumber *parentID;
     
+    // le projet sélectionné
     NSArray *selectedObjects = [prjTreeController selectedObjects];
     
-    // if a project is selected, open the window to show its details.
+    // si un projet a été sélectionné...
     if ([selectedObjects count] == 1) {
+        // id du projet parent. 
         parentID = [[selectedObjects objectAtIndex:0] projectId];
         
-        
+        // instancier nouveau projet.
         Project *prj = [[Project alloc] init];
-        // set current date.
+        // date actuelle.
         prj.startDate = [NSDate date];
         prj.endDate = [NSDate date];
         
         prj.parentProjectId = parentID;
         
-        Project *tmpPrj = [selectedObjects objectAtIndex:0]; 
+        // ajouter le projet dans le tree controller (et dans l'outline view) comme sous-projet. 
+        Project *tmpPrj = [selectedObjects objectAtIndex:0];  // projet sélectionné
         
+        // si le projet ne contient pas encore des sous-projets.
         if ([tmpPrj childProject] == nil) {
             
             NSIndexPath *indexPath = [prjTreeController selectionIndexPath];
@@ -300,21 +242,20 @@ PTCommentairesWindowController *commentWindowController;
             [prjTreeController insertObject:prj atArrangedObjectIndexPath:[indexPath indexPathByAddingIndex:0]];
         } 
     }
-
     
-    NSLog(@"count: %lu", [arrPrj count]);
-    
-    // il s'agit d'un nouveau projet.
-    //isNewProject = true;
-    
+    // ouvrir fenêtre qui permet à l'utilisateur d'encoder les détails.
     [self openProjectDetailsWindow:YES isSubProject:YES];
 }
 
+// bouton 'Nouveau sous-projet' cliqué.
+// ouvre une fenêtre avec les détails du projet sélectionnée. 
 - (IBAction)detailsButtonClicked:(id)sender {
     
     [self openProjectDetailsWindow:NO isSubProject:NO];
 }
 
+// bouton 'Supprimer projet' cliqué.
+// Supprime un projet de la base de données. 
 - (IBAction)removeProjectButtonClicked:(id)sender {
     
     // index du tab actuel.
@@ -330,27 +271,29 @@ PTCommentairesWindowController *commentWindowController;
     
     // supprimer en DB.
     [PTProjectHelper deleteProject:[selectedObjects objectAtIndex:0] successBlock:^(NSMutableData *data){
-        //[self sucUserExists:userExists];
         
+        // si la tâche a été supprimée en DB, la supprimer aussi visuellement de l'outline view et de l'array lié. 
         if (selectedTabIndex == 1) {
             [prjTreeController remove:self];
         } else if (selectedTabIndex == 0) {
             [prjArrayCtrl remove:self];
         }
     } failureBlock:^(){
-        //[self failUserExists];
+        
     } mainWindowController:mainWindowController];
-    
-    //[prjTreeController remove:self];
 }
 
+// passer en 'vue projet'.
 - (IBAction)switchToProjectViewButtonClicked:(id)sender {
     [mainWindowController switchToProjectView:sender];
 }
 
+// bouton 'Avancement' cliqué. 
 - (IBAction)progressButtonClicked:(id)sender {
+    // instancier nouvelle fenêtre.
     progressWindowController = [[PTProgressWindowController alloc] init];
     
+    // le projet sélectionnée. 
     NSArray *selectedObjects;
     selectedObjects = [prjTreeController selectedObjects];
     progressWindowController.project = [selectedObjects objectAtIndex:0];
@@ -361,12 +304,17 @@ PTCommentairesWindowController *commentWindowController;
     // initialiser statuts.
     [progressWindowController initStatusArray];
     
+    // ouvrir fenêtre.
     [progressWindowController showWindow:self];
 }
 
+// bouton 'Commentaires' cliqué. 
+// Ouvre une fenêtre avec les commentaires.
 - (IBAction)commentButtonClicked:(id)sender {
+    // instancier nouvelle fenêtre. 
     commentWindowController = [[PTCommentairesWindowController alloc] init];
     
+    // le projet sélectionnée.
     NSArray *selectedObjects;
     selectedObjects = [prjTreeController selectedObjects];
     commentWindowController.project = [selectedObjects objectAtIndex:0];
@@ -374,14 +322,16 @@ PTCommentairesWindowController *commentWindowController;
     // référence vers mainWindowController. 
     commentWindowController.mainWindowController = mainWindowController;
     
+    // ouvrir fenêtre avec commentaires.
     [commentWindowController showWindow:self];
 }
 
-
+// insère un nouveau projet dans l'array. 
 -(void)insertObject:(Project *)p inArrPrjAtIndex:(NSUInteger)index {
     [arrPrj insertObject:p atIndex:index];
 }
 
+// supprime un projet de l'array. 
 -(void)removeObjectFromArrPrjAtIndex:(NSUInteger)index {
     [arrPrj removeObjectAtIndex:index];
 }
@@ -394,29 +344,17 @@ PTCommentairesWindowController *commentWindowController;
     return arrPrj;
 }
 
-- (void)openProjectDetailsWindow:(BOOL)isNewProject isSubProject:(BOOL)isSubProject {
-    // get selected projects.
-    //NSArray *selectedObjects = [prjArrayCtrl selectedObjects];
+// ouvre la fenêtre de détail.
+- (void)openProjectDetailsWindow:(BOOL)isNewProject isSubProject:(BOOL)isSubProject {    
     
-    
-    /*if (isNewProject == YES)
-    {
-        projectDetailsWindowController = [[PTProjectDetailsWindowController alloc] init];
-        projectDetailsWindowController.parentProjectListViewController = self;
-        projectDetailsWindowController.mainWindowController = mainWindowController;
-        projectDetailsWindowController.isNewProject = isNewProject;
-        
-        [projectDetailsWindowController showWindow:self];
-    }
-    else {*/
-    
-    
+    // l'onglet en cours. 
     int selectedTabIndex = [prjTabView indexOfTabViewItem:[prjTabView selectedTabViewItem]];
     
     NSArray *selectedObjects;
     NSIndexPath *prjTreeIndexPath;
     NSUInteger prjArrCtrlIndex;
     
+    // le projet sélectionné et son indexpath.
     if (selectedTabIndex == 1) {
         selectedObjects = [prjTreeController selectedObjects];
         
@@ -427,37 +365,25 @@ PTCommentairesWindowController *commentWindowController;
         prjArrCtrlIndex = [prjArrayCtrl selectionIndex];
     }
     
-    // if a project is selected, open the window to show its details.
+    // si un projet a été sélectionné, ouvrir la fenêtre avec les détails. 
     if ([selectedObjects count] == 1) {
         
+        // instancier fenêtre.
         projectDetailsWindowController = [[PTProjectDetailsWindowController alloc] init];
         projectDetailsWindowController.parentProjectListViewController = self;
         projectDetailsWindowController.mainWindowController = mainWindowController;
         projectDetailsWindowController.isNewProject = isNewProject;
         projectDetailsWindowController.project = [selectedObjects objectAtIndex:0];
         
-        //NSLog(@"PROJECTID: %@", [[selectedObjects objectAtIndex:0] projectId]);
-        
+        // passer l'indexpath s'il ne s'agit pas d'un nouveau projet.
         if (isNewProject == NO) {
             projectDetailsWindowController.prjTreeIndexPath = prjTreeIndexPath;
             projectDetailsWindowController.prjArrCtrlIndex = prjArrCtrlIndex;
         } 
         
-        // fetch available roles.
-        /*[PTRoleHelper rolesAvailable:^(NSMutableArray *availableRoles){
-            
-            // sort available roles alphabetically.
-            [availableRoles sortUsingComparator:^NSComparisonResult(Role *r1, Role *r2) {
-                
-                return [r1.code compare:r2.code];
-            }];
-            
-            projectDetailsWindowController.availableRoles = availableRoles;*/
-            
-            [projectDetailsWindowController showWindow:self];
-        //}];
+        // afficher la fenêtre. 
+        [projectDetailsWindowController showWindow:self];
     }
-    //}
 }
 
 -(void)tabView:(NSTabView *)tabView didSelectTabViewItem:(NSTabViewItem *)tabViewItem {
@@ -479,15 +405,15 @@ PTCommentairesWindowController *commentWindowController;
     // get developers from webservice.
     [PTUserHelper developers:^(NSMutableArray *developers) {
         
-        // sort descriptors for array.
+        // descripteurs de tri pour l'array.
         NSSortDescriptor *firstDescriptor = [[NSSortDescriptor alloc] initWithKey:@"fullNameAndUsername"
                                                                         ascending:YES];
         NSArray *sortDescriptors = [NSArray arrayWithObjects:firstDescriptor, nil];
         
-        // sort array and affect fetched array to local array.
+        // trier l'array et affecter les responsables/développeurs à l'array.
         [[self mutableArrayValueForKey:@"arrDevelopers"] addObjectsFromArray:[developers sortedArrayUsingDescriptors:sortDescriptors]];
         
-        }
+    }
                 failureBlock:^(NSError *error) {
                     
                 }];

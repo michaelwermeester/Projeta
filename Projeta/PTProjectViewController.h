@@ -15,34 +15,33 @@
 @interface PTProjectViewController : NSViewController {
     NSMutableArray *sourceListItems;
 
-    NSMutableArray *arrPrj;     // array which holds the projects
-    NSTreeController *prjTreeController;
+    NSMutableArray *arrPrj;     // array qui contient les projets. 
+    NSTreeController *prjTreeController;    // tree controller pour l'array arrPrj.
     
     NSSplitView *splitView;
-    NSView *leftView;
-    NSView *rightView;
+    NSView *leftView;           // partie gauche de la splitview.
+    NSView *rightView;          // partie droite de la splitview. 
     PXSourceList *sourceList;
     NSOutlineView *altSourceList;
-    NSButton *testButton;
     NSOutlineView *outlineView;
     
     PTProjectDetailsViewController *projectDetailsViewController;
 }
 
 
-@property (strong) NSMutableArray *arrPrj;
-@property (strong) IBOutlet NSTreeController *prjTreeController;
+@property (strong) NSMutableArray *arrPrj;  // array qui contient les projets. 
+@property (strong) IBOutlet NSTreeController *prjTreeController;    // tree controller pour l'array arrPrj.
 
+// référence vers main window controller.
 @property (assign) MainWindowController *mainWindowController;
+// référence vers project details view controller.
 @property (strong) PTProjectDetailsViewController *projectDetailsViewController;
 @property (strong) IBOutlet NSSplitView *splitView;
-@property (strong) IBOutlet NSView *leftView;
-@property (strong) IBOutlet NSView *rightView;
-@property (strong) IBOutlet PXSourceList *sourceList;
-- (IBAction)testButtonClick:(id)sender;
+@property (strong) IBOutlet NSView *leftView;       // partie gauche de la splitview.
+@property (strong) IBOutlet NSView *rightView;      // partie droite de la splitview. 
 @property (strong) IBOutlet NSOutlineView *altOutlineView;
-@property (strong) IBOutlet NSButton *testButton;
 
+// sélectionner project principal. 
 - (void)selectMainProject;
 
 @end

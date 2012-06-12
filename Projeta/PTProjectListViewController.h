@@ -8,14 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 #import "Project.h"
-//#import "PTCommentairesWindowController.m"
 
 @class MainWindowController;
 @class PTProgressWindowController;
 @class PTProjectDetailsWindowController;
 
 @interface PTProjectListViewController : NSViewController {
-    NSMutableArray *arrPrj;     // array which holds the projects
+    NSMutableArray *arrPrj;     // array qui contient les projets. 
     NSArrayController *prjArrayCtrl;    // array controller
     NSCollectionView *prjCollectionView;
     
@@ -26,15 +25,15 @@
     __weak NSOutlineView *prjOutlineView;
     __weak NSMenuItem *addSubProjectButton;
     __weak NSComboBox *clientComboBox;
-    
-    // fenêtre commentaires.
-    //PTCommentairesWindowController *commentWindowController;
+
     // fenêtre avancement.
     PTProgressWindowController *progressWindowController;
     
+    // array qui contient les développeurs/responsables. 
     NSMutableArray *arrDevelopers;
 }
 
+// array qui contient les projets. 
 @property (strong) NSMutableArray *arrPrj;
 @property (strong) IBOutlet NSArrayController *prjArrayCtrl;
 @property (strong) IBOutlet NSTreeController *prjTreeController;
@@ -46,14 +45,20 @@
 @property (weak) IBOutlet NSMenuItem *addSubProjectButton;
 @property (weak) IBOutlet NSComboBox *clientComboBox;
 
+// array qui contient les développeurs/responsables. 
 @property (strong) NSMutableArray *arrDevelopers;
 
+// nom de la nib file. 
 @property (strong) NSString *nibFileName;
 
+// URL à utiliser.
 @property (strong) NSString *projectURL;
 
 - (void)requestFinished:(NSMutableData*)data;
 - (void)requestFailed:(NSError*)error;
+
+// ouvre une fenêtre avec les détails du projet. 
+- (void)openProjectDetailsWindow:(BOOL)isNewProject isSubProject:(BOOL)isSubProject ;
 
 - (IBAction)addNewProjectButtonClicked:(id)sender;
 - (IBAction)addNewSubProjectButtonClicked:(id)sender;
@@ -62,7 +67,5 @@
 - (IBAction)switchToProjectViewButtonClicked:(id)sender;
 - (IBAction)progressButtonClicked:(id)sender;
 - (IBAction)commentButtonClicked:(id)sender;
-
-- (void)openProjectDetailsWindow:(BOOL)isNewProject isSubProject:(BOOL)isSubProject ;
 
 @end

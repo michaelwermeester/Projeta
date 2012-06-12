@@ -303,6 +303,7 @@
     [progressWindowController showWindow:self];
 }
 
+// ouvre la fenêtre de détail.
 - (void)openTaskDetailsWindow:(BOOL)isNewTask isSubTask:(BOOL)isSubTask {
 
     NSArray *selectedObjects;
