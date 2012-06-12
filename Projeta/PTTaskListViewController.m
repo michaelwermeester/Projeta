@@ -20,63 +20,48 @@
 
 @implementation PTTaskListViewController
 
-@synthesize outlineViewProjetColumn;
-@synthesize projectButton;
-@synthesize checkBoxShowTasksFromSubProjects;
-@synthesize searchField;
+@synthesize outlineViewProjetColumn;    // colonne 'Projet' de l'outline view.
+@synthesize projectButton;              // bouton 'Projet'.
+@synthesize checkBoxShowTasksFromSubProjects;   // checkbox 'inclure tâches des sous-projets'.
+@synthesize searchField;                // champ de recherche. 
 
-@synthesize arrTask;
-@synthesize taskArrayCtrl;
-@synthesize taskTreeCtrl;
-@synthesize taskOutlineView;
-@synthesize mainWindowController;
-@synthesize parentProjectDetailsViewController;
+@synthesize arrTask;                    // array qui contient les tâches.
+@synthesize taskArrayCtrl;              // array controller pour arrTask. 
+@synthesize taskTreeCtrl;               // tree controller pour arrTask.
+@synthesize taskOutlineView;            // outline view qui contient les tâches.
+@synthesize mainWindowController;       // référence vers le MainWindowController (parent).
+@synthesize parentProjectDetailsViewController; // référence vers le PTProjectDetailsViewController (parent).
 
-@synthesize isPersonalTask;
+@synthesize isPersonalTask;             // flag. YES s'il s'agit d'une tâches personnelle.
 
-@synthesize taskURL;
+@synthesize taskURL;                    // optionel. Contient l'URL à utiliser. 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    //self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     self = [super initWithNibName:@"PTTaskListView" bundle:nibBundleOrNil];
     if (self) {
-        // Initialization code here.
         
-        // Initialize the array which holds the list of task 
+        // Initialiser l'array qui contiendra les tâches.  
         arrTask = [[NSMutableArray alloc] init];
-        
-        // register for detecting changes in table view
-        //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editingDidEnd:)
-        //                                             name:NSControlTextDidEndEditingNotification object:nil];
     }
     
     return self;
 }
 
-- (void)dealloc
-{
-    // remove the observer
-    //[[NSNotificationCenter defaultCenter] removeObserver:self];
-    //[[NSNotificationCenter defaultCenter] removeObserver:self name:NSControlTextDidBeginEditingNotification object:nil];
-}
-
 - (void)viewDidLoad {
-    // get server URL as string
+    // get URL du serveur. 
     NSString *urlString = [PTCommon serverURLString];
-    // build URL by adding resource path
+    // construire l'URL en rajoutant le ressource path. 
     if (isPersonalTask == YES)
         urlString = [urlString stringByAppendingString:@"resources/tasks/personal"];
-    /*else if (taskUrl) {
-        
-    }*/
     else
         urlString = [urlString stringByAppendingString:@"resources/tasks/"];
     
-    // convert to NSURL
+    // convertir en NSURL
     NSURL *url = [NSURL URLWithString:urlString];
     
-    // NSURLConnection - MWConnectionController
+    // préparer NSURLConnection - MWConnectionController.
+    // créer nouvau connection controller afin de pouvoir exécuter la requête.
     MWConnectionController* connectionController = [[MWConnectionController alloc] 
                                                     initWithSuccessBlock:^(NSMutableData *data) {
                                                         [self requestFinished:data];
@@ -88,13 +73,11 @@
     
     NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
     
-    // start animating the main window's circular progress indicator.
+    // démarrer l'animation du circular progress indicator sur la fenêtre principale. 
     [mainWindowController startProgressIndicatorAnimation];
     
+    // exécuter la requête HTTP. 
     [connectionController startRequestForURL:url setRequest:urlRequest];
-    
-    // set label of 'detail view' toolbar item to 'Task view'.
-    //[[mainWindowController detailViewToolbarItem] setLabel:NSLocalizedString(@"Task view", nil)];
     
     // désactiver le bouton 'vue projet'.
     [[mainWindowController detailViewToolbarItem] setEnabled:NO];
@@ -107,120 +90,72 @@
     [self viewDidLoad];
 }
 
-// NSURLConnection
+// MWConnectionController/NSURLConnection - exécuté lorsque l'exécution de la requête HTTP a réussi.
 - (void)requestFinished:(NSMutableData*)data
 {
-    // http://stackoverflow.com/questions/5037545/nsurlconnection-and-grand-central-dispatch
+    NSError *error;
     
-    //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    // créer un NSDictionary à partir des données reçus. 
+    NSDictionary *dict = [[NSDictionary alloc] init];
+    dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
         
-        NSError *error;
-    
-        // Use when fetching text data
-        //NSString *responseString = [request responseString];
-        //NSLog(@"response: %@", responseString);
-        //NSDictionary *dict = [[NSDictionary alloc] init];
-        NSDictionary *dict = [[NSDictionary alloc] init];
-        dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
-        //NSLog(@"DESC: %@", [dict description]);
-    
-        // see Cocoa and Objective-C up and running by Scott Stevenson.
-        // page 242
+    // créer des objets 'Task' à partir du dictionnaire et ajouter ces tâches dans l'array prévu. 
+    [[self mutableArrayValueForKey:@"arrTask"] addObjectsFromArray:[PTTaskHelper setAttributesFromJSONDictionary:dict]];
         
-    //});    
-    
-
-    //dispatch_async(dispatch_get_main_queue(), ^{
-        
-        [[self mutableArrayValueForKey:@"arrTask"] addObjectsFromArray:[PTTaskHelper setAttributesFromJSONDictionary:dict]];
-        
-        // stop animating the main window's circular progress indicator.
-        [mainWindowController stopProgressIndicatorAnimation];
-    //});
-    //});
+    // arrêter l'animation du circular progress indicator sur la fenêtre principale. 
+    [mainWindowController stopProgressIndicatorAnimation];
 }
 
+// MWConnectionController/NSURLConnection - exécuté lorsque l'exécution de la requête HTTP a échoué. 
 - (void)requestFailed:(NSError*)error
 {
-    // stop animating the main window's circular progress indicator.
+    // arrêter l'animation du circular progress indicator sur la fenêtre principale. 
     [mainWindowController stopProgressIndicatorAnimation];
-    
-    NSLog(@"Failed %@ with code %ld and with userInfo %@",[error domain],[error code],[error userInfo]);
 }
 
+// insère une nouvelle tâche dans l'array. 
 -(void)insertObject:(Task *)p inArrTaskAtIndex:(NSUInteger)index {
     [arrTask insertObject:p atIndex:index];
 }
 
+// supprime une tâche de l'array. 
 -(void)removeObjectFromArrTaskAtIndex:(NSUInteger)index {
     [arrTask removeObjectAtIndex:index];
 }
 
-// outlineView's willDisplayCell delegate method
-/*- (void)outlineView:(NSOutlineView *)outlineView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item
-{
-    // display task titles
-    if ([[tableColumn identifier] isEqual:@"TaskTitleColumn"]) {
-        Task *task = [item representedObject];
-    
-        [cell setTitle:task.taskTitle];
-    }
-}*/
-
+// nécessaire pour rendre disponible le tri de l'outline view. 
 - (void)outlineView:(NSTableView *)outlineView sortDescriptorsDidChange:(NSArray *)oldDescriptors
 {
     [[self mutableArrayValueForKey:@"arrTask"] sortUsingDescriptors:[outlineView sortDescriptors]];
 }
 
-- (IBAction)addTaskButtonClick:(id)sender {
-    
-}
-
-// update user when finished editing cell in table view
-/*- (void)editingDidEnd:(NSNotification *)notification
-{
-    //NSLog(@"notification object: %@", [notification object]);
-    
-    // continue and update the user only if the object is the usersTableView
-    if ([notification object] == taskOutlineView) {
-        //NSLog(@"UPDATE");
-
-        NSArray *selectedObjects = [taskTreeCtrl selectedObjects];
-        
-        for (Task *task in selectedObjects)
-        {
-            // update Task
-            [self updateTask:task];
-        }
-    }
-}*/
-
+// mettre à jour une tâches existante. 
 - (void)updateTask:(Task *)aTask {
     
     BOOL taskUpdSuc = NO;
     
     taskUpdSuc = [PTTaskHelper updateTask:aTask successBlock:^(NSMutableData *data) {
-        //[self finishedCreatingTask:data];
+        
     } failureBlock:^() {
         
     }
                      mainWindowController:self];
 }
 
+// bouton 'Nouvelle tâche' cliqué.
+// ajoute une nouvelle tâche dans l'outline view et ouvre la fenêtre pour encoder les détails. 
 - (IBAction)addNewTaskButtonClicked:(id)sender {
-    NSNumber *parentID;
+    
+    NSNumber *parentID; // id de la tâche parente. 
     
     NSArray *selectedObjects = [taskTreeCtrl selectedObjects];
     
-    // if a project is selected, open the window to show its details.
+    // si un projet est sélectionné...
     if ([selectedObjects count] == 1) {
-        //parentID = [[selectedObjects objectAtIndex:0] projectId];
-        //parentID = [[selectedObjects objectAtIndex:0] parentProjectId];
         
-        //[prjTreeController add:prj];
-        
+        // instancier une nouvelle tâche.
         Task *tsk = [[Task alloc] init];
-        // set current date.
+        // mettre les dates actuelle.
         tsk.startDate = [NSDate date];
         tsk.endDate = [NSDate date];
         
@@ -230,41 +165,25 @@
         NSTreeNode *parent = [[[[taskTreeCtrl selectedNodes] objectAtIndex:0] parentNode] parentNode];
         NSMutableArray *parentTasks = [[parent representedObject] mutableArrayValueForKeyPath:
                                           [taskTreeCtrl childrenKeyPathForNode:parent]];
-        //NSLog(@"test: %@", [[[[prjTreeController selectedNodes] objectAtIndex:] parent] projectTitle]); 
         
-        //[prjTreeController 
-        //parentrowforrow
-        
-        //NSLog(@"test: %@", [[objects objectAtIndex:0] projectTitle]);
-        //int line = [prjOutlineView selectedRow];
-        //NSLog(@"test: %@", [[parentProjects objectAtIndex:line] projectTitle]);
-        
-        // get projectid du projet parent. 
-        for (Task *p in parentTasks)
-        {
-            if ([p.childTask containsObject:[selectedObjects objectAtIndex:0]])
-            {
+        // get taskId du projet parent. 
+        for (Task *p in parentTasks) {
+            if ([p.childTask containsObject:[selectedObjects objectAtIndex:0]]) {
                 parentID = p.taskId;
-                
-                //NSLog(@"TEST: %d", [[p projectId] intValue]);
-                
+                // sortir de la boucle. 
                 break;
             }
         }
         
-        //NSLog(@"test: %@", [[parent representedObject] projectTitle]);
-        
-        //prj.parentProjectId = parentID;
-        //prj.parentProjectId = p.projectId;
+        // s'il y a une tâche parente, mémoriser l'id de celle-ci.
         if (parentID != nil){
             tsk.parentTaskId = parentID;
         }
         
-        //NSLog(@"parentprojectid: %@", p.projectTitle);
-        
-        //[prjTreeController add:prj];
+        // indexpath de la tâche sélectionnée.
         NSIndexPath *indexPath = [taskTreeCtrl selectionIndexPath];
-        //NSLog(@"indexpath: %@", indexPath);
+        
+        // ajouter la tâche dans l'outlineview en passant par le tree controller. 
         if ([indexPath length] > 1) {
             [taskTreeCtrl insertObject:tsk atArrangedObjectIndexPath:indexPath];
         } else {
@@ -277,93 +196,81 @@
         }
     }
     
-    // il s'agit d'un nouveau projet.
-    //isNewProject = true;
-    
+    // ouvrir fenêtre qui permet à l'utilisateur d'encoder les détails. 
     [self openTaskDetailsWindow:YES isSubTask:NO];
 }
 
+// bouton 'Nouvelle sous-tâche' cliqué.
+// ajoute une nouvelle sous-tâche dans l'outline view et ouvre la fenêtre pour encoder les détails. 
 - (IBAction)addNewSubTaskButtonClicked:(id)sender {
     
-    NSNumber *parentID;
+    NSNumber *parentID; // id de la tâche parente. 
     
     NSArray *selectedObjects = [taskTreeCtrl selectedObjects];
     
-    // if a project is selected, open the window to show its details.
+    // si un projet est sélectionné...
     if ([selectedObjects count] == 1) {
+        // id de la tâche parente.
         parentID = [[selectedObjects objectAtIndex:0] taskId];
         
-        
+        // instancier une nouvelle tâche.
         Task *tsk = [[Task alloc] init];
-        // set current date.
+        // date actuelle.
         tsk.startDate = [NSDate date];
         tsk.endDate = [NSDate date];
         
         tsk.parentTaskId = parentID;
-        
         tsk.isPersonal = isPersonalTask;
         
-        Task *tmpTask = [selectedObjects objectAtIndex:0]; 
+        // ajouter la tâche dans le tree controller (et dans l'outline view) comme sous-tâche. 
+        Task *tmpTask = [selectedObjects objectAtIndex:0]; // tâche sélectionné. 
         
+        // si la tâche ne contient pas encore des sous-tâches.
         if ([tmpTask childTask] == nil) {
             
             NSIndexPath *indexPath = [taskTreeCtrl selectionIndexPath];
             
             tmpTask.childTask = [[NSMutableArray alloc] init];
             [taskTreeCtrl insertObject:tsk atArrangedObjectIndexPath:[indexPath indexPathByAddingIndex:0]];
-        } else {
-            //else if ([[tmpPrj childProject] count] > 0) {
-            
+        } else {    // si la tâche contient déjà des sous-tâches.
             NSIndexPath *indexPath = [taskTreeCtrl selectionIndexPath];
             
             [taskTreeCtrl insertObject:tsk atArrangedObjectIndexPath:[indexPath indexPathByAddingIndex:0]];
         } 
     }
     
-    
-    NSLog(@"count: %lu", [arrTask count]);
-    
-    // il s'agit d'un nouveau projet.
-    //isNewProject = true;
-    
+    // ouvrir fenêtre qui permet à l'utilisateur d'encoder les détails. 
     [self openTaskDetailsWindow:YES isSubTask:YES];
 }
 
+// bouton 'Nouvelle sous-tâche' cliqué.
+// ouvre une fenêtre avec les détails de la tâche sélectionnée. 
 - (IBAction)detailsButtonClicked:(id)sender {
     [self openTaskDetailsWindow:NO isSubTask:NO];
 }
 
+// bouton 'Supprimer tâche' cliqué.
+// Supprime une tâche de la base de données. 
 - (IBAction)removeTaskButtonClicked:(id)sender {
     
-    // index du tab actuel.
-    //int selectedTabIndex = [prjTabView indexOfTabViewItem:[prjTabView selectedTabViewItem]];
-    
-    NSArray *selectedObjects;
-    
-    //if (selectedTabIndex == 1) {
-        selectedObjects = [taskTreeCtrl selectedObjects];
-    //} else if (selectedTabIndex == 0) {
-    //    selectedObjects = [prjArrayCtrl selectedObjects];
-    //}
+    // la tâche sélectionée.
+    NSArray *selectedObjects = [taskTreeCtrl selectedObjects];
     
     // supprimer en DB.
     [PTTaskHelper deleteTask:[selectedObjects objectAtIndex:0] successBlock:^(NSMutableData *data){
-        //[self sucUserExists:userExists];
-        
-        //if (selectedTabIndex == 1) {
-            [taskTreeCtrl remove:self];
-        //} else if (selectedTabIndex == 0) {
-        //    [prjArrayCtrl remove:self];
-        //}
-    } failureBlock:^(){
-        //[self failUserExists];
-    } mainWindowController:mainWindowController];
+        // si la tâche a été supprimée en DB, la supprimer aussi visuellement de l'outline view et de l'array lié. 
+        [taskTreeCtrl remove:self];
+    } failureBlock:^(){ } mainWindowController:mainWindowController];
 }
 
+// bouton 'Commentaires' cliqué. 
+// Ouvre une fenêtre avec les commentaires. 
 - (IBAction)commentButtonClicked:(id)sender {
     
+    // instancier nouvelle fenêtre. 
     commentWindowController = [[PTCommentairesWindowController alloc] init];
 
+    // la tâche sélectionnée. 
     NSArray *selectedObjects;
     selectedObjects = [taskTreeCtrl selectedObjects];
     commentWindowController.task = [selectedObjects objectAtIndex:0];
@@ -371,13 +278,17 @@
     // référence vers mainWindowController. 
     commentWindowController.mainWindowController = mainWindowController;
     
+    // ouvrir fenêtre avec commentaires. 
     [commentWindowController showWindow:self];
 }
 
+// bouton 'Avancement' cliqué. 
 - (IBAction)progressButtonClicked:(id)sender {
     
+    // instancier nouvelle fenêtre.
     progressWindowController = [[PTProgressWindowController alloc] init];
     
+    // la tâche sélectionnée. 
     NSArray *selectedObjects;
     selectedObjects = [taskTreeCtrl selectedObjects];
     progressWindowController.task = [selectedObjects objectAtIndex:0];
@@ -388,60 +299,36 @@
     // initialiser statuts.
     [progressWindowController initStatusArray];
     
+    // ouvrir fenêtre. 
     [progressWindowController showWindow:self];
 }
 
 - (void)openTaskDetailsWindow:(BOOL)isNewTask isSubTask:(BOOL)isSubTask {
-    // get selected projects.
-    //NSArray *selectedObjects = [prjArrayCtrl selectedObjects];
-    
-    
-    /*if (isNewProject == YES)
-     {
-     projectDetailsWindowController = [[PTProjectDetailsWindowController alloc] init];
-     projectDetailsWindowController.parentProjectListViewController = self;
-     projectDetailsWindowController.mainWindowController = mainWindowController;
-     projectDetailsWindowController.isNewProject = isNewProject;
-     
-     [projectDetailsWindowController showWindow:self];
-     }
-     else {*/
-    
-    
-    //int selectedTabIndex = [prjTabView indexOfTabViewItem:[prjTabView selectedTabViewItem]];
-    
+
     NSArray *selectedObjects;
     NSIndexPath *tskTreeIndexPath;
-    //NSUInteger prjArrCtrlIndex;
+
+    selectedObjects = [taskTreeCtrl selectedObjects];   // la tâche sélectionnée. 
+    tskTreeIndexPath = [taskTreeCtrl selectionIndexPath];   // indexpath de la tâche sélectionnée. 
     
-    //if (selectedTabIndex == 1) {
-        selectedObjects = [taskTreeCtrl selectedObjects];
-        
-        tskTreeIndexPath = [taskTreeCtrl selectionIndexPath];
-    //} else {
-    //    selectedObjects = [prjArrayCtrl selectedObjects];
-    //    
-    //    prjArrCtrlIndex = [prjArrayCtrl selectionIndex];
-    //}
-    
-    // if a task is selected, open the window to show its details.
+    // si une tâche a été sélectionné, ouvrir la fenêtre avec les détails. 
     if ([selectedObjects count] == 1) {
         
+        // instancier fenêtre. 
         taskDetailsWindowController = [[PTTaskDetailsWindowController alloc] init];
         taskDetailsWindowController.parentTaskListViewController = self;
         taskDetailsWindowController.mainWindowController = mainWindowController;
         taskDetailsWindowController.isNewTask = isNewTask;
         taskDetailsWindowController.task = [selectedObjects objectAtIndex:0];
         
+        // passer l'indexpath s'il ne s'agit pas d'une nouvelle tâche. 
         if (isNewTask == NO) {
             taskDetailsWindowController.tskTreeIndexPath = tskTreeIndexPath;
-            //taskDetailsWindowControllers.prjArrCtrlIndex = prjArrCtrlIndex;
         }
         
+        // afficher la fenêtre. 
         [taskDetailsWindowController showWindow:self];
-        //}];
     }
-    //}
 }
 
 @end
