@@ -72,7 +72,6 @@
 // keys needed for updating user's usergroups.
 - (NSArray *)updateUsergroupsKeys {
     
-    //NSArray *retArr = [[NSArray alloc] initWithObjects: @"roles", @"userId", nil];
     NSArray *retArr = [[NSArray alloc] initWithObjects: @"code", @"usergroupId", nil];
     
     return retArr;

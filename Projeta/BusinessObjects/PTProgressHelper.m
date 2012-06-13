@@ -21,17 +21,18 @@
     
     BOOL success = NO;
     
+    // create dictionary from Bug object
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[theProgress dictionaryWithValuesForKeys:[theProgress createProgressKeys]]];
     
-    // créer dictionnaire 'task_id'.
+    // créer dictionnaire 'bugId'.
     NSDictionary *bugIdDict = [aBug dictionaryWithValuesForKeys:[aBug bugIdKey]];
-    // ajouter ce dictionnaire sous la clé 'userCreated'.
+    // ajouter ce dictionnaire sous la clé 'bugId'.
     [dict setObject:bugIdDict forKey:@"bugId"];
     
     if (theProgress.status) {
-        // créer dictionnaire 'task_id'.
+        // créer dictionnaire 'statusId'.
         NSDictionary *statusIdDict = [theProgress.status dictionaryWithValuesForKeys:[theProgress.status statusIdKey]];
-        // ajouter ce dictionnaire sous la clé 'userCreated'.
+        // ajouter ce dictionnaire sous la clé 'statusId'.
         [dict setObject:statusIdDict forKey:@"statusId"];
     }
     
@@ -49,14 +50,7 @@
     
     BOOL success = NO;
     
-    /*if ([sender isKindOfClass:[MainWindowController class]]) {
-     // start animating the main window's circular progress indicator.
-     [sender startProgressIndicatorAnimation];
-     }*/
-    
-    // create dictionary from User object
-    //NSDictionary *dict = [theUser dictionaryWithValuesForKeys:[theUser allKeys]];
-    // update username, first name, last name and email address
+    // create dictionary from Task object
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[theProgress dictionaryWithValuesForKeys:[theProgress createProgressKeys]]];
     
     // créer dictionnaire 'task_id'.
@@ -71,18 +65,11 @@
         [dict setObject:statusIdDict forKey:@"statusId"];
     }
     
-    
     // API resource string.
     NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/progress/create"];
     
     // execute the PUT method on the webservice to update the record in the database.
-    //success = [PTCommon executePOSTforDictionary:dict resourceString:resourceString successBlock:successBlock_];
     [PTCommon executePOSTforDictionaryWithBlocks:dict resourceString:resourceString successBlock:successBlock_ failureBlock:failureBlock_];
-    
-    /*if ([sender isKindOfClass:[MainWindowController class]]) {
-     // stop animating the main window's circular progress indicator.
-     [sender stopProgressIndicatorAnimation];
-     }*/
     
     return success;
 }
@@ -93,17 +80,18 @@
     
     BOOL success = NO;
     
+    // create dictionary from Project object
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[theProgress dictionaryWithValuesForKeys:[theProgress createProgressKeys]]];
     
-    // créer dictionnaire 'task_id'.
+    // créer dictionnaire 'projectId'.
     NSDictionary *projectIdDict = [aProject dictionaryWithValuesForKeys:[aProject projectIdKey]];
-    // ajouter ce dictionnaire sous la clé 'userCreated'.
+    // ajouter ce dictionnaire sous la clé 'projectId'.
     [dict setObject:projectIdDict forKey:@"projectId"];
     
     if (theProgress.status) {
-        // créer dictionnaire 'task_id'.
+        // créer dictionnaire 'statusId'.
         NSDictionary *statusIdDict = [theProgress.status dictionaryWithValuesForKeys:[theProgress.status statusIdKey]];
-        // ajouter ce dictionnaire sous la clé 'userCreated'.
+        // ajouter ce dictionnaire sous la clé 'statusId'.
         [dict setObject:statusIdDict forKey:@"statusId"];
     }
     

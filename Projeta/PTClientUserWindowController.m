@@ -58,10 +58,10 @@
 
 
 
-// assign selected user(s) to usergroup. 
+// assign selected user(s) to client. 
 - (IBAction)assignUser:(id)sender {
     
-    // get selection of users to be affected to usergroup.
+    // get selection of users to be affected to client.
     NSArray *selectedUsers = [availableUsersArrayCtrl selectedObjects];
     
     for (User *user in selectedUsers) {
@@ -70,13 +70,13 @@
             usergroup.users = [[NSMutableArray alloc] init];
         }
         
-        // affect new user to usergroup.
+        // affect new user to client.
         [groupUsersArrayCtrl addObject:user];
         
         // remove user from available users.
         [availableUsersArrayCtrl removeObject:user];
         
-        // sort user roles alphabetically.
+        // sort users alphabetically.
         [usergroup.users sortUsingComparator:^NSComparisonResult(User *u1, User *u2) {
             
             return [u1.username compare:u2.username];
@@ -86,20 +86,20 @@
 
 
 
-// remove selected user(s) from usergroup.
+// remove selected user(s) from client.
 - (IBAction)removeUser:(id)sender {
     
-    // get selection of users to be removed from usergroup.
+    // get selection of users to be removed from client.
     NSArray *selectedUsers = [groupUsersArrayCtrl selectedObjects];
     
     for (User *user in selectedUsers) {
-        // make usergroup available.
+        // make user available.
         [availableUsersArrayCtrl addObject:user];
         
-        // remove usergroup from user's usergroups.
+        // remove iserr from assigned users.
         [groupUsersArrayCtrl removeObject:user];
         
-        // sort user groups alphabetically.
+        // sort users alphabetically.
         [availableUsers sortUsingComparator:^NSComparisonResult(User *u1, User *u2) {
             
             return [u1.username compare:u2.username];
@@ -117,15 +117,15 @@
     [self updateUsergroupUsers];
 }
 
-// update user's usergroups (in database).
+// update the client's users (in database).
 - (BOOL)updateUsergroupUsers {
     
     BOOL success;
     
-    // Initialize a new array to hold the roles.
+    // Initialize a new array to hold the users.
     NSMutableArray *usersArray = [[NSMutableArray alloc] init];
     
-    // add (assigned) user roles to the array.
+    // add (assigned) users to the array.
     for (User *user in usergroup.users) {
         
         NSDictionary *tmpUserDict = [user dictionaryWithValuesForKeys:[user userIdKey]];
@@ -136,9 +136,8 @@
     // create a new dictionary which holds the users.
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     [dict setObject:usersArray forKey:@"user"];
-    
-    //
-    // update usergroups in database via web service.
+
+    // update client's users in database via web service.
     success = [PTUsergroupHelper updateUsersForUsergroup:usergroup users:dict successBlock:^(NSMutableData *data) {[self finishedUpdatingUsergroups:data];} failureBlock:^(NSError *error) {[self failedUpdatingUsergroups:error];}];
     
     return success;
@@ -154,7 +153,6 @@
     
     [progressIndicator stopAnimation:self];
     [updatingUsergroupsLabel setHidden:YES];
-    NSLog(@"ok, updated users in usergroup.");
     
     [self close];
 }

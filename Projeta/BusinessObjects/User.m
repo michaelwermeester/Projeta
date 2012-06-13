@@ -137,7 +137,6 @@
 // keys needed for updating user roles.
 - (NSArray *)updateRolesKeys {
  
-    //NSArray *retArr = [[NSArray alloc] initWithObjects: @"roles", @"userId", nil];
     NSArray *retArr = [[NSArray alloc] initWithObjects: @"code", @"roleId", nil];
     
     return retArr;
@@ -146,7 +145,6 @@
 // keys needed for updating user's usergroups.
 - (NSArray *)updateUsergroupsKeys {
     
-    //NSArray *retArr = [[NSArray alloc] initWithObjects: @"roles", @"userId", nil];
     NSArray *retArr = [[NSArray alloc] initWithObjects: @"code", @"usergroupId", nil];
     
     return retArr;
@@ -154,7 +152,6 @@
 
 - (NSString *)fullName
 {
-    //NSString *fullname = [[NSString alloc] initWithString:@""];
     NSString *fullname = [NSString stringWithString:@""];
     if (firstName != nil) {
         fullname = [fullname stringByAppendingString:firstName];
@@ -176,7 +173,6 @@
     
     if ([self fullName] != nil) {
         description = [description stringByAppendingString:[self fullName]];
-        //NSLog(@"fullname : %@", fullName);
     }
     
     if ([self fullName] != nil && [[self fullName] length] > 0 && username != nil)

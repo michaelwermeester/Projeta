@@ -56,9 +56,6 @@
         return nil;
     }
     
-    
-    //NSArray *receivedUsergroups = [aDictionary objectForKey:@"usergroup"];
-    //if (receivedUsergroups) {
     if ([[aDictionary objectForKey:@"usergroup"] isKindOfClass:[NSArray class]]) {
         
         NSArray *receivedUsergroups = [aDictionary objectForKey:@"usergroup"];
@@ -116,10 +113,6 @@
                                                         //[self rolesForUserRequestFailed:error];
                                                     }];
     
-    //[connectionController setPostSuccessAction:^{
-        //NSLog(@"postSuccessAction.");
-    //}];
-    
     NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
     
     [connectionController startRequestForURL:url setRequest:urlRequest];
@@ -140,10 +133,7 @@
 + (void)usergroupsForUser:(User *)aUser successBlock:(void(^)(NSMutableArray *))successBlock {
     
     if (aUser.username)
-        //return [self rolesForUserName:aUser.username successBlock:^{}];
         [self usergroupsForUserName:aUser.username successBlock:successBlock];
-    //else
-    //    return nil;
 }
 
 + (void)usergroupsForUserName:(NSString *)aUsername successBlock:(void(^)(NSMutableArray *))successBlock {
@@ -178,7 +168,6 @@
     // build URL by adding resource path
     NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/usergroups/updateUsersForGroup?usergroupId="];
     resourceString = [resourceString stringByAppendingString:[aUsergroup.usergroupId stringValue]];
-    
     
     // execute the PUT method on the webservice to update the record in the database.
     [PTCommon executePUTforDictionaryWithBlocks:users resourceString:resourceString successBlock:successBlock failureBlock:failureBlock];

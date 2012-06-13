@@ -36,18 +36,6 @@
 @synthesize calendarStartDateReal;
 
 
-//@synthesize project;
-
-/*- (Project *)project {
-    return self;
-}*/
-
-/*- (id)init {
-    self.projectId = [[NSNumber alloc] initWithInt:10];
-    
-    return self;
-}*/
-
 + (Project *)instanceFromDictionary:(NSDictionary *)aDictionary {
     
     Project *instance = [[Project alloc] init];
@@ -61,23 +49,6 @@
     if (![aDictionary isKindOfClass:[NSDictionary class]]) {
         return;
     }
-    
-    // dates
-    //self.dateCreated = [PTCommon webserviceStringToDate:[aDictionary objectForKey:@"dateCreated"]];
-    //self.endDate = [PTCommon webserviceStringToDate:[aDictionary objectForKey:@"endDate"]];
-    //self.startDate = [PTCommon webserviceStringToDate:[aDictionary objectForKey:@"startDate"]];
-    
-    /*NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    NSLocale *enUSPOSIXLocale;
-    enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-    [df setLocale:enUSPOSIXLocale];
-    [df setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ssZ'"];
-    [df setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-    
-    NSString *dateCreatedString = [aDictionary objectForKey:@"dateCreated"];
-    if (dateCreatedString && ![dateCreatedString isKindOfClass:[NSNull class]]) {
-        self.dateCreated = [df dateFromString:dateCreatedString];
-    }*/
     
     self.dateCreated = [PTCommon dateFromJSONString:[aDictionary objectForKey:@"dateCreated"]];
     self.endDate = [PTCommon dateFromJSONString:[aDictionary objectForKey:@"endDate"]];
@@ -178,8 +149,6 @@
 
 - (NSArray *)createProjectKeys
 {
-    //NSArray *retArr = [[NSArray alloc] initWithObjects: @"projectTitle", @"projectDescription", @"endDate", @"endDateReal", @"flagPublic", @"completed", @"parentProjectId", @"startDate", @"startDateReal", @"userCreated", nil];
-    //NSArray *retArr = [[NSArray alloc] initWithObjects: @"projectTitle", @"projectDescription", @"flagPublic", nil];
     NSArray *retArr = [[NSArray alloc] initWithObjects: @"projectTitle", @"projectDescription", @"flagPublic", @"completed", @"startDate", @"startDateReal", @"endDate", @"endDateReal", nil];
     
     return retArr;
@@ -187,8 +156,6 @@
 
 - (NSArray *)updateProjectKeys
 {
-    //NSArray *retArr = [[NSArray alloc] initWithObjects: @"projectTitle", @"projectDescription", @"endDate", @"endDateReal", @"flagPublic", @"completed", @"parentProjectId", @"startDate", @"startDateReal", @"userCreated", nil];
-    //NSArray *retArr = [[NSArray alloc] initWithObjects: @"projectTitle", @"projectDescription", @"flagPublic", nil];
     NSArray *retArr = [[NSArray alloc] initWithObjects: @"projectId", @"projectTitle", @"projectDescription", nil];
     
     return retArr;

@@ -14,9 +14,9 @@
 @class PTUserGroupWindowController;
 
 @interface PTUserManagementViewController : NSViewController {
-    NSMutableArray *arrUsr;     // array which holds the users
+    NSMutableArray *arrUsr;     // array qui contient les utilisateurs.
+    NSArrayController *arrayCtrl;   // array controller pour l'array arrUsr.
     NSTableView *usersTableView;
-    NSArrayController *arrayCtrl;   // array controller
     
     // user details window
     PTUserDetailsWindowController *userDetailsWindowController;
@@ -26,19 +26,14 @@
     __weak NSButton *groupsButton;
 }
 
-@property (strong) NSMutableArray *arrUsr;
-@property (strong) IBOutlet NSTableView *usersTableView;
+@property (strong) NSMutableArray *arrUsr;      // array qui contient les utilisateurs.
+@property (strong) IBOutlet NSTableView *usersTableView;    // array controller pour l'array arrUsr.
 @property (strong) IBOutlet NSArrayController *arrayCtrl;
 @property (strong) IBOutlet NSButton *deleteButton;
 // reference to the (parent) MainWindowController
 @property (assign) MainWindowController *mainWindowController;
 @property (weak) IBOutlet NSButton *groupsButton;
-
 @property (weak) IBOutlet NSSearchField *searchField;
-
-// NSURLConnection
-//- (void)requestFinished:(NSMutableData*)data;
-//- (void)requestFailed:(NSError*)error;
 
 - (IBAction)addButtonClicked:(id)sender;
 - (IBAction)removeButtonClicked:(id)sender;
@@ -48,11 +43,6 @@
 
 - (void)openUserDetailsWindow:(BOOL)isNewUser;
 - (void)openUserGroupWindow;
-
-//- (void)updateUser:(User *)theUser;
-
-- (void)addObservers;
-- (void)removeObservers;
 
 - (void)allUsersRequestFinished:(NSMutableArray *)users;
 - (void)allUsersRequestFailed:(NSError*)error;

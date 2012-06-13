@@ -38,12 +38,15 @@
     [self viewDidLoad];
 }
 
+// bouton 'ajouter un client' cliqué.
 - (IBAction)addClientButtonClicked:(id)sender {
 }
 
+// bouton 'supprimer un client' cliqué.
 - (IBAction)deleteClientButtonClicked:(id)sender {
 }
 
+// bouton 'détails' cliqué.
 - (IBAction)clientDetailsButtonClicked:(id)sender {
     
     clientDetailsWindowController = [[PTClientDetailsWindowController alloc] init];
@@ -51,6 +54,7 @@
     [clientDetailsWindowController showWindow:self];
 }
 
+// bouton 'utilisateurs' cliqué.
 - (IBAction)clientUsersButtonClicked:(id)sender {
     
     clientUserWindowController = [[PTClientUserWindowController alloc] init];

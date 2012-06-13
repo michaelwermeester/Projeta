@@ -111,8 +111,6 @@
     
     [self showClientAndVisibilityTab];
     
-    //[self viewDidLoad];
-    
     // charger la liste des développeurs à partir du webservice et les mettre dans la combobox.
     [self fetchDevelopersFromWebservice];
 }
@@ -243,12 +241,6 @@
     
     // auto resize the view.
     [bugListViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
-    
-    // cacher lo colonne "projet".
-    //[taskListViewController.outlineViewProjetColumn setHidden:YES];
-    //[taskListViewController.checkBoxShowTasksFromSubProjects setHidden:NO];
-    //[taskListViewController.projectButton removeFromSuperview];
-    //[taskListViewController.projectButton setHidden:YES];
 }
 
 - (void)loadComments {
@@ -273,12 +265,6 @@
     
     // charger commentaires.
     [commentViewController loadComments];
-    
-    // cacher lo colonne "projet".
-    //[taskListViewController.outlineViewProjetColumn setHidden:YES];
-    //[taskListViewController.checkBoxShowTasksFromSubProjects setHidden:NO];
-    //[taskListViewController.projectButton removeFromSuperview];
-    //[taskListViewController.projectButton setHidden:YES];
 }
 
 // charger le diagramme de Gantt lié au projet sélectionné.
@@ -305,12 +291,6 @@
     
     // charger commentaires.
     [ganttViewController loadGantt];
-    
-    // cacher lo colonne "projet".
-    //[taskListViewController.outlineViewProjetColumn setHidden:YES];
-    //[taskListViewController.checkBoxShowTasksFromSubProjects setHidden:NO];
-    //[taskListViewController.projectButton removeFromSuperview];
-    //[taskListViewController.projectButton setHidden:YES];
 }
 
 - (IBAction)startDateRealCalendarButtonClicked:(id)sender {
@@ -321,8 +301,6 @@
         // binder la propriété 'value' du datepicker avec la propriété correspondante de l'objet 'projet'. 
         MWCalendarViewController *calView = (MWCalendarViewController *)calendarPopover.contentViewController;
         [calView.datePicker bind:@"value" toObject:self withKeyPath:@"project.startDateReal" options:nil];
-        //[calView.datePicker bind:@"minValue" toObject:self withKeyPath:@"parentProjectStartDate" options:nil];
-        //[calView.datePicker bind:@"maxValue" toObject:self withKeyPath:@"parentProjectEndDate" options:nil];
         
         // afficher le popup avec le calendrier.
         [self.calendarPopover showRelativeToRect:[startDateRealCalendarButton bounds]
@@ -565,19 +543,7 @@
             return [c1.clientName compare:c2.clientName];
         }];
         
-        //if (isNewUser == NO) {
         [[self mutableArrayValueForKey:@"assignedClients"] addObjectsFromArray:clients];
-        //[assignedUsersArrayCtrl addObjects:users];
-        //assignedUsers = users;
-        
-        //NSLog(@"count: %@", [userGroups count]);
-        //} else {
-        //    userDetailsWindowController.user.roles = [[NSMutableArray alloc] init];
-        //}
-        
-        //[[userDetailsWindowController.user mutableArrayValueForKey:@"roles"] addObjectsFromArray:userRoles];
-        
-        NSLog(@"Assigned clients : %lu", [assignedClients count] );
         
         [self loadClientVisibility];
         
@@ -596,19 +562,7 @@
             return [u1.username compare:u2.username];
         }];
         
-        //if (isNewUser == NO) {
         [[self mutableArrayValueForKey:@"assignedUsers"] addObjectsFromArray:users];
-        //[assignedUsersArrayCtrl addObjects:users];
-        //assignedUsers = users;
-        
-        //NSLog(@"count: %@", [userGroups count]);
-        //} else {
-        //    userDetailsWindowController.user.roles = [[NSMutableArray alloc] init];
-        //}
-        
-        //[[userDetailsWindowController.user mutableArrayValueForKey:@"roles"] addObjectsFromArray:userRoles];
-        
-        //NSLog(@"Assigned users : %lu", [assignedUsers count] );
         
         [self loadUserVisibility];
         
@@ -627,19 +581,7 @@
             return [u1.code compare:u2.code];
         }];
         
-        //if (isNewUser == NO) {
         [[self mutableArrayValueForKey:@"assignedUsergroups"] addObjectsFromArray:usergroups];
-        //[assignedUsersArrayCtrl addObjects:users];
-        //assignedUsers = users;
-        
-        //NSLog(@"count: %@", [userGroups count]);
-        //} else {
-        //    userDetailsWindowController.user.roles = [[NSMutableArray alloc] init];
-        //}
-        
-        //[[userDetailsWindowController.user mutableArrayValueForKey:@"roles"] addObjectsFromArray:userRoles];
-        
-        //NSLog(@"Assigned users : %lu", [assignedUsergroups count] );
         
         [self loadUsergroupVisibility];
         
@@ -735,9 +677,7 @@
     
     NSMutableArray *createdProjectArray = [[NSMutableArray alloc] init];
     
-    // see Cocoa and Objective-C up and running by Scott Stevenson.
-    // page 242
-    //[createdUserArray addObjectsFromArray:[PTUserHelper setAttributesFromDictionary2:dict]];
+    // à partir du dictionnaire, créer un objet Projet et le rajouter à l'array. 
     [createdProjectArray addObjectsFromArray:[PTProjectHelper setAttributesFromJSONDictionary:dict]];
     
     NSLog(@"count: %lu", [createdProjectArray count]);
@@ -746,40 +686,11 @@
         
         for (Project *prj in createdProjectArray) {
             
-            
-            //[parentProjectListViewController.prjTreeController removeObjectAtArrangedObjectIndexPath:prjTreeIndexPath];
-            
-            //[parentProjectListViewController.prjTreeController insertObject:prj atArrangedObjectIndexPath:prjTreeIndexPath];
-            
-            
-            /*if (prj.parentProjectId) {
-             [parentProjectListViewController.prjTreeController remove:project];
-             
-             NSIndexPath *indexPath = [parentProjectListViewController.prjTreeController selectionIndexPath];
-             
-             [parentProjectListViewController.prjTreeController insertObject:prj atArrangedObjectIndexPath:[indexPath indexPathByAddingIndex:0]];
-             
-             } else {
-             [[parentProjectListViewController mutableArrayValueForKey:@"arrPrj"] replaceObjectAtIndex:[parentProjectListViewController.arrPrj indexOfObject:project] withObject:prj];
-             }*/
-            
-            
             // reassign user with user returned from web-service.
-            //self.project = prj;
-            //self.project = [prj copy];
             self.project.projectId = [[NSNumber alloc] initWithInt:[prj.projectId intValue]];
             self.project = prj;
-            
-            //NSLog(@"projectid: %@", self.project.projectId);
-            //NSLog(@"projectid: %d", [prj.projectId intValue]);
-            
-            //NSLog(@"id: %d", [prj.projectId intValue]);
-            //NSLog(@"title: %@", prj.projectTitle);
         }
     }
-    
-    // close this window.
-    //[self close];
 }
 
 // charger la liste des développeurs à partir du webservice et les mettre dans la combobox.
@@ -813,7 +724,6 @@
                 }];
 }
 
-
 // update user's usergroups (in database).
 - (BOOL)updateUserVisibility {
     
@@ -821,8 +731,6 @@
     
     // Initialize a new array to hold the roles.
     NSMutableArray *usersArray = [[NSMutableArray alloc] init];
-    
-    
     
     // add (assigned) user roles to the array.
     for (User *user in assignedUsers) {
@@ -845,15 +753,10 @@
 
 - (void)failedUpdatingUsersVisible:(NSError *)failure {
     
-    //[progressIndicator stopAnimation:self];
-    //[updatingUsergroupsLabel setHidden:YES];
 }
 
 - (void)finishedUpdatingUsersVisible:(NSMutableData *)data {
-    
-    //[progressIndicator stopAnimation:self];
-    //[updatingUsergroupsLabel setHidden:YES];
-    NSLog(@"ok, updated user visibility for project.");
+
 }
 
 
@@ -863,8 +766,6 @@
     
     // Initialize a new array to hold the roles.
     NSMutableArray *usergroupsArray = [[NSMutableArray alloc] init];
-    
-    
     
     // add (assigned) user roles to the array.
     for (Usergroup *usergroup in assignedUsergroups) {
@@ -878,7 +779,6 @@
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     [dict setObject:usergroupsArray forKey:@"usergroup"];
     
-    //
     // update usergroups in database via web service.
     success = [PTProjectHelper updateUsergroupsVisibleForProject:project usergroups:dict successBlock:^(NSMutableData *data) {[self finishedUpdatingUsergroupsVisible:data];} failureBlock:^(NSError *error) {[self failedUpdatingUsergroupsVisible:error];}];
     
@@ -887,15 +787,10 @@
 
 - (void)failedUpdatingUsergroupsVisible:(NSError *)failure {
     
-    //[progressIndicator stopAnimation:self];
-    //[updatingUsergroupsLabel setHidden:YES];
 }
 
 - (void)finishedUpdatingUsergroupsVisible:(NSMutableData *)data {
-    
-    //[progressIndicator stopAnimation:self];
-    //[updatingUsergroupsLabel setHidden:YES];
-    NSLog(@"ok, updated usergroups visibility for project.");
+
 }
 
 
@@ -905,8 +800,6 @@
     
     // Initialize a new array to hold the roles.
     NSMutableArray *clientsArray = [[NSMutableArray alloc] init];
-    
-    
     
     // add (assigned) user roles to the array.
     for (Client *client in assignedClients) {
@@ -920,7 +813,6 @@
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     [dict setObject:clientsArray forKey:@"client"];
     
-    //
     // update usergroups in database via web service.
     success = [PTProjectHelper updateClientsVisibleForProject:project clients:dict successBlock:^(NSMutableData *data) {[self finishedUpdatingClientsVisible:data];} failureBlock:^(NSError *error) {[self failedUpdatingClientsVisible:error];}];
     
@@ -929,15 +821,10 @@
 
 - (void)failedUpdatingClientsVisible:(NSError *)failure {
     
-    //[progressIndicator stopAnimation:self];
-    //[updatingUsergroupsLabel setHidden:YES];
 }
 
 - (void)finishedUpdatingClientsVisible:(NSMutableData *)data {
     
-    //[progressIndicator stopAnimation:self];
-    //[updatingUsergroupsLabel setHidden:YES];
-    NSLog(@"ok, updated clients visibility for project.");
 }
 
 @end

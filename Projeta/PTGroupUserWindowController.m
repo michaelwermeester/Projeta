@@ -84,8 +84,6 @@
     }
 }
 
-
-
 // remove selected user(s) from usergroup.
 - (IBAction)removeUser:(id)sender {
     
@@ -107,8 +105,7 @@
     }
 }
 
-
-
+// bouton 'ok' cliqué.
 - (IBAction)okButtonClicked:(id)sender {
     
     [progressIndicator startAnimation:self];
@@ -117,7 +114,7 @@
     [self updateUsergroupUsers];
 }
 
-// update user's usergroups (in database).
+// update usergroup's users (in database).
 - (BOOL)updateUsergroupUsers {
     
     BOOL success;
@@ -137,7 +134,6 @@
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     [dict setObject:usersArray forKey:@"user"];
     
-    //
     // update usergroups in database via web service.
     success = [PTUsergroupHelper updateUsersForUsergroup:usergroup users:dict successBlock:^(NSMutableData *data) {[self finishedUpdatingUsergroups:data];} failureBlock:^(NSError *error) {[self failedUpdatingUsergroups:error];}];
     
@@ -154,7 +150,6 @@
     
     [progressIndicator stopAnimation:self];
     [updatingUsergroupsLabel setHidden:YES];
-    NSLog(@"ok, updated users in usergroup.");
     
     [self close];
 }

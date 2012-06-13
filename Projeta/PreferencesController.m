@@ -172,9 +172,6 @@ static NSString *realm = @"ProjetaRealm";
     {
         //NSURL *url = [NSURL URLWithString:[[self URL] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         NSURLCredential* credential;
-        /*credential = [NSURLCredential credentialWithUser:[self username]
-											password:[self password]
-										 persistence:NSURLCredentialPersistencePermanent];*/
         credential = [NSURLCredential credentialWithUser:[usernameTextField stringValue]
 											password:[passwordTextField stringValue]
 										 persistence:NSURLCredentialPersistencePermanent];

@@ -59,7 +59,6 @@
 
 }
 
-//+ (NSMutableArray *)setAttributesFromDictionary2:(NSDictionary *)aDictionary {
 + (NSMutableArray *)setAttributesFromJSONDictionary:(NSDictionary *)aDictionary {
     
     if (!aDictionary) {
@@ -99,8 +98,6 @@
     }
     
     // create dictionary from User object
-    //NSDictionary *dict = [theUser dictionaryWithValuesForKeys:[theUser allKeys]];
-    // update username, first name, last name and email address
     NSDictionary *dict = [theUser dictionaryWithValuesForKeys:[theUser namesEmailKeysWithPassword]];
 
     // API resource string.
@@ -131,8 +128,6 @@
     }
     
     // create dictionary from User object
-    //NSDictionary *dict = [theUser dictionaryWithValuesForKeys:[theUser allKeys]];
-    // update username, first name, last name and email address
     NSDictionary *dict = [theUser dictionaryWithValuesForKeys:[theUser namesEmailKeys]];
 
     // API resource string.
@@ -264,10 +259,6 @@
                                                     failureBlock:^(NSError *error) {
                                                         //[self rolesForUserRequestFailed:error];
                                                     }];
-    
-    //[connectionController setPostSuccessAction:^{
-        //NSLog(@"postSuccessAction.");
-    //}];
     
     NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
     

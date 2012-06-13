@@ -22,7 +22,6 @@ Bug *bugCopy;
 @synthesize bug;
 
 @synthesize isNewBug;
-//@synthesize isPersonalTask;
 
 @synthesize arrBugCategory;
 @synthesize arrDevelopers;
@@ -58,27 +57,6 @@ Bug *bugCopy;
     // faire une copie du projet en cours.
     bugCopy = [[Bug alloc] init];
     bugCopy = [bug copy];
-    
-    // debug
-    /*for (Project *p in project.childProject) {
-        
-        NSLog(@"title: %@", [p projectTitle] );
-        
-        for (Project *p1 in p.childProject) {
-            NSLog(@"titlesub: %@", [p1 projectTitle] );
-        }
-        
-    }
-    
-    for (Project *p in projectCopy.childProject) {
-        
-        NSLog(@"title: %@", [p projectTitle] );
-        
-        for (Project *p1 in p.childProject) {
-            NSLog(@"titlesub: %@", [p1 projectTitle] );
-        }
-        
-    }*/
 }
 
 - (void)windowDidLoad
@@ -107,37 +85,11 @@ Bug *bugCopy;
     
     if (isNewBug == NO) {
         
-        // cancel changes -> replace current project with previously made copy of project.
+        // cancel changes -> replace current bug with previously made copy of bug.
         [[parentBugListViewController mutableArrayValueForKey:@"arrBug"] replaceObjectAtIndex:[parentBugListViewController.arrBug indexOfObject:bug] withObject:bugCopy];
-        
-        // cancel changes -> replace current project with previously made copy of project.
-        if (tskTreeIndexPath) {
-            
-            //[parentTaskListViewController.taskTreeCtrl removeObjectAtArrangedObjectIndexPath:tskTreeIndexPath];
-            
-            //[parentTaskListViewController.taskTreeCtrl insertObject:taskCopy atArrangedObjectIndexPath:tskTreeIndexPath];
-            
-           /* [parentProjectListViewController.prjTreeController removeObjectAtArrangedObjectIndexPath:prjTreeIndexPath];
-        
-            [parentProjectListViewController.prjTreeController insertObject:projectCopy atArrangedObjectIndexPath:prjTreeIndexPath];*/
-        }
-        else {
-           /* [[parentProjectListViewController mutableArrayValueForKey:@"arrPrj"] replaceObjectAtIndex:[parentProjectListViewController.arrPrj indexOfObject:project] withObject:projectCopy];
-            
-            // re-sélectionner le projet.
-            [parentProjectListViewController.prjArrayCtrl setSelectionIndex:prjArrCtrlIndex];*/
-        }
-             
-        // TODO: select another item to avoid crash.
-        //[parentProjectListViewController.prjTreeController setSelectionIndexPath:prjTreeIndexPath];       
-        
     } else {
-        // remove the temporary inserted/created user.
+        // remove the temporary inserted/created bug.
         [[parentBugListViewController mutableArrayValueForKey:@"arrBug"] removeObject:bug];
-        
-       /* [[parentProjectListViewController prjTreeController] remove:self];*/
-        
-        //[[parentBugListViewController mutableArrayValueForKey:@"arrBug"] removeObjectIdenticalTo:bug];
     }
        
     // close this window.
@@ -154,8 +106,7 @@ Bug *bugCopy;
     // créer une nouvelle tâche.
     if (isNewBug == YES) {
         
-        
-        // user created.
+        // bug created.
         bug.userReported = mainWindowController.loggedInUser;
     
         
@@ -167,7 +118,7 @@ Bug *bugCopy;
                                  } mainWindowController:parentBugListViewController];
          
     }
-    // mettre à jour projet existant.
+    // mettre à jour bogue existant.
     else {
         
         bugUpdSuc = [PTBugHelper updateBug:bug successBlock:^(NSMutableData *data) {
@@ -189,35 +140,14 @@ Bug *bugCopy;
     dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
     
     NSMutableArray *createdBugArray = [[NSMutableArray alloc] init];
-    
-    // see Cocoa and Objective-C up and running by Scott Stevenson.
-    // page 242
-    //[createdUserArray addObjectsFromArray:[PTUserHelper setAttributesFromDictionary2:dict]];
-    /*[createdProjectArray addObjectsFromArray:[PTProjectHelper setAttributesFromJSONDictionary:dict]];*/
-    
-    NSLog(@"count: %lu", [createdBugArray count]);
+
     
     if ([createdBugArray count] == 1) {
 
         for (Bug *b in createdBugArray) {
-   
-            /*
-            if (b.parentTaskId) {
-                [parentTaskListViewController.taskTreeCtrl remove:task];
-                
-                NSIndexPath *indexPath = [parentTaskListViewController.taskTreeCtrl selectionIndexPath];
-                
-                [parentTaskListViewController.taskTreeCtrl insertObject:tsk atArrangedObjectIndexPath:[indexPath indexPathByAddingIndex:0]];
             
-            } else {
-                [[parentTaskListViewController mutableArrayValueForKey:@"arrTask"] replaceObjectAtIndex:[parentTaskListViewController.arrTask indexOfObject:task] withObject:tsk];
-            }*/
-            
-            // reassign user with user returned from web-service. 
+            // reassign bug with bug returned from web-service. 
             self.bug = b;
-            
-            //NSLog(@"id: %d", [prj.projectId intValue]);
-            //NSLog(@"title: %@", prj.projectTitle);
         }
     }
     

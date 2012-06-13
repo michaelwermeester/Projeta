@@ -22,12 +22,8 @@
 
 // Returns all available roles.
 + (void)rolesAvailable:(void(^)(NSMutableArray *))successBlock_;
-//+ (NSMutableArray *)rolesForUser:(User *)aUser;
 + (void)rolesForUser:(User *)aUser successBlock:(void(^)(NSMutableArray *))successBlock_;
-//+ (NSMutableArray *)rolesForUserName:(NSString *)aUsername;
 + (void)rolesForUserName:(NSString *)aUsername successBlock:(void(^)(NSMutableArray *))successBlock_;
-
-//+ (void)updateRolesForUser:(User *)aUser successBlock:(void(^)(NSMutableArray *))successBlock;
 
 //
 + (BOOL)updateRolesForUser:(User *)aUser roles:(NSMutableDictionary *)roles;

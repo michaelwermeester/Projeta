@@ -93,9 +93,7 @@
         [sender startProgressIndicatorAnimation];
     }
     
-    // create dictionary from User object
-    //NSDictionary *dict = [theUser dictionaryWithValuesForKeys:[theUser allKeys]];
-    // update username, first name, last name and email address
+    // create dictionary from Task object
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[theTask dictionaryWithValuesForKeys:[theTask createTaskKeys]]];
     
     
@@ -126,7 +124,6 @@
     NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/tasks/create"];
     
     // execute the PUT method on the webservice to update the record in the database.
-    //success = [PTCommon executePOSTforDictionary:dict resourceString:resourceString successBlock:successBlock_];
     [PTCommon executePOSTforDictionaryWithBlocks:dict resourceString:resourceString successBlock:successBlock_ failureBlock:failureBlock_];
     
     if ([sender isKindOfClass:[MainWindowController class]]) {
@@ -172,22 +169,8 @@
         [sender startProgressIndicatorAnimation];
     }
     
-    // create dictionary from User object
-    //NSDictionary *dict = [theUser dictionaryWithValuesForKeys:[theUser allKeys]];
-    // update username, first name, last name and email address
+    // create dictionary from Task object
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[theTask dictionaryWithValuesForKeys:[theTask updateTaskKeys]]];
-    
-    
-    // s'il s'agit d'un sous-projet...
-    /*if (theProject.parentProjectId) {
-     // créer dictionnaire 'parentProjectId'.
-     Project *parentProject = [[Project alloc] init];
-     parentProject.projectId = theProject.parentProjectId;
-     
-     NSDictionary *parentProjectDict = [parentProject dictionaryWithValuesForKeys:[parentProject projectIdKey]];
-     // ajouter ce dictionnaire sous la clé 'parentProjectId'.
-     [dict setObject:parentProjectDict forKey:@"parentProjectId"];
-     }*/
     
     // Dates début et fin de projet.
     if ([theTask stringStartDate])
@@ -200,7 +183,6 @@
     NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/tasks/update"];
     
     // execute the PUT method on the webservice to update the record in the database.
-    //success = [PTCommon executePUTforDictionaryWithSuccessBlock:dict resourceString:resourceString successBlock:successBlock_];
     success = [PTCommon executePUTforDictionaryWithBlocks:dict resourceString:resourceString successBlock:successBlock_ failureBlock:failureBlock_];
     
     if ([sender isKindOfClass:[MainWindowController class]]) {

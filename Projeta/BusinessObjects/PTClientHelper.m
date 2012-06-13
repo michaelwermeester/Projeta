@@ -92,12 +92,7 @@
                                                         successBlock(clients);
                                                     }
                                                     failureBlock:^(NSError *error) {
-                                                        //[self rolesForUserRequestFailed:error];
                                                     }];
-    
-    //[connectionController setPostSuccessAction:^{
-        //NSLog(@"postSuccessAction.");
-    //}];
     
     NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
     

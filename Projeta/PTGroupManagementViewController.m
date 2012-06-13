@@ -30,9 +30,6 @@
         // Initialization code here.
         
         arrUsrGrp = [[NSMutableArray alloc] init];
-        
-        // Fetch user groups from webservice.
-        //[self fetchUsergroups];
     }
     
     return self;
@@ -94,14 +91,14 @@
     
     NSError *error;
     
+    // récuperer les groupes d'utilisateur du webservice et les mettre dans un dictionnaire. 
     NSDictionary *dict = [[NSDictionary alloc] init];
     dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
     
-    // see Cocoa and Objective-C up and running by Scott Stevenson.
-    // page 242
+    // à partir du dictionnaire, créer des objets Usergroup et les rajouter dans l'array prévu.
     [[self mutableArrayValueForKey:@"arrUsrGrp"] addObjectsFromArray:[PTUsergroupHelper setAttributesFromJSONDictionary:dict]];
     
-    // sort the user list by username. 
+    // sort the user list by usergroup code. 
     [usergroupTableView setSortDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"code" ascending:YES selector:@selector(compare:)], nil]];
     
     [mainWindowController stopProgressIndicatorAnimation];
@@ -133,14 +130,11 @@
     {
         // update Usergroup.
         [self updateUsergroup:usrgrp];
-        //[PTUserHelper updateUser:usr mainWindowController:mainWindowController];
     }
 }
 
 - (void)updateUsergroup:(Usergroup *)theUsergroup {
-    // create dictionary from User object
-    //NSDictionary *dict = [theUser dictionaryWithValuesForKeys:[theUser allKeys]];
-    // update username, first name, last name and email address
+    // create dictionary from Usergroup objects
     NSDictionary *dict = [theUsergroup dictionaryWithValuesForKeys:[theUsergroup allKeys]];
     
     // create NSData from dictionary
@@ -170,7 +164,6 @@
     
     NSString* requestDataLengthString = [[NSString alloc] initWithFormat:@"%d", [requestData length]];
     
-    //[urlRequest setHTTPMethod:@"POST"]; // create
     [urlRequest setHTTPMethod:@"PUT"]; // update
     [urlRequest setHTTPBody:requestData];
     [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -183,10 +176,10 @@
 
 - (void)openUsersWindow 
 {
-    // get selected users.
+    // get selected usergroups.
     NSArray *selectedObjects = [usergroupArrayCtrl selectedObjects];
     
-    // if a user is selected, open the window to show its user details.
+    // si un groupe a été sélectionné.
     if ([selectedObjects count] == 1) {
         
         groupUserWindowController = [[PTGroupUserWindowController alloc] init];
@@ -194,7 +187,7 @@
         groupUserWindowController.mainWindowController = mainWindowController;
         groupUserWindowController.usergroup = [selectedObjects objectAtIndex:0];
         
-        // fetch usergroup's users.
+        // fetch usersgroups.
         [PTUserHelper usersForUsergroup:groupUserWindowController.usergroup successBlock:^(NSMutableArray *users) {
             
             // sort user roles alphabetically.
@@ -205,14 +198,7 @@
             
             //if (isNewUser == NO) {
             groupUserWindowController.usergroup.users = users;
-            
-            //NSLog(@"count: %@", [userGroups count]);
-            //} else {
-            //    userDetailsWindowController.user.roles = [[NSMutableArray alloc] init];
-            //}
-            
-            //[[userDetailsWindowController.user mutableArrayValueForKey:@"roles"] addObjectsFromArray:userRoles];
-            
+
         } failureBlock:^(NSError *error) {
             
         }];

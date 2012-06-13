@@ -29,16 +29,12 @@
         // Initialization code here.
         
         arrBugCat = [[NSMutableArray alloc] init];
-        
-        // Fetch user groups from webservice.
-        //[self fetchUsergroups];
     }
     
     return self;
 }
 
 - (void)viewDidLoad {
-    
     
     // bind the main window's search field to the arraycontroller.
     [[mainWindowController searchField] bind:@"predicate" toObject:bugCategoryArrayCtrl withKeyPath:@"filterPredicate" options:[NSDictionary dictionaryWithObjectsAndKeys:
@@ -96,11 +92,10 @@
     NSDictionary *dict = [[NSDictionary alloc] init];
     dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
     
-    // see Cocoa and Objective-C up and running by Scott Stevenson.
-    // page 242
+    // à partir du dictionnaire, créer des catégories de bogue et les rajouter dans l'array. 
     [[self mutableArrayValueForKey:@"arrBugCat"] addObjectsFromArray:[PTBugCategoryHelper setAttributesFromJSONDictionary:dict]];
     
-    // sort the user list by username. 
+    // trier la liste par nom de catégorie.
     [bugCategoryTableView setSortDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"categoryName" ascending:YES selector:@selector(compare:)], nil]];
     
     [mainWindowController stopProgressIndicatorAnimation];
@@ -127,14 +122,11 @@
     {
         // update Usergroup.
         [self updateBugCategory:bugcat];
-        //[PTUserHelper updateUser:usr mainWindowController:mainWindowController];
     }
 }
 
 - (void)updateBugCategory:(BugCategory *)theBugCategory {
-    // create dictionary from User object
-    //NSDictionary *dict = [theUser dictionaryWithValuesForKeys:[theUser allKeys]];
-    // update username, first name, last name and email address
+    // create dictionary from Bug Categories
     NSDictionary *dict = [theBugCategory dictionaryWithValuesForKeys:[theBugCategory allKeys]];
     
     // create NSData from dictionary
@@ -164,7 +156,6 @@
     
     NSString* requestDataLengthString = [[NSString alloc] initWithFormat:@"%d", [requestData length]];
     
-    //[urlRequest setHTTPMethod:@"POST"]; // create
     [urlRequest setHTTPMethod:@"PUT"]; // update
     [urlRequest setHTTPBody:requestData];
     [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -172,7 +163,6 @@
     [urlRequest setTimeoutInterval:30.0];
     
     [connectionController startRequestForURL:url setRequest:urlRequest];
-    
 }
 
 @end

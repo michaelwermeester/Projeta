@@ -18,7 +18,6 @@
 @interface PTProjectDetailsViewController : NSViewController {
     
     PTProjectViewController *projectViewController;
-    //NSTreeController *prjTreeController;
     
     __weak NSButton *startDateRealCalendarButton;
     NSPopover *calendarPopover;

@@ -21,11 +21,9 @@ Task *taskCopy;
 @synthesize task;
 
 @synthesize isNewTask;
-//@synthesize isPersonalTask;
 
 @synthesize arrDevelopers;
 
-//@synthesize parentProjectListViewController;
 @synthesize mainWindowController;
 @synthesize okButton;
 @synthesize comboDevelopers;
@@ -50,30 +48,9 @@ Task *taskCopy;
 
 - (void)awakeFromNib {
     
-    // faire une copie du projet en cours.
+    // faire une copie de la tâche en cours.
     taskCopy = [[Task alloc] init];
     taskCopy = [task copy];
-    
-    // debug
-    /*for (Project *p in project.childProject) {
-        
-        NSLog(@"title: %@", [p projectTitle] );
-        
-        for (Project *p1 in p.childProject) {
-            NSLog(@"titlesub: %@", [p1 projectTitle] );
-        }
-        
-    }
-    
-    for (Project *p in projectCopy.childProject) {
-        
-        NSLog(@"title: %@", [p projectTitle] );
-        
-        for (Project *p1 in p.childProject) {
-            NSLog(@"titlesub: %@", [p1 projectTitle] );
-        }
-        
-    }*/
 }
 
 - (void)windowDidLoad
@@ -99,38 +76,15 @@ Task *taskCopy;
     if (isNewTask == NO) {
         
         // cancel changes -> replace current project with previously made copy of project.
-        //[[parentProjectListViewController mutableArrayValueForKey:@"arrPrj"] replaceObjectAtIndex:[parentProjectListViewController.arrPrj indexOfObject:project] withObject:projectCopy];
-        
-        // cancel changes -> replace current project with previously made copy of project.
         if (tskTreeIndexPath) {
             
             [parentTaskListViewController.taskTreeCtrl removeObjectAtArrangedObjectIndexPath:tskTreeIndexPath];
             
             [parentTaskListViewController.taskTreeCtrl insertObject:taskCopy atArrangedObjectIndexPath:tskTreeIndexPath];
-            
-           /* [parentProjectListViewController.prjTreeController removeObjectAtArrangedObjectIndexPath:prjTreeIndexPath];
-        
-            [parentProjectListViewController.prjTreeController insertObject:projectCopy atArrangedObjectIndexPath:prjTreeIndexPath];*/
         }
-        else {
-           /* [[parentProjectListViewController mutableArrayValueForKey:@"arrPrj"] replaceObjectAtIndex:[parentProjectListViewController.arrPrj indexOfObject:project] withObject:projectCopy];
-            
-            // re-sélectionner le projet.
-            [parentProjectListViewController.prjArrayCtrl setSelectionIndex:prjArrCtrlIndex];*/
-        }
-             
-        // TODO: select another item to avoid crash.
-        //[parentProjectListViewController.prjTreeController setSelectionIndexPath:prjTreeIndexPath];       
         
-    } else {
-        // remove the temporary inserted/created user.
-        //[[parentProjectListViewController mutableArrayValueForKey:@"arrPrj"] removeObject:project];
-        
-       /* [[parentProjectListViewController prjTreeController] remove:self];*/
-        
-        //[[parentProjectListViewController mutableArrayValueForKey:@"arrPrj"] removeObjectIdenticalTo:project];
     }
-       
+    
     // close this window.
     [self close];
 }
@@ -150,8 +104,8 @@ Task *taskCopy;
         
         
         taskUpdSuc = [PTTaskHelper createTask:task successBlock:^(NSMutableData *data) { 
-                                    [self finishedCreatingTask:data];
-                                }
+            [self finishedCreatingTask:data];
+        }
                                  failureBlock:^() {
                                      
                                  } mainWindowController:parentTaskListViewController];
@@ -163,7 +117,7 @@ Task *taskCopy;
         } failureBlock:^() {
             
         }
-                              mainWindowController:parentTaskListViewController];
+                         mainWindowController:parentTaskListViewController];
     }
 }
 
@@ -177,35 +131,16 @@ Task *taskCopy;
     
     NSMutableArray *createdTaskArray = [[NSMutableArray alloc] init];
     
-    // see Cocoa and Objective-C up and running by Scott Stevenson.
-    // page 242
-    //[createdUserArray addObjectsFromArray:[PTUserHelper setAttributesFromDictionary2:dict]];
+    // à partir du dictionnaire créer des objets Task et les rajouter dans l'array. 
     [createdTaskArray addObjectsFromArray:[PTTaskHelper setAttributesFromJSONDictionary:dict]];
     
-    NSLog(@"count: %lu", [createdTaskArray count]);
-    
     if ([createdTaskArray count] == 1) {
-
+        
         for (Task *tsk in createdTaskArray) {
-   
-            
-            /*if (tsk.parentTaskId) {
-                [parentTaskListViewController.taskTreeCtrl remove:task];
-                
-                NSIndexPath *indexPath = [parentTaskListViewController.taskTreeCtrl selectionIndexPath];
-                
-                [parentTaskListViewController.taskTreeCtrl insertObject:tsk atArrangedObjectIndexPath:[indexPath indexPathByAddingIndex:0]];
-            
-            } else {
-                [[parentTaskListViewController mutableArrayValueForKey:@"arrTask"] replaceObjectAtIndex:[parentTaskListViewController.arrTask indexOfObject:task] withObject:tsk];
-            }*/
             
             // reassign user with user returned from web-service. 
             self.task.taskId = [[NSNumber alloc] initWithInt:[tsk.taskId intValue]];
             self.task = tsk;
-            
-            //NSLog(@"id: %d", [prj.projectId intValue]);
-            //NSLog(@"title: %@", prj.projectTitle);
         }
     }
     

@@ -19,10 +19,6 @@
     
     NSMutableArray *roles;
     NSMutableArray *usergroups;
-    
-    // retourne le nom complet de l'utilisateur (prénom + nom).
-    //NSString *fullName;
-    //NSString *fullNameAndUsername;
 }
 
 @property (nonatomic, copy) NSString *password;

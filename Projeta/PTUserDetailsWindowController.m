@@ -46,7 +46,6 @@ User *userCopy;
 - (id)init
 {
     self = [super initWithWindowNibName:@"PTUserDetailsWindow"];
-    //self = [super initWithWindow:window];
     if (self) {
         // Initialization code here.
     }
@@ -166,11 +165,7 @@ User *userCopy;
             
         }
         
-    }
-    
-    // update user roles.
-    //roleUpdSuc = [self updateUserRoles];
-    
+    }    
 }
 
 - (IBAction)cancelButtonClicked:(id)sender {
@@ -194,23 +189,11 @@ User *userCopy;
 
     [setPwdWindowCtrl setUserId:user.userId];
     
-    /*NSModalSession session = [NSApp beginModalSessionForWindow:[setPwdWindowCtrl window]];
-    
-    for (;;) {
-        if ([NSApp runModalSession:session] != NSRunContinuesResponse)
-            break;
-        //[self doSomeWork];
-    }
-    
-    [NSApp endModalSession:session];*/
-    
     [NSApp beginSheet:[setPwdWindowCtrl window]
        modalForWindow:[self window]
         modalDelegate:nil
        didEndSelector:NULL
           contextInfo:NULL];
-    
-    
 }
 
 - (void)finishedCreatingUser:(NSMutableData*)data {
@@ -221,9 +204,7 @@ User *userCopy;
     
     NSMutableArray *createdUserArray = [[NSMutableArray alloc] init];
     
-    // see Cocoa and Objective-C up and running by Scott Stevenson.
-    // page 242
-    //[createdUserArray addObjectsFromArray:[PTUserHelper setAttributesFromDictionary2:dict]];
+    // crée à partir du dictionnaire des objets User et les rajoute dans l'array.
     [createdUserArray addObjectsFromArray:[PTUserHelper setAttributesFromJSONDictionary:dict]];
     
     if ([createdUserArray count] == 1) {
@@ -267,52 +248,10 @@ User *userCopy;
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     [dict setObject:rolesArray forKey:@"role"];
     
-    //
     // update user roles in database via web service.
     success = [PTRoleHelper updateRolesForUser:user roles:dict];
     
     return success;
-    
-    
-    // -> moved to 'PTRoleHelper - updateUserRoles' method
-    /*// create NSData from dictionary
-    NSError* error;
-    NSData *requestData = [[NSData alloc] init];
-    requestData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
-    
-    // get server URL as string
-    NSString *urlString = [PTCommon serverURLString];
-    // build URL by adding resource path
-    urlString = [urlString stringByAppendingString:@"resources/roles?userId="];
-    urlString = [urlString stringByAppendingString:[user.userId stringValue]];
-    
-    // convert to NSURL
-    NSURL *url = [NSURL URLWithString:urlString];
-    
-    
-    MWConnectionController* connectionController = [[MWConnectionController alloc] 
-                                                    initWithSuccessBlock:^(NSMutableData *data) {
-                                                        
-                                                    }
-                                                    failureBlock:^(NSError *error) {
-                                                        
-                                                    }];
-    
-    
-    NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
-    
-    NSString* requestDataLengthString = [[NSString alloc] initWithFormat:@"%d", [requestData length]];
-    
-    //[urlRequest setHTTPMethod:@"POST"]; // create
-    [urlRequest setHTTPMethod:@"PUT"]; // update
-    [urlRequest setHTTPBody:requestData];
-    [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [urlRequest setValue:requestDataLengthString forHTTPHeaderField:@"Content-Length"];
-    [urlRequest setTimeoutInterval:30.0];
-    
-    [connectionController startRequestForURL:url setRequest:urlRequest];
-     */
-
 }
 
 - (void)controlTextDidChange:(NSNotification *)aNotification

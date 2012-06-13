@@ -10,10 +10,8 @@
 #import "OutlineCollection.h"
 
 #import "User.h"
-//@class User;
 
 @interface Project : OutlineCollection <NSCopying> {
-//@interface Project : NSObject <NSCopying> {
     NSDate *dateCreated;
     NSDate *endDate;
     BOOL flagPublic;
@@ -33,8 +31,6 @@
     NSNumber *projectPercentage;
     
     NSMutableArray *childProject;
-    
-    //Project *project;
 }
 
 @property (nonatomic, copy) NSDate *dateCreated;
@@ -44,7 +40,6 @@
 @property (nonatomic, assign) BOOL completed;
 @property (nonatomic, assign) BOOL canceled;
 @property (nonatomic, copy) NSString *projectDescription;
-//@property (nonatomic, copy) NSNumber *projectId;
 @property (nonatomic, copy) NSNumber *projectId;
 @property (nonatomic, copy) NSNumber *parentProjectId;
 @property (nonatomic, copy) NSString *projectTitle;
@@ -57,16 +52,12 @@
 // retourne le pourcentage d'avancement du projet.
 @property (readonly) NSString *percentageCompleteString;
 
-//@property (strong) Project *project;
-
 // état du projet
 @property (nonatomic, copy) NSString *projectStatus;
 @property (nonatomic, copy) NSNumber *projectPercentage;
 
 @property (readonly, nonatomic, copy) NSString *projectPercentageStatus;
 
-//@property (nonatomic, copy) NSString *stringEndDate;
-//@property (nonatomic, copy) NSString *stringStartDate;
 @property (readonly, nonatomic, copy) NSString *stringEndDate;
 @property (readonly, nonatomic, copy) NSString *stringStartDate;
 

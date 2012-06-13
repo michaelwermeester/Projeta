@@ -15,7 +15,6 @@
 @interface PTTaskDetailsWindowController : NSWindowController {
     
     BOOL isNewTask;
-    //BOOL isPersonalTask;
     __weak NSButton *okButton;
     __weak NSComboBox *comboDevelopers;
     
@@ -25,8 +24,6 @@
 @property (strong) Task *task;
 
 @property (assign) BOOL isNewTask;
-
-//@property (assign) BOOL isPersonalTask;
 
 @property (strong) NSMutableArray *arrDevelopers;
 

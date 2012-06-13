@@ -13,7 +13,6 @@
     NSView *usersView;
 }
 
-//@property (strong, nonatomic) PTUserManagementViewController *userManagementViewController;
 @property (strong) PTUserManagementViewController *userManagementViewController;
 @property (strong) IBOutlet NSView *usersView;
 

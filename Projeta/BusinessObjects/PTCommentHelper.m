@@ -97,14 +97,7 @@
     
     BOOL success = NO;
     
-    /*if ([sender isKindOfClass:[MainWindowController class]]) {
-     // start animating the main window's circular progress indicator.
-     [sender startProgressIndicatorAnimation];
-     }*/
-    
-    // create dictionary from User object
-    //NSDictionary *dict = [theUser dictionaryWithValuesForKeys:[theUser allKeys]];
-    // update username, first name, last name and email address
+    // create dictionary from Project object
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[theComment dictionaryWithValuesForKeys:[theComment createCommentKeys]]];
     
     // créer dictionnaire 'user création'.
@@ -112,25 +105,16 @@
     // ajouter ce dictionnaire sous la clé 'userCreated'.
     [dict setObject:userDict forKey:@"userCreated"];
     
-    
-    // créer dictionnaire 'task_id'.
+    // créer dictionnaire 'project_id'.
     NSDictionary *projectIdDict = [aProject dictionaryWithValuesForKeys:[aProject projectIdKey]];
-    // ajouter ce dictionnaire sous la clé 'userCreated'.
+    // ajouter ce dictionnaire sous la clé 'projectId'.
     [dict setObject:projectIdDict forKey:@"projectId"];
-    
-    NSLog(@"dict: %@", dict);
     
     // API resource string.
     NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/comments/create"];
     
     // execute the PUT method on the webservice to update the record in the database.
-    //success = [PTCommon executePOSTforDictionary:dict resourceString:resourceString successBlock:successBlock_];
     [PTCommon executePOSTforDictionaryWithBlocks:dict resourceString:resourceString successBlock:successBlock_ failureBlock:failureBlock_];
-    
-    /*if ([sender isKindOfClass:[MainWindowController class]]) {
-     // stop animating the main window's circular progress indicator.
-     [sender stopProgressIndicatorAnimation];
-     }*/
     
     return success;
 }
@@ -141,14 +125,7 @@
     
     BOOL success = NO;
     
-    /*if ([sender isKindOfClass:[MainWindowController class]]) {
-        // start animating the main window's circular progress indicator.
-        [sender startProgressIndicatorAnimation];
-    }*/
-    
-    // create dictionary from User object
-    //NSDictionary *dict = [theUser dictionaryWithValuesForKeys:[theUser allKeys]];
-    // update username, first name, last name and email address
+    // create dictionary from Task object
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[theComment dictionaryWithValuesForKeys:[theComment createCommentKeys]]];
     
     // créer dictionnaire 'user création'.
@@ -159,21 +136,14 @@
     
     // créer dictionnaire 'task_id'.
     NSDictionary *taskIdDict = [aTask dictionaryWithValuesForKeys:[aTask taskIdKey]];
-    // ajouter ce dictionnaire sous la clé 'userCreated'.
+    // ajouter ce dictionnaire sous la clé 'taskIdtaskId'.
     [dict setObject:taskIdDict forKey:@"taskId"];
-    
     
     // API resource string.
     NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/comments/create"];
     
     // execute the PUT method on the webservice to update the record in the database.
-    //success = [PTCommon executePOSTforDictionary:dict resourceString:resourceString successBlock:successBlock_];
     [PTCommon executePOSTforDictionaryWithBlocks:dict resourceString:resourceString successBlock:successBlock_ failureBlock:failureBlock_];
-    
-    /*if ([sender isKindOfClass:[MainWindowController class]]) {
-        // stop animating the main window's circular progress indicator.
-        [sender stopProgressIndicatorAnimation];
-    }*/
     
     return success;
 }

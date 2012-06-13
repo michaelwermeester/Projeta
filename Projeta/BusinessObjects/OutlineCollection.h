@@ -20,7 +20,6 @@
 @property (nonatomic, copy) NSDate *startDate;
 @property (nonatomic, copy) NSDate *endDate;
 
-// test - 06 May 2012
 @property (nonatomic, copy) NSString *projectTitle;
 @property (nonatomic, copy) NSString *projectDescription;
 @property (nonatomic, assign) BOOL flagPublic;

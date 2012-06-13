@@ -57,27 +57,6 @@ Project *projectCopy;
     // faire une copie du projet en cours.
     projectCopy = [[Project alloc] init];
     projectCopy = [project copy];
-    
-    // debug
-    /*for (Project *p in project.childProject) {
-        
-        NSLog(@"title: %@", [p projectTitle] );
-        
-        for (Project *p1 in p.childProject) {
-            NSLog(@"titlesub: %@", [p1 projectTitle] );
-        }
-        
-    }
-    
-    for (Project *p in projectCopy.childProject) {
-        
-        NSLog(@"title: %@", [p projectTitle] );
-        
-        for (Project *p1 in p.childProject) {
-            NSLog(@"titlesub: %@", [p1 projectTitle] );
-        }
-        
-    }*/
 }
 
 - (void)windowDidLoad
@@ -97,9 +76,6 @@ Project *projectCopy;
     if (isNewProject == NO) {
         
         // cancel changes -> replace current project with previously made copy of project.
-        //[[parentProjectListViewController mutableArrayValueForKey:@"arrPrj"] replaceObjectAtIndex:[parentProjectListViewController.arrPrj indexOfObject:project] withObject:projectCopy];
-        
-        // cancel changes -> replace current project with previously made copy of project.
         if (prjTreeIndexPath) {
             
             [parentProjectListViewController.prjTreeController removeObjectAtArrangedObjectIndexPath:prjTreeIndexPath];
@@ -112,17 +88,10 @@ Project *projectCopy;
             // re-sélectionner le projet.
             [parentProjectListViewController.prjArrayCtrl setSelectionIndex:prjArrCtrlIndex];
         }
-             
-        // TODO: select another item to avoid crash.
-        //[parentProjectListViewController.prjTreeController setSelectionIndexPath:prjTreeIndexPath];       
         
     } else {
         // remove the temporary inserted/created user.
-        //[[parentProjectListViewController mutableArrayValueForKey:@"arrPrj"] removeObject:project];
-        
         [[parentProjectListViewController prjTreeController] remove:self];
-        
-        //[[parentProjectListViewController mutableArrayValueForKey:@"arrPrj"] removeObjectIdenticalTo:project];
     }
        
     // close this window.
@@ -175,9 +144,7 @@ Project *projectCopy;
     
     NSMutableArray *createdProjectArray = [[NSMutableArray alloc] init];
     
-    // see Cocoa and Objective-C up and running by Scott Stevenson.
-    // page 242
-    //[createdUserArray addObjectsFromArray:[PTUserHelper setAttributesFromDictionary2:dict]];
+    // créer des projets à partir du dictionnaire et les rajouter à l'array prévu. 
     [createdProjectArray addObjectsFromArray:[PTProjectHelper setAttributesFromJSONDictionary:dict]];
     
     NSLog(@"count: %lu", [createdProjectArray count]);
@@ -185,36 +152,9 @@ Project *projectCopy;
     if ([createdProjectArray count] == 1) {
 
         for (Project *prj in createdProjectArray) {
-   
             
-            //[parentProjectListViewController.prjTreeController removeObjectAtArrangedObjectIndexPath:prjTreeIndexPath];
-            
-            //[parentProjectListViewController.prjTreeController insertObject:prj atArrangedObjectIndexPath:prjTreeIndexPath];
-
-            
-            /*if (prj.parentProjectId) {
-                [parentProjectListViewController.prjTreeController remove:project];
-                
-                NSIndexPath *indexPath = [parentProjectListViewController.prjTreeController selectionIndexPath];
-                
-                [parentProjectListViewController.prjTreeController insertObject:prj atArrangedObjectIndexPath:[indexPath indexPathByAddingIndex:0]];
-            
-            } else {
-                [[parentProjectListViewController mutableArrayValueForKey:@"arrPrj"] replaceObjectAtIndex:[parentProjectListViewController.arrPrj indexOfObject:project] withObject:prj];
-            }*/
-            
-            
-            // reassign user with user returned from web-service.
-            //self.project = prj;
-            //self.project = [prj copy];
             self.project.projectId = [[NSNumber alloc] initWithInt:[prj.projectId intValue]];
             self.project = prj;
-            
-            //NSLog(@"projectid: %@", self.project.projectId);
-            //NSLog(@"projectid: %d", [prj.projectId intValue]);
-            
-            //NSLog(@"id: %d", [prj.projectId intValue]);
-            //NSLog(@"title: %@", prj.projectTitle);
         }
     }
     
@@ -235,7 +175,6 @@ Project *projectCopy;
         
         // sort array and affect fetched array to local array.
         [[self mutableArrayValueForKey:@"arrDevelopers"] addObjectsFromArray:[developers sortedArrayUsingDescriptors:sortDescriptors]];
-        
         
         // sélectionner développeur attribué (responsable du projet).
         for (NSInteger i = 0; i < [arrDevelopers count]; i++) {
@@ -284,8 +223,6 @@ Project *projectCopy;
         // binder la propriété 'value' du datepicker avec la propriété correspondante de l'objet 'projet'. 
         MWCalendarViewController *calView = (MWCalendarViewController *)calendarPopover.contentViewController;
         [calView.datePicker bind:@"value" toObject:self withKeyPath:@"project.startDateReal" options:nil];
-        //[calView.datePicker bind:@"minValue" toObject:self withKeyPath:@"parentProjectStartDate" options:nil];
-        //[calView.datePicker bind:@"maxValue" toObject:self withKeyPath:@"parentProjectEndDate" options:nil];
         
         // afficher le popup avec le calendrier.
         [self.calendarPopover showRelativeToRect:[startDateRealCalendarButton bounds]

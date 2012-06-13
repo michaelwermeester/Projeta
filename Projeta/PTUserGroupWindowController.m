@@ -37,9 +37,6 @@
 
 - (void)awakeFromNib {
     
-    //userCopy = [[User alloc] init];
-    //userCopy = [user copy];
-    
     // remove usergroups already affected to user from available usergroups list.
     for (Usergroup *ug in user.usergroups) {
         
@@ -115,6 +112,7 @@
     }
 }
 
+// bouton 'OK' cliqué -> met à jour les groupes.
 - (IBAction)okButtonClicked:(id)sender {
     
     [progressIndicator startAnimation:self];
@@ -160,8 +158,8 @@
     
     [progressIndicator stopAnimation:self];
     [updatingUsergroupsLabel setHidden:YES];
-    NSLog(@"ok, updated user groups");
     
+    // fermer la fenêtre. 
     [self close];
 }
 
