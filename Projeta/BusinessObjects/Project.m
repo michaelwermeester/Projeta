@@ -35,7 +35,7 @@
 // pour calendar control.
 @synthesize calendarStartDateReal;
 
-
+// Permet de créer un objet Project à partir d'un dictionnaire. 
 + (Project *)instanceFromDictionary:(NSDictionary *)aDictionary {
     
     Project *instance = [[Project alloc] init];
@@ -44,6 +44,7 @@
     
 }
 
+// initialise les propriétés à partir du dictionnaire. 
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary {
     
     if (![aDictionary isKindOfClass:[NSDictionary class]]) {

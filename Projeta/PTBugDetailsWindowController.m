@@ -1,5 +1,5 @@
 //
-//  PTProjectDetailsWindowController.m
+//  PTBugDetailsWindowController.m
 //  Projeta
 //
 //  Created by Michael Wermeester on 01/11/11.
@@ -26,7 +26,6 @@ Bug *bugCopy;
 @synthesize arrBugCategory;
 @synthesize arrDevelopers;
 
-//@synthesize parentProjectListViewController;
 @synthesize mainWindowController;
 @synthesize okButton;
 @synthesize comboDevelopers;

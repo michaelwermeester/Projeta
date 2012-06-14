@@ -42,6 +42,7 @@
     }
 }
 
+// Permet de créer un objet Usergroup à partir d'un dictionnaire. 
 + (Usergroup *)instanceFromDictionary:(NSDictionary *)aDictionary {
     
     Usergroup *instance = [[Usergroup alloc] init];
@@ -50,6 +51,7 @@
     
 }
 
+// initialise les propriétés à partir du dictionnaire. 
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary {
     
     if (![aDictionary isKindOfClass:[NSDictionary class]]) {

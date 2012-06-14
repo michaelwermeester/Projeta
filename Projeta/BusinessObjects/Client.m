@@ -36,6 +36,7 @@
     }
 }
 
+// Permet de créer un objet Client à partir d'un dictionnaire. 
 + (Client *)instanceFromDictionary:(NSDictionary *)aDictionary {
     
     Client *instance = [[Client alloc] init];
@@ -44,6 +45,7 @@
     
 }
 
+// initialise les propriétés à partir du dictionnaire. 
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary {
     
     if (![aDictionary isKindOfClass:[NSDictionary class]]) {

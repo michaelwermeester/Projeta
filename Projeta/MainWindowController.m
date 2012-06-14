@@ -44,16 +44,6 @@
     return self;
 }
 
-/*- (id)initWithWindow:(NSWindow *)window
-{
-    self = [super initWithWindow:window];
-    if (self) {
-        // Initialization code here.
-    }
-    
-    return self;
-}*/
-
 - (void)windowDidLoad
 {
     [super windowDidLoad];
@@ -66,20 +56,10 @@
     // keep a reference to this object(self) in mainWindowViewController object 
     [mainWindowViewController setMainWindowController:self];
     
-    /*// adjust for window margin.
-	NSWindow* window = self.window;
-	CGFloat padding = [window contentBorderThicknessForEdge:NSMinYEdge];
-	NSRect frame = [window.contentView frame];
-	frame.size.height -= padding;
-	frame.origin.y += padding;
-    mainWindowViewController.view.frame = frame;*/
-    
     // resize view to fit ContentView
     mainWindowViewController.view.frame = [self frameWithContentViewFrameSize];
     
     // add the view to the window.
-    //[self.mainView addSubview:mainWindowViewController.view];
-    //[window.contentView addSubview:mainWindowViewController.view];
     [self.window.contentView addSubview:mainWindowViewController.view];
     
     // auto resize the view.
@@ -87,7 +67,6 @@
     
     // set the view to receive NSResponder events (used for trackpad and mouse gestures)
     [mainWindowViewController.view setNextResponder:mainWindowViewController];
-    
     
     // cacher le bouton 'ajouter un projet'.
     [addProjectButton setHidden:YES];
@@ -150,11 +129,6 @@
     // keep a reference to this object(self) in mainWindowViewController object 
     [projectViewController setMainWindowController:self];
     
-    // test
-    //projectViewController.arrPrj = [[NSMutableArray alloc] initWithArray:[[mainWindowViewController projectListViewController] arrPrj]];
-    //projectViewController.arrPrj = [[mainWindowViewController projectListViewController] arrPrj];
-    
-    
     // index du tab actuel.
     int selectedTabIndex = [[[mainWindowViewController projectListViewController] prjTabView] indexOfTabViewItem:[[[mainWindowViewController projectListViewController] prjTabView] selectedTabViewItem]];
     
@@ -176,15 +150,8 @@
         tmpOutlColl.childObject = [[NSMutableArray alloc] initWithArray:[[[mainWindowViewController projectListViewController] prjTreeController] selectedObjects]];
 
     }
-    // afficher tous les projets et sous-projets.
-    //tmpOutlColl.childObject = [[mainWindowViewController projectListViewController] arrPrj];
-    // afficher les projets et sous-projets du projet sélectionné dans la treeview.
-    //tmpOutlColl.childObject = [[NSMutableArray alloc] initWithArray:[[[mainWindowViewController projectListViewController] prjTreeController] selectedObjects]];
     [collectionArray addObject:tmpOutlColl];
     
-    /*OutlineCollection *tmpOutlColl2 = [[OutlineCollection alloc] init];
-    tmpOutlColl2.objectTitle = @"PROJECT";
-    [collectionArray addObject:tmpOutlColl2];*/
     projectViewController.arrPrj = collectionArray;
     
     
@@ -204,7 +171,6 @@
     // set the view to receive NSResponder events (used for trackpad and mouse gestures)
     [projectViewController.view setNextResponder:projectViewController];
     
-    
     // afficher le bouton 'ajouter un projet'.
     [addProjectButton setHidden:NO];
     [removeProjectButton setHidden:NO];
@@ -222,11 +188,6 @@
     
     // if a project is selected, open the window to show its details.
     if ([selectedObjects count] == 1) {
-        //NSLog(@"ok");
-        //parentID = [[selectedObjects objectAtIndex:0] projectId];
-        //parentID = [[selectedObjects objectAtIndex:0] parentProjectId];
-        
-        //[prjTreeController add:prj];
         
         Project *prj = [[Project alloc] init];
         // set current date.
@@ -237,14 +198,6 @@
         NSTreeNode *parent = [[[[projectViewController.prjTreeController selectedNodes] objectAtIndex:0] parentNode] parentNode];
         NSMutableArray *parentProjects = [[parent representedObject] mutableArrayValueForKeyPath:
                                           [projectViewController.prjTreeController childrenKeyPathForNode:parent]];
-        //NSLog(@"test: %@", [[[[projectViewController.prjTreeController selectedNodes] objectAtIndex:0] parentNode] projectTitle]); 
-        
-        //[prjTreeController 
-        //parentrowforrow
-        
-        //NSLog(@"test: %@", [[objects objectAtIndex:0] projectTitle]);
-        //int line = [prjOutlineView selectedRow];
-        //NSLog(@"test: %@", [[parentProjects objectAtIndex:0] projectTitle]);
         
         // get projectid du projet parent. 
         for (Project *p in parentProjects)
@@ -253,36 +206,19 @@
             {
                 parentID = p.projectId;
                 
-                //NSLog(@"TEST: %d", [[p projectId] intValue]);
-                
                 break;
             }
         }
-        
-        //NSLog(@"test: %@", [[parent representedObject] projectTitle]);
-        
-        //prj.parentProjectId = parentID;
-        //prj.parentProjectId = p.projectId;
+
         if (parentID != nil){
             prj.parentProjectId = parentID;
         }
-        
-        //NSLog(@"parentprojectid: %@", p.projectTitle);
-        
-        //[prjTreeController add:prj];
+
         NSIndexPath *indexPath = [projectViewController.prjTreeController selectionIndexPath];
         
-        //NSLog(@"indexpath: %@", indexPath);
         if ([indexPath length] > 1) {
             [projectViewController.prjTreeController insertObject:prj atArrangedObjectIndexPath:indexPath];
-        } /*else {
-            // construire nouveau NSIndexPath avec comme valeur 0 -> l'élément sera inséré à la première position.
-            // https://discussions.apple.com/thread/1585148?start=0&tstart=0
-            NSUInteger indexes[1]={0};
-            indexPath=[NSIndexPath indexPathWithIndexes:indexes length:1];
-            
-            [projectViewController.prjTreeController insertObject:prj atArrangedObjectIndexPath:indexPath];
-        }*/
+        } 
         
         [projectViewController.projectDetailsViewController setIsNewProject:YES];
         
@@ -317,16 +253,9 @@
             NSIndexPath *indexPath = [projectViewController.prjTreeController selectionIndexPath];
             
             tmpPrj.childProject = [[NSMutableArray alloc] init];
-            //[tmpPrj.childObject addObject:prj];
-            
-            //[[tmpPrj mutableArrayValueForKey:@"childObject"] addObject:prj];
-            //[projectViewController.altOutlineView reloadData];
-            //[[self mutableArrayValueForKey:@"arrTask"] addObjectsFromArray:[PTTaskHelper setAttributesFromJSONDictionary:dict]];
-            
-            //[projectViewController.prjTreeController
+
             [projectViewController.prjTreeController insertObject:prj atArrangedObjectIndexPath:[indexPath indexPathByAddingIndex:0]];
         } else {
-            //else if ([[tmpPrj childProject] count] > 0) {
 
             NSIndexPath *indexPath = [projectViewController.prjTreeController selectionIndexPath];
             
@@ -335,9 +264,6 @@
         
         [projectViewController.projectDetailsViewController setIsNewProject:YES];
     }
-    
-    
-    //NSLog(@"count: %lu", [projectViewController.arrPrj count]);
 }
 
 // returns a frame which fits the ContentView
@@ -403,24 +329,9 @@
         
         if (projectViewController.view) {
             
-            /*if ([projectViewController.arrPrj count] > 0)
-            {
-                
-            }*/
-            
             NSIndexPath *indexPath = [projectViewController.prjTreeController selectionIndexPath];
             
             NSLog(@"length: %lu", [indexPath length]);
-            
-            //NSIndexSet *ids = [projectViewController.altOutlineView selectedRowIndexes];
-            //NSLog(@"ids: %@", ids);
-            
-            /*NSLog(@"ids: %@", [[projectViewController.altOutlineView itemAtRow:[projectViewController.altOutlineView selectedRow]] description]);
-            
-            NSArray *test = [projectViewController.prjTreeController selectedObjects];
-            OutlineCollection *oc = [test objectAtIndex:0];
-            Project *p = [[oc childObject] objectAtIndex:0];
-            NSLog(@"ids: %@", p.projectTitle);*/
             
             // Enable 'add project' only if the current selected project is at least a subproject. (1 = header)
             if ([indexPath length] > 2) {
@@ -435,11 +346,6 @@
             } else {
                 [addSubProjectMenuItem setEnabled:NO];
             }
-            
-            //Project *p = [[projectViewController.prjTreeController selectedObjects] objectAtIndex:0];
-            //NSLog(@"projectitle: %@", p.projectTitle);
-
-            
         }
     }
 }

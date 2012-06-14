@@ -13,8 +13,6 @@
 
 @implementation ProjetaAppDelegate
 
-//@synthesize window = _window;
-
 NSMutableArray *mainWindows;
 
 #pragma mark CoreData
@@ -22,21 +20,11 @@ NSMutableArray *mainWindows;
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
-
     
     // open main window
     MainWindowController *newMainWindow;
     newMainWindow = [[MainWindowController alloc] init];
     [newMainWindow showWindow:self];
-    
-    // users window
-    //usersWindowController = [[PTUserManagementWindowController alloc] init];
-    //[usersWindowController showWindow:self];
-    
-	/*MainWindowController *newMainWindow;
-    newMainWindow = [[MainWindowController alloc] initWithWindowNibName:@"MainWindow"]; 
-    //newMainWindow = [[MainWindowController alloc] init];
-    [newMainWindow showWindow:self];*/
     
     // initialize array with window
     mainWindows = [NSMutableArray arrayWithObject:newMainWindow];
@@ -224,12 +212,6 @@ NSMutableArray *mainWindows;
     newMainWindow = [[MainWindowController alloc] init];
     [newMainWindow showWindow:self];
     
-    /*
-    MainWindowController *newMainWindow;
-    newMainWindow = [[MainWindowController alloc] initWithWindowNibName:@"MainWindow"]; 
-    //newMainWindow = [[MainWindowController alloc] init];
-    [newMainWindow showWindow:self];*/
-    
     // add window to array
     [mainWindows addObject:newMainWindow];
 }
@@ -245,11 +227,7 @@ NSMutableArray *mainWindows;
 // removes reference to main window that will be closed
 + (void)removeMainWindow:(MainWindowController*)window
 {
-    //NSLog(@"items: %lu", [mainWindows count]);
-    
     [mainWindows removeObject:window];
-    
-    //NSLog(@"items: %lu", [mainWindows count]);
 }
 
 @end

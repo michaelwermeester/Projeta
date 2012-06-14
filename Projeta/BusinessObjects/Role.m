@@ -40,6 +40,7 @@
     }
 }
 
+// Permet de créer un objet Role à partir d'un dictionnaire. 
 + (Role *)instanceFromDictionary:(NSDictionary *)aDictionary {
     
     Role *instance = [[Role alloc] init];
@@ -48,6 +49,7 @@
     
 }
 
+// initialise les propriétés à partir du dictionnaire. 
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary {
     
     if (![aDictionary isKindOfClass:[NSDictionary class]]) {

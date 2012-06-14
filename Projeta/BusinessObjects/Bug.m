@@ -34,7 +34,7 @@
 @synthesize bugStatus = bugStatus;
 @synthesize bugPercentage = bugPercentage;
 
-
+// Permet de créer un objet Bug à partir d'un dictionnaire. 
 + (Bug *)instanceFromDictionary:(NSDictionary *)aDictionary {
     
     Bug *instance = [[Bug alloc] init];
@@ -43,6 +43,7 @@
     
 }
 
+// initialise les propriétés à partir du dictionnaire. 
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary {
     
     if (![aDictionary isKindOfClass:[NSDictionary class]]) {

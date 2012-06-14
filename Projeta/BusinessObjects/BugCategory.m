@@ -41,6 +41,7 @@
     }
 }
 
+// Permet de créer un objet BugCategory à partir d'un dictionnaire. 
 + (BugCategory *)instanceFromDictionary:(NSDictionary *)aDictionary {
     
     BugCategory *instance = [[BugCategory alloc] init];
@@ -49,6 +50,7 @@
     
 }
 
+// initialise les propriétés à partir du dictionnaire. 
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary {
     
     if (![aDictionary isKindOfClass:[NSDictionary class]]) {

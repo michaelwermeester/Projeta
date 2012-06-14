@@ -108,7 +108,6 @@ SourceListItem *personalTasksItem;
     
     if (!projectListViewController) {
         
-        //projectListViewController = [[PTProjectListViewController alloc] init];
         projectListViewController = [[PTProjectListViewController alloc] initWithNibName:@"PTProjectListView" bundle:nil];
         
         projectListViewController.projectURL = @"resources/projects/public";
@@ -288,32 +287,6 @@ SourceListItem *personalTasksItem;
                 [taskListViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
             }
         }
-        /*else if (identifier == @"tasksPersonal") {
-            
-            [self removeViewsFromRightView];
-            
-            if (!taskListViewController) {
-                
-                taskListViewController = [[PTTaskListViewController alloc] init];
-                
-                // tâche personnelle.
-                taskListViewController.isPersonalTask = YES;
-                
-                // set reference to (parent) window
-                [taskListViewController setMainWindowController:mainWindowController];
-                
-                // resize the view to fit and fill the right splitview view
-                [taskListViewController.view setFrameSize:rightView.frame.size];
-                
-                [self.rightView addSubview:taskListViewController.view];
-                
-                // auto resize the view.
-                [taskListViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
-                
-                // cacher la colonne 'projet'.
-                [taskListViewController.outlineViewProjetColumn setHidden:YES];
-            }
-        }*/
         else if (identifier == @"bugs" || identifier == @"bugsAssigned" || identifier == @"bugsParClientItem" || identifier == @"bugsParDeveloppeurItem") {
             
             [self removeViewsFromRightView];
@@ -566,16 +539,13 @@ SourceListItem *personalTasksItem;
     
     NSMutableArray *loggedInUserArr = [[NSMutableArray alloc] init];
     
-    // see Cocoa and Objective-C up and running by Scott Stevenson.
-    // page 242
-    //[loggedInUserArr addObjectsFromArray:[PTUserHelper setAttributesFromDictionary2:dict]];
+    // créer un utilisateur à partir du dictionnaire et l'ajouter dans l'array.
     [loggedInUserArr addObjectsFromArray:[PTUserHelper setAttributesFromJSONDictionary:dict]];
     
     if ([loggedInUserArr count] == 1) {
         for (User *usr in loggedInUserArr) {
             _loggedInUser = usr;
             
-            // 03-18-2012
             mainWindowController.loggedInUser = usr;
             
             // fetch user roles of logged in user from webservice
@@ -655,8 +625,6 @@ SourceListItem *personalTasksItem;
     [self willChangeValueForKey:@"_currentUserRoles"];
     [_currentUserRoles addObjectsFromArray:[PTRoleHelper setAttributesFromJSONDictionary:dict]];
     [self didChangeValueForKey:@"_currentUserRoles"];
-    
-    //[self showAdminMenu];
     
     // stop animating the main window's circular progress indicator.
     [mainWindowController stopProgressIndicatorAnimation];

@@ -1,5 +1,5 @@
 //
-//  PTProjectDetailsWindowController.h
+//  PTBugDetailsWindowController.h
 //  Projeta
 //
 //  Created by Michael Wermeester on 01/11/11.

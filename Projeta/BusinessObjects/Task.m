@@ -30,6 +30,7 @@
 
 @synthesize projectTitle = projectTitle;
 
+// Permet de créer un objet Task à partir d'un dictionnaire. 
 + (Task *)instanceFromDictionary:(NSDictionary *)aDictionary {
     
     Task *instance = [[Task alloc] init];
@@ -38,6 +39,7 @@
     return instance;
 }
 
+// initialise les propriétés à partir du dictionnaire. 
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary {
     
     if (![aDictionary isKindOfClass:[NSDictionary class]]) {
@@ -68,8 +70,7 @@
     self.priority = [NSDecimalNumber decimalNumberWithString:(NSString *)[aDictionary objectForKey:@"priority"]];
     
     // état de la tâche.
-    //if ([[aDictionary objectForKey:@"taskStatus"] isKindOfClass:[NSNull class]] == NO)
-        self.taskStatus = [aDictionary objectForKey:@"taskStatus"];
+    self.taskStatus = [aDictionary objectForKey:@"taskStatus"];
     // pourcentage.
     if (([[aDictionary objectForKey:@"taskPercentage"] isKindOfClass:[NSNull class]] == NO) && [aDictionary objectForKey:@"taskPercentage"] != nil)
         self.taskPercentage = [NSDecimalNumber decimalNumberWithString:(NSString *)[aDictionary objectForKey:@"taskPercentage"]];
@@ -116,14 +117,6 @@
     copy.taskPercentage = [taskPercentage copyWithZone:zone];
     copy.taskStatus = [taskStatus copyWithZone:zone];
     
-    //copy.dateCreated = [dateCreated copyWithZone:zone];
-    //copy.endDateReal = [endDateReal copyWithZone:zone];
-    //copy.flagPublic = flagPublic;
-    
-    //copy.canceled = canceled;
-    
-    //copy.startDateReal = [startDateReal copyWithZone:zone];
-    
     return copy;
 }
 
@@ -136,8 +129,6 @@
 
 - (NSArray *)createTaskKeys
 {
-    //NSArray *retArr = [[NSArray alloc] initWithObjects: @"projectTitle", @"projectDescription", @"endDate", @"endDateReal", @"flagPublic", @"completed", @"parentProjectId", @"startDate", @"startDateReal", @"userCreated", nil];
-    //NSArray *retArr = [[NSArray alloc] initWithObjects: @"projectTitle", @"projectDescription", @"flagPublic", nil];
     NSArray *retArr = [[NSArray alloc] initWithObjects: @"taskTitle", @"taskDescription", @"completed", @"isPersonal", nil];
     
     return retArr;
@@ -151,8 +142,6 @@
 
 - (NSArray *)updateTaskKeys
 {
-    //NSArray *retArr = [[NSArray alloc] initWithObjects: @"projectTitle", @"projectDescription", @"endDate", @"endDateReal", @"flagPublic", @"completed", @"parentProjectId", @"startDate", @"startDateReal", @"userCreated", nil];
-    //NSArray *retArr = [[NSArray alloc] initWithObjects: @"projectTitle", @"projectDescription", @"flagPublic", nil];
     NSArray *retArr = [[NSArray alloc] initWithObjects: @"taskId", @"taskTitle", @"taskDescription", @"completed", nil];
     
     return retArr;

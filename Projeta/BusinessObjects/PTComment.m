@@ -17,6 +17,7 @@
 @synthesize dateCreated = dateCreated;
 @synthesize userCreated = userCreated;
 
+// Permet de créer un objet PTComment à partir d'un dictionnaire. 
 + (PTComment *)instanceFromDictionary:(NSDictionary *)aDictionary {
     
     PTComment *instance = [[PTComment alloc] init];
@@ -24,6 +25,7 @@
     return instance;
 }
 
+// initialise les propriétés à partir du dictionnaire. 
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary {
     if (![aDictionary isKindOfClass:[NSDictionary class]]) {
         return;

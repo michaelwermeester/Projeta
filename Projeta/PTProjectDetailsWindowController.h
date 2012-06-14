@@ -35,7 +35,6 @@
 @property (weak) IBOutlet NSButton *startDateCalendarButton;
 @property (weak) IBOutlet NSButton *endDateCalendarButton;
 
-// test -- can remove
 @property (strong) NSIndexPath *prjTreeIndexPath;
 @property (assign) NSUInteger prjArrCtrlIndex;
 

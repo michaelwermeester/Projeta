@@ -60,6 +60,7 @@
     return copy;
 }
 
+// Permet de créer un objet User à partir d'un dictionnaire. 
 + (User *)instanceFromDictionary:(NSDictionary *)aDictionary {
 
     User *instance = [[User alloc] init];
@@ -68,6 +69,7 @@
 
 }
 
+// initialise les propriétés à partir du dictionnaire. 
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary {
 
     if (!aDictionary) {

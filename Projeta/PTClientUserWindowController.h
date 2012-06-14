@@ -1,5 +1,5 @@
 //
-//  PTUserGroupWindowController.h
+//  PTClientUserWindowController.h
 //  Projeta
 //
 //  Created by Michael Wermeester on 1/22/12.
