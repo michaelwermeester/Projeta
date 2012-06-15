@@ -331,8 +331,6 @@
             
             NSIndexPath *indexPath = [projectViewController.prjTreeController selectionIndexPath];
             
-            NSLog(@"length: %lu", [indexPath length]);
-            
             // Enable 'add project' only if the current selected project is at least a subproject. (1 = header)
             if ([indexPath length] > 2) {
                 [addProjectMenuItem setEnabled:YES];

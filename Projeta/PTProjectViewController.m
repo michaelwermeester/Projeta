@@ -76,7 +76,7 @@
     projectDetailsViewController.project = [[prjTreeController selectedObjects] objectAtIndex:0];
     
     // charger les utilisateurs, groupes et clients liés au projet.
-    [projectDetailsViewController loadProjectDetails];
+    //[projectDetailsViewController loadProjectDetails];
     // charger les tâches liés au projet.
     [projectDetailsViewController loadTasks];
     // charger les bogues liés au projet.
@@ -185,6 +185,11 @@
                 break;
             }
         }
+        
+        
+        
+        
+        [projectDetailsViewController loadProjectDetails];
     } 
     else {
         projectDetailsViewController.project = nil;
