@@ -30,6 +30,8 @@
 
 @synthesize projectTitle = projectTitle;
 
+@synthesize projectId = projectId;
+
 // Permet de créer un objet Task à partir d'un dictionnaire. 
 + (Task *)instanceFromDictionary:(NSDictionary *)aDictionary {
     
@@ -116,6 +118,9 @@
     
     copy.taskPercentage = [taskPercentage copyWithZone:zone];
     copy.taskStatus = [taskStatus copyWithZone:zone];
+    
+    copy.projectId = [projectId copyWithZone:zone];
+    copy.projectTitle = [projectTitle copyWithZone:zone];
     
     return copy;
 }

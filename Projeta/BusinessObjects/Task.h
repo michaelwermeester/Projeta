@@ -29,6 +29,8 @@
     NSNumber *taskPercentage;
     
     NSString *projectTitle;
+    
+    NSNumber *projectId;
 }
 
 @property (nonatomic, retain) NSDate *endDate;
@@ -46,6 +48,7 @@
 
 @property (nonatomic, copy) NSString *projectTitle;
 
+@property (nonatomic, copy) NSNumber *projectId;
 
 // état et pourcentage de la tâche.
 @property (nonatomic, copy) NSString *taskStatus;

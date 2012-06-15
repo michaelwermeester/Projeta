@@ -120,6 +120,16 @@
     if ([theTask stringEndDate])
         [dict setObject:[theTask stringEndDate] forKey:@"endDate"];
     
+    // ID du projet lié.
+    if ([theTask projectId]) {
+        Project *linkedProject = [[Project alloc] init];
+        linkedProject.projectId = theTask.projectId;
+        // créer dictionnaire 'projectId'.
+        NSDictionary *projectIdDict = [linkedProject dictionaryWithValuesForKeys:[linkedProject projectIdKey]];
+        // ajouter ce dictionnaire sous la clé 'projectId'.
+        [dict setObject:projectIdDict forKey:@"projectId"];
+    }
+    
     // API resource string.
     NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/tasks/create"];
     

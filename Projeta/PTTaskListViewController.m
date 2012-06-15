@@ -180,6 +180,10 @@
             tsk.parentTaskId = parentID;
         }
         
+        // id du projet s'il s'agit d'une tâche pour un projet. 
+        if (parentProjectDetailsViewController)
+            tsk.projectId = parentProjectDetailsViewController.project.projectId;
+        
         // indexpath de la tâche sélectionnée.
         NSIndexPath *indexPath = [taskTreeCtrl selectionIndexPath];
         
@@ -221,6 +225,10 @@
         
         tsk.parentTaskId = parentID;
         tsk.isPersonal = isPersonalTask;
+        
+        // id du projet s'il s'agit d'une tâche pour un projet. 
+        if (parentProjectDetailsViewController)
+            tsk.projectId = parentProjectDetailsViewController.project.projectId;
         
         // ajouter la tâche dans le tree controller (et dans l'outline view) comme sous-tâche. 
         Task *tmpTask = [selectedObjects objectAtIndex:0]; // tâche sélectionné. 
