@@ -54,6 +54,8 @@
     // construire l'URL en rajoutant le ressource path. 
     if (isPersonalTask == YES)
         urlString = [urlString stringByAppendingString:@"resources/tasks/personal"];
+    else if (taskURL) 
+        urlString = [urlString stringByAppendingString:taskURL];
     else
         urlString = [urlString stringByAppendingString:@"resources/tasks/"];
     

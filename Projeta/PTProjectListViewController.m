@@ -76,7 +76,7 @@ PTCommentairesWindowController *commentWindowController;
     }
     
     
-    if ([nibFileName isEqualToString:@"PTProjectListViewAssigned"]) {
+    if ([nibFileName isEqualToString:@"PTProjectListViewAssigned"] || [nibFileName isEqualToString:@"PTProjectListViewDeveloper"]) {
         // Hide tree view tab. 
         NSTabViewItem *activityTab = [prjTabView tabViewItemAtIndex:1];
         [prjTabView removeTabViewItem:activityTab];

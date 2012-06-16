@@ -279,6 +279,9 @@ SourceListItem *personalTasksItem;
                 else
                     taskListViewController.isPersonalTask = NO;
                 
+                if (identifier == @"tasksAssigned")
+                    taskListViewController.taskURL = @"resources/tasks/assigned";
+                
                 // set reference to (parent) window
                 [taskListViewController setMainWindowController:mainWindowController];
                 
