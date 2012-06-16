@@ -236,15 +236,19 @@ SourceListItem *personalTasksItem;
             if (!projectListViewController) {
        
                 //projectListViewController = [[PTProjectListViewController alloc] init];
-                if (identifier == @"projects" || identifier == @"projectsPublic" || identifier == @"projectsAssigned") 
+                if (identifier == @"projects" || identifier == @"projectsPublic") 
                     projectListViewController = [[PTProjectListViewController alloc] initWithNibName:@"PTProjectListView" bundle:nil];
                 else if (identifier == @"projectsParClientItem") 
                     projectListViewController = [[PTProjectListViewController alloc] initWithNibName:@"PTProjectListViewClient" bundle:nil];
                 else if (identifier == @"projectsParDeveloppeurItem")
                     projectListViewController = [[PTProjectListViewController alloc] initWithNibName:@"PTProjectListViewDeveloper" bundle:nil];
+                else if (identifier == @"projectsAssigned")
+                    projectListViewController = [[PTProjectListViewController alloc] initWithNibName:@"PTProjectListViewAssigned" bundle:nil];
                 
                 if (identifier == @"projectsPublic")
                     projectListViewController.projectURL = @"resources/projects/public";
+                else if (identifier == @"projectsAssigned")
+                    projectListViewController.projectURL = @"resources/projects/assigned";
                 
                 // set reference to (parent) window
                 [projectListViewController setMainWindowController:mainWindowController];

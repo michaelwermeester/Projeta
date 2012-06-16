@@ -63,7 +63,7 @@ PTCommentairesWindowController *commentWindowController;
     
     // get URL du serveur. 
     NSString *urlString = [PTCommon serverURLString];
-    // construire l'URL en rajoutant le ressource path. 
+    // construire l'URL en rajoutant le ressource path.
     if (projectURL) {
         urlString = [urlString stringByAppendingString:projectURL];
     } else {
@@ -73,6 +73,13 @@ PTCommentairesWindowController *commentWindowController;
     // charger la liste des développeurs/responsables si nécessaire. 
     if ([nibFileName isEqualToString:@"PTProjectListViewDeveloper"]) {
         [self fetchDevelopersFromWebservice];
+    }
+    
+    
+    if ([nibFileName isEqualToString:@"PTProjectListViewAssigned"]) {
+        // Hide tree view tab. 
+        NSTabViewItem *activityTab = [prjTabView tabViewItemAtIndex:1];
+        [prjTabView removeTabViewItem:activityTab];
     }
 
     // convertir en NSURL

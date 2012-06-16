@@ -15,6 +15,7 @@
 		4C0968A714D71E92009B4470 /* PTClientManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0968A614D71E92009B4470 /* PTClientManagementViewController.m */; };
 		4C0BA4E913F329C7002EA4F2 /* PXSourceList.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0BA4E813F329C7002EA4F2 /* PXSourceList.m */; };
 		4C0BC5B513DA1D15003360E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C74A61413A2BFA100E7DBF6 /* Cocoa.framework */; };
+		4C0CE48E158D1F1A0030A5E9 /* PTProjectListViewAssigned.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C0CE48D158D1F0E0030A5E9 /* PTProjectListViewAssigned.xib */; };
 		4C11311014CA21AA008D47F4 /* PTSetPasswordWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C11310F14CA21AA008D47F4 /* PTSetPasswordWindowController.m */; };
 		4C1208EC142E46B80043598F /* PTUserDetailsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1208EB142E46B80043598F /* PTUserDetailsWindowController.m */; };
 		4C21F24513C2691600462C43 /* PTUserManagementWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C21F24413C2691600462C43 /* PTUserManagementWindowController.m */; };
@@ -159,6 +160,7 @@
 		4C0BC5AF13DA1C4A003360E2 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		4C0BC5B113DA1C60003360E2 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		4C0BC5B313DA1CC9003360E2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4C0CE48D158D1F0E0030A5E9 /* PTProjectListViewAssigned.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTProjectListViewAssigned.xib; sourceTree = "<group>"; };
 		4C11310E14CA21AA008D47F4 /* PTSetPasswordWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTSetPasswordWindowController.h; sourceTree = "<group>"; };
 		4C11310F14CA21AA008D47F4 /* PTSetPasswordWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTSetPasswordWindowController.m; sourceTree = "<group>"; };
 		4C1208EA142E46B70043598F /* PTUserDetailsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTUserDetailsWindowController.h; sourceTree = "<group>"; };
@@ -654,6 +656,7 @@
 				4C8173E41407A89D0012C0EB /* PTProjectListViewController.h */,
 				4C8173E51407A89D0012C0EB /* PTProjectListViewController.m */,
 				4CE69FF414DC6B2D0008BAF0 /* PTProjectListView.xib */,
+				4C0CE48D158D1F0E0030A5E9 /* PTProjectListViewAssigned.xib */,
 				4CE13E15157540A500B14C43 /* PTProjectListViewClient.xib */,
 				4CE13E18157540AE00B14C43 /* PTProjectListViewDeveloper.xib */,
 				4CCDB31F13F83CB80084FC84 /* PTProjectViewController.h */,
@@ -895,6 +898,7 @@
 				4C91F2D11565675600D1D5D3 /* PTBugListViewBackup.xib in Resources */,
 				4CE13E16157540A500B14C43 /* PTProjectListViewClient.xib in Resources */,
 				4CE13E19157540AE00B14C43 /* PTProjectListViewDeveloper.xib in Resources */,
+				4C0CE48E158D1F1A0030A5E9 /* PTProjectListViewAssigned.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
