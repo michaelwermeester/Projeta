@@ -28,6 +28,8 @@
 @synthesize bugOutlineView;
 @synthesize mainWindowController;
 
+@synthesize bugURL;
+
 @synthesize parentProjectDetailsViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -48,7 +50,10 @@
     // get server URL as string
     NSString *urlString = [PTCommon serverURLString];
     // build URL by adding resource path
-    urlString = [urlString stringByAppendingString:@"resources/bugs/"];
+    if (bugURL)
+        urlString = [urlString stringByAppendingString:bugURL];
+    else
+        urlString = [urlString stringByAppendingString:@"resources/bugs/"];
     
     // convert to NSURL
     NSURL *url = [NSURL URLWithString:urlString];

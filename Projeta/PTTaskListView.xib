@@ -564,7 +564,6 @@
 								<bool key="NSNoAutoenable">YES</bool>
 								<reference key="NSMenuFont" ref="169508843"/>
 							</object>
-							<int key="NSSelectedIndex">-1</int>
 							<bool key="NSPullDown">YES</bool>
 							<int key="NSPreferredEdge">1</int>
 							<bool key="NSUsesItemFromMenu">YES</bool>
@@ -626,6 +625,7 @@
 						<string key="NSFrame">{{610, 4}, {77, 32}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:687</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="547019395">
@@ -1109,6 +1109,22 @@
 						<reference key="destination" ref="664643200"/>
 					</object>
 					<int key="connectionID">1679</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">removeTaskButton</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="501416719"/>
+					</object>
+					<int key="connectionID">1896</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">addTaskButton</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="909280065"/>
+					</object>
+					<int key="connectionID">1897</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -4045,7 +4061,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1895</int>
+			<int key="maxID">1897</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -4071,7 +4087,6 @@
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="addNewSubTaskButtonClicked:">id</string>
 						<string key="addNewTaskButtonClicked:">id</string>
-						<string key="addTaskButtonClick:">id</string>
 						<string key="commentButtonClicked:">id</string>
 						<string key="detailsButtonClicked:">id</string>
 						<string key="progressButtonClicked:">id</string>
@@ -4084,10 +4099,6 @@
 						</object>
 						<object class="IBActionInfo" key="addNewTaskButtonClicked:">
 							<string key="name">addNewTaskButtonClicked:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="addTaskButtonClick:">
-							<string key="name">addTaskButtonClick:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="commentButtonClicked:">
@@ -4108,15 +4119,21 @@
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="addTaskButton">NSPopUpButton</string>
 						<string key="checkBoxShowTasksFromSubProjects">NSButton</string>
 						<string key="outlineViewProjetColumn">NSTableColumn</string>
 						<string key="projectButton">NSButton</string>
+						<string key="removeTaskButton">NSButton</string>
 						<string key="searchField">NSSearchField</string>
 						<string key="taskArrayCtrl">NSArrayController</string>
 						<string key="taskOutlineView">NSOutlineView</string>
 						<string key="taskTreeCtrl">NSTreeController</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="addTaskButton">
+							<string key="name">addTaskButton</string>
+							<string key="candidateClassName">NSPopUpButton</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="checkBoxShowTasksFromSubProjects">
 							<string key="name">checkBoxShowTasksFromSubProjects</string>
 							<string key="candidateClassName">NSButton</string>
@@ -4127,6 +4144,10 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="projectButton">
 							<string key="name">projectButton</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="removeTaskButton">
+							<string key="name">removeTaskButton</string>
 							<string key="candidateClassName">NSButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="searchField">

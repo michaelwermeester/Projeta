@@ -197,6 +197,16 @@
     // charger la liste des clients disponibles.
     [self fetchAvailableClients];
     [self fetchAssignedClients];
+    
+    
+    //[self loadTasks];
+    //[self loadComments];
+    //[self loadBugs];
+    
+    //commentViewController.mainWindowController = mainWindowController;
+    commentViewController.project = [self project];
+    [commentViewController loadComments];
+    
 }
 
 - (void)loadTasks {

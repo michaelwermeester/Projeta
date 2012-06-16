@@ -31,6 +31,8 @@
 @synthesize taskOutlineView;            // outline view qui contient les tâches.
 @synthesize mainWindowController;       // référence vers le MainWindowController (parent).
 @synthesize parentProjectDetailsViewController; // référence vers le PTProjectDetailsViewController (parent).
+@synthesize removeTaskButton;
+@synthesize addTaskButton;
 
 @synthesize isPersonalTask;             // flag. YES s'il s'agit d'une tâches personnelle.
 

@@ -32,6 +32,8 @@
     PTTaskDetailsWindowController *taskDetailsWindowController;
     // fenêtre avancement.
     PTProgressWindowController *progressWindowController;
+    __weak NSButton *removeTaskButton;
+    __weak NSPopUpButton *addTaskButton;
 }
 
 // propriétés. 
@@ -53,6 +55,8 @@
 
 // référence vers le PTProjectDetailsViewController (parent).
 @property (assign) PTProjectDetailsViewController *parentProjectDetailsViewController;
+@property (weak) IBOutlet NSButton *removeTaskButton;
+@property (weak) IBOutlet NSPopUpButton *addTaskButton;
 
 // actions.
 - (IBAction)commentButtonClicked:(id)sender;    // bouton 'Commentaires' cliqué.

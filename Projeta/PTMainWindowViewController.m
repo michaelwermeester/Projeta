@@ -282,6 +282,7 @@ SourceListItem *personalTasksItem;
                 if (identifier == @"tasksAssigned")
                     taskListViewController.taskURL = @"resources/tasks/assigned";
                 
+                
                 // set reference to (parent) window
                 [taskListViewController setMainWindowController:mainWindowController];
                 
@@ -292,6 +293,12 @@ SourceListItem *personalTasksItem;
                 
                 // auto resize the view.
                 [taskListViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
+                
+                // hide add/remove buttons.
+                if (identifier != @"tasks" && identifier != @"tasksPersonal") {
+                    [taskListViewController.addTaskButton setHidden:YES];
+                    [taskListViewController.removeTaskButton setHidden:YES];
+                }
             }
         }
         else if (identifier == @"bugs" || identifier == @"bugsAssigned" || identifier == @"bugsParClientItem" || identifier == @"bugsParDeveloppeurItem") {
@@ -301,6 +308,9 @@ SourceListItem *personalTasksItem;
             if (!bugListViewController) {
                 
                  bugListViewController = [[PTBugListViewController alloc] init];
+                
+                if (identifier == @"bugsAssigned")
+                    bugListViewController.bugURL = @"resources/bugs/assigned";
                 
                 // set reference to (parent) window
                 [bugListViewController setMainWindowController:mainWindowController];

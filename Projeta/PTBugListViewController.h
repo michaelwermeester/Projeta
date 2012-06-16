@@ -43,6 +43,8 @@
 // reference to the (parent) MainWindowController
 @property (assign) MainWindowController *mainWindowController;
 
+@property (strong) NSString *bugURL;           // optionel. Contient l'URL à utiliser. 
+
 // reference to the (parent) PTProjectDetailsViewController
 @property (assign) PTProjectDetailsViewController *parentProjectDetailsViewController;
 - (IBAction)addNewBugButtonClicked:(id)sender;
