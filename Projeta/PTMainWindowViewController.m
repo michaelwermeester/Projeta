@@ -274,7 +274,8 @@ SourceListItem *personalTasksItem;
                     taskListViewController = [[PTTaskListViewController alloc] initWithNibName:@"PTTaskListView" bundle:nil];
                 else if (identifier == @"tasksParClientItem") 
                     taskListViewController = [[PTTaskListViewController alloc] initWithNibName:@"PTTaskListViewClient" bundle:nil];
-                
+                else if (identifier == @"tasksParDeveloppeurItem") 
+                    taskListViewController = [[PTTaskListViewController alloc] initWithNibName:@"PTTaskListViewDeveloper" bundle:nil];
                 
                 
                 // tâche public.
