@@ -190,6 +190,7 @@
         
         
         [projectDetailsViewController loadProjectDetails];
+
     } 
     else {
         projectDetailsViewController.project = nil;

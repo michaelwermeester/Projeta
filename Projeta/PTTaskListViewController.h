@@ -92,4 +92,8 @@
 // - créer une nouvelle tâche. (isNewTask = YES)
 - (void)openTaskDetailsWindow:(BOOL)isNewTask isSubTask:(BOOL)isSubTask;
 
+- (void)viewDidLoad;
+
+- (void)loadTasks;
+
 @end

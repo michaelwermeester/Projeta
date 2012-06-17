@@ -75,7 +75,7 @@
 }
 
 - (void)viewDidLoad {
-    // get URL du serveur. 
+    /*// get URL du serveur. 
     NSString *urlString = [PTCommon serverURLString];
     // construire l'URL en rajoutant le ressource path. 
     if (isPersonalTask == YES)
@@ -84,6 +84,7 @@
         urlString = [urlString stringByAppendingString:taskURL];
     else
         urlString = [urlString stringByAppendingString:@"resources/tasks/"];
+        
     
     // convertir en NSURL
     NSURL *url = [NSURL URLWithString:urlString];
@@ -105,7 +106,9 @@
     [mainWindowController startProgressIndicatorAnimation];
     
     // exécuter la requête HTTP. 
-    [connectionController startRequestForURL:url setRequest:urlRequest];
+    [connectionController startRequestForURL:url setRequest:urlRequest];*/
+    
+    [self loadTasks];
     
     // désactiver le bouton 'vue projet'.
     [[mainWindowController detailViewToolbarItem] setEnabled:NO];
@@ -509,6 +512,41 @@
                 failureBlock:^(NSError *error) {
                     
                 }];
+}
+
+- (void)loadTasks {
+    // get URL du serveur. 
+    NSString *urlString = [PTCommon serverURLString];
+    // construire l'URL en rajoutant le ressource path. 
+    if (isPersonalTask == YES)
+        urlString = [urlString stringByAppendingString:@"resources/tasks/personal"];
+    else if (taskURL) 
+        urlString = [urlString stringByAppendingString:taskURL];
+    else
+        urlString = [urlString stringByAppendingString:@"resources/tasks/"];
+    
+    
+    // convertir en NSURL
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    // préparer NSURLConnection - MWConnectionController.
+    // créer nouvau connection controller afin de pouvoir exécuter la requête.
+    MWConnectionController* connectionController = [[MWConnectionController alloc] 
+                                                    initWithSuccessBlock:^(NSMutableData *data) {
+                                                        [self requestFinished:data];
+                                                    }
+                                                    failureBlock:^(NSError *error) {
+                                                        [self requestFailed:error];
+                                                    }];
+    
+    
+    NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
+    
+    // démarrer l'animation du circular progress indicator sur la fenêtre principale. 
+    [mainWindowController startProgressIndicatorAnimation];
+    
+    // exécuter la requête HTTP. 
+    [connectionController startRequestForURL:url setRequest:urlRequest];
 }
 
 @end

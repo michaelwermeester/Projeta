@@ -18,6 +18,7 @@
 #import "PTUserHelper.h"
 #import "Role.h"
 #import "Usergroup.h"
+#import "PTCommon.h"
 
 
 
@@ -207,10 +208,28 @@
     commentViewController.project = [self project];
     [commentViewController loadComments];
     
+    // load tasks for selected project. 
+    if (project.projectId) {
+        // get URL du serveur. 
+        NSString *urlString = [NSString stringWithString:@"resources/tasks/?projectId="];
+        urlString = [urlString stringByAppendingString:[project.projectId stringValue]];
+     
+        taskListViewController.taskURL = urlString;
+    
+        [taskListViewController loadTasks];
+    }
+    
 }
 
 - (void)loadTasks {
     taskListViewController = [[PTTaskListViewController alloc] initWithNibName:@"PTTaskListView" bundle:nil];
+    
+    // get URL du serveur. 
+    /*NSString *urlString = [PTCommon serverURLString];
+    urlString = [urlString stringByAppendingString:@"resources/tasks/?projectId="];
+    urlString = [urlString stringByAppendingString:[project.projectId stringValue]];
+    
+    taskListViewController.taskURL = urlString;*/
     
     // set reference to (parent) window
     [taskListViewController setMainWindowController:mainWindowController];
