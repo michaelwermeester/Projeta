@@ -34,6 +34,7 @@
     PTProgressWindowController *progressWindowController;
     __weak NSButton *removeTaskButton;
     __weak NSPopUpButton *addTaskButton;
+    __weak NSButton *filterButton;
 }
 
 // propriétés. 
@@ -57,6 +58,13 @@
 @property (assign) PTProjectDetailsViewController *parentProjectDetailsViewController;
 @property (weak) IBOutlet NSButton *removeTaskButton;
 @property (weak) IBOutlet NSPopUpButton *addTaskButton;
+@property (weak) IBOutlet NSButton *filterButton;
+
+@property (weak) IBOutlet NSPopUpButton *comboStatusFilter;
+@property (weak) IBOutlet NSTextField *minDateFilter;
+@property (weak) IBOutlet NSTextField *maxDateFilter;
+@property (nonatomic, retain) NSDate *minDateFilterDate;
+@property (nonatomic, retain) NSDate *maxDateFilterDate;
 
 // actions.
 - (IBAction)commentButtonClicked:(id)sender;    // bouton 'Commentaires' cliqué.
@@ -65,6 +73,7 @@
 - (IBAction)addNewTaskButtonClicked:(id)sender; // bouton 'Nouvelle tâche' cliqué.
 - (IBAction)progressButtonClicked:(id)sender;   // bouton 'Avancement' cliqué.
 - (IBAction)removeTaskButtonClicked:(id)sender; // bouton 'Supprimer tâche' cliqué.
+- (IBAction)filterButtonClicked:(id)sender;
 
 // Méthodes qui sont exécutés lors du succès ou échec de connexion (exécution de la requête HTTP). 
 - (void)requestFinished:(NSMutableData*)data;

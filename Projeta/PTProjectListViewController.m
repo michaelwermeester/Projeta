@@ -369,6 +369,24 @@ PTCommentairesWindowController *commentWindowController;
         if ([[[comboStatusFilter selectedItem] title] isEqualToString:@"En cours"]) {
             status = [NSString stringWithFormat:@"2"];
         }
+        else if ([[[comboStatusFilter selectedItem] title] isEqualToString:@"Mis en production"]) {
+            status = [NSString stringWithFormat:@"7"];
+        }
+        else if ([[[comboStatusFilter selectedItem] title] isEqualToString:@"Clôturé"]) {
+            status = [NSString stringWithFormat:@"5"];
+        }
+        else if ([[[comboStatusFilter selectedItem] title] isEqualToString:@"Point zéro"]) {
+            status = [NSString stringWithFormat:@"1"];
+        }
+        else if ([[[comboStatusFilter selectedItem] title] isEqualToString:@"Attente d'infos"]) {
+            status = [NSString stringWithFormat:@"3"];
+        }
+        else if ([[[comboStatusFilter selectedItem] title] isEqualToString:@"Analyse"]) {
+            status = [NSString stringWithFormat:@"4"];
+        }
+        else if ([[[comboStatusFilter selectedItem] title] isEqualToString:@"Demande de mise en production"]) {
+            status = [NSString stringWithFormat:@"6"];
+        }
         
         urlString = [urlString stringByAppendingString:@"status="];
         urlString = [urlString stringByAppendingString:status];

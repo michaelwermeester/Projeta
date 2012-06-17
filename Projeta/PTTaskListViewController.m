@@ -33,6 +33,13 @@
 @synthesize parentProjectDetailsViewController; // référence vers le PTProjectDetailsViewController (parent).
 @synthesize removeTaskButton;
 @synthesize addTaskButton;
+@synthesize filterButton;
+
+@synthesize minDateFilterDate;
+@synthesize maxDateFilterDate;
+@synthesize comboStatusFilter;
+@synthesize minDateFilter;
+@synthesize maxDateFilter;
 
 @synthesize isPersonalTask;             // flag. YES s'il s'agit d'une tâches personnelle.
 
@@ -344,4 +351,73 @@
     }
 }
 
+- (IBAction)filterButtonClicked:(id)sender {
+    // donner le focus au bouton 'OK'.
+    [self.mainWindowController.window makeFirstResponder:filterButton];
+    
+    //get server URL as string
+    NSString *urlString = [PTCommon serverURLString];
+    // build URL by adding resource path
+    //urlString = [urlString stringByAppendingString:@"resources/projects/filter"];
+    if (taskURL) {
+        urlString = [urlString stringByAppendingString:taskURL];
+    } else {
+        urlString = [urlString stringByAppendingString:@"resources/tasks/filter"];
+    }
+    
+    
+    //int selectedFilterStatus = [comboStatusFilter indexOfSelectedItem];
+    
+    urlString = [urlString stringByAppendingString:@"/?"];
+    
+    if ([[[comboStatusFilter selectedItem] title] isEqualToString:@"Tous"] == NO) {
+        
+        NSString *status = @"";
+        
+        if ([[[comboStatusFilter selectedItem] title] isEqualToString:@"En cours"]) {
+            status = [NSString stringWithFormat:@"2"];
+        }
+        
+        urlString = [urlString stringByAppendingString:@"status="];
+        urlString = [urlString stringByAppendingString:status];
+        urlString = [urlString stringByAppendingString:@"&"];
+    }
+    
+    // min date filter.
+    if ([[minDateFilter stringValue] length] > 0) {
+        urlString = [urlString stringByAppendingString:@"minDate='"];
+        urlString = [urlString stringByAppendingString:[PTCommon stringJSONFromDate:minDateFilterDate]];
+        urlString = [urlString stringByAppendingString:@"'&"];
+        //NSLog(@"date: %@", [PTCommon stringJSONFromDate:minDateFilterDate]);
+    }
+    
+    // max date filter.
+    if ([[maxDateFilter stringValue] length] > 0) {
+        urlString = [urlString stringByAppendingString:@"maxDate='"];
+        urlString = [urlString stringByAppendingString:[PTCommon stringJSONFromDate:maxDateFilterDate]];
+        urlString = [urlString stringByAppendingString:@"'&"];
+        //NSLog(@"date: %@", [PTCommon stringJSONFromDate:maxDateFilterDate]);
+    }
+    
+    // convertir en NSURL
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    //NSLog(@"urlstring: %@" ,urlString);
+    
+    // NSURLConnection - MWConnectionController
+    // instantier et passer les blocks avec les méthodes à exécuter. 
+    MWConnectionController* connectionController = [[MWConnectionController alloc] 
+                                                    initWithSuccessBlock:^(NSMutableData *data) {
+                                                        [self requestFinished:data];
+                                                    }
+                                                    failureBlock:^(NSError *error) {
+                                                        [self requestFailed:error];
+                                                    }];
+    
+    // créer l'URLRequest à partir de l'URL. 
+    NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
+    
+    // lancer la requête. 
+    [connectionController startRequestForURL:url setRequest:urlRequest];
+}
 @end
