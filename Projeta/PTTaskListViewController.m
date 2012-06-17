@@ -18,6 +18,7 @@
 #import "PTTaskHelper.h"
 #import "Task.h"
 #import "Role.h"
+#import "PTClientHelper.h"
 
 @implementation PTTaskListViewController
 
@@ -46,13 +47,23 @@
 
 @synthesize taskURL;                    // optionel. Contient l'URL à utiliser. 
 
+// nom de la nib file. 
+@synthesize nibFileName;
+
+@synthesize arrClients;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:@"PTTaskListView" bundle:nibBundleOrNil];
+    // mémoriser le nom de la nib file. 
+    nibFileName = nibNameOrNil;
+    
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
         // Initialiser l'array qui contiendra les tâches.  
         arrTask = [[NSMutableArray alloc] init];
+        
+        arrClients = [[NSMutableArray alloc] init];
     }
     
     return self;
@@ -93,6 +104,11 @@
     
     // désactiver le bouton 'vue projet'.
     [[mainWindowController detailViewToolbarItem] setEnabled:NO];
+    
+    // charger la liste des clients si nécessaire. 
+    if ([nibFileName isEqualToString:@"PTTaskListViewClient"]) {
+        [self fetchClientsFromWebservice];
+    }
 }
 
 - (void)loadView
@@ -443,4 +459,27 @@
     // lancer la requête. 
     [connectionController startRequestForURL:url setRequest:urlRequest];
 }
+
+// charger la liste des développeurs à partir du webservice et les mettre dans la combobox.
+- (void)fetchClientsFromWebservice
+{
+    // get developers from webservice.
+    [PTClientHelper getClientNames:^(NSMutableArray *clients) {
+        
+        //[[self mutableArrayValueForKey:@"arrClients"] addObjectsFromArray:clients];
+        
+        // descripteurs de tri pour l'array.
+        NSSortDescriptor *firstDescriptor = [[NSSortDescriptor alloc] initWithKey:@"clientName"
+                                                                        ascending:YES];
+        NSArray *sortDescriptors = [NSArray arrayWithObjects:firstDescriptor, nil];
+        
+        // trier l'array et affecter les responsables/développeurs à l'array.
+        [[self mutableArrayValueForKey:@"arrClients"] addObjectsFromArray:[clients sortedArrayUsingDescriptors:sortDescriptors]];
+        
+    }
+                      failureBlock:^(NSError *error) {
+                          
+                      }];
+}
+
 @end

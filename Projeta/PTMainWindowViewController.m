@@ -19,6 +19,7 @@
 #import "PTGroupManagementViewController.h"
 #import "PTUserManagementViewController.h"
 #import "Role.h"
+#import "PTTaskListViewController.h"
 
 // array which holds the user roles of the connected user.
 static NSMutableArray *_currentUserRoles = nil;
@@ -268,7 +269,13 @@ SourceListItem *personalTasksItem;
             
             if (!taskListViewController) {
                 
-                taskListViewController = [[PTTaskListViewController alloc] init];
+                
+                if (identifier == @"tasks" || identifier == @"tasksPersonal" || identifier == @"tasksAssigned") 
+                    taskListViewController = [[PTTaskListViewController alloc] initWithNibName:@"PTTaskListView" bundle:nil];
+                else if (identifier == @"tasksParClientItem") 
+                    taskListViewController = [[PTTaskListViewController alloc] initWithNibName:@"PTTaskListViewClient" bundle:nil];
+                
+                
                 
                 // tâche public.
                 if (identifier == @"tasksPersonal") {

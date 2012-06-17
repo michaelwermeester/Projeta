@@ -66,6 +66,12 @@
 @property (nonatomic, retain) NSDate *minDateFilterDate;
 @property (nonatomic, retain) NSDate *maxDateFilterDate;
 
+// array qui contient les développeurs/responsables. 
+@property (strong) NSMutableArray *arrClients;
+
+// nom de la nib file. 
+@property (strong) NSString *nibFileName;
+
 // actions.
 - (IBAction)commentButtonClicked:(id)sender;    // bouton 'Commentaires' cliqué.
 - (IBAction)detailsButtonClicked:(id)sender;    // bouton 'Détails' cliqué.

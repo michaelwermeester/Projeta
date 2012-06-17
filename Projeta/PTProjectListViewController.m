@@ -548,7 +548,6 @@ PTCommentairesWindowController *commentWindowController;
 // charger la liste des développeurs à partir du webservice et les mettre dans la combobox.
 - (void)fetchClientsFromWebservice
 {
-    NSLog(@"ok");
     // get developers from webservice.
     [PTClientHelper getClientNames:^(NSMutableArray *clients) {
         
