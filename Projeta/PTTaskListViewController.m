@@ -19,6 +19,7 @@
 #import "Task.h"
 #import "Role.h"
 #import "PTClientHelper.h"
+#import "PTUserHelper.h"
 
 @implementation PTTaskListViewController
 
@@ -50,6 +51,7 @@
 // nom de la nib file. 
 @synthesize nibFileName;
 
+@synthesize arrDevelopers;
 @synthesize arrClients;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -62,6 +64,9 @@
         
         // Initialiser l'array qui contiendra les tâches.  
         arrTask = [[NSMutableArray alloc] init];
+        
+        // Initialise l'array qui contient les développeurs/responsables. 
+        arrDevelopers = [[NSMutableArray alloc] init];
         
         arrClients = [[NSMutableArray alloc] init];
     }
@@ -105,6 +110,10 @@
     // désactiver le bouton 'vue projet'.
     [[mainWindowController detailViewToolbarItem] setEnabled:NO];
     
+    // charger la liste des développeurs si nécessaire. 
+    if ([nibFileName isEqualToString:@"PTTaskListViewDeveloper"]) {
+        [self fetchDevelopersFromWebservice];
+    }
     // charger la liste des clients si nécessaire. 
     if ([nibFileName isEqualToString:@"PTTaskListViewClient"]) {
         [self fetchClientsFromWebservice];
@@ -480,6 +489,26 @@
                       failureBlock:^(NSError *error) {
                           
                       }];
+}
+
+// charger la liste des développeurs à partir du webservice et les mettre dans la combobox.
+- (void)fetchDevelopersFromWebservice
+{
+    // get developers from webservice.
+    [PTUserHelper developers:^(NSMutableArray *developers) {
+        
+        // descripteurs de tri pour l'array.
+        NSSortDescriptor *firstDescriptor = [[NSSortDescriptor alloc] initWithKey:@"fullNameAndUsername"
+                                                                        ascending:YES];
+        NSArray *sortDescriptors = [NSArray arrayWithObjects:firstDescriptor, nil];
+        
+        // trier l'array et affecter les responsables/développeurs à l'array.
+        [[self mutableArrayValueForKey:@"arrDevelopers"] addObjectsFromArray:[developers sortedArrayUsingDescriptors:sortDescriptors]];
+        
+    }
+                failureBlock:^(NSError *error) {
+                    
+                }];
 }
 
 @end

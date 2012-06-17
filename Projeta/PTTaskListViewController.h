@@ -67,6 +67,8 @@
 @property (nonatomic, retain) NSDate *maxDateFilterDate;
 
 // array qui contient les développeurs/responsables. 
+@property (strong) NSMutableArray *arrDevelopers;
+// array qui contient les développeurs/responsables. 
 @property (strong) NSMutableArray *arrClients;
 
 // nom de la nib file. 
