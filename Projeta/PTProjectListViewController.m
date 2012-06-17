@@ -18,6 +18,7 @@
 #import "PTCommentairesWindowController.h"
 #import "PTUserHelper.h"
 #import "Role.h"
+#import "PTClientHelper.h"
 
 PTCommentairesWindowController *commentWindowController;
 
@@ -27,6 +28,7 @@ PTCommentairesWindowController *commentWindowController;
 @synthesize arrPrj; 
 // array qui contient les développeurs/responsables. 
 @synthesize arrDevelopers;
+@synthesize arrClients;
 @synthesize mainWindowController;
 @synthesize prjTabView;
 @synthesize prjOutlineView;
@@ -64,6 +66,8 @@ PTCommentairesWindowController *commentWindowController;
         
         // Initialise l'array qui contient les développeurs/responsables. 
         arrDevelopers = [[NSMutableArray alloc] init];
+        
+        arrClients = [[NSMutableArray alloc] init];
     }
     
     return self;
@@ -83,6 +87,11 @@ PTCommentairesWindowController *commentWindowController;
     // charger la liste des développeurs/responsables si nécessaire. 
     if ([nibFileName isEqualToString:@"PTProjectListViewDeveloper"]) {
         [self fetchDevelopersFromWebservice];
+    }
+    
+    // charger la liste des clients si nécessaire. 
+    if ([nibFileName isEqualToString:@"PTProjectListViewClient"]) {
+        [self fetchClientsFromWebservice];
     }
     
     
@@ -529,6 +538,29 @@ PTCommentairesWindowController *commentWindowController;
         
         // trier l'array et affecter les responsables/développeurs à l'array.
         [[self mutableArrayValueForKey:@"arrDevelopers"] addObjectsFromArray:[developers sortedArrayUsingDescriptors:sortDescriptors]];
+        
+    }
+                failureBlock:^(NSError *error) {
+                    
+                }];
+}
+
+// charger la liste des développeurs à partir du webservice et les mettre dans la combobox.
+- (void)fetchClientsFromWebservice
+{
+    NSLog(@"ok");
+    // get developers from webservice.
+    [PTClientHelper getClientNames:^(NSMutableArray *clients) {
+        
+        //[[self mutableArrayValueForKey:@"arrClients"] addObjectsFromArray:clients];
+        
+        // descripteurs de tri pour l'array.
+        NSSortDescriptor *firstDescriptor = [[NSSortDescriptor alloc] initWithKey:@"clientName"
+                                                                        ascending:YES];
+        NSArray *sortDescriptors = [NSArray arrayWithObjects:firstDescriptor, nil];
+        
+        // trier l'array et affecter les responsables/développeurs à l'array.
+        [[self mutableArrayValueForKey:@"arrClients"] addObjectsFromArray:[clients sortedArrayUsingDescriptors:sortDescriptors]];
         
     }
                 failureBlock:^(NSError *error) {

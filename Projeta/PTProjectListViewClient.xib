@@ -1616,6 +1616,16 @@
 				<string key="NSTreeContentChildrenKey">childProject</string>
 				<string key="NSTreeContentLeafKey">isLeaf</string>
 			</object>
+			<object class="NSArrayController" id="459795560">
+				<string key="NSObjectClassName">Client</string>
+				<bool key="NSEditable">YES</bool>
+				<object class="_NSManagedProxy" key="_NSManagedProxy"/>
+				<bool key="NSAvoidsEmptySelection">YES</bool>
+				<bool key="NSPreservesSelection">YES</bool>
+				<bool key="NSSelectsInsertedObjects">YES</bool>
+				<bool key="NSFilterRestrictsInsertion">YES</bool>
+				<bool key="NSClearsFilterPredicateOnInsertion">YES</bool>
+			</object>
 			<object class="NSUserDefaultsController" id="1016012414">
 				<bool key="NSSharedInstance">YES</bool>
 			</object>
@@ -2002,6 +2012,38 @@
 						</object>
 					</object>
 					<int key="connectionID">1229</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">contentValues: arrangedObjects.clientName</string>
+						<reference key="source" ref="880567894"/>
+						<reference key="destination" ref="459795560"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="880567894"/>
+							<reference key="NSDestination" ref="459795560"/>
+							<string key="NSLabel">contentValues: arrangedObjects.clientName</string>
+							<string key="NSBinding">contentValues</string>
+							<string key="NSKeyPath">arrangedObjects.clientName</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">1579</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">contentArray: arrClients</string>
+						<reference key="source" ref="459795560"/>
+						<reference key="destination" ref="1001"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="459795560"/>
+							<reference key="NSDestination" ref="1001"/>
+							<string key="NSLabel">contentArray: arrClients</string>
+							<string key="NSBinding">contentArray</string>
+							<string key="NSKeyPath">arrClients</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">1577</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -4406,6 +4448,12 @@
 						<reference key="object" ref="475344569"/>
 						<reference key="parent" ref="1005"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1574</int>
+						<reference key="object" ref="459795560"/>
+						<reference key="parent" ref="0"/>
+						<string key="objectName">clients array controller</string>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -4548,6 +4596,7 @@
 					<string>1569.IBPluginDependency</string>
 					<string>157.IBPluginDependency</string>
 					<string>1570.IBPluginDependency</string>
+					<string>1574.IBPluginDependency</string>
 					<string>19.IBPluginDependency</string>
 					<string>20.IBPluginDependency</string>
 					<string>304.IBNSViewMetadataTranslatesAutoresizingMaskIntoConstraints</string>
@@ -4865,6 +4914,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="NO"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -5005,7 +5055,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">1573</int>
+			<int key="maxID">1579</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -5076,12 +5126,14 @@
 							<string>addNewSubProjectButtonClicked:</string>
 							<string>commentButtonClicked:</string>
 							<string>detailsButtonClicked:</string>
+							<string>filterButtonClicked:</string>
 							<string>progressButtonClicked:</string>
 							<string>removeProjectButtonClicked:</string>
 							<string>switchToProjectViewButtonClicked:</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -5099,6 +5151,7 @@
 							<string>addNewSubProjectButtonClicked:</string>
 							<string>commentButtonClicked:</string>
 							<string>detailsButtonClicked:</string>
+							<string>filterButtonClicked:</string>
 							<string>progressButtonClicked:</string>
 							<string>removeProjectButtonClicked:</string>
 							<string>switchToProjectViewButtonClicked:</string>
@@ -5122,6 +5175,10 @@
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
+								<string key="name">filterButtonClicked:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
 								<string key="name">progressButtonClicked:</string>
 								<string key="candidateClassName">id</string>
 							</object>
@@ -5139,39 +5196,61 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>addProjectButton</string>
 							<string>addSubProjectButton</string>
 							<string>clientComboBox</string>
+							<string>comboStatusFilter</string>
+							<string>filterButton</string>
+							<string>maxDateFilter</string>
+							<string>minDateFilter</string>
 							<string>prjArrayCtrl</string>
 							<string>prjCollectionView</string>
 							<string>prjOutlineView</string>
 							<string>prjTabView</string>
 							<string>prjTreeController</string>
+							<string>removeProjectButton</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>NSPopUpButton</string>
 							<string>NSMenuItem</string>
 							<string>NSComboBox</string>
+							<string>NSPopUpButton</string>
+							<string>NSButton</string>
+							<string>NSTextField</string>
+							<string>NSTextField</string>
 							<string>NSArrayController</string>
 							<string>NSCollectionView</string>
 							<string>NSOutlineView</string>
 							<string>NSTabView</string>
 							<string>NSTreeController</string>
+							<string>NSButton</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>addProjectButton</string>
 							<string>addSubProjectButton</string>
 							<string>clientComboBox</string>
+							<string>comboStatusFilter</string>
+							<string>filterButton</string>
+							<string>maxDateFilter</string>
+							<string>minDateFilter</string>
 							<string>prjArrayCtrl</string>
 							<string>prjCollectionView</string>
 							<string>prjOutlineView</string>
 							<string>prjTabView</string>
 							<string>prjTreeController</string>
+							<string>removeProjectButton</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">addProjectButton</string>
+								<string key="candidateClassName">NSPopUpButton</string>
+							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">addSubProjectButton</string>
 								<string key="candidateClassName">NSMenuItem</string>
@@ -5179,6 +5258,22 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">clientComboBox</string>
 								<string key="candidateClassName">NSComboBox</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">comboStatusFilter</string>
+								<string key="candidateClassName">NSPopUpButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">filterButton</string>
+								<string key="candidateClassName">NSButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">maxDateFilter</string>
+								<string key="candidateClassName">NSTextField</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">minDateFilter</string>
+								<string key="candidateClassName">NSTextField</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">prjArrayCtrl</string>
@@ -5199,6 +5294,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">prjTreeController</string>
 								<string key="candidateClassName">NSTreeController</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">removeProjectButton</string>
+								<string key="candidateClassName">NSButton</string>
 							</object>
 						</object>
 					</object>

@@ -31,6 +31,7 @@
     
     // array qui contient les développeurs/responsables. 
     NSMutableArray *arrDevelopers;
+    NSMutableArray *arrClients;
     __weak NSPopUpButton *comboStatusFilter;
     __weak NSTextField *minDateFilter;
     __weak NSTextField *maxDateFilter;
@@ -58,6 +59,9 @@
 
 // array qui contient les développeurs/responsables. 
 @property (strong) NSMutableArray *arrDevelopers;
+
+// array qui contient les développeurs/responsables. 
+@property (strong) NSMutableArray *arrClients;
 
 // nom de la nib file. 
 @property (strong) NSString *nibFileName;
