@@ -31,6 +31,10 @@
     
     // array qui contient les développeurs/responsables. 
     NSMutableArray *arrDevelopers;
+    __weak NSPopUpButton *comboStatusFilter;
+    __weak NSTextField *minDateFilter;
+    __weak NSTextField *maxDateFilter;
+    __weak NSButton *filterButton;
 }
 
 // array qui contient les projets. 
@@ -45,6 +49,9 @@
 @property (weak) IBOutlet NSMenuItem *addSubProjectButton;
 @property (weak) IBOutlet NSComboBox *clientComboBox;
 
+@property (nonatomic, retain) NSDate *minDateFilterDate;
+@property (nonatomic, retain) NSDate *maxDateFilterDate;
+
 // array qui contient les développeurs/responsables. 
 @property (strong) NSMutableArray *arrDevelopers;
 
@@ -53,6 +60,10 @@
 
 // URL à utiliser.
 @property (strong) NSString *projectURL;
+@property (weak) IBOutlet NSPopUpButton *comboStatusFilter;
+@property (weak) IBOutlet NSTextField *minDateFilter;
+@property (weak) IBOutlet NSTextField *maxDateFilter;
+@property (weak) IBOutlet NSButton *filterButton;
 
 - (void)requestFinished:(NSMutableData*)data;
 - (void)requestFailed:(NSError*)error;
@@ -67,5 +78,6 @@
 - (IBAction)switchToProjectViewButtonClicked:(id)sender;
 - (IBAction)progressButtonClicked:(id)sender;
 - (IBAction)commentButtonClicked:(id)sender;
+- (IBAction)filterButtonClicked:(id)sender;
 
 @end

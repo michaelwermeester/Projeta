@@ -64,6 +64,20 @@
     return stringFromDate;
 }
 
+// pour filtre.
+/*+ (NSString*)dateStringForFilterFromDate:(NSDate *)aDate {
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSLocale *enUSPOSIXLocale;
+    enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+    [formatter setLocale:enUSPOSIXLocale];
+    [formatter setDateFormat:@"yyyy'-'MM'-'dd"];
+    
+    NSString *stringFromDate = [formatter stringFromDate:aDate];
+    
+    return stringFromDate;
+}*/
+
 // retourne un string qui peut être envoyé au webservice à partir d'une date.
 + (NSString*)stringJSONFromDate:(NSDate *)aDate {
     

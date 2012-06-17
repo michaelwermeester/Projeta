@@ -252,4 +252,47 @@
     return success;
 }
 
+
+
+//// fetch all client names from web service.
+//+ (void)filterProjects:(Project *)aProject status:(NSNumber *)statusId successBlock:(void(^)(NSMutableArray *))successBlock failureBlock:(void(^)(NSError *))failureBlock {
+//    
+//    // get server URL as string
+//    NSString *urlString = [PTCommon serverURLString];
+//    // build URL by adding resource path
+//    urlString = [urlString stringByAppendingString:@"resources/projects/filter"];
+//    
+//    ///[self serverClientsToArray:urlString successBlock:successBlock failureBlock:failureBlock];
+//}
+//
+//
+//// Fetches users for the given resource URL into an NSMutableArray and executes the successBlock upon success.
+//+ (void)serverProjectsToArray:(NSString *)urlString successBlock:(void (^)(NSMutableArray*))successBlock failureBlock:(void(^)(NSError *))failureBlock {
+//    
+//    // convert to NSURL
+//    NSURL *url = [NSURL URLWithString:urlString];
+//    
+//    NSMutableArray *users= [[NSMutableArray alloc] init];
+//    
+//    // NSURLConnection - MWConnectionController
+//    MWConnectionController* connectionController = [[MWConnectionController alloc] 
+//                                                    initWithSuccessBlock:^(NSMutableData *data) {
+//                                                        NSError *error;
+//                                                        
+//                                                        NSDictionary *dict = [[NSDictionary alloc] init];
+//                                                        dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
+//                                                        
+//                                                        [users addObjectsFromArray:[PTUserHelper setAttributesFromJSONDictionary:dict]];
+//                                                        
+//                                                        successBlock(users);
+//                                                    }
+//                                                    failureBlock:^(NSError *error) {
+//                                                        //[self rolesForUserRequestFailed:error];
+//                                                    }];
+//    
+//    NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
+//    
+//    [connectionController startRequestForURL:url setRequest:urlRequest];
+//}
+
 @end
