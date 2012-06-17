@@ -104,6 +104,8 @@
 // MWConnectionController/NSURLConnection - exécuté lorsque l'exécution de la requête HTTP a réussi.
 - (void)requestFinished:(NSMutableData*)data
 {
+    [[self mutableArrayValueForKey:@"arrTask"] removeAllObjects];
+    
     NSError *error;
     
     // créer un NSDictionary à partir des données reçus. 
@@ -375,7 +377,16 @@
         NSString *status = @"";
         
         if ([[[comboStatusFilter selectedItem] title] isEqualToString:@"En cours"]) {
-            status = [NSString stringWithFormat:@"2"];
+            status = [NSString stringWithFormat:@"10"];
+        }
+        else if ([[[comboStatusFilter selectedItem] title] isEqualToString:@"Attente d'infos"]) {
+            status = [NSString stringWithFormat:@"11"];
+        }
+        else if ([[[comboStatusFilter selectedItem] title] isEqualToString:@"Clôturé"]) {
+            status = [NSString stringWithFormat:@"12"];
+        }
+        else if ([[[comboStatusFilter selectedItem] title] isEqualToString:@"Point zéro"]) {
+            status = [NSString stringWithFormat:@"9"];
         }
         
         urlString = [urlString stringByAppendingString:@"status="];

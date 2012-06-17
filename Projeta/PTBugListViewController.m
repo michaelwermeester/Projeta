@@ -105,6 +105,8 @@
 
 - (void)requestFinished:(NSMutableData*)data
 {
+    [[self mutableArrayValueForKey:@"arrBug"] removeAllObjects];
+    
     NSError *error;
 
     NSDictionary *dict = [[NSDictionary alloc] init];
