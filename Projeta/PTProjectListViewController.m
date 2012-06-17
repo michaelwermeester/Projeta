@@ -17,6 +17,7 @@
 #import "PTProjectDetailsWindowController.h"
 #import "PTCommentairesWindowController.h"
 #import "PTUserHelper.h"
+#import "Role.h"
 
 PTCommentairesWindowController *commentWindowController;
 
@@ -47,6 +48,8 @@ PTCommentairesWindowController *commentWindowController;
 
 @synthesize minDateFilterDate;
 @synthesize maxDateFilterDate;
+@synthesize addProjectButton;
+@synthesize removeProjectButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -132,6 +135,15 @@ PTCommentairesWindowController *commentWindowController;
 - (void)loadView
 {
     [super loadView];
+    
+    for (Role *r in mainWindowController.mainWindowViewController.currentUserRoles) {
+        
+        // if user is in administrator role, add the admin menu to the sidebar.
+        if ([r.code isEqualToString:@"administrator"] == NO && [r.code isEqualToString:@"developer"] == NO) {
+            [addProjectButton setHidden:YES];
+            [removeProjectButton setHidden:YES];
+        }
+    }
     
     [self viewDidLoad];
 }

@@ -17,6 +17,7 @@
 #import "PTTaskDetailsWindowController.h"
 #import "PTTaskHelper.h"
 #import "Task.h"
+#import "Role.h"
 
 @implementation PTTaskListViewController
 
@@ -97,6 +98,15 @@
 - (void)loadView
 {
     [super loadView];
+    
+    for (Role *r in mainWindowController.mainWindowViewController.currentUserRoles) {
+        
+        // if user is in administrator role, add the admin menu to the sidebar.
+        if ([r.code isEqualToString:@"administrator"] == NO && [r.code isEqualToString:@"developer"] == NO) {
+            [addTaskButton setHidden:YES];
+            [removeTaskButton setHidden:YES];
+        }
+    }
     
     [self viewDidLoad];
 }

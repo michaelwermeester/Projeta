@@ -58,4 +58,7 @@
 - (void)startProgressIndicatorAnimation;
 - (void)stopProgressIndicatorAnimation;
 
+
+@property (nonatomic, assign) BOOL hideAdminControls;
+
 @end

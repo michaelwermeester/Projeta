@@ -13,6 +13,8 @@
 #import "PTMainWindowViewController.h"
 #import "User.h"
 
+#import "Role.h"
+
 @implementation MainWindowController
 
 @synthesize mainView;
@@ -29,6 +31,8 @@
 @synthesize addSubProjectMenuItem;
 @synthesize removeProjectButton;
 
+@synthesize hideAdminControls;
+
 - (id)init
 {
     self = [super initWithWindowNibName:@"MainWindow"];
@@ -40,6 +44,8 @@
         progressCount = 0;
         
         loggedInUser = nil;
+        
+        hideAdminControls = YES;
     }
     return self;
 }
@@ -347,5 +353,6 @@
         }
     }
 }
+
 
 @end

@@ -80,4 +80,6 @@
 // afficher points de menu supplémentaires sous 'TÂCHES' si l'utilisateur est un administrateur ou développeur.
 - (void)showTaskMenuByUserRole;
 
+//@property (nonatomic, assign) BOOL hideAdminControls;
+
 @end

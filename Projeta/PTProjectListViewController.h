@@ -35,6 +35,8 @@
     __weak NSTextField *minDateFilter;
     __weak NSTextField *maxDateFilter;
     __weak NSButton *filterButton;
+    __weak NSPopUpButton *addProjectButton;
+    __weak NSButton *removeProjectButton;
 }
 
 // array qui contient les projets. 
@@ -51,6 +53,8 @@
 
 @property (nonatomic, retain) NSDate *minDateFilterDate;
 @property (nonatomic, retain) NSDate *maxDateFilterDate;
+@property (weak) IBOutlet NSPopUpButton *addProjectButton;
+@property (weak) IBOutlet NSButton *removeProjectButton;
 
 // array qui contient les développeurs/responsables. 
 @property (strong) NSMutableArray *arrDevelopers;

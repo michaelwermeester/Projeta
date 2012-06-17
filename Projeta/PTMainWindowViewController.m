@@ -730,6 +730,8 @@ SourceListItem *personalTasksItem;
             SourceListItem *tasksParDeveloppeurItem = [SourceListItem itemWithTitle:@"Par développeur" identifier:@"tasksParDeveloppeurItem"];
             
             [tasksHeaderItem setChildren:[NSArray arrayWithObjects:tasksItem, personalTasksItem, tasksAssignedItem, tasksParClientItem, tasksParDeveloppeurItem, nil]];
+            
+            mainWindowController.hideAdminControls = NO;
         }
     }
     
@@ -823,5 +825,6 @@ SourceListItem *personalTasksItem;
 - (NSMutableArray *)currentUserRoles {
     return _currentUserRoles;
 }
+
 
 @end
