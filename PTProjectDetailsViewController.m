@@ -210,7 +210,7 @@
 }
 
 - (void)loadTasks {
-    taskListViewController = [[PTTaskListViewController alloc] init];
+    taskListViewController = [[PTTaskListViewController alloc] initWithNibName:@"PTTaskListView" bundle:nil];
     
     // set reference to (parent) window
     [taskListViewController setMainWindowController:mainWindowController];
@@ -236,7 +236,7 @@
 }
 
 - (void)loadBugs {
-    bugListViewController = [[PTBugListViewController alloc] init];
+    bugListViewController = [[PTBugListViewController alloc] initWithNibName:@"PTBugListView" bundle:nil];
     
     // set reference to (parent) window
     [bugListViewController setMainWindowController:mainWindowController];

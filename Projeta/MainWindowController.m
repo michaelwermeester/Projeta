@@ -255,7 +255,7 @@
         
         if ([tmpPrj childProject] == nil) {
             
-            NSLog(@"111111111");
+           // NSLog(@"111111111");
             NSIndexPath *indexPath = [projectViewController.prjTreeController selectionIndexPath];
             
             tmpPrj.childProject = [[NSMutableArray alloc] init];
