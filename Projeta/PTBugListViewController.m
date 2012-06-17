@@ -21,12 +21,16 @@
 @synthesize outlineViewProjetColumn;
 @synthesize projectButton;
 @synthesize removeBugButton;
+@synthesize filterButton;
 
 @synthesize arrBug;
 @synthesize bugArrayCtrl;
 @synthesize bugTreeCtrl;
 @synthesize bugOutlineView;
 @synthesize mainWindowController;
+
+@synthesize comboStatusFilter;
+@synthesize combCategoryFilter;
 
 @synthesize bugURL;
 
@@ -101,6 +105,97 @@
     }
     
     [self openBugDetailsWindow:YES];
+}
+
+- (IBAction)filterButtonClicked:(id)sender {
+    // donner le focus au bouton 'OK'.
+    [self.mainWindowController.window makeFirstResponder:filterButton];
+    
+    //get server URL as string
+    NSString *urlString = [PTCommon serverURLString];
+    // build URL by adding resource path
+    //urlString = [urlString stringByAppendingString:@"resources/projects/filter"];
+    if (bugURL) {
+        urlString = [urlString stringByAppendingString:bugURL];
+    } else {
+        urlString = [urlString stringByAppendingString:@"resources/bugs"];
+    }
+    
+    
+    //int selectedFilterStatus = [comboStatusFilter indexOfSelectedItem];
+    
+    urlString = [urlString stringByAppendingString:@"/?"];
+    
+    if ([[[comboStatusFilter selectedItem] title] isEqualToString:@"Tous"] == NO) {
+        
+        NSString *status = @"";
+        
+        if ([[[comboStatusFilter selectedItem] title] isEqualToString:@"En cours"]) {
+            status = [NSString stringWithFormat:@"16"];
+        }
+        else if ([[[comboStatusFilter selectedItem] title] isEqualToString:@"Attente d'infos"]) {
+            status = [NSString stringWithFormat:@"15"];
+        }
+        else if ([[[comboStatusFilter selectedItem] title] isEqualToString:@"Won't fix"]) {
+            status = [NSString stringWithFormat:@"20"];
+        }
+        else if ([[[comboStatusFilter selectedItem] title] isEqualToString:@"Corrigé"]) {
+            status = [NSString stringWithFormat:@"14"];
+        }
+        else if ([[[comboStatusFilter selectedItem] title] isEqualToString:@"Rapporté"]) {
+            status = [NSString stringWithFormat:@"13"];
+        }
+        
+        urlString = [urlString stringByAppendingString:@"status="];
+        urlString = [urlString stringByAppendingString:status];
+        urlString = [urlString stringByAppendingString:@"&"];
+    }
+    
+    if ([[[combCategoryFilter selectedItem] title] isEqualToString:@"Tous"] == NO) {
+        
+        NSString *category = @"";
+        
+        if ([[[combCategoryFilter selectedItem] title] isEqualToString:@"BLOCKER - Empêche l'utilisation et/ou les tests ; paralyse les travaux."]) {
+            category = [NSString stringWithFormat:@"1"];
+        }
+        else if ([[[combCategoryFilter selectedItem] title] isEqualToString:@"CRITICAL - Crashs, pertes de données, graves fuites de mémoire."]) {
+            category = [NSString stringWithFormat:@"2"];
+        }
+        else if ([[[combCategoryFilter selectedItem] title] isEqualToString:@"MAJOR - Perte de fonctionnalité majeure."]) {
+            category = [NSString stringWithFormat:@"3"];
+        }
+        else if ([[[combCategoryFilter selectedItem] title] isEqualToString:@"MINOR - Perte de fonctionnalité mineure, ou autre problème facilement corrigible."]) {
+            category = [NSString stringWithFormat:@"7"];
+        }
+        else if ([[[combCategoryFilter selectedItem] title] isEqualToString:@"TRIVIAL - Problème cosmétique comme une faute d'orthographe, ou un problème d'alignement de texte."]) {
+            category = [NSString stringWithFormat:@"9"];
+        }
+        
+        urlString = [urlString stringByAppendingString:@"category="];
+        urlString = [urlString stringByAppendingString:category];
+        urlString = [urlString stringByAppendingString:@"&"];
+    }
+    
+    // convertir en NSURL
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    NSLog(@"urlstring: %@" ,urlString);
+    
+    // NSURLConnection - MWConnectionController
+    // instantier et passer les blocks avec les méthodes à exécuter. 
+    MWConnectionController* connectionController = [[MWConnectionController alloc] 
+                                                    initWithSuccessBlock:^(NSMutableData *data) {
+                                                        [self requestFinished:data];
+                                                    }
+                                                    failureBlock:^(NSError *error) {
+                                                        [self requestFailed:error];
+                                                    }];
+    
+    // créer l'URLRequest à partir de l'URL. 
+    NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
+    
+    // lancer la requête. 
+    [connectionController startRequestForURL:url setRequest:urlRequest];
 }
 
 - (void)requestFinished:(NSMutableData*)data

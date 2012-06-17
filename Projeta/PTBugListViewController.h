@@ -21,6 +21,7 @@
     __weak NSTableColumn *outlineViewProjetColumn;
     __weak NSButton *projectButton;
     __weak NSButton *removeBugButton;
+    __weak NSButton *filterButton;
     
     // task details window
     PTBugDetailsWindowController *bugDetailsWindowController;
@@ -39,6 +40,10 @@
 @property (weak) IBOutlet NSTableColumn *outlineViewProjetColumn;
 @property (weak) IBOutlet NSButton *projectButton;
 @property (weak) IBOutlet NSButton *removeBugButton;
+@property (weak) IBOutlet NSButton *filterButton;
+
+@property (weak) IBOutlet NSPopUpButton *comboStatusFilter;
+@property (weak) IBOutlet NSPopUpButton *combCategoryFilter;
 
 // reference to the (parent) MainWindowController
 @property (assign) MainWindowController *mainWindowController;
@@ -48,6 +53,7 @@
 // reference to the (parent) PTProjectDetailsViewController
 @property (assign) PTProjectDetailsViewController *parentProjectDetailsViewController;
 - (IBAction)addNewBugButtonClicked:(id)sender;
+- (IBAction)filterButtonClicked:(id)sender;
 
 - (void)requestFinished:(NSMutableData*)data;
 - (void)requestFailed:(NSError*)error;
