@@ -361,10 +361,12 @@
     NSString *urlString = [PTCommon serverURLString];
     // build URL by adding resource path
     //urlString = [urlString stringByAppendingString:@"resources/projects/filter"];
-    if (taskURL) {
+    if (isPersonalTask == YES)
+        urlString = [urlString stringByAppendingString:@"resources/tasks/personal"];
+    else if (taskURL) {
         urlString = [urlString stringByAppendingString:taskURL];
     } else {
-        urlString = [urlString stringByAppendingString:@"resources/tasks/filter"];
+        urlString = [urlString stringByAppendingString:@"resources/tasks"];
     }
     
     
@@ -413,7 +415,7 @@
     // convertir en NSURL
     NSURL *url = [NSURL URLWithString:urlString];
     
-    //NSLog(@"urlstring: %@" ,urlString);
+    NSLog(@"urlstring: %@" ,urlString);
     
     // NSURLConnection - MWConnectionController
     // instantier et passer les blocks avec les méthodes à exécuter. 
