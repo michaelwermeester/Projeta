@@ -15,6 +15,8 @@
 #import "PTBugHelper.h"
 #import "PTCommon.h"
 #import "PTProjectDetailsViewController.h"
+#import "PTUserHelper.h"
+#import "PTClientHelper.h"
 
 @implementation PTBugListViewController
 @synthesize addBugButton;
@@ -34,17 +36,31 @@
 
 @synthesize bugURL;
 
+// nom de la nib file. 
+@synthesize nibFileName;
+
+
+@synthesize arrClients;
+@synthesize arrDevelopers;
+
 @synthesize parentProjectDetailsViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    //self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    self = [super initWithNibName:@"PTBugListView" bundle:nibBundleOrNil];
+    // mémoriser le nom de la nib file. 
+    nibFileName = nibNameOrNil;
+    
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Initialization code here.
         
         // Initialize the array which holds the list of task 
         arrBug = [[NSMutableArray alloc] init];
+        
+        // Initialise l'array qui contient les développeurs/responsables. 
+        arrDevelopers = [[NSMutableArray alloc] init];
+        
+        arrClients = [[NSMutableArray alloc] init];
     }
     
     return self;
@@ -81,6 +97,15 @@
     
     // désactiver le bouton 'vue projet'.
     [[mainWindowController detailViewToolbarItem] setEnabled:NO];
+    
+    // charger la liste des développeurs si nécessaire. 
+    if ([nibFileName isEqualToString:@"PTBugListViewDeveloper"]) {
+        [self fetchDevelopersFromWebservice];
+    }
+    // charger la liste des clients si nécessaire. 
+    if ([nibFileName isEqualToString:@"PTBugListViewClient"]) {
+        [self fetchClientsFromWebservice];
+    }
 }
 
 - (void)loadView
@@ -262,6 +287,48 @@
         
         [bugDetailsWindowController showWindow:self];
     }
+}
+
+// charger la liste des développeurs à partir du webservice et les mettre dans la combobox.
+- (void)fetchClientsFromWebservice
+{
+    // get developers from webservice.
+    [PTClientHelper getClientNames:^(NSMutableArray *clients) {
+        
+        //[[self mutableArrayValueForKey:@"arrClients"] addObjectsFromArray:clients];
+        
+        // descripteurs de tri pour l'array.
+        NSSortDescriptor *firstDescriptor = [[NSSortDescriptor alloc] initWithKey:@"clientName"
+                                                                        ascending:YES];
+        NSArray *sortDescriptors = [NSArray arrayWithObjects:firstDescriptor, nil];
+        
+        // trier l'array et affecter les responsables/développeurs à l'array.
+        [[self mutableArrayValueForKey:@"arrClients"] addObjectsFromArray:[clients sortedArrayUsingDescriptors:sortDescriptors]];
+        
+    }
+                      failureBlock:^(NSError *error) {
+                          
+                      }];
+}
+
+// charger la liste des développeurs à partir du webservice et les mettre dans la combobox.
+- (void)fetchDevelopersFromWebservice
+{
+    // get developers from webservice.
+    [PTUserHelper developers:^(NSMutableArray *developers) {
+        
+        // descripteurs de tri pour l'array.
+        NSSortDescriptor *firstDescriptor = [[NSSortDescriptor alloc] initWithKey:@"fullNameAndUsername"
+                                                                        ascending:YES];
+        NSArray *sortDescriptors = [NSArray arrayWithObjects:firstDescriptor, nil];
+        
+        // trier l'array et affecter les responsables/développeurs à l'array.
+        [[self mutableArrayValueForKey:@"arrDevelopers"] addObjectsFromArray:[developers sortedArrayUsingDescriptors:sortDescriptors]];
+        
+    }
+                failureBlock:^(NSError *error) {
+                    
+                }];
 }
 
 @end

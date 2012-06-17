@@ -315,7 +315,12 @@ SourceListItem *personalTasksItem;
             
             if (!bugListViewController) {
                 
-                 bugListViewController = [[PTBugListViewController alloc] init];
+                if (identifier == @"bugs" || identifier == @"bugsAssigned") 
+                    bugListViewController = [[PTBugListViewController alloc] initWithNibName:@"PTBugListView" bundle:nil];
+                else if (identifier == @"bugsParClientItem") 
+                     bugListViewController = [[PTBugListViewController alloc] initWithNibName:@"PTBugListViewClient" bundle:nil];
+                else if (identifier == @"bugsParDeveloppeurItem") 
+                     bugListViewController = [[PTBugListViewController alloc] initWithNibName:@"PTBugListViewDeveloper" bundle:nil];
                 
                 if (identifier == @"bugsAssigned")
                     bugListViewController.bugURL = @"resources/bugs/assigned";

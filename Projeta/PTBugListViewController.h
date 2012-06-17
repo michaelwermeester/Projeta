@@ -45,6 +45,14 @@
 @property (weak) IBOutlet NSPopUpButton *comboStatusFilter;
 @property (weak) IBOutlet NSPopUpButton *combCategoryFilter;
 
+// array qui contient les développeurs/responsables. 
+@property (strong) NSMutableArray *arrDevelopers;
+// array qui contient les développeurs/responsables. 
+@property (strong) NSMutableArray *arrClients;
+
+// nom de la nib file. 
+@property (strong) NSString *nibFileName;
+
 // reference to the (parent) MainWindowController
 @property (assign) MainWindowController *mainWindowController;
 
