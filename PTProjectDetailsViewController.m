@@ -210,19 +210,36 @@
     
     // load tasks for selected project. 
     if (project.projectId) {
-        // get URL du serveur. 
+        // tasks.
         NSString *urlString = [NSString stringWithString:@"resources/tasks/?projectId="];
         urlString = [urlString stringByAppendingString:[project.projectId stringValue]];
      
         taskListViewController.taskURL = urlString;
     
         [taskListViewController loadTasks];
+        
+        
+        // bugs.
+        urlString = [NSString stringWithString:@"resources/bugs/?projectId="];
+        urlString = [urlString stringByAppendingString:[project.projectId stringValue]];
+        
+        bugListViewController.bugURL = urlString;
+        
+        [bugListViewController loadBugs];
     }
     
 }
 
 - (void)loadTasks {
     taskListViewController = [[PTTaskListViewController alloc] initWithNibName:@"PTTaskListView" bundle:nil];
+    
+    if (project.projectId) {
+        // tasks.
+        NSString *urlString = [NSString stringWithString:@"resources/tasks/?projectId="];
+        urlString = [urlString stringByAppendingString:[project.projectId stringValue]];
+        
+        taskListViewController.taskURL = urlString;
+    }
     
     // get URL du serveur. 
     /*NSString *urlString = [PTCommon serverURLString];
@@ -256,6 +273,14 @@
 
 - (void)loadBugs {
     bugListViewController = [[PTBugListViewController alloc] initWithNibName:@"PTBugListView" bundle:nil];
+    
+    if (project.projectId) {
+        // bugs.
+        NSString *urlString = [NSString stringWithString:@"resources/bugs/?projectId="];
+        urlString = [urlString stringByAppendingString:[project.projectId stringValue]];
+        
+        bugListViewController.bugURL = urlString;
+    }
     
     // set reference to (parent) window
     [bugListViewController setMainWindowController:mainWindowController];

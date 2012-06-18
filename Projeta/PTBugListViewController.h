@@ -68,4 +68,6 @@
 
 - (void)openBugDetailsWindow:(BOOL)isNewBug;
 
+- (void)loadBugs;
+
 @end

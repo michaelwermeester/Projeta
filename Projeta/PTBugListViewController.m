@@ -148,8 +148,10 @@
     
     
     //int selectedFilterStatus = [comboStatusFilter indexOfSelectedItem];
-    
-    urlString = [urlString stringByAppendingString:@"/?"];
+    if (parentProjectDetailsViewController)
+        urlString = [urlString stringByAppendingString:@"&"];
+    else
+        urlString = [urlString stringByAppendingString:@"/?"];
     
     if ([[[comboStatusFilter selectedItem] title] isEqualToString:@"Tous"] == NO) {
         
@@ -329,6 +331,38 @@
                 failureBlock:^(NSError *error) {
                     
                 }];
+}
+
+
+- (void)loadBugs {
+    // get server URL as string
+    NSString *urlString = [PTCommon serverURLString];
+    // build URL by adding resource path
+    if (bugURL)
+        urlString = [urlString stringByAppendingString:bugURL];
+    else
+        urlString = [urlString stringByAppendingString:@"resources/bugs/"];
+    
+    // convert to NSURL
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    // NSURLConnection - MWConnectionController
+    MWConnectionController* connectionController = [[MWConnectionController alloc] 
+                                                    initWithSuccessBlock:^(NSMutableData *data) {
+                                                        [self requestFinished:data];
+                                                    }
+                                                    failureBlock:^(NSError *error) {
+                                                        [self requestFailed:error];
+                                                    }];
+    
+    
+    NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
+    
+    // start animating the main window's circular progress indicator.
+    [mainWindowController startProgressIndicatorAnimation];
+    
+    [connectionController startRequestForURL:url setRequest:urlRequest];
+    
 }
 
 @end

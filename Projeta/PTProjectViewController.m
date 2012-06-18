@@ -78,6 +78,7 @@
     // charger les utilisateurs, groupes et clients liés au projet.
     //[projectDetailsViewController loadProjectDetails];
     // charger les tâches liés au projet.
+    
     [projectDetailsViewController loadTasks];
     // charger les bogues liés au projet.
     [projectDetailsViewController loadBugs];
