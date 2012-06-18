@@ -159,4 +159,20 @@
     [self close];
 }
 
+// Retourne le titre de la fenêtre.
+- (NSString *)windowTitle {
+    
+    // afficher 'Projet : <nom du projet>'.
+    NSString *retVal = [[NSString alloc] initWithString:@"Utilisateurs pour client"];
+    if (client) {
+        if (client.clientName) {
+            retVal = [retVal stringByAppendingString:@" : "];
+            retVal = [retVal stringByAppendingString:client.clientName];
+        }
+    }
+    
+    return retVal;
+    
+}
+
 @end

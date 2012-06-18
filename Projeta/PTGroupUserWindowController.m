@@ -154,4 +154,20 @@
     [self close];
 }
 
+// Retourne le titre de la fenêtre.
+- (NSString *)windowTitle {
+    
+    // afficher 'Projet : <nom du projet>'.
+    NSString *retVal = [[NSString alloc] initWithString:@"Utilisateurs pour groupe"];
+    if (usergroup) {
+        if (usergroup.code) {
+            retVal = [retVal stringByAppendingString:@" : "];
+            retVal = [retVal stringByAppendingString:usergroup.code];
+        }
+    }
+    
+    return retVal;
+    
+}
+
 @end

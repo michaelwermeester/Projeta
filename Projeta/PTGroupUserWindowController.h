@@ -34,6 +34,7 @@
 @property (weak) IBOutlet NSTextField *updatingUsergroupsLabel;
 @property (weak) IBOutlet NSProgressIndicator *progressIndicator;
 
+@property (readonly) NSString *windowTitle;
 
 - (IBAction)cancelButtonClicked:(id)sender;
 - (IBAction)assignUser:(id)sender;

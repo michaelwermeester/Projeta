@@ -745,7 +745,7 @@
 							<object class="NSTextFieldCell" key="NSCell" id="248580358">
 								<int key="NSCellFlags">68288064</int>
 								<int key="NSCellFlags2">272630784</int>
-								<string key="NSContents">Updating usergroups...</string>
+								<string key="NSContents">Updating users...</string>
 								<reference key="NSSupport" ref="666629784"/>
 								<string key="NSCellIdentifier">_NS:3944</string>
 								<reference key="NSControlView" ref="490694599"/>
@@ -986,6 +986,22 @@
 						<reference key="destination" ref="1001"/>
 					</object>
 					<int key="connectionID">4</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">title: windowTitle</string>
+						<reference key="source" ref="1005"/>
+						<reference key="destination" ref="1001"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="1005"/>
+							<reference key="NSDestination" ref="1001"/>
+							<string key="NSLabel">title: windowTitle</string>
+							<string key="NSBinding">title</string>
+							<string key="NSKeyPath">windowTitle</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">525</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -2790,7 +2806,7 @@
 				<reference key="dict.values" ref="1002"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">522</int>
+			<int key="maxID">525</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
