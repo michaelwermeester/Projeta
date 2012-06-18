@@ -117,7 +117,7 @@
 
 // NSURLConnection
 - (IBAction)addNewBugButtonClicked:(id)sender {
-    NSNumber *parentID;
+    //NSNumber *parentID;
     
     NSArray *selectedObjects = [bugArrayCtrl selectedObjects];
     
@@ -273,7 +273,7 @@
     // continue and update the user only if the object is the usersTableView
     if ([notification object] == bugOutlineView) {
         
-        NSArray *selectedObjects = [bugArrayCtrl selectedObjects];
+        //NSArray *selectedObjects = [bugArrayCtrl selectedObjects];
     }
 }
 
