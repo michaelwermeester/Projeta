@@ -102,6 +102,14 @@ Bug *bugCopy;
     // donner le focus au bouton 'OK'.
     [self.window makeFirstResponder:okButton];
     
+    if ([comboDevelopers indexOfSelectedItem] > -1) {
+        User *selectedDev = [arrDevelopers objectAtIndex:[comboDevelopers indexOfSelectedItem]];
+    
+        bug.userAssigned = selectedDev;
+    } else {
+        bug.userAssigned = nil;
+    }
+    
     // créer une nouvelle tâche.
     if (isNewBug == YES) {
         
@@ -168,6 +176,17 @@ Bug *bugCopy;
         // sort array and affect fetched array to local array.
         [[self mutableArrayValueForKey:@"arrDevelopers"] addObjectsFromArray:[developers sortedArrayUsingDescriptors:sortDescriptors]];
         
+        // sélectionner développeur attribué (responsable du projet).
+        for (NSInteger i = 0; i < [arrDevelopers count]; i++) {
+            
+            User *u = [arrDevelopers objectAtIndex:i];
+            
+            if ([u.userId intValue] == [bug.userAssigned.userId intValue]) {
+
+                [comboDevelopers selectItemAtIndex:i];
+                break;
+            }
+        }
         
     }
                 failureBlock:^(NSError *error) {

@@ -125,6 +125,13 @@
         [dict setObject:parentProjectDict forKey:@"parentProjectId"];
     }
     
+    if (theProject.userAssigned) {
+        // créer dictionnaire 'userassigned'.
+        NSDictionary *userAssignedDict = [theProject.userAssigned dictionaryWithValuesForKeys:[theProject.userAssigned userIdKey]];
+        // ajouter ce dictionnaire sous la clé 'userReported'.
+        [dict setObject:userAssignedDict forKey:@"userAssigned"];
+    }
+    
     
     // Dates début et fin de projet.
     if ([theProject stringStartDate])
@@ -192,6 +199,13 @@
         [dict setObject:[theProject stringStartDate] forKey:@"startDate"];
     if ([theProject stringEndDate])
         [dict setObject:[theProject stringEndDate] forKey:@"endDate"];
+    
+    if (theProject.userAssigned) {
+        // créer dictionnaire 'userassigned'.
+        NSDictionary *userAssignedDict = [theProject.userAssigned dictionaryWithValuesForKeys:[theProject.userAssigned userIdKey]];
+        // ajouter ce dictionnaire sous la clé 'userReported'.
+        [dict setObject:userAssignedDict forKey:@"userAssigned"];
+    }
     
     // API resource string.
     NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/projects/update"];

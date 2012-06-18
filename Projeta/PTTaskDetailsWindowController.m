@@ -96,6 +96,14 @@ Task *taskCopy;
     // donner le focus au bouton 'OK'.
     [self.window makeFirstResponder:okButton];
     
+    if ([comboDevelopers indexOfSelectedItem] > -1) {
+        User *selectedDev = [arrDevelopers objectAtIndex:[comboDevelopers indexOfSelectedItem]];
+    
+        task.userAssigned = selectedDev;
+    } else {
+        task.userAssigned = nil;
+    }
+    
     // créer une nouvelle tâche.
     if (isNewTask == YES) {
         

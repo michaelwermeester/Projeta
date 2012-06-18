@@ -104,6 +104,13 @@
     // ajouter ce dictionnaire sous la clé 'projectId'.
     [dict setObject:projectDict forKey:@"projectId"];
     
+    // créer dictionnaire 'userassigned'.
+    if (theBug.userAssigned) {
+        NSDictionary *userAssignedDict = [theBug.userAssigned dictionaryWithValuesForKeys:[theBug.userAssigned userIdKey]];
+        // ajouter ce dictionnaire sous la clé 'userReported'.
+        [dict setObject:userAssignedDict forKey:@"userAssigned"];
+    }
+    
     // API resource string.
     NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/bugs/create"];
     
@@ -130,6 +137,13 @@
     
     // créer dictionnaire à partir de l'objet theBug.
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[theBug dictionaryWithValuesForKeys:[theBug updateBugKeys]]];
+    
+    // créer dictionnaire 'userassigned'.
+    if (theBug.userAssigned) {
+        NSDictionary *userAssignedDict = [theBug.userAssigned dictionaryWithValuesForKeys:[theBug.userAssigned userIdKey]];
+        // ajouter ce dictionnaire sous la clé 'userReported'.
+        [dict setObject:userAssignedDict forKey:@"userAssigned"];
+    }
     
     // API resource string.
     NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/bugs/update"];

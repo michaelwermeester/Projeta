@@ -105,6 +105,15 @@ Project *projectCopy;
     // donner le focus au bouton 'OK'.
     [self.window makeFirstResponder:okButton];
     
+    if ([comboDevelopers indexOfSelectedItem] > -1) {
+        User *selectedDev = [arrDevelopers objectAtIndex:[comboDevelopers indexOfSelectedItem]];
+    
+        project.userAssigned = selectedDev;
+    } else {
+        project.userAssigned = nil;
+    }
+    
+    
     // créer un nouveau projet.
     if (isNewProject == YES) {
         

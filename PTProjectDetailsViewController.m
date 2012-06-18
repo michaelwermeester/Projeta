@@ -425,6 +425,14 @@
     // donner le focus au bouton 'OK'.
     [mainWindowController.window makeFirstResponder:saveProjectButton];
     
+    if ([comboDevelopers indexOfSelectedItem] > -1) {
+        User *selectedDev = [arrDevelopers objectAtIndex:[comboDevelopers indexOfSelectedItem]];
+        
+        project.userAssigned = selectedDev;
+    } else {
+        project.userAssigned = nil;
+    }
+    
     // créer un nouveau projet.
     if (isNewProject == YES) {
         

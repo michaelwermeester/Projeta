@@ -113,6 +113,13 @@
         [dict setObject:parentTaskDict forKey:@"parentTaskId"];
     }
     
+    if (theTask.userAssigned) {
+        // créer dictionnaire 'userassigned'.
+        NSDictionary *userAssignedDict = [theTask.userAssigned dictionaryWithValuesForKeys:[theTask.userAssigned userIdKey]];
+        // ajouter ce dictionnaire sous la clé 'userReported'.
+        [dict setObject:userAssignedDict forKey:@"userAssigned"];
+    }
+    
     
     // Dates début et fin de projet.
     if ([theTask stringStartDate])
@@ -188,6 +195,12 @@
     if ([theTask stringEndDate])
         [dict setObject:[theTask stringEndDate] forKey:@"endDate"];
     
+    if (theTask.userAssigned) {
+        // créer dictionnaire 'userassigned'.
+        NSDictionary *userAssignedDict = [theTask.userAssigned dictionaryWithValuesForKeys:[theTask.userAssigned userIdKey]];
+        // ajouter ce dictionnaire sous la clé 'userReported'.
+        [dict setObject:userAssignedDict forKey:@"userAssigned"];
+    }
     
     // API resource string.
     NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/tasks/update"];
