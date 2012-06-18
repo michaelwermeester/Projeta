@@ -128,5 +128,18 @@
     [PTClientHelper serverClientsToArray:urlString successBlock:successBlock failureBlock:failureBlock];
 }
 
++ (BOOL)updateUsersForClient:(Client *)aClient users:(NSMutableDictionary *)users successBlock:(void(^)(NSMutableData *))successBlock failureBlock:(void(^)(NSError *))failureBlock {
+    
+    BOOL success;
+    
+    // build URL by adding resource path
+    NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/clients/updateUsersForClient?clientId="];
+    resourceString = [resourceString stringByAppendingString:[aClient.clientId stringValue]];
+    
+    // execute the PUT method on the webservice to update the record in the database.
+    [PTCommon executePUTforDictionaryWithBlocks:users resourceString:resourceString successBlock:successBlock failureBlock:failureBlock];
+    
+    return success;
+}
 
 @end

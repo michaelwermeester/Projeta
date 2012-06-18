@@ -12,6 +12,7 @@
 #import "PTRoleHelper.h"
 #import "PTUserHelper.h"
 #import "User.h"
+#import "Client.h"
 
 @implementation PTUserHelper
 
@@ -284,5 +285,24 @@
     
     [self serverUsersToArray:urlString successBlock:successBlock failureBlock:failureBlock];
 }
+
++ (void)usersForClient:(Client *)aClient successBlock:(void(^)(NSMutableArray *))successBlock failureBlock:(void(^)(NSError *))failureBlock {
+    
+    if (aClient.clientId)
+        //return [self rolesForUserName:aUser.username successBlock:^{}];
+        [self usersForClientId:aClient.clientId successBlock:successBlock failureBlock:failureBlock];
+}
+
++ (void)usersForClientId:(NSNumber *)aClientId successBlock:(void(^)(NSMutableArray *))successBlock failureBlock:(void(^)(NSError *))failureBlock {
+    
+    NSString *urlString = [PTCommon serverURLString];
+    // build URL by adding resource path
+    urlString = [urlString stringByAppendingString:@"resources/users/client/"];
+    urlString = [urlString stringByAppendingString:[aClientId stringValue]];
+    
+    [PTUserHelper serverUsersToArray:urlString successBlock:successBlock failureBlock:failureBlock];
+}
+
+
 
 @end

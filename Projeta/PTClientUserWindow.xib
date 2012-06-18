@@ -81,7 +81,7 @@
 											<string key="NSFrameSize">{300, 231}</string>
 											<reference key="NSSuperview" ref="556049748"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="615303491"/>
+											<reference key="NSNextKeyView" ref="259234292"/>
 											<string key="NSReuseIdentifierKey">_NS:1828</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTableHeaderView" key="NSHeaderView" id="127902380">
@@ -270,7 +270,7 @@
 							<string key="NSFrame">{{20, 109}, {302, 249}}</string>
 							<reference key="NSSuperview" ref="1006"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="556049748"/>
+							<reference key="NSNextKeyView" ref="615303491"/>
 							<string key="NSReuseIdentifierKey">_NS:1824</string>
 							<int key="NSsFlags">133682</int>
 							<reference key="NSVScroller" ref="259234292"/>
@@ -295,7 +295,7 @@
 											<string key="NSFrameSize">{299, 231}</string>
 											<reference key="NSSuperview" ref="97493644"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="53926695"/>
+											<reference key="NSNextKeyView" ref="89836873"/>
 											<string key="NSReuseIdentifierKey">_NS:1828</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTableHeaderView" key="NSHeaderView" id="615035368">
@@ -413,7 +413,7 @@
 									<string key="NSFrame">{{1, 233}, {299, 15}}</string>
 									<reference key="NSSuperview" ref="429606935"/>
 									<reference key="NSWindow"/>
-									<reference key="NSNextKeyView" ref="434301843"/>
+									<reference key="NSNextKeyView" ref="1001182409"/>
 									<string key="NSReuseIdentifierKey">_NS:1847</string>
 									<int key="NSsFlags">1</int>
 									<reference key="NSTarget" ref="429606935"/>
@@ -439,7 +439,7 @@
 							<string key="NSFrame">{{363, 109}, {301, 249}}</string>
 							<reference key="NSSuperview" ref="1006"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="97493644"/>
+							<reference key="NSNextKeyView" ref="53926695"/>
 							<string key="NSReuseIdentifierKey">_NS:1824</string>
 							<int key="NSsFlags">133682</int>
 							<reference key="NSVScroller" ref="89836873"/>
@@ -627,6 +627,7 @@
 							<string key="NSFrame">{{580, 12}, {90, 32}}</string>
 							<reference key="NSSuperview" ref="1006"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:687</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="256872352">
@@ -766,6 +767,7 @@
 							<string key="NSFrame">{{144, 75}, {223, 26}}</string>
 							<reference key="NSSuperview" ref="1006"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="434301843"/>
 							<string key="NSReuseIdentifierKey">_NS:708</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSComboBoxCell" key="NSCell" id="310879689">
@@ -849,6 +851,7 @@
 							<string key="NSFrame">{{17, 80}, {157, 17}}</string>
 							<reference key="NSSuperview" ref="1006"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="1019200041"/>
 							<string key="NSReuseIdentifierKey">_NS:3944</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="758396310">
@@ -1055,19 +1058,19 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">contentArray: usergroup.users</string>
+						<string key="label">contentArray: client.users</string>
 						<reference key="source" ref="811880500"/>
 						<reference key="destination" ref="1001"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="811880500"/>
 							<reference key="NSDestination" ref="1001"/>
-							<string key="NSLabel">contentArray: usergroup.users</string>
+							<string key="NSLabel">contentArray: client.users</string>
 							<string key="NSBinding">contentArray</string>
-							<string key="NSKeyPath">usergroup.users</string>
+							<string key="NSKeyPath">client.users</string>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
-					<int key="connectionID">251</int>
+					<int key="connectionID">520</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -1116,6 +1119,22 @@
 						</object>
 					</object>
 					<int key="connectionID">244</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">contentValues: arrangedObjects.fullNameAndUsername</string>
+						<reference key="source" ref="1019200041"/>
+						<reference key="destination" ref="811880500"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="1019200041"/>
+							<reference key="NSDestination" ref="811880500"/>
+							<string key="NSLabel">contentValues: arrangedObjects.fullNameAndUsername</string>
+							<string key="NSBinding">contentValues</string>
+							<string key="NSKeyPath">arrangedObjects.fullNameAndUsername</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">522</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -2771,7 +2790,7 @@
 				<reference key="dict.values" ref="1002"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">519</int>
+			<int key="maxID">522</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

@@ -8,6 +8,7 @@
 
 #import "Client.h"
 #import "User.h"
+#import "PTCommon.h"
 
 @implementation Client
 
@@ -20,6 +21,7 @@
 @synthesize primaryContactId = primaryContactId;
 @synthesize vatNumber = vatNumber;
 
+@synthesize users;
 
 // Override isEqual method.
 - (BOOL)isEqual:(id)anObject {
@@ -70,5 +72,7 @@
     
     return retArr;
 }
+
+
 
 @end

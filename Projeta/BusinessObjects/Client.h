@@ -19,6 +19,8 @@
     NSString *phoneNumber;
     User *primaryContactId;
     NSString *vatNumber;
+    
+    NSMutableArray *users;
 }
 
 @property (nonatomic, copy) NSString *address;
@@ -30,9 +32,13 @@
 @property (strong) User *primaryContactId;
 @property (nonatomic, copy) NSString *vatNumber;
 
+@property (strong) NSMutableArray *users;
+
 + (Client *)instanceFromDictionary:(NSDictionary *)aDictionary;
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
 
 - (NSArray *)updateClientsKeys;
+
+
 
 @end

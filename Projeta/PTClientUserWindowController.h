@@ -10,7 +10,8 @@
 
 @class MainWindowController;
 @class PTClientManagementViewController;
-@class Usergroup;
+@class Client;
+
 
 @interface PTClientUserWindowController : NSWindowController {
 
@@ -28,7 +29,7 @@
 // reference to the (parent) MainWindowController
 @property (assign) MainWindowController *mainWindowController;
 // User
-@property (strong) Usergroup *usergroup;
+@property (strong) Client *client;
 @property (strong) IBOutlet NSArrayController *groupUsersArrayCtrl;
 @property (strong) IBOutlet NSArrayController *availableUsersArrayCtrl;
 @property (weak) IBOutlet NSTextField *updatingUsergroupsLabel;

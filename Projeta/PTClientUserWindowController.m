@@ -10,13 +10,15 @@
 #import "User.h"
 #import "Usergroup.h"
 #import "PTUsergroupHelper.h"
+#import "Client.h"
+#import "PTClientHelper.h"
 
 @implementation PTClientUserWindowController
 
 @synthesize availableUsers;
 @synthesize mainWindowController;
 @synthesize parentClientManagementViewCtrl;
-@synthesize usergroup;
+@synthesize client;
 @synthesize groupUsersArrayCtrl;
 @synthesize availableUsersArrayCtrl;
 @synthesize updatingUsergroupsLabel;
@@ -36,7 +38,7 @@
 - (void)awakeFromNib {
     
     // remove users already affected to user from available users list.
-    for (User *u in usergroup.users) {
+    for (User *u in client.users) {
         
         for (NSUInteger i = 0; i < [availableUsers count]; i++) {
             
@@ -66,8 +68,8 @@
     
     for (User *user in selectedUsers) {
         
-        if (!usergroup.users) {
-            usergroup.users = [[NSMutableArray alloc] init];
+        if (!client.users) {
+            client.users = [[NSMutableArray alloc] init];
         }
         
         // affect new user to client.
@@ -77,7 +79,7 @@
         [availableUsersArrayCtrl removeObject:user];
         
         // sort users alphabetically.
-        [usergroup.users sortUsingComparator:^NSComparisonResult(User *u1, User *u2) {
+        [client.users sortUsingComparator:^NSComparisonResult(User *u1, User *u2) {
             
             return [u1.username compare:u2.username];
         }];
@@ -126,7 +128,7 @@
     NSMutableArray *usersArray = [[NSMutableArray alloc] init];
     
     // add (assigned) users to the array.
-    for (User *user in usergroup.users) {
+    for (User *user in client.users) {
         
         NSDictionary *tmpUserDict = [user dictionaryWithValuesForKeys:[user userIdKey]];
         
@@ -138,8 +140,8 @@
     [dict setObject:usersArray forKey:@"user"];
 
     // update client's users in database via web service.
-    success = [PTUsergroupHelper updateUsersForUsergroup:usergroup users:dict successBlock:^(NSMutableData *data) {[self finishedUpdatingUsergroups:data];} failureBlock:^(NSError *error) {[self failedUpdatingUsergroups:error];}];
-    
+    success = [PTClientHelper updateUsersForClient:client users:dict successBlock:^(NSMutableData *data) {[self finishedUpdatingUsergroups:data];} failureBlock:^(NSError *error) {[self failedUpdatingUsergroups:error];}];
+
     return success;
 }
 

@@ -11,6 +11,7 @@
 #import "PTClientHelper.h"
 #import "PTClientManagementViewController.h"
 #import "PTClientUserWindowController.h"
+#import "PTUserHelper.h"
 
 @implementation PTClientManagementViewController
 
@@ -56,10 +57,50 @@
 
 // bouton 'utilisateurs' cliqué.
 - (IBAction)clientUsersButtonClicked:(id)sender {
+
     
-    clientUserWindowController = [[PTClientUserWindowController alloc] init];
+    // get selected usergroups.
+    NSArray *selectedObjects = [clientsArrayCtrl selectedObjects];
     
-    [clientUserWindowController showWindow:self];
+    // si un groupe a été sélectionné.
+    if ([selectedObjects count] == 1) {
+        
+        clientUserWindowController = [[PTClientUserWindowController alloc] init];
+        clientUserWindowController.parentClientManagementViewCtrl = self;
+        clientUserWindowController.mainWindowController = mainWindowController;
+        clientUserWindowController.client = [selectedObjects objectAtIndex:0];
+        
+        // fetch usersgroups.
+        [PTUserHelper usersForClient:clientUserWindowController.client successBlock:^(NSMutableArray *users) {
+            
+            // sort user roles alphabetically.
+            [users sortUsingComparator:^NSComparisonResult(User *u1, User *u2) {
+                
+                return [u1.username compare:u2.username];
+            }];
+            
+            //if (isNewUser == NO) {
+            clientUserWindowController.client.users = users;
+            
+        } failureBlock:^(NSError *error) {
+            
+        }];
+        
+        // fetch available users.
+        [PTUserHelper allUsers:^(NSMutableArray *availableUsers) { 
+            
+            // sort available roles alphabetically.
+            [availableUsers sortUsingComparator:^NSComparisonResult(User *u1, User *u2) {
+                
+                return [u1.username compare:u2.username];
+            }];
+            
+            clientUserWindowController.availableUsers = availableUsers;
+            
+            [clientUserWindowController showWindow:self];
+        } failureBlock:^(NSError *error) { }];
+        
+    }
 }
 
 - (void)viewDidLoad {

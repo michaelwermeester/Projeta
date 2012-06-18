@@ -12,6 +12,7 @@
 #import "Usergroup.h"
 
 @class Project;
+@class Client;
 
 @interface PTUserHelper : NSObject {
     NSArray *users;
@@ -50,5 +51,7 @@
 
 + (void)allUsers:(void(^)(NSMutableArray *))successBlock failureBlock:(void(^)(NSError *))failureBlock;
 + (void)developers:(void(^)(NSMutableArray *))successBlock failureBlock:(void(^)(NSError *))failureBlock;
+
++ (void)usersForClient:(Client *)aClient successBlock:(void(^)(NSMutableArray *))successBlock failureBlock:(void(^)(NSError *))failureBlock;
 
 @end
