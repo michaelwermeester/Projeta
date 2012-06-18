@@ -83,6 +83,9 @@ Task *taskCopy;
             [parentTaskListViewController.taskTreeCtrl insertObject:taskCopy atArrangedObjectIndexPath:tskTreeIndexPath];
         }
         
+    } else {
+        // remove the temporary inserted/created user.
+        [[parentTaskListViewController taskTreeCtrl] remove:self];
     }
     
     // close this window.
@@ -186,6 +189,27 @@ Task *taskCopy;
                 failureBlock:^(NSError *error) {
                     
                 }];
+}
+
+
+// Retourne le titre de la fenêtre.
+- (NSString *)windowTitle {
+    
+    // afficher 'Projet : <nom du projet>'.
+    NSString *retVal = [[NSString alloc] initWithString:@"Tâche"];
+    if (task) {
+        if (task.taskTitle) {
+            retVal = [retVal stringByAppendingString:@" : "];
+            retVal = [retVal stringByAppendingString:task.taskTitle];
+        }
+    }
+    
+    // si nouveau projet, afficher 'Nouveau projet'.
+    if (isNewTask)
+        retVal = [[NSString alloc] initWithString:@"Nouvelle tâche"];
+    
+    return retVal;
+    
 }
 
 @end

@@ -54,4 +54,6 @@
 
 - (void)initBugCategoryArray;
 
+@property (readonly) NSString *windowTitle;
+
 @end

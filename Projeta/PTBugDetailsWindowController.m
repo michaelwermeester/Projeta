@@ -205,4 +205,24 @@ Bug *bugCopy;
     [[self mutableArrayValueForKey:@"arrBugCategory"] addObject:[BugCategory initWithId:[[NSNumber alloc] initWithInt:9] name:@"TRIVIAL - Problème cosmétique comme une faute d'orthographe, ou un problème d'alignement de texte."]];
 }
 
+// Retourne le titre de la fenêtre.
+- (NSString *)windowTitle {
+    
+    // afficher 'Projet : <nom du projet>'.
+    NSString *retVal = [[NSString alloc] initWithString:@"Bogue"];
+    if (bug) {
+        if (bug.title) {
+            retVal = [retVal stringByAppendingString:@" : "];
+            retVal = [retVal stringByAppendingString:bug.title];
+        }
+    }
+    
+    // si nouveau projet, afficher 'Nouveau projet'.
+    if (isNewBug)
+        retVal = [[NSString alloc] initWithString:@"Nouveau bogue"];
+    
+    return retVal;
+    
+}
+
 @end

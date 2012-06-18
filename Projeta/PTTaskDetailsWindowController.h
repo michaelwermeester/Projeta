@@ -44,4 +44,6 @@
 // charger la liste des développeurs à partir du webservice et les mettre dans la combobox.
 - (void)fetchDevelopersFromWebservice;
 
+@property (readonly) NSString *windowTitle;
+
 @end
