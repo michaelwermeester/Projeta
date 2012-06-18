@@ -249,6 +249,23 @@
             
             [taskTreeCtrl insertObject:tsk atArrangedObjectIndexPath:indexPath];
         }
+    } else {
+        // instancier une nouvelle tâche.
+        Task *tsk = [[Task alloc] init];
+        // mettre les dates actuelle.
+        tsk.startDate = [NSDate date];
+        tsk.endDate = [NSDate date];
+        
+        tsk.isPersonal = isPersonalTask;
+        
+        // id du projet s'il s'agit d'une tâche pour un projet. 
+        if (parentProjectDetailsViewController)
+            tsk.projectId = parentProjectDetailsViewController.project.projectId;
+        
+        NSUInteger indexes[1]={0};
+        NSIndexPath *indexPath = [NSIndexPath indexPathWithIndexes:indexes length:1];
+        
+        [taskTreeCtrl insertObject:tsk atArrangedObjectIndexPath:indexPath];
     }
     
     // ouvrir fenêtre qui permet à l'utilisateur d'encoder les détails. 

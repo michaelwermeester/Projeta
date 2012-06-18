@@ -232,6 +232,17 @@ PTCommentairesWindowController *commentWindowController;
             
             [prjTreeController insertObject:prj atArrangedObjectIndexPath:indexPath];
         }
+    } else {
+        // instancier nouveau projet. 
+        Project *prj = [[Project alloc] init];
+        // date actuelle. 
+        prj.startDate = [NSDate date];
+        prj.endDate = [NSDate date];
+        
+        NSUInteger indexes[1]={0};
+        NSIndexPath *indexPath = [NSIndexPath indexPathWithIndexes:indexes length:1];
+        
+        [prjTreeController insertObject:prj atArrangedObjectIndexPath:indexPath];
     }
 
     // ouvrir fenêtre qui permet à l'utilisateur d'encoder les détails.

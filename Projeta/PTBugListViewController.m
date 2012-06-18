@@ -127,6 +127,10 @@
         Bug *bug = [[Bug alloc] init];
         
         [bugArrayCtrl insertObject:bug atArrangedObjectIndex:[bugArrayCtrl selectionIndex]];
+    } else {
+        Bug *bug = [[Bug alloc] init];
+        
+        [bugArrayCtrl insertObject:bug atArrangedObjectIndex:0];
     }
     
     [self openBugDetailsWindow:YES];
