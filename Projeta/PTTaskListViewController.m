@@ -409,8 +409,10 @@
     
     
     //int selectedFilterStatus = [comboStatusFilter indexOfSelectedItem];
-    
-    urlString = [urlString stringByAppendingString:@"/?"];
+    if (parentProjectDetailsViewController)
+        urlString = [urlString stringByAppendingString:@"&"];
+    else
+        urlString = [urlString stringByAppendingString:@"/?"];
     
     if ([[[comboStatusFilter selectedItem] title] isEqualToString:@"Tous"] == NO) {
         
