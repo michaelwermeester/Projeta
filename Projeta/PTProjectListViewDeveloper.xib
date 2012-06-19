@@ -67,7 +67,7 @@
 				<int key="NSvFlags">268</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<object class="NSButton" id="752339356">
+					<object class="NSButton" id="1001855449">
 						<reference key="NSNextResponder" ref="1005"/>
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{815, 328}, {82, 32}}</string>
@@ -75,7 +75,7 @@
 						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="NSEnabled">YES</bool>
-						<object class="NSButtonCell" key="NSCell" id="995533739">
+						<object class="NSButtonCell" key="NSCell" id="161896529">
 							<int key="NSCellFlags">67239424</int>
 							<int key="NSCellFlags2">134217728</int>
 							<string key="NSContents">Button</string>
@@ -85,7 +85,7 @@
 								<int key="NSfFlags">1044</int>
 							</object>
 							<string key="NSCellIdentifier">_NS:9</string>
-							<reference key="NSControlView" ref="752339356"/>
+							<reference key="NSControlView" ref="1001855449"/>
 							<int key="NSButtonFlags">-2038284033</int>
 							<int key="NSButtonFlags2">129</int>
 							<string key="NSAlternateContents"/>
@@ -1750,7 +1750,7 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">filterButton</string>
 						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="752339356"/>
+						<reference key="destination" ref="1001855449"/>
 					</object>
 					<int key="connectionID">1560</int>
 				</object>
@@ -1758,7 +1758,7 @@
 					<object class="IBActionConnection" key="connection">
 						<string key="label">filterButtonClicked:</string>
 						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="752339356"/>
+						<reference key="destination" ref="1001855449"/>
 					</object>
 					<int key="connectionID">1561</int>
 				</object>
@@ -1785,6 +1785,14 @@
 						<reference key="destination" ref="575760289"/>
 					</object>
 					<int key="connectionID">1564</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">developerComboBox</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="244559371"/>
+					</object>
+					<int key="connectionID">1565</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -2967,9 +2975,9 @@
 								<reference key="containingView" ref="1005"/>
 							</object>
 							<reference ref="244559371"/>
-							<reference ref="752339356"/>
+							<reference ref="1001855449"/>
 							<object class="IBNSLayoutConstraint" id="633452612">
-								<reference key="firstItem" ref="752339356"/>
+								<reference key="firstItem" ref="1001855449"/>
 								<int key="firstAttribute">11</int>
 								<int key="relation">0</int>
 								<reference key="secondItem" ref="150378647"/>
@@ -2984,8 +2992,8 @@
 								<int key="contentType">2</int>
 								<reference key="containingView" ref="1005"/>
 							</object>
-							<object class="IBNSLayoutConstraint" id="853719825">
-								<reference key="firstItem" ref="752339356"/>
+							<object class="IBNSLayoutConstraint" id="950086659">
+								<reference key="firstItem" ref="1001855449"/>
 								<int key="firstAttribute">11</int>
 								<int key="relation">0</int>
 								<reference key="secondItem" ref="1005624234"/>
@@ -3000,8 +3008,8 @@
 								<int key="contentType">2</int>
 								<reference key="containingView" ref="1005"/>
 							</object>
-							<object class="IBNSLayoutConstraint" id="344832288">
-								<reference key="firstItem" ref="752339356"/>
+							<object class="IBNSLayoutConstraint" id="665384034">
+								<reference key="firstItem" ref="1001855449"/>
 								<int key="firstAttribute">5</int>
 								<int key="relation">0</int>
 								<reference key="secondItem" ref="575760289"/>
@@ -3016,8 +3024,8 @@
 								<int key="contentType">3</int>
 								<reference key="containingView" ref="1005"/>
 							</object>
-							<object class="IBNSLayoutConstraint" id="847456087">
-								<reference key="firstItem" ref="752339356"/>
+							<object class="IBNSLayoutConstraint" id="277734805">
+								<reference key="firstItem" ref="1001855449"/>
 								<int key="firstAttribute">5</int>
 								<int key="relation">0</int>
 								<reference key="secondItem" ref="1005"/>
@@ -4607,17 +4615,17 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">1554</int>
-						<reference key="object" ref="752339356"/>
+						<reference key="object" ref="1001855449"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="995533739"/>
+							<reference ref="161896529"/>
 						</object>
 						<reference key="parent" ref="1005"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">1555</int>
-						<reference key="object" ref="995533739"/>
-						<reference key="parent" ref="752339356"/>
+						<reference key="object" ref="161896529"/>
+						<reference key="parent" ref="1001855449"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">1556</int>
@@ -4626,17 +4634,17 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">1557</int>
-						<reference key="object" ref="853719825"/>
+						<reference key="object" ref="950086659"/>
 						<reference key="parent" ref="1005"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">1558</int>
-						<reference key="object" ref="344832288"/>
+						<reference key="object" ref="665384034"/>
 						<reference key="parent" ref="1005"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">1559</int>
-						<reference key="object" ref="847456087"/>
+						<reference key="object" ref="277734805"/>
 						<reference key="parent" ref="1005"/>
 					</object>
 				</object>
@@ -4946,9 +4954,9 @@
 						<reference ref="508137997"/>
 						<reference ref="975211707"/>
 						<reference ref="633452612"/>
-						<reference ref="853719825"/>
-						<reference ref="344832288"/>
-						<reference ref="847456087"/>
+						<reference ref="950086659"/>
+						<reference ref="665384034"/>
+						<reference ref="277734805"/>
 					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -5261,7 +5269,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">1564</int>
+			<int key="maxID">1565</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -5406,6 +5414,7 @@
 							<string>addSubProjectButton</string>
 							<string>clientComboBox</string>
 							<string>comboStatusFilter</string>
+							<string>developerComboBox</string>
 							<string>filterButton</string>
 							<string>maxDateFilter</string>
 							<string>minDateFilter</string>
@@ -5422,6 +5431,7 @@
 							<string>NSMenuItem</string>
 							<string>NSComboBox</string>
 							<string>NSPopUpButton</string>
+							<string>NSComboBox</string>
 							<string>NSButton</string>
 							<string>NSTextField</string>
 							<string>NSTextField</string>
@@ -5441,6 +5451,7 @@
 							<string>addSubProjectButton</string>
 							<string>clientComboBox</string>
 							<string>comboStatusFilter</string>
+							<string>developerComboBox</string>
 							<string>filterButton</string>
 							<string>maxDateFilter</string>
 							<string>minDateFilter</string>
@@ -5468,6 +5479,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">comboStatusFilter</string>
 								<string key="candidateClassName">NSPopUpButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">developerComboBox</string>
+								<string key="candidateClassName">NSComboBox</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">filterButton</string>

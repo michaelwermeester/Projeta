@@ -34,6 +34,7 @@ PTCommentairesWindowController *commentWindowController;
 @synthesize prjOutlineView;
 @synthesize addSubProjectButton;
 @synthesize clientComboBox;
+@synthesize developerComboBox;
 @synthesize prjTreeController;
 @synthesize prjArrayCtrl;
 @synthesize prjCollectionView;
@@ -451,7 +452,19 @@ PTCommentairesWindowController *commentWindowController;
             urlString = [urlString stringByAppendingString:@"clientId='"];
             urlString = [urlString stringByAppendingString:clientId];
             urlString = [urlString stringByAppendingString:@"'&"];
-            NSLog(@"OOOK");
+        }
+    }
+    
+    if (developerComboBox) {
+        
+        if ([developerComboBox indexOfSelectedItem] > -1) {
+            User *selectedDev = [arrDevelopers objectAtIndex:[developerComboBox indexOfSelectedItem]];
+            
+            NSString *devId = [[selectedDev userId] stringValue];
+            
+            urlString = [urlString stringByAppendingString:@"devId='"];
+            urlString = [urlString stringByAppendingString:devId];
+            urlString = [urlString stringByAppendingString:@"'&"];
         }
     }
     

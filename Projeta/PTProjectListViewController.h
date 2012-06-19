@@ -51,6 +51,7 @@
 @property (weak) IBOutlet NSOutlineView *prjOutlineView;
 @property (weak) IBOutlet NSMenuItem *addSubProjectButton;
 @property (weak) IBOutlet NSComboBox *clientComboBox;
+@property (weak) IBOutlet NSComboBox *developerComboBox;
 
 @property (nonatomic, retain) NSDate *minDateFilterDate;
 @property (nonatomic, retain) NSDate *maxDateFilterDate;
