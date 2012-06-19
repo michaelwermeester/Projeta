@@ -50,6 +50,9 @@
 // array qui contient les développeurs/responsables. 
 @property (strong) NSMutableArray *arrClients;
 
+@property (weak) IBOutlet NSComboBox *clientComboBox;
+@property (weak) IBOutlet NSComboBox *developerComboBox;
+
 // nom de la nib file. 
 @property (strong) NSString *nibFileName;
 

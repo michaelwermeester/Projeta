@@ -263,28 +263,28 @@
 							<string key="NSKeyEquivalent"/>
 							<int key="NSPeriodicDelay">400</int>
 							<int key="NSPeriodicInterval">75</int>
-							<object class="NSMenuItem" key="NSMenuItem" id="517660930">
-								<reference key="NSMenu" ref="600446707"/>
-								<string key="NSTitle">Tous</string>
-								<string key="NSKeyEquiv"/>
-								<int key="NSMnemonicLoc">2147483647</int>
-								<int key="NSState">1</int>
-								<object class="NSCustomResource" key="NSOnImage" id="135429755">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">NSMenuCheckmark</string>
-								</object>
-								<object class="NSCustomResource" key="NSMixedImage" id="1011686760">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">NSMenuMixedState</string>
-								</object>
-								<string key="NSAction">_popUpItemAction:</string>
-								<reference key="NSTarget" ref="658572681"/>
-							</object>
+							<nil key="NSMenuItem"/>
 							<bool key="NSMenuItemRespectAlignment">YES</bool>
 							<object class="NSMenu" key="NSMenu" id="600446707">
 								<string key="NSTitle">OtherViews</string>
 								<array class="NSMutableArray" key="NSMenuItems">
-									<reference ref="517660930"/>
+									<object class="NSMenuItem" id="517660930">
+										<reference key="NSMenu" ref="600446707"/>
+										<string key="NSTitle">Tous</string>
+										<string key="NSKeyEquiv"/>
+										<int key="NSMnemonicLoc">2147483647</int>
+										<int key="NSState">1</int>
+										<object class="NSCustomResource" key="NSOnImage" id="135429755">
+											<string key="NSClassName">NSImage</string>
+											<string key="NSResourceName">NSMenuCheckmark</string>
+										</object>
+										<object class="NSCustomResource" key="NSMixedImage" id="1011686760">
+											<string key="NSClassName">NSImage</string>
+											<string key="NSResourceName">NSMenuMixedState</string>
+										</object>
+										<string key="NSAction">_popUpItemAction:</string>
+										<reference key="NSTarget" ref="658572681"/>
+									</object>
 									<object class="NSMenuItem" id="896365829">
 										<reference key="NSMenu" ref="600446707"/>
 										<string key="NSTitle">BLOCKER - Empêche l'utilisation et/ou les tests ; paralyse les travaux.</string>
@@ -331,7 +331,6 @@
 										<string key="NSTitle">TRIVIAL - Problème cosmétique comme une faute d'orthographe, ou un problème d'alignement de texte.</string>
 										<string key="NSKeyEquiv"/>
 										<int key="NSMnemonicLoc">2147483647</int>
-										<int key="NSState">1</int>
 										<reference key="NSOnImage" ref="135429755"/>
 										<reference key="NSMixedImage" ref="1011686760"/>
 										<string key="NSAction">_popUpItemAction:</string>
@@ -340,7 +339,7 @@
 								</array>
 								<reference key="NSMenuFont" ref="169508843"/>
 							</object>
-							<int key="NSSelectedIndex">5</int>
+							<int key="NSSelectedIndex">-1</int>
 							<int key="NSPreferredEdge">1</int>
 							<bool key="NSUsesItemFromMenu">YES</bool>
 							<bool key="NSAltersState">YES</bool>
@@ -479,7 +478,7 @@
 										<string key="NSFrameSize">{840, 164}</string>
 										<reference key="NSSuperview" ref="891136466"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="558137675"/>
+										<reference key="NSNextKeyView" ref="874524372"/>
 										<string key="NSReuseIdentifierKey">_NS:13</string>
 										<bool key="NSEnabled">YES</bool>
 										<object class="NSTableHeaderView" key="NSHeaderView" id="363366123">
@@ -724,7 +723,7 @@
 						<string key="NSFrame">{{20, 40}, {842, 182}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="874524372"/>
+						<reference key="NSNextKeyView" ref="891136466"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<int key="NSsFlags">133682</int>
 						<reference key="NSVScroller" ref="1006037459"/>
@@ -893,7 +892,6 @@
 						<string key="NSFrame">{{791, 4}, {77, 32}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:687</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="547019395">
@@ -1034,6 +1032,14 @@
 						<reference key="destination" ref="1049539861"/>
 					</object>
 					<int key="connectionID">1884</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">developerComboBox</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="971806"/>
+					</object>
+					<int key="connectionID">1960</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -3487,7 +3493,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1959</int>
+			<int key="maxID">1960</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3526,8 +3532,10 @@
 						<string key="bugArrayCtrl">NSArrayController</string>
 						<string key="bugOutlineView">NSOutlineView</string>
 						<string key="bugTreeCtrl">NSTreeController</string>
+						<string key="clientComboBox">NSComboBox</string>
 						<string key="combCategoryFilter">NSPopUpButton</string>
 						<string key="comboStatusFilter">NSPopUpButton</string>
+						<string key="developerComboBox">NSComboBox</string>
 						<string key="filterButton">NSButton</string>
 						<string key="outlineViewProjetColumn">NSTableColumn</string>
 						<string key="projectButton">NSButton</string>
@@ -3550,6 +3558,10 @@
 							<string key="name">bugTreeCtrl</string>
 							<string key="candidateClassName">NSTreeController</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="clientComboBox">
+							<string key="name">clientComboBox</string>
+							<string key="candidateClassName">NSComboBox</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="combCategoryFilter">
 							<string key="name">combCategoryFilter</string>
 							<string key="candidateClassName">NSPopUpButton</string>
@@ -3557,6 +3569,10 @@
 						<object class="IBToOneOutletInfo" key="comboStatusFilter">
 							<string key="name">comboStatusFilter</string>
 							<string key="candidateClassName">NSPopUpButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="developerComboBox">
+							<string key="name">developerComboBox</string>
+							<string key="candidateClassName">NSComboBox</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="filterButton">
 							<string key="name">filterButton</string>

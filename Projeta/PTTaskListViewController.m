@@ -37,6 +37,8 @@
 @synthesize removeTaskButton;
 @synthesize addTaskButton;
 @synthesize filterButton;
+@synthesize clientComboBox;
+@synthesize developerComboBox;
 
 @synthesize minDateFilterDate;
 @synthesize maxDateFilterDate;
@@ -467,6 +469,32 @@
         urlString = [urlString stringByAppendingString:[PTCommon stringJSONFromDate:maxDateFilterDate]];
         urlString = [urlString stringByAppendingString:@"'&"];
         //NSLog(@"date: %@", [PTCommon stringJSONFromDate:maxDateFilterDate]);
+    }
+    
+    if (clientComboBox) {
+        
+        if ([clientComboBox indexOfSelectedItem] > -1) {
+            Client *selectedClient = [arrClients objectAtIndex:[clientComboBox indexOfSelectedItem]];
+            
+            NSString *clientId = [[selectedClient clientId] stringValue];
+            
+            urlString = [urlString stringByAppendingString:@"clientId='"];
+            urlString = [urlString stringByAppendingString:clientId];
+            urlString = [urlString stringByAppendingString:@"'&"];
+        }
+    }
+    
+    if (developerComboBox) {
+        
+        if ([developerComboBox indexOfSelectedItem] > -1) {
+            User *selectedDev = [arrDevelopers objectAtIndex:[developerComboBox indexOfSelectedItem]];
+            
+            NSString *devId = [[selectedDev userId] stringValue];
+            
+            urlString = [urlString stringByAppendingString:@"devId='"];
+            urlString = [urlString stringByAppendingString:devId];
+            urlString = [urlString stringByAppendingString:@"'&"];
+        }
     }
     
     // convertir en NSURL

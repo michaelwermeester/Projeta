@@ -74,6 +74,9 @@
 // nom de la nib file. 
 @property (strong) NSString *nibFileName;
 
+@property (weak) IBOutlet NSComboBox *clientComboBox;
+@property (weak) IBOutlet NSComboBox *developerComboBox;
+
 // actions.
 - (IBAction)commentButtonClicked:(id)sender;    // bouton 'Commentaires' cliqué.
 - (IBAction)detailsButtonClicked:(id)sender;    // bouton 'Détails' cliqué.

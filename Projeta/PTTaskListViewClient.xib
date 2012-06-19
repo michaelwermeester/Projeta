@@ -767,7 +767,6 @@
 						<string key="NSFrame">{{803, 4}, {77, 32}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:687</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="547019395">
@@ -799,7 +798,7 @@
 										<string key="NSFrameSize">{852, 154}</string>
 										<reference key="NSSuperview" ref="558648819"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="483854337"/>
+										<reference key="NSNextKeyView" ref="561871470"/>
 										<string key="NSReuseIdentifierKey">_NS:1703</string>
 										<bool key="NSEnabled">YES</bool>
 										<object class="NSTableHeaderView" key="NSHeaderView" id="1002919798">
@@ -1074,7 +1073,7 @@
 						<string key="NSFrame">{{20, 40}, {854, 172}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="561871470"/>
+						<reference key="NSNextKeyView" ref="558648819"/>
 						<string key="NSReuseIdentifierKey">_NS:1699</string>
 						<int key="NSsFlags">133682</int>
 						<reference key="NSVScroller" ref="103110775"/>
@@ -1304,6 +1303,14 @@
 						<reference key="destination" ref="288917055"/>
 					</object>
 					<int key="connectionID">1923</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">clientComboBox</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="37569806"/>
+					</object>
+					<int key="connectionID">2718</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -4617,7 +4624,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">2717</int>
+			<int key="maxID">2718</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -4682,7 +4689,9 @@
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="addTaskButton">NSPopUpButton</string>
 						<string key="checkBoxShowTasksFromSubProjects">NSButton</string>
+						<string key="clientComboBox">NSComboBox</string>
 						<string key="comboStatusFilter">NSPopUpButton</string>
+						<string key="developerComboBox">NSComboBox</string>
 						<string key="filterButton">NSButton</string>
 						<string key="maxDateFilter">NSTextField</string>
 						<string key="minDateFilter">NSTextField</string>
@@ -4703,9 +4712,17 @@
 							<string key="name">checkBoxShowTasksFromSubProjects</string>
 							<string key="candidateClassName">NSButton</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="clientComboBox">
+							<string key="name">clientComboBox</string>
+							<string key="candidateClassName">NSComboBox</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="comboStatusFilter">
 							<string key="name">comboStatusFilter</string>
 							<string key="candidateClassName">NSPopUpButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="developerComboBox">
+							<string key="name">developerComboBox</string>
+							<string key="candidateClassName">NSComboBox</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="filterButton">
 							<string key="name">filterButton</string>

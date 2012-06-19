@@ -34,6 +34,9 @@
 @synthesize comboStatusFilter;
 @synthesize combCategoryFilter;
 
+@synthesize clientComboBox;
+@synthesize developerComboBox;
+
 @synthesize bugURL;
 
 // nom de la nib file. 
@@ -205,6 +208,32 @@
         urlString = [urlString stringByAppendingString:@"category="];
         urlString = [urlString stringByAppendingString:category];
         urlString = [urlString stringByAppendingString:@"&"];
+    }
+    
+    if (clientComboBox) {
+        
+        if ([clientComboBox indexOfSelectedItem] > -1) {
+            Client *selectedClient = [arrClients objectAtIndex:[clientComboBox indexOfSelectedItem]];
+            
+            NSString *clientId = [[selectedClient clientId] stringValue];
+            
+            urlString = [urlString stringByAppendingString:@"clientId='"];
+            urlString = [urlString stringByAppendingString:clientId];
+            urlString = [urlString stringByAppendingString:@"'&"];
+        }
+    }
+    
+    if (developerComboBox) {
+        
+        if ([developerComboBox indexOfSelectedItem] > -1) {
+            User *selectedDev = [arrDevelopers objectAtIndex:[developerComboBox indexOfSelectedItem]];
+            
+            NSString *devId = [[selectedDev userId] stringValue];
+            
+            urlString = [urlString stringByAppendingString:@"devId='"];
+            urlString = [urlString stringByAppendingString:devId];
+            urlString = [urlString stringByAppendingString:@"'&"];
+        }
     }
     
     // convertir en NSURL
