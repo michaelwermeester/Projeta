@@ -441,6 +441,20 @@ PTCommentairesWindowController *commentWindowController;
         //NSLog(@"date: %@", [PTCommon stringJSONFromDate:maxDateFilterDate]);
     }
     
+    if (clientComboBox) {
+        
+        if ([clientComboBox indexOfSelectedItem] > -1) {
+            Client *selectedClient = [arrClients objectAtIndex:[clientComboBox indexOfSelectedItem]];
+        
+            NSString *clientId = [[selectedClient clientId] stringValue];
+            
+            urlString = [urlString stringByAppendingString:@"clientId='"];
+            urlString = [urlString stringByAppendingString:clientId];
+            urlString = [urlString stringByAppendingString:@"'&"];
+            NSLog(@"OOOK");
+        }
+    }
+    
     // convertir en NSURL
     NSURL *url = [NSURL URLWithString:urlString];
     
