@@ -38,6 +38,8 @@
     // appeler NSURLConnection. 
     NSURLConnection* __autoreleasing connectionResponse = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     
+    //NSLog(@"TURL: %@", url);
+    
     if (!connectionResponse)
     {
         // handle error
@@ -72,10 +74,9 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     
     // for easier debugging
-    NSString* newStr = [[NSString alloc] initWithData:receivedData
-                                             encoding:NSUTF8StringEncoding];
+    //NSString* newStr = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
     
-    NSLog(@"JSON result: %@", newStr);
+    //NSLog(@"JSON result: %@", newStr);
     // end debug
     
     // exécuter le success-block et lui passer les donées reçues. 

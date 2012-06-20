@@ -10,6 +10,7 @@
 #import "Bug.h"
 #import "BugCategory.h"
 #import "PTMainWindowViewController.h"
+#import "PTBugCategoryHelper.h"
 #import "PTBugDetailsWindowController.h"
 #import "PTBugHelper.h"
 #import "PTBugListViewController.h"
@@ -68,6 +69,7 @@ Bug *bugCopy;
     
     // charger la liste des développeurs à partir du webservice et les mettre dans la combobox.
     [self fetchDevelopersFromWebservice];
+    [self fetchBugcategoriesFromWebservice];
     
     
 }
@@ -102,12 +104,22 @@ Bug *bugCopy;
     // donner le focus au bouton 'OK'.
     [self.window makeFirstResponder:okButton];
     
+    // developer.
     if ([comboDevelopers indexOfSelectedItem] > -1) {
         User *selectedDev = [arrDevelopers objectAtIndex:[comboDevelopers indexOfSelectedItem]];
     
         bug.userAssigned = selectedDev;
     } else {
         bug.userAssigned = nil;
+    }
+    
+    // bug category.
+    if ([bugCategoryComboBox indexOfSelectedItem] > -1) {
+        BugCategory *selectedCategory = [arrBugCategory objectAtIndex:[bugCategoryComboBox indexOfSelectedItem]];
+        
+        bug.bugCategory = selectedCategory;
+    } else {
+        bug.bugCategory = nil;
     }
     
     // créer une nouvelle tâche.
@@ -223,6 +235,50 @@ Bug *bugCopy;
     
     return retVal;
     
+}
+
+// charger la liste des développeurs à partir du webservice et les mettre dans la combobox.
+- (void)fetchBugcategoriesFromWebservice
+{
+    /*// get developers from webservice.
+    [PTBugCategoryHelper bugcategories:^(NSMutableArray *bugcategories) {
+        
+        // sort descriptors for array.
+        NSSortDescriptor *firstDescriptor = [[NSSortDescriptor alloc] initWithKey:@"categoryName"
+                                                                        ascending:YES];
+        NSArray *sortDescriptors = [NSArray arrayWithObjects:firstDescriptor, nil];
+        
+        // sort array and affect fetched array to local array.
+        [[self mutableArrayValueForKey:@"arrBugCategory"] addObjectsFromArray:[bugcategories sortedArrayUsingDescriptors:sortDescriptors]];
+        
+        // sélectionner développeur attribué (responsable du projet).
+        for (NSInteger i = 0; i < [arrBugCategory count]; i++) {
+            
+            BugCategory *bc = [arrBugCategory objectAtIndex:i];
+            
+            if ([bc.bugcategoryId intValue] == [bug.bugCategory.bugcategoryId intValue]) {
+                
+                [bugCategoryComboBox selectItemAtIndex:i];
+                break;
+            }
+        }
+        
+    }
+                failureBlock:^(NSError *error) {
+                    
+                }];*/
+    
+    // sélectionner développeur attribué (responsable du projet).
+    for (NSInteger i = 0; i < [arrBugCategory count]; i++) {
+        
+        BugCategory *bc = [arrBugCategory objectAtIndex:i];
+        
+        if ([bc.bugcategoryId intValue] == [bug.bugCategory.bugcategoryId intValue]) {
+            
+            [bugCategoryComboBox selectItemAtIndex:i];
+            break;
+        }
+    }
 }
 
 @end

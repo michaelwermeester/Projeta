@@ -87,4 +87,10 @@
     return bugCategory;
 }
 
+- (NSArray *)bugcategoryIdKey {
+    NSArray *retArr = [[NSArray alloc] initWithObjects:@"bugcategoryId", nil];
+    
+    return retArr;
+}
+
 @end

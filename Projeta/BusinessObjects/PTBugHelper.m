@@ -7,6 +7,7 @@
 //
 
 #import "Bug.h"
+#import "BugCategory.h"
 #import "MainWindowController.h"
 #import "PTBugHelper.h"
 #import "PTCommon.h"
@@ -111,6 +112,13 @@
         [dict setObject:userAssignedDict forKey:@"userAssigned"];
     }
     
+    // créer dictionnaire 'bugcategoryid'.
+    if (theBug.bugCategory) {
+        NSDictionary *userAssignedDict = [theBug.bugCategory dictionaryWithValuesForKeys:[theBug.bugCategory bugcategoryIdKey]];
+        // ajouter ce dictionnaire sous la clé 'userReported'.
+        [dict setObject:userAssignedDict forKey:@"bugcategoryId"];
+    }
+    
     // API resource string.
     NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/bugs/create"];
     
@@ -143,6 +151,13 @@
         NSDictionary *userAssignedDict = [theBug.userAssigned dictionaryWithValuesForKeys:[theBug.userAssigned userIdKey]];
         // ajouter ce dictionnaire sous la clé 'userReported'.
         [dict setObject:userAssignedDict forKey:@"userAssigned"];
+    }
+    
+    // créer dictionnaire 'bugcategoryid'.
+    if (theBug.bugCategory) {
+        NSDictionary *userAssignedDict = [theBug.bugCategory dictionaryWithValuesForKeys:[theBug.bugCategory bugcategoryIdKey]];
+        // ajouter ce dictionnaire sous la clé 'userReported'.
+        [dict setObject:userAssignedDict forKey:@"bugcategoryId"];
     }
     
     // API resource string.

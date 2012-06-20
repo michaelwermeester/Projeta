@@ -22,6 +22,7 @@
 - (void)setAttributesFromDictionary:(NSDictionary *)aDictionary;
 
 - (NSArray *)allKeys;
+- (NSArray *)bugcategoryIdKey;
 
 + (BugCategory *)initWithId:(NSNumber *)anId name:(NSString *)aName;
 

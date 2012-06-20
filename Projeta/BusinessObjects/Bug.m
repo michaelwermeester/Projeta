@@ -66,6 +66,8 @@
     self.userReported = [User instanceFromDictionary:[aDictionary objectForKey:@"userReported"]];
     
     
+    self.priority = [NSDecimalNumber decimalNumberWithString:(NSString *)[aDictionary objectForKey:@"priority"]];
+    
     // état du bogue.
     if ([[aDictionary objectForKey:@"bugStatus"] isKindOfClass:[NSNull class]] == NO)
         self.bugStatus = [aDictionary objectForKey:@"bugStatus"];
@@ -111,14 +113,14 @@
 
 - (NSArray *)createBugKeys
 {
-    NSArray *retArr = [[NSArray alloc] initWithObjects: @"title", @"details", @"fixed", nil];
+    NSArray *retArr = [[NSArray alloc] initWithObjects: @"title", @"details", @"fixed", @"priority", nil];
     
     return retArr;
 }
 
 - (NSArray *)updateBugKeys
 {
-    NSArray *retArr = [[NSArray alloc] initWithObjects: @"bugId", @"title", @"details", @"fixed", nil];
+    NSArray *retArr = [[NSArray alloc] initWithObjects: @"bugId", @"title", @"details", @"fixed", @"priority", nil];
     
     return retArr;
 }
