@@ -23,6 +23,7 @@
 			<string>NSDateFormatter</string>
 			<string>NSCustomView</string>
 			<string>NSTableView</string>
+			<string>NSViewController</string>
 			<string>NSTextField</string>
 			<string>NSSearchField</string>
 			<string>NSSearchFieldCell</string>
@@ -30,6 +31,8 @@
 			<string>NSTreeController</string>
 			<string>NSButtonCell</string>
 			<string>NSTableColumn</string>
+			<string>NSDatePicker</string>
+			<string>NSDatePickerCell</string>
 			<string>NSOutlineView</string>
 			<string>NSPopUpButtonCell</string>
 			<string>NSCollectionViewItem</string>
@@ -37,6 +40,7 @@
 			<string>NSScrollView</string>
 			<string>NSTabViewItem</string>
 			<string>NSUserDefaultsController</string>
+			<string>NSPopover</string>
 			<string>NSPopUpButton</string>
 			<string>NSMenuItem</string>
 			<string>NSTabView</string>
@@ -937,7 +941,6 @@
 													<int key="NSvFlags">-2147483392</int>
 													<string key="NSFrame">{{1, 230}, {919, 15}}</string>
 													<reference key="NSSuperview" ref="836911323"/>
-													<reference key="NSNextKeyView" ref="474546755"/>
 													<string key="NSReuseIdentifierKey">_NS:1800</string>
 													<int key="NSsFlags">1</int>
 													<reference key="NSTarget" ref="836911323"/>
@@ -1270,7 +1273,7 @@
 													<string key="NSFrame">{{1, 230}, {916, 15}}</string>
 													<reference key="NSSuperview" ref="483272419"/>
 													<reference key="NSWindow"/>
-													<reference key="NSNextKeyView" ref="993591620"/>
+													<reference key="NSNextKeyView" ref="474546755"/>
 													<string key="NSReuseIdentifierKey">_NS:1728</string>
 													<int key="NSsFlags">1</int>
 													<reference key="NSTarget" ref="483272419"/>
@@ -1334,6 +1337,7 @@
 						<string key="NSFrame">{{846, 13}, {108, 32}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:687</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="559369862">
@@ -1635,6 +1639,76 @@
 			<object class="NSUserDefaultsController" id="1016012414">
 				<bool key="NSSharedInstance">YES</bool>
 			</object>
+			<object class="NSViewController" id="546140602"/>
+			<object class="NSPopover" id="37055897">
+				<nil key="NSNextResponder"/>
+				<int key="NSAppearance">0</int>
+				<int key="NSBehavior">0</int>
+				<double key="NSContentWidth">0.0</double>
+				<double key="NSContentHeight">0.0</double>
+				<bool key="NSAnimates">YES</bool>
+			</object>
+			<object class="NSCustomView" id="737493642">
+				<reference key="NSNextResponder"/>
+				<int key="NSvFlags">268</int>
+				<object class="NSMutableArray" key="NSSubviews">
+					<bool key="EncodedWithXMLCoder">YES</bool>
+					<object class="NSDatePicker" id="639273324">
+						<reference key="NSNextResponder" ref="737493642"/>
+						<int key="NSvFlags">268</int>
+						<string key="NSFrameSize">{139, 148}</string>
+						<reference key="NSSuperview" ref="737493642"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<bool key="NSEnabled">YES</bool>
+						<object class="NSDatePickerCell" key="NSCell" id="283556066">
+							<int key="NSCellFlags">71433728</int>
+							<int key="NSCellFlags2">0</int>
+							<object class="NSCalendarDate" key="NSContents">
+								<double key="NS.time">-595929600</double>
+								<object class="NSTimeZone" key="NS.timezone">
+									<string key="NS.name">US/Pacific</string>
+									<object class="NSMutableData" key="NS.data">
+										<bytes key="NS.bytes">VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
+y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
+5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
+8n/BkPNvwKD0X6OQ9U+ioPY/hZD3L4Sg+CiiEPkPZqD6CIQQ+viDIPvoZhD82GUg/chIEP64RyD/qCoQ
+AJgpIAGIDBACeAsgA3EokARhJ6AFUQqQBkEJoAcw7JAHjUOgCRDOkAmtvyAK8LCQC+CvoAzZzRANwJGg
+DrmvEA+priAQmZEQEYmQIBJ5cxATaXIgFFlVEBVJVCAWOTcQFyk2IBgiU5AZCRggGgI1kBryNKAb4heQ
+HNIWoB3B+ZAesfigH6HbkCB2KyAhgb2QIlYNICNq2hAkNe8gJUq8ECYV0SAnKp4QJ/7toCkKgBAp3s+g
+KupiECu+saAs036QLZ6ToC6zYJAvfnWgMJNCkDFnkiAycySQM0d0IDRTBpA1J1YgNjLokDcHOCA4HAUQ
+OOcaIDn75xA6xvwgO9vJEDywGKA9u6sQPo/6oD+bjRBAb9ygQYSpkEJPvqBDZIuQRC+goEVEbZBF89Mg
+Ry2KEEfTtSBJDWwQSbOXIErtThBLnLOgTNZqkE18laBOtkyQT1x3oFCWLpBRPFmgUnYQkFMcO6BUVfKQ
+VPwdoFY11JBW5TogWB7xEFjFHCBZ/tMQWqT+IFvetRBchOAgXb6XEF5kwiBfnnkQYE3eoGGHlZBiLcCg
+Y2d3kGQNoqBlR1mQZe2EoGcnO5BnzWagaQcdkGmtSKBq5v+Qa5ZlIGzQHBBtdkcgbq/+EG9WKSBwj+AQ
+cTYLIHJvwhBzFe0gdE+kEHT/CaB2OMCQdt7roHgYopB4vs2gefiEkHqer6B72GaQfH6RoH24SJB+XnOg
+f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</bytes>
+									</object>
+								</object>
+								<string key="NS.format">%Y-%m-%d %H:%M:%S %z</string>
+							</object>
+							<reference key="NSSupport" ref="1030773520"/>
+							<string key="NSCellIdentifier">_NS:9</string>
+							<reference key="NSControlView" ref="639273324"/>
+							<double key="NSTimeInterval">0.0</double>
+							<int key="NSDatePickerElements">224</int>
+							<int key="NSDatePickerType">1</int>
+							<reference key="NSBackgroundColor" ref="1017540249"/>
+							<reference key="NSTextColor" ref="107989933"/>
+						</object>
+					</object>
+				</object>
+				<string key="NSFrameSize">{139, 148}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
+				<reference key="NSNextKeyView" ref="639273324"/>
+				<string key="NSReuseIdentifierKey">_NS:9</string>
+				<string key="NSClassName">NSView</string>
+			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
 			<object class="NSMutableArray" key="connectionRecords">
@@ -1814,6 +1888,46 @@
 						<reference key="destination" ref="544378015"/>
 					</object>
 					<int key="connectionID">1364</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">calendarPopover</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="37055897"/>
+					</object>
+					<int key="connectionID">1386</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">startDateCalendarButton</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="1049419977"/>
+					</object>
+					<int key="connectionID">1389</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">endDateCalendarButton</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="86562962"/>
+					</object>
+					<int key="connectionID">1390</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">endDateCalendarButtonClicked:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="86562962"/>
+					</object>
+					<int key="connectionID">1391</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">startDateCalendarButtonClicked:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="1049419977"/>
+					</object>
+					<int key="connectionID">1392</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -2138,6 +2252,30 @@
 						</object>
 					</object>
 					<int key="connectionID">1361</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">datePicker</string>
+						<reference key="source" ref="546140602"/>
+						<reference key="destination" ref="639273324"/>
+					</object>
+					<int key="connectionID">1387</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">view</string>
+						<reference key="source" ref="546140602"/>
+						<reference key="destination" ref="639273324"/>
+					</object>
+					<int key="connectionID">1388</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">contentViewController</string>
+						<reference key="source" ref="37055897"/>
+						<reference key="destination" ref="546140602"/>
+					</object>
+					<int key="connectionID">1373</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3639,7 +3777,6 @@
 								<int key="contentType">3</int>
 								<reference key="containingView" ref="587396652"/>
 							</object>
-							<reference ref="483272419"/>
 							<object class="IBNSLayoutConstraint" id="777373188">
 								<reference key="firstItem" ref="483272419"/>
 								<int key="firstAttribute">3</int>
@@ -3688,6 +3825,7 @@
 								<int key="contentType">2</int>
 								<reference key="containingView" ref="587396652"/>
 							</object>
+							<reference ref="483272419"/>
 						</object>
 						<reference key="parent" ref="934147305"/>
 					</object>
@@ -4629,6 +4767,82 @@
 						<reference key="object" ref="91661392"/>
 						<reference key="parent" ref="474546755"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1371</int>
+						<reference key="object" ref="546140602"/>
+						<reference key="parent" ref="0"/>
+						<string key="objectName">start date Popover View Controller</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1372</int>
+						<reference key="object" ref="37055897"/>
+						<reference key="parent" ref="0"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1376</int>
+						<reference key="object" ref="737493642"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="639273324"/>
+							<object class="IBNSLayoutConstraint" id="688333313">
+								<reference key="firstItem" ref="639273324"/>
+								<int key="firstAttribute">3</int>
+								<int key="relation">0</int>
+								<reference key="secondItem" ref="737493642"/>
+								<int key="secondAttribute">3</int>
+								<float key="multiplier">1</float>
+								<object class="IBLayoutConstant" key="constant">
+									<double key="value">0.0</double>
+								</object>
+								<float key="priority">1000</float>
+								<int key="scoringType">8</int>
+								<float key="scoringTypeFloat">29</float>
+								<int key="contentType">3</int>
+								<reference key="containingView" ref="737493642"/>
+							</object>
+							<object class="IBNSLayoutConstraint" id="723277053">
+								<reference key="firstItem" ref="639273324"/>
+								<int key="firstAttribute">5</int>
+								<int key="relation">0</int>
+								<reference key="secondItem" ref="737493642"/>
+								<int key="secondAttribute">5</int>
+								<float key="multiplier">1</float>
+								<object class="IBLayoutConstant" key="constant">
+									<double key="value">0.0</double>
+								</object>
+								<float key="priority">1000</float>
+								<int key="scoringType">8</int>
+								<float key="scoringTypeFloat">29</float>
+								<int key="contentType">3</int>
+								<reference key="containingView" ref="737493642"/>
+							</object>
+						</object>
+						<reference key="parent" ref="0"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1377</int>
+						<reference key="object" ref="639273324"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="283556066"/>
+						</object>
+						<reference key="parent" ref="737493642"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1378</int>
+						<reference key="object" ref="283556066"/>
+						<reference key="parent" ref="639273324"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1384</int>
+						<reference key="object" ref="688333313"/>
+						<reference key="parent" ref="737493642"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1385</int>
+						<reference key="object" ref="723277053"/>
+						<reference key="parent" ref="737493642"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -4767,6 +4981,18 @@
 					<string>1349.IBPluginDependency</string>
 					<string>1351.IBPluginDependency</string>
 					<string>1352.IBPluginDependency</string>
+					<string>1371.CustomClassName</string>
+					<string>1371.IBPluginDependency</string>
+					<string>1372.IBAttributePlaceholdersKey</string>
+					<string>1372.IBPluginDependency</string>
+					<string>1376.IBNSViewMetadataConstraints</string>
+					<string>1376.IBPluginDependency</string>
+					<string>1376.userInterfaceItemIdentifier</string>
+					<string>1377.IBNSViewMetadataTranslatesAutoresizingMaskIntoConstraints</string>
+					<string>1377.IBPluginDependency</string>
+					<string>1378.IBPluginDependency</string>
+					<string>1384.IBPluginDependency</string>
+					<string>1385.IBPluginDependency</string>
 					<string>152.IBNSViewMetadataTranslatesAutoresizingMaskIntoConstraints</string>
 					<string>152.IBPluginDependency</string>
 					<string>153.IBPluginDependency</string>
@@ -5093,6 +5319,29 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>MWCalendarViewController</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<object class="NSMutableDictionary">
+						<string key="NS.key.0">AccessibilityDescription</string>
+						<object class="IBAccessibilityAttribute" key="NS.object.0">
+							<string key="name">AccessibilityDescription</string>
+							<reference key="object" ref="37055897"/>
+							<string key="accessibilityValue">start date popover</string>
+						</object>
+					</object>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<object class="NSMutableArray">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<reference ref="688333313"/>
+						<reference ref="723277053"/>
+					</object>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>start date view</string>
+					<boolean value="NO"/>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="NO"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -5252,11 +5501,30 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">1364</int>
+			<int key="maxID">1392</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<object class="IBPartialClassDescription">
+					<string key="className">MWCalendarViewController</string>
+					<string key="superclassName">NSViewController</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">datePicker</string>
+						<string key="NS.object.0">NSDatePicker</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">datePicker</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">datePicker</string>
+							<string key="candidateClassName">NSDatePicker</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/MWCalendarViewController.h</string>
+					</object>
+				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">MWDateFormatter</string>
 					<string key="superclassName">NSDateFormatter</string>
@@ -5323,13 +5591,17 @@
 							<string>addNewSubProjectButtonClicked:</string>
 							<string>commentButtonClicked:</string>
 							<string>detailsButtonClicked:</string>
+							<string>endDateCalendarButtonClicked:</string>
 							<string>filterButtonClicked:</string>
 							<string>progressButtonClicked:</string>
 							<string>removeProjectButtonClicked:</string>
+							<string>startDateCalendarButtonClicked:</string>
 							<string>switchToProjectViewButtonClicked:</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -5348,9 +5620,11 @@
 							<string>addNewSubProjectButtonClicked:</string>
 							<string>commentButtonClicked:</string>
 							<string>detailsButtonClicked:</string>
+							<string>endDateCalendarButtonClicked:</string>
 							<string>filterButtonClicked:</string>
 							<string>progressButtonClicked:</string>
 							<string>removeProjectButtonClicked:</string>
+							<string>startDateCalendarButtonClicked:</string>
 							<string>switchToProjectViewButtonClicked:</string>
 						</object>
 						<object class="NSArray" key="dict.values">
@@ -5372,6 +5646,10 @@
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
+								<string key="name">endDateCalendarButtonClicked:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
 								<string key="name">filterButtonClicked:</string>
 								<string key="candidateClassName">id</string>
 							</object>
@@ -5381,6 +5659,10 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">removeProjectButtonClicked:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">startDateCalendarButtonClicked:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
@@ -5395,9 +5677,11 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>addProjectButton</string>
 							<string>addSubProjectButton</string>
+							<string>calendarPopover</string>
 							<string>clientComboBox</string>
 							<string>comboStatusFilter</string>
 							<string>developerComboBox</string>
+							<string>endDateCalendarButton</string>
 							<string>filterButton</string>
 							<string>maxDateFilter</string>
 							<string>minDateFilter</string>
@@ -5407,14 +5691,17 @@
 							<string>prjTabView</string>
 							<string>prjTreeController</string>
 							<string>removeProjectButton</string>
+							<string>startDateCalendarButton</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>NSPopUpButton</string>
 							<string>NSMenuItem</string>
+							<string>NSPopover</string>
 							<string>NSComboBox</string>
 							<string>NSPopUpButton</string>
 							<string>NSComboBox</string>
+							<string>NSButton</string>
 							<string>NSButton</string>
 							<string>NSTextField</string>
 							<string>NSTextField</string>
@@ -5424,6 +5711,7 @@
 							<string>NSTabView</string>
 							<string>NSTreeController</string>
 							<string>NSButton</string>
+							<string>NSButton</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -5432,9 +5720,11 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>addProjectButton</string>
 							<string>addSubProjectButton</string>
+							<string>calendarPopover</string>
 							<string>clientComboBox</string>
 							<string>comboStatusFilter</string>
 							<string>developerComboBox</string>
+							<string>endDateCalendarButton</string>
 							<string>filterButton</string>
 							<string>maxDateFilter</string>
 							<string>minDateFilter</string>
@@ -5444,6 +5734,7 @@
 							<string>prjTabView</string>
 							<string>prjTreeController</string>
 							<string>removeProjectButton</string>
+							<string>startDateCalendarButton</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -5456,6 +5747,10 @@
 								<string key="candidateClassName">NSMenuItem</string>
 							</object>
 							<object class="IBToOneOutletInfo">
+								<string key="name">calendarPopover</string>
+								<string key="candidateClassName">NSPopover</string>
+							</object>
+							<object class="IBToOneOutletInfo">
 								<string key="name">clientComboBox</string>
 								<string key="candidateClassName">NSComboBox</string>
 							</object>
@@ -5466,6 +5761,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">developerComboBox</string>
 								<string key="candidateClassName">NSComboBox</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">endDateCalendarButton</string>
+								<string key="candidateClassName">NSButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">filterButton</string>
@@ -5501,6 +5800,10 @@
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">removeProjectButton</string>
+								<string key="candidateClassName">NSButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">startDateCalendarButton</string>
 								<string key="candidateClassName">NSButton</string>
 							</object>
 						</object>

@@ -58,6 +58,12 @@
 @property (weak) IBOutlet NSPopUpButton *addProjectButton;
 @property (weak) IBOutlet NSButton *removeProjectButton;
 
+@property (weak) IBOutlet NSButton *startDateCalendarButton;
+@property (weak) IBOutlet NSButton *endDateCalendarButton;
+@property (strong) IBOutlet NSPopover *calendarPopover;
+- (IBAction)startDateCalendarButtonClicked:(id)sender;
+- (IBAction)endDateCalendarButtonClicked:(id)sender;
+
 // array qui contient les développeurs/responsables. 
 @property (strong) NSMutableArray *arrDevelopers;
 

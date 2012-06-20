@@ -19,6 +19,7 @@
 #import "PTUserHelper.h"
 #import "Role.h"
 #import "PTClientHelper.h"
+#import "MWCalendarViewController.h"
 
 PTCommentairesWindowController *commentWindowController;
 
@@ -53,6 +54,11 @@ PTCommentairesWindowController *commentWindowController;
 @synthesize maxDateFilterDate;
 @synthesize addProjectButton;
 @synthesize removeProjectButton;
+
+@synthesize startDateCalendarButton;
+@synthesize endDateCalendarButton;
+
+@synthesize calendarPopover;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -603,6 +609,51 @@ PTCommentairesWindowController *commentWindowController;
                 failureBlock:^(NSError *error) {
                     
                 }];
+}
+
+
+- (IBAction)startDateCalendarButtonClicked:(id)sender {
+    
+    if (!minDateFilterDate) {
+        minDateFilterDate = [NSDate date]; 
+    }
+    
+    // si bouton clicked...
+    if (self.startDateCalendarButton.intValue == 1) {
+        
+        // binder la propriété 'value' du datepicker avec la propriété correspondante de l'objet 'projet'. 
+        MWCalendarViewController *calView = (MWCalendarViewController *)calendarPopover.contentViewController;
+        [calView.datePicker bind:@"value" toObject:self withKeyPath:@"minDateFilterDate" options:nil];
+        
+        // afficher le popup avec le calendrier.
+        [self.calendarPopover showRelativeToRect:[startDateCalendarButton bounds]
+                                          ofView:startDateCalendarButton
+                                   preferredEdge:NSMaxYEdge];
+    } else {
+        [self.calendarPopover close];
+    }
+}
+
+- (IBAction)endDateCalendarButtonClicked:(id)sender {
+    
+    if (!maxDateFilterDate) {
+        maxDateFilterDate = [NSDate date]; 
+    }
+    
+    // si bouton clicked...
+    if (self.endDateCalendarButton.intValue == 1) {
+        
+        // binder la propriété 'value' du datepicker avec la propriété correspondante de l'objet 'projet'. 
+        MWCalendarViewController *calView = (MWCalendarViewController *)calendarPopover.contentViewController;
+        [calView.datePicker bind:@"value" toObject:self withKeyPath:@"maxDateFilterDate" options:nil];
+        
+        // afficher le popup avec le calendrier.
+        [self.calendarPopover showRelativeToRect:[endDateCalendarButton bounds]
+                                          ofView:endDateCalendarButton
+                                   preferredEdge:NSMaxYEdge];
+    } else {
+        [self.calendarPopover close];
+    }
 }
 
 
