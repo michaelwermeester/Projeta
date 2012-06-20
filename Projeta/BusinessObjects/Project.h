@@ -60,6 +60,8 @@
 
 @property (readonly, nonatomic, copy) NSString *stringEndDate;
 @property (readonly, nonatomic, copy) NSString *stringStartDate;
+@property (readonly, nonatomic, copy) NSString *stringEndDateReal;
+@property (readonly, nonatomic, copy) NSString *stringStartDateReal;
 
 
 // pour calendar control.

@@ -114,6 +114,9 @@
     // construire l'URL en rajoutant le ressource path. 
     urlString = [urlString stringByAppendingString:resourceString];
     
+    // debug.
+    NSLog(@"res: %@", [[NSString alloc] initWithData:requestData encoding:NSASCIIStringEncoding]);
+    
     // convertir en NSURL. 
     NSURL *url = [NSURL URLWithString:urlString];
     

@@ -199,6 +199,11 @@
         [dict setObject:[theProject stringStartDate] forKey:@"startDate"];
     if ([theProject stringEndDate])
         [dict setObject:[theProject stringEndDate] forKey:@"endDate"];
+    // Dates début et fin réels de projet.
+    if ([theProject stringStartDateReal])
+        [dict setObject:[theProject stringStartDateReal] forKey:@"startDateReal"];
+    if ([theProject stringEndDateReal])
+        [dict setObject:[theProject stringEndDateReal] forKey:@"endDateReal"];
     
     if (theProject.userAssigned) {
         // créer dictionnaire 'userassigned'.

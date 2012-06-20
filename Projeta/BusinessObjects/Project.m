@@ -150,14 +150,15 @@
 
 - (NSArray *)createProjectKeys
 {
-    NSArray *retArr = [[NSArray alloc] initWithObjects: @"projectTitle", @"projectDescription", @"flagPublic", @"completed", @"startDate", @"startDateReal", @"endDate", @"endDateReal", nil];
+    //NSArray *retArr = [[NSArray alloc] initWithObjects: @"projectTitle", @"projectDescription", @"flagPublic", @"completed", @"startDate", @"startDateReal", @"endDate", @"endDateReal", nil];
+    NSArray *retArr = [[NSArray alloc] initWithObjects: @"projectTitle", @"projectDescription", @"flagPublic", @"completed", nil];
     
     return retArr;
 }
 
 - (NSArray *)updateProjectKeys
 {
-    NSArray *retArr = [[NSArray alloc] initWithObjects: @"projectId", @"projectTitle", @"projectDescription", nil];
+    NSArray *retArr = [[NSArray alloc] initWithObjects: @"projectId", @"projectTitle", @"projectDescription", @"flagPublic", @"completed", nil];
     
     return retArr;
 }
@@ -208,7 +209,19 @@
 // Retourne la date de début de projet en String en format yyyy-MM-dd.
 - (NSString *)stringStartDate {
     
-    return [PTCommon stringJSONFromDate:startDate];
+    return [PTCommon stringJSONFromDate:startDateReal];
+}
+
+// Retourne la date de fin de projet en String en format yyyy-MM-dd.
+- (NSString *)stringEndDateReal {
+    
+    return [PTCommon stringJSONFromDate:endDateReal];
+}
+
+// Retourne la date de début de projet en String en format yyyy-MM-dd.
+- (NSString *)stringStartDateReal {
+    
+    return [PTCommon stringJSONFromDate:startDateReal];
 }
 
 - (NSString *)projectPercentageStatus {
