@@ -126,6 +126,11 @@
         [dict setObject:[theTask stringStartDate] forKey:@"startDate"];
     if ([theTask stringEndDate])
         [dict setObject:[theTask stringEndDate] forKey:@"endDate"];
+    // Dates début et fin réels de projet.
+    if ([theTask stringStartDateReal])
+        [dict setObject:[theTask stringStartDateReal] forKey:@"startDateReal"];
+    if ([theTask stringEndDateReal])
+        [dict setObject:[theTask stringEndDateReal] forKey:@"endDateReal"];
     
     // ID du projet lié.
     if ([theTask projectId]) {

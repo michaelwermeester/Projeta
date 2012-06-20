@@ -134,7 +134,7 @@
 
 - (NSArray *)createTaskKeys
 {
-    NSArray *retArr = [[NSArray alloc] initWithObjects: @"taskTitle", @"taskDescription", @"completed", @"isPersonal", nil];
+    NSArray *retArr = [[NSArray alloc] initWithObjects: @"taskTitle", @"taskDescription", @"completed", @"isPersonal", @"priority", nil];
     
     return retArr;
 }
@@ -147,7 +147,7 @@
 
 - (NSArray *)updateTaskKeys
 {
-    NSArray *retArr = [[NSArray alloc] initWithObjects: @"taskId", @"taskTitle", @"taskDescription", @"completed", nil];
+    NSArray *retArr = [[NSArray alloc] initWithObjects: @"taskId", @"taskTitle", @"taskDescription", @"completed", @"priority", nil];
     
     return retArr;
 }
@@ -162,6 +162,18 @@
 - (NSString *)stringStartDate {
     
     return [PTCommon stringJSONFromDate:startDate];
+}
+
+// Retourne la date de fin de projet en String en format yyyy-MM-dd.
+- (NSString *)stringEndDateReal {
+    
+    return [PTCommon stringJSONFromDate:endDateReal];
+}
+
+// Retourne la date de début de projet en String en format yyyy-MM-dd.
+- (NSString *)stringStartDateReal {
+    
+    return [PTCommon stringJSONFromDate:startDateReal];
 }
 
 @end
