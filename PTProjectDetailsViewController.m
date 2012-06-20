@@ -293,6 +293,8 @@
     
     [self.tabBugView addSubview:bugListViewController.view];
     
+    [bugListViewController.projectButton setHidden:YES];
+    
     // auto resize the view.
     [bugListViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
 }
