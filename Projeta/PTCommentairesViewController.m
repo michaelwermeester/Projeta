@@ -133,6 +133,13 @@
             
         } mainWindowController:mainWindowController];
     }
+    else if (bug) {
+        commentUpdSuc = [PTCommentHelper createComment:comment forBug:bug successBlock:^(NSMutableData *data) { 
+            [self finishedCreatingComment:data];
+        } failureBlock:^() {
+            
+        } mainWindowController:mainWindowController];
+    }
 }
 
 // exécuté lorsque le commentaire a été envoyé. 

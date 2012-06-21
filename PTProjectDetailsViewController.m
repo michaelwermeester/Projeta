@@ -264,7 +264,7 @@
     
     // cacher la colonne "projet".
     [taskListViewController.outlineViewProjetColumn setHidden:YES];
-    [taskListViewController.checkBoxShowTasksFromSubProjects setHidden:NO];
+    //[taskListViewController.checkBoxShowTasksFromSubProjects setHidden:NO];
     //[taskListViewController.projectButton removeFromSuperview];
     [taskListViewController.projectButton setHidden:YES];
     // afficher champ de recherche.
@@ -424,6 +424,7 @@
     
     BOOL prjUpdSuc = NO;
     
+    NSLog(@"DAAT: %@", project.startDate);
     // donner le focus au bouton 'OK'.
     [mainWindowController.window makeFirstResponder:saveProjectButton];
     

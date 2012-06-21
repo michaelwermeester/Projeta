@@ -209,7 +209,7 @@
 // Retourne la date de début de projet en String en format yyyy-MM-dd.
 - (NSString *)stringStartDate {
     
-    return [PTCommon stringJSONFromDate:startDateReal];
+    return [PTCommon stringJSONFromDate:startDate];
 }
 
 // Retourne la date de fin de projet en String en format yyyy-MM-dd.

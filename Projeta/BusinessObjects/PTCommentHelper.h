@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class Task;
+@class Bug;
 
 @interface PTCommentHelper : NSObject
 
@@ -20,5 +21,6 @@
 
 + (BOOL)createComment:(PTComment *)theComment forProject:(Project *)aProject successBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)())failureBlock_ mainWindowController:(id)sender;
 + (BOOL)createComment:(PTComment *)theComment forTask:(Task *)aTask successBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)())failureBlock_ mainWindowController:(id)sender;
++ (BOOL)createComment:(PTComment *)theComment forBug:(Bug *)aBug successBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)())failureBlock_ mainWindowController:(id)sender;
 
 @end

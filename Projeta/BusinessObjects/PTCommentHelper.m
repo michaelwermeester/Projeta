@@ -11,6 +11,7 @@
 #import "PTCommentHelper.h"
 #import "PTCommon.h"
 #import "Task.h"
+#import "Bug.h"
 
 @implementation PTCommentHelper
 
@@ -138,6 +139,34 @@
     NSDictionary *taskIdDict = [aTask dictionaryWithValuesForKeys:[aTask taskIdKey]];
     // ajouter ce dictionnaire sous la clé 'taskIdtaskId'.
     [dict setObject:taskIdDict forKey:@"taskId"];
+    
+    // API resource string.
+    NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/comments/create"];
+    
+    // execute the PUT method on the webservice to update the record in the database.
+    [PTCommon executePOSTforDictionaryWithBlocks:dict resourceString:resourceString successBlock:successBlock_ failureBlock:failureBlock_];
+    
+    return success;
+}
+
+
++ (BOOL)createComment:(PTComment *)theComment forBug:(Bug *)aBug successBlock:(void(^)(NSMutableData *))successBlock_ failureBlock:(void(^)())failureBlock_ mainWindowController:(id)sender {
+    
+    BOOL success = NO;
+    
+    // create dictionary from Task object
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[theComment dictionaryWithValuesForKeys:[theComment createCommentKeys]]];
+    
+    // créer dictionnaire 'user création'.
+    NSDictionary *userDict = [theComment.userCreated dictionaryWithValuesForKeys:[theComment.userCreated userIdKey]];
+    // ajouter ce dictionnaire sous la clé 'userCreated'.
+    [dict setObject:userDict forKey:@"userCreated"];
+    
+    
+    // créer dictionnaire 'task_id'.
+    NSDictionary *taskIdDict = [aBug dictionaryWithValuesForKeys:[aBug bugIdKey]];
+    // ajouter ce dictionnaire sous la clé 'taskIdtaskId'.
+    [dict setObject:taskIdDict forKey:@"bugId"];
     
     // API resource string.
     NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/comments/create"];

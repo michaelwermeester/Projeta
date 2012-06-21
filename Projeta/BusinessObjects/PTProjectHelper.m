@@ -199,6 +199,7 @@
     // create dictionary from Project object
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[theProject dictionaryWithValuesForKeys:[theProject updateProjectKeys]]];
     
+    //NSLog(@"daat: %@", theProject)
     // Dates début et fin de projet.
     if ([theProject stringStartDate])
         [dict setObject:[theProject stringStartDate] forKey:@"startDate"];
