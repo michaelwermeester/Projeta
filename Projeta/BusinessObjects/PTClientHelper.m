@@ -142,4 +142,15 @@
     return success;
 }
 
+// fetch all client names from web service.
++ (void)getClientsFull:(void(^)(NSMutableArray *))successBlock failureBlock:(void(^)(NSError *))failureBlock {
+    
+    // get server URL as string
+    NSString *urlString = [PTCommon serverURLString];
+    // build URL by adding resource path
+    urlString = [urlString stringByAppendingString:@"resources/clients/allclients"];
+    
+    [self serverClientsToArray:urlString successBlock:successBlock failureBlock:failureBlock];
+}
+
 @end

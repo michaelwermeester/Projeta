@@ -52,6 +52,15 @@
     
     clientDetailsWindowController = [[PTClientDetailsWindowController alloc] init];
     
+    
+    // get selected usergroups.
+    NSArray *selectedObjects = [clientsArrayCtrl selectedObjects];
+    
+    // si un groupe a été sélectionné.
+    if ([selectedObjects count] == 1) {
+        clientDetailsWindowController.client = clientUserWindowController.client = [selectedObjects objectAtIndex:0];
+    }
+    
     [clientDetailsWindowController showWindow:self];
 }
 
@@ -115,7 +124,12 @@
     // show loading indicator animation.
     [mainWindowController startProgressIndicatorAnimation];
     
-    [PTClientHelper getClientNames:^(NSMutableArray *clients) { 
+    /*[PTClientHelper getClientNames:^(NSMutableArray *clients) { 
+        [self getClientNamesRequestFinished:clients]; 
+    } failureBlock:^(NSError *error) {
+        [self getClientNamesRequestFailed:error];
+    }];*/
+    [PTClientHelper getClientsFull:^(NSMutableArray *clients) { 
         [self getClientNamesRequestFinished:clients]; 
     } failureBlock:^(NSError *error) {
         [self getClientNamesRequestFailed:error];

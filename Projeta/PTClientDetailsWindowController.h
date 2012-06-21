@@ -8,6 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class Client;
+
 @interface PTClientDetailsWindowController : NSWindowController
+
+@property (strong) Client *client;
+
+@property (readonly) NSString *windowTitle;
 
 @end
