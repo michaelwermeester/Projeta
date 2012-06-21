@@ -468,7 +468,7 @@
 					</object>
 					<object class="NSButton" id="435119592">
 						<reference key="NSNextResponder" ref="1005"/>
-						<int key="NSvFlags">268</int>
+						<int key="NSvFlags">-2147483380</int>
 						<string key="NSFrame">{{285, 13}, {86, 32}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
@@ -492,7 +492,7 @@
 					</object>
 					<object class="NSButton" id="502721954">
 						<reference key="NSNextResponder" ref="1005"/>
-						<int key="NSvFlags">268</int>
+						<int key="NSvFlags">-2147483380</int>
 						<string key="NSFrame">{{371, 12}, {84, 32}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
@@ -516,7 +516,7 @@
 					</object>
 					<object class="NSButton" id="843680761">
 						<reference key="NSNextResponder" ref="1005"/>
-						<int key="NSvFlags">268</int>
+						<int key="NSvFlags">-2147483380</int>
 						<string key="NSFrame">{{454, 12}, {127, 32}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
@@ -540,7 +540,7 @@
 					</object>
 					<object class="NSButton" id="128140161">
 						<reference key="NSNextResponder" ref="1005"/>
-						<int key="NSvFlags">268</int>
+						<int key="NSvFlags">-2147483380</int>
 						<string key="NSFrame">{{581, 12}, {133, 32}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
@@ -4883,13 +4883,17 @@
 							<string>addNewSubProjectButtonClicked:</string>
 							<string>commentButtonClicked:</string>
 							<string>detailsButtonClicked:</string>
+							<string>endDateCalendarButtonClicked:</string>
 							<string>filterButtonClicked:</string>
 							<string>progressButtonClicked:</string>
 							<string>removeProjectButtonClicked:</string>
+							<string>startDateCalendarButtonClicked:</string>
 							<string>switchToProjectViewButtonClicked:</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -4908,9 +4912,11 @@
 							<string>addNewSubProjectButtonClicked:</string>
 							<string>commentButtonClicked:</string>
 							<string>detailsButtonClicked:</string>
+							<string>endDateCalendarButtonClicked:</string>
 							<string>filterButtonClicked:</string>
 							<string>progressButtonClicked:</string>
 							<string>removeProjectButtonClicked:</string>
+							<string>startDateCalendarButtonClicked:</string>
 							<string>switchToProjectViewButtonClicked:</string>
 						</object>
 						<object class="NSArray" key="dict.values">
@@ -4932,6 +4938,10 @@
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
+								<string key="name">endDateCalendarButtonClicked:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
 								<string key="name">filterButtonClicked:</string>
 								<string key="candidateClassName">id</string>
 							</object>
@@ -4944,6 +4954,10 @@
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
+								<string key="name">startDateCalendarButtonClicked:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
 								<string key="name">switchToProjectViewButtonClicked:</string>
 								<string key="candidateClassName">id</string>
 							</object>
@@ -4953,9 +4967,13 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>addProjectButton</string>
 							<string>addSubProjectButton</string>
+							<string>calendarPopover</string>
 							<string>clientComboBox</string>
 							<string>comboStatusFilter</string>
+							<string>developerComboBox</string>
+							<string>endDateCalendarButton</string>
 							<string>filterButton</string>
 							<string>maxDateFilter</string>
 							<string>minDateFilter</string>
@@ -4964,12 +4982,18 @@
 							<string>prjOutlineView</string>
 							<string>prjTabView</string>
 							<string>prjTreeController</string>
+							<string>removeProjectButton</string>
+							<string>startDateCalendarButton</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>NSPopUpButton</string>
 							<string>NSMenuItem</string>
+							<string>NSPopover</string>
 							<string>NSComboBox</string>
 							<string>NSPopUpButton</string>
+							<string>NSComboBox</string>
+							<string>NSButton</string>
 							<string>NSButton</string>
 							<string>NSTextField</string>
 							<string>NSTextField</string>
@@ -4978,15 +5002,21 @@
 							<string>NSOutlineView</string>
 							<string>NSTabView</string>
 							<string>NSTreeController</string>
+							<string>NSButton</string>
+							<string>NSButton</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>addProjectButton</string>
 							<string>addSubProjectButton</string>
+							<string>calendarPopover</string>
 							<string>clientComboBox</string>
 							<string>comboStatusFilter</string>
+							<string>developerComboBox</string>
+							<string>endDateCalendarButton</string>
 							<string>filterButton</string>
 							<string>maxDateFilter</string>
 							<string>minDateFilter</string>
@@ -4995,12 +5025,22 @@
 							<string>prjOutlineView</string>
 							<string>prjTabView</string>
 							<string>prjTreeController</string>
+							<string>removeProjectButton</string>
+							<string>startDateCalendarButton</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
+								<string key="name">addProjectButton</string>
+								<string key="candidateClassName">NSPopUpButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
 								<string key="name">addSubProjectButton</string>
 								<string key="candidateClassName">NSMenuItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">calendarPopover</string>
+								<string key="candidateClassName">NSPopover</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">clientComboBox</string>
@@ -5009,6 +5049,14 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">comboStatusFilter</string>
 								<string key="candidateClassName">NSPopUpButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">developerComboBox</string>
+								<string key="candidateClassName">NSComboBox</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">endDateCalendarButton</string>
+								<string key="candidateClassName">NSButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">filterButton</string>
@@ -5041,6 +5089,14 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">prjTreeController</string>
 								<string key="candidateClassName">NSTreeController</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">removeProjectButton</string>
+								<string key="candidateClassName">NSButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">startDateCalendarButton</string>
+								<string key="candidateClassName">NSButton</string>
 							</object>
 						</object>
 					</object>

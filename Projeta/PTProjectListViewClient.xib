@@ -67,7 +67,7 @@
 				<int key="NSvFlags">268</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<object class="NSButton" id="296115248">
+					<object class="NSButton" id="444103682">
 						<reference key="NSNextResponder" ref="1005"/>
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{791, 328}, {78, 32}}</string>
@@ -76,7 +76,7 @@
 						<reference key="NSNextKeyView" ref="1005624234"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="NSEnabled">YES</bool>
-						<object class="NSButtonCell" key="NSCell" id="1024638536">
+						<object class="NSButtonCell" key="NSCell" id="953717103">
 							<int key="NSCellFlags">67239424</int>
 							<int key="NSCellFlags2">134217728</int>
 							<string key="NSContents">Filtrer</string>
@@ -86,7 +86,7 @@
 								<int key="NSfFlags">1044</int>
 							</object>
 							<string key="NSCellIdentifier">_NS:9</string>
-							<reference key="NSControlView" ref="296115248"/>
+							<reference key="NSControlView" ref="444103682"/>
 							<int key="NSButtonFlags">-2038284033</int>
 							<int key="NSButtonFlags2">129</int>
 							<string key="NSAlternateContents"/>
@@ -282,7 +282,7 @@
 						<string key="NSFrame">{{771, 340}, {13, 12}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="296115248"/>
+						<reference key="NSNextKeyView" ref="444103682"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="280068977">
@@ -588,7 +588,7 @@
 					</object>
 					<object class="NSButton" id="435119592">
 						<reference key="NSNextResponder" ref="1005"/>
-						<int key="NSvFlags">268</int>
+						<int key="NSvFlags">-2147483380</int>
 						<string key="NSFrame">{{285, 13}, {86, 32}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
@@ -612,7 +612,7 @@
 					</object>
 					<object class="NSButton" id="502721954">
 						<reference key="NSNextResponder" ref="1005"/>
-						<int key="NSvFlags">268</int>
+						<int key="NSvFlags">-2147483380</int>
 						<string key="NSFrame">{{371, 12}, {84, 32}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
@@ -636,7 +636,7 @@
 					</object>
 					<object class="NSButton" id="843680761">
 						<reference key="NSNextResponder" ref="1005"/>
-						<int key="NSvFlags">268</int>
+						<int key="NSvFlags">-2147483380</int>
 						<string key="NSFrame">{{454, 12}, {127, 32}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
@@ -660,7 +660,7 @@
 					</object>
 					<object class="NSButton" id="128140161">
 						<reference key="NSNextResponder" ref="1005"/>
-						<int key="NSvFlags">268</int>
+						<int key="NSvFlags">-2147483380</int>
 						<string key="NSFrame">{{581, 12}, {133, 32}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
@@ -1748,7 +1748,7 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">filterButton</string>
 						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="296115248"/>
+						<reference key="destination" ref="444103682"/>
 					</object>
 					<int key="connectionID">1585</int>
 				</object>
@@ -1756,7 +1756,7 @@
 					<object class="IBActionConnection" key="connection">
 						<string key="label">filterButtonClicked:</string>
 						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="296115248"/>
+						<reference key="destination" ref="444103682"/>
 					</object>
 					<int key="connectionID">1586</int>
 				</object>
@@ -2941,9 +2941,9 @@
 								<int key="contentType">3</int>
 								<reference key="containingView" ref="1005"/>
 							</object>
-							<reference ref="296115248"/>
-							<object class="IBNSLayoutConstraint" id="264307426">
-								<reference key="firstItem" ref="296115248"/>
+							<reference ref="444103682"/>
+							<object class="IBNSLayoutConstraint" id="999123253">
+								<reference key="firstItem" ref="444103682"/>
 								<int key="firstAttribute">5</int>
 								<int key="relation">0</int>
 								<reference key="secondItem" ref="575760289"/>
@@ -2959,7 +2959,7 @@
 								<reference key="containingView" ref="1005"/>
 							</object>
 							<object class="IBNSLayoutConstraint" id="1065877795">
-								<reference key="firstItem" ref="296115248"/>
+								<reference key="firstItem" ref="444103682"/>
 								<int key="firstAttribute">11</int>
 								<int key="relation">0</int>
 								<reference key="secondItem" ref="150378647"/>
@@ -2974,8 +2974,8 @@
 								<int key="contentType">2</int>
 								<reference key="containingView" ref="1005"/>
 							</object>
-							<object class="IBNSLayoutConstraint" id="798350800">
-								<reference key="firstItem" ref="296115248"/>
+							<object class="IBNSLayoutConstraint" id="877588469">
+								<reference key="firstItem" ref="444103682"/>
 								<int key="firstAttribute">11</int>
 								<int key="relation">0</int>
 								<reference key="secondItem" ref="1005624234"/>
@@ -2990,8 +2990,8 @@
 								<int key="contentType">2</int>
 								<reference key="containingView" ref="1005"/>
 							</object>
-							<object class="IBNSLayoutConstraint" id="514983315">
-								<reference key="firstItem" ref="296115248"/>
+							<object class="IBNSLayoutConstraint" id="446639688">
+								<reference key="firstItem" ref="444103682"/>
 								<int key="firstAttribute">5</int>
 								<int key="relation">0</int>
 								<reference key="secondItem" ref="1005"/>
@@ -4571,21 +4571,21 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">1580</int>
-						<reference key="object" ref="296115248"/>
+						<reference key="object" ref="444103682"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="1024638536"/>
+							<reference ref="953717103"/>
 						</object>
 						<reference key="parent" ref="1005"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">1581</int>
-						<reference key="object" ref="1024638536"/>
-						<reference key="parent" ref="296115248"/>
+						<reference key="object" ref="953717103"/>
+						<reference key="parent" ref="444103682"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">1582</int>
-						<reference key="object" ref="264307426"/>
+						<reference key="object" ref="999123253"/>
 						<reference key="parent" ref="1005"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -4595,12 +4595,12 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">1584</int>
-						<reference key="object" ref="798350800"/>
+						<reference key="object" ref="877588469"/>
 						<reference key="parent" ref="1005"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">1587</int>
-						<reference key="object" ref="514983315"/>
+						<reference key="object" ref="446639688"/>
 						<reference key="parent" ref="1005"/>
 					</object>
 				</object>
@@ -4905,10 +4905,10 @@
 						<reference ref="301797230"/>
 						<reference ref="484238486"/>
 						<reference ref="475344569"/>
-						<reference ref="264307426"/>
+						<reference ref="999123253"/>
 						<reference ref="1065877795"/>
-						<reference ref="798350800"/>
-						<reference ref="514983315"/>
+						<reference ref="877588469"/>
+						<reference ref="446639688"/>
 					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -5290,13 +5290,17 @@
 							<string>addNewSubProjectButtonClicked:</string>
 							<string>commentButtonClicked:</string>
 							<string>detailsButtonClicked:</string>
+							<string>endDateCalendarButtonClicked:</string>
 							<string>filterButtonClicked:</string>
 							<string>progressButtonClicked:</string>
 							<string>removeProjectButtonClicked:</string>
+							<string>startDateCalendarButtonClicked:</string>
 							<string>switchToProjectViewButtonClicked:</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -5315,9 +5319,11 @@
 							<string>addNewSubProjectButtonClicked:</string>
 							<string>commentButtonClicked:</string>
 							<string>detailsButtonClicked:</string>
+							<string>endDateCalendarButtonClicked:</string>
 							<string>filterButtonClicked:</string>
 							<string>progressButtonClicked:</string>
 							<string>removeProjectButtonClicked:</string>
+							<string>startDateCalendarButtonClicked:</string>
 							<string>switchToProjectViewButtonClicked:</string>
 						</object>
 						<object class="NSArray" key="dict.values">
@@ -5339,6 +5345,10 @@
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
+								<string key="name">endDateCalendarButtonClicked:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
 								<string key="name">filterButtonClicked:</string>
 								<string key="candidateClassName">id</string>
 							</object>
@@ -5348,6 +5358,10 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">removeProjectButtonClicked:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">startDateCalendarButtonClicked:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
@@ -5362,8 +5376,11 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>addProjectButton</string>
 							<string>addSubProjectButton</string>
+							<string>calendarPopover</string>
 							<string>clientComboBox</string>
 							<string>comboStatusFilter</string>
+							<string>developerComboBox</string>
+							<string>endDateCalendarButton</string>
 							<string>filterButton</string>
 							<string>maxDateFilter</string>
 							<string>minDateFilter</string>
@@ -5373,13 +5390,17 @@
 							<string>prjTabView</string>
 							<string>prjTreeController</string>
 							<string>removeProjectButton</string>
+							<string>startDateCalendarButton</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>NSPopUpButton</string>
 							<string>NSMenuItem</string>
+							<string>NSPopover</string>
 							<string>NSComboBox</string>
 							<string>NSPopUpButton</string>
+							<string>NSComboBox</string>
+							<string>NSButton</string>
 							<string>NSButton</string>
 							<string>NSTextField</string>
 							<string>NSTextField</string>
@@ -5389,6 +5410,7 @@
 							<string>NSTabView</string>
 							<string>NSTreeController</string>
 							<string>NSButton</string>
+							<string>NSButton</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -5397,8 +5419,11 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>addProjectButton</string>
 							<string>addSubProjectButton</string>
+							<string>calendarPopover</string>
 							<string>clientComboBox</string>
 							<string>comboStatusFilter</string>
+							<string>developerComboBox</string>
+							<string>endDateCalendarButton</string>
 							<string>filterButton</string>
 							<string>maxDateFilter</string>
 							<string>minDateFilter</string>
@@ -5408,6 +5433,7 @@
 							<string>prjTabView</string>
 							<string>prjTreeController</string>
 							<string>removeProjectButton</string>
+							<string>startDateCalendarButton</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -5420,12 +5446,24 @@
 								<string key="candidateClassName">NSMenuItem</string>
 							</object>
 							<object class="IBToOneOutletInfo">
+								<string key="name">calendarPopover</string>
+								<string key="candidateClassName">NSPopover</string>
+							</object>
+							<object class="IBToOneOutletInfo">
 								<string key="name">clientComboBox</string>
 								<string key="candidateClassName">NSComboBox</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">comboStatusFilter</string>
 								<string key="candidateClassName">NSPopUpButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">developerComboBox</string>
+								<string key="candidateClassName">NSComboBox</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">endDateCalendarButton</string>
+								<string key="candidateClassName">NSButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">filterButton</string>
@@ -5461,6 +5499,10 @@
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">removeProjectButton</string>
+								<string key="candidateClassName">NSButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">startDateCalendarButton</string>
 								<string key="candidateClassName">NSButton</string>
 							</object>
 						</object>
