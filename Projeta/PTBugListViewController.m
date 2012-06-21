@@ -17,6 +17,8 @@
 #import "PTProjectDetailsViewController.h"
 #import "PTUserHelper.h"
 #import "PTClientHelper.h"
+#import "PTProgressWindowController.h"
+#import "PTCommentairesWindowController.h"
 
 @implementation PTBugListViewController
 @synthesize addBugButton;
@@ -398,4 +400,38 @@
     
 }
 
+- (IBAction)progressButtonClicked:(id)sender {
+    // instancier nouvelle fenêtre.
+    progressWindowController = [[PTProgressWindowController alloc] init];
+    
+    // la tâche sélectionnée. 
+    NSArray *selectedObjects;
+    selectedObjects = [bugArrayCtrl selectedObjects];
+    progressWindowController.bug = [selectedObjects objectAtIndex:0];
+    
+    // référence vers mainWindowController. 
+    progressWindowController.mainWindowController = mainWindowController;
+    
+    // initialiser statuts.
+    [progressWindowController initStatusArray];
+    
+    // ouvrir fenêtre. 
+    [progressWindowController showWindow:self];
+}
+
+- (IBAction)commentButtonClicked:(id)sender {
+    // instancier nouvelle fenêtre. 
+    commentWindowController = [[PTCommentairesWindowController alloc] init];
+    
+    // la tâche sélectionnée. 
+    NSArray *selectedObjects;
+    selectedObjects = [bugArrayCtrl selectedObjects];
+    commentWindowController.bug = [selectedObjects objectAtIndex:0];
+    
+    // référence vers mainWindowController. 
+    commentWindowController.mainWindowController = mainWindowController;
+    
+    // ouvrir fenêtre avec commentaires. 
+    [commentWindowController showWindow:self];
+}
 @end

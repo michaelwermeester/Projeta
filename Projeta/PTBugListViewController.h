@@ -12,6 +12,7 @@
 @class PTBugDetailsWindowController;
 @class PTCommentairesWindowController;
 @class PTProjectDetailsViewController;
+@class PTProgressWindowController;
 
 @interface PTBugListViewController : NSViewController {
     NSMutableArray *arrBug;     // array which holds the projects
@@ -28,6 +29,9 @@
     // fenêtre commentaires.
     PTCommentairesWindowController *commentWindowController;
     __weak NSButton *addBugButton;
+    
+    // fenêtre avancement.
+    PTProgressWindowController *progressWindowController;
 }
 
 @property (strong) NSMutableArray *arrBug;
@@ -52,6 +56,8 @@
 
 @property (weak) IBOutlet NSComboBox *clientComboBox;
 @property (weak) IBOutlet NSComboBox *developerComboBox;
+- (IBAction)progressButtonClicked:(id)sender;
+- (IBAction)commentButtonClicked:(id)sender;
 
 // nom de la nib file. 
 @property (strong) NSString *nibFileName;

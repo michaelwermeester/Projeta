@@ -12,6 +12,7 @@
 #import "PTStatus.h"
 #import "Project.h"
 #import "Task.h"
+#import "Bug.h"
 
 @interface PTProgressWindowController ()
 
@@ -74,6 +75,13 @@
         [arrStatus addObject:[PTStatus initWithId:[[NSNumber alloc] initWithInt:7] name:@"Mis en production"]];
         [arrStatus addObject:[PTStatus initWithId:[[NSNumber alloc] initWithInt:5] name:@"Clôturé"]];
     }
+    else if (bug) {
+        [arrStatus addObject:[PTStatus initWithId:[[NSNumber alloc] initWithInt:13] name:@"Rapporté"]];
+        [arrStatus addObject:[PTStatus initWithId:[[NSNumber alloc] initWithInt:14] name:@"Corrigé"]];
+        [arrStatus addObject:[PTStatus initWithId:[[NSNumber alloc] initWithInt:15] name:@"Attente d'infos"]];
+        [arrStatus addObject:[PTStatus initWithId:[[NSNumber alloc] initWithInt:16] name:@"En cours"]];
+        [arrStatus addObject:[PTStatus initWithId:[[NSNumber alloc] initWithInt:20] name:@"Won't fix"]];
+    }
 }
 
 // Clic sur bouton 'Envoyer'. 
@@ -104,7 +112,13 @@
         } failureBlock:^() {
             
         } mainWindowController:mainWindowController];
-    }
+    } else if (bug) {
+    progressUpdSuc = [PTProgressHelper createProgress:progress forBug:bug successBlock:^(NSMutableData *data) { 
+        [self finishedCreatingProgress:data];
+    } failureBlock:^() {
+        
+    } mainWindowController:mainWindowController];
+}
 }
 
 // exécuté lorsque l'état d'avancement a été créé. 
@@ -138,6 +152,13 @@
             progressUrlString = [progressUrlString stringByAppendingString:[[project projectId] stringValue]];
         }
     }
+    else if (bug) {   // pour un projet...
+        if (bug.bugId) {
+            progressUrlString = [[NSString alloc] initWithString:@"https://luckycode.be:8181/projeta-website/faces/progressCocoa.xhtml?type=bug&id="];
+            progressUrlString = [progressUrlString stringByAppendingString:[[bug bugId] stringValue]];
+        }
+    }
+    
     
     // convertir en NSURL
     NSURL *progressUrl = [NSURL URLWithString:progressUrlString];
