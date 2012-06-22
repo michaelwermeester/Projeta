@@ -189,6 +189,16 @@
 // charger les utilisateurs, groupes et clients liés au projet.
 - (void)loadProjectDetails {
     
+    [[self mutableArrayValueForKey:@"assignedUsergroups"] removeAllObjects];
+    [[self mutableArrayValueForKey:@"availableUsergroups"] removeAllObjects];
+    
+    [[self mutableArrayValueForKey:@"assignedUsers"] removeAllObjects];
+    [[self mutableArrayValueForKey:@"availableUsers"] removeAllObjects];
+    
+    [[self mutableArrayValueForKey:@"assignedClients"] removeAllObjects];
+    [[self mutableArrayValueForKey:@"availableClients"] removeAllObjects];
+    
+    
     // charger la liste des groupes d'utilisateurs disponibles.
     [self fetchAvailableUsergroups];
     [self fetchAssignedUsergroups];
@@ -600,8 +610,8 @@
 
 - (void)fetchAssignedClients {
     
-    [[self mutableArrayValueForKey:@"assignedClients"] removeAllObjects];
-    [[self mutableArrayValueForKey:@"availableClients"] removeAllObjects];
+    //[[self mutableArrayValueForKey:@"assignedClients"] removeAllObjects];
+    //[[self mutableArrayValueForKey:@"availableClients"] removeAllObjects];
     
     // fetch usergroup's users.
     [PTClientHelper clientsVisibleForProject:project successBlock:^(NSMutableArray *clients) {
@@ -623,8 +633,8 @@
 
 - (void)fetchAssignedUsers {
     
-    [[self mutableArrayValueForKey:@"assignedUsers"] removeAllObjects];
-    [[self mutableArrayValueForKey:@"availableUsers"] removeAllObjects];
+    //[[self mutableArrayValueForKey:@"assignedUsers"] removeAllObjects];
+    //[[self mutableArrayValueForKey:@"availableUsers"] removeAllObjects];
     
     // fetch usergroup's users.
     [PTUserHelper usersVisibleForProject:project successBlock:^(NSMutableArray *users) {
@@ -646,8 +656,8 @@
 
 - (void)fetchAssignedUsergroups {
     
-    [[self mutableArrayValueForKey:@"assignedUsergroups"] removeAllObjects];
-    [[self mutableArrayValueForKey:@"availableUsergroups"] removeAllObjects];
+    //[[self mutableArrayValueForKey:@"assignedUsergroups"] removeAllObjects];
+    //[[self mutableArrayValueForKey:@"availableUsergroups"] removeAllObjects];
     
     // fetch usergroup's users.
     [PTUsergroupHelper usergroupsVisibleForProject:project successBlock:^(NSMutableArray *usergroups) {
