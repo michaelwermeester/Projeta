@@ -269,6 +269,8 @@
     NSDictionary *dict = [[NSDictionary alloc] init];
     dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
         
+    NSLog(@"fuckdict: %@", dict);
+    
     [[self mutableArrayValueForKey:@"arrBug"] addObjectsFromArray:[PTBugHelper setAttributesFromJSONDictionary:dict]];
         
     // stop animating the main window's circular progress indicator.

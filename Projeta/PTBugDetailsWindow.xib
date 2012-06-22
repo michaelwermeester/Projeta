@@ -19,6 +19,7 @@
 			<string>NSButton</string>
 			<string>NSButtonCell</string>
 			<string>NSTextFieldCell</string>
+			<string>NSDateFormatter</string>
 			<string>NSComboBox</string>
 			<string>IBNSLayoutConstraint</string>
 			<string>NSCustomObject</string>
@@ -67,6 +68,7 @@
 							<string key="NSFrame">{{567, 10}, {90, 32}}</string>
 							<reference key="NSSuperview" ref="1006"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="96544303">
@@ -689,9 +691,28 @@
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="1010817827">
 								<int key="NSCellFlags">68288064</int>
-								<int key="NSCellFlags2">272630784</int>
+								<int key="NSCellFlags2">-1874852864</int>
 								<string key="NSContents"/>
 								<reference key="NSSupport" ref="108698400"/>
+								<object class="NSDateFormatter" key="NSFormatter" id="907581387">
+									<object class="NSMutableDictionary" key="NS.attributes">
+										<bool key="EncodedWithXMLCoder">YES</bool>
+										<object class="NSArray" key="dict.sortedKeys">
+											<bool key="EncodedWithXMLCoder">YES</bool>
+											<string>dateFormat</string>
+											<string>dateStyle</string>
+											<string>formatterBehavior</string>
+										</object>
+										<object class="NSArray" key="dict.values">
+											<bool key="EncodedWithXMLCoder">YES</bool>
+											<string>d/M/yyyy</string>
+											<integer value="0"/>
+											<integer value="1040"/>
+										</object>
+									</object>
+									<string key="NS.format">d/M/yyyy</string>
+									<bool key="NS.natural">NO</bool>
+								</object>
 								<string key="NSCellIdentifier">_NS:1505</string>
 								<reference key="NSControlView" ref="272126467"/>
 								<reference key="NSBackgroundColor" ref="554342550"/>
@@ -1009,19 +1030,19 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: bug.userReported.fullNameAndUsername</string>
+						<string key="label">value: bug.userReported.username</string>
 						<reference key="source" ref="44293156"/>
 						<reference key="destination" ref="1001"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="44293156"/>
 							<reference key="NSDestination" ref="1001"/>
-							<string key="NSLabel">value: bug.userReported.fullNameAndUsername</string>
+							<string key="NSLabel">value: bug.userReported.username</string>
 							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">bug.userReported.fullNameAndUsername</string>
+							<string key="NSKeyPath">bug.userReported.username</string>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
-					<int key="connectionID">1787</int>
+					<int key="connectionID">1794</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -1038,6 +1059,22 @@
 						</object>
 					</object>
 					<int key="connectionID">1781</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: bug.dateReported</string>
+						<reference key="source" ref="272126467"/>
+						<reference key="destination" ref="1001"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="272126467"/>
+							<reference key="NSDestination" ref="1001"/>
+							<string key="NSLabel">value: bug.dateReported</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">bug.dateReported</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">1793</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -2424,6 +2461,10 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">1740</int>
 						<reference key="object" ref="1010817827"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="907581387"/>
+						</object>
 						<reference key="parent" ref="272126467"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -2571,6 +2612,11 @@
 						<reference key="object" ref="27770797"/>
 						<reference key="parent" ref="1006"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1795</int>
+						<reference key="object" ref="907581387"/>
+						<reference key="parent" ref="1010817827"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -2684,6 +2730,8 @@
 					<string>1782.IBPluginDependency</string>
 					<string>1783.IBPluginDependency</string>
 					<string>1784.IBPluginDependency</string>
+					<string>1795.IBDateFormatterBehaviorMetadataKey</string>
+					<string>1795.IBPluginDependency</string>
 					<string>2.IBNSViewMetadataConstraints</string>
 					<string>2.IBPluginDependency</string>
 					<string>219.IBPluginDependency</string>
@@ -2848,6 +2896,8 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<integer value="2"/>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<object class="NSMutableArray">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<reference ref="541617945"/>
@@ -2958,7 +3008,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">1791</int>
+			<int key="maxID">1795</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

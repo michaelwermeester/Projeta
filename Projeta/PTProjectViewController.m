@@ -188,7 +188,8 @@
         }
         
         
-        
+        NSLog(@"PROID: %@", projectDetailsViewController.project.projectTitle);
+        NSLog(@"PROID: %@", projectDetailsViewController.project.projectId);
         
         [projectDetailsViewController loadProjectDetails];
 

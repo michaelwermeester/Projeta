@@ -132,11 +132,16 @@
     for (Role *r in mainWindowController.mainWindowViewController.currentUserRoles) {
         
         // if user is in administrator role, add the admin menu to the sidebar.
-        if ([r.code isEqualToString:@"administrator"] == NO && [r.code isEqualToString:@"developer"] == NO) {
+        if ([r.code isEqualToString:@"administrator"] == NO && [r.code isEqualToString:@"developer"] == NO && isPersonalTask == NO) {
             [addTaskButton setHidden:YES];
             [removeTaskButton setHidden:YES];
         }
     }
+    
+    if (isPersonalTask == YES) {
+        [outlineViewProjetColumn setHidden:YES];
+    }
+    
     
     [self viewDidLoad];
 }
@@ -211,6 +216,7 @@
         // mettre les dates actuelle.
         tsk.startDate = [NSDate date];
         tsk.endDate = [NSDate date];
+        
         
         tsk.isPersonal = isPersonalTask;
         

@@ -230,10 +230,10 @@
         
         
         // bugs.
-        urlString = [NSString stringWithString:@"resources/bugs/?projectId="];
-        urlString = [urlString stringByAppendingString:[project.projectId stringValue]];
+        NSString *urlStrings = [NSString stringWithString:@"resources/bugs/?projectId="];
+        urlStrings = [urlStrings stringByAppendingString:[project.projectId stringValue]];
         
-        bugListViewController.bugURL = urlString;
+        bugListViewController.bugURL = urlStrings;
         
         [bugListViewController loadBugs];
     }
