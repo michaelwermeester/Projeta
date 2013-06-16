@@ -221,7 +221,7 @@
     // load tasks for selected project. 
     if (project.projectId) {
         // tasks.
-        NSString *urlString = [NSString stringWithString:@"resources/tasks/?projectId="];
+        NSString *urlString = @"resources/tasks/?projectId=";
         urlString = [urlString stringByAppendingString:[project.projectId stringValue]];
      
         taskListViewController.taskURL = urlString;
@@ -230,7 +230,7 @@
         
         
         // bugs.
-        NSString *urlStrings = [NSString stringWithString:@"resources/bugs/?projectId="];
+        NSString *urlStrings = @"resources/bugs/?projectId=";
         urlStrings = [urlStrings stringByAppendingString:[project.projectId stringValue]];
         
         bugListViewController.bugURL = urlStrings;
@@ -245,7 +245,7 @@
     
     if (project.projectId) {
         // tasks.
-        NSString *urlString = [NSString stringWithString:@"resources/tasks/?projectId="];
+        NSString *urlString = @"resources/tasks/?projectId=";
         urlString = [urlString stringByAppendingString:[project.projectId stringValue]];
         
         taskListViewController.taskURL = urlString;
@@ -286,7 +286,7 @@
     
     if (project.projectId) {
         // bugs.
-        NSString *urlString = [NSString stringWithString:@"resources/bugs/?projectId="];
+        NSString *urlString = @"resources/bugs/?projectId=";
         urlString = [urlString stringByAppendingString:[project.projectId stringValue]];
         
         bugListViewController.bugURL = urlString;

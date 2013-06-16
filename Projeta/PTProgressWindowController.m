@@ -89,7 +89,7 @@
     
     BOOL progressUpdSuc = NO;
     
-    int selectedIndex = [statusComboBox indexOfSelectedItem];
+    NSInteger selectedIndex = [statusComboBox indexOfSelectedItem];
     
     // statut.
     if (selectedIndex > -1) {
@@ -125,7 +125,7 @@
 - (void)finishedCreatingProgress:(NSMutableData*)data {    
     
     // remettre champs à vide.
-    progress.progressComment = [[NSString alloc] initWithString:@""];
+    progress.progressComment = @"";
     progress.percentageComplete = nil;
     progress.status = nil;
     progress.statusId = nil;
@@ -143,18 +143,18 @@
     // afficher commentaires pour tâche...
     if (task) {
         if (task.taskId) {
-            progressUrlString = [[NSString alloc] initWithString:@"https://luckycode.be:8181/projeta-website/faces/progressCocoa.xhtml?type=task&id="];
+            progressUrlString = @"https://luckycode.be:8181/projeta-website/faces/progressCocoa.xhtml?type=task&id=";
             progressUrlString = [progressUrlString stringByAppendingString:[[task taskId] stringValue]];
         }
     } else if (project) {   // pour un projet...
         if (project.projectId) {
-            progressUrlString = [[NSString alloc] initWithString:@"https://luckycode.be:8181/projeta-website/faces/progressCocoa.xhtml?type=project&id="];
+            progressUrlString = @"https://luckycode.be:8181/projeta-website/faces/progressCocoa.xhtml?type=project&id=";
             progressUrlString = [progressUrlString stringByAppendingString:[[project projectId] stringValue]];
         }
     }
     else if (bug) {   // pour un projet...
         if (bug.bugId) {
-            progressUrlString = [[NSString alloc] initWithString:@"https://luckycode.be:8181/projeta-website/faces/progressCocoa.xhtml?type=bug&id="];
+            progressUrlString = @"https://luckycode.be:8181/projeta-website/faces/progressCocoa.xhtml?type=bug&id=";
             progressUrlString = [progressUrlString stringByAppendingString:[[bug bugId] stringValue]];
         }
     }

@@ -314,7 +314,7 @@ PTCommentairesWindowController *commentWindowController;
 - (IBAction)removeProjectButtonClicked:(id)sender {
     
     // index du tab actuel.
-    int selectedTabIndex = [prjTabView indexOfTabViewItem:[prjTabView selectedTabViewItem]];
+    NSInteger selectedTabIndex = [prjTabView indexOfTabViewItem:[prjTabView selectedTabViewItem]];
     
     NSArray *selectedObjects;
     
@@ -518,7 +518,7 @@ PTCommentairesWindowController *commentWindowController;
 - (void)openProjectDetailsWindow:(BOOL)isNewProject isSubProject:(BOOL)isSubProject {    
     
     // l'onglet en cours. 
-    int selectedTabIndex = [prjTabView indexOfTabViewItem:[prjTabView selectedTabViewItem]];
+    NSInteger selectedTabIndex = [prjTabView indexOfTabViewItem:[prjTabView selectedTabViewItem]];
     
     NSArray *selectedObjects;
     NSIndexPath *prjTreeIndexPath;
@@ -559,7 +559,7 @@ PTCommentairesWindowController *commentWindowController;
 -(void)tabView:(NSTabView *)tabView didSelectTabViewItem:(NSTabViewItem *)tabViewItem {
     
     // désactiver la menu pour rajouter un sous-projet si le premier onglet est l'onglet actif.
-    int selectedTabIndex = [tabView indexOfTabViewItem:tabViewItem];
+    NSInteger selectedTabIndex = [tabView indexOfTabViewItem:tabViewItem];
     
     if (selectedTabIndex == 0) {
         [addSubProjectButton setEnabled:NO];

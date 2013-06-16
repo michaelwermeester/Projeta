@@ -158,7 +158,7 @@
 - (NSString *)windowTitle {
     
     // afficher 'Projet : <nom du projet>'.
-    NSString *retVal = [[NSString alloc] initWithString:@"Utilisateurs pour groupe"];
+    NSString *retVal = @"Utilisateurs pour groupe";
     if (usergroup) {
         if (usergroup.code) {
             retVal = [retVal stringByAppendingString:@" : "];

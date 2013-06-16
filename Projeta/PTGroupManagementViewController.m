@@ -162,7 +162,7 @@
     
     NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
     
-    NSString* requestDataLengthString = [[NSString alloc] initWithFormat:@"%d", [requestData length]];
+    NSString* requestDataLengthString = [[NSString alloc] initWithFormat:@"%ld", (unsigned long)[requestData length]];
     
     [urlRequest setHTTPMethod:@"PUT"]; // update
     [urlRequest setHTTPBody:requestData];

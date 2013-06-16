@@ -154,7 +154,7 @@
 
 - (NSString *)fullName
 {
-    NSString *fullname = [NSString stringWithString:@""];
+    NSString *fullname = @"";
     if (firstName != nil) {
         fullname = [fullname stringByAppendingString:firstName];
     }
@@ -170,7 +170,7 @@
 
 - (NSString*)fullNameAndUsername {
     
-    NSString *description = [NSString stringWithString:@""];
+    NSString *description = @"";
     
     
     if ([self fullName] != nil) {

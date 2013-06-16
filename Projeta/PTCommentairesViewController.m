@@ -82,16 +82,16 @@
     // afficher commentaires pour tâche...
     if (task) {
         if (task.taskId) {
-            commentUrlString = [[NSString alloc] initWithString:@"https://luckycode.be:8181/projeta-website/faces/commentsCocoa.xhtml?type=task&id="];
+            commentUrlString = @"https://luckycode.be:8181/projeta-website/faces/commentsCocoa.xhtml?type=task&id=";
             commentUrlString = [commentUrlString stringByAppendingString:[[task taskId] stringValue]];
         }
     } else if (project) {   // afficher commentaires pour projet.
         if (project.projectId) {
-            commentUrlString = [[NSString alloc] initWithString:@"https://luckycode.be:8181/projeta-website/faces/commentsCocoa.xhtml?type=project&id="];
+            commentUrlString = @"https://luckycode.be:8181/projeta-website/faces/commentsCocoa.xhtml?type=project&id=";
             commentUrlString = [commentUrlString stringByAppendingString:[[project projectId] stringValue]];
         }
     } else if (bug) {   // afficher commentaires pour bogue.
-        commentUrlString = [[NSString alloc] initWithString:@"https://luckycode.be:8181/projeta-website/faces/commentsCocoa.xhtml?type=bug&id="];
+        commentUrlString = @"https://luckycode.be:8181/projeta-website/faces/commentsCocoa.xhtml?type=bug&id=";
         commentUrlString = [commentUrlString stringByAppendingString:[[bug bugId] stringValue]];
     }
     
@@ -161,7 +161,7 @@
         for (PTComment *cmt in createdCommentArray) {
             
             // remettre textbox à vide.
-            comment.comment = [[NSString alloc] initWithString:@""];
+            comment.comment = @"";
             
             // désactiver bouton pour envoyer commentaire.
             [sendCommentButton setEnabled:NO];

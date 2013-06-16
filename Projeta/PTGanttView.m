@@ -15,7 +15,7 @@
 
 int counter;
 int totalProjects;
-int max;
+NSInteger max;
 NSInteger days;
 
 CGFloat headerHeight = 70.0f; 
@@ -119,7 +119,9 @@ NSBezierPath *aPath ;
     [drawStringAttributes setValue:[NSColor blackColor] forKey:NSForegroundColorAttributeName];
     [drawStringAttributes setValue:[NSFont boldSystemFontOfSize:11] forKey:NSFontAttributeName];
     
-    NSString *projTitleString = [NSString stringWithFormat:aProject.projectTitle];
+    //NSString *projTitleString = [NSString stringWithFormat:aProject.projectTitle];
+    NSString *projTitleString = aProject.projectTitle;
+    
     NSSize stringSize = [projTitleString sizeWithAttributes:drawStringAttributes];
 
     NSPoint centerPoint;
@@ -169,7 +171,8 @@ NSBezierPath *aPath ;
         // incrementer la date par 1 jour.
         NSDate *date = [self dateByAddingDays:i toDate:minDate];
        
-        NSString *dateString = [NSString stringWithFormat:[PTCommon stringFromDate:date]];
+        //NSString *dateString = [NSString stringWithFormat:[PTCommon stringFromDate:date]];
+        NSString *dateString = [PTCommon stringFromDate:date];
         
         NSPoint centerPoint;
         centerPoint.x = (20 * i) - 6;

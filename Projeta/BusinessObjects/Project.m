@@ -185,7 +185,7 @@
 // retourne le pourcentage d'avancement du projet.
 - (NSString *)percentageCompleteString {
     
-    NSString *retVal = [[NSString alloc] initWithString:@""];
+    NSString *retVal = @"";
     
     // si le percentage est un numéro.
     if (self.projectPercentage) {
@@ -226,7 +226,7 @@
 
 - (NSString *)projectPercentageStatus {
     
-    NSString *retString = [[NSString alloc] initWithString:@""];
+    NSString *retString = @"";
     
     if ([self projectPercentage]) {
         if ([self.projectPercentage isEqualToNumber:[NSDecimalNumber notANumber]] == NO) {

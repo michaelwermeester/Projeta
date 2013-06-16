@@ -230,25 +230,25 @@ SourceListItem *personalTasksItem;
 	else if([selectedIndexes count]==1) {
 		NSString *identifier = [[sourceList itemAtRow:[selectedIndexes firstIndex]] identifier];
 		
-        if (identifier == @"projects" || identifier == @"projectsPublic" || identifier == @"projectsAssigned" || identifier == @"projectsParClientItem" || identifier == @"projectsParDeveloppeurItem") {
+        if ([identifier isEqualToString:@"projects"] || [identifier isEqualToString:@"projectsPublic"] || [identifier isEqualToString:@"projectsAssigned"] || [identifier isEqualToString:@"projectsParClientItem"] || [identifier isEqualToString:@"projectsParDeveloppeurItem"]) {
             
             [self removeViewsFromRightView];
             
             if (!projectListViewController) {
        
                 //projectListViewController = [[PTProjectListViewController alloc] init];
-                if (identifier == @"projects" || identifier == @"projectsPublic") 
+                if ([identifier isEqualToString:@"projects"] || [identifier isEqualToString:@"projectsPublic"])
                     projectListViewController = [[PTProjectListViewController alloc] initWithNibName:@"PTProjectListView" bundle:nil];
-                else if (identifier == @"projectsParClientItem") 
+                else if ([identifier isEqualToString:@"projectsParClientItem"])
                     projectListViewController = [[PTProjectListViewController alloc] initWithNibName:@"PTProjectListViewClient" bundle:nil];
-                else if (identifier == @"projectsParDeveloppeurItem")
+                else if ([identifier isEqualToString:@"projectsParDeveloppeurItem"])
                     projectListViewController = [[PTProjectListViewController alloc] initWithNibName:@"PTProjectListViewDeveloper" bundle:nil];
-                else if (identifier == @"projectsAssigned")
+                else if ([identifier isEqualToString:@"projectsAssigned"])
                     projectListViewController = [[PTProjectListViewController alloc] initWithNibName:@"PTProjectListViewAssigned" bundle:nil];
                 
-                if (identifier == @"projectsPublic")
+                if ([identifier isEqualToString:@"projectsPublic"])
                     projectListViewController.projectURL = @"resources/projects/public";
-                else if (identifier == @"projectsAssigned")
+                else if ([identifier isEqualToString:@"projectsAssigned"])
                     projectListViewController.projectURL = @"resources/projects/assigned";
                 
                 // set reference to (parent) window
@@ -263,23 +263,23 @@ SourceListItem *personalTasksItem;
                 [projectListViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
             }
         }
-        else if (identifier == @"tasks" || identifier == @"tasksPersonal" || identifier == @"tasksAssigned" || identifier == @"tasksParClientItem" || identifier == @"tasksParDeveloppeurItem") {
+        else if ([identifier isEqualToString:@"tasks"] || [identifier isEqualToString:@"tasksPersonal"] || [identifier isEqualToString:@"tasksAssigned"] || [identifier isEqualToString:@"tasksParClientItem"] || [identifier isEqualToString:@"tasksParDeveloppeurItem"]) {
             
             [self removeViewsFromRightView];
             
             if (!taskListViewController) {
                 
                 
-                if (identifier == @"tasks" || identifier == @"tasksPersonal" || identifier == @"tasksAssigned") 
+                if ([identifier isEqualToString:@"tasks"] || [identifier isEqualToString:@"tasksPersonal"] || [identifier isEqualToString:@"tasksAssigned"])
                     taskListViewController = [[PTTaskListViewController alloc] initWithNibName:@"PTTaskListView" bundle:nil];
-                else if (identifier == @"tasksParClientItem") 
+                else if ([identifier isEqualToString:@"tasksParClientItem"])
                     taskListViewController = [[PTTaskListViewController alloc] initWithNibName:@"PTTaskListViewClient" bundle:nil];
-                else if (identifier == @"tasksParDeveloppeurItem") 
+                else if ([identifier isEqualToString:@"tasksParDeveloppeurItem"])
                     taskListViewController = [[PTTaskListViewController alloc] initWithNibName:@"PTTaskListViewDeveloper" bundle:nil];
                 
                 
                 // tâche public.
-                if (identifier == @"tasksPersonal") {
+                if ([identifier isEqualToString:@"tasksPersonal"]) {
                     taskListViewController.isPersonalTask = YES;
                     // cacher la colonne 'projet'.
                     [taskListViewController.outlineViewProjetColumn setHidden:YES];
@@ -287,7 +287,7 @@ SourceListItem *personalTasksItem;
                 else
                     taskListViewController.isPersonalTask = NO;
                 
-                if (identifier == @"tasksAssigned")
+                if ([identifier isEqualToString:@"tasksAssigned"])
                     taskListViewController.taskURL = @"resources/tasks/assigned";
                 
                 
@@ -303,26 +303,26 @@ SourceListItem *personalTasksItem;
                 [taskListViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
                 
                 // hide add/remove buttons.
-                if (identifier != @"tasks" && identifier != @"tasksPersonal") {
+                if (![identifier isEqual: @"tasks"] && ![identifier isEqual:@"tasksPersonal"]) {
                     [taskListViewController.addTaskButton setHidden:YES];
                     [taskListViewController.removeTaskButton setHidden:YES];
                 }
             }
         }
-        else if (identifier == @"bugs" || identifier == @"bugsAssigned" || identifier == @"bugsParClientItem" || identifier == @"bugsParDeveloppeurItem") {
+        else if ([identifier isEqual: @"bugs"] || [identifier isEqual: @"bugsAssigned"] || [identifier isEqual: @"bugsParClientItem"] || [identifier isEqual: @"bugsParDeveloppeurItem"]) {
             
             [self removeViewsFromRightView];
             
             if (!bugListViewController) {
                 
-                if (identifier == @"bugs" || identifier == @"bugsAssigned") 
+                if ([identifier isEqual: @"bugs"] || [identifier isEqual: @"bugsAssigned"]) 
                     bugListViewController = [[PTBugListViewController alloc] initWithNibName:@"PTBugListView" bundle:nil];
-                else if (identifier == @"bugsParClientItem") 
+                else if ([identifier isEqual: @"bugsParClientItem"]) 
                      bugListViewController = [[PTBugListViewController alloc] initWithNibName:@"PTBugListViewClient" bundle:nil];
-                else if (identifier == @"bugsParDeveloppeurItem") 
+                else if ([identifier isEqual: @"bugsParDeveloppeurItem"]) 
                      bugListViewController = [[PTBugListViewController alloc] initWithNibName:@"PTBugListViewDeveloper" bundle:nil];
                 
-                if (identifier == @"bugsAssigned")
+                if ([identifier isEqual: @"bugsAssigned"])
                     bugListViewController.bugURL = @"resources/bugs/assigned";
                 
                 // set reference to (parent) window
@@ -341,7 +341,7 @@ SourceListItem *personalTasksItem;
                 [bugListViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
             }
         }
-        else if (identifier == @"userAdmin") {
+        else if ([identifier isEqual: @"userAdmin"]) {
             
             [self removeViewsFromRightView];
             
@@ -361,7 +361,7 @@ SourceListItem *personalTasksItem;
                 [userManagementViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
             }
         }
-        else if (identifier == @"groupAdmin") {
+        else if ([identifier isEqual: @"groupAdmin"]) {
             
             [self removeViewsFromRightView];
             
@@ -381,7 +381,7 @@ SourceListItem *personalTasksItem;
                 [groupManagementViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
             }
         }
-        else if (identifier == @"clientAdmin") {
+        else if ([identifier isEqual: @"clientAdmin"]) {
             
             [self removeViewsFromRightView];
             
@@ -401,7 +401,7 @@ SourceListItem *personalTasksItem;
                 [clientManagementViewController.view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
             }
         }
-        else if (identifier == @"bugCategoryAdmin") {
+        else if ([identifier isEqual: @"bugCategoryAdmin"]) {
             
             [self removeViewsFromRightView];
             

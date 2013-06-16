@@ -127,7 +127,7 @@
 
 - (NSString *)bugPercentageStatus {
     
-    NSString *retString = [[NSString alloc] initWithString:@""];
+    NSString *retString = @"";
     
     if ([self bugPercentage]) {
         if ([self.bugPercentage isEqualToNumber:[NSDecimalNumber notANumber]] == NO) {

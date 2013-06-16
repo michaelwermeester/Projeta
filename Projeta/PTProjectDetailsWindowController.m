@@ -207,7 +207,7 @@ Project *projectCopy;
 - (NSString *)windowTitle {
     
     // afficher 'Projet : <nom du projet>'.
-    NSString *retVal = [[NSString alloc] initWithString:@"Projet"];
+    NSString *retVal = @"Projet";
     if (project) {
         if (project.projectTitle) {
             retVal = [retVal stringByAppendingString:@" : "];
@@ -217,7 +217,7 @@ Project *projectCopy;
     
     // si nouveau projet, afficher 'Nouveau projet'.
     if (isNewProject)
-        retVal = [[NSString alloc] initWithString:@"Nouveau projet"];
+        retVal = @"Nouveau projet";
     
     return retVal;
 

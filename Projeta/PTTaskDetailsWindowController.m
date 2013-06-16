@@ -196,7 +196,7 @@ Task *taskCopy;
 - (NSString *)windowTitle {
     
     // afficher 'Projet : <nom du projet>'.
-    NSString *retVal = [[NSString alloc] initWithString:@"Tâche"];
+    NSString *retVal = @"Tâche";
     if (task) {
         if (task.taskTitle) {
             retVal = [retVal stringByAppendingString:@" : "];
@@ -206,7 +206,7 @@ Task *taskCopy;
     
     // si nouveau projet, afficher 'Nouveau projet'.
     if (isNewTask)
-        retVal = [[NSString alloc] initWithString:@"Nouvelle tâche"];
+        retVal = @"Nouvelle tâche";
     
     return retVal;
     

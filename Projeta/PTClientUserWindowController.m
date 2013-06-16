@@ -163,7 +163,7 @@
 - (NSString *)windowTitle {
     
     // afficher 'Projet : <nom du projet>'.
-    NSString *retVal = [[NSString alloc] initWithString:@"Utilisateurs pour client"];
+    NSString *retVal = @"Utilisateurs pour client";
     if (client) {
         if (client.clientName) {
             retVal = [retVal stringByAppendingString:@" : "];

@@ -221,7 +221,7 @@ Bug *bugCopy;
 - (NSString *)windowTitle {
     
     // afficher 'Projet : <nom du projet>'.
-    NSString *retVal = [[NSString alloc] initWithString:@"Bogue"];
+    NSString *retVal = @"Bogue";
     if (bug) {
         if (bug.title) {
             retVal = [retVal stringByAppendingString:@" : "];
@@ -231,7 +231,7 @@ Bug *bugCopy;
     
     // si nouveau projet, afficher 'Nouveau projet'.
     if (isNewBug)
-        retVal = [[NSString alloc] initWithString:@"Nouveau bogue"];
+        retVal = @"Nouveau bogue";
     
     return retVal;
     
