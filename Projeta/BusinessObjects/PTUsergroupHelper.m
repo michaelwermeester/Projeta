@@ -148,7 +148,7 @@
 
 + (BOOL)updateUsergroupsForUser:(User *)aUser usergroups:(NSMutableDictionary *)usergroups successBlock:(void(^)(NSMutableData *))successBlock failureBlock:(void(^)(NSError *))failureBlock {
     
-    BOOL success;
+    BOOL success = YES;
     
     // build URL by adding resource path
     NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/usergroups/updateGroupsForUser?userId="];
@@ -163,7 +163,7 @@
 
 + (BOOL)updateUsersForUsergroup:(Usergroup *)aUsergroup users:(NSMutableDictionary *)users successBlock:(void(^)(NSMutableData *))successBlock failureBlock:(void(^)(NSError *))failureBlock {
 
-    BOOL success;
+    BOOL success = YES;
     
     // build URL by adding resource path
     NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/usergroups/updateUsersForGroup?usergroupId="];

@@ -234,7 +234,7 @@
 
 + (BOOL)updateUsersVisibleForProject:(Project *)aProject users:(NSMutableDictionary *)users successBlock:(void(^)(NSMutableData *))successBlock failureBlock:(void(^)(NSError *))failureBlock {
     
-    BOOL success;
+    BOOL success = YES;
     
     // build URL by adding resource path
     NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/projects/updateUsersVisibleForProject?projectId="];
@@ -249,7 +249,7 @@
 
 + (BOOL)updateUsergroupsVisibleForProject:(Project *)aProject usergroups:(NSMutableDictionary *)usergroups successBlock:(void(^)(NSMutableData *))successBlock failureBlock:(void(^)(NSError *))failureBlock {
     
-    BOOL success;
+    BOOL success = YES;
     
     // build URL by adding resource path
     NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/projects/updateUsergroupsVisibleForProject?projectId="];
@@ -264,7 +264,7 @@
 
 + (BOOL)updateClientsVisibleForProject:(Project *)aProject clients:(NSMutableDictionary *)clients successBlock:(void(^)(NSMutableData *))successBlock failureBlock:(void(^)(NSError *))failureBlock {
     
-    BOOL success;
+    BOOL success = YES;
     
     // build URL by adding resource path
     NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/projects/updateClientsVisibleForProject?projectId="];

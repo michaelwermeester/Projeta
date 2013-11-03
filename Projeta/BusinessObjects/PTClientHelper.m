@@ -130,7 +130,7 @@
 
 + (BOOL)updateUsersForClient:(Client *)aClient users:(NSMutableDictionary *)users successBlock:(void(^)(NSMutableData *))successBlock failureBlock:(void(^)(NSError *))failureBlock {
     
-    BOOL success;
+    BOOL success = YES;
     
     // build URL by adding resource path
     NSString *resourceString = [[NSString alloc] initWithFormat:@"resources/clients/updateUsersForClient?clientId="];
